@@ -72,4 +72,4 @@ Feedback or professionnal contact : Go on the [home page](https://aureldev.fr/) 
 
 ## License
 
-This project is licensed under the MIT License - see the (LICENSE.md) for details.
+This project is licensed under the MIT License - [see the LICENSE file](/LICENSE) for details.
