@@ -1,12 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
-  nitro: {
+  /* nitro: {
     preset: "vercel",
-  },
-  experimental: {
-    payloadExtraction: false,
-  },
+  }, */
   modules: [
     "@nuxt/content",
     "@nuxt/ui",
@@ -58,6 +55,6 @@ export default defineNuxtConfig({
     transpile: [],
   },
   vite: {},
-  devtools: { enabled: true },
-  compatibilityDate: "2024-04-03",
+  devtools: { enabled: false },
+  compatibilityDate: "latest",
 });

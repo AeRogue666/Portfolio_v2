@@ -27,7 +27,7 @@ useSeoMeta({
 </script>
 
 <template>
-    <main tabindex="-1" aria-labelledby="feed-title">
+    <UContainer tabindex="-1" aria-labelledby="feed-title">
         <h1 id="feed-title" class="sr-only">{{ t('index.title') }}</h1>
 
         <Feed id="feed" :items="items" :loading="status === 'pending'" :error="error?.message ?? null" />
@@ -47,5 +47,5 @@ useSeoMeta({
         <footer>
 
         </footer>
-    </main>
+    </UContainer>
 </template>
