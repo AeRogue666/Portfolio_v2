@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./themes//light.css";
+@import "./themes/dark.css";
+
+html {
+  --font-scale: 1;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+html[data-contrast="normal"] {
+  --bg: var(--bg-primary);
+  --bg-2: var(--bg-secondary);
+  --bg-3: var(--bg-tertiary);
+  --text: var(--text-primary);
+  --text-2: var(--text-secondary);
+  --text-3: var(--text-tertiary);
+  --link: var(--text-secondary);
+  --link-hover: var(--accent-hover);
+}
+
+html[data-contrast="high"] {
+  --bg: var(--a11y-high-bg);
+  --bg-2: var(--a11y-high-bg-2);
+  --bg-3: var(--a11y-high-bg-3);
+  --text: var(--a11y-high-text);
+  --text-2: var(--a11y-high-text-2);
+  --text-3: var(--a11y-high-text-3);
+  --accent: var(--a11y-high-focus);
+}
+
+html[data-contrast="low"] {
+  --bg: var(--a11y-low-bg);
+  --bg-2: var(--a11y-low-bg-2);
+  --bg-3: var(--a11y-low-bg-3);
+  --text: var(--a11y-low-text);
+  --text-2: var(--a11y-low-text-2);
+  --text-3: var(--a11y-low-text-3);
+}
+
+html[data-grayscale="true"] {
+  --bg: var(--bg-gray-primary);
+  --bg-2: var(--bg-gray-secondary);
+  --bg-3: var(--bg-gray-tertiary);
+  --text: var(--text-gray-primary);
+  --text-2: var(--text-gray-secondary);
+  --text-3: var(--text-gray-tertiary);
+  --link: var(--text-gray-secondary);
+  --accent: var(--accent-gray);
+}
+
+html[data-grayscale="true"] image {
+  filter: grayscale(100%);
+}
+
+html[data-underline="true"] a {
+  text-decoration: underline !important;
+}
+
+html[data-font="source-sans"] {
+  font-family: "Source Sans 3", system-ui, sans-serif;
+}
+
+html[data-font="atkinson"] {
+  font-family: "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+
+html[data-font="roboto"] {
+  font-family: "Roboto", system-ui, sans-serif;
+}

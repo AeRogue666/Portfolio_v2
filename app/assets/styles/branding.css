@@ -1,0 +1,26 @@
+/* Cette palette est plus "branding" que l'autre qui est plus orientée "lecture longue / accessibilité" */
+
+:root {
+/* Backgrounds */
+--bg-primary: #f6f1eb;
+--bg-secondary: #e8dfd6; /* off-white chaud */
+--bg-tertiary: #d6cbbf; /* beige doux */
+
+/* Text */
+--text-primary: #1f1f1f; /* charcoal */
+--text-secondary: #4a4a4a;
+--text-muted: #6b6b6b;
+
+/* Accent */
+--accent: #b24a2f; /* rouge brûlé */
+--accent-hover: #9c3f28;
+
+/* States */
+--focus: #b24a2f;
+--border-subtle: #cfc4b8;
+
+/* Feedback */
+--success: #4f7d5b;
+--warning: #b98b3a;
+--danger: #a03a2c;
+}

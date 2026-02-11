@@ -1,0 +1,51 @@
+<script setup lang="ts">
+definePageMeta({
+    layout: 'index-header'
+});
+
+const feedStore = useFeedStore(),
+    { t, locale } = useI18n();
+
+const { items, total, status, error, loadMore } = useFeed({ limit: 5 });
+
+onMounted(() => {
+    if (items.value?.length) feedStore.setPosts(items.value)
+});
+
+watch(locale, () => {
+    feedStore.reset();
+});
+
+useSeoMeta({
+    title: t('seo.home.title'),
+    description: t('seo.home.description'),
+    ogTitle: t('seo.home.title'),
+    ogDescription: t('seo.home.description'),
+    ogImage: '/images/project/front-ecommerce-headless/desktop.png',
+    twitterCard: 'summary_large_image',
+});
+</script>
+
+<template>
+    <main tabindex="-1" aria-labelledby="feed-title">
+        <h1 id="feed-title" class="sr-only">{{ t('index.title') }}</h1>
+
+        <Feed id="feed" :items="items" :loading="status === 'pending'" :error="error?.message ?? null" />
+
+        <UContainer>
+            <button v-if="items.length < total" id="button-load-articles"
+                :aria-label="t('index.loading_articles_button')" role="button" aria-controls="feed" @click="loadMore()"
+                :aria-busy="status === 'pending'">
+                {{ t('index.loading_articles_button') }}
+            </button>
+        </UContainer>
+
+        <div v-if="status === 'success' && feedStore.sortedPosts.length < total" aria-live="polite" class="sr-only">
+            <span>{{ total }} {{ t('index.loaded_new_articles') }}</span>
+        </div>
+
+        <footer>
+
+        </footer>
+    </main>
+</template>

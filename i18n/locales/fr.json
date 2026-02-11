@@ -1,0 +1,133 @@
+{
+  "header": {
+    "skip_content": "Passer au contenu principal",
+    "span_title": "Aureldev"
+  },
+  "sidebar-left": {
+    "open": "Ouvrir le menu du profil",
+    "close": "Fermer le menu du profil",
+    "title": "Profil",
+    "description": "Découvrer mon profil",
+    "user_title": "Aureldev",
+    "user_description": "Développeur Full-stack",
+    "user_alternative_text": "",
+    "open_github": "Ouvrir sur Github",
+    "open_linkedin": "Ouvrir sur Linkedin",
+    "modal-message": {
+      "title": "Envoyer un message",
+      "description": "Envoyer un message à Aureldev",
+      "send-message_button_label": "Envoyer un message",
+      "input_label": "Email",
+      "textarea_label": "Message",
+      "textarea_placeholder": "Décrivez votre besoin, votre message ou votre question. Je vous répondrez directement par mail",
+      "submit_button": "Envoyer"
+    },
+    "navigation": {
+      "accessibility_statement": "Déclaration d'accessibilité",
+      "problem_report": "Signaler un problème"
+    }
+  },
+  "sidebar-right": {
+    "open": "Ouvrir les paramètres utilisateurs",
+    "close": "Fermer les paramètres utilisateurs",
+    "title": "Paramètres utilisateurs",
+    "description": "Réglez le site à vos préférences",
+    "theme": "Theme",
+    "language": "Langue",
+    "contrast": "Contraste",
+    "font": "Police",
+    "grayscale": "Grayscale",
+    "underline_links": "Liens sous-lignés",
+    "reset_params": "Réinitialiser les paramètres"
+  },
+  "seo": {
+    "home": {
+      "title": "Portfolio d'Aureldev - projets et contenu",
+      "description": "Découvrez un portfolio 'as a social feed', accessible et centré sur l'utilisateur"
+    }
+  },
+  "index": {
+    "title": "Portfolio - projets et contenu",
+    "load_more": "Load more articles",
+    "loaded_new_articles": "Nouveux articles chargés",
+    "loading_articles_button": "Bouton de chargement de nouveaux articles"
+  },
+  "post": {
+    "read_post": "Lire le post",
+    "read_about": "Lire la présentation complète",
+    "pinned_post": "Post épinglé",
+    "default_post": "Post",
+    "type": {
+      "project": "Projet",
+      "update": "Mise à jour",
+      "about": "A propos",
+      "pinned": "Epinglé"
+    }
+  },
+  "project": {
+    "published_on": "Publié le",
+    "role": "Rôle",
+    "stack": "Stack",
+    "context": "Contexte",
+    "problem": "Le problème",
+    "solution": "La solution",
+    "technical_choices": "Choix techniques",
+    "accessibility": "Accessibilité et UX",
+    "learnings": "Résultats et Apprentissages",
+    "watch_code": "Voir le code",
+    "watch_demo": "Voir la démo"
+  },
+  "update": {
+    "published_on": "Publié le",
+    "tags": "Tags",
+    "content": "Contenu"
+  },
+  "footer": {},
+  "error": {
+    "feed_loading_error": "Impossible de charger le feed",
+    "content_unavailable": "Contenu indisponible"
+  },
+  "loading": {
+    "loading_feed": "Chargement du feed"
+  },
+  "toast": {
+    "form_submitted": {
+      "title": "Succès",
+      "description": "Le formulaire a été envoyé avec succèes"
+    },
+    "form_error_submission": {
+      "title": "Erreur",
+      "description": "Une erreur est survenue lors de l'envoi du formulaire"
+    }
+  },
+  "breadcrumb": {
+    "feed": "Fil",
+    "projects": "Projets",
+    "updates": "Mises à jour",
+    "about": "A propos",
+    "accessibility": "Accessibilité"
+  },
+  "report": {
+    "title": "Signaler un problème",
+    "description": "Problème d'accessibilité, bug ou retour sur fonctionnalité",
+    "issue": {
+      "accessibility": "Accessibilité",
+      "issue": "Problème",
+      "bug": "Bug",
+      "feedback": "Retour sur fonctionnalité",
+      "other": "Autre"
+    },
+    "state": {
+        "error": "Erreur",
+        "required": "Requis"
+      },
+    "form": {
+      "type": "Types de problèmes",
+      "issue_selector": "Sélecteur de problèmes",
+      "description": "Description",
+      "email": "Email",
+      "optional": "Optionnel",
+      "submit": "Envoyer"
+    }
+  }
+}

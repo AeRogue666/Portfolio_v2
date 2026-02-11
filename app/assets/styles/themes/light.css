@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+[data-theme="light"], .light {
+/* Backgrounds */
+--bg-primary: #f5efe6; /* ask white */
+--bg-secondary: #e6d8c8; /* sandstone */
+--bg-tertiary: #b8a99a; /* warm taupe */
+
+/* Text */
+--text-primary: #1f1f1f; /* charcoal */
+--text-secondary: #2b1e16; /* charcoal */
+--text-muted: #6b6b6b;
+
+/* Accent */
+/* --accent: #a13d2d; burnt ember */
+/* --accent-hover: #c76a3a; copper */
+
+/* States */
+/* --focus: #e0a458; amber glow */
+--border-subtle: #cfc4b8;
+
+/* Feedback */
+/* --success: #4E744F; */
+/* --warning: #885F20; */
+/* --danger: #8c2f2f; */
+}

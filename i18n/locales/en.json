@@ -1,0 +1,133 @@
+{
+  "header": {
+    "skip_content": "Skip to main content",
+    "span_title": "Aureldev"
+  },
+  "sidebar-left": {
+    "open": "Open profile menu",
+    "close": "Close profile menu",
+    "title": "Profile",
+    "description": "Discover my profile",
+    "user_title": "Aureldev",
+    "user_description": "Full-stack Developer",
+    "user_alternative_text": "",
+    "open_github": "Open on Github",
+    "open_linkedin": "Open on Linkedin",
+    "modal-message": {
+      "title": "Send a message",
+      "description": "Send a message to Aureldev",
+      "send-message_button_label": "Send a message",
+      "input_label": "Email",
+      "textarea_label": "Message",
+      "textarea_placeholder": "Describe your need, your context or your question. I will directly answer by mail.",
+      "submit_button": "Submit"
+    },
+    "navigation": {
+      "accessibility_statement": "Accessibility statement",
+      "problem_report": "Report a problem"
+    }
+  },
+  "sidebar-right": {
+    "open": "Open user settings",
+    "close": "Close user settings",
+    "title": "User settings",
+    "description": "",
+    "theme": "Theme",
+    "language": "Language",
+    "contrast": "Contrast",
+    "font": "Font",
+    "grayscale": "Grayscale",
+    "underline_links": "Underline links",
+    "reset_params": "Reset parameters"
+  },
+  "seo": {
+    "home": {
+      "title": "Portfolio of Aureldev - projects and contents",
+      "description": "Discover an Accessible, User-centered portfolio as a social feed"
+    }
+  },
+  "index": {
+    "title": "Portfolio - projects and contents",
+    "load_more": "Load more articles",
+    "loaded_new_articles": "New articles loaded",
+    "loading_articles_button": "Loading articles button"
+  },
+  "post": {
+    "read_post": "Read the post",
+    "read_about": "Read the full presentation",
+    "pinned_post": "Pinned post",
+    "default_post": "Post",
+    "type": {
+      "project": "Project",
+      "update": "Update",
+      "about": "About",
+      "pinned": "Pinned"
+    }
+  },
+  "project": {
+    "published_on": "Published on",
+    "role": "Role",
+    "stack": "Stack",
+    "context": "Context",
+    "problem": "Problem",
+    "solution": "Solution",
+    "technical_choices": "Technical choices",
+    "accessibility": "Accessibility and UX",
+    "learnings": "Learnings",
+    "watch_code": "Watch code",
+    "watch_demo": "Watch demo"
+  },
+  "update": {
+    "published_on": "Published on",
+    "tags": "Tags",
+    "content": "Content"
+  },
+  "footer": {},
+  "error": {
+    "feed_loading_error": "Impossible to load the feed",
+    "content_unavailable": "Content unavailable"
+  },
+  "loading": {
+    "loading_feed": "Loading feed"
+  },
+  "toast": {
+    "form_submitted": {
+      "title": "Success",
+      "description": "The form has been submitted"
+    },
+    "form_error_submission": {
+      "title": "Error",
+      "description": "An error occured in the form submission"
+    }
+  },
+  "breadcrumb": {
+    "feed": "Feed",
+    "projects": "Projects",
+    "updates": "Updates",
+    "about": "About",
+    "accessibility": "Accessibility"
+  },
+  "report": {
+    "title": "Report a problem",
+    "description": "Accessibility issue, bug, or feedback",
+    "issue": {
+      "accessibility": "Accessibility",
+      "issue": "Issue",
+      "bug": "Bug",
+      "feedback": "Feedback",
+      "other": "Other"
+    },
+    "state": {
+      "error": "Error",
+      "required": "Required"
+    },
+    "form": {
+      "type": "Type of issue",
+      "issue_selector": "Issue selector",
+      "description": "Description",
+      "email": "Email",
+      "optional": "Optional",
+      "submit": "Submit"
+    }
+  }
+}
