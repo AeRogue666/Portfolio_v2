@@ -40,9 +40,9 @@ Soon:
 The feed is structured content, not a blog.
 Each post serves a clear purpose:
 
-- Project
+- Project (personnal project)
 - Update (career-relevant only)
-- Pinned content
+- Pinned content (only one at a time)
 - About
 
 Content is written in Markdown and rendered server-side for SEO and accessibility.
@@ -67,5 +67,9 @@ The architecture is intentionally prepared for future growth:
 
 ## Find a problem
 
-If you find a problem in this portfolio (accessibility concern, bug, issue, etc.) or maybe you want to add a new feature or just give a feedback on this project,
-you can contact me directly inside the Portfolio (For issues: /report page; For professionnal contact or feedback: use the "Send a message" modal in the left sidebar).
+Accessibility concern, bug, issue, etc. : Go on the [report page](https://aureldev.fr/report)
+Feedback or professionnal contact : Go on the [home page](https://aureldev.fr/) and click on the button "Send a message".
+
+## License
+
+This project is licensed under the MIT License - see the (LICENSE.md) for details.
