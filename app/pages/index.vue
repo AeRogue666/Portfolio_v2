@@ -8,22 +8,18 @@ const feedStore = useFeedStore(),
 
 const { items, total, status, error, loadMore } = useFeed({ limit: 5 });
 
-onMounted(() => {
-    if (items.value?.length) feedStore.setPosts(items.value)
+watch(items, (newItems) => {
+    feedStore.setPosts(newItems)
 });
 
-watch(locale, () => {
-    feedStore.reset();
-});
-
-useSeoMeta({
+useSeoMeta(({
     title: t('seo.home.title'),
     description: t('seo.home.description'),
     ogTitle: t('seo.home.title'),
     ogDescription: t('seo.home.description'),
     ogImage: '/images/project/front-ecommerce-headless/desktop.png',
     twitterCard: 'summary_large_image',
-});
+}));
 </script>
 
 <template>

@@ -3,8 +3,8 @@ const accessibilityStore = useAccessibilityStore(),
   { t } = useI18n();
 
 onMounted(() => {
-  accessibilityStore.apply()
-})
+  accessibilityStore.apply();
+});
 </script>
 
 <template>

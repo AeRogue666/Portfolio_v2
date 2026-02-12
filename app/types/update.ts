@@ -15,6 +15,8 @@ export interface Update {
 export interface UpdateTranslation {
   title: string;
   summary: string;
+  feed_title: string;
+  feed_summary: string;
   content: string;
 }
 

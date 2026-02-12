@@ -8,6 +8,8 @@ export interface FeedItem {
   kindFallback?: FeedKind; // if kind is pinned, show the real post type
   title: string;
   summary?: string;
+  feed_title?: string;
+  feed_summary?: string;
   slug?: string;
   date: string;
   tags?: string[];

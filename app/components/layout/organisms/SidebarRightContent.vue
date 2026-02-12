@@ -2,10 +2,9 @@
 import type { SelectMenuItem } from '@nuxt/ui';
 import FontScaleSelector from './FontScaleSelector.vue';
 import SidebarSelectorBase from '../molecules/SidebarSelectorBase.vue';
-import { en, fr } from '@nuxt/ui/runtime/locale/index.js';
 
 const accessibilityStore = useAccessibilityStore(),
-    { t, locale, setLocale } = useI18n();
+    { t, locale, locales, setLocale } = useI18n();
 
 // Font family
 const fontFamilyItems = ref<SelectMenuItem[]>([
@@ -37,6 +36,16 @@ const grayscale = computed({
         get: () => accessibilityStore.underlineLinks,
         set: () => accessibilityStore.toggleUnderlinelinks(),
     });
+
+const switching = ref(false);
+
+async function changeLanguage(newLocale: any) {
+    if (newLocale === locale.value) return
+
+    switching.value = true
+    await setLocale(newLocale)
+    switching.value = false
+};
 </script>
 
 <template>
@@ -65,8 +74,8 @@ const grayscale = computed({
                 </template>
 
                 <template #body>
-                    <ULocaleSelect v-model="locale" :locales="[en, fr]" @update="setLocale" color="neutral" size="xl"
-                        :ui="{
+                    <ULocaleSelect :model-value="locale" :locales="locales" @update:model-value="changeLanguage"
+                        :disabled="switching" color="neutral" size="xl" :ui="{
                             base: 'bg-(--bg-secondary)',
                             content: 'bg-(--bg-secondary)'
                         }" class="w-48" />

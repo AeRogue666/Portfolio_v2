@@ -27,6 +27,8 @@ export interface Project {
 export interface ProjectTranslation {
   title: string;
   summary: string;
+  feed_title: string;
+  feed_summary: string;
   role: string;
   context: string;
   problem: string;

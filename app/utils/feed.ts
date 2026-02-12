@@ -16,7 +16,6 @@ import type { FeedItem } from "~/types/feed";
 } */
 
 // Return the right URL for a FeedItem
-
 export function getPostUrl(post: FeedItem) {
   if (post.kind === "about") return "/about";
 

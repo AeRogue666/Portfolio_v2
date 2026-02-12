@@ -15,6 +15,8 @@ type FeedSource = {
     {
       title: string;
       summary?: string;
+      feed_title?: string;
+      feed_summary?: string;
     }
   >;
 };
@@ -30,6 +32,8 @@ export function toFeedItem(source: FeedSource, locale: Locale): FeedItem {
     kindFallback: r.pinned ? r.kind : undefined,
     title: r.title,
     summary: r.summary,
+    feed_title: r.feed_title,
+    feed_summary: r.feed_summary,
     slug: r.slug,
     date: r.date,
     pinned: r.pinned,

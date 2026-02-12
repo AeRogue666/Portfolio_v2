@@ -2,35 +2,39 @@ import type { Update } from "~/types/update";
 
 export const updates: Update[] = [
   {
-    slug: "exploration-prisma-neon",
+    slug: "exploration-prisma",
     date: "2025-05-06",
-    kind: 'update',
+    kind: "update",
     pinned: false,
-    tags: ["Full-stack", "Fullstack", "Prisma", "Neon", "Compétence"],
+    tags: ["Full-stack", "Fullstack", "Prisma", "Compétence"],
     image: {
       alt: "",
       sources: {
         feed: {
-          mobile: `/images/update/exploration-prisma-neon/mobile.png`,
-          desktop: `/images/update/exploration-prisma-neon/desktop.png`,
-          tablet: `/images/update/exploration-prisma-neon/mobile.png`,
+          mobile: `/images/update/exploration-prisma/mobile.png`,
+          desktop: `/images/update/exploration-prisma/desktop.png`,
+          tablet: `/images/update/exploration-prisma/mobile.png`,
         },
         detail: {
-          mobile: `/images/update/exploration-prisma-neon/mobile.png`,
-          desktop: `/images/update/exploration-prisma-neon/desktop.png`,
-          tablet: `/images/update/exploration-prisma-neon/mobile.png`,
+          mobile: `/images/update/exploration-prisma/mobile.png`,
+          desktop: `/images/update/exploration-prisma/desktop.png`,
+          tablet: `/images/update/exploration-prisma/mobile.png`,
         },
       },
     },
     translations: {
       fr: {
-        title: "Exploration de Prisma et Neon",
+        title: "Exploration de Prisma",
         summary: "Montée en compétence sur une stack full-stack moderne",
+        feed_title: "",
+        feed_summary: "",
         content: "",
       },
       en: {
-        title: "Exploration de Prisma et Neon",
-        summary: "Montée en compétence sur une stack full-stack moderne",
+        title: "Exploring Prisma",
+        summary: "Developing skills in a modern full-stack environment",
+        feed_title: "",
+        feed_summary: "",
         content: "",
       },
     },

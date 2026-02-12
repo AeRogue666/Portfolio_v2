@@ -18,9 +18,7 @@ export default cachedEventHandler(
       ...updates.map((u) => toFeedItem({ ...u, kind: "update" }, locale)),
       toFeedItem({ ...about, kind: "about" }, locale),
     ];
-
-    const getTime = (date?: string) => (date ? new Date(date).getTime() : 0);
-
+    
     feed.sort((a, b) => {
       if (a.kind === "pinned" && b.kind !== "pinned") return -1;
       if (a.kind !== "pinned" && b.kind === "pinned") return 1;
