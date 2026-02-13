@@ -10,7 +10,7 @@ const { t } = useI18n()
 <template>
     <div class="hidden lg:block w-72 h-screen sticky top-0">
         <IconButton :variant="'ghost'" :color="'neutral'" :icon="'fa7-solid:chevron-left'" :size="'3xl'"
-            :label="t('sidebar-left.close')" :class="'text-3xl absolute right-4 top-4 z-50'"
+            :label="t('sidebar-left.close')" id="button-sidebarleft-close" :class="'text-3xl absolute right-4 top-4 z-50'" 
             @click="$emit('close')" />
         <SidebarLeftContent />
     </div>

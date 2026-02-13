@@ -2,9 +2,11 @@
 import type { SelectMenuItem } from '@nuxt/ui';
 import FontScaleSelector from './FontScaleSelector.vue';
 import SidebarSelectorBase from '../molecules/SidebarSelectorBase.vue';
+import SwitchButton from '~/components/ui/SwitchButton.vue';
 
 const accessibilityStore = useAccessibilityStore(),
-    { t, locale, locales, setLocale } = useI18n();
+    { t, locale, locales, setLocale } = useI18n(),
+    colorMode = useColorMode();
 
 // Font family
 const fontFamilyItems = ref<SelectMenuItem[]>([
@@ -61,8 +63,9 @@ async function changeLanguage(newLocale: any) {
 
                 <template #body>
                     <UColorModeSelect color="neutral" size="xl" :ui="{
-                        base: 'bg-(--bg-secondary)',
-                        content: 'bg-(--bg-secondary)'
+                        base: 'bg-(--bg-2)',
+                        content: 'bg-(--bg-2)',
+                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
                     }" />
                 </template>
             </SidebarSelectorBase>
@@ -76,8 +79,9 @@ async function changeLanguage(newLocale: any) {
                 <template #body>
                     <ULocaleSelect :model-value="locale" :locales="locales" @update:model-value="changeLanguage"
                         :disabled="switching" color="neutral" size="xl" :ui="{
-                            base: 'bg-(--bg-secondary)',
-                            content: 'bg-(--bg-secondary)'
+                            base: 'bg-(--bg-2)',
+                            content: 'bg-(--bg-2)',
+                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
                         }" class="w-48" />
                 </template>
             </SidebarSelectorBase>
@@ -104,8 +108,9 @@ async function changeLanguage(newLocale: any) {
                 <template #body>
                     <USelect v-model="fontFamily" :items="fontFamilyItems" value-key="value" label-key="label"
                         color="neutral" size="xl" aria-label="Font selector" :ui="{
-                            base: 'bg-(--bg-secondary)',
-                            content: 'bg-(--bg-secondary)'
+                            base: 'bg-(--bg-2)',
+                            content: 'bg-(--bg-2)',
+                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
                         }" />
                 </template>
             </SidebarSelectorBase>
@@ -116,8 +121,10 @@ async function changeLanguage(newLocale: any) {
                     {{ t('sidebar-right.grayscale') }}
                 </template>
                 <template #body>
-                    <USwitch v-model="grayscale" color="neutral" size="xl" unchecked-icon="fa7-solid:xmark"
-                        checked-icon="fa7-solid:check" />
+                    <!-- <USwitch v-model="grayscale" :text="'Grayscale switch'" color="neutral" size="xl"
+                        unchecked-icon="fa7-solid:xmark" checked-icon="fa7-solid:check" /> -->
+                    <SwitchButton id="button-switch-grayscale" label="Grayscale switch" type="button" color="neutral"
+                        variant="soft" :checked="grayscale" @click="accessibilityStore.toggleGrayscale" />
                 </template>
             </SidebarSelectorBase>
 
@@ -127,14 +134,15 @@ async function changeLanguage(newLocale: any) {
                     {{ t('sidebar-right.underline_links') }}
                 </template>
                 <template #body>
-                    <USwitch v-model="underlineLinks" color="neutral" size="xl" unchecked-icon="fa7-solid:xmark"
-                        checked-icon="fa7-solid:check" />
+                    <SwitchButton id="button-switch-underlinelinks" label="Underline links switch" type="button"
+                        color="neutral" variant="soft" :checked="underlineLinks"
+                        @click="accessibilityStore.toggleUnderlinelinks" />
                 </template>
             </SidebarSelectorBase>
 
             <!-- RESET -->
             <UButton :label="t('sidebar-right.reset_params')" variant="soft"
-                class="justify-center items-center w-full md:w-[50%] h-auto bg-(--accent) text-(--text) hover:bg-(--bg-3) px-2 py-2"
+                class="justify-center items-center w-full md:w-[50%] h-auto bg-(--bg-2) text-(--text) hover:bg-elevated active:bg-elevated focus:outline-none focus-visible:bg-elevated hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent px-2 py-2"
                 @click="accessibilityStore.reset()" />
         </UContainer>
     </aside>

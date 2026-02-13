@@ -12,7 +12,7 @@ const { t } = useI18n()
             container: 'overflow-hidden',
         }">
         <IconButton :variant="'ghost'" :color="'neutral'" :icon="'fa7-solid:gear'" :size="'size-10'"
-            :label="t('sidebar-right.open')" :class="'size-10'" />
+            :label="t('sidebar-right.open')" id="button-sidebarright-open" :class="'size-10'" />
 
         <template #body>
             <SidebarRightContent />

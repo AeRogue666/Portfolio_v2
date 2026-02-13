@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { capitalize } from 'vue';
 import SidebarLeftMobile from './SidebarLeftMobile.vue';
 import SidebarRightMobile from './SidebarRightMobile.vue';
 
@@ -17,8 +16,8 @@ const { t } = useI18n();
             </div>
 
             <UContainer data-slot="center" class="hidden lg:flex">
-                <NuxtLink to="/" aria-describedby="#header_title">
-                    <span id="header_title" class="text-xl font-bold">{{ capitalize(t('header.span_title')) }}</span>
+                <NuxtLink to="/" aria-describedby="header-title">
+                    <span id="header-title" class="text-xl font-bold">{{ t('header.span_title') }}</span>
                 </NuxtLink>
             </UContainer>
 

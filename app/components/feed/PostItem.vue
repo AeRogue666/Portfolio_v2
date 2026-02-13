@@ -51,7 +51,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
 
         <div class="flex flex-wrap gap-2">
             <PostBadge v-for="tag in post.tags" :label="tag" :key="tag" :variant="'soft'" :color="'neutral'"
-                :size="'md'" :class-name="'bg-(--bg-tertiary) text-(--text-secondary) text-scalable'" />
+                :size="'md'" :class-name="'bg-(--bg-3) text-(--text-2) text-scalable'" />
         </div>
 
         <template #actions>
