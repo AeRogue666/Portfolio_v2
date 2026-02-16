@@ -6,7 +6,7 @@ defineProps<{
     id: string,
     variant?: "ghost" | "solid" | "outline" | "soft" | "subtle" | "link" | undefined,
     color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined,
-    class?: string | undefined,
+    class?: string | object | undefined,
     to?: string | undefined,
     target?: string | undefined,
 }>();

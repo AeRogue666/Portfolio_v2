@@ -1,10 +1,5 @@
 <script setup lang="ts">
-const accessibilityStore = useAccessibilityStore(),
-  { t } = useI18n();
-
-onMounted(() => {
-  accessibilityStore.apply();
-});
+const { t } = useI18n();
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
-import { capitalize } from 'vue';
+import PostBadge from '~/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '~/components/layout/molecules/ArticleLayout.vue';
 import type { UpdateResolved } from '~/types/update';
 
@@ -27,7 +27,7 @@ if (error.value) {
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         label: t('breadcrumb.feed'),
-        to: '/'
+        to: ''
     },
     {
         label: t('breadcrumb.updates'),
@@ -95,26 +95,30 @@ watchEffect(() => {
                 <time :datetime="update.date">{{ dayjs(update.date).format('DD MMMM YYYY') }}</time>
             </p>
 
-            <h1 id="article-title" class="text-xl font-bold mt-2">{{ update.title }}</h1>
-            <p class="lead">{{ update.summary }}</p>
+            <h1 id="article-title" class="text-2xl font-semibold tracking-tight leading-snug mt-2"
+                style="font-size: var(--step-3);">{{ update.title }}</h1>
+            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
+                {{ update.summary }}
+            </p>
 
-            <NuxtImg :src="update.image?.sources.detail.mobile" :alt="update.image?.alt"
+            <img :src="update.image?.sources.detail.mobile" :alt="update.image?.alt"
                 sizes="(max-width: 40rem) 100vw, (max-width: 64rem) 80vw, 37.5rem"
                 :srcset="`${update.image?.sources.detail.mobile} 640w, ${update.image?.sources.detail.tablet} 768w, ${update.image?.sources.detail.desktop} 1024w`"
                 class="my-2 rounded-lg" itemprop="image" placeholder="blur" />
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
-                <dt class="font-semibold">{{ t('update.tags') }}</dt>
+                <dt class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">{{ t('update.tags') }}</dt>
                 <dd class="flex flex-wrap gap-2">
-                    <UBadge v-for="tag in update.tags" :label="capitalize(tag)" :key="tag" variant="soft"
-                        color="neutral" class="bg-(--bg-tertiary) text-(--text-secondary)" />
+                    <PostBadge v-for="tech in update.tags" :label="tech" :key="tech" :variant="'soft'"
+                        :color="'neutral'" :size="'md'" :class-name="'bg-(--bg-3) text-(--text-2) text-scalable'" />
                 </dd>
             </dl>
         </template>
 
         <section aria-labelledby="content">
-            <h2 id="content">{{ t('update.content') }}</h2>
-            <p>{{ update.content }}</p>
+            <h2 id="content" class="text-2xl font-semibold leading-snug text-scalable"
+                style="font-size: var(--step-2);">{{ t('update.content') }}</h2>
+            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">{{ update.content }}</p>
         </section>
 
         <template #footer>

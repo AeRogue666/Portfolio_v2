@@ -12,7 +12,7 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <section aria-live="polite" id="feed">
+    <section class="flex flex-col divide-y divide-(--border-subtle)" aria-live="polite" id="feed">
         <p v-if="loading">{{ t('loading.loading_feed') }}...</p>
         <p v-if="error">{{ error }}</p>
 

@@ -23,6 +23,7 @@
       "submit_button": "Envoyer"
     },
     "navigation": {
+      "homepage": "Accueil",
       "accessibility_statement": "Declaration d'accessibilite",
       "problem_report": "Signaler un probleme"
     }

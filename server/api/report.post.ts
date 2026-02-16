@@ -1,6 +1,6 @@
 // import { Resend } from 'resend';
 
-type Issues = "accessibility" | "issue" | "bug" | "feedback" | "other";
+type Issues = "accessibility" | "issue" | "bug" | "other";
 
 type ReportBody = {
   issue: Issues;

@@ -1,32 +1,41 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui';
-import { capitalize } from 'vue';
 import SendMessageModal from './SendMessageModal.vue';
 import IconButton from '../../ui/IconButton.vue';
 
 const { t } = useI18n(),
-    colorMode = useColorMode();
+    colorMode = useColorMode(),
+    avatarSrc = ref('https://avatars.githubusercontent.com/u/38510448?v=4');
 
 const itemsNavigation = computed<NavigationMenuItem[]>(() => [
     {
-        label: capitalize(t('sidebar-left.navigation.accessibility_statement')),
+        label: t('sidebar-left.navigation.homepage'),
+        icon: "fa7-solid:home",
+        to: "/",
+    },
+    {
+        label: t('sidebar-left.navigation.accessibility_statement'),
         icon: "fa7-brands:accessible-icon",
         to: "/accessibility",
     },
     {
-        label: capitalize(t('sidebar-left.navigation.problem_report')),
+        label: t('sidebar-left.navigation.problem_report'),
         icon: 'fa7-solid:warning',
         to: '/report',
     }
 ]);
 
-const avatarSrc = computed(() => {
-    if(colorMode.unknown) 
-        return 'https://avatars.githubusercontent.com/u/38510448?v=4'
-
-    return colorMode.value === 'dark'
-        ? 'https://github.com/nuxt.png'
-        : 'https://avatars.githubusercontent.com/u/38510448?v=4'
+onMounted(() => {
+    watch(
+        () => colorMode.value,
+        (mode) => {
+            avatarSrc.value =
+                mode === 'dark'
+                    ? 'https://github.com/nuxt.png'
+                    : 'https://avatars.githubusercontent.com/u/38510448?v=4'
+        },
+        { immediate: true }
+    )
 });
 </script>
 
@@ -43,9 +52,9 @@ const avatarSrc = computed(() => {
                         alt: t('sidebar-left.user_alternative_text')
                     }" :ui="{
                         root: 'items-center',
-                        name: 'text-(--text-1)',
-                        description: 'text-(--text-2)',
-                        avatar: 'size-48 bg-(--bg-2)'
+                        name: 'text-2xl text-(--text-1) font-semibold tracking-tight leading-snug',
+                        description: 'text-base leading-relaxed text-(--text-2) max-w-[65ch]',
+                        avatar: 'size-40 bg-(--bg-2)'
                     }" />
             </div>
 
@@ -66,18 +75,10 @@ const avatarSrc = computed(() => {
             </div>
 
             <UNavigationMenu highlight-color="neutral" orientation="vertical" :items="itemsNavigation" :ui="{
-                root: '',
-                list: 'flex flex-col gap-2', // ul
-                label: 'text-3xl text-(--text) font-semibold',
-                childList: 'sm:w-72',
-                childLinkWrapper: 'pb-2', // li
-                childLink: '', // a
-                childLinkDescription: 'text-balance line-clamp-2',
-                link: 'text-(--text)',
+                list: 'flex flex-col gap-3', // ul
                 linkLeadingIcon: 'text-(--text-muted)',
-                linkLabel: 'text-(--text) text-base truncate',
-                linkTrailingIcon: 'text-xl',
-            }" class="h-screen m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full" />
+                linkLabel: 'text-base leading-relaxed text-(--text-1) truncate max-w-[65ch]',
+            }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full" />
         </UContainer>
     </aside>
 </template>

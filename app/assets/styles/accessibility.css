@@ -11,19 +11,17 @@ html {
 
 html[data-contrast="normal"] {
   --bg: var(--bg-primary);
-  --bg-2: var(--bg-secondary);
-  --bg-3: var(--bg-tertiary);
+  --bg-2: color-mix(in srgb, var(--bg) 92%, black);
+  --bg-3: color-mix(in srgb, var(--bg) 85%, black);
   --text: var(--text-primary);
   --text-2: var(--text-secondary);
-  --text-3: var(--text-tertiary);
-  --link: var(--text-secondary);
-  --link-hover: var(--accent-hover);
+  --text-3: var(--text-muted);
 }
 
 html[data-contrast="high"] {
   --bg: var(--a11y-high-bg);
-  --bg-2: var(--a11y-high-bg-2);
-  --bg-3: var(--a11y-high-bg-3);
+  --bg-2: color-mix(in srgb, var(--bg) 92%, black);
+  --bg-3: color-mix(in srgb, var(--bg) 85%, black);
   --text: var(--a11y-high-text);
   --text-2: var(--a11y-high-text-2);
   --text-3: var(--a11y-high-text-3);
@@ -32,8 +30,8 @@ html[data-contrast="high"] {
 
 html[data-contrast="low"] {
   --bg: var(--a11y-low-bg);
-  --bg-2: var(--a11y-low-bg-2);
-  --bg-3: var(--a11y-low-bg-3);
+  --bg-2: color-mix(in srgb, var(--bg) 92%, black);
+  --bg-3: color-mix(in srgb, var(--bg) 85%, black);
   --text: var(--a11y-low-text);
   --text-2: var(--a11y-low-text-2);
   --text-3: var(--a11y-low-text-3);
@@ -41,8 +39,8 @@ html[data-contrast="low"] {
 
 html[data-grayscale="true"] {
   --bg: var(--bg-gray-primary);
-  --bg-2: var(--bg-gray-secondary);
-  --bg-3: var(--bg-gray-tertiary);
+  --bg-2: color-mix(in srgb, var(--bg) 92%, black);
+  --bg-3: color-mix(in srgb, var(--bg) 85%, black);
   --text: var(--text-gray-primary);
   --text-2: var(--text-gray-secondary);
   --text-3: var(--text-gray-tertiary);

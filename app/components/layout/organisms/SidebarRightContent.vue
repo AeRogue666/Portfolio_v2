@@ -36,7 +36,7 @@ const grayscale = computed({
 }),
     underlineLinks = computed({
         get: () => accessibilityStore.underlineLinks,
-        set: () => accessibilityStore.toggleUnderlinelinks(),
+        set: () => accessibilityStore.toggleUnderlineLinks(),
     });
 
 const switching = ref(false);
@@ -58,7 +58,7 @@ async function changeLanguage(newLocale: any) {
             <!-- THEME -->
             <SidebarSelectorBase>
                 <template #title>
-                    <span class="text-base font-bold">{{ t('sidebar-right.theme') }}</span>
+                    {{ t('sidebar-right.theme') }}
                 </template>
 
                 <template #body>
@@ -136,7 +136,7 @@ async function changeLanguage(newLocale: any) {
                 <template #body>
                     <SwitchButton id="button-switch-underlinelinks" label="Underline links switch" type="button"
                         color="neutral" variant="soft" :checked="underlineLinks"
-                        @click="accessibilityStore.toggleUnderlinelinks" />
+                        @click="accessibilityStore.toggleUnderlineLinks" />
                 </template>
             </SidebarSelectorBase>
 

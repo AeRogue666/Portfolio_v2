@@ -3,8 +3,6 @@
 [data-theme="light"], .light {
 /* Backgrounds */
 --bg-primary: #f5efe6; /* ask white */
---bg-secondary: #e6d8c8; /* sandstone */
---bg-tertiary: #b8a99a; /* warm taupe */
 
 /* Text */
 --text-primary: #1f1f1f; /* charcoal */

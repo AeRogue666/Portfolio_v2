@@ -5,16 +5,18 @@ defineProps<{
 </script>
 
 <template>
-    <article class="flex flex-col mx-2 py-6 gap-4 border-b border-(--border-subtle)"
+    <article class="flex flex-col w-full py-10"
         :aria-roledescription="ariaRoleDescription">
-        <header v-if="$slots.meta" class="flex flex-col justify-baseline items-baseline">
-            <slot name="meta"></slot>
-        </header>
-        <section class="flex flex-col justify-baseline items-baseline">
-            <slot></slot>
-        </section>
-        <footer v-if="$slots.actions" class="grid grid-cols-2 justify-baseline items-center">
-            <slot name="actions"></slot>
-        </footer>
+        <div class="flex flex-col w-full gap-6">
+            <header v-if="$slots.meta" class="flex flex-col gap-3">
+                <slot name="meta"></slot>
+            </header>
+            <section class="flex flex-col gap-4">
+                <slot></slot>
+            </section>
+            <footer v-if="$slots.actions" class="pt-2">
+                <slot name="actions"></slot>
+            </footer>
+        </div>
     </article>
 </template>

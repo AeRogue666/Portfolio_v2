@@ -4,7 +4,7 @@ definePageMeta({
 });
 
 const feedStore = useFeedStore(),
-    { t, locale } = useI18n();
+    { t } = useI18n();
 
 const { items, total, status, error, loadMore } = useFeed({ limit: 5 });
 
@@ -24,7 +24,7 @@ useSeoMeta(({
 
 <template>
     <UContainer tabindex="-1" aria-labelledby="feed-title">
-        <h1 id="feed-title" class="sr-only">{{ t('index.title') }}</h1>
+        <h1 id="feed-title" class="text-2xl font-semibold tracking-tight leading-snug sr-only" style="font-size: var(--step-3);">{{ t('index.title') }}</h1>
 
         <Feed id="feed" :items="items" :loading="status === 'pending'" :error="error?.message ?? null" />
 

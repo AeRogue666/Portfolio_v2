@@ -44,10 +44,11 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
                 </p>
             </section>
             <ResponsiveImage v-if="post.image" :image="post.image" :preload="post.pinned" />
+            <div v-else class="h-px w-full bg-(--border-subtle) my-2"></div>
         </template>
 
-        <h2 class="text-xl font-bold mt-2 text-scalable">{{ post.feed_title ? post.feed_title : post.title }}</h2>
-        <p class="text-base text-scalable">{{ post.feed_summary ? post.feed_summary : post.summary }}</p>
+        <h2 class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">{{ post.feed_title ? post.feed_title : post.title }}</h2>
+        <p class="text-base leading-relaxed text-(--text-2) text-scalable max-w-prose">{{ post.feed_summary ? post.feed_summary : post.summary }}</p>
 
         <div class="flex flex-wrap gap-2">
             <PostBadge v-for="tag in post.tags" :label="tag" :key="tag" :variant="'soft'" :color="'neutral'"
