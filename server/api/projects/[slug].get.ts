@@ -1,6 +1,6 @@
 import { Locale } from "~/types/i18n";
 import { projects } from "~~/server/data/projects";
-import { resolveWithLocale } from "~~/server/utils/resolve";
+import { resolveWithLocale } from "~~/server/lib/resolve";
 
 // Deviendra prisma.project.findUnique({ where: { slug } })
 export default cachedEventHandler((event) => {

@@ -10,7 +10,8 @@
     "description": "Decouvrez mon profil",
     "user_title": "Aureldev",
     "user_description": "Developpeur Full-stack",
-    "user_alternative_text": "",
+    "user_alternative_text": "Sur cette image est représenté Aureldev, un développeur full-stack français. Cocorico !",
+    "contact_me": "Contactez-moi ou envoyez-moi votre avis ici",
     "open_github": "Ouvrir sur Github",
     "open_linkedin": "Ouvrir sur Linkedin",
     "modal-message": {

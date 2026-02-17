@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import PostBadge from './molecules/PostBadge.vue';
 import PostBase from './molecules/PostBase.vue';
 import ResponsiveImage from './organisms/ResponsiveImage.vue';
-import type { FeedItem } from '~/types/feed';
+import type { FeedItem } from '~/app/types/feed';
 
 const props = defineProps<{
     post: FeedItem,

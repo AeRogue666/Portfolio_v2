@@ -47,6 +47,13 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
   },
+
+  runtimeConfig: {
+    resendApiKey: import.meta.env.RESEND_API_KEY,
+    upstashRedisUrl: import.meta.env.UPSTASH_REDIS_REST_URL,
+    upstashRedisToken: import.meta.env.UPSTASH_REDIS_REST_TOKEN
+  },
+
   build: {
     transpile: [],
   },

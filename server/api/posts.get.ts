@@ -2,7 +2,7 @@ import { Locale } from "~/types/i18n";
 import { about } from "../data/about";
 import { projects } from "../data/projects";
 import { updates } from "../data/updates";
-import { toFeedItem } from "../utils/toFeedItem";
+import { toFeedItem } from "../lib/toFeedItem";
 
 // deviendra prisma.post.findMany({ where: { kind: { in: ['about','project','update'] } } })
 

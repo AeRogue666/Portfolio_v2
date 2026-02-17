@@ -1,37 +1,11 @@
-// import { Resend } from 'resend';
+import { Resend } from "resend";
+import { ContactFormSchema } from '~~/utils/schemas/contact';
+import { contactTemplate } from "../templates/contactEmail";
+import { rateLimit } from "../lib/rateLimit";
+import { logEvent } from "../lib/logger";
+import { containsSpam } from "../lib/spamFilter";
 
-type ContactBody = {
-  description: string;
-  email: string;
-};
-
-// RATE LIMIT
-
-const RATE_LIMIT_WINDOW = 10 * 60 * 1000; // 10 minutes
-const RATE_LIMIT_MAX = 3;
-
-const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
-
-function isRateLimited(ip: string) {
-  const now = Date.now();
-  const entry = rateLimitMap.get(ip);
-
-  if (!entry) {
-    rateLimitMap.set(ip, { count: 1, timestamp: now });
-    return false;
-  }
-
-  if (now - entry.timestamp > RATE_LIMIT_WINDOW) {
-    rateLimitMap.set(ip, { count: 1, timestamp: now });
-    return false;
-  }
-
-  entry.count++;
-
-  return entry.count > RATE_LIMIT_MAX;
-}
-
-// HANDLER
+/* HANDLER */
 
 export default defineEventHandler(async (event) => {
   const ip =
@@ -39,29 +13,55 @@ export default defineEventHandler(async (event) => {
     event.node.req.socket.remoteAddress ??
     "unknown";
 
-  if (isRateLimited(ip)) {
+  if (await rateLimit(ip)) {
+    logEvent("contact_rate_limited", { ip });
+
     throw createError({
       statusCode: 429,
       statusMessage: "Too many reports. Please try again later.",
     });
   }
-  const body = await readBody<ContactBody>(event);
 
-  if (!body.email || !body.description) {
+  const body = await readBody(event),
+    parsed = ContactFormSchema.safeParse(body);
+
+  if (!parsed.success) {
+    logEvent("contact_invalid_payload", { ip });
+
     throw createError({
       statusCode: 400,
-      statusMessage: "Invalid report payload",
+      statusMessage: "Invalid form data",
     });
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const { email, message, website } = parsed.data;
+
+  // Honeypot triggered (bot filled hidden field)
+  if (website) {
+    return { success: true }; // pretend success silently
+  }
+
+  if (containsSpam(message)) {
+    logEvent("contact_spam_detected", { ip, email });
+
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Spam detected",
+    });
+  }
+
+  const config = useRuntimeConfig(),
+    resend = new Resend(config.resendApiKey);
 
   await resend.emails.send({
-    from: `${body.email}`,
+    from: "Portfolio Contact <onboarding@resend.dev>", // verified domain
+    replyTo: email,
     to: ["pro@aureldev.dev"],
-    subject: `[Contact] ${body.email}`,
-    text: `${body.description}`.trim(),
+    subject: `[New Contact] - ${email}`,
+    html: contactTemplate(email, message),
   });
+
+  logEvent("contact_success", { ip, email });
 
   return { success: true };
 });

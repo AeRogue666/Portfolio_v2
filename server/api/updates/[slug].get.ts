@@ -1,7 +1,7 @@
 import { Locale } from "~/types/i18n";
 import { Update } from "~/types/update";
 import { updates } from "~~/server/data/updates";
-import { resolveWithLocale } from "~~/server/utils/resolve";
+import { resolveWithLocale } from "~~/server/lib/resolve";
 
 // Deviendra prisma.update.findUnique({ where: { slug } })
 export default cachedEventHandler(

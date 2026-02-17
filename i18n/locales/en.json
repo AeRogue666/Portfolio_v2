@@ -10,7 +10,8 @@
     "description": "Discover my profile",
     "user_title": "Aureldev",
     "user_description": "Full-stack Developer",
-    "user_alternative_text": "",
+    "user_alternative_text": "On this image is represented Aureldev, a French full-stack developer. Cocorico!",
+    "contact_me": "Contact me or send me a feedback here",
     "open_github": "Open on Github",
     "open_linkedin": "Open on Linkedin",
     "modal-message": {

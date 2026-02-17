@@ -58,6 +58,8 @@ onMounted(() => {
                     }" />
             </div>
 
+            <span class="text-base text-(--text-2) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.contact_me') }}</span>
+            
             <SendMessageModal />
 
             <div class="inline-flex items-baseline">
@@ -77,7 +79,7 @@ onMounted(() => {
             <UNavigationMenu highlight-color="neutral" orientation="vertical" :items="itemsNavigation" :ui="{
                 list: 'flex flex-col gap-3', // ul
                 linkLeadingIcon: 'text-(--text-muted)',
-                linkLabel: 'text-base leading-relaxed text-(--text-1) truncate max-w-[65ch]',
+                linkLabel: 'text-base text-(--text-1) leading-relaxed truncate max-w-[65ch]',
             }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full" />
         </UContainer>
     </aside>
