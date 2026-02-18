@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
-import PostBadge from '~/components/feed/molecules/PostBadge.vue';
-import ArticleLayout from '~/components/layout/molecules/ArticleLayout.vue';
-import type { UpdateResolved } from '~/types/update';
+import PostBadge from '@/components/feed/molecules/PostBadge.vue';
+import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
+import type { UpdateResolved } from '@/types/update';
 
 definePageMeta({
     layout: 'default'
@@ -101,8 +101,8 @@ watchEffect(() => {
                 {{ update.summary }}
             </p>
 
-            <img :src="update.image?.sources.detail.mobile" :alt="update.image?.alt"
-                sizes="(max-width: 40rem) 100vw, (max-width: 64rem) 80vw, 37.5rem"
+            <NuxtImg :src="update.image?.sources.detail.mobile" :alt="update.image?.alt"
+                sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw"
                 :srcset="`${update.image?.sources.detail.mobile} 640w, ${update.image?.sources.detail.tablet} 768w, ${update.image?.sources.detail.desktop} 1024w`"
                 class="my-2 rounded-lg" itemprop="image" placeholder="blur" />
 

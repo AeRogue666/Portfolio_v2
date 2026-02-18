@@ -1,5 +1,6 @@
-import { FeedItem } from "~/types/feed";
-import { Locale } from "~/types/i18n";
+import type { FeedItem } from "@/types/feed";
+import type { Locale } from "@/types/i18n";
+import { resolveWithLocale } from "./resolve";
 
 // Deviendra ToFeedItem(prismaObject)
 

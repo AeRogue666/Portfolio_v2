@@ -1,9 +1,9 @@
 import { Resend } from "resend";
-import { ContactFormSchema } from '~~/utils/schemas/contact';
-import { contactTemplate } from "../templates/contactEmail";
-import { rateLimit } from "../lib/rateLimit";
-import { logEvent } from "../lib/logger";
-import { containsSpam } from "../lib/spamFilter";
+import { ContactFormSchema } from '@/utils/schemas/contact';
+import { contactTemplate } from "#server/templates/contactEmail";
+import { rateLimit } from "#server/lib/rateLimit";
+import { logEvent } from "#server/lib/logger";
+import { containsSpam } from "#server/lib/spamFilter";
 
 /* HANDLER */
 

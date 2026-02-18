@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
-  /* nitro: {
+  nitro: {
     preset: "vercel",
-  }, */
+  },
   modules: [
     "@nuxt/content",
     "@nuxt/ui",
@@ -35,14 +35,12 @@ export default defineNuxtConfig({
       xl: 1280,
     },
     format: ["webp", "avif", "png"],
+    provider: 'ipx'
   },
 
   app: {
     head: {
-      title: "Portfolio v2",
-      htmlAttrs: {
-        lang: "en",
-      },
+      title: "Portfolio - Aureldev",
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
     },
@@ -54,6 +52,15 @@ export default defineNuxtConfig({
     upstashRedisToken: import.meta.env.UPSTASH_REDIS_REST_TOKEN
   },
 
+  routeRules: {
+    '/**': {
+      headers: {
+        'X-Frame-Options': 'DENY',
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
+      }
+    }
+  },
   build: {
     transpile: [],
   },

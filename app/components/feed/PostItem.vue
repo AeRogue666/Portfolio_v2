@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import PostBadge from './molecules/PostBadge.vue';
 import PostBase from './molecules/PostBase.vue';
 import ResponsiveImage from './organisms/ResponsiveImage.vue';
-import type { FeedItem } from '~/app/types/feed';
+import type { FeedItem } from '@/types/feed';
 
 const props = defineProps<{
     post: FeedItem,
@@ -43,7 +43,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
                     <time :datetime="post.date">{{ dayjs(post.date).format('DD MMMM YYYY') }}</time>
                 </p>
             </section>
-            <ResponsiveImage v-if="post.image" :image="post.image" :preload="post.pinned" />
+            <ResponsiveImage v-if="post.image" :image="post.image" />
             <div v-else class="h-px w-full bg-(--border-subtle) my-2"></div>
         </template>
 

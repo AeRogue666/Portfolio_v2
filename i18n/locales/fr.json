@@ -12,7 +12,7 @@
     "user_description": "Développeur Full-stack orienté Accessibilité",
     "user_tagline": "J'accompagne les équipes dans la conception et le développement d'applications web accessibles, évolutives et maintenables.",
     "user_alternative_text": "Sur cette image est représenté Aureldev, un développeur full-stack orienté accessibilité français. Cocorico !",
-    "contact_me": "Contactez-moi ou envoyez-moi votre avis ici",
+    "contact_me": "Contactez ou envoyez votre avis",
     "open_github": "Ouvrir sur Github",
     "open_linkedin": "Ouvrir sur Linkedin",
     "modal-message": {
@@ -22,12 +22,18 @@
       "input_label": "Email",
       "textarea_label": "Message",
       "textarea_placeholder": "Decrivez votre besoin, votre message ou votre question. Je vous repondrez directement par mail",
-      "submit_button": "Envoyer"
+      "submit_button": "Envoyer",
+      "state": {
+        "loading": "Envoi en cours...",
+        "success": "Message envoyé",
+        "error": "Une erreur non prévue est survenue. Réessayez plus tard.",
+        "waiting_before_new_message": "Veuillez patienter avant de pouvoir envoyer un nouveau message."
+      }
     },
     "navigation": {
       "homepage": "Accueil",
       "accessibility_statement": "Declaration d'accessibilite",
-      "problem_report": "Signaler un Problème"
+      "problem_report": "Signaler un incident"
     }
   },
   "sidebar-right": {
@@ -51,9 +57,8 @@
   },
   "index": {
     "title": "Portfolio - projets et contenu",
-    "load_more": "Load more articles",
-    "loaded_new_articles": "Nouveux articles charges",
-    "loading_articles_button": "Bouton de chargement de nouveaux articles"
+    "load_more": "Charger d'autres articles",
+    "loaded_new_articles": "Nouveux articles disponibles"
   },
   "post": {
     "read_post": "Lire le post",
@@ -87,7 +92,7 @@
   },
   "footer": {},
   "error": {
-    "feed_loading_error": "Impossible de charger le feed",
+    "feed_loading_error": "Nous sommes dans l'incapacité de charger le feed",
     "content_unavailable": "Contenu indisponible"
   },
   "loading": {

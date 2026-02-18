@@ -30,9 +30,9 @@ useSeoMeta(({
 
         <UContainer>
             <button v-if="items.length < total" id="button-load-articles"
-                :aria-label="t('index.loading_articles_button')" role="button" aria-controls="feed" @click="loadMore()"
+                :aria-label="t('index.load_more')" role="button" aria-controls="feed" @click="loadMore()"
                 :aria-busy="status === 'pending'">
-                {{ t('index.loading_articles_button') }}
+                {{ t('index.load_more') }}
             </button>
         </UContainer>
 

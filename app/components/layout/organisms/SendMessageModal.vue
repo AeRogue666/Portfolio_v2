@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ContactFormSchema, type ContactFormState } from '~/utils/schemas/contact'
+import { ContactFormSchema, type ContactFormState } from '@/utils/schemas/contact'
 import type { FormSubmitEvent } from '@nuxt/ui'
 
 const state = reactive<ContactFormState>({
@@ -85,20 +85,20 @@ async function onSubmit(event: FormSubmitEvent<ContactFormState>) {
                     <div v-else-if="submitState === 'loading'" key="loading"
                         class="flex flex-col items-center gap-6">
                         <UIcon name="fa7-solid:spinner" class="size-16 animate-spin" />
-                        <p class="text-lg leading-relaxed font-medium">{{ 'Sending...' }}</p>
+                        <p class="text-lg leading-relaxed font-medium">{{ t('sidebar-left.modal-message.state.loading') }}</p>
                     </div>
 
                     <div v-else-if="submitState === 'success'" key="success"
                         class="flex flex-col items-center gap-6 text-green-500">
                         <UIcon name="fa7-solid:check" class="size-16 animate-bounce" />
-                        <p class="text-lg leading-relaxed font-medium">{{ 'Message sent' }}</p>
-                        <span class="text-base leading-relaxed text-(--text-2)">{{ 'You can only send one message at a time' }}</span>
+                        <p class="text-lg leading-relaxed font-medium">{{ t('sidebar-left.modal-mmesage.state.success') }}</p>
+                        <span class="text-base leading-relaxed text-(--text-2)">{{ t('sidebar-left.modal-message.state.waiting_before_new_message') }}</span>
                     </div>
 
                     <div v-else-if="submitState === 'error'" key="error"
                         class="flex flex-col items-center gap-6 text-red-500">
                         <UIcon name="fa7-solid:xmark" class="size-16 animate-none" />
-                        <p class="text-lg leading-relaxed font-medium">{{ 'Something went wrong' }}</p>
+                        <p class="text-lg leading-relaxed font-medium">{{ t('sidebar-left.modal-message.state.error') }}</p>
                     </div>
                 </Transition>
             </div>

@@ -1,23 +1,24 @@
 # A propos
 
-Je suis développeur full-stack avec un intérêt particulier pour l'accessibilité, la qualité des interfaces et à l'expérience utilisateur.
+Je suis développeur full-stack basé en France, spécialisé dans l'accessibilité et l'architecture web évolutive.
 
-Mon approche du développement est centrée sur l'utilisateur :
+J'aide les équipes à concevoir et à développer des applications web inclusives, faciles à maintenir et axées sur la performance, sans sacrifier l'expérience utilisateur ou le design, en utilisant Vue, Nuxt, Typescript et des outils backend modernes tel que Node.js, Prisma, Express ou PostgreSQL.
 
-- Un produit doit être **compréhensible**, **utilisable** et **robuste**, quel que soit le contexte.
+Mon approche combine :
 
-Je travaille principalement avec des stacks modernes (Nuxt, TypeScript, Node, PostgreSQL), en portant une attention constante à :
+- Une réflexion axée sur l'accessibilité (basée sur les WCAG)
+- Des principes de conception centrés sur l'utilisateur
+- Une architecture propre et évolutive
+- Une maintenabilité à long terme
 
-- La lisibilité du code
-- La maintenabilité
-- l'accessibilité dès la conception
+L'accessibilité n'est pas une fonctionnalité.
+C'est un fondement.
 
-Et privilégie les standards web plutôt que de suivre les modes du moment.
+Un produit numérique doit être **clair**, **utilisable** et **robuste**, quel que soient le contexte ou les contraintes.
 
-Ce portfolio est à la fois une vritine et un terrain d'expérimentation.
-Il évolue en continu, au même rythme que mes compétences.
+Je privilégie les normes web plutôt que les tendances passagères, et la fiabilité à long terme plutôt que le commodité à court terme.
 
-Maintenant, vous pouvez :
+Vous pouvez :
 
 - [Télécharger mon CV](/public/files/CV_Aurelien_GASNIER_New_2.pdf)
-- Ou me contacter en cliquant sur le bouton "Envoyer un message" (Dans le menu de gauche).
+- Ou me contacter via le bouton "Envoyer un message" dans le menu de gauche.

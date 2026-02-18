@@ -1,4 +1,4 @@
-import type { FeedItem } from "~/types/feed";
+import type { FeedItem } from "@/types/feed";
 
 // Return Vue component appropriate to use as a FeedItem
 // Not neccessary anymore, PostItem do that itself

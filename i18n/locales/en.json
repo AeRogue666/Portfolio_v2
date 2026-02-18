@@ -12,7 +12,7 @@
     "user_description": "Accessibility-first Full-stack Developer",
     "user_tagline": "Helping teams design and ship accessible, scalable and maintainable web applications.",
     "user_alternative_text": "On this image is represented Aureldev, a French Accessibility-first Full-stack Developer. Cocorico!",
-    "contact_me": "Contact me or send me a feedback here",
+    "contact_me": "Contact me or send feedback",
     "open_github": "Open on Github",
     "open_linkedin": "Open on Linkedin",
     "modal-message": {
@@ -22,7 +22,13 @@
       "input_label": "Email",
       "textarea_label": "Message",
       "textarea_placeholder": "Describe your need, your context or your question. I will directly answer by mail.",
-      "submit_button": "Submit"
+      "submit_button": "Submit",
+      "state": {
+        "loading": "Sending...",
+        "success": "Message sent",
+        "error": "An unexpected error occured. Please try later again.",
+        "waiting_before_new_message": "Please wait before sending another message."
+      }
     },
     "navigation": {
       "homepage": "Home page",
@@ -52,8 +58,7 @@
   "index": {
     "title": "Portfolio - projects and contents",
     "load_more": "Load more articles",
-    "loaded_new_articles": "New articles loaded",
-    "loading_articles_button": "Loading articles button"
+    "loaded_new_articles": "New articles available"
   },
   "post": {
     "read_post": "Read the post",
@@ -87,7 +92,7 @@
   },
   "footer": {},
   "error": {
-    "feed_loading_error": "Impossible to load the feed",
+    "feed_loading_error": "Unable to load the feed",
     "content_unavailable": "Content unavailable"
   },
   "loading": {

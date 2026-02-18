@@ -1,4 +1,4 @@
-import { Locale } from "~/types/i18n";
+import type { Locale } from "@/types/i18n";
 
 // Take a source (object), remove `translations` and fuse this source with the translations object.
 
