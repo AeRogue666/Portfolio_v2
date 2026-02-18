@@ -2,7 +2,7 @@
 import type { SelectMenuItem } from '@nuxt/ui';
 import FontScaleSelector from './FontScaleSelector.vue';
 import SidebarSelectorBase from '../molecules/SidebarSelectorBase.vue';
-import SwitchButton from '~/components/ui/SwitchButton.vue';
+import SwitchButton from '../../ui/SwitchButton.vue';
 
 const accessibilityStore = useAccessibilityStore(),
     { t, locale, locales, setLocale } = useI18n(),

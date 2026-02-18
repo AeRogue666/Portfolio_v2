@@ -56,6 +56,7 @@ onMounted(() => {
                         description: 'text-base leading-relaxed text-(--text-2) max-w-[65ch]',
                         avatar: 'size-40 bg-(--bg-2)'
                     }" />
+                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.user_tagline') }}</span>
             </div>
 
             <span class="text-base text-(--text-2) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.contact_me') }}</span>

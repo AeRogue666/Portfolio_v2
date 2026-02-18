@@ -7,10 +7,11 @@
     "open": "Ouvrir le menu du profil",
     "close": "Fermer le menu du profil",
     "title": "Profil",
-    "description": "Decouvrez mon profil",
+    "description": "Découvrez mon profil",
     "user_title": "Aureldev",
-    "user_description": "Developpeur Full-stack",
-    "user_alternative_text": "Sur cette image est représenté Aureldev, un développeur full-stack français. Cocorico !",
+    "user_description": "Développeur Full-stack orienté Accessibilité",
+    "user_tagline": "J'accompagne les équipes dans la conception et le développement d'applications web accessibles, évolutives et maintenables.",
+    "user_alternative_text": "Sur cette image est représenté Aureldev, un développeur full-stack orienté accessibilité français. Cocorico !",
     "contact_me": "Contactez-moi ou envoyez-moi votre avis ici",
     "open_github": "Ouvrir sur Github",
     "open_linkedin": "Ouvrir sur Linkedin",
@@ -26,26 +27,26 @@
     "navigation": {
       "homepage": "Accueil",
       "accessibility_statement": "Declaration d'accessibilite",
-      "problem_report": "Signaler un probleme"
+      "problem_report": "Signaler un Problème"
     }
   },
   "sidebar-right": {
-    "open": "Ouvrir les parametres utilisateurs",
-    "close": "Fermer les parametres utilisateurs",
-    "title": "Parametres utilisateurs",
-    "description": "Reglez le site à vos preferences",
+    "open": "Ouvrir les paramètres utilisateurs",
+    "close": "Fermer les paramètres utilisateurs",
+    "title": "Paramètres utilisateurs",
+    "description": "Réglez le site à vos preferences",
     "theme": "Theme",
     "language": "Langue",
     "contrast": "Contraste",
     "font": "Police",
     "grayscale": "Grayscale",
     "underline_links": "Liens sous-lignes",
-    "reset_params": "Reinitialiser les parametres"
+    "reset_params": "Réinitialiser les paramètres"
   },
   "seo": {
     "home": {
-      "title": "Portfolio d'Aureldev - projets et contenu",
-      "description": "Decouvrez un portfolio 'as a social feed', accessible et centre sur l'utilisateur"
+      "title": "Portfolio d'Aureldev - Développer Full-stack orienté accessibilité",
+      "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur"
     }
   },
   "index": {
@@ -56,31 +57,31 @@
   },
   "post": {
     "read_post": "Lire le post",
-    "read_about": "Lire la presentation complete",
-    "pinned_post": "Post epingle",
+    "read_about": "Lire la présentation complète",
+    "pinned_post": "Post épinglé",
     "default_post": "Post",
     "type": {
       "project": "Projet",
       "update": "Mise à jour",
       "about": "A propos",
-      "pinned": "Epingle"
+      "pinned": "Epinglé"
     }
   },
   "project": {
-    "published_on": "Publie le",
+    "published_on": "Publié le",
     "role": "Role",
     "stack": "Stack",
     "context": "Contexte",
-    "problem": "Le probleme",
+    "problem": "Le problème",
     "solution": "La solution",
     "technical_choices": "Choix techniques",
-    "accessibility": "Accessibilite et UX",
-    "learnings": "Resultats et Apprentissages",
+    "accessibility": "Accessibilité et UX",
+    "learnings": "Résultats et Apprentissages",
     "watch_code": "Voir le code",
     "watch_demo": "Voir la démo"
   },
   "update": {
-    "published_on": "Publie le",
+    "published_on": "Publié le",
     "tags": "Tags",
     "content": "Contenu"
   },
@@ -94,8 +95,8 @@
   },
   "toast": {
     "form_submitted": {
-      "title": "Succes",
-      "description": "Le formulaire a ete envoye avec succes"
+      "title": "Succès",
+      "description": "Le formulaire a été envoyé avec succès"
     },
     "form_error_submission": {
       "title": "Erreur",
@@ -107,16 +108,16 @@
     "projects": "Projets",
     "updates": "Mises à jour",
     "about": "A propos",
-    "accessibility": "Accessibilite"
+    "accessibility": "Accessibilité"
   },
   "report": {
-    "title": "Signaler un probleme",
-    "description": "Probleme d'accessibilite, bug ou retour sur fonctionnalite",
+    "title": "Signaler un problème",
+    "description": "Problème d'accessibilité, bug ou retour sur une fonctionnalitée",
     "issue": {
-      "accessibility": "Accessibilite",
-      "issue": "Probleme",
+      "accessibility": "Accessibilité",
+      "issue": "Problème",
       "bug": "Bug",
-      "feedback": "Retour sur fonctionnalite",
+      "feedback": "Retour sur une fonctionnalitée",
       "other": "Autre"
     },
     "state": {
@@ -124,8 +125,8 @@
       "required": "Requis"
     },
     "form": {
-      "type": "Types de problemes",
-      "issue_selector": "Sélecteur de problemes",
+      "type": "Types de problèmes",
+      "issue_selector": "Sélecteur de problèmes",
       "description": "Description",
       "email": "Email",
       "optional": "Optionnel",

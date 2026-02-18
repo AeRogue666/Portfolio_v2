@@ -9,8 +9,9 @@
     "title": "Profile",
     "description": "Discover my profile",
     "user_title": "Aureldev",
-    "user_description": "Full-stack Developer",
-    "user_alternative_text": "On this image is represented Aureldev, a French full-stack developer. Cocorico!",
+    "user_description": "Accessibility-first Full-stack Developer",
+    "user_tagline": "Helping teams design and ship accessible, scalable and maintainable web applications.",
+    "user_alternative_text": "On this image is represented Aureldev, a French Accessibility-first Full-stack Developer. Cocorico!",
     "contact_me": "Contact me or send me a feedback here",
     "open_github": "Open on Github",
     "open_linkedin": "Open on Linkedin",
@@ -44,8 +45,8 @@
   },
   "seo": {
     "home": {
-      "title": "Portfolio of Aureldev - projects and contents",
-      "description": "Discover an Accessible, User-centered portfolio as a social feed"
+      "title": "Portfolio of Aureldev - Accessibility-first Full-stack Developer",
+      "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed"
     }
   },
   "index": {

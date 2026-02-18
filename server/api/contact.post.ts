@@ -54,9 +54,8 @@ export default defineEventHandler(async (event) => {
     resend = new Resend(config.resendApiKey);
 
   await resend.emails.send({
-    from: "Portfolio Contact <onboarding@resend.dev>", // verified domain
-    replyTo: email,
-    to: ["pro@aureldev.dev"],
+    from: "Resend <onboarding@resend.dev>", // verified domain
+    to: ["contact@aureldev.com"],
     subject: `[New Contact] - ${email}`,
     html: contactTemplate(email, message),
   });
