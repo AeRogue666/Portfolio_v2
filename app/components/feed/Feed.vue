@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FeedItem } from '~/types/feed';
+import type { FeedItem } from '@/types/feed';
 import PostItem from './PostItem.vue';
 
 defineProps<{

@@ -12,6 +12,7 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         label: t('sidebar-left.navigation.homepage'),
         icon: "fa7-solid:home",
         to: "/",
+        active: true
     },
     {
         label: t('sidebar-left.navigation.accessibility_statement'),
@@ -35,12 +36,12 @@ onMounted(() => {
                     : 'https://avatars.githubusercontent.com/u/38510448?v=4'
         },
         { immediate: true }
-    )
+    );
 });
 </script>
 
 <template>
-    <aside id="mobile-menu"
+    <aside id="sidebar-left" role="dialog" aria-modal="true"
         class="block w-full lg:w-auto min-w-60 h-auto bg-(--bg) basis-0.5 relative [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-2">
 
         <UContainer class="flex flex-col items-center w-full h-full mt-4 gap-4">
@@ -56,11 +57,13 @@ onMounted(() => {
                         description: 'text-base leading-relaxed text-(--text-2) max-w-[65ch]',
                         avatar: 'size-40 bg-(--bg-2)'
                     }" />
-                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.user_tagline') }}</span>
+                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.user_tagline')
+                }}</span>
             </div>
 
-            <span class="text-base text-(--text-2) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.contact_me') }}</span>
-            
+            <span class="text-base text-(--text-2) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.contact_me')
+            }}</span>
+
             <SendMessageModal />
 
             <div class="inline-flex items-baseline">
@@ -79,8 +82,10 @@ onMounted(() => {
 
             <UNavigationMenu highlight-color="neutral" orientation="vertical" :items="itemsNavigation" :ui="{
                 list: 'flex flex-col gap-3', // ul
+                item: '', // li
+                link: 'data-active:before:bg-(--bg-3) hover:bg-(--bg-2)', // a
                 linkLeadingIcon: 'text-(--text-muted)',
-                linkLabel: 'text-base text-(--text-1) leading-relaxed truncate max-w-[65ch]',
+                linkLabel: 'text-base leading-relaxed truncate max-w-[65ch]',
             }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full" />
         </UContainer>
     </aside>

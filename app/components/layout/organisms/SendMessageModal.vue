@@ -14,7 +14,7 @@ const { submitState, loading, submit } = useContactForm();
 function validate(values: ContactFormState) {
     const result = ContactFormSchema.safeParse(values);
 
-    if(result.success) return []
+    if (result.success) return []
 
     return result.error.issues.map((issue: any) => ({
         name: String(issue.path[0]),
@@ -41,7 +41,7 @@ async function onSubmit(event: FormSubmitEvent<ContactFormState>) {
             class: 'rounded-full'
         }" :ui="{
             content: 'w-auto bg-(--bg)',
-            body: 'flex'
+            body: 'flex flex-col justify-center'
         }">
 
         <template #default>
@@ -62,9 +62,10 @@ async function onSubmit(event: FormSubmitEvent<ContactFormState>) {
                         </UFormField>
 
                         <UFormField label="Website" name="website" class="hidden">
-                            <UInput v-model="state.website" type="text" size="xl" class="hidden" tabindex="-1" autocomplete="off" :ui="{
-                                base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
-                            }" />
+                            <UInput v-model="state.website" type="text" size="xl" class="hidden" tabindex="-1"
+                                autocomplete="off" :ui="{
+                                    base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
+                                }" />
                         </UFormField>
 
                         <UFormField :label="t('sidebar-left.modal-message.textarea_label')" name="message" required>
@@ -82,23 +83,30 @@ async function onSubmit(event: FormSubmitEvent<ContactFormState>) {
                         </UButton>
                     </UForm>
 
-                    <div v-else-if="submitState === 'loading'" key="loading"
-                        class="flex flex-col items-center gap-6">
+                    <div v-else-if="submitState === 'loading'" key="loading" class="flex flex-col items-center gap-6">
                         <UIcon name="fa7-solid:spinner" class="size-16 animate-spin" />
-                        <p class="text-lg leading-relaxed font-medium">{{ t('sidebar-left.modal-message.state.loading') }}</p>
+                        <p class="text-lg leading-relaxed font-medium">
+                            {{ t('sidebar-left.modal-message.state.loading') }}
+                        </p>
                     </div>
 
                     <div v-else-if="submitState === 'success'" key="success"
                         class="flex flex-col items-center gap-6 text-green-500">
                         <UIcon name="fa7-solid:check" class="size-16 animate-bounce" />
-                        <p class="text-lg leading-relaxed font-medium">{{ t('sidebar-left.modal-mmesage.state.success') }}</p>
-                        <span class="text-base leading-relaxed text-(--text-2)">{{ t('sidebar-left.modal-message.state.waiting_before_new_message') }}</span>
+                        <p class="text-lg leading-relaxed font-medium">
+                            {{ t('sidebar-left.modal-mmesage.state.success') }}
+                        </p>
+                        <span class="text-base leading-relaxed text-(--text-2)">
+                            {{ t('sidebar-left.modal-message.state.waiting_before_new_message') }}
+                        </span>
                     </div>
 
                     <div v-else-if="submitState === 'error'" key="error"
                         class="flex flex-col items-center gap-6 text-red-500">
                         <UIcon name="fa7-solid:xmark" class="size-16 animate-none" />
-                        <p class="text-lg leading-relaxed font-medium">{{ t('sidebar-left.modal-message.state.error') }}</p>
+                        <p class="text-lg leading-relaxed font-medium">
+                            {{ t('sidebar-left.modal-message.state.error') }}
+                        </p>
                     </div>
                 </Transition>
             </div>

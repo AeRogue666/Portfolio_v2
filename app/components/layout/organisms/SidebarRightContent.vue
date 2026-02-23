@@ -51,7 +51,7 @@ async function changeLanguage(newLocale: any) {
 </script>
 
 <template>
-    <aside id="mobile-menu"
+    <aside id="sidebar-right" role="dialog" aria-modal="true"
         class="block w-full lg:w-auto min-w-60 h-screen bg-(--bg) basis-0.5 relative [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-2">
         <UContainer class="flex flex-col items-center w-full h-auto my-4 gap-4">
 
@@ -65,7 +65,8 @@ async function changeLanguage(newLocale: any) {
                     <UColorModeSelect color="neutral" size="xl" :ui="{
                         base: 'bg-(--bg-2)',
                         content: 'bg-(--bg-2)',
-                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
+                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
                     }" />
                 </template>
             </SidebarSelectorBase>
@@ -81,7 +82,8 @@ async function changeLanguage(newLocale: any) {
                         :disabled="switching" color="neutral" size="xl" :ui="{
                             base: 'bg-(--bg-2)',
                             content: 'bg-(--bg-2)',
-                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
+                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
                         }" class="w-48" />
                 </template>
             </SidebarSelectorBase>
@@ -110,7 +112,8 @@ async function changeLanguage(newLocale: any) {
                         color="neutral" size="xl" aria-label="Font selector" :ui="{
                             base: 'bg-(--bg-2)',
                             content: 'bg-(--bg-2)',
-                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
+                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
                         }" />
                 </template>
             </SidebarSelectorBase>
@@ -121,8 +124,6 @@ async function changeLanguage(newLocale: any) {
                     {{ t('sidebar-right.grayscale') }}
                 </template>
                 <template #body>
-                    <!-- <USwitch v-model="grayscale" :text="'Grayscale switch'" color="neutral" size="xl"
-                        unchecked-icon="fa7-solid:xmark" checked-icon="fa7-solid:check" /> -->
                     <SwitchButton id="button-switch-grayscale" label="Grayscale switch" type="button" color="neutral"
                         variant="soft" :checked="grayscale" @click="accessibilityStore.toggleGrayscale" />
                 </template>

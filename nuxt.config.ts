@@ -47,9 +47,9 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    resendApiKey: import.meta.env.RESEND_API_KEY,
-    upstashRedisUrl: import.meta.env.UPSTASH_REDIS_REST_URL,
-    upstashRedisToken: import.meta.env.UPSTASH_REDIS_REST_TOKEN
+    resendApiKey: '',
+    upstashRedisUrl: '',
+    upstashRedisToken: ''
   },
 
   routeRules: {
@@ -64,7 +64,9 @@ export default defineNuxtConfig({
   build: {
     transpile: [],
   },
-  vite: {},
+  vite: {
+    logLevel: 'warn',
+  },
   devtools: { enabled: false },
   compatibilityDate: "latest",
 });

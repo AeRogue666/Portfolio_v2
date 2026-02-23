@@ -12,8 +12,6 @@ node_modules
 
 # Logs
 logs
-*.log
-
 # Misc
 .DS_Store
 .fleet
@@ -22,7 +20,6 @@ documentation
 
 # Local env files
 .env
-.env.*
 !.env.example
 
 pnpm-lock.yaml

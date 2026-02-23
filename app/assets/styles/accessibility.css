@@ -1,6 +1,6 @@
 @import "tailwindcss";
 @import "./tokens.css";
-@import "./themes//light.css";
+@import "./themes/light.css";
 @import "./themes/dark.css";
 
 html {
@@ -16,6 +16,7 @@ html[data-contrast="normal"] {
   --text: var(--text-primary);
   --text-2: var(--text-secondary);
   --text-3: var(--text-muted);
+  --link: var(--text-2);
 }
 
 html[data-contrast="high"] {
@@ -25,6 +26,7 @@ html[data-contrast="high"] {
   --text: var(--a11y-high-text);
   --text-2: var(--a11y-high-text-2);
   --text-3: var(--a11y-high-text-3);
+  --link: var(--text-2);
   --accent: var(--a11y-high-focus);
 }
 
@@ -35,6 +37,7 @@ html[data-contrast="low"] {
   --text: var(--a11y-low-text);
   --text-2: var(--a11y-low-text-2);
   --text-3: var(--a11y-low-text-3);
+  --link: var(--text-2);
 }
 
 html[data-grayscale="true"] {

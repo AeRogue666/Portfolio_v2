@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconButton from '~/components/ui/IconButton.vue';
+import IconButton from '@/components/ui/IconButton.vue';
 
 defineProps<{
     fontScale: FontScale
