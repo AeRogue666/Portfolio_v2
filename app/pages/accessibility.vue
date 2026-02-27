@@ -23,7 +23,7 @@ if(error.value) {
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         label: t('breadcrumb.feed'),
-        to: '/'
+        to: ''
     },
     {
         label: t('breadcrumb.accessibility'),

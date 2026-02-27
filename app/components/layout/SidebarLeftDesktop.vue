@@ -4,11 +4,10 @@ import IconButton from '../ui/IconButton.vue';
 import SidebarLeftContent from './organisms/SidebarLeftContent.vue';
 
 const props = defineProps<{
-    isFirstMount: boolean
+    isFirstMount: boolean;
 }>();
 
 const { t } = useI18n();
-
 const sidebarLeftRef = useTemplateRef('sidebarLeftRef');
 
 const { activate, deactivate } = useFocusTrap(sidebarLeftRef, {
@@ -19,27 +18,30 @@ const { activate, deactivate } = useFocusTrap(sidebarLeftRef, {
     setReturnFocus: "#button-sidebarleft-open",
 });
 
+onBeforeUnmount(() => {
+    try {
+        deactivate();
+    } catch (e) {
+        console.log('Error deactivating focus trap:', e);
+    }
+});
+
 onMounted(async () => {
     await nextTick()
-
     // const isReopening = !sidebarLeftRef.value?.contains(document.activeElement);
-
-    if(props.isFirstMount) {
-        // Premier chargement : on attend que le focus entre naturellement
+    if (props.isFirstMount) { // Premier chargement : on attend que le focus entre naturellement
         sidebarLeftRef.value?.addEventListener('focusin', () => activate(), { once: true });
         console.log('First focus')
-    } else {
-        // Réouverture : le focus est déjà positionné ailleurs, on active directement le trap
+    } else { // Réouverture : le focus est déjà positionné ailleurs, on active directement le trap
         activate();
         console.log('Focus')
     }
 });
-
-onBeforeUnmount(() => deactivate());
 </script>
 
 <template>
-    <div ref="sidebarLeftRef" class="hidden lg:block w-auto min-h-screen sticky top-0">
+    <div ref="sidebarLeftRef" class="hidden lg:block w-auto min-h-screen sticky top-0" role="dialog" aria-modal="true"
+        :aria-label="t('sidebar-left.label')">
         <!-- Close button -->
         <IconButton id="button-sidebarleft-close" :variant="'ghost'" :color="'neutral'" :icon="'fa7-solid:chevron-left'"
             :size="'3xl'" :label="t('sidebar-left.close')" :class="'text-3xl absolute right-6 top-6 z-50'"

@@ -23,7 +23,12 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         label: t('sidebar-left.navigation.problem_report'),
         icon: 'fa7-solid:warning',
         to: '/report',
-    }
+    },
+    {
+        label: t('sidebar-left.navigation.accessibility_report'),
+        icon: "fa7-solid:newspaper",
+        to: "/accessibility-report",
+    },
 ]);
 
 onMounted(() => {
@@ -57,12 +62,14 @@ onMounted(() => {
                         description: 'text-base leading-relaxed text-(--text-2) max-w-[65ch]',
                         avatar: 'size-40 bg-(--bg-2)'
                     }" />
-                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.user_tagline')
-                }}</span>
+                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]">
+                    {{ t('sidebar-left.user_tagline') }}
+                </span>
             </div>
 
-            <span class="text-base text-(--text-2) leading-relaxed max-w-[65ch]">{{ t('sidebar-left.contact_me')
-            }}</span>
+            <span class="text-base text-(--text-2) leading-relaxed max-w-[65ch]">
+                {{ t('sidebar-left.contact_me') }}
+            </span>
 
             <SendMessageModal />
 

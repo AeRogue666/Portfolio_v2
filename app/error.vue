@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { NuxtError } from '#app';
+import type { NuxtError } from 'nuxt/app';
 
 const props = defineProps<{
     error: NuxtError
@@ -21,7 +21,7 @@ onMounted(() => {
         </a>
 
         <UError redirect="/" :error="{
-            statusCode: error.statusCode,
+            statusCode: error.status,
             statusMessage: `We couldn't find this page.`,
             message: `It seems the answer isn't here.`
         }" :clear="{

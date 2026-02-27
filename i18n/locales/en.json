@@ -6,6 +6,7 @@
   "sidebar-left": {
     "open": "Open profile menu",
     "close": "Close profile menu",
+    "label": "Main navigation",
     "title": "Profile",
     "description": "Discover my profile",
     "user_title": "Aureldev",
@@ -33,7 +34,8 @@
     "navigation": {
       "homepage": "Home page",
       "accessibility_statement": "Accessibility statement",
-      "problem_report": "Report a problem"
+      "problem_report": "Report a problem",
+      "accessibility_report": "Accessibility report"
     }
   },
   "sidebar-right": {
@@ -59,6 +61,31 @@
     "title": "Portfolio - projects and contents",
     "load_more": "Load more articles",
     "loaded_new_articles": "New articles available"
+  },
+  "filters": {
+    "filters": "Filters",
+    "tags": "Tags",
+    "no_tags": "No tags available",
+    "sort": {
+      "label": "Sort by",
+      "recent": "Most recent",
+      "oldest": "Oldest first",
+      "alpha": "A to Z",
+      "alpha_desc": "Z to A"
+    },
+    "filter_options": "Filter options",
+    "close_filters": "Close filters menu",
+    "reset": "Clear filters",
+    "active_count": "{count} filter(s) active"
+  },
+  "feed": {
+    "no_results": "No posts match your filters. Try adjusting your selection.",
+    "showing_filtered": "Showing {count} of {total} posts",
+    "showing_all": "Showing {total} posts"
+  },
+  "pagination": {
+    "previous": "Previous page",
+    "next": "Next page"
   },
   "post": {
     "read_post": "Read the post",
@@ -113,7 +140,8 @@
     "projects": "Projects",
     "updates": "Updates",
     "about": "About",
-    "accessibility": "Accessibility"
+    "accessibility": "Accessibility",
+    "accessibility_report": "Accessibility report"
   },
   "report": {
     "title": "Report a problem",
@@ -136,6 +164,11 @@
       "email": "Email",
       "optional": "Optional",
       "submit": "Submit"
+    }
+  },
+  "accessibility-report": {
+    "test_environment": {
+      "keyboard_navigation": "Exhaustive keyboard navigation (Tab, Escape, Enter)"
     }
   }
 }

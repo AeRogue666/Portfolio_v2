@@ -6,6 +6,7 @@
   "sidebar-left": {
     "open": "Ouvrir le menu du profil",
     "close": "Fermer le menu du profil",
+    "label": "Navigation principale",
     "title": "Profil",
     "description": "Découvrez mon profil",
     "user_title": "Aureldev",
@@ -33,7 +34,8 @@
     "navigation": {
       "homepage": "Accueil",
       "accessibility_statement": "Declaration d'accessibilite",
-      "problem_report": "Signaler un incident"
+      "problem_report": "Signaler un incident",
+      "accessibility_report": "Rapport d'accessibilité"
     }
   },
   "sidebar-right": {
@@ -59,6 +61,31 @@
     "title": "Portfolio - projets et contenu",
     "load_more": "Charger d'autres articles",
     "loaded_new_articles": "Nouveux articles disponibles"
+  },
+  "filters": {
+    "filters": "Filtres",
+    "tags": "Tags",
+    "no_tags": "Aucun tag disponible",
+    "sort": {
+      "label": "Trier par",
+      "recent": "Plus récent",
+      "oldest": "Plus ancien",
+      "alpha": "A à Z",
+      "alpha_desc": "Z à A"
+    },
+    "filter_options": "Options de filtrage",
+    "close_filters": "Fermer le menu des filtres",
+    "reset": "Réinitialiser les filtres",
+    "active_count": "{count} filtre(s) actif(s)"
+  },
+  "feed": {
+    "no_results": "Aucun post ne correspond à vos filtres. Essayez d'ajuster votre sélection.",
+    "showing_filtered": "Affichage de {count} sur {total} posts",
+    "showing_all": "Affichage de {total} posts"
+  },
+  "pagination": {
+    "previous": "Page précédente",
+    "next": "Page suivante"
   },
   "post": {
     "read_post": "Lire le post",
@@ -113,7 +140,8 @@
     "projects": "Projets",
     "updates": "Mises à jour",
     "about": "A propos",
-    "accessibility": "Accessibilité"
+    "accessibility": "Accessibilité",
+    "accessibility_report":"Rapport d'accessibilité"
   },
   "report": {
     "title": "Signaler un problème",
@@ -136,6 +164,11 @@
       "email": "Email",
       "optional": "Optionnel",
       "submit": "Envoyer"
+    }
+  },
+  "accessibility-report": {
+    "test_environment": {
+      "keyboard_navigation": "Navigation clavier exhaustive (Tab, Echap, Entrer)"
     }
   }
 }

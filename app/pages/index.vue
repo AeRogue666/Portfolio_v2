@@ -6,11 +6,27 @@ definePageMeta({
 const feedStore = useFeedStore(),
     { t } = useI18n();
 
-const { items, total, status, error, loadMore } = useFeed({ limit: 5 });
+const {
+    items,
+    availableTags,
+    selectedTags,
+    sortBy,
+    status,
+    error,
+    toggleTag,
+    setSortBy,
+    resetFilters,
+    loadMore,
+    total
+} = useFeed({ limit: 5 });
 
+// Mettre à jour le store avec les posts
 watch(items, (newItems) => {
     feedStore.setPosts(newItems)
 });
+
+// Déterminer si des filtres sont actifs
+const hasActiveFilters = computed(() => selectedTags.value.length > 0);
 
 useSeoMeta(({
     title: t('seo.home.title'),
@@ -24,20 +40,37 @@ useSeoMeta(({
 
 <template>
     <UContainer tabindex="-1" aria-labelledby="feed-title">
-        <h1 id="feed-title" class="text-2xl font-semibold tracking-tight leading-snug sr-only" style="font-size: var(--step-3);">{{ t('index.title') }}</h1>
 
+        <!-- Filtres -->
+        <FeedFilters :available-tags="availableTags" :selected-tags="selectedTags" :sort-by="sortBy"
+            :has-active-filters="hasActiveFilters" @toggle-tag="toggleTag" @set-sort="setSortBy"
+            @reset-filters="resetFilters" />
+
+        <!-- Feed -->
         <Feed id="feed" :items="items" :loading="status === 'pending'" :error="error?.message ?? null" />
 
-        <UContainer>
-            <button v-if="items.length < total" id="button-load-articles"
-                :aria-label="t('index.load_more')" role="button" aria-controls="feed" @click="loadMore()"
-                :aria-busy="status === 'pending'">
+        <!-- Message si aucun résultat après filtrage -->
+        <div v-if="status === 'success' && items.length === 0 && hasActiveFilters" aria-live="polite"
+            class="py-8 text-center text-(--text-2)">
+            <p>{{ t('feed.no_results') }}</p>
+            <button @click="resetFilters"
+                class="mt-4 px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text-1) rounded border border-(--border-subtle) transition-colors">
+                {{ t('filters.reset') }}
+            </button>
+        </div>
+
+        <!-- Bouton Load More -->
+        <UContainer v-if="items.length < total">
+            <button id="button-load-articles" :aria-label="t('index.load_more')" role="button" aria-controls="feed"
+                @click="loadMore()" :aria-busy="status === 'pending'" :disabled="status === 'pending'"
+                class="w-full px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text-1) rounded border border-(--border-subtle) disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
                 {{ t('index.load_more') }}
             </button>
         </UContainer>
 
-        <div v-if="status === 'success' && feedStore.sortedPosts.length < total" aria-live="polite" class="sr-only">
-            <span>{{ total }} {{ t('index.loaded_new_articles') }}</span>
+        <!-- Annonce accessibilité pour lecteurs d'écran -->
+        <div v-if="status === 'success' && items.length > 0" aria-live="polite" class="sr-only">
+            <span>{{ items.length }} {{ t('index.loaded_new_articles') }}</span>
         </div>
 
         <footer>

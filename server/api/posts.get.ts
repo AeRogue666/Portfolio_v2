@@ -9,8 +9,8 @@ import { toFeedItem } from "#server/lib/toFeedItem";
 export default cachedEventHandler(
   (event) => {
     const query = getQuery(event),
-      limit = Number(query.limit ?? 5),
-      offset = Number(query.offset ?? 0),
+      /* limit = Number(query.limit ?? 5), A conserver, pour le jour où le portfolio contiendra 1000+ posts
+      offset = Number(query.offset ?? 0), */
       locale: Locale = query.locale === "fr" ? "fr" : "en";
 
     const feed = [
@@ -27,14 +27,14 @@ export default cachedEventHandler(
 
     return {
       total: feed.length,
-      items: feed.slice(offset, offset + limit),
+      items: feed // On renvoit tout au lieu d'utiliser feed.slice(offset, offset + limit),
     };
   },
   {
     maxAge: 60 * 10, // 10 minutes
     getKey: (event) => {
       const q = getQuery(event);
-      return `posts-${q.locale ?? "en"}-${q.offset ?? 0}-${q.limit ?? 5}`;
+      return `posts-${q.locale ?? "en"}`; // -${q.offset ?? 0}-${q.limit ?? 5}
     },
   },
 );

@@ -1,4 +1,4 @@
-import type { FeedItem } from "~/types/feed";
+import type { FeedItem } from "@/types/feed";
 
 interface FeedState {
   posts: FeedItem[];

@@ -16,8 +16,8 @@ const { activate, deactivate } = useFocusTrap(sidebarRightRef, {
 });
 
 onMounted(async () => {
-    await nextTick()
-    activate()
+    await nextTick();
+    activate();
 });
 
 onBeforeUnmount(() => deactivate());

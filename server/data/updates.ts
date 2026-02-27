@@ -1,4 +1,4 @@
-import type { Update } from "~/types/update";
+import type { Update } from "@/types/update";
 
 export const updates: Update[] = [
   {

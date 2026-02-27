@@ -10,6 +10,7 @@ const state = reactive<ContactFormState>({
 
 const { t } = useI18n();
 const { submitState, loading, submit } = useContactForm();
+const { openContactModal, closeContactModal } = useModalState();
 
 function validate(values: ContactFormState) {
     const result = ContactFormSchema.safeParse(values);
@@ -31,11 +32,20 @@ function resetForm() {
 async function onSubmit(event: FormSubmitEvent<ContactFormState>) {
     await submit(event.data, resetForm);
 };
+
+onMounted(() => {
+    openContactModal();
+});
+
+function handleModalClose() {
+    closeContactModal();
+    resetForm();
+}
 </script>
 
 <template>
     <UModal id="contact-modal" :modal="true" fullscreen direction="left" :title="t('sidebar-left.modal-message.title')"
-        :description="t('sidebar-left.modal-message.description')" :close="{
+        :description="t('sidebar-left.modal-message.description')" @close="handleModalClose" :close="{
             color: 'neutral',
             variant: 'outline',
             class: 'rounded-full'
