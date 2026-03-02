@@ -90,13 +90,15 @@ watchEffect(() => {
                     <span class="mx-2 text-(--text-muted)">/</span>
                 </template>
             </UBreadcrumb>
-            <p class="text-sm text-(--text-2)">
+            <p class="text-sm text-(--text-2) leading-snug" style="font-size: var(--step--1);">
                 {{ t('update.published_on') }}
                 <time :datetime="update.date">{{ dayjs(update.date).format('DD MMMM YYYY') }}</time>
             </p>
 
             <h1 id="article-title" class="text-2xl font-semibold tracking-tight leading-snug mt-2"
-                style="font-size: var(--step-3);">{{ update.title }}</h1>
+                style="font-size: var(--step-3);">
+                {{ update.title }}
+            </h1>
             <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
                 {{ update.summary }}
             </p>
@@ -107,7 +109,9 @@ watchEffect(() => {
                 class="my-2 rounded-lg" itemprop="image" placeholder="blur" />
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
-                <dt class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">{{ t('update.tags') }}</dt>
+                <dt class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">
+                    {{ t('update.tags') }}
+                </dt>
                 <dd class="flex flex-wrap gap-2">
                     <PostBadge v-for="tech in update.tags" :label="tech" :key="tech" :variant="'soft'"
                         :color="'neutral'" :size="'md'" :class-name="'bg-(--bg-3) text-(--text-2) text-scalable'" />
@@ -117,8 +121,12 @@ watchEffect(() => {
 
         <section aria-labelledby="content">
             <h2 id="content" class="text-2xl font-semibold leading-snug text-scalable"
-                style="font-size: var(--step-2);">{{ t('update.content') }}</h2>
-            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">{{ update.content }}</p>
+                style="font-size: var(--step-2);">
+                {{ t('update.content') }}
+            </h2>
+            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
+                {{ update.content }}
+            </p>
         </section>
 
         <template #footer>

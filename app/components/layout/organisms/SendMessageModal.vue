@@ -44,8 +44,9 @@ function handleModalClose() {
 </script>
 
 <template>
-    <UModal id="contact-modal" :modal="true" fullscreen direction="left" :title="t('sidebar-left.modal-message.title')"
-        :description="t('sidebar-left.modal-message.description')" @close="handleModalClose" :close="{
+    <UModal id="contact-modal" :modal="true" @close="handleModalClose" fullscreen direction="left"
+        :title="t('sidebar-left.modal-message.title')" :description="t('sidebar-left.modal-message.description')"
+        :close="{
             color: 'neutral',
             variant: 'outline',
             class: 'rounded-full'
@@ -56,8 +57,8 @@ function handleModalClose() {
 
         <template #default>
             <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" color="neutral"
-                variant="ghost" size="xl" class="bg-(--bg-2) text-(--text)"
-                :label="t('sidebar-left.modal-message.send-message_button_label')" />
+                variant="solid" size="xl" class="bg-(--bg-3) text-(--text) hover:text-inverted"
+                :label="t('sidebar-left.modal-message.send-message_button_label')" style="font-size: var(--step-0);" />
         </template>
 
         <template #body>
@@ -68,14 +69,14 @@ function handleModalClose() {
                         <UFormField :label="t('sidebar-left.modal-message.input_label')" name="email" required>
                             <UInput autofocus v-model="state.email" size="xl" :placeholder="'amazing@email.com'" :ui="{
                                 base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
-                            }" />
+                            }" style="font-size: var(--step--1);" />
                         </UFormField>
 
                         <UFormField label="Website" name="website" class="hidden">
                             <UInput v-model="state.website" type="text" size="xl" class="hidden" tabindex="-1"
                                 autocomplete="off" :ui="{
                                     base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
-                                }" />
+                                }" style="font-size: var(--step--1);" />
                         </UFormField>
 
                         <UFormField :label="t('sidebar-left.modal-message.textarea_label')" name="message" required>
@@ -83,19 +84,19 @@ function handleModalClose() {
                                 maxlength="3000" :placeholder="t('sidebar-left.modal-message.textarea_placeholder')"
                                 :ui="{
                                     base: 'w-3xs md:w-xs bg-(--bg-2)'
-                                }" />
+                                }" style="font-size: var(--step--1);" />
                         </UFormField>
 
                         <UButton :loading="loading" :disabled="loading" type="submit" name="submit-contact-drawer"
-                            color="neutral" variant="ghost"
-                            class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text) hover:bg-(--accent) focus:bg-(--accent)">
+                            color="neutral" variant="solid"
+                            class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text) hover:text-inverted" style="font-size: var(--step-0);">
                             {{ t('sidebar-left.modal-message.submit_button') }}
                         </UButton>
                     </UForm>
 
                     <div v-else-if="submitState === 'loading'" key="loading" class="flex flex-col items-center gap-6">
                         <UIcon name="fa7-solid:spinner" class="size-16 animate-spin" />
-                        <p class="text-lg leading-relaxed font-medium">
+                        <p class="text-lg leading-relaxed font-medium" style="font-size: var(--step--1);">
                             {{ t('sidebar-left.modal-message.state.loading') }}
                         </p>
                     </div>
@@ -103,10 +104,10 @@ function handleModalClose() {
                     <div v-else-if="submitState === 'success'" key="success"
                         class="flex flex-col items-center gap-6 text-green-500">
                         <UIcon name="fa7-solid:check" class="size-16 animate-bounce" />
-                        <p class="text-lg leading-relaxed font-medium">
+                        <p class="text-lg leading-relaxed font-medium" style="font-size: var(--step--1);">
                             {{ t('sidebar-left.modal-mmesage.state.success') }}
                         </p>
-                        <span class="text-base leading-relaxed text-(--text-2)">
+                        <span class="text-base leading-relaxed text-(--text-2)" style="font-size: var(--step--1);">
                             {{ t('sidebar-left.modal-message.state.waiting_before_new_message') }}
                         </span>
                     </div>
@@ -114,7 +115,7 @@ function handleModalClose() {
                     <div v-else-if="submitState === 'error'" key="error"
                         class="flex flex-col items-center gap-6 text-red-500">
                         <UIcon name="fa7-solid:xmark" class="size-16 animate-none" />
-                        <p class="text-lg leading-relaxed font-medium">
+                        <p class="text-lg leading-relaxed font-medium" style="font-size: var(--step--1);">
                             {{ t('sidebar-left.modal-message.state.error') }}
                         </p>
                     </div>

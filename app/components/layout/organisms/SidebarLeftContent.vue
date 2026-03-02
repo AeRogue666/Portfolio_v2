@@ -59,15 +59,15 @@ onMounted(() => {
                     }" :ui="{
                         root: 'items-center',
                         name: 'text-2xl text-(--text-1) font-semibold tracking-tight leading-snug',
-                        description: 'text-base leading-relaxed text-(--text-2) max-w-[65ch]',
+                        description: 'text-base leading-relaxed text-(--text-2)',
                         avatar: 'size-40 bg-(--bg-2)'
                     }" />
-                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]">
+                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]" style="font-size: var(--step--1);">
                     {{ t('sidebar-left.user_tagline') }}
                 </span>
             </div>
 
-            <span class="text-base text-(--text-2) leading-relaxed max-w-[65ch]">
+            <span class="text-base text-(--text-2) leading-relaxed" style="font-size: var(--step--1);">
                 {{ t('sidebar-left.contact_me') }}
             </span>
 
@@ -93,7 +93,7 @@ onMounted(() => {
                 link: 'data-active:before:bg-(--bg-3) hover:bg-(--bg-2)', // a
                 linkLeadingIcon: 'text-(--text-muted)',
                 linkLabel: 'text-base leading-relaxed truncate max-w-[65ch]',
-            }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full" />
+            }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full" style="font-size: var(--step--1);" />
         </UContainer>
     </aside>
 </template>

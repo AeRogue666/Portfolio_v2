@@ -3,7 +3,7 @@ export function logEvent(event: string, data: Record<string, any>) {
     JSON.stringify({
       event,
       ...data,
-      timestamp: new Date().toISOString()
+      timestamp: new Date() // .toISOString()
     })
   );
 }

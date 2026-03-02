@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   ssr: true,
   nitro: {
-    preset: "vercel",
+    preset: "vercel", // "vercel" or "node-server"
   },
   modules: [
     "@nuxt/content",

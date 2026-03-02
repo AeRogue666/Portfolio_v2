@@ -9,7 +9,7 @@
             <slot name="header"></slot>
         </header>
 
-        <section class="prose prose-neutral dark:prose-invert">
+        <section class="flex flex-col gap-6 prose prose-neutral dark:prose-invert">
             <slot></slot>
         </section>
 

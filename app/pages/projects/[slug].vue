@@ -97,7 +97,7 @@ watchEffect(() => {
 
             <h1 id="article-title" class="text-2xl font-semibold tracking-tight leading-snug mt-2"
                 style="font-size: var(--step-3);">{{ project.title }}</h1>
-            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
+            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
                 {{ project.summary }}
             </p>
 
@@ -108,80 +108,87 @@ watchEffect(() => {
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <div>
-                    <dt class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">{{
-                        t('project.role') }}</dt>
-                    <dd class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
+                    <dt class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+                        {{ t('project.role') }}
+                    </dt>
+                    <dd class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
                         {{ project.role }}</dd>
                 </div>
                 <div>
-                    <dt class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">{{
-                        t('project.stack') }}</dt>
+                    <dt class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+                        {{ t('project.stack') }}
+                    </dt>
                     <dd class="flex flex-wrap gap-2">
                         <PostBadge v-for="tech in project.stack" :label="tech" :key="tech" :variant="'soft'"
-                            :color="'neutral'" :size="'md'" :class-name="'bg-(--bg-3) text-(--text-2) text-scalable'" />
+                            :color="'neutral'" :size="'md'" :class-name="'bg-(--bg-3) text-(--text-2)'" />
                     </dd>
-                </div>
-                <div>
-                    <dt class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">{{
-                        t('project.context') }}</dt>
-                    <dd class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
-                        {{
-                            project.context }}</dd>
                 </div>
             </dl>
         </template>
 
+        <section aria-labelledby="context">
+            <h2 class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+                {{ t('project.context') }}
+            </h2>
+            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+                {{ project.context }}
+            </p>
+        </section>
+
         <section aria-labelledby="problem">
-            <h2 id="problem" class="text-2xl font-semibold leading-snug text-scalable"
-                style="font-size: var(--step-2);">{{
-                    t('project.problem') }}</h2>
-            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">{{
-                project.problem
-                }}</p>
+            <h2 id="problem" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+                {{ t('project.problem') }}
+            </h2>
+            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+                {{ project.problem }}
+            </p>
         </section>
 
         <section aria-labelledby="solution">
-            <h2 id="solution" class="text-2xl font-semibold leading-snug text-scalable"
-                style="font-size: var(--step-2);">
+            <h2 id="solution" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
                 {{ t('project.solution') }}
             </h2>
-            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
+            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
                 {{ project.solution }}
             </p>
         </section>
 
         <section aria-labelledby="tech">
-            <h2 id="tech" class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">
+            <h2 id="tech" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
                 {{ t('project.technical_choices') }}
             </h2>
             <ul class="flex flex-col justify-center items-baseline">
-                <li v-for="tech in project.technicalChoices" :key="tech.title">
+                <li v-for="tech in project.technicalChoices" :key="tech.title"
+                    class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
                     <strong>{{ tech.title }}</strong> - {{ tech.description }}
                 </li>
             </ul>
         </section>
 
         <section aria-labelledby="a11y">
-            <h2 id="a11y" class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">
+            <h2 id="a11y" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
                 {{ t('project.accessibility') }}
             </h2>
-            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
+            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
                 {{ project.accessibility }}</p>
         </section>
 
         <section aria-labelledby="results">
-            <h2 id="results" class="text-2xl font-semibold leading-snug text-scalable"
-                style="font-size: var(--step-2);">
+            <h2 id="results" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
                 {{ t('project.learnings') }}
             </h2>
             <ul>
-                <li v-for="learning in project.learnings" class="flex flex-col" :key="learning">{{ learning }}</li>
+                <li v-for="learning in project.learnings" class="flex flex-col" :key="learning">
+                    <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">{{ learning }}</p>
+                </li>
             </ul>
         </section>
 
         <template #footer>
-            <a v-if="project.links?.github" :href="project.links.github">{{ t('project.watch_code') }}</a>
-            <a v-if="project.links?.demo" :href="project.links.demo">{{ t('project.watch_demo') }}</a>
+            <a v-if="project.links?.github" :href="project.links.github" class="text-base text-(--text-2) leading-snug"
+                style="font-size: var(--step--1);">{{ t('project.watch_code') }}</a>
+            <a v-if="project.links?.demo" :href="project.links.demo" class="text-base text-(--text-2) leading-snug"
+                style="font-size: var(--step--1);">{{ t('project.watch_demo') }}</a>
         </template>
     </ArticleLayout>
 </template>

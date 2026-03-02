@@ -39,7 +39,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
         <template #meta>
             <section class="flex justify-between items-center w-full">
                 <PostBadge :label="badgeLabel" :icon="badgeIcon" :color="post.pinned ? 'success' : 'neutral'" />
-                <p v-if="post.date" class="text-sm text-(--text-2) text-scalable">
+                <p v-if="post.date" class="text-sm text-(--text-2) text-scalable" style="font-size: var(--step--1);">
                     <time :datetime="post.date">{{ dayjs(post.date).format('DD MMMM YYYY') }}</time>
                 </p>
             </section>
@@ -47,8 +47,12 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
             <div v-else class="h-px w-full bg-(--border-subtle) my-2"></div>
         </template>
 
-        <h2 class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">{{ post.feed_title ? post.feed_title : post.title }}</h2>
-        <p class="text-base leading-relaxed text-(--text-2) text-scalable max-w-prose">{{ post.feed_summary ? post.feed_summary : post.summary }}</p>
+        <h2 class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">
+            {{ post.feed_title ? post.feed_title : post.title }}
+        </h2>
+        <p class="text-base leading-relaxed text-(--text-2) text-scalable max-w-prose" style="font-size: var(--step--1);">
+            {{ post.feed_summary ? post.feed_summary : post.summary }}
+        </p>
 
         <div class="flex flex-wrap gap-2">
             <PostBadge v-for="tag in post.tags" :label="tag" :key="tag" :variant="'soft'" :color="'neutral'"
