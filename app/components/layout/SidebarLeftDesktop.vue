@@ -9,32 +9,57 @@ const props = defineProps<{
 
 const { t } = useI18n();
 const sidebarLeftRef = useTemplateRef('sidebarLeftRef');
+const { isModalOpen } = useSidebarFocusState();
 
 const { activate, deactivate } = useFocusTrap(sidebarLeftRef, {
     immediate: false,
-    escapeDeactivates: false, // on gère la fermeture manuellement
-    allowOutsideClick: true, // permet les clics hors sidebar sans bloquer
-    returnFocusOnDeactivate: true, // retourne le focus sur l'élément précédent
-    setReturnFocus: "#button-sidebarleft-open",
+    escapeDeactivates: false,
+    allowOutsideClick: true,
+    returnFocusOnDeactivate: true,
+});
+
+let focusTrapActive = false;
+
+const activateTrap = () => {
+    if (!focusTrapActive && !isModalOpen.value) {
+        activate();
+        focusTrapActive = true;
+    }
+};
+
+const deactivateTrap = () => {
+    if (focusTrapActive) {
+        deactivate();
+        focusTrapActive = false;
+    }
+};
+
+watch(isModalOpen, (value) => {
+    if(value) {
+        deactivateTrap();
+    } else {
+        setTimeout(() => {
+            activateTrap();
+        }, 100);
+    }
 });
 
 onBeforeUnmount(() => {
     try {
-        deactivate();
-    } catch (e) {
-        console.log('Error deactivating focus trap:', e);
+        deactivateTrap();
+    } catch (error) {
+        console.log('Error trap: ', error);
     }
 });
 
 onMounted(async () => {
     await nextTick()
-    // const isReopening = !sidebarLeftRef.value?.contains(document.activeElement);
-    if (props.isFirstMount) { // Premier chargement : on attend que le focus entre naturellement
-        sidebarLeftRef.value?.addEventListener('focusin', () => activate(), { once: true });
-        console.log('First focus')
-    } else { // Réouverture : le focus est déjà positionné ailleurs, on active directement le trap
-        activate();
-        console.log('Focus')
+    if (props.isFirstMount) {
+        sidebarLeftRef.value?.addEventListener('focusin', () => activateTrap(), { once: true });
+        console.log('First focus');
+    } else {
+        activateTrap();
+        console.log('Focus');
     }
 });
 </script>

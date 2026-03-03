@@ -10,7 +10,8 @@ const state = reactive<ContactFormState>({
 
 const { t } = useI18n();
 const { submitState, loading, submit } = useContactForm();
-const { openContactModal, closeContactModal } = useModalState();
+const isOpen = ref(false);
+const { setModalOpen } = useSidebarFocusStateInject();
 
 function validate(values: ContactFormState) {
     const result = ContactFormSchema.safeParse(values);
@@ -33,18 +34,30 @@ async function onSubmit(event: FormSubmitEvent<ContactFormState>) {
     await submit(event.data, resetForm);
 };
 
-onMounted(() => {
-    openContactModal();
-});
+watch(isOpen, (value) => {
+    setModalOpen(value);
 
-function handleModalClose() {
-    closeContactModal();
-    resetForm();
-}
+    if(value) {
+        nextTick(() => {
+            setTimeout(() => {
+                const input = document.querySelector('input[name="email"]') as HTMLInputElement;
+                if(input) {
+                    input.removeAttribute('inert')
+                    input.removeAttribute('aria-hidden')
+                    input.scrollIntoView({ behavior: 'smooth' })
+                    input.focus({ preventScroll: false })
+
+                    console.log('after focus: ', document.activeElement?.tagName, document.activeElement?.id)
+                    console.log('focused: ', document.activeElement === input)
+                }
+            }, 300);
+        })
+    }
+});
 </script>
 
 <template>
-    <UModal id="contact-modal" :modal="true" @close="handleModalClose" fullscreen direction="left"
+    <UModal v-model:open="isOpen" id="contact-modal" :modal="true" fullscreen direction="left"
         :title="t('sidebar-left.modal-message.title')" :description="t('sidebar-left.modal-message.description')"
         :close="{
             color: 'neutral',
@@ -67,7 +80,7 @@ function handleModalClose() {
                     <UForm v-if="submitState === 'idle'" key="form" :validate="validate" :state="state"
                         class="flex flex-col items-center w-full gap-4" @submit="onSubmit">
                         <UFormField :label="t('sidebar-left.modal-message.input_label')" name="email" required>
-                            <UInput autofocus v-model="state.email" size="xl" :placeholder="'amazing@email.com'" :ui="{
+                            <UInput id="send-message-input" v-model="state.email" size="xl" :placeholder="'amazing@email.com'" :ui="{
                                 base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
                             }" style="font-size: var(--step--1);" />
                         </UFormField>
@@ -89,7 +102,8 @@ function handleModalClose() {
 
                         <UButton :loading="loading" :disabled="loading" type="submit" name="submit-contact-drawer"
                             color="neutral" variant="solid"
-                            class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text) hover:text-inverted" style="font-size: var(--step-0);">
+                            class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text) hover:text-inverted"
+                            style="font-size: var(--step-0);">
                             {{ t('sidebar-left.modal-message.submit_button') }}
                         </UButton>
                     </UForm>
@@ -105,7 +119,7 @@ function handleModalClose() {
                         class="flex flex-col items-center gap-6 text-green-500">
                         <UIcon name="fa7-solid:check" class="size-16 animate-bounce" />
                         <p class="text-lg leading-relaxed font-medium" style="font-size: var(--step--1);">
-                            {{ t('sidebar-left.modal-mmesage.state.success') }}
+                            {{ t('sidebar-left.modal-message.state.success') }}
                         </p>
                         <span class="text-base leading-relaxed text-(--text-2)" style="font-size: var(--step--1);">
                             {{ t('sidebar-left.modal-message.state.waiting_before_new_message') }}
