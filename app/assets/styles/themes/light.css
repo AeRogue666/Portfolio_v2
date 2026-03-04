@@ -2,23 +2,26 @@
 
 [data-theme="light"], .light {
 /* Backgrounds */
---bg-primary: #f5efe6; /* ask white */
+--bg-primary: #fdfbd4; /** Chai cream **/ /* #f5efe6; */
+--bg-secondary: #f5f0d0;
+--bg-elevated: #fffef8;
 
 /* Text */
---text-primary: #1f1f1f; /* charcoal */
---text-secondary: #2b1e16; /* charcoal */
---text-muted: #6b6b6b;
+--text-primary: #3d2817; /** Deep dark Brown **/ /* #1f1f1f; */
+--text-secondary: #5c3d24; /** Medium Brown **/ /* #2b1e16; */
+--text-muted: #7a5c42; /** Light Brown **/ /* #6b6b6b; */
 
 /* Accent */
-/* --accent: #a13d2d; burnt ember */
-/* --accent-hover: #c76a3a; copper */
+--accent: #c86f28; /** Spicy Orange **/
+--accent-hover: #b35e1f;
 
 /* States */
-/* --focus: #e0a458; amber glow */
---border-subtle: #cfc4b8;
+--focus: #d47e30;
+--border-subtle: #d4c4a8; /* #cfc4b8; */
+--border-medium: #b8a58a;
 
-/* Feedback */
-/* --success: #4E744F; */
-/* --warning: #885F20; */
-/* --danger: #8c2f2f; */
+/* Feeedback */
+--success: #5a7c3e; /** Green olive **/
+--warning: #b8762d; /** Copper Orange **/
+--danger: #A33a2b; /** Red dirt **/
 }

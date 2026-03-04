@@ -2,23 +2,26 @@
 
 [data-theme="dark"], .dark {
 /* Backgrounds */
---bg-primary: #1c1b19;
+--bg-primary: #2a1f16; /** Deep dark Brown **/ /* #1c1b19; */
+--bg-secondary: #3d2d21;
+--bg-elevated: #4a362a;
 
 /* Text */
---text-primary: #f4f1ec;
---text-secondary: #d0cbc4;
---text-muted: #a09a92;
+--text-primary: #fdfbd4; /** Chai cream **/ /* #f4f1ec; */
+--text-secondary: #e8dcbb; /** Mitigated cream **/ /* #d0cbc4; */
+--text-muted: #c4b698; /** Soft beige **/ /* #a09a92; */
 
 /* Accent */
-/* --accent: #a13d2d; burnt ember */
-/* --accent-hover: #c76a3a; copper */
+--accent: #e89850; /** Luminous Orange Chai **/
+--accent-hover: #f5ab68;
 
 /* States */
-/* --focus: #e0a458; amber glow */
+--focus: #f5ab68;
 --border-subtle: #3a3936;
+--border-medium: #7a6450;
 
 /* Feedback */
-/* --success: #61B366; */
-/* --warning: #c98b2f; */
-/* --danger: #C24747; */
+--success: #7fa060; /** Light Green Olive **/
+--warning: #d9954a; /** Luminous Coppered Orange **/
+--danger: #d66b5a; /** Light Red dirt **/
 }

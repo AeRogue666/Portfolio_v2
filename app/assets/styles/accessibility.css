@@ -7,16 +7,15 @@ html {
   --font-scale: 1;
   background: var(--bg-primary);
   color: var(--text-primary);
+  --bg: var(--bg-primary);
+  --bg-2: var(--bg-secondary); /* color-mix(in srgb, var(--bg-secondary) 92%, black) */
+  --bg-3: var(--bg-elevated); /* color-mix(in srgb, var(--bg-elevated) 85%, black) */
 }
 
 html[data-contrast="normal"] {
-  --bg: var(--bg-primary);
-  --bg-2: color-mix(in srgb, var(--bg) 92%, black);
-  --bg-3: color-mix(in srgb, var(--bg) 85%, black);
   --text: var(--text-primary);
   --text-2: var(--text-secondary);
   --text-3: var(--text-muted);
-  --link: var(--text-2);
 }
 
 html[data-contrast="high"] {
@@ -26,7 +25,6 @@ html[data-contrast="high"] {
   --text: var(--a11y-high-text);
   --text-2: var(--a11y-high-text-2);
   --text-3: var(--a11y-high-text-3);
-  --link: var(--text-2);
   --accent: var(--a11y-high-focus);
 }
 
@@ -37,7 +35,6 @@ html[data-contrast="low"] {
   --text: var(--a11y-low-text);
   --text-2: var(--a11y-low-text-2);
   --text-3: var(--a11y-low-text-3);
-  --link: var(--text-2);
 }
 
 html[data-grayscale="true"] {
@@ -47,7 +44,6 @@ html[data-grayscale="true"] {
   --text: var(--text-gray-primary);
   --text-2: var(--text-gray-secondary);
   --text-3: var(--text-gray-tertiary);
-  --link: var(--text-gray-secondary);
   --accent: var(--accent-gray);
 }
 

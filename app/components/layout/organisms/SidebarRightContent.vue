@@ -63,10 +63,10 @@ async function changeLanguage(newLocale: any) {
 
                 <template #body>
                     <UColorModeSelect color="neutral" size="xl" :ui="{
-                        base: 'bg-(--bg-2)',
+                        base: 'bg-(--bg-2) text-(length:--step--1)',
                         content: 'bg-(--bg-2)',
                         value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                     }" />
                 </template>
             </SidebarSelectorBase>
@@ -80,10 +80,10 @@ async function changeLanguage(newLocale: any) {
                 <template #body>
                     <ULocaleSelect :model-value="locale" :locales="locales" @update:model-value="changeLanguage"
                         :disabled="switching" color="neutral" size="xl" :ui="{
-                            base: 'bg-(--bg-2)',
+                            base: 'bg-(--bg-2) text-(length:--step--1)',
                             content: 'bg-(--bg-2)',
                             value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
+                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                         }" class="w-48" />
                 </template>
             </SidebarSelectorBase>
@@ -110,10 +110,10 @@ async function changeLanguage(newLocale: any) {
                 <template #body>
                     <USelect v-model="fontFamily" :items="fontFamilyItems" value-key="value" label-key="label"
                         color="neutral" size="xl" aria-label="Font selector" :ui="{
-                            base: 'bg-(--bg-2)',
+                            base: 'bg-(--bg-2) text-(length:--step--1)',
                             content: 'bg-(--bg-2)',
                             value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
+                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                         }" />
                 </template>
             </SidebarSelectorBase>
@@ -144,7 +144,7 @@ async function changeLanguage(newLocale: any) {
             <!-- RESET -->
             <UButton :label="t('sidebar-right.reset_params')" variant="soft"
                 class="justify-center items-center w-full md:w-[50%] h-auto bg-(--bg-2) text-(--text) hover:bg-elevated active:bg-elevated focus:outline-none focus-visible:bg-elevated hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent px-2 py-2"
-                @click="accessibilityStore.reset()" />
+                @click="accessibilityStore.reset()" style="font-size: var(--step-0);" />
         </UContainer>
     </aside>
 </template>
