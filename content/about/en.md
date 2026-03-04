@@ -1,20 +1,22 @@
 # About
 
+Good morning, Aurélien, 26 years old.
+
 I am a France-based full-stack developer specialized in accessibility and scalable web architecture.
 
-I help teams design and build inclusive, maintainable and performance-oriented web applications without sacrificing user-experience or design, using Vue, Nuxt, Typescript and modern backend tooling such as Node.js, Prisma, Express and PostgreSQL.
+I help teams design and build inclusive, maintainable and performance-oriented web applications without sacrificing user-experience or design, using Vue (Vue 3 preferably), Nuxt (3 and 4+), Typescript and modern backend tooling such as Node.js, Prisma, Express and PostgreSQL.
 
 My approach combines:
 
-- Accessibility-first thinking (WCAG-driven)
+- Accessibility-first thinking (WCAG-driven and RGAA-driven)
 - User-centered design principles
 - Clean and scalable architecture
 - Long-term maintainability
 
 Accessibility isn't a feature.
-It is a foundation.
+It is a web foundation.
 
-A digital product should be **clear**, **usable**, and **robust**, regardless of context or constraints.
+A digital product should be **perceivable**, **operable**, **understantable** and **robust**, regardless of context or constraints.
 
 I prioritize web standards over passing trends, and long-term reliability over shor-term convenience.
 

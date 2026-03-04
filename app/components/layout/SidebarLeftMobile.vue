@@ -2,7 +2,8 @@
 import IconButton from '../ui/IconButton.vue';
 import SidebarLeftContent from "./organisms/SidebarLeftContent.vue";
 
-const { t } = useI18n()
+const { t } = useI18n();
+useSidebarFocusState();
 </script>
 
 <template>
