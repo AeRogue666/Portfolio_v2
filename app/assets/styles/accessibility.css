@@ -45,6 +45,9 @@ html[data-grayscale="true"] {
   --text-2: var(--text-gray-secondary);
   --text-3: var(--text-gray-tertiary);
   --accent: var(--accent-gray);
+  --bg-feed-project: var(--bg-gray-project);
+  --bg-feed-update: var(--bg-gray-update);
+  --bg-feed-about: var(--bg-gray-about);
 }
 
 html[data-grayscale="true"] image {

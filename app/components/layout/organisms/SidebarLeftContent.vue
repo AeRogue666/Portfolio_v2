@@ -20,14 +20,19 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         to: "/accessibility",
     },
     {
+        label: t('sidebar-left.navigation.accessibility_report'),
+        icon: "fa7-solid:newspaper",
+        to: "/accessibility-report",
+    },
+    {
         label: t('sidebar-left.navigation.problem_report'),
         icon: 'fa7-solid:warning',
         to: '/report',
     },
     {
-        label: t('sidebar-left.navigation.accessibility_report'),
-        icon: "fa7-solid:newspaper",
-        to: "/accessibility-report",
+        label: t('sidebar-left.navigation.legal_mention'),
+        icon: "fa7-solid:file-contract",
+        to: "/legal-mention",
     },
 ]);
 
@@ -47,10 +52,10 @@ onMounted(() => {
 
 <template>
     <aside id="sidebar-left" role="dialog" aria-modal="true"
-        class="block w-full lg:w-auto min-w-60 h-auto bg-(--bg) basis-0.5 relative [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-2">
+        class="block w-full lg:w-auto min-w-60 h-auto bg-(--bg) basis-0.5 relative">
 
         <UContainer class="flex flex-col items-center w-full h-full mt-4 gap-4">
-            <div class="flex flex-col justify-center items-baseline">
+            <div class="flex flex-col justify-center items-center">
                 <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
                     :description="t('sidebar-left.user_description')" key="user-avatar" :avatar="{
                         src: avatarSrc,
@@ -62,7 +67,8 @@ onMounted(() => {
                         description: 'text-base leading-relaxed text-(--text-2)',
                         avatar: 'size-40 bg-(--bg-2)'
                     }" />
-                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]" style="font-size: var(--step--1);">
+                <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]"
+                    style="font-size: var(--step--1);">
                     {{ t('sidebar-left.user_tagline') }}
                 </span>
             </div>
@@ -93,7 +99,14 @@ onMounted(() => {
                 link: 'data-active:before:bg-(--bg-3) hover:bg-(--bg-2)', // a
                 linkLeadingIcon: 'text-(--text-muted)',
                 linkLabel: 'text-base leading-relaxed truncate max-w-[65ch]',
-            }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full" style="font-size: var(--step--1);" />
+            }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full"
+                style="font-size: var(--step--1);" />
+
+            <UFooter :ui="{
+                container: 'p-0 lg:p-0'
+            }">
+                <p class="text-sm text-(--text-3)">Copyright Aureldev © {{ new Date().getUTCFullYear() }}</p>
+            </UFooter>
         </UContainer>
     </aside>
 </template>

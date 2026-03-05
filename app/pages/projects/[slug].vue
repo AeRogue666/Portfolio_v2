@@ -5,11 +5,8 @@ import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 import type { ProjectResolved } from '@/types/project';
 
-definePageMeta({
-    layout: 'default'
-});
-
-const route = useRoute(), { t, locale, locales } = useI18n();
+const route = useRoute(),
+    { t, locale, locales } = useI18n();
 
 const { data: project, error } = await useAsyncData<ProjectResolved>(
     () => `project-${route.params.slug}-${locale.value}`,
@@ -120,7 +117,9 @@ watchEffect(() => {
                     </dt>
                     <dd class="flex flex-wrap gap-2">
                         <PostBadge v-for="tech in project.stack" :label="tech" :key="tech" :variant="'soft'"
-                            :color="'neutral'" :size="'md'" :class-name="'bg-(--bg-3) text-(--text-2)'" />
+                            :color="'neutral'" :size="'md'"
+                            :class-name="'bg-(--bg-3) text-(--text-2) text-scalable border border-(--border-subtle)'"
+                            style="font-size: var(--step--1);" />
                     </dd>
                 </div>
             </dl>
@@ -179,16 +178,19 @@ watchEffect(() => {
             </h2>
             <ul>
                 <li v-for="learning in project.learnings" class="flex flex-col" :key="learning">
-                    <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">{{ learning }}</p>
+                    <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">{{ learning }}
+                    </p>
                 </li>
             </ul>
         </section>
 
         <template #footer>
-            <a v-if="project.links?.github" :href="project.links.github" class="text-base text-(--text-2) leading-snug"
-                style="font-size: var(--step--1);">{{ t('project.watch_code') }}</a>
-            <a v-if="project.links?.demo" :href="project.links.demo" class="text-base text-(--text-2) leading-snug"
-                style="font-size: var(--step--1);">{{ t('project.watch_demo') }}</a>
+            <a v-if="project.links?.github" :href="project.links.github"
+                class="inline-flex items-center gap-2 text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors"
+                style="font-size: var(--step-0);">{{ t('project.watch_code') }}</a>
+            <a v-if="project.links?.demo" :href="project.links.demo"
+                class="inline-flex items-center gap-2 text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors"
+                style="font-size: var(--step-0);">{{ t('project.watch_demo') }}</a>
         </template>
     </ArticleLayout>
 </template>

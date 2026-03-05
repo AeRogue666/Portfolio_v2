@@ -3,17 +3,17 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 
 const { t, locale } = useI18n();
 
-const contentPath = computed(() => `/accessibility/${locale.value}`);
+const contentPath = computed(() => `/legal_mention/${locale.value}`);
 
 const { data: page, error } = await useAsyncData(
-    () => `accessibility-${locale.value}`,
+    () => `legal_mention-${locale.value}`,
     () =>
         queryCollection('content')
-            .path(contentPath.value) // .where('path', '=', `/accessibility/${locale.value}`)
+            .path(contentPath.value) // .where('path', '=', `/legalmention/${locale.value}`)
             .first()
 );
 if(error.value) {
-    throw createError({ status: 404, statusMessage: 'Accessibility data not found', cause: error.value, fatal: true })
+    throw createError({ status: 404, statusMessage: 'Legal mention data not found', cause: error.value, fatal: true })
 }
 
 const breadcrumbItems: BreadcrumbItem[] = [
@@ -22,8 +22,8 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: ''
     },
     {
-        label: t('breadcrumb.accessibility'),
-        to: '/accessibility'
+        label: t('breadcrumb.legal_mention'),
+        to: '/legal-mention'
     },
 ];
 </script>

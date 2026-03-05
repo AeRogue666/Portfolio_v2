@@ -13,8 +13,6 @@ export interface About {
 export interface AboutTranslation {
   title: string;
   summary: string;
-  feed_title: string;
-  feed_summary: string;
 }
 
 export interface AboutResolved extends AboutTranslation {

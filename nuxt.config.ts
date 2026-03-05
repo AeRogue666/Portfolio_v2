@@ -25,7 +25,6 @@ export default defineNuxtConfig({
     strategy: "no_prefix",
     detectBrowserLanguage: false,
   },
-
   image: {
     dir: "public",
     screens: {
@@ -35,9 +34,8 @@ export default defineNuxtConfig({
       xl: 1280,
     },
     format: ["webp", "avif", "png"],
-    provider: 'ipx'
+    provider: "ipx",
   },
-
   app: {
     head: {
       title: "Portfolio - Aureldev",
@@ -45,27 +43,26 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
   },
-
   runtimeConfig: {
-    resendApiKey: '',
-    upstashRedisUrl: '',
-    upstashRedisToken: ''
+    resendApiKey: "",
+    upstashRedisUrl: "",
+    upstashRedisToken: "",
   },
-
   routeRules: {
-    '/**': {
+    "/**": {
       headers: {
-        'X-Frame-Options': 'DENY',
+        "X-Frame-Options": "DENY",
         "X-Content-Type-Options": "nosniff",
-        "Referrer-Policy": "strict-origin-when-cross-origin"
-      }
-    }
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+      },
+      appLayout: "index-header",
+    },
   },
   build: {
     transpile: [],
   },
   vite: {
-    logLevel: 'warn',
+    logLevel: "warn",
   },
   devtools: { enabled: false },
   compatibilityDate: "latest",

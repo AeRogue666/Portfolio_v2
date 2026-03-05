@@ -24,4 +24,9 @@
 --success: #5a7c3e; /** Green olive **/
 --warning: #b8762d; /** Copper Orange **/
 --danger: #A33a2b; /** Red dirt **/
+
+/* Grayscale Feed */
+--bg-feed-project: #fff5e1;
+--bg-feed-update: #f0ead6;
+--bg-feed-about: #fff9ec;
 }

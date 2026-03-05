@@ -23,7 +23,6 @@ const { t } = useI18n(),
 
 const isFiltersOpen = ref(false);
 const filtersPanelRef = ref<HTMLElement | null>(null);
-// const closeButtonRef = ref<HTMLButtonElement | null>(null);
 
 // Computed pour synchroniser sortBy (prop) avec le USelect
 const sortValue = computed<FeedSortValue>({
@@ -46,16 +45,6 @@ const grayscale = computed({
     get: () => accessibilityStore.grayscale,
     set: () => accessibilityStore.toggleGrayscale(),
 });
-
-// Gestion du focus trap et de la fermeture
-/* watch(isFiltersOpen, (newValue) => {
-    if (newValue) {
-        setTimeout(() => {
-            const firstButton = filtersPanelRef.value?.querySelector('button:not(.close-button)') as HTMLButtonElement;
-            firstButton.focus();
-        }, 50);
-    }
-}); */
 
 // Gestion de la touche Escape
 const handleKeyDown = (event: KeyboardEvent) => {
@@ -118,7 +107,7 @@ onUnmounted(() => {
 <template>
     <section aria-label="Feed filtes">
         <!-- Tri + Bouton filtres -->
-        <div class="flex justify-between items-center gap-4 mb-4">
+        <div class="flex justify-between items-center gap-4 mt-4 mb-4">
             <!-- Tri -->
             <div class="flex items-center gap-2">
                 <label for="sort-select" class="text-sm font-(--text-2)">{{ t('filters.sort.label') }}</label>

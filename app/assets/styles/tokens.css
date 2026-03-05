@@ -66,6 +66,15 @@
   --text-gray-tertiary: #8a8a8a;
   --accent-gray: #555;
 
+  /* Grayscale Feed */
+  --bg-feed-project: #fff5e1;
+  --bg-feed-update: #f0ead6;
+  --bg-feed-about: #fff9ec;
+  --bg-gray-project: #f6f6f6;
+  --bg-gray-update: #f9f9f9;
+  --bg-gray-about: #f7f7f7;
+
+
   /* Type scale */
   --text-scale: 1;
   --step--1: calc(0.83rem * var(--text-scale)); /* Petits textes, métadonnées */

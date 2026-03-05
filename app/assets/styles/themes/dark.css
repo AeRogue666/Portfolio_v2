@@ -24,4 +24,9 @@
 --success: #7fa060; /** Light Green Olive **/
 --warning: #d9954a; /** Luminous Coppered Orange **/
 --danger: #d66b5a; /** Light Red dirt **/
+
+/* Grayscale Feed */
+--bg-feed-project: #000a1e;
+--bg-feed-update: #0f1429;
+--bg-feed-about: #000613;
 }

@@ -157,6 +157,12 @@ strong {
   background: var(--accent);
 }
 
+#sidebar-left {
+  scrollbar-width: none;
+  scrollbar-color: unset;
+  overflow-y: hidden;
+}
+
 @media (min-width: 64rem) {
   aside {
     position: sticky;

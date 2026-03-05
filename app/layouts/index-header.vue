@@ -4,10 +4,15 @@ import SidebarRightDesktop from "@/components/layout/SidebarRightDesktop.vue";
 import AppHeader from "@/components/layout/AppHeader.vue";
 import IconButton from "@/components/ui/IconButton.vue";
 
+const props = defineProps<{
+    sidebarLeftOpen?: boolean,
+    sidebarRightOpen?: boolean,
+}>();
+
 const { t, locale } = useI18n();
 
-const leftOpen = ref(true);
-const rightOpen = ref(false);
+const leftOpen = ref<boolean>(props.sidebarLeftOpen || true);
+const rightOpen = ref<boolean>(props.sidebarRightOpen || false);
 
 const leftOpenCount = ref(0);
 
@@ -76,7 +81,7 @@ useHead(() => ({
         </div>
 
         <!-- Mobile / Tablet -->
-        <main class="lg:hidden px-4" id="main-content" tabindex="-1" aria-labelledby="feed-title">
+        <main class="lg:hidden" id="main-content" tabindex="-1" aria-labelledby="feed-title">
             <NuxtPage />
         </main>
     </div>

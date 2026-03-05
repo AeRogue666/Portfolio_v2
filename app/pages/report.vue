@@ -2,11 +2,8 @@
 import type { FormError, FormSubmitEvent, SelectMenuItem } from '@nuxt/ui';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
-definePageMeta({
-    layout: 'index-header'
-})
-
-const { t } = useI18n(), toast = useToast();
+const { t } = useI18n(),
+    toast = useToast();
 
 type Issues = 'accessibility' | 'issue' | 'bug' | 'feedback' | 'other';
 
@@ -110,9 +107,9 @@ const issueError = computed(() => {
                     {{ t('report.form.type') }}
                 </label>
 
-                <USelect v-model="form.issue" :items="issueItems" id="issue-field"
-                value-key="value" label-key="label" :aria-describedby="issueError ? 'issue-error' : undefined"
-                    :aria-invalid="!!issueError" name="issue" color="neutral" size="xl" :ui="{
+                <USelect v-model="form.issue" :items="issueItems" id="issue-field" value-key="value" label-key="label"
+                    :aria-describedby="issueError ? 'issue-error' : undefined" :aria-invalid="!!issueError" name="issue"
+                    color="neutral" size="xl" :ui="{
                         base: 'bg-(--bg-2)',
                         content: 'bg-(--bg-2)'
                     }" />

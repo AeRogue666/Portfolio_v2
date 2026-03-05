@@ -1,8 +1,4 @@
 <script setup lang="ts">
-definePageMeta({
-    layout: 'index-header'
-});
-
 const feedStore = useFeedStore(),
     { t } = useI18n();
 
@@ -25,7 +21,6 @@ watch(items, (newItems) => {
     feedStore.setPosts(newItems)
 });
 
-// Déterminer si des filtres sont actifs
 const hasActiveFilters = computed(() => selectedTags.value.length > 0);
 
 useSeoMeta(({
@@ -72,9 +67,5 @@ useSeoMeta(({
         <div v-if="status === 'success' && items.length > 0" aria-live="polite" class="sr-only">
             <span>{{ items.length }} {{ t('index.loaded_new_articles') }}</span>
         </div>
-
-        <footer>
-
-        </footer>
     </UContainer>
 </template>

@@ -5,11 +5,8 @@ import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 import type { UpdateResolved } from '@/types/update';
 
-definePageMeta({
-    layout: 'default'
-});
-
-const route = useRoute(), { t, locale, locales } = useI18n();
+const route = useRoute(),
+    { t, locale, locales } = useI18n();
 
 const { data: update, error } = await useAsyncData<UpdateResolved>(
     () => `update-${route.params.slug}-${locale.value}`,
@@ -114,7 +111,9 @@ watchEffect(() => {
                 </dt>
                 <dd class="flex flex-wrap gap-2">
                     <PostBadge v-for="tech in update.tags" :label="tech" :key="tech" :variant="'soft'"
-                        :color="'neutral'" :size="'md'" :class-name="'bg-(--bg-3) text-(--text-2) text-scalable'" />
+                        :color="'neutral'" :size="'md'"
+                        :class-name="'bg-(--bg-3) text-(--text-2) text-scalable border border-(--border-subtle)'"
+                        style="font-size: var(--step--1);" />
                 </dd>
             </dl>
         </template>

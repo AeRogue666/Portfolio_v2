@@ -10,6 +10,7 @@ const props = defineProps<{
 }>();
 
 const { t, locale } = useI18n();
+const accessibilityStore = useAccessibilityStore();
 
 dayjs.locale(locale.value);
 
@@ -32,7 +33,8 @@ const badgeLabel = computed(() => {
 
 const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : undefined)),
     postUrl = computed(() => getPostUrl(props.post)),
-    cardType = computed(() => props.post.kindFallback || props.post.kind);
+    cardType = computed(() => props.post.kindFallback || props.post.kind),
+    grayscale = computed(() => accessibilityStore.grayscale);
 </script>
 
 <template>
@@ -40,7 +42,9 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
         <template #meta>
             <section class="flex justify-between items-center w-full mb-3">
                 <PostBadge :label="badgeLabel" :icon="badgeIcon" :color="post.pinned ? 'success' : 'neutral'"
-                    :variant="'soft'" :size="'md'" />
+                    :variant="'soft'" :size="'md'"
+                    :class-name="grayscale ? 'bg-(--bg-3) text-(--text-2)  text-scalable' : ''"
+                    style="font-size: var(--step--1);" />
                 <time v-if="post.date" :datetime="post.date" class="text-sm text-(--text-2) text-scalable"
                     style="font-size: var(--step--1);">{{ dayjs(post.date).format('DD MMMM YYYY') }}</time>
             </section>

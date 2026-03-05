@@ -31,7 +31,7 @@ export const projects: Project[] = [
     ],
     stack: ["Express", "Directus", "PostgreSQL"],
     links: {
-      github: "",
+      github: "https://github.com/AeRogue666/Project1-Recipes-Website",
       demo: "",
     },
     translations: {
@@ -140,7 +140,7 @@ export const projects: Project[] = [
     stack: ["Nuxt", "TypeScript", "Directus", "Pinia"],
     tags: ["Nuxt", "TypeScript", "E-commerce", "Directus", "Pinia"],
     links: {
-      github: "",
+      github: "https://github.com/AeRogue666/Epices-du-monde",
       demo: "",
     },
     translations: {

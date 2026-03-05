@@ -1,12 +1,7 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
 
-definePageMeta({
-    layout: 'index-header'
-});
-
 const { t, locale } = useI18n();
-
 const contentPath = computed(() => `/about/${locale.value}`);
 
 const { data: page } = await useAsyncData(

@@ -11,13 +11,13 @@ const cardStyles = computed(() => {
 
     switch (props.cardType) {
         case 'project':
-            return `${baseClasses} light:bg-[#fff5e1] dark:bg-[#000a1e] border-l-4 light:border-l-[#d47e30] dark:border-l-[#2b81cf]`;
+            return `${baseClasses} bg-(--bg-feed-project)`;
         case 'update':
-            return `${baseClasses} light:bg-[#f0ead6] dark:bg-[#0f1429] border-l-4 light:border-l-[#8d5a2b] dark:border-l-[#72a5d4]`;
+            return `${baseClasses} bg-(--bg-feed-update)`;
         case 'about':
-            return `${baseClasses} light:bg-[#fff9ec] dark:bg-[#000613] border-l-4 light:border-l-[#b8762d] dark:border-l-[#4789d2]`;
+            return `${baseClasses} bg-(--bg-feed-about)`;
         default:
-            return `${baseClasses} bg-(--bg-2) border border-(--border-subtle)`;
+            return `${baseClasses} bg-(--bg-2)`;
     }
 });
 </script>

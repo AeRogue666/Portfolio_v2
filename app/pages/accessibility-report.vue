@@ -2,10 +2,6 @@
 import type { BreadcrumbItem } from '@nuxt/ui';
 import ArticleLayout from '../components/layout/molecules/ArticleLayout.vue';
 
-definePageMeta({
-    layout: 'default'
-});
-
 const { t, locale } = useI18n(),
     accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode();
