@@ -29,12 +29,19 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         icon: 'fa7-solid:warning',
         to: '/report',
     },
-    {
-        label: t('sidebar-left.navigation.legal_mention'),
-        icon: "fa7-solid:file-contract",
-        to: "/legal-mention",
-    },
-]);
+]),
+    itemsFooterNavigation = computed<NavigationMenuItem[]>(() => [
+        {
+            label: t('sidebar-left.navigation.legal_notices'),
+            icon: "fa7-solid:file-contract",
+            to: "/legal-notices",
+        },
+        {
+            label: t('sidebar-left.navigation.terms_of_use'),
+            icon: "fa7-solid:file-contract",
+            to: "/terms",
+        },
+    ]);
 
 onMounted(() => {
     watch(
@@ -103,9 +110,21 @@ onMounted(() => {
                 style="font-size: var(--step--1);" />
 
             <UFooter :ui="{
-                container: 'p-0 lg:p-0'
+                container: 'flex-col p-0 lg:p-0',
+                center: ''
             }">
-                <p class="text-sm text-(--text-3)">Copyright Aureldev © {{ new Date().getUTCFullYear() }}</p>
+                <UNavigationMenu highlight-color="neutral" orientation="horizontal" :items="itemsFooterNavigation" :ui="{
+                    list: 'gap-3', // ul
+                    item: '', // li
+                    link: 'data-active:before:bg-(--bg-3) hover:bg-(--bg-2)', // a
+                    linkLeadingIcon: 'text-(--text-muted)',
+                    linkLabel: 'text-base leading-relaxed truncate max-w-[65ch]',
+                }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full"
+                    style="font-size: var(--step--1);" />
+
+                <template #right>
+                    <p class="text-sm text-(--text-3)">Copyright Aureldev © {{ new Date().getUTCFullYear() }}</p>
+                </template>
             </UFooter>
         </UContainer>
     </aside>

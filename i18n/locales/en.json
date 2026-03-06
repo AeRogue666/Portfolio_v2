@@ -36,7 +36,8 @@
       "accessibility_statement": "Accessibility statement",
       "problem_report": "Report a problem",
       "accessibility_report": "Accessibility report",
-      "legal_mention": "Legal mentions"
+      "legal_notices": "Legal notices",
+      "terms_of_use": "Terms of Use"
     }
   },
   "sidebar-right": {
@@ -143,7 +144,8 @@
     "about": "About",
     "accessibility": "Accessibility",
     "accessibility_report": "Accessibility report",
-    "legal_mention": "Legal mentions"
+    "legal_notices": "Legal notices",
+    "terms_of_use": "Terms of Use"
   },
   "report": {
     "title": "Report a problem",
