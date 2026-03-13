@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: {
     preset: "vercel", // "vercel" or "node-server"
-    static: true
+    // static: true
   },
   modules: [
     "@nuxt/content",
@@ -35,7 +35,7 @@ export default defineNuxtConfig({
       xl: 1280,
     },
     format: ["webp", "avif", "png"],
-    provider: "ipx",
+    // provider: "ipx",
   },
   app: {
     head: {
