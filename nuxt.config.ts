@@ -3,7 +3,6 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: {
     preset: "vercel", // "vercel" or "node-server"
-    // static: true
   },
   modules: [
     "@nuxt/content",
@@ -36,7 +35,7 @@ export default defineNuxtConfig({
     },
     format: ["webp", "avif", "png"],
     vercel: {
-      formats: ['image/webp', 'image/avif']
+      formats: ["image/webp", "image/avif"],
     },
     // provider: "ipx",
     domains: ["github.com", "avatars.githubusercontent.com"],
@@ -61,7 +60,6 @@ export default defineNuxtConfig({
         "Referrer-Policy": "strict-origin-when-cross-origin",
       },
       appLayout: "index-header",
-      // prerender: true
     },
   },
   build: {
@@ -70,7 +68,7 @@ export default defineNuxtConfig({
   vite: {
     logLevel: "warn",
     optimizeDeps: {
-      include: ["zod"],
+      include: ["zod", "@vueuse/integrations/useFocusTrap", "dayjs"],
     },
   },
   devtools: { enabled: false },

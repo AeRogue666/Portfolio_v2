@@ -4,9 +4,9 @@ import SidebarRightDesktop from "@/components/layout/SidebarRightDesktop.vue";
 import AppHeader from "@/components/layout/AppHeader.vue";
 import IconButton from "@/components/ui/IconButton.vue";
 
-const props = defineProps<{
-    sidebarLeftOpen?: boolean,
-    sidebarRightOpen?: boolean,
+defineProps<{
+    leftOpen?: boolean,
+    rightOpen?: boolean,
 }>();
 
 const { t, locale } = useI18n();
@@ -23,7 +23,7 @@ function openLeft() {
     });
 }
 
-watch(() => leftOpen.value, async (newVal) => {
+watch(() => leftOpen, async (newVal) => {
     if (!newVal) {
         await nextTick();
     }

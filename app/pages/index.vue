@@ -63,6 +63,16 @@ useSeoMeta(({
     ogImage: '/images/project/front-ecommerce-headless/desktop.png',
     twitterCard: 'summary_large_image',
 }));
+
+/* definePageMeta({
+    layout: {
+        name: 'index-header',
+        props: {
+            leftOpen: false,
+            rightOpen: false,
+        },
+    },
+}); */
 </script>
 
 <template>

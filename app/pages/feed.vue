@@ -16,9 +16,16 @@ const {
     total
 } = useFeed({ limit: 5 });
 
+const { polite, assertive } = useAnnouncer();
+
 // Mettre à jour le store avec les posts
 watch(items, (newItems) => {
-    feedStore.setPosts(newItems)
+    try {
+        feedStore.setPosts(newItems)
+        polite('Feed reloaded successfully');
+    } catch (err) {
+        assertive('Error: Feed failed to reload');
+    }
 });
 
 const hasActiveFilters = computed(() => selectedTags.value.length > 0);
@@ -31,6 +38,16 @@ useSeoMeta(({
     ogImage: '/images/project/front-ecommerce-headless/desktop.png',
     twitterCard: 'summary_large_image',
 }));
+
+/* definePageMeta({
+    layout: {
+        name: 'index-header',
+        props: {
+            leftOpen: true,
+            rightOpen: false,
+        },
+    },
+}); */
 </script>
 
 <template>
