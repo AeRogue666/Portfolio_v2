@@ -14,23 +14,23 @@
     "preview": "nuxt preview"
   },
   "dependencies": {
-    "@nuxt/content": "^3.11.2",
+    "@nuxt/content": "^3.12.0",
     "@nuxt/image": "^2.0.0",
-    "@nuxt/ui": "^4.4.0",
+    "@nuxt/ui": "^4.5.1",
     "@nuxtjs/i18n": "^10.2.1",
     "@pinia/nuxt": "^0.11.3",
-    "@upstash/redis": "^1.36.2",
+    "@upstash/redis": "^1.36.3",
     "better-sqlite3": "^12.6.2",
     "dayjs": "^1.11.19",
     "focus-trap": "^7.8.0",
     "markdown-it": "^14.1.0",
-    "nuxt": "^4.3.1",
-    "resend": "^6.9.2",
+    "nuxt": "^4.4.2",
+    "resend": "^6.9.3",
     "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
-    "@iconify-json/fa7-brands": "^1.2.1",
-    "@iconify-json/fa7-solid": "^1.2.3",
+    "@iconify-json/fa7-brands": "^1.2.2",
+    "@iconify-json/fa7-solid": "^1.2.4",
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/vite": "^4.2.1"
   },

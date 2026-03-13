@@ -3,6 +3,7 @@ export default defineNuxtConfig({
   ssr: true,
   nitro: {
     preset: "vercel", // "vercel" or "node-server"
+    // static: true
   },
   modules: [
     "@nuxt/content",
@@ -56,6 +57,7 @@ export default defineNuxtConfig({
         "Referrer-Policy": "strict-origin-when-cross-origin",
       },
       appLayout: "index-header",
+      prerender: true
     },
   },
   build: {
