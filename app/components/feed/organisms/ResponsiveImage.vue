@@ -36,6 +36,7 @@ const src = props.image.sources.feed?.mobile || props.image.sources.detail?.mobi
         <!-- <NuxtImg :src="src" :alt="image.alt" sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw"
             :srcset="` ${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
             class="w-full h-auto object-cover transition-transform duration-300 hover:scale-105" loading="lazy" /> -->
+        <span>{{ image }}</span>
     </div>
 </template>
 
