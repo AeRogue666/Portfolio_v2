@@ -1,17 +1,49 @@
 <script setup lang="ts">
 import { ContactFormSchema, type ContactFormState } from '@/utils/schemas/contact'
-import type { FormSubmitEvent } from '@nuxt/ui'
+import type { FormSubmitEvent, SelectMenuItem } from '@nuxt/ui'
 
 const state = reactive<ContactFormState>({
+    type: 'simple_contact',
     email: '',
     message: '',
     website: ''
 });
 
-const { t } = useI18n();
-const { submitState, loading, submit } = useContactForm();
+const { t } = useI18n(),
+    { submitState, loading, submit } = useContactForm(),
+    { setModalOpen } = useSidebarFocusStateInject(),
+    accessibilityStore = useAccessibilityStore(),
+    colorMode = useColorMode();
+
 const isOpen = ref(false);
-const { setModalOpen } = useSidebarFocusStateInject();
+
+const typeItems = computed<SelectMenuItem[]>(() => [
+    {
+        label: 'Diagnostic Accessibilité',
+        value: 'accessibility_diagnostic'
+    },
+    {
+        label: 'Prise de contact professionnelle',
+        value: 'professionnal_contact'
+    },
+    {
+        label: 'Simple message',
+        value: 'simple_contact'
+    }
+]);
+
+/* {
+        label: 'Conception d\'un site internet',
+        value: 'website_creation'
+    },
+    {
+        label: 'Conception d\'une application mobile',
+        value: 'app_creation'
+    },
+    {
+        label: 'Formation au Numérique',
+        value: 'numerical_formation'
+    }, */
 
 function validate(values: ContactFormState) {
     const result = ContactFormSchema.safeParse(values);
@@ -25,6 +57,7 @@ function validate(values: ContactFormState) {
 }
 
 function resetForm() {
+    state.type = 'simple_contact'
     state.email = ''
     state.message = ''
     state.website = ''
@@ -37,11 +70,11 @@ async function onSubmit(event: FormSubmitEvent<ContactFormState>) {
 watch(isOpen, (value) => {
     setModalOpen(value);
 
-    if(value) {
+    if (value) {
         nextTick(() => {
             setTimeout(() => {
                 const input = document.querySelector('input[name="email"]') as HTMLInputElement;
-                if(input) {
+                if (input) {
                     input.removeAttribute('inert')
                     input.removeAttribute('aria-hidden')
                     input.scrollIntoView({ behavior: 'smooth' })
@@ -53,6 +86,16 @@ watch(isOpen, (value) => {
             }, 300);
         })
     }
+});
+
+const grayscale = computed({
+    get: () => accessibilityStore.grayscale,
+    set: () => accessibilityStore.toggleGrayscale(),
+});
+
+const typeError = computed(() => {
+    if (!state.type) return t('report.state.required')
+    return null
 });
 </script>
 
@@ -79,10 +122,32 @@ watch(isOpen, (value) => {
                 <Transition name="fade-scale" mode="out-in">
                     <UForm v-if="submitState === 'idle'" key="form" :validate="validate" :state="state"
                         class="flex flex-col items-center w-full gap-4" @submit="onSubmit">
-                        <UFormField :label="t('sidebar-left.modal-message.input_label')" name="email" required>
-                            <UInput id="send-message-input" v-model="state.email" size="xl" :placeholder="'amazing@email.com'" :ui="{
-                                base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
-                            }" style="font-size: var(--step--1);" />
+                        <div class="flex flex-col w-full md:w-auto h-auto gap-4">
+                            <label id="issue-label" for="issue-field"
+                                class="block w-3xs md:w-xs bg-(--bg-2) text-(--text) after:content-['*'] after:ms-0.5 after:text-error"
+                                style="font-size: var(--step-0);">
+                                {{ t('sidebar-left.modal-message.selectType_label') }}
+                            </label>
+
+                            <USelect v-model="state.type" :items="typeItems" id="issue-field" value-key="value"
+                                label-key="label" :aria-describedby="typeError ? 'issue-error' : undefined"
+                                :aria-invalid="!!typeError" name="issue" color="neutral" size="xl" :ui="{
+                                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                                    content: 'bg-(--bg-2)',
+                                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                                }" class="w-78" />
+
+                            <p v-if="typeError" id="issue-error" class="text-sm text-(--danger) mt-2">
+                                {{ typeError }}
+                            </p>
+                        </div>
+
+                        <UFormField :label="t('sidebar-left.modal-message.email_label')" name="email" required>
+                            <UInput id="send-message-input" v-model="state.email" size="xl"
+                                :placeholder="'amazing@email.com'" :ui="{
+                                    base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
+                                }" style="font-size: var(--step--1);" />
                         </UFormField>
 
                         <UFormField label="Website" name="website" class="hidden">

@@ -1,27 +1,59 @@
 <script setup lang="ts">
-const feedStore = useFeedStore(),
-    { t } = useI18n();
+import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
+import CarouselWrapper from '../components/index/organisms/CarouselWrapper.vue';
+import ExpertiseContainer from '../components/index/ExpertiseContainer.vue';
+import IndexSection from '../components/index/IndexSection.vue';
 
-const {
-    items,
-    availableTags,
-    selectedTags,
-    sortBy,
-    status,
-    error,
-    toggleTag,
-    setSortBy,
-    resetFilters,
-    loadMore,
-    total
-} = useFeed({ limit: 5 });
+const { t } = useI18n(),
+    colorMode = useColorMode(),
+    avatarSrc = ref('https://avatars.githubusercontent.com/u/38510448?v=4');
 
-// Mettre à jour le store avec les posts
-watch(items, (newItems) => {
-    feedStore.setPosts(newItems)
+useSidebarFocusState();
+
+const clientsCarouselItems = ref<{
+    image: string;
+    alt: string;
+    description: string;
+}[]>([]);
+
+const realisationsCarouselItems = ref<{
+    image: string;
+    alt: string;
+    description: string;
+    link: string;
+}[]>([
+    {
+        image: '/images/project/plateforme-gestion-recettes/desktop.png',
+        alt: '',
+        description: 'A multi-role recipe management platform',
+        link: '/projects/plateforme-gestion-recettes'
+    },
+    {
+        image: '/images/project/front-ecommerce-headless/desktop.png',
+        alt: '',
+        description: 'An asian online store',
+        link: '/projects/front-ecommerce-headless'
+    },
+    {
+        image: '/images/update/exploration-prisma/desktop.png',
+        alt: '',
+        description: 'Exploration of Prisma possibilities',
+        link: '/updates/exploration-prisma'
+    }
+]);
+
+onMounted(() => {
+    watch(
+        () => colorMode.value,
+        (mode) => {
+            avatarSrc.value =
+                mode === 'dark'
+                    ? 'https://github.com/nuxt.png'
+                    : 'https://avatars.githubusercontent.com/u/38510448?v=4'
+        },
+        { immediate: true }
+    );
 });
-
-const hasActiveFilters = computed(() => selectedTags.value.length > 0);
 
 useSeoMeta(({
     title: t('seo.home.title'),
@@ -34,38 +66,133 @@ useSeoMeta(({
 </script>
 
 <template>
-    <UContainer tabindex="-1" aria-labelledby="feed-title">
+    <UContainer tabindex="-1" aria-labelledby="index-title">
+        <!-- Landing section -->
+        <IndexSection id="landing-section" :class="'bg-(--bg-3)'">
+            <template #tag>
+                <span class="text-xl font-semibold lg:text-2xl lg:text-center text-(--text) mb-6"
+                    style="font-size: var(--step-3);">
+                    {{ t('index.user_title') }}
+                </span>
+            </template>
 
-        <!-- Filtres -->
-        <FeedFilters :available-tags="availableTags" :selected-tags="selectedTags" :sort-by="sortBy"
-            :has-active-filters="hasActiveFilters" @toggle-tag="toggleTag" @set-sort="setSortBy"
-            @reset-filters="resetFilters" />
+            <template #title>
+                <h1 id="index-title"
+                    class="text-4xl font-bold tracking-tight lg:font-extrabold md:text-5xl lg:text-6xl lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 text-(--text)"
+                    style="font-size: var(--step-5);">
+                    {{ t('index.landing_section.title') }}
+                </h1>
+            </template>
 
-        <!-- Feed -->
-        <Feed id="feed" :items="items" :loading="status === 'pending'" :error="error?.message ?? null" />
+            <template #description>
+                <p class="text-lg font-normal text-body lg:text-xl lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: var(--step-1);">
+                    {{ t('index.landing_section.description') }}
+                </p>
+            </template>
+        </IndexSection>
 
-        <!-- Message si aucun résultat après filtrage -->
-        <div v-if="status === 'success' && items.length === 0 && hasActiveFilters" aria-live="polite"
-            class="py-8 text-center text-(--text-2)">
-            <p>{{ t('feed.no_results') }}</p>
-            <button @click="resetFilters"
-                class="mt-4 px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text-1) rounded border border-(--border-subtle) transition-colors">
-                {{ t('filters.reset') }}
-            </button>
-        </div>
+        <!-- Clients section -->
+        <IndexSection v-if="clientsCarouselItems.length !== 0" id="client-section"
+            :class="'bg-(--card-project-accent) '">
+            <template #tag>
+                <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
+                    style="font-size: var(--step-0);">
+                    {{ t('index.client_section.tag') }}
+                </span>
+            </template>
 
-        <!-- Bouton Load More -->
-        <UContainer v-if="items.length < total">
-            <button id="button-load-articles" :aria-label="t('index.load_more')" role="button" aria-controls="feed"
-                @click="loadMore()" :aria-busy="status === 'pending'" :disabled="status === 'pending'"
-                class="w-full px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text-1) rounded border border-(--border-subtle) disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
-                {{ t('index.load_more') }}
-            </button>
-        </UContainer>
+            <template #title>
+                <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
+                    style="font-size: var(--step-2);">
+                    {{ t('index.client_section.title') }}
+                </h2>
+            </template>
 
-        <!-- Annonce accessibilité pour lecteurs d'écran -->
-        <div v-if="status === 'success' && items.length > 0" aria-live="polite" class="sr-only">
-            <span>{{ items.length }} {{ t('index.loaded_new_articles') }}</span>
-        </div>
+            <UCarousel v-slot="{ item }" class-names loop arrows dots auto-scroll :items="clientsCarouselItems"
+                class="w-full max-w-md my-10" :ui="{
+                    item: 'basis-1/3'
+                }">
+                <NuxtImg :src="item.image" :alt="item.alt"
+                    sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw"
+                    :srcset="` ${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`"
+                    class="rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
+                    loading="lazy" />
+                <span>{{ item.description }}</span>
+            </UCarousel>
+        </IndexSection>
+
+        <!-- Realisations section -->
+        <IndexSection id="campain-section" :class="'bg-(--card-update-accent)'">
+            <template #tag>
+                <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
+                    style="font-size: var(--step-0);">
+                    {{ t('index.campain_section.tag') }}
+                </span>
+            </template>
+
+            <template #title>
+                <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
+                    style="font-size: var(--step-2);">
+                    {{ t('index.campain_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="text-lg font-normal text-body lg:text-xl lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: var(--step-1);">
+                    {{ t('index.campain_section.description') }}
+                </p>
+            </template>
+
+            <CarouselWrapper :items="realisationsCarouselItems" class="w-full max-w-md mx-auto my-10" :ui="{
+                item: 'basis-[90%] transition-opacity [&:not(.is-snapped)]:opacity-10'
+            }" />
+        </IndexSection>
+
+        <!-- Expertise section -->
+        <!-- <IndexSection id="expertise-section" :class="'bg-(--border-subtle)'">
+            <template #tag>
+                <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
+                    style="font-size: var(--step-0);">
+                    {{ t('index.expertise_section.tag') }}
+                </span>
+            </template>
+
+            <template #title>
+                <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
+                    style="font-size: var(--step-2);">
+                    {{ t('index.expertise_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="text-lg font-normal text-body lg:text-xl lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: var(--step-1);">
+                    {{ t('index.expertise_section.description') }}
+                </p>
+            </template>
+
+            <ExpertiseContainer />
+        </IndexSection> -->
+
+        <!-- Contact section -->
+        <IndexSection id="contact-section" :class="'bg-(--card-about-accent)'">
+            <template #title>
+                <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
+                    style="font-size: var(--step-2);">
+                    {{ t('index.contact_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="text-lg font-normal text-body lg:text-xl lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: var(--step-1);">
+                    {{ t('index.contact_section.description') }}
+                </p>
+            </template>
+
+            <SendMessageModal />
+        </IndexSection>
     </UContainer>
 </template>

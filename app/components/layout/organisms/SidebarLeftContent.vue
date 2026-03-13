@@ -15,6 +15,11 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         active: true
     },
     {
+        label: t('sidebar-left.navigation.feed'),
+        icon: 'fa7-solid:message',
+        to: '/feed',
+    },
+    {
         label: t('sidebar-left.navigation.accessibility_statement'),
         icon: "fa7-brands:accessible-icon",
         to: "/accessibility",

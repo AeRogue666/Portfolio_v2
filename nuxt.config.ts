@@ -63,6 +63,9 @@ export default defineNuxtConfig({
   },
   vite: {
     logLevel: "warn",
+    optimizeDeps: {
+      include: ["zod"],
+    },
   },
   devtools: { enabled: false },
   compatibilityDate: "latest",

@@ -20,7 +20,8 @@
       "title": "Send a message",
       "description": "Send a message to Aureldev",
       "send-message_button_label": "Send a message",
-      "input_label": "Email",
+      "selectType_label": "Select a type",
+      "email_label": "Email",
       "textarea_label": "Message",
       "textarea_placeholder": "Describe your need, your context or your question. I will directly answer by mail.",
       "submit_button": "Submit",
@@ -33,6 +34,7 @@
     },
     "navigation": {
       "homepage": "Home page",
+      "feed": "Feed",
       "accessibility_statement": "Accessibility statement",
       "problem_report": "Report a problem",
       "accessibility_report": "Accessibility report",
@@ -57,12 +59,38 @@
     "home": {
       "title": "Portfolio of Aureldev - Accessibility-first Full-stack Developer",
       "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed"
+    },
+    "feed": {
+      "title": "Portfolio of Aureldev - Accessibility-first Full-stack Developer",
+      "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed"
     }
   },
   "index": {
-    "title": "Portfolio - projects and contents",
-    "load_more": "Load more articles",
-    "loaded_new_articles": "New articles available"
+    "user_title": "Aureldev",
+    "landing_section": {
+      "title": "Accessibility-first Full-stack Developer",
+      "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed"
+    },
+    "client_section": {
+      "tag": "They trust me",
+      "title": "My clients",
+      "description": ""
+    },
+    "campain_section": {
+      "tag": "Portfolio",
+      "title": "My achievements",
+      "description": "Discover my laboratory and how I was able to create these fabulous projects."
+    },
+    "expertise_section": {
+      "tag": "Project timeline",
+      "title": "My expertise",
+      "description": "I will support you from start to finish in setting up your project, proceeding as follows"
+    },
+    "contact_section": {
+      "tag": "Contact",
+      "title": "Ready to discuss it?",
+      "description": "Don't wait any longer, contact me now using the form below!"
+    }
   },
   "filters": {
     "filters": "Filters",
@@ -81,6 +109,9 @@
     "active_count": "{count} filter(s) active"
   },
   "feed": {
+    "title": "Portfolio - projects and contents",
+    "load_more": "Load more articles",
+    "loaded_new_articles": "New articles available",
     "no_results": "No posts match your filters. Try adjusting your selection.",
     "showing_filtered": "Showing {count} of {total} posts",
     "showing_all": "Showing {total} posts"

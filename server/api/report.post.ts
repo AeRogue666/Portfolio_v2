@@ -1,4 +1,4 @@
-// import { Resend } from 'resend';
+import { Resend } from 'resend';
 
 type Issues = "accessibility" | "issue" | "bug" | "other";
 
@@ -10,11 +10,11 @@ type ReportBody = {
 };
 
 // RATE LIMIT
-
 const RATE_LIMIT_WINDOW = 10 * 60 * 1000; // 10 minutes
 const RATE_LIMIT_MAX = 3;
 
 const rateLimitMap = new Map<string, { count: number; timestamp: number }>();
+const config = useRuntimeConfig();
 
 function isRateLimited(ip: string) {
   const now = Date.now();
@@ -62,7 +62,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const resend = new Resend(process.env.RESEND_API_KEY);
+  const resend = new Resend(config.resendApiKey);
 
   await resend.emails.send({
     from: "Report <report@aureldev.dev>",

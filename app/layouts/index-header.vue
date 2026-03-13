@@ -11,8 +11,8 @@ const props = defineProps<{
 
 const { t, locale } = useI18n();
 
-const leftOpen = ref<boolean>(props.sidebarLeftOpen || true);
-const rightOpen = ref<boolean>(props.sidebarRightOpen || false);
+const leftOpen = ref<boolean>(false);
+const rightOpen = ref<boolean>(false);
 
 const leftOpenCount = ref(0);
 
@@ -37,10 +37,9 @@ useHead(() => ({
 </script>
 
 <template>
-    <AppHeader />
+    <AppHeader :open-left="openLeft" :right-open="rightOpen" />
 
     <div class="min-h-screen">
-
         <!-- Desktop -->
         <div ref="gridRef"
             class="hidden lg:grid w-full gap-6 px-6 transition-[grid-template-columns] duration-300 will-change-auto"
@@ -59,19 +58,19 @@ useHead(() => ({
                 <!-- Reopen Left Sidebar -->
                 <IconButton v-if="!leftOpen" id="button-sidebarleft-open" :variant="'ghost'" :color="'neutral'"
                     :icon="'fa7-solid:chevron-right'" :size="'3xl'" :label="$t('sidebar-left.open')"
-                    class="absolute left-6 top-6 -translate-x-full opacity-50 hover:opacity-100" @click="openLeft" />
+                    class="absolute left-6 top-6 -translate-x-full opacity-50 hover:opacity-100 z-50" @click="openLeft" />
 
                 <!-- Reopen Right Sidebar -->
                 <IconButton v-if="!rightOpen" id="button-sidebarright-open" :variant="'ghost'" :color="'neutral'"
                     :icon="'fa7-solid:chevron-left'" :size="'3xl'" :label="$t('sidebar-right.open')"
-                    class="absolute right-6 top-6 translate-x-full opacity-50 hover:opacity-100"
+                    class="absolute right-6 top-6 translate-x-full opacity-50 hover:opacity-100 z-50"
                     @click="rightOpen = true" />
 
                 <!-- FEED CONTAINER -->
                 <main ref="mainRef" id="main-content" tabindex="-1" aria-labelledby="feed-title"
-                    class="w-full max-w-5xl mx-auto px-4" style="font-size: var(--step--1);">
+                    class="w-full max-w-auto mx-auto" style="font-size: var(--step--1);">
                     <h1 id="feed-title" class="text-2xl font-semibold tracking-tight leading-snug sr-only"
-                        style="font-size: var(--step-3);">{{ t('index.title') }}</h1>
+                        style="font-size: var(--step-3);">{{ t('feed.title') }}</h1>
                     <NuxtPage />
                 </main>
             </div>

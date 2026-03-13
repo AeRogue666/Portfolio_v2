@@ -20,7 +20,8 @@
       "title": "Envoyer un message",
       "description": "Envoyer un message à Aureldev",
       "send-message_button_label": "Envoyer un message",
-      "input_label": "Email",
+      "selectType_label": "Sélectionner le type",
+      "email_label": "Email",
       "textarea_label": "Message",
       "textarea_placeholder": "Decrivez votre besoin, votre message ou votre question. Je vous repondrez directement par mail",
       "submit_button": "Envoyer",
@@ -33,11 +34,12 @@
     },
     "navigation": {
       "homepage": "Accueil",
+      "feed": "Fil",
       "accessibility_statement": "Declaration d'accessibilite",
       "problem_report": "Signaler un incident",
       "accessibility_report": "Rapport d'accessibilité",
       "legal_notices": "Mentions légales",
-      "terms_of_use": "Conditions Générales d'Utilisation"
+      "terms_of_use": "CGU"
     }
   },
   "sidebar-right": {
@@ -57,12 +59,38 @@
     "home": {
       "title": "Portfolio d'Aureldev - Développer Full-stack orienté accessibilité",
       "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur"
+    },
+    "feed": {
+      "title": "Portfolio d'Aureldev - Développer Full-stack orienté accessibilité",
+      "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur"
     }
   },
   "index": {
-    "title": "Portfolio - projets et contenu",
-    "load_more": "Charger d'autres articles",
-    "loaded_new_articles": "Nouveux articles disponibles"
+    "user_title": "Aureldev",
+    "landing_section": {
+      "title": "Développeur Full-stack orienté Accessibilité",
+      "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur"
+    },
+    "client_section": {
+      "tag": "Ils me font confiance",
+      "title": "Mes clients",
+      "description": ""
+    },
+    "campain_section": {
+      "tag": "Portfolio",
+      "title": "Mes réalisations",
+      "description": "Découvrez mon laboratoire et comment j'ai pu créer ces fabuleux projets"
+    },
+    "expertise_section": {
+      "tag": "Déroulé d'un projet",
+      "title": "Mon expertise",
+      "description": "Je vous accompagne de A à Z lors de la mise en place de votre projet, en procédant de la manière suivante"
+    },
+    "contact_section": {
+      "tag": "Contact",
+      "title": "Prêt à en discuter ?",
+      "description": "N'attendez plus et contactez-moi dès maintenant ci-dessous !"
+    }
   },
   "filters": {
     "filters": "Filtres",
@@ -81,6 +109,9 @@
     "active_count": "{count} filtre(s) actif(s)"
   },
   "feed": {
+    "title": "Portfolio - projets et contenu",
+    "load_more": "Charger d'autres articles",
+    "loaded_new_articles": "Nouveux articles disponibles",
     "no_results": "Aucun post ne correspond à vos filtres. Essayez d'ajuster votre sélection.",
     "showing_filtered": "Affichage de {count} sur {total} posts",
     "showing_all": "Affichage de {total} posts"
