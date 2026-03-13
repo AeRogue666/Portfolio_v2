@@ -113,22 +113,17 @@ onUnmounted(() => {
                 <label for="sort-select" class="text-sm font-(--text-2)">{{ t('filters.sort.label') }}</label>
                 <USelect id="sort-select" v-model="sortValue" :items="sortOptions" color="neutral" size="xl"
                     class="transition-colors" :ui="{
-                        base: 'bg-(--bg-2)',
+                        base: 'bg-(--bg-2) hover:bg-(--bg-3) text-(length:--step--1)',
                         content: 'bg-(--bg-2)',
                         value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                     }" />
             </div>
 
             <!-- Bouton Filtres (CollapsibleMenu) -->
             <UButton @click="isFiltersOpen = !isFiltersOpen" :aria-expanded="isFiltersOpen"
                 aria-controls="filters-panel" variant="ghost" color="neutral" size="xl"
-                class="transition-colors" :ui="{
-                    base: 'bg-(--bg-2) hover:bg-(--bg-3)',
-                    content: 'bg-(--bg-2) hover:bg-(--bg-3)',
-                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
-                }">
+                class="bg-(--bg-2) hover:bg-(--bg-3) text-base text-(--text-1) text-(length:--step--1) font-medium">
                 <Icon name="fa7-solid:sliders" />
                 {{ t('filters.filters') }}
                 <Icon :name="isFiltersOpen ? 'fa7-solid:chevron-up' : 'fa7-solid:chevron-down'" />
@@ -164,7 +159,7 @@ onUnmounted(() => {
                     <div class="flex flex-wrap gap-2">
                         <UButton v-for="tag in availableTags" :key="tag" @click="handleTagClick(tag)"
                             :aria-pressed="isTagSelected(tag)" :class="[
-                                'px-3 py-2 text-sm font-medium rounded transition-colors',
+                                'px-3 py-2 text-sm font-medium rounded transition-colors text-(length:--step--1)',
                                 isTagSelected(tag)
                                     ? 'bg-green-500 text-white ring-2 ring-green-300'
                                     : 'bg-(--bg-3) text-(--text-2) border border-bg-(--border-subtle)'
@@ -179,7 +174,7 @@ onUnmounted(() => {
                 <!-- Bouton Reset -->
                 <div v-if="hasActiveFilters" class="pt-4 border-t border-(--border-subtle)">
                     <UButton @click="handleResetFilters" variant="soft" color="neutral"
-                        class="text-base bg-(--danger) text-(--text-1) hover:bg-(--accent) font-medium">
+                        class="text-base bg-(--danger) text-(--text-1) text-(length:--step-0) hover:bg-(--accent) font-medium">
                         <Icon name="fa7-solid:filter" class="size-4" />
                         {{ t('filters.reset') }}
                     </UButton>

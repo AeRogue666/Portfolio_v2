@@ -3,14 +3,16 @@ import type { FormError, FormSubmitEvent, SelectMenuItem } from '@nuxt/ui';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
 const { t } = useI18n(),
-    toast = useToast();
+    toast = useToast(),
+    accessibilityStore = useAccessibilityStore(),
+    colorMode = useColorMode();
 
 type Issues = 'accessibility' | 'issue' | 'bug' | 'feedback' | 'other';
 
 type ReportForm = {
     issue: Issues,
     description: string,
-    email: string | null
+    email: string | undefined
     honeypot?: any
 }
 
@@ -36,7 +38,7 @@ const issueItems = computed<SelectMenuItem[]>(() => [
 const form = reactive<ReportForm>({
     issue: 'accessibility',
     description: '',
-    email: null,
+    email: undefined,
 });
 
 type Schema = typeof form
@@ -69,7 +71,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
         form.issue = 'accessibility';
         form.description = '';
-        form.email = null
+        form.email = undefined
 
         toast.add({
             title: t('toast.form_submitted.title'),
@@ -91,13 +93,22 @@ const issueError = computed(() => {
     if (!form.issue) return t('report.state.required')
     return null
 });
+
+const grayscale = computed({
+    get: () => accessibilityStore.grayscale,
+    set: () => accessibilityStore.toggleGrayscale(),
+});
 </script>
 
 <template>
     <ArticleLayout>
         <template #header>
-            <h1 id="article-title" class="text-xl font-bold">{{ t('report.title') }}</h1>
-            <p class="text-base">{{ t('report.description') }}</p>
+            <h1 id="article-title" class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
+                style="font-size: var(--step-2);">{{ t('report.title') }}</h1>
+            <p class="text-base leading-relaxed text-(--text-2) text-scalable max-w-prose"
+                :class="grayscale && colorMode.value == 'dark' ? 'text-white' : ''" style="font-size: var(--step-0);">
+                {{ t('report.description') }}
+            </p>
         </template>
 
         <UForm :state="form" :validate="validateForm" class="space-y-4" @submit.prevent="onSubmit">
@@ -110,8 +121,10 @@ const issueError = computed(() => {
                 <USelect v-model="form.issue" :items="issueItems" id="issue-field" value-key="value" label-key="label"
                     :aria-describedby="issueError ? 'issue-error' : undefined" :aria-invalid="!!issueError" name="issue"
                     color="neutral" size="xl" :ui="{
-                        base: 'bg-(--bg-2)',
-                        content: 'bg-(--bg-2)'
+                        base: 'bg-(--bg-2) text-(length:--step--1)',
+                        content: 'bg-(--bg-2)',
+                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                     }" />
 
                 <p v-if="issueError" id="issue-error" class="text-sm text-(--danger) mt-2">{{ issueError }}</p>
@@ -119,7 +132,10 @@ const issueError = computed(() => {
 
             <UFormField :label="t('report.form.description')" name="description" orientation="vertical" required>
                 <UTextarea v-model="form.description" :ui="{
-                    base: 'bg-(--bg-secondary) text-xl'
+                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    content: 'bg-(--bg-2)',
+                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                 }" required />
             </UFormField>
 
@@ -128,7 +144,10 @@ const issueError = computed(() => {
                     labelWrapper: 'justify-start'
                 }">
                 <UInput v-model="form.email" type="email" autocomplete="off" :ui="{
-                    base: 'bg-(--bg-secondary) text-xl',
+                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    content: 'bg-(--bg-2)',
+                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                 }" />
             </UFormField>
         </UForm>

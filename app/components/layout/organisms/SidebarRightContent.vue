@@ -56,23 +56,48 @@ async function changeLanguage(newLocale: any) {
         <UContainer class="flex flex-col items-center w-full h-auto my-4 gap-4">
 
             <!-- THEME -->
-            <SidebarSelectorBase>
+            <label id="color-select-label" for="color-select"
+                class="text-2xl text-(--text-2) font-semibold tracking-tight leading-relaxed"
+                style="font-size: var(--step-0);">
+                {{ t('sidebar-right.theme') }}
+            </label>
+            <UColorModeSelect id="color-select" name="color" color="neutral" size="xl" :ui="{
+                base: 'bg-(--bg-2) text-(length:--step--1)',
+                content: 'bg-(--bg-2)',
+                value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+            }" class="transition-colors" />
+
+            <!-- <SidebarSelectorBase>
                 <template #title>
                     {{ t('sidebar-right.theme') }}
                 </template>
 
-                <template #body>
-                    <UColorModeSelect color="neutral" size="xl" :ui="{
+<template #body>
+                    <UColorModeSelect id="color-select" color="neutral" size="xl" :ui="{
                         base: 'bg-(--bg-2) text-(length:--step--1)',
                         content: 'bg-(--bg-2)',
                         value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                         item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                    }" />
+                    }" class="transition-colors" />
                 </template>
-            </SidebarSelectorBase>
+</SidebarSelectorBase> -->
 
             <!-- LANGUAGE -->
-            <SidebarSelectorBase>
+            <label id="language-label" for="language-selector"
+                class="text-2xl text-(--text-2) font-semibold tracking-tight leading-relaxed"
+                style="font-size: var(--step-0);">
+                {{ t('sidebar-right.language') }}
+            </label>
+            <ULocaleSelect id="language-selector" name="language" :model-value="locale" :locales="locales"
+                @update:model-value="changeLanguage" :disabled="switching" color="neutral" size="xl" :ui="{
+                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    content: 'bg-(--bg-2)',
+                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                }" class="transitions-color w-48" />
+
+            <!-- <SidebarSelectorBase>
                 <template #title>
                     {{ t('sidebar-right.language') }}
                 </template>
@@ -84,12 +109,20 @@ async function changeLanguage(newLocale: any) {
                             content: 'bg-(--bg-2)',
                             value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                             item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                        }" class="w-48" />
+                        }" class="transitions-color w-48" />
                 </template>
-            </SidebarSelectorBase>
+            </SidebarSelectorBase> -->
 
             <!-- FONT SCALE -->
-            <SidebarSelectorBase>
+            <label id="font-scale-label" for="font-scale"
+                class="text-2xl text-(--text-2) font-semibold tracking-tight leading-relaxed"
+                style="font-size: var(--step-0);">
+                {{ t('sidebar-right.contrast') }}
+            </label>
+            <FontScaleSelector id="font-scale" name="font-scale" :font-scale="accessibilityStore.fontScale"
+                :increase-font="accessibilityStore.increaseFont" :decrease-font="accessibilityStore.decreaseFont" />
+
+            <!-- <SidebarSelectorBase>
                 <template #title>
                     {{ t('sidebar-right.contrast') }}
                 </template>
@@ -99,24 +132,21 @@ async function changeLanguage(newLocale: any) {
                         :increase-font="accessibilityStore.increaseFont"
                         :decrease-font="accessibilityStore.decreaseFont" />
                 </template>
-            </SidebarSelectorBase>
+            </SidebarSelectorBase> -->
 
             <!-- FONT FAMILY -->
-            <SidebarSelectorBase>
-                <template #title>
-                    {{ t('sidebar-right.font') }}
-                </template>
-
-                <template #body>
-                    <USelect v-model="fontFamily" :items="fontFamilyItems" value-key="value" label-key="label"
-                        color="neutral" size="xl" aria-label="Font selector" :ui="{
-                            base: 'bg-(--bg-2) text-(length:--step--1)',
-                            content: 'bg-(--bg-2)',
-                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                        }" />
-                </template>
-            </SidebarSelectorBase>
+            <label id="font-selector-label" for="font-selector"
+                class="text-2xl text-(--text-2) font-semibold tracking-tight leading-relaxed"
+                style="font-size: var(--step-0);">
+                {{ t('sidebar-right.font') }}
+            </label>
+            <USelect id="font-selector" v-model="fontFamily" :items="fontFamilyItems" value-key="value"
+                label-key="label" name="font-selector" color="neutral" size="xl" aria-label="Font selector" :ui="{
+                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    content: 'bg-(--bg-2)',
+                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                }" />
 
             <!-- GRAYSCALE -->
             <SidebarSelectorBase>

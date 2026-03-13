@@ -5,7 +5,7 @@ type Issues = "accessibility" | "issue" | "bug" | "other";
 type ReportBody = {
   issue: Issues;
   description: string;
-  email?: string | null;
+  email?: string | undefined;
   honeypot?: any;
 };
 

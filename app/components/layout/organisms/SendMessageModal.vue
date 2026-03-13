@@ -80,8 +80,8 @@ watch(isOpen, (value) => {
                     input.scrollIntoView({ behavior: 'smooth' })
                     input.focus({ preventScroll: false })
 
-                    console.log('after focus: ', document.activeElement?.tagName, document.activeElement?.id)
-                    console.log('focused: ', document.activeElement === input)
+                    // console.log('after focus: ', document.activeElement?.tagName, document.activeElement?.id)
+                    // console.log('focused: ', document.activeElement === input)
                 }
             }, 300);
         })
@@ -136,7 +136,7 @@ const typeError = computed(() => {
                                     content: 'bg-(--bg-2)',
                                     value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                                     item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                                }" class="w-78" />
+                                }" class="w-78 transition-colors" required />
 
                             <p v-if="typeError" id="issue-error" class="text-sm text-(--danger) mt-2">
                                 {{ typeError }}
@@ -144,17 +144,16 @@ const typeError = computed(() => {
                         </div>
 
                         <UFormField :label="t('sidebar-left.modal-message.email_label')" name="email" required>
-                            <UInput id="send-message-input" v-model="state.email" size="xl"
+                            <UInput id="send-message-input" v-model="state.email" size="xl" tabindex="-1"
                                 :placeholder="'amazing@email.com'" :ui="{
                                     base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
                                 }" style="font-size: var(--step--1);" />
                         </UFormField>
 
                         <UFormField label="Website" name="website" class="hidden">
-                            <UInput v-model="state.website" type="text" size="xl" class="hidden" tabindex="-1"
-                                autocomplete="off" :ui="{
-                                    base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
-                                }" style="font-size: var(--step--1);" />
+                            <UInput v-model="state.website" type="text" size="xl" class="hidden" autocomplete="off" :ui="{
+                                base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
+                            }" style="font-size: var(--step--1);" />
                         </UFormField>
 
                         <UFormField :label="t('sidebar-left.modal-message.textarea_label')" name="message" required>
