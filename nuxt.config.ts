@@ -35,7 +35,11 @@ export default defineNuxtConfig({
       xl: 1280,
     },
     format: ["webp", "avif", "png"],
+    vercel: {
+      formats: ['image/webp', 'image/avif']
+    },
     // provider: "ipx",
+    domains: ["github.com", "avatars.githubusercontent.com"],
   },
   app: {
     head: {
