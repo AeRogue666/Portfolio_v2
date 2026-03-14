@@ -4,11 +4,6 @@ import SidebarRightDesktop from "@/components/layout/SidebarRightDesktop.vue";
 import AppHeader from "@/components/layout/AppHeader.vue";
 import IconButton from "@/components/ui/IconButton.vue";
 
-defineProps<{
-    leftOpen?: boolean,
-    rightOpen?: boolean,
-}>();
-
 const { t, locale } = useI18n();
 
 const leftOpen = ref<boolean>(false);

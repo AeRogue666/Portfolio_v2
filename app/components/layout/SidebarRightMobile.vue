@@ -6,9 +6,9 @@ const { t } = useI18n()
 </script>
 
 <template>
-    <UDrawer direction="right" :title="t('sidebar-right.title')" :description="t('sidebar-right.description')" :ui="{
-        content: 'w-screen bg-(--bg-primary)',
-        container: 'overflow-hidden',
+    <USlideover side="right" :title="t('sidebar-right.title')" :description="t('sidebar-right.description')" :ui="{
+        content: 'w-screen bg-(--bg)',
+        body: 'overflow-hidden p-0',
     }">
         <IconButton ref="sidebarRightButtonMobileRef" id="button-sidebarright-mobile" :variant="'ghost'"
             :color="'neutral'" :icon="'fa7-solid:gear'" :size="'size-10'" :label="t('sidebar-right.open')"
@@ -17,5 +17,5 @@ const { t } = useI18n()
         <template #body>
             <SidebarRightContent />
         </template>
-    </UDrawer>
+    </USlideover>
 </template>

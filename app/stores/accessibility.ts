@@ -38,13 +38,13 @@ export const useAccessibilityStore = defineStore("accessibility", {
       // FONT SCALE
       const scales: FontScale[] = [1, 1.25, 1.5, 1.75, 2];
       const i = scales.indexOf(this.fontScale);
-      if (i < scales.length - 1) this.fontScale = scales[i + 1];
+      if (i !== -1 && i < scales.length - 1) this.fontScale = scales[i + 1] as FontScale;
     },
     decreaseFont() {
       // FONT SCALE
       const scales: FontScale[] = [1, 1.25, 1.5, 1.75, 2];
       const i = scales.indexOf(this.fontScale);
-      if (i > 0) this.fontScale = scales[i - 1];
+      if (i > 0) this.fontScale = scales[i - 1] as FontScale;
     },
     changeFont(font: FontFamily) {
       // FONT FAMILY

@@ -26,7 +26,7 @@ const fontFamilyItems = ref<SelectMenuItem[]>([
 
 const fontFamily = computed({
     get: () => accessibilityStore.fontFamily,
-    set: (value) => accessibilityStore.changeFont(value)
+    set: (value: string) => accessibilityStore.changeFont(value as FontFamily)
 });
 
 // Toggles
@@ -40,18 +40,17 @@ const grayscale = computed({
     });
 
 const switching = ref(false);
-
-async function changeLanguage(newLocale: any) {
+async function changeLanguage(newLocale: string) {
     if (newLocale === locale.value) return
 
     switching.value = true
-    await setLocale(newLocale)
+    await setLocale(newLocale as "en" | "fr")
     switching.value = false
 };
 </script>
 
 <template>
-    <aside id="sidebar-right" role="dialog" aria-modal="true"
+    <aside id="sidebar-right"
         class="block w-full lg:w-auto min-w-60 h-screen bg-(--bg) basis-0.5 relative [&::-webkit-scrollbar]:bg-transparent [&::-webkit-scrollbar]:w-2">
         <UContainer class="flex flex-col items-center w-full h-auto my-4 gap-4">
 
@@ -67,21 +66,13 @@ async function changeLanguage(newLocale: any) {
                 value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                 item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
             }" class="transition-colors" />
-
-            <!-- <SidebarSelectorBase>
-                <template #title>
-                    {{ t('sidebar-right.theme') }}
-                </template>
-
-<template #body>
-                    <UColorModeSelect id="color-select" color="neutral" size="xl" :ui="{
-                        base: 'bg-(--bg-2) text-(length:--step--1)',
-                        content: 'bg-(--bg-2)',
-                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                    }" class="transition-colors" />
-                </template>
-</SidebarSelectorBase> -->
+            <!-- <USelect id="color-select" v-model="colorModeValue" :items="colorModeItems" value-key="value"
+                label-key="label" color="neutral" size="xl" class="transitions-color" :ui="{
+                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    content: 'bg-(--bg-2) z-[100]',
+                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                }" :search-input="false" /> -->
 
             <!-- LANGUAGE -->
             <label id="language-label" for="language-selector"
@@ -96,22 +87,13 @@ async function changeLanguage(newLocale: any) {
                     value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                     item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                 }" class="transitions-color w-48" />
-
-            <!-- <SidebarSelectorBase>
-                <template #title>
-                    {{ t('sidebar-right.language') }}
-                </template>
-
-                <template #body>
-                    <ULocaleSelect :model-value="locale" :locales="locales" @update:model-value="changeLanguage"
-                        :disabled="switching" color="neutral" size="xl" :ui="{
-                            base: 'bg-(--bg-2) text-(length:--step--1)',
-                            content: 'bg-(--bg-2)',
-                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                        }" class="transitions-color w-48" />
-                </template>
-            </SidebarSelectorBase> -->
+            <!-- <USelectMenu id="language-selector" :model-value="locale" :items="localeItems" value-key="value"
+                label-key="label" color="neutral" size="xl" :disabled="switching" class="transitions-color w-48" :ui="{
+                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    content: 'bg-(--bg-2)',
+                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                }" :search-input="false" @update:model-value="changeLanguage" /> -->
 
             <!-- FONT SCALE -->
             <label id="font-scale-label" for="font-scale"
@@ -121,18 +103,6 @@ async function changeLanguage(newLocale: any) {
             </label>
             <FontScaleSelector id="font-scale" name="font-scale" :font-scale="accessibilityStore.fontScale"
                 :increase-font="accessibilityStore.increaseFont" :decrease-font="accessibilityStore.decreaseFont" />
-
-            <!-- <SidebarSelectorBase>
-                <template #title>
-                    {{ t('sidebar-right.contrast') }}
-                </template>
-
-                <template #body>
-                    <FontScaleSelector :font-scale="accessibilityStore.fontScale"
-                        :increase-font="accessibilityStore.increaseFont"
-                        :decrease-font="accessibilityStore.decreaseFont" />
-                </template>
-            </SidebarSelectorBase> -->
 
             <!-- FONT FAMILY -->
             <label id="font-selector-label" for="font-selector"

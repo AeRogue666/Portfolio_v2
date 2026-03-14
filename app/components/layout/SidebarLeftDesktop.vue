@@ -65,7 +65,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div ref="sidebarLeftRef" class="hidden lg:block w-auto min-h-screen sticky top-0" role="dialog" aria-modal="true"
+    <div ref="sidebarLeftRef" class="hidden lg:block w-auto min-h-screen sticky top-0"
         :aria-label="t('sidebar-left.label')">
         <!-- Close button -->
         <IconButton id="button-sidebarleft-close" :variant="'ghost'" :color="'neutral'" :icon="'fa7-solid:chevron-left'"

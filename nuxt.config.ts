@@ -1,9 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
-  nitro: {
-    preset: "vercel", // "vercel" or "node-server"
-  },
   modules: [
     "@nuxt/content",
     "@nuxt/ui",
@@ -26,19 +23,23 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false,
   },
   image: {
-    dir: "public",
+    dir:
+      process.env.NODE_ENV === "production"
+        ? "public"
+        : process.cwd() + "/public",
     screens: {
+      xs: 320,
       sm: 640,
       md: 768,
       lg: 1024,
       xl: 1280,
+      xxl: 1536,
     },
-    format: ["webp", "avif", "png"],
+    densities: [1],
+    provider: "ipx",
     vercel: {
       formats: ["image/webp", "image/avif"],
     },
-    // provider: "ipx",
-    domains: ["github.com", "avatars.githubusercontent.com"],
   },
   app: {
     head: {

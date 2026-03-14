@@ -63,7 +63,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <aside id="sidebar-left" role="dialog" aria-modal="true"
+    <aside id="sidebar-left"
         class="block w-full lg:w-auto min-w-60 h-auto bg-(--bg) basis-0.5 relative">
 
         <UContainer class="flex flex-col items-center w-full h-full mt-4 gap-4">

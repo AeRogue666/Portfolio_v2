@@ -123,12 +123,11 @@ useSeoMeta(({
                 class="w-full max-w-md my-10" :ui="{
                     item: 'basis-1/3'
                 }">
-                <NuxtImg :src="item.image" :alt="item.alt"
-                    sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw"
-                    :srcset="` ${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`"
+                <NuxtImg :src="item.image" :alt="item.alt" sizes="xs:100vw md:80vw lg:64rem"
                     class="rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
-                    loading="lazy" />
+                    densities="x1" loading="lazy" :placeholder="true" />
                 <span>{{ item.description }}</span>
+                <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="` ${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`" -->
             </UCarousel>
         </IndexSection>
 
