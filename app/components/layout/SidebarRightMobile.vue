@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import IconButton from '../ui/IconButton.vue';
-import SidebarRightContent from './organisms/SidebarRightContent.vue';
+import SidebarRightContent from './SidebarRightDesktop.vue';
 
 const { t } = useI18n()
 </script>

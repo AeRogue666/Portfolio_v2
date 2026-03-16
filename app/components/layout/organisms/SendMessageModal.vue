@@ -113,7 +113,7 @@ const typeError = computed(() => {
 
         <template #default>
             <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" color="neutral"
-                variant="solid" size="xl" class="bg-(--bg-3) text-(--text) hover:text-inverted"
+                variant="solid" size="xl" class="bg-(--bg-3) text-(--text) hover:bg(--bg-elevated) hover:text-inverted"
                 :label="t('sidebar-left.modal-message.send-message_button_label')" style="font-size: var(--step-0);" />
         </template>
 
@@ -136,7 +136,7 @@ const typeError = computed(() => {
                                     content: 'bg-(--bg-2)',
                                     value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                                     item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                                }" class="w-78 transition-colors" required />
+                                }" class="ring-transparent w-78 transition-colors" required />
 
                             <p v-if="typeError" id="issue-error" class="text-sm text-(--danger) mt-2">
                                 {{ typeError }}

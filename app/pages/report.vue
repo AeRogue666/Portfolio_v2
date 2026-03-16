@@ -125,19 +125,10 @@ const grayscale = computed({
                         content: 'bg-(--bg-2)',
                         value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                         item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                    }" />
+                    }" class="ring-transparent transitions-color w-48" />
 
                 <p v-if="issueError" id="issue-error" class="text-sm text-(--danger) mt-2">{{ issueError }}</p>
             </div>
-
-            <UFormField :label="t('report.form.description')" name="description" orientation="vertical" required>
-                <UTextarea v-model="form.description" :ui="{
-                    base: 'bg-(--bg-2) text-(length:--step--1)',
-                    content: 'bg-(--bg-2)',
-                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                }" required />
-            </UFormField>
 
             <UFormField :label="t('report.form.email')" name="email" :hint="t('report.form.optional')"
                 orientation="vertical" :ui="{
@@ -150,12 +141,22 @@ const grayscale = computed({
                     item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                 }" />
             </UFormField>
+
+            <UFormField :label="t('report.form.description')" name="description" orientation="vertical" required>
+                <UTextarea v-model="form.description" :ui="{
+                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    content: 'bg-(--bg-2)',
+                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                }" required />
+            </UFormField>
         </UForm>
 
         <template #footer>
-            <UButton name="button-submit-report" color="neutral" variant="ghost" size="xl"
-                class="bg-(--bg-2) text-(--text)" :label="t('report.form.submit')" type="submit"
-                :loading="isSubmitting" />
+            <UButton name="button-submit-report" color="neutral" variant="solid" size="xl"
+                class="bg-(--bg-3) text-(--text) hover:bg(--bg-elevated) hover:text-inverted"
+                :label="t('report.form.submit')" type="submit" :loading="isSubmitting"
+                style="font-size: var(--step-0);" />
         </template>
     </ArticleLayout>
 </template>

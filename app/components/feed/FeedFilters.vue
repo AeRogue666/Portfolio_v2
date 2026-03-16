@@ -112,18 +112,18 @@ onUnmounted(() => {
             <div class="flex items-center gap-2">
                 <label for="sort-select" class="text-sm font-(--text-2)">{{ t('filters.sort.label') }}</label>
                 <USelect id="sort-select" v-model="sortValue" :items="sortOptions" color="neutral" size="xl"
-                    class="transition-colors" :ui="{
-                        base: 'bg-(--bg-2) hover:bg-(--bg-3) text-(length:--step--1)',
+                    class="ring-transparent transition-colors" :ui="{
+                        base: 'bg-(--bg-2) hover:bg-(--bg-2) focus-visible:bg-(--bg-2) text-(length:--step--1)',
                         content: 'bg-(--bg-2)',
-                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1) ' : 'text-(length:--step--1) ',
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1) ' : 'text-(length:--step--1) '
                     }" />
             </div>
 
             <!-- Bouton Filtres (CollapsibleMenu) -->
             <UButton @click="isFiltersOpen = !isFiltersOpen" :aria-expanded="isFiltersOpen"
                 aria-controls="filters-panel" variant="ghost" color="neutral" size="xl"
-                class="bg-(--bg-2) hover:bg-(--bg-3) text-base text-(--text-1) text-(length:--step--1) font-medium">
+                class="bg-(--bg-2) text-base text-(--text) font-medium hover:bg-(--bg-2) focus-visible:bg-(--bg-2) focus:ring-2 focus:ring-inverted text-(length:--step--1)">
                 <Icon name="fa7-solid:sliders" />
                 {{ t('filters.filters') }}
                 <Icon :name="isFiltersOpen ? 'fa7-solid:chevron-up' : 'fa7-solid:chevron-down'" />
@@ -145,8 +145,8 @@ onUnmounted(() => {
                 <div class="flex justify-between items-center mb-4 pb-3 border-b border-(--border-subtle)">
                     <h2 class="text-2xl font-semibold text-(--text-1) leading-snug text-scalable">{{
                         t('filters.filter_options') }}</h2>
-                    <UButton @click="handleCloseFilters" :aria-label="t('filters.close_filters')"
-                        variant="outline" color="neutral"
+                    <UButton @click="handleCloseFilters" :aria-label="t('filters.close_filters')" variant="outline"
+                        color="neutral"
                         class="close-button p-1 hover:bg-(--bg-3) rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
                         <Icon name="fa7-solid:xmark" size="1.25rem" />
                     </UButton>

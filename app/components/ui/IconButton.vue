@@ -14,7 +14,7 @@ defineProps<{
 
 <template>
     <UButton :variant="variant" :color="color" :to="to" :target="target" :id="id" :aria-labelledby="`${id}-label`"
-        class="flex flex-row items-center w-10 h-10 bg-(--bg-2) text-(--text-2) rounded-full gap-2" :class="class">
+        class="flex flex-row items-center w-10 h-10 bg-(--bg-2) text-(--text-2) rounded-full gap-2 hover:bg-(--bg-2) hover:text-(--accent-hover) focus-visible:bg-(--bg-2) focus-visible:text-(--focus)" :class="class">
         <UIcon :name="icon" :class="size" />
         <span :id="`${id}-label`" class="sr-only">{{ label }}</span>
     </UButton>

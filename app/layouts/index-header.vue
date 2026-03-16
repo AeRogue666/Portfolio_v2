@@ -29,6 +29,11 @@ useHead(() => ({
         lang: locale.value
     }
 }));
+
+/* <IconButton v-if="!rightOpen" id="button-sidebarright-open" :variant="'ghost'" :color="'neutral'"
+                    :icon="'fa7-solid:chevron-left'" :size="'3xl'" :label="$t('sidebar-right.open')"
+                    class="absolute right-6 top-6 translate-x-full opacity-50 hover:opacity-100 z-50"
+                    @click="rightOpen = true" /> */
 </script>
 
 <template>
@@ -53,13 +58,13 @@ useHead(() => ({
                 <!-- Reopen Left Sidebar -->
                 <IconButton v-if="!leftOpen" id="button-sidebarleft-open" :variant="'ghost'" :color="'neutral'"
                     :icon="'fa7-solid:chevron-right'" :size="'3xl'" :label="$t('sidebar-left.open')"
-                    class="absolute left-6 top-6 -translate-x-full opacity-50 hover:opacity-100 z-50" @click="openLeft" />
+                    class="text-3xl absolute left-6 top-6 -translate-x-full opacity-50 hover:opacity-100 focus:opacity-100 z-50"
+                    @click="openLeft" />
 
-                <!-- Reopen Right Sidebar -->
-                <IconButton v-if="!rightOpen" id="button-sidebarright-open" :variant="'ghost'" :color="'neutral'"
-                    :icon="'fa7-solid:chevron-left'" :size="'3xl'" :label="$t('sidebar-right.open')"
-                    class="absolute right-6 top-6 translate-x-full opacity-50 hover:opacity-100 z-50"
-                    @click="rightOpen = true" />
+                <!-- Right Sidebar -->
+                <SidebarRightDesktop :is-open="rightOpen" />
+
+                
 
                 <!-- FEED CONTAINER -->
                 <main ref="mainRef" id="main-content" tabindex="-1" aria-labelledby="feed-title"
@@ -70,8 +75,8 @@ useHead(() => ({
                 </main>
             </div>
 
-            <!-- Right Sidebar -->
-            <SidebarRightDesktop v-if="rightOpen" @close="rightOpen = false" />
+            <!-- Reopen Right Sidebar -->
+             
         </div>
 
         <!-- Mobile / Tablet -->
