@@ -25,8 +25,13 @@
 --warning: #d9954a; /** Luminous Coppered Orange **/
 --danger: #d66b5a; /** Light Red dirt **/
 
-/* Grayscale Feed */
---bg-feed-project: #000a1e;
---bg-feed-update: #0f1429;
---bg-feed-about: #000613;
+/* Card types */
+--card-project-bg: #3a2a14; /** Deep Warm Brown **/
+--card-project-accent: #e89850; /** Lighted Chai orange **/
+
+--card-update-bg: #2e2318; /** Dark Brown Sepia **/
+--card-update-accent: #c4855a; /** Lighted Chai brown **/
+
+--card-about-bg: #352b18; /** Dark Vanilla brown **/
+--card-about-accent: #d9954a; /** Luminous Golden Copper **/
 }

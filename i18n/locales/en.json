@@ -74,7 +74,7 @@
     "client_section": {
       "tag": "They trust me",
       "title": "My clients",
-      "description": ""
+      "be_the_first": "Be the first!"
     },
     "campain_section": {
       "tag": "Portfolio",
@@ -95,6 +95,7 @@
   "filters": {
     "filters": "Filters",
     "tags": "Tags",
+    "kinds": "Kinds",
     "no_tags": "No tags available",
     "sort": {
       "label": "Sort by",

@@ -4,6 +4,7 @@ import type { FeedKind } from '~/app/types/feed';
 const props = defineProps<{
     ariaRoleDescription?: string,
     cardType?: FeedKind;
+    pinned?: boolean;
 }>();
 
 const cardStyles = computed(() => {
@@ -11,19 +12,20 @@ const cardStyles = computed(() => {
 
     switch (props.cardType) {
         case 'project':
-            return `${baseClasses} bg-(--bg-feed-project)`;
+            return `${baseClasses} bg-(--card-project-bg) border-l-4 border-l-(--card-project-accent)`;
         case 'update':
-            return `${baseClasses} bg-(--bg-feed-update)`;
+            return `${baseClasses} bg-(--card-update-bg) border-l-4 border-l-(--card-update-accent)`;
         case 'about':
-            return `${baseClasses} bg-(--bg-feed-about)`;
+            return `${baseClasses} bg-(--card-about-bg) border-l-4 border-l-(--card-about-accent)`;
         default:
-            return `${baseClasses} bg-(--bg-2)`;
+            return `${baseClasses} bg-(--bg-2) border border-(--border-subtle)`;
     }
 });
 </script>
 
 <template>
-    <article :class="cardStyles" class="flex flex-col w-full py-10" :aria-roledescription="ariaRoleDescription">
+    <article :class="[cardStyles, { 'is-pinned': pinned }]" class="flex flex-col w-full py-10"
+        :aria-roledescription="ariaRoleDescription">
         <div class="flex flex-col w-full gap-6">
             <header v-if="$slots.meta" class="flex flex-col mx-6 gap-4">
                 <slot name="meta"></slot>
@@ -53,11 +55,26 @@ article:focus-within {
     outline-offset: 3px;
 }
 
+/* Post épinglé : liseré coloré + halo diffus pour le distinguer visuellement.
+    Le box-shadow est multicouche : 
+        - couche 1 : contour net 2px avec liseré vert
+        - couche 2 : halo diffus color-mix pour l'aura (farming ?)
+        - couche 3-4 : ombres de profondeur habituelles conservées 
+*/
+article.is-pinned {
+    box-shadow:
+        0 0 28px 6px color-mix(in srgb, var(--success) 45%, transparent),
+        0 10px 15px oklch(29.797% 0.0421 59.168 / 0.12),
+        0 4px 6px oklch(29.797% 0.0421 59.168 / 0.08);
+    transition: translateY(-2px);
+}
+
 @keyframes slideUp {
     from {
         opacity: 0;
-        transform: translateY(2Opx);
+        transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

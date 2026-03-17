@@ -45,9 +45,18 @@ html[data-grayscale="true"] {
   --text-2: var(--text-gray-secondary);
   --text-3: var(--text-gray-tertiary);
   --accent: var(--accent-gray);
-  --bg-feed-project: var(--bg-gray-project);
-  --bg-feed-update: var(--bg-gray-update);
-  --bg-feed-about: var(--bg-gray-about);
+
+  /* Cards - les teintes colorées sont remplacées par des gris légèrement distincts 
+    pour conserver une différenciation visuelle sans couleur.
+    Les accents sont des gris foncés pour maintenir le contraste WCAG AA. */
+  --card-project-bg: #f6f6f6;
+  --card-project-accent: #4a4a4a;
+
+  --card-update-bg: #f0f0f0;
+  --card-update-accent: #3a3a3a;
+
+  --card-about-bg: #f9f9f9;
+  --card-about-accent: #555555;
 }
 
 html[data-grayscale="true"] image {

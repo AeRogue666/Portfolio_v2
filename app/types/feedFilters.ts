@@ -9,5 +9,6 @@ export interface FeedSortOption {
 
 export interface FeedFilterState {
   selectedtags: string[];
+  selectedKinds: string[];
   sortBy: FeedSortValue;
 }

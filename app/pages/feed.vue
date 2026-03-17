@@ -6,10 +6,12 @@ const {
     items,
     availableTags,
     selectedTags,
+    selectedKinds,
     sortBy,
     status,
     error,
     toggleTag,
+    toggleKind,
     setSortBy,
     resetFilters,
     loadMore,
@@ -28,7 +30,7 @@ watch(items, (newItems) => {
     }
 });
 
-const hasActiveFilters = computed(() => selectedTags.value.length > 0);
+const hasActiveFilters = computed(() => selectedTags.value.length > 0 || selectedKinds.value.length > 0);
 
 useSeoMeta(({
     title: t('seo.feed.title'),
@@ -38,25 +40,16 @@ useSeoMeta(({
     ogImage: '/images/project/front-ecommerce-headless/desktop.png',
     twitterCard: 'summary_large_image',
 }));
-
-/* definePageMeta({
-    layout: {
-        name: 'index-header',
-        props: {
-            leftOpen: true,
-            rightOpen: false,
-        },
-    },
-}); */
 </script>
 
 <template>
     <UContainer tabindex="-1" aria-labelledby="feed-title">
 
         <!-- Filtres -->
-        <FeedFilters :available-tags="availableTags" :selected-tags="selectedTags" :sort-by="sortBy"
-            :has-active-filters="hasActiveFilters" @toggle-tag="toggleTag" @set-sort="setSortBy"
-            @reset-filters="resetFilters" />
+        <FeedFilters :available-tags="availableTags" :selected-tags="selectedTags" :selected-kinds="selectedKinds"
+            :sort-by="sortBy" :has-active-filters="hasActiveFilters"
+            :active-filters-count="selectedTags.length + selectedKinds.length" @toggle-tag="toggleTag"
+            @toggle-kind="toggleKind" @set-sort="setSortBy" @reset-filters="resetFilters" />
 
         <!-- Feed -->
         <Feed id="feed" :items="items" :loading="status === 'pending'" :error="error?.message ?? null" />

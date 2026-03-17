@@ -4,10 +4,6 @@ import FontScaleSelector from './organisms/FontScaleSelector.vue';
 import SidebarSelectorBase from './molecules/SidebarSelectorBase.vue';
 import IconButton from '../ui/IconButton.vue';
 
-defineProps<{
-    isOpen: boolean,
-}>();
-
 const accessibilityStore = useAccessibilityStore(),
     { t, locale, locales, setLocale } = useI18n(),
     colorMode = useColorMode();
@@ -52,23 +48,26 @@ async function changeLanguage(newLocale: string) {
     switching.value = false
 };
 
+const isOpen = ref<boolean>(false);
+
 /* <SwitchButton id="button-switch-grayscale" label="Grayscale switch" type="button" color="neutral"
             variant="soft" :checked="grayscale" @click="accessibilityStore.toggleGrayscale" />
     <SwitchButton id="button-switch-underlinelinks" label="Underline links switch" type="button" color="neutral"
             variant="soft" :checked="underlineLinks" @click="accessibilityStore.toggleUnderlineLinks" />  */
+/* opacity-50 hover:opacity-100 focus:opacity-100; :icon="isOpen ? 'fa7-solid:chevron-right' : 'fa7-solid:chevron-left'" */
 </script>
 
 <template>
-    <USlideover title="Parameters" description="Set the design the way you want" :ui="{
+    <USlideover v-model:open="isOpen" title="Parameters" description="Set the design the way you want" :ui="{
         content: 'bg-(--bg)',
         description: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)',
         body: 'flex flex-col items-center w-full my-4 gap-4',
         close: 'hover:bg-(--accent-hover) focus-visible:bg-(--bg-3)'
     }">
         <IconButton id="button-sidebarright-open" :variant="'ghost'" :color="'neutral'"
-            :icon="isOpen ? 'fa7-solid:chevron-right' : 'fa7-solid:chevron-left'" :size="'3xl'"
+            icon="fa7-solid:gear" :size="'3xl'"
             :label="isOpen ? $t('sidebar-right.open') : t('sidebar-right.close')"
-            class="text-3xl absolute right-6 top-6 translate-x-full opacity-50 hover:opacity-100 focus:opacity-100 z-50" />
+            class="text-3xl relative right-0 top-0 translate-x-full z-50" />
 
         <template #body>
             <SidebarSelectorBase>

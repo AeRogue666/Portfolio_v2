@@ -38,7 +38,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
 </script>
 
 <template>
-    <PostBase :aria-role-description="badgeLabel" :card-type="cardType">
+    <PostBase :aria-role-description="badgeLabel" :card-type="cardType" :pinned="post.pinned">
         <template #meta>
             <section class="flex justify-between items-center w-full mb-3">
                 <PostBadge :label="badgeLabel" :icon="badgeIcon" :color="post.pinned ? 'success' : 'neutral'"
@@ -49,7 +49,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
                     style="font-size: var(--step--1);">{{ dayjs(post.date).format('DD MMMM YYYY') }}</time>
             </section>
             <ResponsiveImage v-if="post.image" :image="post.image" class="rounded-xl overflow-hidden" />
-            <div v-else class="h-px w-full bg-(--border-subtle) my-2"></div>
+            <div v-else class="w-full h-49.5 bg-(--bg-3) my-2 rounded-xl overflow-hidden"></div>
         </template>
 
         <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)" style="font-size: var(--step-2);">

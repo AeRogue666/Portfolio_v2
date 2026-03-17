@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SidebarLeftMobile from './SidebarLeftMobile.vue';
+import SidebarRightDesktop from './SidebarRightDesktop.vue';
 import SidebarRightMobile from './SidebarRightMobile.vue';
 
 const { t } = useI18n();
@@ -10,9 +11,14 @@ const { t } = useI18n();
         <UContainer
             class="w-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3 h-full">
 
+            <!-- DESKTOP ONLY -->
+            <div class="hidden lg:block">
+                
+            </div>
+
             <!-- MOBILE ONLY -->
             <div class="lg:hidden">
-                <SidebarLeftMobile data-slot="left" />
+                <SidebarLeftMobile />
             </div>
 
             <UContainer data-slot="center" class="hidden lg:flex">
@@ -21,9 +27,14 @@ const { t } = useI18n();
                 </NuxtLink>
             </UContainer>
 
+            <!-- DESKTOP ONLY -->
+            <div class="hidden lg:block">
+                <SidebarRightDesktop />
+            </div>
+
             <!-- MOBILE ONLY -->
             <div class="lg:hidden">
-                <SidebarRightMobile data-slot="right" />
+                <SidebarRightMobile />
             </div>
         </UContainer>
     </header>

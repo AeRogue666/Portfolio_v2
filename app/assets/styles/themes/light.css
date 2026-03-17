@@ -25,8 +25,13 @@
 --warning: #b8762d; /** Copper Orange **/
 --danger: #A33a2b; /** Red dirt **/
 
-/* Grayscale Feed */
---bg-feed-project: #fff5e1;
---bg-feed-update: #f0ead6;
---bg-feed-about: #fff9ec;
+/* Card types */
+--card-project-bg: #fff5e1; /** Peach cream **/
+--card-project-accent: #d47e30; /** Chai orange **/
+
+--card-update-bg: #f0ead6; /** Soft beige **/
+--card-update-accent: #8d5a2b; /** Chai brown **/
+
+--card-about-bg: #fff9ec; /** Vanilla cream **/
+--card-about-accent: #b8762d; /** Golden Copper **/
 }

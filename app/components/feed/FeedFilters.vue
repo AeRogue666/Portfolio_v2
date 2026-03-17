@@ -1,16 +1,20 @@
 <script setup lang="ts">
 import type { SelectItem } from '@nuxt/ui';
+import type { FeedKind } from '~/app/types/feed';
 import type { FeedSortValue } from '~/app/types/feedFilters';
 
 interface Props {
     availableTags: string[];
     selectedTags: string[];
+    selectedKinds: FeedKind[];
     sortBy: FeedSortValue;
     hasActiveFilters: boolean;
+    activeFiltersCount: number;
 }
 
 interface Emits {
     'toggle-tag': [tag: string];
+    'toggle-kind': [kind: FeedKind];
     'set-sort': [sort: FeedSortValue];
     'reset-filters': [];
 }
@@ -39,6 +43,13 @@ const sortOptions = computed<SelectItem[]>(() =>
         { value: 'alpha', label: t('filters.sort.alpha') },
         { value: 'alpha-desc', label: t('filters.sort.alpha_desc') },
     ]);
+
+// Kinds disponibles - "pinned" est intentionnellement absent : c'est un état dérivé (kindFallback), pas un type que l'utilsiateur choisit de filtrer
+const availableKinds: { value: FeedKind; labelKey: string }[] = [
+    { value: 'project', labelKey: 'post.type.project' },
+    { value: 'update', labelKey: 'post.type.update' },
+    { value: 'about', labelKey: 'post.type.about' },
+];
 
 // Grayscale
 const grayscale = computed({
@@ -81,12 +92,12 @@ const handlePanelKeyDown = (event: KeyboardEvent) => {
 const handleTagClick = (tag: string) => {
     emit('toggle-tag', tag);
 };
+const handleKindClick = (kind: FeedKind) => emit('toggle-kind', kind);
 
 const handleResetFilters = () => {
     emit('reset-filters');
     isFiltersOpen.value = false;
 };
-
 const handleCloseFilters = () => {
     isFiltersOpen.value = false;
 };
@@ -94,6 +105,8 @@ const handleCloseFilters = () => {
 const isTagSelected = (tag: string): boolean => {
     return props.selectedTags.includes(tag);
 };
+
+const isKindSelected = (kind: FeedKind): boolean => props.selectedKinds.includes(kind);
 
 onMounted(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -105,9 +118,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <section aria-label="Feed filtes">
+    <section aria-label="Feed filters">
         <!-- Tri + Bouton filtres -->
-        <div class="flex justify-between items-center gap-4 mt-4 mb-4">
+        <div class="flex items-center gap-2 mt-4 mb-4">
             <!-- Tri -->
             <div class="flex items-center gap-2">
                 <label for="sort-select" class="text-sm font-(--text-2)">{{ t('filters.sort.label') }}</label>
@@ -115,23 +128,26 @@ onUnmounted(() => {
                     class="ring-transparent transition-colors" :ui="{
                         base: 'bg-(--bg-2) hover:bg-(--bg-2) focus-visible:bg-(--bg-2) text-(length:--step--1)',
                         content: 'bg-(--bg-2)',
-                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1) ' : 'text-(length:--step--1) ',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1) ' : 'text-(length:--step--1) '
+                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)',
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
                     }" />
             </div>
 
-            <!-- Bouton Filtres (CollapsibleMenu) -->
-            <UButton @click="isFiltersOpen = !isFiltersOpen" :aria-expanded="isFiltersOpen"
-                aria-controls="filters-panel" variant="ghost" color="neutral" size="xl"
-                class="bg-(--bg-2) text-base text-(--text) font-medium hover:bg-(--bg-2) focus-visible:bg-(--bg-2) focus:ring-2 focus:ring-inverted text-(length:--step--1)">
-                <Icon name="fa7-solid:sliders" />
-                {{ t('filters.filters') }}
-                <Icon :name="isFiltersOpen ? 'fa7-solid:chevron-up' : 'fa7-solid:chevron-down'" />
-            </UButton>
+            <div class="flex items-center ml-auto gap-2">
+                <!-- Badge compteur de filtres actifs -->
+                <div v-if="hasActiveFilters" aria-live="polite"
+                    class="text-sm text-(--text-2) whitespace-nowrap text-(length:--step--1)">
+                    {{ t('filters.active_count', { count: selectedTags.length }) }}
+                </div>
 
-            <!-- Badge compteur de filtres actifs -->
-            <div v-if="hasActiveFilters" aria-live="polite" class="text-sm text-(--text-2)">
-                {{ t('filters.active_count', { count: selectedTags.length }) }}
+                <!-- Bouton Filtres (CollapsibleMenu) -->
+                <UButton @click="isFiltersOpen = !isFiltersOpen" :aria-expanded="isFiltersOpen"
+                    aria-controls="filters-panel" variant="ghost" color="neutral" size="xl"
+                    class="bg-(--bg-2) text-base text-(--text) font-medium hover:bg-(--bg-2) focus-visible:bg-(--bg-2) focus:ring-2 focus:ring-inverted text-(length:--step--1)">
+                    <Icon name="fa7-solid:sliders" />
+                    {{ t('filters.filters') }}
+                    <Icon :name="isFiltersOpen ? 'fa7-solid:chevron-up' : 'fa7-solid:chevron-down'" />
+                </UButton>
             </div>
         </div>
 
@@ -152,11 +168,31 @@ onUnmounted(() => {
                     </UButton>
                 </div>
 
+                <!-- Kinds -->
+                <div class="mb-4">
+                    <h3 class="mb-3 text-xl font-semibold text-(--text-2) leading-snug text-scalable">{{
+                        t('filters.kinds') }}</h3>
+                    <div class="flex flex-wrap gap-2" role="group" :aria-label="t('filters.kinds')">
+                        <UButton v-for="kind in availableKinds" :key="kind.value" @click="handleKindClick(kind.value)"
+                            :aria-pressed="isKindSelected(kind.value)" :class="[
+                                'px-3 py-2 text-sm font-medium rounded transition-colors text-(length:--step--1)',
+                                isKindSelected(kind.value)
+                                    ? 'bg-green-500 text-white ring-2 ring-blue-300'
+                                    : 'bg-(--bg-3) text-(--text-2) border border-bg-(--border-subtle)'
+                            ]">
+                            {{ t(kind.labelKey) }}
+                        </UButton>
+                    </div>
+                </div>
+
+                <!-- Séparateur -->
+                <hr class="w-full h-px border-0 bg(--border-subtle) my-4" aria-hidden="true">
+
                 <!-- Tags -->
                 <div class="mb-4">
                     <h3 class="mb-3 text-xl font-semibold text-(--text-2) leading-snug text-scalable">{{
                         t('filters.tags') }}</h3>
-                    <div class="flex flex-wrap gap-2">
+                    <div class="flex flex-wrap gap-2" role="group" :aria-label="t('filters.tags')">
                         <UButton v-for="tag in availableTags" :key="tag" @click="handleTagClick(tag)"
                             :aria-pressed="isTagSelected(tag)" :class="[
                                 'px-3 py-2 text-sm font-medium rounded transition-colors text-(length:--step--1)',

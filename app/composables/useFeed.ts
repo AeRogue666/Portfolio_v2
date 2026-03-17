@@ -1,4 +1,4 @@
-import type { FeedItem, FeedResponse } from "@/types/feed";
+import type { FeedItem, FeedKind, FeedResponse } from "@/types/feed";
 import type { FeedSortValue } from "../types/feedFilters";
 
 interface UseFeedOptions {
@@ -29,6 +29,21 @@ export function useFeed(options?: UseFeedOptions) {
     }
 
     return [];
+  });
+
+  // Kinds sélectionnés depuis l'URL (?kinds=project,update)
+  const VALID_KINDS: FeedKind[] = ["project", "update", "about", "pinned"];
+  const selectedKinds = computed<FeedKind[]>(() => {
+    const kinds = route.query.kinds;
+    const raw =
+      typeof kinds === "string"
+        ? kinds.split(",")
+        : Array.isArray(kinds)
+          ? kinds.filter((k): k is string => typeof k === "string")
+          : [];
+    return raw
+      .map((k) => k.trim())
+      .filter((k): k is FeedKind => VALID_KINDS.includes(k as FeedKind));
   });
 
   const sortBy = computed<FeedSortValue>(() => {
@@ -76,20 +91,41 @@ export function useFeed(options?: UseFeedOptions) {
     return Array.from(tags).sort();
   });
 
-  // Filtrer les items actuels par tags (logique OR)
+  // Les posts épinglés sont extraits en amont, avant tout filtrage ou tri.
+  // Ils doivent toujours apparaître en première position (position 0)
+  // quels que soient les filtres de tags actifs ou l'option de tri sélectionnée.
+  const pinnedItems = computed<FeedItem[]>(() =>
+    serverItems.value.filter((item) => item.pinned),
+  );
+
+  // Filtrer les items NON épinglés par tags (logique OR).
+  // Les épinglés sont délibérément exclus ici : ils ne participent pas au filtrage.
   const filteredByTags = computed<FeedItem[]>(() => {
+    const nonPinned = serverItems.value.filter((item) => !item.pinned);
+
     if (selectedTags.value.length === 0) {
-      return serverItems.value;
+      return nonPinned;
     }
 
-    return serverItems.value.filter((item) =>
+    return nonPinned.filter((item) =>
       item.tags?.some((tag) => selectedTags.value.includes(tag)),
     );
   });
 
-  // Appliquer le tri
+  // Filter par kind (logique OR) - s'applique après le filtre par tags.
+  // Les épinglés sont là aussi exclus: ils ont leur propre pipeline.
+  const filteredByKinds = computed<FeedItem[]>(() => {
+    if (selectedKinds.value.length === 0) {
+      return filteredByTags.value;
+    }
+    return filteredByTags.value.filter((item) =>
+      selectedKinds.value.includes(item.kindFallback ?? item.kind),
+    );
+  });
+
+  // Appliquer le tri aux posts normaux, puis réinjecter les épinglés en tête.
   const sortedAndFiltered = computed<FeedItem[]>(() => {
-    const items = [...filteredByTags.value];
+    const regularItems = filteredByKinds.value;
 
     const compareFn = (a: FeedItem, b: FeedItem) => {
       switch (sortBy.value) {
@@ -106,7 +142,8 @@ export function useFeed(options?: UseFeedOptions) {
       }
     };
 
-    return items.sort(compareFn);
+    // Les épinglés sont réinjectés ici, toujours en tête, dans leur ordre d'origine, suivis des posts normaux triés selon le critère actif.
+    return [...pinnedItems.value, ...regularItems.sort(compareFn)];
   });
 
   // Items finaux à afficher (triés + filtrés)
@@ -144,6 +181,24 @@ export function useFeed(options?: UseFeedOptions) {
     });
   };
 
+  // Mettre à jour les kinds sélectionnés (persiste en URL)
+  const setSelectedKinds = (kinds: FeedKind[]) => {
+    router.push({
+      query: {
+        ...route.query,
+        kinds: kinds.length > 0 ? kinds.join(',') : undefined,
+      }
+    })
+  };
+
+  // Ajouter/retirer un kind
+  const toggleKind = (kind: FeedKind) => {
+    const newKinds = selectedKinds.value.includes(kind)
+    ? selectedKinds.value.filter((k) => k !== kind)
+    : [...selectedKinds.value, kind];
+    setSelectedKinds(newKinds);
+  };
+
   // Réinitialiser tous les filtres
   const resetFilters = () => {
     router.push({
@@ -163,6 +218,7 @@ export function useFeed(options?: UseFeedOptions) {
 
     // Etat de filtrage/tri depuis URL
     selectedTags: computed(() => selectedTags.value),
+    selectedKinds: computed(() => selectedKinds.value),
     sortBy: computed(() => sortBy.value),
 
     // Etat du chargement
@@ -172,6 +228,8 @@ export function useFeed(options?: UseFeedOptions) {
     // Actions
     toggleTag,
     setSelectedTags,
+    toggleKind,
+    setSelectedKinds,
     setSortBy,
     resetFilters,
     loadMore,

@@ -74,7 +74,7 @@
     "client_section": {
       "tag": "Ils me font confiance",
       "title": "Mes clients",
-      "description": ""
+      "be_the_first": "Soyez le premier !"
     },
     "campain_section": {
       "tag": "Portfolio",
@@ -95,6 +95,7 @@
   "filters": {
     "filters": "Filtres",
     "tags": "Tags",
+    "kinds": "Types d'articles",
     "no_tags": "Aucun tag disponible",
     "sort": {
       "label": "Trier par",

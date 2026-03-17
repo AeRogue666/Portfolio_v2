@@ -1,6 +1,12 @@
 import type { ResponsiveImage } from "./media";
 
-export type FeedKind = "project" | "update" | "about" | "pinned"; // One day: Job, Talk, Note, etc.
+export type FeedKind = "project" | "update" | "about" | "pinned"; 
+// Futurs kinds :
+// Note - courte réflexion, pensée du moment, microblog (idéal pour du contenu fréquent et léger)
+// Talk - présentation, conférence, intervention publique
+// Experiment - side project, proof of concept, exploration technique sans objectif de production
+// Reading - livre, article, ressource qui m'a marqué avec mon avis
+// Job - expérience professionnelle, mission, poste occupé
 
 export interface FeedItem {
   id: string;

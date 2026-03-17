@@ -63,16 +63,6 @@ useSeoMeta(({
     ogImage: '/images/project/front-ecommerce-headless/desktop.png',
     twitterCard: 'summary_large_image',
 }));
-
-/* definePageMeta({
-    layout: {
-        name: 'index-header',
-        props: {
-            leftOpen: false,
-            rightOpen: false,
-        },
-    },
-}); */
 </script>
 
 <template>
@@ -104,7 +94,7 @@ useSeoMeta(({
 
         <!-- Clients section -->
         <IndexSection v-if="clientsCarouselItems.length !== 0" id="client-section"
-            :class="'bg-(--card-project-accent) '">
+            :class="'bg-(--card-project-bg) border-l-4 border-l-(--card-project-accent)'">
             <template #tag>
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
                     style="font-size: var(--step-0);">
@@ -119,20 +109,27 @@ useSeoMeta(({
                 </h2>
             </template>
 
-            <UCarousel v-slot="{ item }" class-names loop arrows dots auto-scroll :items="clientsCarouselItems"
-                class="w-full max-w-md my-10" :ui="{
+            <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names loop arrows dots
+                auto-scroll :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
                     item: 'basis-1/3'
                 }">
                 <NuxtImg :src="item.image" :alt="item.alt" sizes="xs:100vw md:80vw lg:64rem"
                     class="rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
                     densities="x1" loading="lazy" :placeholder="true" />
-                <span>{{ item.description }}</span>
+                <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
+                    style="font-size: var(--step-0);">{{
+                    item.description }}</span>
                 <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="` ${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`" -->
             </UCarousel>
+            <div v-else class="flex justify-center items-center w-full my-10">
+                <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
+                    style="font-size: var(--step-0);">{{
+                        t('index.client_section.be_the_first') }}</span>
+            </div>
         </IndexSection>
 
         <!-- Realisations section -->
-        <IndexSection id="campain-section" :class="'bg-(--card-update-accent)'">
+        <IndexSection id="campain-section" :class="'bg-(--card-update-bg) border-l-4 border-l-(--card-update-accent)'">
             <template #tag>
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
                     style="font-size: var(--step-0);">
@@ -186,7 +183,7 @@ useSeoMeta(({
         </IndexSection> -->
 
         <!-- Contact section -->
-        <IndexSection id="contact-section" :class="'bg-(--card-about-accent)'">
+        <IndexSection id="contact-section" :class="'bg-(--card-about-bg) border-l-4 border-l-(--card-about-accent)'">
             <template #title>
                 <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
                     style="font-size: var(--step-2);">
