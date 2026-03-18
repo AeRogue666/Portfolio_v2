@@ -30,7 +30,7 @@ useHead(() => ({
 </script>
 
 <template>
-    <AppHeader :open-left="openLeft" />
+    <AppHeader />
 
     <div class="min-h-screen">
         <!-- Desktop -->
@@ -52,7 +52,7 @@ useHead(() => ({
                 <!-- Reopen Left Sidebar -->
                 <IconButton v-if="!leftOpen" id="button-sidebarleft-open" :variant="'ghost'" :color="'neutral'"
                     :icon="'fa7-solid:chevron-right'" :size="'3xl'" :label="$t('sidebar-left.open')"
-                    class="text-3xl absolute left-6 top-6 -translate-x-full opacity-50 hover:opacity-100 focus:opacity-100 z-50"
+                    class="text-3xl text-(length:--step-2) absolute left-6 top-6 -translate-x-full opacity-50 hover:opacity-100 focus:opacity-100 z-50"
                     @click="openLeft" />
 
                 <!-- FEED CONTAINER -->

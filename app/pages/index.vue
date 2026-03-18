@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
 import CarouselWrapper from '../components/index/organisms/CarouselWrapper.vue';
-import ExpertiseContainer from '../components/index/ExpertiseContainer.vue';
 import IndexSection from '../components/index/IndexSection.vue';
+import type { FeedResponse } from '../types/feed';
 
-const { t } = useI18n(),
+const { t, locale } = useI18n(),
     colorMode = useColorMode(),
     avatarSrc = ref('https://avatars.githubusercontent.com/u/38510448?v=4');
 
@@ -16,7 +16,31 @@ const clientsCarouselItems = ref<{
     description: string;
 }[]>([]);
 
-const realisationsCarouselItems = ref<{
+const { data: postsData } = await useAsyncData(
+    () => `index-projects-${locale.value}`,
+    () => $fetch<FeedResponse>('/api/posts', {
+        query: { locale: locale.value }
+    }),
+    { watch: [locale] }
+);
+
+const realisationsCarouselItems = computed(() => {
+    if(!postsData.value?.items) return [];
+
+    return postsData.value.items.filter(item => 
+        (item.kind === 'project' || item.kindFallback === 'project') && item.image
+    )
+    .map(item => ({
+        image: item.image!.sources.detail?.mobile
+            || item.image!.sources.feed?.mobile
+            || '',
+        alt: item.image!.alt,
+        description: item.feed_title ?? item.title,
+        link: `/projects/${item.slug}`,
+    }));
+});
+
+/* const realisationsCarouselItems = ref<{
     image: string;
     alt: string;
     description: string;
@@ -40,7 +64,7 @@ const realisationsCarouselItems = ref<{
         description: 'Exploration of Prisma possibilities',
         link: '/updates/exploration-prisma'
     }
-]);
+]); */
 
 onMounted(() => {
     watch(
@@ -70,23 +94,23 @@ useSeoMeta(({
         <!-- Landing section -->
         <IndexSection id="landing-section" :class="'bg-(--bg-3)'">
             <template #tag>
-                <span class="text-xl font-semibold lg:text-2xl lg:text-center text-(--text) mb-6"
-                    style="font-size: var(--step-3);">
+                <span class="text-xl font-semibold lg:text-center text-(--text) mb-6"
+                    style="font-size: clamp(1rem, var(--step-3), 2rem);">
                     {{ t('index.user_title') }}
                 </span>
             </template>
 
             <template #title>
                 <h1 id="index-title"
-                    class="text-4xl font-bold tracking-tight lg:font-extrabold md:text-5xl lg:text-6xl lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 text-(--text)"
-                    style="font-size: var(--step-5);">
+                    class="text-4xl font-bold tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 text-(--text)"
+                    style="font-size: clamp(1.5rem, var(--step-5), 4rem);">
                     {{ t('index.landing_section.title') }}
                 </h1>
             </template>
 
             <template #description>
-                <p class="text-lg font-normal text-body lg:text-xl lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
-                    style="font-size: var(--step-1);">
+                <p class="text-lg font-normal text-body lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: clamp(1.25rem, var(--step-4), 3rem);">
                     {{ t('index.landing_section.description') }}
                 </p>
             </template>
@@ -117,9 +141,9 @@ useSeoMeta(({
                     class="rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
                     densities="x1" loading="lazy" :placeholder="true" />
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
-                    style="font-size: var(--step-0);">{{
-                    item.description }}</span>
-                <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="` ${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`" -->
+                    style="font-size: var(--step-0);">
+                    {{ item.description }}
+                </span> <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="` ${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`" -->
             </UCarousel>
             <div v-else class="flex justify-center items-center w-full my-10">
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
@@ -129,7 +153,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Realisations section -->
-        <IndexSection id="campain-section" :class="'bg-(--card-update-bg) border-l-4 border-l-(--card-update-accent)'">
+        <IndexSection id="campain-section" :class="'bg-(--card-update-bg)'">
             <template #tag>
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
                     style="font-size: var(--step-0);">
@@ -183,7 +207,7 @@ useSeoMeta(({
         </IndexSection> -->
 
         <!-- Contact section -->
-        <IndexSection id="contact-section" :class="'bg-(--card-about-bg) border-l-4 border-l-(--card-about-accent)'">
+        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'">
             <template #title>
                 <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
                     style="font-size: var(--step-2);">

@@ -28,6 +28,16 @@ html[data-contrast="high"] {
   --accent: var(--a11y-high-focus);
 }
 
+/* En contraste élevé, la sidebar peut contenir plus de contenu qu'en mode normal
+(textes plus grands, espacements plus importants). On active le scroll pour garantir
+l'accessibilité du contenu hors viewport, sur desktop et mobile. */
+html[data-crontrast="high"] #sidebar-left,
+html[data-contrast="high"] #sidebar-right {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--a11y-high-text) var(--a11y-high-bg);
+}
+
 html[data-contrast="low"] {
   --bg: var(--a11y-low-bg);
   --bg-2: color-mix(in srgb, var(--bg) 92%, black);
@@ -47,8 +57,7 @@ html[data-grayscale="true"] {
   --accent: var(--accent-gray);
 
   /* Cards - les teintes colorées sont remplacées par des gris légèrement distincts 
-    pour conserver une différenciation visuelle sans couleur.
-    Les accents sont des gris foncés pour maintenir le contraste WCAG AA. */
+    pour conserver la différenciation visuelle sans couleur (WCAG 1.4.1). */
   --card-project-bg: #f6f6f6;
   --card-project-accent: #4a4a4a;
 

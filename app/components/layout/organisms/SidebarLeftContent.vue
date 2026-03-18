@@ -64,7 +64,7 @@ onMounted(() => {
 
 <template>
     <aside id="sidebar-left"
-        class="block w-full lg:w-auto min-w-60 h-auto bg-(--bg) basis-0.5 relative">
+        class="block w-full lg:w-auto min-w-60 h-full bg-(--bg) basis-0.5 relative overflow-y-auto">
 
         <UContainer class="flex flex-col items-center w-full h-full mt-4 gap-4">
             <div class="flex flex-col justify-center items-center">
@@ -75,8 +75,8 @@ onMounted(() => {
                         alt: t('sidebar-left.user_alternative_text')
                     }" :ui="{
                         root: 'items-center',
-                        name: 'text-2xl text-(--text-1) font-semibold tracking-tight leading-snug',
-                        description: 'text-base leading-relaxed text-(--text-2)',
+                        name: 'text-(length:--step-2) text-2xl text-(--text-1) font-semibold tracking-tight leading-snug',
+                        description: 'text-(length:--step-0) leading-relaxed text-(--text-2)',
                         avatar: 'size-40 bg-(--bg-2)'
                     }" />
                 <span class="text-sm text-(--text-muted) leading-relaxed max-w-[65ch]"
@@ -85,7 +85,7 @@ onMounted(() => {
                 </span>
             </div>
 
-            <span class="text-base text-(--text-2) leading-relaxed" style="font-size: var(--step--1);">
+            <span class="text-(--text-2) leading-relaxed" style="font-size: var(--step--1);">
                 {{ t('sidebar-left.contact_me') }}
             </span>
 
@@ -112,7 +112,7 @@ onMounted(() => {
                 linkLeadingIcon: 'text-(--text-muted)',
                 linkLabel: 'text-base leading-relaxed truncate max-w-[65ch]',
             }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full"
-                style="font-size: var(--step--1);" />
+                style="font-size: var(--step-0);" />
 
             <UFooter :ui="{
                 container: 'flex-col p-0 lg:p-0',
@@ -128,7 +128,9 @@ onMounted(() => {
                     style="font-size: var(--step--1);" />
 
                 <template #right>
-                    <p class="text-sm text-(--text-3)">Copyright Aureldev © {{ new Date().getUTCFullYear() }}</p>
+                    <p class="text-sm text-(--text-3)" style="font-size: var(--step--1);">
+                        Copyright Aureldev © {{ new Date().getUTCFullYear() }}
+                    </p>
                 </template>
             </UFooter>
         </UContainer>

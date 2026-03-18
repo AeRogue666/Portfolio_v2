@@ -75,8 +75,8 @@
   --step-1: calc(1.2rem * var(--text-scale)); /* Sous-titres */
   --step-2: calc(1.44rem * var(--text-scale)); /* Titres de sections */
   --step-3: calc(1.728rem * var(--text-scale)); /* Titres principaux */
-  --step-4: calc(1.728rem * var(--text-scale)); /* Sous-titre - Landing page */
-  --step-5: calc(3rem * var(--text-scale)); /* Titre principal - Landing page */
+  --step-4: calc(2.25rem * var(--text-scale)); /* Grand titre - ex hero subtitle */
+  --step-5: calc(3rem * var(--text-scale)); /* Titre hero - plafonné par clamp() côté usage */
 
   /* Spacing scale */
   --space-xs: 0.5rem;

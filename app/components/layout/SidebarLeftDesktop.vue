@@ -69,7 +69,7 @@ onMounted(async () => {
         :aria-label="t('sidebar-left.label')">
         <!-- Close button -->
         <IconButton id="button-sidebarleft-close" :variant="'ghost'" :color="'neutral'" :icon="'fa7-solid:chevron-left'"
-            :size="'3xl'" :label="t('sidebar-left.close')" :class="'text-3xl absolute right-6 top-6 z-50'"
+            :size="'3xl'" :label="t('sidebar-left.close')" :class="'text-3xl text-(length:--step-2) absolute right-6 top-6 z-50'"
             @click="$emit('close')" />
         <!-- Content -->
         <SidebarLeftContent />

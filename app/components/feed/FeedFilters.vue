@@ -123,7 +123,8 @@ onUnmounted(() => {
         <div class="flex items-center gap-2 mt-4 mb-4">
             <!-- Tri -->
             <div class="flex items-center gap-2">
-                <label for="sort-select" class="text-sm font-(--text-2)">{{ t('filters.sort.label') }}</label>
+                <label for="sort-select" class="text-sm font-(--text-2)" style="font-size: var(--step--1);">{{
+                    t('filters.sort.label') }}</label>
                 <USelect id="sort-select" v-model="sortValue" :items="sortOptions" color="neutral" size="xl"
                     class="ring-transparent transition-colors" :ui="{
                         base: 'bg-(--bg-2) hover:bg-(--bg-2) focus-visible:bg-(--bg-2) text-(length:--step--1)',
@@ -159,8 +160,9 @@ onUnmounted(() => {
 
                 <!-- Header du panel avec bouton fermeture -->
                 <div class="flex justify-between items-center mb-4 pb-3 border-b border-(--border-subtle)">
-                    <h2 class="text-2xl font-semibold text-(--text-1) leading-snug text-scalable">{{
-                        t('filters.filter_options') }}</h2>
+                    <h2 class="text-2xl font-semibold text-(--text-1) leading-snug text-scalable">
+                        {{ t('filters.filter_options') }}
+                    </h2>
                     <UButton @click="handleCloseFilters" :aria-label="t('filters.close_filters')" variant="outline"
                         color="neutral"
                         class="close-button p-1 hover:bg-(--bg-3) rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
@@ -170,8 +172,9 @@ onUnmounted(() => {
 
                 <!-- Kinds -->
                 <div class="mb-4">
-                    <h3 class="mb-3 text-xl font-semibold text-(--text-2) leading-snug text-scalable">{{
-                        t('filters.kinds') }}</h3>
+                    <h3 class="mb-3 text-xl font-semibold text-(--text-2) leading-snug text-scalable">
+                        {{ t('filters.kinds') }}
+                    </h3>
                     <div class="flex flex-wrap gap-2" role="group" :aria-label="t('filters.kinds')">
                         <UButton v-for="kind in availableKinds" :key="kind.value" @click="handleKindClick(kind.value)"
                             :aria-pressed="isKindSelected(kind.value)" :class="[
@@ -190,8 +193,9 @@ onUnmounted(() => {
 
                 <!-- Tags -->
                 <div class="mb-4">
-                    <h3 class="mb-3 text-xl font-semibold text-(--text-2) leading-snug text-scalable">{{
-                        t('filters.tags') }}</h3>
+                    <h3 class="mb-3 text-xl font-semibold text-(--text-2) leading-snug text-scalable">
+                        {{ t('filters.tags') }}
+                    </h3>
                     <div class="flex flex-wrap gap-2" role="group" :aria-label="t('filters.tags')">
                         <UButton v-for="tag in availableTags" :key="tag" @click="handleTagClick(tag)"
                             :aria-pressed="isTagSelected(tag)" :class="[
@@ -203,8 +207,9 @@ onUnmounted(() => {
                             {{ tag }}
                         </UButton>
                     </div>
-                    <p v-if="availableTags.length === 0" class="mt-2 text-sm text-(--text-3) italic">{{
-                        t('filters.no_tags') }}</p>
+                    <p v-if="availableTags.length === 0" class="mt-2 text-sm text-(--text-3) italic">
+                        {{ t('filters.no_tags') }}
+                    </p>
                 </div>
 
                 <!-- Bouton Reset -->
