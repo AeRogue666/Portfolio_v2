@@ -54,13 +54,21 @@ export default defineNuxtConfig({
     upstashRedisToken: "",
   },
   routeRules: {
-    "/**": {
+    "/": {
       headers: {
         "X-Frame-Options": "DENY",
         "X-Content-Type-Options": "nosniff",
         "Referrer-Policy": "strict-origin-when-cross-origin",
       },
       appLayout: "index-header",
+    },
+    "/**": {
+      headers: {
+        "X-Frame-Options": "DENY",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+      },
+      appLayout: "default",
     },
   },
   build: {

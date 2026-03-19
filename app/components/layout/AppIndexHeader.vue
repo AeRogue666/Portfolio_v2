@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import SearchBarDrawer from './organisms/SearchBarDrawer.vue';
 import SidebarLeftMobile from './SidebarLeftMobile.vue';
 import SidebarRight from './SidebarRight.vue';
 
@@ -24,13 +23,11 @@ const { t } = useI18n();
             <UContainer data-slot="center" class="hidden lg:flex">
                 <NuxtLink to="/" aria-describedby="header-title">
                     <span id="header-title" class="text-2xl font-bold lg:text-center text-(--text) mb-3"
-                        style="font-size: clamp(1rem, var(--step-3), 2rem);">
+                        style="font-size: clamp(1.5rem, var(--step-5), 4rem);">
                         {{ t('header.span_title') }}
                     </span>
                 </NuxtLink>
             </UContainer>
-
-            <!-- <SearchBarDrawer /> -->
 
             <!-- DESKTOP AND MOBILE -->
             <SidebarRight />

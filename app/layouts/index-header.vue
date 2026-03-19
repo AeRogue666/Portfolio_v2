@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SidebarLeftDesktop from "@/components/layout/SidebarLeftDesktop.vue";
-import AppHeader from "@/components/layout/AppHeader.vue";
+import AppIndexHeader from "../components/layout/AppIndexHeader.vue";
 import IconButton from "@/components/ui/IconButton.vue";
 
 const { t, locale } = useI18n();
@@ -30,7 +30,7 @@ useHead(() => ({
 </script>
 
 <template>
-    <AppHeader />
+    <AppIndexHeader />
 
     <div class="min-h-screen">
         <!-- Desktop -->
@@ -66,7 +66,7 @@ useHead(() => ({
         </div>
 
         <!-- Mobile / Tablet -->
-        <main class="lg:hidden" id="main-content" tabindex="-1" aria-labelledby="feed-title">
+        <main class="lg:hidden" id="main-content" tabindex="-1" aria-labelledby="feed-title"> <!-- class="min-h-[calc(100vh-calc(.25rem*16))]" -->
             <NuxtPage />
         </main>
     </div>

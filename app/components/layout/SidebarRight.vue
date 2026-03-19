@@ -20,7 +20,7 @@ const isOpen = ref<boolean>(false);
     }">
         <IconButton id="button-sidebarright-open" :variant="'ghost'" :color="'neutral'" icon="fa7-solid:gear"
             :size="'3xl'" :label="isOpen ? $t('sidebar-right.open') : t('sidebar-right.close')"
-            class="text-3xl text-(length:--step-2) relative right-0 top-0 translate-x-full z-50" />
+            class="text-3xl text-(length:--step-2) relative right-9 top-0 translate-x-full z-50" />
 
         <template #body>
             <SidebarRightContent />

@@ -147,33 +147,33 @@ const breadcrumbItems: BreadcrumbItem[] = [
                     <span class="mx-2 text-(--text-muted)">/</span>
                 </template>
             </UBreadcrumb>
-            <h1 id="article-title" class="text-2xl font-bold">{{ reportData.title }}</h1>
-            <p class="text-base text-(--text-2)">{{ reportData.description }}</p>
+            <h1 id="article-title" class="text-2xl font-bold" style="font-size: var(--step-3);">{{ reportData.title }}</h1>
+            <p class="text-base text-(--text-2)" style="font-size: var(--step-1);">{{ reportData.description }}</p>
         </template>
 
         <!-- Résumé Exécutif -->
         <section class="mb-12" aria-labelledby="summary-heading">
-            <h2 id="summary-heading" clas="text-xl font-bold mb-4">{{ reportData.summaryTitle }}</h2>
+            <h2 id="summary-heading" clas="text-xl font-bold mb-4" style="font-size: var(--step-2);">{{ reportData.summaryTitle }}</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 mb-8 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 mb-8 gap-4" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                 <div class="p-4 bg-(--bg-2) rounded-lg border border-(--border-subtle)">
-                    <p class="text-sm text-(--text-2)">{{ reportData.conformanceLabel }}</p>
+                    <p class="text-sm text-(--text-2)" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ reportData.conformanceLabel }}</p>
                     <p class="text-3xl font-bold text-green-500">{{ stats.conformePercent }}</p>
                 </div>
                 <div class="p-4 bg-(--bg-2) rounded-lg border border-(--border-subtle)">
-                    <p class="text-sm text-(--text-2)">{{ reportData.conformableCriteriaLabel }}</p>
+                    <p class="text-sm text-(--text-2)" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ reportData.conformableCriteriaLabel }}</p>
                     <p class="text-3xl font-bold">{{ stats.conformes }}/{{ stats.total }}</p>
                 </div>
                 <div class="p-4 bg-(--bg-2) rounded-lg border border-(--border-subtle)">
-                    <p class="text-sm text-(--text-2)">{{ reportData.nonConformitiesLabel }}</p>
+                    <p class="text-sm text-(--text-2)" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ reportData.nonConformitiesLabel }}</p>
                     <p class="text-3xl font-bold text-orange-500">{{ stats.nonConformes }}</p>
                 </div>
                 <div class="p-4 bg-(--bg-2) rounded-lg border border-(--border-subtle)">
-                    <p class="text-sm text-(--text-2)">{{ reportData.nonApplicablesLabel }}</p>
+                    <p class="text-sm text-(--text-2)" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ reportData.nonApplicablesLabel }}</p>
                     <p class="text-3xl font-bold text-gray-500">{{ stats.nonApplicables }}</p>
                 </div>
                 <div class="p-4 bg-(--bg-2) rounded-lg border border-(--border-subtle)">
-                    <p class="text-sm text-(--text-2)">{{ reportData.statusLabel }}</p>
+                    <p class="text-sm text-(--text-2)" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ reportData.statusLabel }}</p>
                     <p class="text-3xl font-bold text-blue-500">
                         {{ reportData.conformityTotal.label }} {{ stats.conformePercent == 100
                             ? reportData.conformityTotal.total
@@ -183,9 +183,9 @@ const breadcrumbItems: BreadcrumbItem[] = [
             </div>
 
             <div class="mb-6 p-4 bg-(--bg-2) rounded-lg border-l-4 border-blue-500">
-                <h3 class="font-semibold mb-2">{{ reportData.testEnvironmentTitle }}</h3>
+                <h3 class="font-semibold mb-2" style="font-size: var(--step-1);">{{ reportData.testEnvironmentTitle }}</h3>
                 <ul class="text-sm text-(--text-2) space-y-1">
-                    <li v-for="test in testEnvironmentMap" :key="test.value">
+                    <li v-for="test in testEnvironmentMap" :key="test.value" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                         <UIcon :name="`fa7-solid:${test.icon}`" size="xl" /> {{ test.value }}
                     </li>
                 </ul>
@@ -194,12 +194,12 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
         <!-- Scores par page -->
         <section class="mb-12" aria-labelledby="scores-heading">
-            <h2 id="scores-heading" class="text-xl font-bold mb-4">{{ reportData.scoresTitle }}</h2>
+            <h2 id="scores-heading" class="text-xl font-bold mb-4" style="font-size: var(--step-2);">{{ reportData.scoresTitle }}</h2>
 
             <div class="overflow-x-auto">
                 <table class="w-full text-sm">
                     <thead>
-                        <tr class="border-b border-(--border-subtle) bg-(--bg-2)">
+                        <tr class="border-b border-(--border-subtle) bg-(--bg-2)" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                             <th class="text-left px-4 py-3 font-semibold">
                                 {{ reportData.pageLabelCol }}
                             </th>
@@ -216,7 +216,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
                     </thead>
                     <tbody>
                         <tr v-for="score in reportData.pageScores" :key="score.page"
-                            class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors">
+                            class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                             <td class="px-4 py-3">{{ score.page }}</td>
                             <td class="text-center px-4 py-3 font-medium">{{ score.lighthouse }}/100</td>
                             <td class="text-center px-4 py-3 font-medium">{{ score.wave }}/10</td>
@@ -234,22 +234,22 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
         <!-- Tableau RGAA avec filtres -->
         <section class="mb-12" aria-labelledby="rgaa-heading">
-            <h2 id="rgaa-heading" class="text-xl font-bold mb-4">{{ reportData.rgaaTitle }}</h2>
+            <h2 id="rgaa-heading" class="text-xl font-bold mb-4" style="font-size: var(--step-2);">{{ reportData.rgaaTitle }}</h2>
 
             <!-- Filtres -->
-            <div class="grid grid-cols-1 md:grid-cols-3 mb-6 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 mb-6 gap-4 overflow-x-auto">
                 <div class="flex flex-col items-baseline">
-                    <label id="rgaa-label" for="rgaa-search" class="text-sm mb-2">
+                    <label id="rgaa-label" for="rgaa-search" class="text-sm mb-2" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                         {{ reportData.rgaaTitle.split(' ')[0] }}
                     </label>
                     <UInput v-model="searchQuery" id="rgaa-search"
                         icon="fa7-solid:magnifying-glass" autocomplete="off" :ui="{
                             base: 'min-w-[16rem] md:min-w-[14rem] bg-(--bg-2) text-(--text)'
-                        }" />
+                        }" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);" />
                 </div>
 
                 <div class="flex flex-col items-baseline">
-                    <label id="thematic-label" for="thematic-select" class="text-sm mb-2">
+                    <label id="thematic-label" for="thematic-select" class="text-sm mb-2" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                         {{ reportData.thematicFilterLabel }}
                     </label>
                     <USelect v-model="selectedThematic" :items="thematicOptions" id="thematic-select"
@@ -259,11 +259,11 @@ const breadcrumbItems: BreadcrumbItem[] = [
                             content: 'bg-(--bg-2) min-w-[12rem]',
                             value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                             item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        }" />
+                        }" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);" />
                 </div>
 
                 <div class="flex flex-col items-baseline">
-                    <label id="status-label" for="status-select" class="text-sm mb-2">
+                    <label id="status-label" for="status-select" class="text-sm mb-2" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                         {{ reportData.statusFilterLabel }}
                     </label>
                     <USelect v-model="selectedStatus" :items="statusOptions" id="status-select" :aria-label="reportData.statusFilterLabel"
@@ -273,7 +273,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
                             content: 'bg-(--bg-2) min-w-[12rem]',
                             value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                             item: grayscale && colorMode.value == 'dark' ? 'text-inverted' : ''
-                        }" />
+                        }" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);" />
                 </div>
             </div>
 
@@ -281,7 +281,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
             <div class="overflow-x-auto">
                 <table class="w-full text-sm">
                     <thead>
-                        <tr class="border-b border-(--border-subtle) bg-(--bg-2)">
+                        <tr class="border-b border-(--border-subtle) bg-(--bg-2)" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                             <th class="text-left px-4 py-3 font-semibold">
                                 {{ reportData.idCol }}
                             </th>
@@ -301,8 +301,8 @@ const breadcrumbItems: BreadcrumbItem[] = [
                     </thead>
                     <tbody>
                         <tr v-for="criteria in filteredCriteria" :key="criteria.id"
-                            class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors">
-                            <td class="px-4 py-3 font-mono text-xs font-semibold text-blue-500">{{ criteria.id }}</td>
+                            class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
+                            <td class="px-4 py-3 font-mono text-xs font-semibold text-blue-500" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ criteria.id }}</td>
                             <td class="text-center px-4 py-3 font-medium">
                                 <span class="inline-block px-2 py-1 rounded"
                                     :class="`bg-${getThematicColor(criteria.thematic)}-500/20`">
@@ -319,7 +319,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
                                     {{ criteria.status }}
                                 </span>
                             </td>
-                            <td class="px-4 py-3 text-xs text-(--text-2)">
+                            <td class="px-4 py-3 text-xs text-(--text-2)" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                                 {{ criteria.pages.join(', ') }}
                             </td>
                         </tr>
@@ -330,13 +330,13 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
         <!-- Cas d'usage complexes -->
         <section class="mb-12" aria-labelledby="usecases-heading">
-            <h2 id="usecases-heading" class="text-xl font-bold mb-4">
+            <h2 id="usecases-heading" class="text-xl font-bold mb-4" style="font-size: var(--step-2);">
                 {{ reportData.useCasesTitle }}
             </h2>
             <div class="space-y-6">
                 <div v-for="usecase in reportData.useCases" :key="usecase.title"
-                    class="p-4 bg-(--bg-2) rounded-lg border border-(--border-subtle)">
-                    <h3 class="font-bold mb-2">{{ usecase.title }}</h3>
+                    class="p-4 bg-(--bg-2) rounded-lg border border-(--border-subtle)" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
+                    <h3 class="font-bold mb-2" style="font-size: var(--step-1);">{{ usecase.title }}</h3>
                     <p class="text-sm text-(--text-2) mb-3">
                         {{ usecase.description }}
                     </p>
@@ -350,14 +350,14 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
         <!-- Journal des corrections -->
         <section class="mb-12" aria-labelledby="corrections-heading">
-            <h2 id="corrections-heading" class="text-xl font-bold mb-4">
+            <h2 id="corrections-heading" class="text-xl font-bold mb-4" style="font-size: var(--step-2);">
                 {{ reportData.correctionsTitle }}
             </h2>
             <div class="space-y-4">
                 <div v-for="correction in reportData.corrections" :key="correction.issue"
-                    class="p-4 bg-(--bg-2) rounded-lg border-1-4 border-orange-500">
+                    class="p-4 bg-(--bg-2) rounded-lg border-1-4 border-orange-500" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                     <div class="flex justify-between items-start mb-2">
-                        <h3 class="font-bold">{{ correction.issue }}</h3>
+                        <h3 class="font-bold" style="font-size: var(--step-1);">{{ correction.issue }}</h3>
                         <span class="inline-block px-2 py-1 rounded text-xs font-semibold" :class="correction.status === 'Corrigé' || correction.status === 'Fixed'
                             ? 'bg-green-500/20'
                             : 'bg-blue-500/20'
@@ -375,15 +375,15 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
         <!-- Environnement de test -->
         <section class="mb-12" aria-labelledby="environment-heading">
-            <h2 id="environment-heading" class="text-xl font-bold mb-4">
+            <h2 id="environment-heading" class="text-xl font-bold mb-4" style="font-size: var(--step-2);">
                 {{ reportData.environmentTitle }}
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div v-for="env in reportData.testEnvironment" :key="env.category"
                     class="p-4 bg-(--bg-2) rounded-lg border border-(--border-subtle)">
-                    <h3 class="font-bold mb-3">{{ env.category }}</h3>
+                    <h3 class="font-bold mb-3" style="font-size: var(--step-1);">{{ env.category }}</h3>
                     <ul class="text-sm text-(--text-2) space-y-2">
-                        <li v-for="detail in env.details" :key="detail" class="flex items-start gap-2">
+                        <li v-for="detail in env.details" :key="detail" class="flex items-start gap-2" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
                             <UIcon name="fa7-solid:check" class="mt-0.5 text-green-500 font-bold" />
                             <span>{{ detail }}</span>
                         </li>
@@ -394,13 +394,13 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
         <!-- Glossaire -->
         <section class="mb-12" aria-labelledby="glossary-heading">
-            <h2 id="glossary-heading" class="text-xl font-bold mb-4">
+            <h2 id="glossary-heading" class="text-xl font-bold mb-4" style="font-size: var(--step-2);">
                 {{ reportData.glossaryTitle }}
             </h2>
             <div class="space-y-4">
                 <div v-for="item in reportData.glossary" :key="item.term"
-                    class="p-4 bg-(--bg-2) rounded-1g border border-(--border-subtle)">
-                    <h3 class="font-bold text-blue-500 mb-2">
+                    class="p-4 bg-(--bg-2) rounded-1g border border-(--border-subtle)" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
+                    <h3 class="font-bold text-blue-500 mb-2" style="font-size: var(--step-1);">
                         {{ item.term }}
                     </h3>
                     <p class="text-sm text-(--text-2)">{{ item.definition }}</p>
@@ -410,8 +410,8 @@ const breadcrumbItems: BreadcrumbItem[] = [
 
         <!-- Conclusion -->
         <section class="mb-12 p-6 bg-(--bg-secondary) rounded-lg border-1-4 border-green-500"
-            aria-labelledby="conclusion-heading">
-            <h2 id="conclusion-heading" class="text-xl font-bold mb-4">
+            aria-labelledby="conclusion-heading" style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">
+            <h2 id="conclusion-heading" class="text-xl font-bold mb-4" style="font-size: var(--step-2);">
                 {{ reportData.conclusionTitle }}
             </h2>
             <p class="text-sm text-(--text-1) mb-4 leading-relaxed">
@@ -432,8 +432,8 @@ const breadcrumbItems: BreadcrumbItem[] = [
     <!-- loading state -->
     <ArticleLayout v-else>
         <template #header>
-            <h1 class="text-2xl font-bold">{{ t('loading.loading_feed') }}</h1>
+            <h1 class="text-2xl font-bold" style="font-size: var(--step-3);">{{ t('loading.loading_feed') }}</h1>
         </template>
-        <p>{{ t('loading.loading_feed') }}...</p>
+        <p style="font-size: clamp(0.75rem, var(--step-0), 1.5rem);">{{ t('loading.loading_feed') }}...</p>
     </ArticleLayout>
 </template>
