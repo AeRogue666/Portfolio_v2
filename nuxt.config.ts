@@ -62,6 +62,14 @@ export default defineNuxtConfig({
       },
       appLayout: "index-header",
     },
+    "/feed": {
+      headers: {
+        "X-Frame-Options": "DENY",
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+      },
+      appLayout: "feed-header",
+    },
     "/**": {
       headers: {
         "X-Frame-Options": "DENY",

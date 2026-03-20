@@ -58,8 +58,8 @@ useHead(() => ({
                 <!-- FEED CONTAINER -->
                 <main ref="mainRef" id="main-content" tabindex="-1" aria-labelledby="feed-title"
                     class="w-full max-w-auto mx-auto" style="font-size: var(--step--1);">
-                    <h1 id="feed-title" class="text-2xl font-semibold tracking-tight leading-snug sr-only"
-                        style="font-size: var(--step-3);">{{ t('feed.title') }}</h1>
+                    <!-- <h1 id="feed-title" class="text-2xl font-semibold tracking-tight leading-snug sr-only"
+                        style="font-size: var(--step-3);">{{ t('feed.title') }}</h1> -->
                     <NuxtPage />
                 </main>
             </div>

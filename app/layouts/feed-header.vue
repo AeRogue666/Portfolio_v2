@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SidebarLeftDesktop from "@/components/layout/SidebarLeftDesktop.vue";
-import AppIndexHeader from "../components/layout/AppIndexHeader.vue";
+import AppHeader from "@/components/layout/AppHeader.vue";
 import IconButton from "@/components/ui/IconButton.vue";
 
 const { t, locale } = useI18n();
@@ -30,7 +30,7 @@ useHead(() => ({
 </script>
 
 <template>
-    <AppIndexHeader />
+    <AppHeader />
 
     <div class="min-h-screen">
         <!-- Desktop -->
@@ -41,7 +41,7 @@ useHead(() => ({
                 'grid-cols-1': !leftOpen
                 // 'grid-cols-[minmax(16rem,20rem)_minmax(0,1fr)_18rem]': leftOpen && rightOpen,
                 // 'grid-cols-[minmax(0,1fr)_18rem]': !leftOpen && rightOpen,
-
+                
             }">
 
             <!-- Left Sidebar -->
@@ -58,14 +58,15 @@ useHead(() => ({
                 <!-- FEED CONTAINER -->
                 <main ref="mainRef" id="main-content" tabindex="-1" aria-labelledby="feed-title"
                     class="w-full max-w-auto mx-auto" style="font-size: var(--step--1);">
+                    <h1 id="feed-title" class="text-2xl font-semibold tracking-tight leading-snug sr-only"
+                        style="font-size: var(--step-3);">{{ t('feed.title') }}</h1>
                     <NuxtPage />
                 </main>
             </div>
         </div>
 
         <!-- Mobile / Tablet -->
-        <main class="lg:hidden" id="main-content" tabindex="-1" aria-labelledby="feed-title">
-            <!-- class="min-h-[calc(100vh-calc(.25rem*16))]" -->
+        <main class="lg:hidden" id="main-content" tabindex="-1" aria-labelledby="feed-title"> <!-- class="min-h-[calc(100vh-calc(.25rem*16))]" -->
             <NuxtPage />
         </main>
     </div>

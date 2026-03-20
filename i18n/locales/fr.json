@@ -69,7 +69,10 @@
     "user_title": "Aureldev",
     "landing_section": {
       "title": "Développeur Full-stack orienté Accessibilité",
-      "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur"
+      "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur",
+      "title_accent": "Développeur Full-stack",
+      "title_rest": "orienté Accessibilité",
+      "cta": "Découvrez le fil d'actualité"
     },
     "client_section": {
       "tag": "Ils me font confiance",
@@ -91,6 +94,15 @@
       "title": "Prêt à en discuter ?",
       "description": "N'attendez plus et contactez-moi dès maintenant ci-dessous !"
     }
+  },
+  "search": {
+    "title": "Barre de recherche",
+    "description": "Vous pouvez chercher un post ou une page ici",
+    "button_label": "Rechercher",
+    "recent_label": "Recherches récentes",
+    "results_label": "Résultats",
+    "aria_label": "Ouvrir le menu de la barre de recherche",
+    "placeholder": "Chercher un post ou une page"
   },
   "filters": {
     "filters": "Filtres",

@@ -69,7 +69,10 @@
     "user_title": "Aureldev",
     "landing_section": {
       "title": "Accessibility-first Full-stack Developer",
-      "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed"
+      "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed",
+      "title_accent": "Accessibility-first",
+      "title_rest": "Full-stack Developer",
+      "cta": "Discover the feed"
     },
     "client_section": {
       "tag": "They trust me",
@@ -91,6 +94,15 @@
       "title": "Ready to discuss it?",
       "description": "Don't wait any longer, contact me now using the form below!"
     }
+  },
+  "search": {
+    "title": "Search bar",
+    "description": "You can search a post or a page here",
+    "button_label": "Search",
+    "recent_label": "Recent search",
+    "results_label": "Results",
+    "aria_label": "Open search bar menu",
+    "placeholder": "Search a post or a page here"
   },
   "filters": {
     "filters": "Filters",

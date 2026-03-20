@@ -8,8 +8,9 @@ import type { ProjectResolved } from '@/types/project';
 const route = useRoute(),
     { t, locale, locales } = useI18n();
 
+const asyncKey = computed(() => `project-${route.params.slug}-${locale.value}`);
 const { data: project, error } = await useAsyncData<ProjectResolved>(
-    () => `project-${route.params.slug}-${locale.value}`,
+    () => asyncKey.value,
     () => $fetch(`/api/projects/${route.params.slug}`, {
         query: { locale: locale.value }
     }),
@@ -98,11 +99,12 @@ watchEffect(() => {
                 {{ project.summary }}
             </p>
 
-            <NuxtImg :src="project.image?.sources.detail.mobile" :alt="project.image?.alt" width="768" height="432"
-                class="my-2 rounded-lg" densities="x1" itemprop="image" :placeholder="true" />
+            <NuxtImg :src="project.image?.sources.detail.mobile"
+                :srcset="`${project.image?.sources.detail.mobile} 640w, ${project.image?.sources.detail.tablet} 768w, ${project.image?.sources.detail.desktop} 1024w`"
+                :alt="project.image?.alt" class="my-2 rounded-lg" densities="x1" itemprop="image" :placeholder="true" />
+            <!-- width="768" height="432" -->
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->
-            <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="`${project.image?.sources.detail.mobile} 640w, ${project.image?.sources.detail.tablet} 768w, ${project.image?.sources.detail.desktop} 1024w`" -->
-
+             
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <div>
                     <dt class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">

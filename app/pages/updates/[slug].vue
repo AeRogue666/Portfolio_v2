@@ -8,8 +8,9 @@ import type { UpdateResolved } from '@/types/update';
 const route = useRoute(),
     { t, locale, locales } = useI18n();
 
+const asyncKey = computed(() => `update-${route.params.slug}-${locale.value}`);
 const { data: update, error } = await useAsyncData<UpdateResolved>(
-    () => `update-${route.params.slug}-${locale.value}`,
+    () => asyncKey.value,
     () => $fetch(`/api/updates/${route.params.slug}`, {
         query: { locale: locale.value }
     }),
@@ -100,11 +101,12 @@ watchEffect(() => {
                 {{ update.summary }}
             </p>
 
-            <NuxtImg :src="update.image?.sources.detail.mobile" :alt="update.image?.alt" width="768" height="432"
-                class="my-2 rounded-lg" densities="x1" itemprop="image" :placeholder="true" />
+            <NuxtImg :src="update.image?.sources.detail.mobile"
+                :srcset="`${update.image?.sources.detail.mobile} 640w, ${update.image?.sources.detail.tablet} 768w, ${update.image?.sources.detail.desktop} 1024w`"
+                :alt="update.image?.alt" width="768" height="432" class="my-2 rounded-lg" densities="x1"
+                itemprop="image" :placeholder="true" />
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->
-            <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw"
-                :srcset="`${update.image?.sources.detail.mobile} 640w, ${update.image?.sources.detail.tablet} 768w, ${update.image?.sources.detail.desktop} 1024w`" -->
+            <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" -->
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <dt class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">

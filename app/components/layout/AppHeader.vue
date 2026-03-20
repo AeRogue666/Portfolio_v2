@@ -9,7 +9,7 @@ const { t } = useI18n();
 <template>
     <header class="flex items-center w-full h-full gap-2 p-4 border-b relative z-50">
         <UContainer
-            class="w-full h-full max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+            class="w-full h-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3"> <!-- max-w-(--ui-container) -->
 
             <!-- DESKTOP ONLY -->
             <div class="hidden lg:block">
@@ -30,7 +30,7 @@ const { t } = useI18n();
                 </NuxtLink>
             </UContainer>
 
-            <!-- <SearchBarDrawer /> -->
+            <SearchBarDrawer />
 
             <!-- DESKTOP AND MOBILE -->
             <SidebarRight />

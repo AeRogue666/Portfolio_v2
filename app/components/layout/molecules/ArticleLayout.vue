@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <article class="prose prose-neutral w-full max-w-3xl mx-auto px-4 py-10 prose-headings:scroll-mt-24"
+    <article class="prose prose-neutral w-full max-w-7xl mx-auto px-4 py-10 prose-headings:scroll-mt-24"
         aria-labelledby="article-title">
         <header class="flex flex-col mb-10">
             <slot name="header"></slot>

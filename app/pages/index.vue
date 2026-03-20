@@ -3,6 +3,8 @@ import SendMessageModal from '../components/layout/organisms/SendMessageModal.vu
 import CarouselWrapper from '../components/index/organisms/CarouselWrapper.vue';
 import IndexSection from '../components/index/IndexSection.vue';
 import type { FeedResponse } from '../types/feed';
+import LandingSection from '../components/index/LandingSection.vue';
+import ExpertiseContainer from '../components/index/ExpertiseContainer.vue';
 
 const { t, locale } = useI18n(),
     colorMode = useColorMode(),
@@ -25,19 +27,19 @@ const { data: postsData } = await useAsyncData(
 );
 
 const realisationsCarouselItems = computed(() => {
-    if(!postsData.value?.items) return [];
+    if (!postsData.value?.items) return [];
 
-    return postsData.value.items.filter(item => 
+    return postsData.value.items.filter(item =>
         (item.kind === 'project' || item.kindFallback === 'project') && item.image
     )
-    .map(item => ({
-        image: item.image!.sources.detail?.mobile
-            || item.image!.sources.feed?.mobile
-            || '',
-        alt: item.image!.alt,
-        description: item.feed_title ?? item.title,
-        link: `/projects/${item.slug}`,
-    }));
+        .map(item => ({
+            image: item.image!.sources.detail?.mobile
+                || item.image!.sources.feed?.mobile
+                || '',
+            alt: item.image!.alt,
+            description: item.feed_title ?? item.title,
+            link: `/projects/${item.slug}`,
+        }));
 });
 
 /* const realisationsCarouselItems = ref<{
@@ -90,47 +92,63 @@ useSeoMeta(({
 </script>
 
 <template>
-    <UContainer tabindex="-1" aria-labelledby="index-title">
+    <UContainer tabindex="-1" aria-labelledby="index-title" class="max-w-none">
         <!-- Landing section -->
-        <IndexSection id="landing-section" :class="'bg-(--bg-3)'">
+        <LandingSection id="landing-section" aria-labelledby="index-title" fill="--card-update-bg">
             <template #tag>
-                <span class="text-xl font-semibold lg:text-center text-(--text) mb-6"
-                    style="font-size: clamp(1rem, var(--step-3), 2rem);">
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase"
+                    style="font-size: clamp(0.75rem, var(--step--1), 1rem);">
                     {{ t('index.user_title') }}
                 </span>
             </template>
 
             <template #title>
                 <h1 id="index-title"
-                    class="text-4xl font-bold tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 text-(--text)"
+                    class="flex flex-col font-bold tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36"
                     style="font-size: clamp(1.5rem, var(--step-5), 4rem);">
-                    {{ t('index.landing_section.title') }}
+                    <span class="text-(--accent)">{{ t('index.landing_section.title_accent') }}</span>
+                    <span class="text-(--text)">{{ t('index.landing_section.title_rest') }}</span>
                 </h1>
             </template>
 
             <template #description>
-                <p class="text-lg font-normal text-body lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
-                    style="font-size: clamp(1.25rem, var(--step-4), 3rem);">
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: clamp(1rem, var(--step-1), 2rem);">
                     {{ t('index.landing_section.description') }}
                 </p>
             </template>
-        </IndexSection>
+
+            <NuxtLink to="/feed"
+                class="inline-flex items-center px-5 py-2.5 gap-2 rounded-lg border border-(--accent)/40 text-(--accent) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus)"
+                style="font-size: var(--step-0);">
+                {{ t('index.landing_section.cta') }}
+                <UIcon name="fa7-solid:arrow-right" class="text-sm" />
+            </NuxtLink>
+        </LandingSection>
 
         <!-- Clients section -->
         <IndexSection v-if="clientsCarouselItems.length !== 0" id="client-section"
-            :class="'bg-(--card-project-bg) border-l-4 border-l-(--card-project-accent)'">
+            :class="'bg-(--card-project-bg)'" fill="--card-update-bg">
             <template #tag>
-                <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
-                    style="font-size: var(--step-0);">
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase"
+                    style="font-size: clamp(0.75rem, var(--step--1), 1rem);">
                     {{ t('index.client_section.tag') }}
                 </span>
             </template>
 
             <template #title>
-                <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
-                    style="font-size: var(--step-2);">
+                <h2 id="clients-title"
+                    class="text-2xl font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36"
+                    style="font-size: clamp(1rem, var(--step-2), 2rem);">
                     {{ t('index.client_section.title') }}
                 </h2>
+            </template>
+
+            <template #description>
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: clamp(1rem, var(--step-1), 2rem);">
+                    {{ t('index.client_section.description') }}
+                </p>
             </template>
 
             <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names loop arrows dots
@@ -143,7 +161,8 @@ useSeoMeta(({
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
                     style="font-size: var(--step-0);">
                     {{ item.description }}
-                </span> <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="` ${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`" -->
+                </span>
+                <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="`${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`"  -->
             </UCarousel>
             <div v-else class="flex justify-center items-center w-full my-10">
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
@@ -153,24 +172,25 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Realisations section -->
-        <IndexSection id="campain-section" :class="'bg-(--card-update-bg)'">
+        <IndexSection id="campain-section" :class="'bg-(--card-update-bg)'" fill="--card-about-bg">
             <template #tag>
-                <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
-                    style="font-size: var(--step-0);">
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase"
+                    style="font-size: clamp(0.75rem, var(--step--1), 1rem);">
                     {{ t('index.campain_section.tag') }}
                 </span>
             </template>
 
             <template #title>
-                <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
-                    style="font-size: var(--step-2);">
+                <h2 id="campain-title"
+                    class="text-2xl font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36"
+                    style="font-size: clamp(1rem, var(--step-2), 2rem);">
                     {{ t('index.campain_section.title') }}
                 </h2>
             </template>
 
             <template #description>
-                <p class="text-lg font-normal text-body lg:text-xl lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
-                    style="font-size: var(--step-1);">
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: clamp(1rem, var(--step-1), 2rem);">
                     {{ t('index.campain_section.description') }}
                 </p>
             </template>
@@ -181,24 +201,25 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Expertise section -->
-        <!-- <IndexSection id="expertise-section" :class="'bg-(--border-subtle)'">
+        <!-- <IndexSection id="expertise-section" :class="'bg-(--bg-elevated)'" fill="--card-about-bg">
             <template #tag>
-                <span class="text-base font-semibold lg:text-center text-(--text) mb-3"
-                    style="font-size: var(--step-0);">
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase"
+                    style="font-size: clamp(0.75rem, var(--step--1), 1rem);">
                     {{ t('index.expertise_section.tag') }}
                 </span>
             </template>
 
             <template #title>
-                <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
-                    style="font-size: var(--step-2);">
+                <h2 id="expertise-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36"
+                    style="font-size: clamp(1rem, var(--step-2), 2rem);">
                     {{ t('index.expertise_section.title') }}
                 </h2>
             </template>
 
             <template #description>
-                <p class="text-lg font-normal text-body lg:text-xl lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
-                    style="font-size: var(--step-1);">
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: clamp(1rem, var(--step-1), 2rem);">
                     {{ t('index.expertise_section.description') }}
                 </p>
             </template>
@@ -207,17 +228,25 @@ useSeoMeta(({
         </IndexSection> -->
 
         <!-- Contact section -->
-        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'">
+        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" fill="--bg-2">
+            <template #tag>
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase"
+                    style="font-size: clamp(0.75rem, var(--step--1), 1rem);">
+                    {{ t('index.contact_section.tag') }}
+                </span>
+            </template>
+
             <template #title>
-                <h2 class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
-                    style="font-size: var(--step-2);">
+                <h2 id="contact-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36"
+                    style="font-size: clamp(1rem, var(--step-2), 2rem);">
                     {{ t('index.contact_section.title') }}
                 </h2>
             </template>
 
             <template #description>
-                <p class="text-lg font-normal text-body lg:text-xl lg:text-center text-(--text-2) mb-6 sm:px-16 xl:px-48"
-                    style="font-size: var(--step-1);">
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48"
+                    style="font-size: clamp(1rem, var(--step-1), 2rem);">
                     {{ t('index.contact_section.description') }}
                 </p>
             </template>
