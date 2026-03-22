@@ -23,10 +23,6 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false,
   },
   image: {
-    dir:
-      process.env.NODE_ENV === "production"
-        ? "public"
-        : process.cwd() + "/public",
     screens: {
       xs: 320,
       sm: 640,
@@ -34,11 +30,6 @@ export default defineNuxtConfig({
       lg: 1024,
       xl: 1280,
       xxl: 1536,
-    },
-    densities: [1],
-    provider: "ipx",
-    vercel: {
-      formats: ["image/webp", "image/avif"],
     },
   },
   app: {
