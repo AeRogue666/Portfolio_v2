@@ -68,15 +68,36 @@
   --text-gray-tertiary: #8a8a8a;
   --accent-gray: #555;
 
-  /* Type scale */
+  /* ======
+    Type scale
+    ======
+    
+    Chaque token intègre :m
+      - clamp(min, calc(nominale * --text-scale), max)
+      - min : plancher de lisibilité WCAG (jamais en dessous)
+      - calc : valeur nominale scalée par le store Pinia (runtime)
+      - max : plafond pour éviter de casser les layouts à --text-scale: 2
+
+      --text-scale est modifié au runtime par useAccessibilityStore.
+      Ne jamais résoudre ces tokens au build (exemple: @thme Tailwind).
+
+      Correspondance balises :
+        --font-size-small -> <small>, <time>, <caption>, badges, labels secondaires, métadonnées
+        --font-size-body -> <p>, <li>, <td>, <dd> - corps de texte, référence de base
+        --font-size-lead -> <p class="lead">, résumés introductifs, sous-descriptions de section
+        --font-size-subtitle -> <h3>, sous-titres de sections dans les articles et pages
+        --font-size-title -> <h2>, titres principaux des pages intérieures
+        --font-size-heading -> <h1> des pages intérieures (articles, feed, rapport a11y, etc. sauf index)
+        --font-size-hero -> <h1> de la landing page (index.vue) uniquement
+    */
   --text-scale: 1;
-  --step--1: calc(0.83rem * var(--text-scale)); /* Petits textes, métadonnées */
-  --step-0: calc(1rem * var(--text-scale)); /* Corps de texte */
-  --step-1: calc(1.2rem * var(--text-scale)); /* Sous-titres */
-  --step-2: calc(1.44rem * var(--text-scale)); /* Titres de sections */
-  --step-3: calc(1.728rem * var(--text-scale)); /* Titres principaux */
-  --step-4: calc(2.25rem * var(--text-scale)); /* Grand titre - ex hero subtitle */
-  --step-5: calc(3rem * var(--text-scale)); /* Titre hero - plafonné par clamp() côté usage */
+  --font-size-small: clamp(0.75rem, calc(0.875rem * var(--text-scale)), 1rem);
+  --font-size-body: clamp(0.875rem, calc(1rem * var(--text-scale)), 1.25rem);
+  --font-size-lead: clamp(1rem, calc(1.25rem * var(--text-scale)), 1.625rem);
+  --font-size-subtitle: clamp(1.25rem, calc(1.5rem * var(--text-scale)), 2rem);
+  --font-size-title: clamp(1.5rem, calc(2rem * var(--text-scale)), 2.5rem);
+  --font-size-heading: clamp(2rem, calc(2.25rem * var(--text-scale)), 3rem);
+  --font-size-hero: clamp(2rem, calc(3rem * var(--text-scale)), 4rem);
 
   /* Spacing scale */
   --space-xs: 0.5rem;

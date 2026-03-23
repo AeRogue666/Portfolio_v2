@@ -123,28 +123,29 @@ onUnmounted(() => {
         <div class="flex items-center gap-2 mt-4 mb-4">
             <!-- Tri -->
             <div class="flex items-center gap-2">
-                <label for="sort-select" class="text-sm font-(--text-2)" style="font-size: var(--step--1);">{{
-                    t('filters.sort.label') }}</label>
+                <label for="sort-select" class="text-(--text-2) fs-body">
+                    {{ t('filters.sort.label') }}
+                </label>
                 <USelect id="sort-select" v-model="sortValue" :items="sortOptions" color="neutral" size="xl"
                     class="ring-transparent transition-colors" :ui="{
-                        base: 'bg-(--bg-2) hover:bg-(--bg-2) focus-visible:bg-(--bg-2) text-(length:--step--1)',
+                        base: 'bg-(--bg-2) hover:bg-(--bg-2) focus-visible:bg-(--bg-2) fs-body',
                         content: 'bg-(--bg-2)',
-                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'text-(--text) fs-body',
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'text-(--text) fs-body'
                     }" />
             </div>
 
             <div class="flex items-center ml-auto gap-2">
                 <!-- Badge compteur de filtres actifs -->
                 <div v-if="hasActiveFilters" aria-live="polite"
-                    class="text-sm text-(--text-2) whitespace-nowrap text-(length:--step--1)">
+                    class="text-sm text-(--text-2) whitespace-nowrap fs-body">
                     {{ t('filters.active_count', { count: selectedTags.length }) }}
                 </div>
 
                 <!-- Bouton Filtres (CollapsibleMenu) -->
                 <UButton @click="isFiltersOpen = !isFiltersOpen" :aria-expanded="isFiltersOpen"
                     aria-controls="filters-panel" variant="ghost" color="neutral" size="xl"
-                    class="bg-(--bg-2) text-base text-(--text) font-medium hover:bg-(--bg-2) focus-visible:bg-(--bg-2) focus:ring-2 focus:ring-inverted text-(length:--step--1)">
+                    class="bg-(--bg-2) text-base text-(--text) font-medium hover:bg-(--bg-2) focus-visible:bg-(--bg-2) focus:ring-2 focus:ring-inverted fs-body">
                     <Icon name="fa7-solid:sliders" />
                     {{ t('filters.filters') }}
                     <Icon :name="isFiltersOpen ? 'fa7-solid:chevron-up' : 'fa7-solid:chevron-down'" />
@@ -160,25 +161,25 @@ onUnmounted(() => {
 
                 <!-- Header du panel avec bouton fermeture -->
                 <div class="flex justify-between items-center mb-4 pb-3 border-b border-(--border-subtle)">
-                    <h2 class="text-2xl font-semibold text-(--text-1) leading-snug text-scalable">
+                    <h2 class="fs-title font-semibold text-(--text-1) leading-snug">
                         {{ t('filters.filter_options') }}
                     </h2>
                     <UButton @click="handleCloseFilters" :aria-label="t('filters.close_filters')" variant="outline"
                         color="neutral"
-                        class="close-button p-1 hover:bg-(--bg-3) rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
+                        class="p-1 bg-transparent fs-body text-(--text) hover:bg-(--bg-3) rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors">
                         <Icon name="fa7-solid:xmark" size="1.25rem" />
                     </UButton>
                 </div>
 
                 <!-- Kinds -->
                 <div class="mb-4">
-                    <h3 class="mb-3 text-xl font-semibold text-(--text-2) leading-snug text-scalable">
+                    <h3 class="mb-3 fs-subtitle font-semibold text-(--text-2) leading-snug text-scalable">
                         {{ t('filters.kinds') }}
                     </h3>
                     <div class="flex flex-wrap gap-2" role="group" :aria-label="t('filters.kinds')">
                         <UButton v-for="kind in availableKinds" :key="kind.value" @click="handleKindClick(kind.value)"
                             :aria-pressed="isKindSelected(kind.value)" :class="[
-                                'px-3 py-2 text-sm font-medium rounded transition-colors text-(length:--step--1)',
+                                'px-3 py-2 font-medium rounded transition-colors fs-body',
                                 isKindSelected(kind.value)
                                     ? 'bg-green-500 text-white ring-2 ring-blue-300'
                                     : 'bg-(--bg-3) text-(--text-2) border border-bg-(--border-subtle)'
@@ -193,13 +194,13 @@ onUnmounted(() => {
 
                 <!-- Tags -->
                 <div class="mb-4">
-                    <h3 class="mb-3 text-xl font-semibold text-(--text-2) leading-snug text-scalable">
+                    <h3 class="mb-3 fs-subtitle font-semibold text-(--text-2) leading-snug">
                         {{ t('filters.tags') }}
                     </h3>
                     <div class="flex flex-wrap gap-2" role="group" :aria-label="t('filters.tags')">
                         <UButton v-for="tag in availableTags" :key="tag" @click="handleTagClick(tag)"
                             :aria-pressed="isTagSelected(tag)" :class="[
-                                'px-3 py-2 text-sm font-medium rounded transition-colors text-(length:--step--1)',
+                                'px-3 py-2 text-sm font-medium rounded transition-colors fs-body',
                                 isTagSelected(tag)
                                     ? 'bg-green-500 text-white ring-2 ring-green-300'
                                     : 'bg-(--bg-3) text-(--text-2) border border-bg-(--border-subtle)'
@@ -207,7 +208,7 @@ onUnmounted(() => {
                             {{ tag }}
                         </UButton>
                     </div>
-                    <p v-if="availableTags.length === 0" class="mt-2 text-sm text-(--text-3) italic">
+                    <p v-if="availableTags.length === 0" class="mt-2 fs-small text-(--text-3) italic">
                         {{ t('filters.no_tags') }}
                     </p>
                 </div>
@@ -215,7 +216,7 @@ onUnmounted(() => {
                 <!-- Bouton Reset -->
                 <div v-if="hasActiveFilters" class="pt-4 border-t border-(--border-subtle)">
                     <UButton @click="handleResetFilters" variant="soft" color="neutral"
-                        class="text-base bg-(--danger) text-(--text-1) text-(length:--step-0) hover:bg-(--accent) font-medium">
+                        class="text-base bg-(--danger) text-(--text-1) fs-body hover:bg-(--accent) font-medium">
                         <Icon name="fa7-solid:filter" class="size-4" />
                         {{ t('filters.reset') }}
                     </UButton>

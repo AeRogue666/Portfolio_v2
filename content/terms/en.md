@@ -1,12 +1,12 @@
 # Terms and Conditions of Use
 
-Effective as of 07/03/2026
+<time datetime="07-03-2026">Effective as of 7 March 2026.</time>
 
 The purpose of these general terms and conditions of use, hereinafter referred to as "**T&Cs**", is to provide a legal framework for the terms and conditions governing the provision of the aureldev.com website, hereinafter referred to as the "**Site**", and the services offered by aureldev.com, and to define the terms and conditions of access and use of the services by the "**User**".
 
 ## Article 1: Legal notices
 
-The Site is published and managed by Aureldev, domiciled in France, whose email address is contact@aureldev.com.
+The Site is published and managed by Aureldev, domiciled in France, whose email address is <contact@aureldev.com>.
 For more information, all legal notices are available on the Site under the heading "**Legal notices**".
 
 ## Article 2: Access to the site
@@ -24,7 +24,7 @@ The Site ensures that the User's personal data is collected and processed in acc
 
 Under the applicable regulations on the protection of personal data, Users have the right to access, rectify, delete and object to the use of their personal data. Users may exercise this right:
 
-- by emailing contact@aureldev.com
+- by emailing <contact@aureldev.com>
 - using the contact form available in the left-hand menu (aside), by clicking on the "Send a message" button.
 
 ## Article 4: Intellectual property

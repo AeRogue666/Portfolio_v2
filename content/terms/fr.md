@@ -1,6 +1,6 @@
 # Conditions Générales d'Utilisation
 
-En vigueur au 07/03/2026
+<time datetime="07-03-2026">En vigueur au 7 Mars 2026.</time>
 
 Les présentes conditions générales d'utilisation ci-après "**CGU**" ont pour objet l'encadrement juridique des modalités de mise à disposition du site aureldev.com, ci-après le "**Site**", et des services par aureldev.com et de définir les conditions d'accès et d'utilisation des services par l'"**Utilisateur**".
 
@@ -8,7 +8,7 @@ Les présentes CGU sont accessibles sur le site à la rubrique "**CGU**".
 
 ## Article 1: Les mentions légales
 
-L'édition et la direction de la publication du Site sont assurées par Aureldev, domicilié en France, dont l'adresse e-mail est contact@aureldev.com.
+L'édition et la direction de la publication du Site sont assurées par Aureldev, domicilié en France, dont l'adresse e-mail est <contact@aureldev.com>.
 Pour en savoir plus, toutes les mentions légales sont accessibles sur le site à la rubrique "**Mentions légales**".
 
 ## Article 2: Accès au site
@@ -26,7 +26,7 @@ Le Site assure à l'Utilisateur une collecte et un traitement des données perso
 
 En vertu de la Règlementation applicable en matière de protection des Données à caractère personnel, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur peut exercer ce droit :
 
-- par mail à l'adresse email contact@aureldev.com
+- par mail à l'adresse email <contact@aureldev.com>
 - depuis le formulaire de contact disponible dans le menu de gauche (aside), en cliquant sur le bouton "Envoyer un message"
 
 ## Article 4: Propriété intellectuelle

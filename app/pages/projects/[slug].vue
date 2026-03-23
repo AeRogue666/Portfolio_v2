@@ -83,19 +83,18 @@ watchEffect(() => {
 <template>
     <ArticleLayout v-if="project" style="font-size: var(--step-0);">
         <template #header>
-            <UBreadcrumb :items="breadcrumbItems" class="my-2">
+            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                 <template #separator>
                     <span class="mx-2 text-(--text-muted)">/</span>
                 </template>
             </UBreadcrumb>
-            <p class="text-sm text-(--text-2)">
+            <p class="fs-small text-(--text-2)">
                 {{ t('project.published_on') }}
                 <time :datetime="project.date">{{ dayjs(project.date).format('DD MMMM YYYY') }}</time>
             </p>
 
-            <h1 id="article-title" class="text-2xl font-semibold tracking-tight leading-snug mt-2"
-                style="font-size: var(--step-3);">{{ project.title }}</h1>
-            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+            <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">{{ project.title }}</h1>
+            <p class="fs-subtitle text-(--text-2) leading-snug">
                 {{ project.summary }}
             </p>
 
@@ -107,80 +106,80 @@ watchEffect(() => {
              
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <div>
-                    <dt class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+                    <dt class="fs-lead font-semibold leading-snug">
                         {{ t('project.role') }}
                     </dt>
-                    <dd class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
-                        {{ project.role }}</dd>
+                    <dd class="fs-body text-(--text-2) leading-snug">
+                        {{ project.role }}
+                    </dd>
                 </div>
                 <div>
-                    <dt class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+                    <dt class="fs-lead font-semibold leading-snug">
                         {{ t('project.stack') }}
                     </dt>
                     <dd class="flex flex-wrap gap-2">
                         <PostBadge v-for="tech in project.stack" :label="tech" :key="tech" :variant="'soft'"
                             :color="'neutral'" :size="'md'"
-                            :class-name="'bg-(--bg-3) text-(--text-2) text-scalable border border-(--border-subtle)'"
-                            style="font-size: var(--step--1);" />
+                            :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
                     </dd>
                 </div>
             </dl>
         </template>
 
         <section aria-labelledby="context">
-            <h2 class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+            <h2 class="fs-title font-semibold leading-snug">
                 {{ t('project.context') }}
             </h2>
-            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+            <p class="fs-body text-(--text-2) leading-snug">
                 {{ project.context }}
             </p>
         </section>
 
         <section aria-labelledby="problem">
-            <h2 id="problem" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+            <h2 id="problem" class="fs-title font-semibold leading-snug">
                 {{ t('project.problem') }}
             </h2>
-            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+            <p class="fs-body text-(--text-2) leading-snug">
                 {{ project.problem }}
             </p>
         </section>
 
         <section aria-labelledby="solution">
-            <h2 id="solution" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+            <h2 id="solution" class="fs-title font-semibold leading-snug">
                 {{ t('project.solution') }}
             </h2>
-            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+            <p class="fs-body text-(--text-2) leading-snug">
                 {{ project.solution }}
             </p>
         </section>
 
         <section aria-labelledby="tech">
-            <h2 id="tech" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+            <h2 id="tech" class="fs-title font-semibold leading-snug">
                 {{ t('project.technical_choices') }}
             </h2>
             <ul class="flex flex-col justify-center items-baseline">
                 <li v-for="tech in project.technicalChoices" :key="tech.title"
-                    class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+                    class="fs-body text-(--text-2) leading-snug">
                     <strong>{{ tech.title }}</strong> - {{ tech.description }}
                 </li>
             </ul>
         </section>
 
         <section aria-labelledby="a11y">
-            <h2 id="a11y" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+            <h2 id="a11y" class="fs-title font-semibold leading-snug">
                 {{ t('project.accessibility') }}
             </h2>
-            <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+            <p class="fs-body text-(--text-2) leading-snug">
                 {{ project.accessibility }}</p>
         </section>
 
         <section aria-labelledby="results">
-            <h2 id="results" class="text-2xl font-semibold leading-snug" style="font-size: var(--step-2);">
+            <h2 id="results" class="fs-title font-semibold leading-snug">
                 {{ t('project.learnings') }}
             </h2>
             <ul>
                 <li v-for="learning in project.learnings" class="flex flex-col" :key="learning">
-                    <p class="text-base text-(--text-2) leading-snug" style="font-size: var(--step--1);">{{ learning }}
+                    <p class="fs-body text-(--text-2) leading-snug">{{ learning }}
                     </p>
                 </li>
             </ul>
@@ -188,11 +187,13 @@ watchEffect(() => {
 
         <template #footer>
             <a v-if="project.links?.github" :href="project.links.github"
-                class="inline-flex items-center gap-2 text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors"
-                style="font-size: var(--step-0);">{{ t('project.watch_code') }}</a>
+                class="inline-flex items-center gap-2 fs-body text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors">
+                {{ t('project.watch_code') }}
+            </a>
             <a v-if="project.links?.demo" :href="project.links.demo"
-                class="inline-flex items-center gap-2 text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors"
-                style="font-size: var(--step-0);">{{ t('project.watch_demo') }}</a>
+                class="inline-flex items-center gap-2 fs-body text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors">
+                {{ t('project.watch_demo') }}
+            </a>
         </template>
     </ArticleLayout>
 </template>

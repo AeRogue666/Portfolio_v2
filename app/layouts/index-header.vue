@@ -57,7 +57,7 @@ useHead(() => ({
 
                 <!-- FEED CONTAINER -->
                 <main ref="mainRef" id="main-content" tabindex="-1" aria-labelledby="feed-title"
-                    class="w-full max-w-auto mx-auto" style="font-size: var(--step--1);">
+                    class="w-full max-w-auto mx-auto">
                     <NuxtPage />
                 </main>
             </div>

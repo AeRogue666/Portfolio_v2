@@ -103,10 +103,8 @@ const grayscale = computed({
 <template>
     <ArticleLayout>
         <template #header>
-            <h1 id="article-title" class="text-2xl font-semibold leading-snug text-scalable text-(--text)"
-                style="font-size: var(--step-3);">{{ t('report.title') }}</h1>
-            <p class="text-base leading-relaxed text-(--text-2) text-scalable max-w-prose"
-                style="font-size: var(--step-1);">
+            <h1 id="article-title" class="text-2xl font-semibold leading-snug text-scalable text-(--text) fs-heading">{{ t('report.title') }}</h1>
+            <p class="text-base leading-relaxed text-(--text-2) text-scalable max-w-prose fs-subtitle">
                 {{ t('report.description') }}
             </p>
         </template>
@@ -114,18 +112,17 @@ const grayscale = computed({
         <UForm :state="form" :validate="validateForm" class="space-y-4" @submit.prevent="onSubmit">
             <div class="text-sm">
                 <label id="issue-label" for="issue-field"
-                    class="block font-medium text-(--text) after:content-['*'] after:ms-0.5 after:text-error"
-                    style="font-size: clamp(0.5rem, var(--step--1), 1.5rem);">
+                    class="block font-medium text-(--text) after:content-['*'] after:ms-0.5 after:text-error fs-body">
                     {{ t('report.form.type') }}
                 </label>
 
                 <USelect v-model="form.issue" :items="issueItems" id="issue-field" value-key="value" label-key="label"
                     :aria-describedby="issueError ? 'issue-error' : undefined" :aria-invalid="!!issueError" name="issue"
                     color="neutral" size="xl" :ui="{
-                        base: 'bg-(--bg-2) text-(length:--step--1)',
+                        base: 'bg-(--bg-2) fs-body',
                         content: 'bg-(--bg-2)',
                         value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body'
                     }" class="ring-transparent transitions-color w-48" />
 
                 <p v-if="issueError" id="issue-error" class="text-sm text-(--danger) mt-2">{{ issueError }}</p>
@@ -134,35 +131,34 @@ const grayscale = computed({
             <UFormField :label="t('report.form.email')" name="email" :hint="t('report.form.optional')"
                 orientation="vertical" :ui="{
                     labelWrapper: 'justify-start',
-                    label: 'text-(--text) text-(length:--step--1)',
-                    hint: 'text-(length:--step--1)'
+                    label: 'text-(--text) fs-body',
+                    hint: 'fs-small'
                 }">
                 <UInput v-model="form.email" type="email" autocomplete="off" :ui="{
-                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    base: 'bg-(--bg-2) fs-body',
                     content: 'bg-(--bg-2)',
                     value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body',
                 }" />
             </UFormField>
 
             <UFormField :label="t('report.form.description')" name="description" orientation="vertical" :ui="{
-                label: 'text-(--text) text-(length:--step--1)',
-                hint: 'text-(length:--step--1)'
+                label: 'text-(--text) fs-body',
+                hint: 'fs-body'
             }" required>
                 <UTextarea v-model="form.description" :ui="{
-                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    base: 'bg-(--bg-2) fs-body',
                     content: 'bg-(--bg-2)',
                     value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body'
                 }" required />
             </UFormField>
         </UForm>
 
         <template #footer>
             <UButton name="button-submit-report" color="neutral" variant="solid" size="xl"
-                class="bg-(--bg-3) text-(--text) hover:bg(--bg-elevated) hover:text-inverted"
-                :label="t('report.form.submit')" type="submit" :loading="isSubmitting"
-                style="font-size: var(--step-0);" />
+                class="bg-(--bg-3) text-(--text) hover:bg(--bg-elevated) hover:text-inverted fs-body"
+                :label="t('report.form.submit')" type="submit" :loading="isSubmitting" />
         </template>
     </ArticleLayout>
 </template>

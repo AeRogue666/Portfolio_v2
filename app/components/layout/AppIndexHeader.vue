@@ -7,8 +7,8 @@ const { t } = useI18n();
 
 <template>
     <header class="flex items-center w-full h-full gap-2 p-4 border-b relative z-50">
-        <UContainer
-            class="w-full h-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3"> <!-- max-w-(--ui-container) -->
+        <UContainer class="w-full h-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
+            <!-- max-w-(--ui-container) -->
 
             <!-- DESKTOP ONLY -->
             <div class="hidden lg:block">
@@ -22,8 +22,7 @@ const { t } = useI18n();
 
             <UContainer data-slot="center" class="hidden lg:flex">
                 <NuxtLink to="/" aria-describedby="header-title">
-                    <span id="header-title" class="text-2xl font-bold lg:text-center text-(--text) mb-3"
-                        style="font-size: clamp(1.5rem, var(--step-5), 4rem);">
+                    <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3">
                         {{ t('header.span_title') }}
                     </span>
                 </NuxtLink>

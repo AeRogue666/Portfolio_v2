@@ -57,9 +57,9 @@ useSeoMeta(({
         <!-- Message si aucun résultat après filtrage -->
         <div v-if="status === 'success' && items.length === 0 && hasActiveFilters" aria-live="polite"
             class="py-8 text-center text-(--text-2)">
-            <p>{{ t('feed.no_results') }}</p>
+            <p class="fs-body">{{ t('feed.no_results') }}</p>
             <button @click="resetFilters"
-                class="mt-4 px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text-1) rounded border border-(--border-subtle) transition-colors">
+                class="mt-4 px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text) rounded border border-(--border-subtle) transition-colors fs-body">
                 {{ t('filters.reset') }}
             </button>
         </div>
@@ -68,14 +68,14 @@ useSeoMeta(({
         <UContainer v-if="items.length < total">
             <button id="button-load-articles" :aria-label="t('feed.load_more')" role="button" aria-controls="feed"
                 @click="loadMore()" :aria-busy="status === 'pending'" :disabled="status === 'pending'"
-                class="w-full px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text-1) rounded border border-(--border-subtle) disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                class="w-full px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text) rounded border border-(--border-subtle) disabled:opacity-50 disabled:cursor-not-allowed transition-colors fs-body">
                 {{ t('feed.load_more') }}
             </button>
         </UContainer>
 
         <!-- Annonce accessibilité pour lecteurs d'écran -->
         <div v-if="status === 'success' && items.length > 0" aria-live="polite" class="sr-only">
-            <span>{{ items.length }} {{ t('feed.loaded_new_articles') }}</span>
+            <span class="fs-small">{{ items.length }} {{ t('feed.loaded_new_articles') }}</span>
         </div>
     </UContainer>
 </template>

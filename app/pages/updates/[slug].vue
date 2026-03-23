@@ -83,21 +83,20 @@ watchEffect(() => {
 <template>
     <ArticleLayout v-if="update">
         <template #header>
-            <UBreadcrumb :items="breadcrumbItems" class="my-2">
+            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                 <template #separator>
                     <span class="mx-2 text-(--text-muted)">/</span>
                 </template>
             </UBreadcrumb>
-            <p class="text-sm text-(--text-2) leading-snug" style="font-size: var(--step--1);">
+            <p class="fs-small text-(--text-2) leading-snug">
                 {{ t('update.published_on') }}
                 <time :datetime="update.date">{{ dayjs(update.date).format('DD MMMM YYYY') }}</time>
             </p>
 
-            <h1 id="article-title" class="text-2xl font-semibold tracking-tight leading-snug mt-2"
-                style="font-size: var(--step-3);">
+            <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
                 {{ update.title }}
             </h1>
-            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
+            <p class="fs-subtitle text-(--text-2) leading-snug max-w-[65ch]">
                 {{ update.summary }}
             </p>
 
@@ -109,24 +108,22 @@ watchEffect(() => {
             <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" -->
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
-                <dt class="text-2xl font-semibold leading-snug text-scalable" style="font-size: var(--step-2);">
+                <dt class="fs-lead font-semibold leading-snug">
                     {{ t('update.tags') }}
                 </dt>
                 <dd class="flex flex-wrap gap-2">
                     <PostBadge v-for="tech in update.tags" :label="tech" :key="tech" :variant="'soft'"
                         :color="'neutral'" :size="'md'"
-                        :class-name="'bg-(--bg-3) text-(--text-2) text-scalable border border-(--border-subtle)'"
-                        style="font-size: var(--step--1);" />
+                        :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
                 </dd>
             </dl>
         </template>
 
         <section aria-labelledby="content">
-            <h2 id="content" class="text-2xl font-semibold leading-snug text-scalable"
-                style="font-size: var(--step-2);">
+            <h2 id="content" class="fs-title font-semibold leading-snug">
                 {{ t('update.content') }}
             </h2>
-            <p class="text-base text-(--text-2) leading-snug max-w-[65ch]" style="font-size: var(--step--1);">
+            <p class="fs-body text-(--text-2) leading-snug max-w-[65ch]">
                 {{ update.content }}
             </p>
         </section>

@@ -105,7 +105,7 @@ const typeError = computed(() => {
         :close="{
             color: 'neutral',
             variant: 'outline',
-            class: 'rounded-full'
+            class: 'rounded-full bg-transparent fs-body text-(--text) hover:bg-(--bg-3) rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors'
         }" :ui="{
             content: 'w-auto bg-(--bg)',
             body: 'flex flex-col justify-center'
@@ -113,8 +113,8 @@ const typeError = computed(() => {
 
         <template #default>
             <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" color="neutral"
-                variant="solid" size="xl" class="bg-(--bg-3) text-(--text) hover:bg(--bg-elevated) hover:text-inverted"
-                :label="t('sidebar-left.modal-message.send-message_button_label')" style="font-size: var(--step-0);" />
+                variant="solid" size="xl" class="bg-(--bg-3) text-(--text) fs-body"
+                :label="t('sidebar-left.modal-message.send-message_button_label')" />
         </template>
 
         <template #body>
@@ -122,59 +122,63 @@ const typeError = computed(() => {
                 <Transition name="fade-scale" mode="out-in">
                     <UForm v-if="submitState === 'idle'" key="form" :validate="validate" :state="state"
                         class="flex flex-col items-center w-full gap-4" @submit="onSubmit">
-                        <div class="flex flex-col w-full md:w-auto h-auto gap-4">
+                        <div class="flex flex-col w-auto h-auto gap-4">
                             <label id="issue-label" for="issue-field"
-                                class="block w-3xs md:w-xs bg-(--bg-2) text-(--text) after:content-['*'] after:ms-0.5 after:text-error"
-                                style="font-size: var(--step-0);">
+                                class="block w-3xs md:w-xs fs-body text-(--text-2) after:content-['*'] after:ms-0.5 after:text-error">
                                 {{ t('sidebar-left.modal-message.selectType_label') }}
                             </label>
 
                             <USelect v-model="state.type" :items="typeItems" id="issue-field" value-key="value"
                                 label-key="label" :aria-describedby="typeError ? 'issue-error' : undefined"
                                 :aria-invalid="!!typeError" name="issue" color="neutral" size="xl" :ui="{
-                                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                                    base: 'bg-(--bg-2) text-(--text-2) fs-body',
                                     content: 'bg-(--bg-2)',
                                     value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
-                                }" class="ring-transparent w-78 transition-colors" required />
+                                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'text-(--text-2) fs-body'
+                                }" class="ring-transparent transition-colors" required />
 
-                            <p v-if="typeError" id="issue-error" class="text-sm text-(--danger) mt-2">
+                            <p v-if="typeError" id="issue-error" class="fs-small text-(--danger) mt-2">
                                 {{ typeError }}
                             </p>
                         </div>
 
-                        <UFormField :label="t('sidebar-left.modal-message.email_label')" name="email" required>
+                        <UFormField :label="t('sidebar-left.modal-message.email_label')" name="email" :ui="{
+                            label: 'text-(--text-2) fs-body'
+                        }" required>
                             <UInput id="send-message-input" v-model="state.email" size="xl" tabindex="-1"
                                 :placeholder="'amazing@email.com'" :ui="{
-                                    base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
-                                }" style="font-size: var(--step--1);" />
+                                    base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text-2) fs-body'
+                                }" />
                         </UFormField>
 
-                        <UFormField label="Website" name="website" class="hidden">
+                        <UFormField label="Website" name="website" class="hidden" :ui="{
+                            label: 'text-(--text-2) fs-body'
+                        }">
                             <UInput v-model="state.website" type="text" size="xl" class="hidden" autocomplete="off" :ui="{
-                                base: 'w-3xs md:w-xs bg-(--bg-2) text-(--text)'
-                            }" style="font-size: var(--step--1);" />
+                                base: 'w-3xs md:w-xs fs-body'
+                            }" />
                         </UFormField>
 
-                        <UFormField :label="t('sidebar-left.modal-message.textarea_label')" name="message" required>
+                        <UFormField :label="t('sidebar-left.modal-message.textarea_label')" name="message" :ui="{
+                            label: 'text-(--text-2) fs-body'
+                        }" required>
                             <UTextarea v-model="state.message" type="text" :rows="10" :maxrows="20" minlength="20"
                                 maxlength="3000" :placeholder="t('sidebar-left.modal-message.textarea_placeholder')"
                                 :ui="{
-                                    base: 'w-3xs md:w-xs bg-(--bg-2)'
-                                }" style="font-size: var(--step--1);" />
+                                    base: 'w-3xs md:w-xs bg-(--bg-2) fs-body'
+                                }" />
                         </UFormField>
 
                         <UButton :loading="loading" :disabled="loading" type="submit" name="submit-contact-drawer"
                             color="neutral" variant="solid"
-                            class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text) hover:text-inverted"
-                            style="font-size: var(--step-0);">
+                            class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) hover:text-inverted fs-body">
                             {{ t('sidebar-left.modal-message.submit_button') }}
                         </UButton>
                     </UForm>
 
                     <div v-else-if="submitState === 'loading'" key="loading" class="flex flex-col items-center gap-6">
                         <UIcon name="fa7-solid:spinner" class="size-16 animate-spin" />
-                        <p class="text-lg leading-relaxed font-medium" style="font-size: var(--step--1);">
+                        <p class="fs-body leading-relaxed font-medium">
                             {{ t('sidebar-left.modal-message.state.loading') }}
                         </p>
                     </div>
@@ -182,10 +186,10 @@ const typeError = computed(() => {
                     <div v-else-if="submitState === 'success'" key="success"
                         class="flex flex-col items-center gap-6 text-green-500">
                         <UIcon name="fa7-solid:check" class="size-16 animate-bounce" />
-                        <p class="text-lg leading-relaxed font-medium" style="font-size: var(--step--1);">
+                        <p class="fs-body leading-relaxed font-medium">
                             {{ t('sidebar-left.modal-message.state.success') }}
                         </p>
-                        <span class="text-base leading-relaxed text-(--text-2)" style="font-size: var(--step--1);">
+                        <span class="fs-body leading-relaxed text-(--text-2)">
                             {{ t('sidebar-left.modal-message.state.waiting_before_new_message') }}
                         </span>
                     </div>
@@ -193,7 +197,7 @@ const typeError = computed(() => {
                     <div v-else-if="submitState === 'error'" key="error"
                         class="flex flex-col items-center gap-6 text-red-500">
                         <UIcon name="fa7-solid:xmark" class="size-16 animate-none" />
-                        <p class="text-lg leading-relaxed font-medium" style="font-size: var(--step--1);">
+                        <p class="fs-body leading-relaxed font-medium">
                             {{ t('sidebar-left.modal-message.state.error') }}
                         </p>
                     </div>

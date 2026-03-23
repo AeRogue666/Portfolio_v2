@@ -28,5 +28,5 @@ Si votre équipe valorise la clarté, la performance et les expériences numéri
 
 Vous pouvez :
 
-- [Télécharger mon CV](/public/files/CV_Aurelien_GASNIER_New_2.pdf)
-- Ou me contacter via le bouton "Envoyer un message" dans le menu de gauche.
+- Me contacter via le bouton "Envoyer un message" dans le menu de gauche.
+- M'envoyer un mail à <contact@aureldev.com>

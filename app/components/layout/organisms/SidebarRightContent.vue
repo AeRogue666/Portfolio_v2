@@ -61,11 +61,11 @@ async function changeLanguage(newLocale: string) {
         </template>
         <template #body>
             <UColorModeSelect :ui="{
-                base: 'bg-(--bg-2)',
+                base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
                 content: 'bg-(--bg-2)',
-                value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)',
-            }" class="ring-transparent transitions-color w-48" style="font-size: var(--step--1);" />
+                value: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
+                item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
+            }" class="ring-transparent transitions-color w-48" />
         </template>
     </SidebarSelectorBase>
 
@@ -76,10 +76,10 @@ async function changeLanguage(newLocale: string) {
         <template #body>
             <ULocaleSelect :model-value="locale" :locales="locales" @update:model-value="changeLanguage"
                 :disabled="switching" color="neutral" size="xl" :ui="{
-                    base: 'bg-(--bg-2) text-(length:--step--1)',
+                    base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
                     content: 'bg-(--bg-2)',
-                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)'
+                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
+                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)'
                 }" class="ring-transparent transitions-color w-48" />
         </template>
     </SidebarSelectorBase>
@@ -100,10 +100,10 @@ async function changeLanguage(newLocale: string) {
         </template>
         <template #body>
             <USelect v-model="fontFamily" :items="fontFamilyItems" color="neutral" size="xl" :ui="{
-                base: 'bg-(--bg-2) text-(length:--step--1)',
+                base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
                 content: 'bg-(--bg-2)',
-                value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                item: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length: --step--1)' : 'text-(length: --step--1)'
+                value: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body',
+                item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body text-(--text)' : 'fs-body text-(--text)'
             }" class="ring-transparent transitions-color w-48" />
         </template>
     </SidebarSelectorBase>
@@ -117,8 +117,8 @@ async function changeLanguage(newLocale: string) {
             <USwitch v-model="grayscale" @click="accessibilityStore.toggleGrayscale" checked-icon="fa7-solid:check"
                 unchecked-icon="fa7-solid:xmark" size="xl" color="neutral" :ui="{
                     root: 'flex flex-col-reverse items-center',
-                    base: grayscale && colorMode.value === 'dark' ? 'text-inverted text-(length: --step-1)  data-[state=unchecked]:bg-(--bg-3)' : 'text-(length: --step-1)  data-[state=unchecked]:bg-(--bg-3)',
-                    label: grayscale && colorMode.value === 'dark' ? 'text-inverted text-(length: --step-1)' : 'text-(length: --step-1)',
+                    base: grayscale && colorMode.value === 'dark' ? 'text-inverted fs-body data-[state=unchecked]:bg-(--bg-3)' : 'fs-body text-(--text) data-[state=unchecked]:bg-(--bg-3)',
+                    label: grayscale && colorMode.value === 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
                     thumb: 'data-[state=unchecked]:bg-(--accent) data-[state=checked]:bg-(--accent-soft)'
                 }" :aria-label="t('sidebar-right.grayscale')" />
         </template>
@@ -133,14 +133,14 @@ async function changeLanguage(newLocale: string) {
             <USwitch v-model="underlineLinks" @click="accessibilityStore.toggleUnderlineLinks"
                 checked-icon="fa7-solid:check" unchecked-icon="fa7-solid:xmark" size="xl" color="neutral" :ui="{
                     root: 'flex flex-col-reverse items-center',
-                    base: grayscale && colorMode.value === 'dark' ? 'text-inverted text-(length: --step-1)  data-[state=unchecked]:bg-(--bg-3)' : 'text-(length: --step-1) data-[state=unchecked]:bg-(--bg-3)',
-                    label: grayscale && colorMode.value === 'dark' ? 'text-inverted text-(length: --step-1)' : 'text-(length: --step-1)',
+                    base: grayscale && colorMode.value === 'dark' ? 'text-inverted fs-body data-[state=unchecked]:bg-(--bg-3)' : 'fs-body text-(--text) data-[state=unchecked]:bg-(--bg-3)',
+                    label: grayscale && colorMode.value === 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
                     thumb: 'data-[state=unchecked]:bg-(--accent) data-[state=checked]:bg-(--accent-soft)'
                 }" :aria-label="t('sidebar-right.underline_links')" />
         </template>
     </SidebarSelectorBase>
 
     <UButton :label="t('sidebar-right.reset_params')" variant="soft"
-        class="justify-center items-center w-full md:w-[50%] h-auto bg-(--bg-2) text-(--text) hover:bg-(--accent-hover) hover:text-white active:bg-elevated focus:outline-none focus-visible:bg-(--bg-3) focus:ring-2 focus:ring-inverted hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent px-2 py-2"
-        @click="accessibilityStore.reset()" style="font-size: var(--step-0);" />
+        class="justify-center items-center w-full md:w-[50%] h-auto bg-(--bg-2) text-(--text) fs-body hover:bg-(--accent-hover) hover:text-white active:bg-elevated focus:outline-none focus-visible:bg-(--bg-3) focus:ring-2 focus:ring-inverted hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent px-2 py-2"
+        @click="accessibilityStore.reset()" />
 </template>

@@ -32,7 +32,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
     <template v-if="page">
         <article>
             <header>
-                <UBreadcrumb :items="breadcrumbItems" class="my-2">
+                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                     <template #separator>
                         <span class="mx-2 text-(--text-muted)">/</span>
                     </template>
@@ -43,8 +43,46 @@ const breadcrumbItems: BreadcrumbItem[] = [
         </article>
     </template>
     <template>
-        <p>
+        <p class="fs-body">
             {{ t('error.content_unavailable') }}
         </p>
     </template>
 </template>
+
+<style lang="css">
+h1 {
+    font-size: var(--font-size-heading);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: var(--font-size-title);
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: var(--font-size-subtitle);
+    line-height: 1.4;
+}
+
+.lead {
+    font-size: var(--font-size-lead);
+    line-height: 1.6;
+}
+
+p,
+li,
+td,
+dd {
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+}
+
+small,
+time,
+caption,
+.metadata {
+    font-size: var(--font-size-small);
+    line-height: 1.5;
+}
+</style>

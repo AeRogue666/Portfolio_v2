@@ -23,8 +23,7 @@ const { t } = useI18n();
 
             <UContainer data-slot="center" class="hidden lg:flex">
                 <NuxtLink to="/" aria-describedby="header-title">
-                    <span id="header-title" class="text-2xl font-bold lg:text-center text-(--text) mb-3"
-                        style="font-size: clamp(1rem, var(--step-3), 2rem);">
+                    <span id="header-title" class="fs-title font-bold lg:text-center text-(--text) mb-3">
                         {{ t('header.span_title') }}
                     </span>
                 </NuxtLink>

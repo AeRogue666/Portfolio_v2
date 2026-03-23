@@ -1,6 +1,6 @@
 # Accessibility statement
 
-``Updated 2026/02/02.``
+<time datetime="23-03-2026">Updated 23 March 2026.</time>
 
 This website is a personal portfolio designed to showcase my projects, background, and skills, with a strong focus on digital accessibility.
 

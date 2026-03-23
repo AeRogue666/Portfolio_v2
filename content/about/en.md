@@ -30,5 +30,5 @@ If your team values clarity, performance and inclusive digital experiences, we s
 
 You can :
 
-- [Download my CV](/public/files/CV_Aurelien_GASNIER_New_2.pdf)
-- Or contact me via the "Send a message" button in the left menu.
+- Contact me via the "Send a message" button in the left menu.
+- Send me an email on <contact@aureldev.com>
