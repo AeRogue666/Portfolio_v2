@@ -1,35 +1,30 @@
 <script setup lang="ts">
-import SidebarLeftMobile from './SidebarLeftMobile.vue';
+import SidebarLeft from './SidebarLeft.vue';
 import SidebarRight from './SidebarRight.vue';
 
 const { t } = useI18n();
+useSidebarFocusState();
 </script>
 
 <template>
-    <header class="flex items-center w-full h-full gap-2 p-4 border-b relative z-50">
-        <UContainer class="w-full h-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
-            <!-- max-w-(--ui-container) -->
+    <UHeader toggle-side="left"
+        class="flex items-center w-full h-full bg-(--bg) gap-2 p-4 border-b border-(--border-medium) relative z-50">
+        <template #toggle>
+            <SidebarLeft />
+        </template>
 
-            <!-- DESKTOP ONLY -->
-            <div class="hidden lg:block">
-
-            </div>
-
-            <!-- MOBILE ONLY -->
-            <div class="lg:hidden">
-                <SidebarLeftMobile />
-            </div>
-
-            <UContainer data-slot="center" class="hidden lg:flex">
+        <template #left>
+            <UContainer class="hidden lg:flex">
                 <NuxtLink to="/" aria-describedby="header-title">
                     <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3">
                         {{ t('header.span_title') }}
                     </span>
                 </NuxtLink>
             </UContainer>
+        </template>
 
-            <!-- DESKTOP AND MOBILE -->
+        <template #right>
             <SidebarRight />
-        </UContainer>
-    </header>
+        </template>
+    </UHeader>
 </template>

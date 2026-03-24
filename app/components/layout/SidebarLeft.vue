@@ -7,7 +7,6 @@ useSidebarFocusState();
 </script>
 
 <template>
-    <!-- DO NOT USE ANYMORE. PREFER SIDEBARLEFT -->
     <USlideover side="left" :title="t('sidebar-left.title')" :description="t('sidebar-left.description')" :ui="{
         content: 'w-screen bg-(--bg)',
         body: 'p-0',

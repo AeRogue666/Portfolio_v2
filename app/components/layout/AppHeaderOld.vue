@@ -8,13 +8,12 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <UHeader toggle-side="left"
-        class="flex items-center w-full h-full bg-(--bg) gap-2 p-4 border-b border-(--border-medium) relative z-50">
-        <template #toggle>
-            <SidebarLeft />
-        </template>
+    <header class="flex items-center w-full h-full gap-2 p-4 border-b relative z-50">
+        <UContainer
+            class="w-full h-full mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-3">
 
-        <template #left>
+            <SidebarLeft />
+
             <UContainer class="hidden lg:flex">
                 <NuxtLink to="/" aria-describedby="header-title">
                     <span id="header-title" class="fs-title font-bold lg:text-center text-(--text) mb-3">
@@ -22,12 +21,10 @@ const { t } = useI18n();
                     </span>
                 </NuxtLink>
             </UContainer>
-        </template>
 
-        <template #right>
             <SearchBarDrawer />
 
             <SidebarRight />
-        </template>
-    </UHeader>
+        </UContainer>
+    </header>
 </template>

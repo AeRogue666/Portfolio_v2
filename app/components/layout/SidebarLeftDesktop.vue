@@ -65,6 +65,7 @@ onMounted(async () => {
 </script>
 
 <template>
+    <!-- DO NOT USE ANYMORE. PREFER SIDEBARLEFT -->
     <div ref="sidebarLeftRef" class="hidden lg:block w-auto min-h-screen sticky top-0"
         :aria-label="t('sidebar-left.label')">
         <!-- Close button -->

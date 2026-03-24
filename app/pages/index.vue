@@ -92,9 +92,9 @@ useSeoMeta(({
 </script>
 
 <template>
-    <UContainer tabindex="-1" aria-labelledby="index-title" class="max-w-none">
+    <UContainer class="max-w-none">
         <!-- Landing section -->
-        <LandingSection id="landing-section" aria-labelledby="index-title" fill="--card-update-bg">
+        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" fill="--card-update-bg">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
                     {{ t('index.user_title') }}
