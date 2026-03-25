@@ -30,7 +30,13 @@ export default defineNuxtConfig({
       lg: 1024,
       xl: 1280,
       xxl: 1536,
+      avatar: 160,
+      avatar2x: 320,
+      hero: 1920,  
     },
+    domains: [
+      'github.com', 'avatars.githubusercontent.com'
+    ]
   },
   app: {
     head: {

@@ -76,8 +76,10 @@
     },
     "client_section": {
       "tag": "They trust me",
-      "title": "My clients",
-      "be_the_first": "Be the first!"
+      "title": "Customer reviews",
+      "description": "",
+      "be_the_first": "Be the first!",
+      "button": "Reading {customer_name} review"
     },
     "campain_section": {
       "tag": "Portfolio",
@@ -87,7 +89,33 @@
     "expertise_section": {
       "tag": "Project timeline",
       "title": "My expertise",
-      "description": "I will support you from start to finish in setting up your project, proceeding as follows"
+      "description": "I will support you from start to finish in setting up your project, proceeding as follows",
+      "process": {
+        "1": {
+          "title": "Reviewing your goals",
+          "description": "We'll work together to review your goals"
+        },
+        "2": {
+          "title": "Proposing a Custom Digital Project",
+          "description": "A digital project tailored to your needs"
+        },
+        "3": {
+          "title": "Budget and deadline approval",
+          "description": "We work together to apprtove a budget and a reasonable deadline"
+        },
+        "4": {
+          "title": "Step-by-Step",
+          "description": "We develop the project and keep you regularly updated on its progress"
+        },
+        "5": {
+          "title": "Crash Test",
+          "description": "We conduct crash tests on the project with your team under real-world conditions"
+        },
+        "6": {
+          "title": "Post-Sales Support",
+          "description": "Your project is now yours, but we provide support"
+        }
+      }
     },
     "contact_section": {
       "tag": "Contact",
@@ -188,6 +216,7 @@
     "about": "About",
     "accessibility": "Accessibility",
     "accessibility_report": "Accessibility report",
+    "report": "Report a problem",
     "legal_notices": "Legal notices",
     "terms_of_use": "Terms of Use"
   },

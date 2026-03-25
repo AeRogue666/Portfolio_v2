@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FormError, FormSubmitEvent, SelectMenuItem } from '@nuxt/ui';
+import type { BreadcrumbItem, FormError, FormSubmitEvent, SelectMenuItem } from '@nuxt/ui';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
 const { t } = useI18n(),
@@ -15,6 +15,17 @@ type ReportForm = {
     email: string | undefined
     honeypot?: any
 }
+
+const breadcrumbItems: BreadcrumbItem[] = [
+    {
+        label: t('breadcrumb.feed'),
+        to: '/feed'
+    },
+    {
+        label: t('breadcrumb.report'),
+        to: '/report'
+    },
+];
 
 const issueItems = computed<SelectMenuItem[]>(() => [
     {
@@ -103,6 +114,13 @@ const grayscale = computed({
 <template>
     <ArticleLayout>
         <template #header>
+            <header>
+                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)">/</span>
+                    </template>
+                </UBreadcrumb>
+            </header>
             <h1 id="article-title" class="text-2xl font-semibold leading-snug text-scalable text-(--text) fs-heading">{{ t('report.title') }}</h1>
             <p class="text-base leading-relaxed text-(--text-2) text-scalable max-w-prose fs-subtitle">
                 {{ t('report.description') }}

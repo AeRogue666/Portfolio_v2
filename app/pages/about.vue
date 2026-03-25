@@ -15,7 +15,7 @@ const { data: page } = await useAsyncData(
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         label: t('breadcrumb.feed'),
-        to: ''
+        to: '/feed'
     },
     {
         label: t('breadcrumb.about'),

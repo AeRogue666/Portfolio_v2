@@ -20,9 +20,9 @@ defineProps<{
         </div>
 
         <!-- B - Vague SVG de séparation avec la section suivante -->
-        <svg class="block w-full h-18 absolute -bottom-px left-0 right-0 z-2" view-box="0 0 1440 72"
+        <svg class="block w-full h-18 absolute -bottom-px left-0 right-0 z-2" view-box="0 0 1846 320"
             preserve-aspect-ratio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M0,36 C180,72 360,0 540,28 C720,56 900,8 1080,36 C1260,60 1360,18 1440,36 L1440,72 L0,72 Z"
+            <path d="M0,36 C180,72 360,0 540,28 C720,56 900,8 1080,36 C1260,60 1360,18 1846,36 L1846,72 L0,72 Z"
                 :fill="`var(${fill})`" />
         </svg>
     </section>

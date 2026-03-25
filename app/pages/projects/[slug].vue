@@ -25,7 +25,7 @@ if (error.value) {
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         label: t('breadcrumb.feed'),
-        to: ''
+        to: '/feed'
     },
     {
         label: t('breadcrumb.projects'),
@@ -93,17 +93,19 @@ watchEffect(() => {
                 <time :datetime="project.date">{{ dayjs(project.date).format('DD MMMM YYYY') }}</time>
             </p>
 
-            <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">{{ project.title }}</h1>
+            <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">{{ project.title }}
+            </h1>
             <p class="fs-subtitle text-(--text-2) leading-snug">
                 {{ project.summary }}
             </p>
 
             <NuxtImg :src="project.image?.sources.detail.mobile"
                 :srcset="`${project.image?.sources.detail.mobile} 640w, ${project.image?.sources.detail.tablet} 768w, ${project.image?.sources.detail.desktop} 1024w`"
-                :alt="project.image?.alt" class="my-2 rounded-lg" densities="x1" itemprop="image" :placeholder="true" />
+                width="1280" height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="project.image?.alt"
+                class="my-2 rounded-lg" :placeholder="true" />
             <!-- width="768" height="432" -->
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->
-             
+
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <div>
                     <dt class="fs-lead font-semibold leading-snug">

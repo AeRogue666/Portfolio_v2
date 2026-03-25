@@ -9,7 +9,9 @@ const { t } = useI18n();
 
 <template>
     <UHeader toggle-side="left"
-        class="flex items-center w-full h-full bg-(--bg) gap-2 p-4 border-b border-(--border-medium) relative z-50">
+        class="flex items-center w-full h-full bg-(--bg) gap-2 p-4 border-b border-(--border-medium) relative z-50" :ui="{
+            container: 'max-w-none'
+        }">
         <template #toggle>
             <SidebarLeft />
         </template>

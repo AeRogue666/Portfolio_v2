@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import ProcessCard from './molecules/ProcessCard.vue';
 
+const { t } = useI18n();
+
 const elements = reactive<{
     title: string,
     description?: string,
@@ -10,48 +12,48 @@ const elements = reactive<{
     iconClass?: string,
 }[]>([
     {
-        title: 'Etude de vos objectifs',
-        description: 'Nous étudions ensemble vos objectifs',
+        title: t('index.expertise_section.process.1.title'),
+        description: t('index.expertise_section.process.1.description'),
         icon: 'fa7-solid:magnifying-glass',
         size: 'xl',
         class: 'bg-blue-500',
         iconClass: 'bg-blue-500',
     },
     {
-        title: 'Proposition d\'un projet digital sur mesure',
-        description: 'Projet digital répondant à vos besoins',
+        title: t('index.expertise_section.process.2.title'),
+        description: t('index.expertise_section.process.2.description'),
         icon: 'fa7-solid:pen-ruler',
         size: 'xl',
         class: 'bg-pink-500',
         iconClass: 'size-24 bg-white',
     },
     {
-        title: 'Validation budgétaire et deadline',
-        description: 'Nous validons ensemble un budget ainsi qu\'une deadline raisonnable',
+        title: t('index.expertise_section.process.3.title'),
+        description: t('index.expertise_section.process.3.description'),
         icon: 'fa7-solid:dollar-sign',
         size: 'xl',
         class: 'bg-green-500',
         iconClass: 'size-24 bg-white',
     },
     {
-        title: 'Pas à pas',
-        description: 'Nous produisons le projet et vous tenons au courant sur son avancé de manière régulière',
+        title: t('index.expertise_section.process.4.title'),
+        description: t('index.expertise_section.process.4.description'),
         icon: 'fa7-solid:shapes',
         size: 'xl',
         class: 'bg-purple-500',
         iconClass: 'size-24 bg-white',
     },
     {
-        title: 'Crashtest',
-        description: 'Nous effectuons des crashtests du projet avec votre équipe en conditions réelles',
+        title: t('index.expertise_section.process.5.title'),
+        description: t('index.expertise_section.process.5.description'),
         icon: 'fa7-solid:warning',
         size: 'xl',
         class: 'bg-orange-500',
         iconClass: 'size-24 bg-white',
     },
     {
-        title: 'Suivis après vente',
-        description: 'Votre projet vous appartient désormais, mais nous assurons le support !',
+        title: t('index.expertise_section.process.6.title'),
+        description: t('index.expertise_section.process.6.description'),
         icon: 'fa7-solid:comments',
         size: 'xl',
         class: 'bg-lightblue-500',

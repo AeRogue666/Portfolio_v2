@@ -25,7 +25,7 @@ if (error.value) {
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         label: t('breadcrumb.feed'),
-        to: ''
+        to: '/feed'
     },
     {
         label: t('breadcrumb.updates'),
@@ -102,10 +102,11 @@ watchEffect(() => {
 
             <NuxtImg :src="update.image?.sources.detail.mobile"
                 :srcset="`${update.image?.sources.detail.mobile} 640w, ${update.image?.sources.detail.tablet} 768w, ${update.image?.sources.detail.desktop} 1024w`"
-                :alt="update.image?.alt" width="768" height="432" class="my-2 rounded-lg" densities="x1"
-                itemprop="image" :placeholder="true" />
+                width="1280" height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="update.image?.alt"
+                class="my-2 rounded-lg" :placeholder="true" />
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->
             <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" -->
+            <!-- width="768" height="432" -->
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <dt class="fs-lead font-semibold leading-snug">

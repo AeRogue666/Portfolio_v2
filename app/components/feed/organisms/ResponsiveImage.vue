@@ -24,9 +24,8 @@ const src = props.image.sources.feed?.mobile || props.image.sources.detail?.mobi
 
 <template>
     <div class="relative overflow-hidden rounded-xl shadow-md">
-        <NuxtImg :src="src" :alt="image.alt" width="640" height="360"
-            class="w-full h-auto object-cover transition-transform duration-300 hover:scale-105" densities="x1"
-            loading="lazy" />
+        <NuxtImg :src="src" :alt="image.alt" width="640" height="360" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
+            class="w-full h-auto object-cover transition-transform duration-300 hover:scale-105" loading="lazy" />
         <!-- sizes="xs:100vw sm:100vw md:80vw lg:64rem" -->
         <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="` ${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" -->
     </div>

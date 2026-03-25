@@ -130,7 +130,7 @@ const getAccessibilityColor = (accessibility: string) => {
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         label: t('breadcrumb.feed'),
-        to: ''
+        to: '/feed'
     },
     {
         label: t('breadcrumb.accessibility_report'),

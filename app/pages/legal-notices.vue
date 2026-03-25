@@ -19,7 +19,7 @@ if(error.value) {
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         label: t('breadcrumb.feed'),
-        to: ''
+        to: '/feed'
     },
     {
         label: t('breadcrumb.legal_notices'),

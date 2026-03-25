@@ -8,14 +8,18 @@ import ExpertiseContainer from '../components/index/ExpertiseContainer.vue';
 
 const { t, locale } = useI18n(),
     colorMode = useColorMode(),
-    avatarSrc = ref('https://avatars.githubusercontent.com/u/38510448?v=4');
+    avatarSrc = ref('https://avatars.githubusercontent.com/u/38510448?v=4'),
+    fillColor = ref<string[] | undefined>(undefined);
 
 useSidebarFocusState();
 
 const clientsCarouselItems = ref<{
+    title: string; // '70 millions', '30%', etc.
+    description: string; // 'happy users', 'more efficiency on the website'
     image: string;
     alt: string;
-    description: string;
+    link: string; // /customers/[slug] or /customers-stories/[slug]
+    customer_name: string;
 }[]>([]);
 
 const { data: postsData } = await useAsyncData(
@@ -76,6 +80,10 @@ onMounted(() => {
                 mode === 'dark'
                     ? 'https://github.com/nuxt.png'
                     : 'https://avatars.githubusercontent.com/u/38510448?v=4'
+            fillColor.value =
+                mode === 'dark'
+                    ? undefined
+                    : ['--bg', '--bg', '--bg', '--bg', '--bg']
         },
         { immediate: true }
     );
@@ -94,7 +102,8 @@ useSeoMeta(({
 <template>
     <UContainer class="max-w-none">
         <!-- Landing section -->
-        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" fill="--card-update-bg">
+        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1"
+            :fill="fillColor?.[0] ?? '--card-update-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
                     {{ t('index.user_title') }}
@@ -124,7 +133,7 @@ useSeoMeta(({
 
         <!-- Clients section -->
         <IndexSection v-if="clientsCarouselItems.length !== 0" id="client-section" :class="'bg-(--card-project-bg)'"
-            fill="--card-update-bg">
+            :fill="fillColor?.[1] ?? '--card-update-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.client_section.tag') }}
@@ -145,18 +154,33 @@ useSeoMeta(({
             </template>
 
             <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names loop arrows dots
-                auto-scroll :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
-                    item: 'basis-1/3',
+                :autoplay="{ delay: 2000 }" :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
+                    item: 'basis-full',
                     prev: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg-(--bg-3) text-(--text-2) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90',
                     next: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg(--bg-3) text-(--text) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90'
                 }">
-                <NuxtImg :src="item.image" :alt="item.alt" sizes="xs:100vw md:80vw lg:64rem"
-                    class="rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
-                    densities="x1" loading="lazy" :placeholder="true" />
-                <span class="text-base font-semibold lg:text-center text-(--text) mb-3 fs-body">
-                    {{ item.description }}
-                </span>
-                <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" :srcset="`${item.image} 640w, ${item.image} 768w, ${item.image} 1024w`"  -->
+                <NuxtLink :to="item.link"
+                    class="flex flex-col items-center w-auto h-auto lg:h-92 p-3 lg:p-4 rounded-lg shrink-0 grow-0">
+                    <div class="flex flex-col items-start w-full my-auto">
+                        <h3 class="fs-subtitle font-semibold mb-4">
+                            {{ item.title }}
+                        </h3>
+                        <span class="fs-body font-normal lg:text-center text-(--text) mb-3">
+                            {{ item.description }}
+                        </span>
+                    </div>
+
+                    <div class="flex flex-col lg:w-[75%] gap-4">
+                        <NuxtImg :src="item.image" :alt="item.alt" sizes="xs:40vw md:10vw lg:20rem"
+                            class="rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
+                            loading="lazy" :placeholder="true" />
+
+                        <UButton :id="`button-customerscarousel-${item.customer_name}`" variant="ghost" color="neutral"
+                            icon="fa7-solid:arrow-right" size="md" class="w-auto">
+                            {{ t('index.client_section.button', { customer_name: item.customer_name }) }}
+                        </UButton>
+                    </div>
+                </NuxtLink>
             </UCarousel>
             <div v-else class="flex justify-center items-center w-full my-10">
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3 fs-body">
@@ -166,7 +190,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Realisations section -->
-        <IndexSection id="campain-section" :class="'bg-(--card-update-bg)'" fill="--card-about-bg">
+        <IndexSection id="campain-section" :class="'bg-(--card-update-bg)'" :fill="fillColor?.[2] ?? '--card-about-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.campain_section.tag') }}
@@ -194,7 +218,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Expertise section -->
-        <!-- <IndexSection id="expertise-section" :class="'bg-(--bg-elevated)'" fill="--card-about-bg">
+        <!-- <IndexSection id="expertise-section" :class="'bg-(--bg-elevated)'" :fill="fillColor?.[3] ?? '--card-about-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.expertise_section.tag') }}
@@ -218,7 +242,7 @@ useSeoMeta(({
         </IndexSection> -->
 
         <!-- Contact section -->
-        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" fill="--bg-2">
+        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" :fill="fillColor?.[4] ?? '--bg-2'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.contact_section.tag') }}

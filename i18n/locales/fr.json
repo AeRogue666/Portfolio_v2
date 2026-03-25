@@ -76,8 +76,10 @@
     },
     "client_section": {
       "tag": "Ils me font confiance",
-      "title": "Mes clients",
-      "be_the_first": "Soyez le premier !"
+      "title": "Témoignages de clients",
+      "description": "",
+      "be_the_first": "Soyez le premier !",
+      "button": "Lire le témoigagne de {customer_name}"
     },
     "campain_section": {
       "tag": "Portfolio",
@@ -87,7 +89,33 @@
     "expertise_section": {
       "tag": "Déroulé d'un projet",
       "title": "Mon expertise",
-      "description": "Je vous accompagne de A à Z lors de la mise en place de votre projet, en procédant de la manière suivante"
+      "description": "Je vous accompagne de A à Z lors de la mise en place de votre projet, en procédant de la manière suivante",
+      "process": {
+        "1": {
+          "title": "Etude de vos objectifs",
+          "description": "Nous étudions ensemble vos objectifs"
+        },
+        "2": {
+          "title": "Proposition d'un Projet Digital sur mesure",
+          "description": "Projet digital répondant à vos besoins"
+        },
+        "3": {
+          "title": "Validation budgétaire et deadline",
+          "description": "Nous validons ensemble un budget ainsi qu'une deadline raisonnable"
+        },
+        "4": {
+          "title": "Pas à pas",
+          "description": "Nous produisons le projet et vous tenons au courant sur son avancé de manière régulière"
+        },
+        "5": {
+          "title": "Crash Test",
+          "description": "Nous effectuons des crash tests du projet avec votre équipe en conditions réelles"
+        },
+        "6": {
+          "title": "Suivis après vente",
+          "description": "Votre projet vous appartient désormais, mais nous assurons le support !"
+        }
+      }
     },
     "contact_section": {
       "tag": "Contact",
@@ -188,11 +216,12 @@
     "about": "A propos",
     "accessibility": "Accessibilité",
     "accessibility_report":"Rapport d'accessibilité",
+    "report": "Signaler un incident",
     "legal_notices": "Mentions légales",
     "terms_of_use": "Conditions Générales d'Utilisation"
   },
   "report": {
-    "title": "Signaler un problème",
+    "title": "Signaler un incident",
     "description": "Problème d'accessibilité, bug ou retour sur une fonctionnalitée",
     "issue": {
       "accessibility": "Accessibilité",
