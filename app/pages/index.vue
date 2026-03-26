@@ -37,10 +37,10 @@ const realisationsCarouselItems = computed(() => {
         (item.kind === 'project' || item.kindFallback === 'project') && item.image
     )
         .map(item => ({
-            image: item.image!.sources.detail?.mobile
-                || item.image!.sources.feed?.mobile
+            image: item.image?.sources.detail?.mobile
+                || item.image?.sources.feed?.mobile
                 || '',
-            alt: item.image!.alt,
+            alt: item.image?.alt,
             description: item.feed_title ?? item.title,
             link: `/projects/${item.slug}`,
         }));
