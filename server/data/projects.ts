@@ -243,14 +243,14 @@ export const projects: Project[] = [
       alt: "",
       sources: {
         feed: {
-          mobile: `/images/project/portfolio-v2/mobile.PNG`,
-          desktop: `/images/project/portfolio-v2/desktop.PNG`,
-          tablet: `/images/project/portfolio-v2/mobile.PNG`,
+          mobile: `/images/project/portfolio-v2/mobile.png`,
+          desktop: `/images/project/portfolio-v2/desktop.png`,
+          tablet: `/images/project/portfolio-v2/mobile.png`,
         },
         detail: {
-          mobile: `/images/project/portfolio-v2/mobile.PNG`,
-          desktop: `/images/project/portfolio-v2/desktop.PNG`,
-          tablet: `/images/project/portfolio-v2/mobile.PNG`,
+          mobile: `/images/project/portfolio-v2/mobile.png`,
+          desktop: `/images/project/portfolio-v2/desktop.png`,
+          tablet: `/images/project/portfolio-v2/mobile.png`,
         },
       },
     },
@@ -310,14 +310,14 @@ export const projects: Project[] = [
       alt: "",
       sources: {
         feed: {
-          mobile: `/images/project/front-pomodoro-timer/mobile.PNG`,
-          desktop: `/images/project/front-pomodoro-timer/desktop.PNG`,
-          tablet: `/images/project/front-pomodoro-timer/mobile.PNG`,
+          mobile: `/images/project/front-pomodoro-timer/mobile.png`,
+          desktop: `/images/project/front-pomodoro-timer/desktop.png`,
+          tablet: `/images/project/front-pomodoro-timer/mobile.png`,
         },
         detail: {
-          mobile: `/images/project/front-pomodoro-timer/mobile.PNG`,
-          desktop: `/images/project/front-pomodoro-timer/desktop.PNG`,
-          tablet: `/images/project/front-pomodoro-timer/mobile.PNG`,
+          mobile: `/images/project/front-pomodoro-timer/mobile.png`,
+          desktop: `/images/project/front-pomodoro-timer/desktop.png`,
+          tablet: `/images/project/front-pomodoro-timer/mobile.png`,
         },
       },
     },
@@ -375,14 +375,14 @@ export const projects: Project[] = [
       alt: "",
       sources: {
         feed: {
-          mobile: `/images/project/front-weather-aggregator/mobile.PNG`,
-          desktop: `/images/project/front-weather-aggregator/desktop.PNG`,
-          tablet: `/images/project/front-weather-aggregator/mobile.PNG`,
+          mobile: `/images/project/front-weather-aggregator/mobile.png`,
+          desktop: `/images/project/front-weather-aggregator/desktop.png`,
+          tablet: `/images/project/front-weather-aggregator/mobile.png`,
         },
         detail: {
-          mobile: `/images/project/front-weather-aggregator/mobile.PNG`,
-          desktop: `/images/project/front-weather-aggregator/desktop.PNG`,
-          tablet: `/images/project/front-weather-aggregator/mobile.PNG`,
+          mobile: `/images/project/front-weather-aggregator/mobile.png`,
+          desktop: `/images/project/front-weather-aggregator/desktop.png`,
+          tablet: `/images/project/front-weather-aggregator/mobile.png`,
         },
       },
     },
