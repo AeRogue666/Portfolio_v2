@@ -11,14 +11,14 @@ export const updates: Update[] = [
       alt: "",
       sources: {
         feed: {
-          mobile: `/images/update/exploration-prisma/mobile.png`,
-          desktop: `/images/update/exploration-prisma/desktop.png`,
-          tablet: `/images/update/exploration-prisma/mobile.png`,
+          mobile: `/images/update/exploration-prisma/mobile.PNG`,
+          desktop: `/images/update/exploration-prisma/desktop.PNG`,
+          tablet: `/images/update/exploration-prisma/mobile.PNG`,
         },
         detail: {
-          mobile: `/images/update/exploration-prisma/mobile.png`,
-          desktop: `/images/update/exploration-prisma/desktop.png`,
-          tablet: `/images/update/exploration-prisma/mobile.png`,
+          mobile: `/images/update/exploration-prisma/mobile.PNG`,
+          desktop: `/images/update/exploration-prisma/desktop.PNG`,
+          tablet: `/images/update/exploration-prisma/mobile.PNG`,
         },
       },
     },

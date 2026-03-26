@@ -3,21 +3,21 @@ import type { Project } from "@/types/project";
 export const projects: Project[] = [
   {
     slug: "plateforme-gestion-recettes",
-    date: "2024-03-12",
+    date: "2024-12-03",
     kind: "project",
     pinned: true,
     image: {
       alt: "",
       sources: {
         feed: {
-          mobile: `/images/project/plateforme-gestion-recettes/mobile.png`,
-          desktop: `/images/project/plateforme-gestion-recettes/desktop.png`,
-          tablet: `/images/project/plateforme-gestion-recettes/mobile.png`,
+          mobile: `/images/project/plateforme-gestion-recettes/mobile.PNG`,
+          desktop: `/images/project/plateforme-gestion-recettes/desktop.PNG`,
+          tablet: `/images/project/plateforme-gestion-recettes/mobile.PNG`,
         },
         detail: {
-          mobile: `/images/project/plateforme-gestion-recettes/mobile.png`,
-          desktop: `/images/project/plateforme-gestion-recettes/desktop.png`,
-          tablet: `/images/project/plateforme-gestion-recettes/mobile.png`,
+          mobile: `/images/project/plateforme-gestion-recettes/mobile.PNG`,
+          desktop: `/images/project/plateforme-gestion-recettes/desktop.PNG`,
+          tablet: `/images/project/plateforme-gestion-recettes/mobile.PNG`,
         },
       },
     },
@@ -120,20 +120,20 @@ export const projects: Project[] = [
   {
     slug: "front-ecommerce-headless",
     kind: "project",
-    date: "2025-05-06",
+    date: "2025-06-20",
     pinned: false,
     image: {
       alt: "",
       sources: {
         feed: {
-          mobile: `/images/project/front-ecommerce-headless/mobile.png`,
-          desktop: `/images/project/front-ecommerce-headless/desktop.png`,
-          tablet: `/images/project/front-ecommerce-headless/mobile.png`,
+          mobile: `/images/project/front-ecommerce-headless/mobile.PNG`,
+          desktop: `/images/project/front-ecommerce-headless/desktop.PNG`,
+          tablet: `/images/project/front-ecommerce-headless/mobile.PNG`,
         },
         detail: {
-          mobile: `/images/project/front-ecommerce-headless/mobile.png`,
-          desktop: `/images/project/front-ecommerce-headless/desktop.png`,
-          tablet: `/images/project/front-ecommerce-headless/mobile.png`,
+          mobile: `/images/project/front-ecommerce-headless/mobile.PNG`,
+          desktop: `/images/project/front-ecommerce-headless/desktop.PNG`,
+          tablet: `/images/project/front-ecommerce-headless/mobile.PNG`,
         },
       },
     },
@@ -231,6 +231,201 @@ export const projects: Project[] = [
           "Optimisation of the online purchasing process for customers, with integrated basket and cookie management, using Pinia.",
           "Analysis of user experience (UX) and digital accessibility aspects as part of an e-commerce development project.",
         ],
+      },
+    },
+  },
+  {
+    slug: "front-pomodoro-timer",
+    kind: "project",
+    date: "2025-11-25",
+    pinned: false,
+    image: {
+      alt: "",
+      sources: {
+        feed: {
+          mobile: `/images/project/front-pomodoro-timer/mobile.PNG`,
+          desktop: `/images/project/front-pomodoro-timer/desktop.PNG`,
+          tablet: `/images/project/front-pomodoro-timer/mobile.PNG`,
+        },
+        detail: {
+          mobile: `/images/project/front-pomodoro-timer/mobile.PNG`,
+          desktop: `/images/project/front-pomodoro-timer/desktop.PNG`,
+          tablet: `/images/project/front-pomodoro-timer/mobile.PNG`,
+        },
+      },
+    },
+    stack: ["Vue", "TypeScript", "Pinia", "I18n"],
+    tags: ["Vue", "TypeScript", "Pinia", "I18n", "Vue-router"],
+    links: {
+      github: "https://github.com/AeRogue666/TasksTimer",
+      demo: "",
+    },
+    translations: {
+      fr: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+      en: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+    },
+  },
+  {
+    slug: "front-weather-aggregator",
+    kind: "project",
+    date: "2025-11-26",
+    pinned: false,
+    image: {
+      alt: "",
+      sources: {
+        feed: {
+          mobile: `/images/project/front-weather-aggregator/mobile.PNG`,
+          desktop: `/images/project/front-weather-aggregator/desktop.PNG`,
+          tablet: `/images/project/front-weather-aggregator/mobile.PNG`,
+        },
+        detail: {
+          mobile: `/images/project/front-weather-aggregator/mobile.PNG`,
+          desktop: `/images/project/front-weather-aggregator/desktop.PNG`,
+          tablet: `/images/project/front-weather-aggregator/mobile.PNG`,
+        },
+      },
+    },
+    stack: ["Vue", "JavaScript", "Pinia", "I18n"],
+    tags: ["Vue", "JavaScript", "Pinia", "I18n"],
+    links: {
+      github: "https://github.com/AeRogue666/WeatherApp",
+      demo: "",
+    },
+    translations: {
+      fr: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+      en: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+    },
+  },
+  {
+    slug: "portfolio-v2",
+    kind: "project",
+    date: "2026-02-11",
+    pinned: false,
+    image: {
+      alt: "",
+      sources: {
+        feed: {
+          mobile: `/images/project/portfolio-v2/mobile.PNG`,
+          desktop: `/images/project/portfolio-v2/desktop.PNG`,
+          tablet: `/images/project/portfolio-v2/mobile.PNG`,
+        },
+        detail: {
+          mobile: `/images/project/portfolio-v2/mobile.PNG`,
+          desktop: `/images/project/portfolio-v2/desktop.PNG`,
+          tablet: `/images/project/portfolio-v2/mobile.PNG`,
+        },
+      },
+    },
+    stack: ["Nuxt", "TypeScript", "Pinia", "I18n", "Focus-trap", "Resend", "Upstash/Redis", "Markdown", "Prisma", "PostgreSQL"],
+    tags: ["Nuxt", "TypeScript", "Pinia", "I18n", "Prisma", "PostgreSQL"],
+    links: {
+      github: "https://github.com/AeRogue666/Portfolio_v2",
+      demo: "https://aureldev.com",
+    },
+    translations: {
+      fr: {
+        title: "",
+        summary: "",
+        feed_title: "Portfolio v2 - Accessibility-first Content-driven project",
+        feed_summary: "Version 2 of my Portfolio - Made with Nuxt 4.2+ and Accessibility-First in mind",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+      en: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
       },
     },
   },
