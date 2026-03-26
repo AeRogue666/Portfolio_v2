@@ -2,11 +2,18 @@
 import IconButton from '@/components/ui/IconButton.vue';
 
 defineProps<{
-    fontScale: FontScale
+    fontScale: FontScale,
+    increaseFont: Function,
+    decreaseFont: Function,
 }>();
 
-const increaseFont = defineModel('increaseFont', { required: true });
-const decreaseFont = defineModel('decreaseFont', { required: true });
+/* defineEmits<{
+    increaseFont: Function,
+    decreaseFont: Function,
+}>(); */
+
+// const increaseFont = defineModel('increaseFont', { required: true });
+// const decreaseFont = defineModel('decreaseFont', { required: true });
 </script>
 
 <template>

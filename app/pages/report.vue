@@ -171,12 +171,10 @@ const grayscale = computed({
                     item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body'
                 }" required />
             </UFormField>
-        </UForm>
-
-        <template #footer>
+            
             <UButton name="button-submit-report" color="neutral" variant="solid" size="xl"
                 class="bg-(--bg-3) text-(--text) hover:bg(--bg-elevated) hover:text-inverted fs-body"
                 :label="t('report.form.submit')" type="submit" :loading="isSubmitting" />
-        </template>
+        </UForm>
     </ArticleLayout>
 </template>

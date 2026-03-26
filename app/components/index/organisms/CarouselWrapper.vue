@@ -12,8 +12,8 @@ defineProps<{
 <template>
     <UCarousel v-slot="{ item, index }" class-names loop arrows dots :autoplay="{ delay: 2000 }" :items="items">
         <NuxtLink :id="`carousel-${index}`" :to="item.link">
-            <NuxtImg :src="item.image" :alt="item.alt" width="640" height="360" densities="x1"
-                class="rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
+            <NuxtImg :src="item.image" :alt="item.alt" width="1080" height="1350" densities="x1"
+                class="rounded-xl border-2 border-solid border-(--border-subtle) overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
                 loading="lazy" />
             <span>{{ item.description }}</span>
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->

@@ -235,136 +235,6 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "front-pomodoro-timer",
-    kind: "project",
-    date: "2025-11-25",
-    pinned: false,
-    image: {
-      alt: "",
-      sources: {
-        feed: {
-          mobile: `/images/project/front-pomodoro-timer/mobile.PNG`,
-          desktop: `/images/project/front-pomodoro-timer/desktop.PNG`,
-          tablet: `/images/project/front-pomodoro-timer/mobile.PNG`,
-        },
-        detail: {
-          mobile: `/images/project/front-pomodoro-timer/mobile.PNG`,
-          desktop: `/images/project/front-pomodoro-timer/desktop.PNG`,
-          tablet: `/images/project/front-pomodoro-timer/mobile.PNG`,
-        },
-      },
-    },
-    stack: ["Vue", "TypeScript", "Pinia", "I18n"],
-    tags: ["Vue", "TypeScript", "Pinia", "I18n", "Vue-router"],
-    links: {
-      github: "https://github.com/AeRogue666/TasksTimer",
-      demo: "",
-    },
-    translations: {
-      fr: {
-        title: "",
-        summary: "",
-        feed_title: "",
-        feed_summary: "",
-        role: "",
-        context: "",
-        problem: "",
-        solution: "",
-        technicalChoices: [
-          {
-            title: "",
-            description: "",
-          },
-        ],
-        accessibility: "",
-        learnings: [],
-      },
-      en: {
-        title: "",
-        summary: "",
-        feed_title: "",
-        feed_summary: "",
-        role: "",
-        context: "",
-        problem: "",
-        solution: "",
-        technicalChoices: [
-          {
-            title: "",
-            description: "",
-          },
-        ],
-        accessibility: "",
-        learnings: [],
-      },
-    },
-  },
-  {
-    slug: "front-weather-aggregator",
-    kind: "project",
-    date: "2025-11-26",
-    pinned: false,
-    image: {
-      alt: "",
-      sources: {
-        feed: {
-          mobile: `/images/project/front-weather-aggregator/mobile.PNG`,
-          desktop: `/images/project/front-weather-aggregator/desktop.PNG`,
-          tablet: `/images/project/front-weather-aggregator/mobile.PNG`,
-        },
-        detail: {
-          mobile: `/images/project/front-weather-aggregator/mobile.PNG`,
-          desktop: `/images/project/front-weather-aggregator/desktop.PNG`,
-          tablet: `/images/project/front-weather-aggregator/mobile.PNG`,
-        },
-      },
-    },
-    stack: ["Vue", "JavaScript", "Pinia", "I18n"],
-    tags: ["Vue", "JavaScript", "Pinia", "I18n"],
-    links: {
-      github: "https://github.com/AeRogue666/WeatherApp",
-      demo: "",
-    },
-    translations: {
-      fr: {
-        title: "",
-        summary: "",
-        feed_title: "",
-        feed_summary: "",
-        role: "",
-        context: "",
-        problem: "",
-        solution: "",
-        technicalChoices: [
-          {
-            title: "",
-            description: "",
-          },
-        ],
-        accessibility: "",
-        learnings: [],
-      },
-      en: {
-        title: "",
-        summary: "",
-        feed_title: "",
-        feed_summary: "",
-        role: "",
-        context: "",
-        problem: "",
-        solution: "",
-        technicalChoices: [
-          {
-            title: "",
-            description: "",
-          },
-        ],
-        accessibility: "",
-        learnings: [],
-      },
-    },
-  },
-  {
     slug: "portfolio-v2",
     kind: "project",
     date: "2026-02-11",
@@ -430,3 +300,134 @@ export const projects: Project[] = [
     },
   },
 ];
+
+/* {
+    slug: "front-pomodoro-timer",
+    kind: "project",
+    date: "2025-11-25",
+    pinned: false,
+    image: {
+      alt: "",
+      sources: {
+        feed: {
+          mobile: `/images/project/front-pomodoro-timer/mobile.PNG`,
+          desktop: `/images/project/front-pomodoro-timer/desktop.PNG`,
+          tablet: `/images/project/front-pomodoro-timer/mobile.PNG`,
+        },
+        detail: {
+          mobile: `/images/project/front-pomodoro-timer/mobile.PNG`,
+          desktop: `/images/project/front-pomodoro-timer/desktop.PNG`,
+          tablet: `/images/project/front-pomodoro-timer/mobile.PNG`,
+        },
+      },
+    },
+    stack: ["Vue", "TypeScript", "Pinia", "I18n"],
+    tags: ["Vue", "TypeScript", "Pinia", "I18n", "Vue-router"],
+    links: {
+      github: "https://github.com/AeRogue666/TasksTimer",
+      demo: "",
+    },
+    translations: {
+      fr: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+      en: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+    },
+  }, */
+  /* {
+    slug: "front-weather-aggregator",
+    kind: "project",
+    date: "2025-11-26",
+    pinned: false,
+    image: {
+      alt: "",
+      sources: {
+        feed: {
+          mobile: `/images/project/front-weather-aggregator/mobile.PNG`,
+          desktop: `/images/project/front-weather-aggregator/desktop.PNG`,
+          tablet: `/images/project/front-weather-aggregator/mobile.PNG`,
+        },
+        detail: {
+          mobile: `/images/project/front-weather-aggregator/mobile.PNG`,
+          desktop: `/images/project/front-weather-aggregator/desktop.PNG`,
+          tablet: `/images/project/front-weather-aggregator/mobile.PNG`,
+        },
+      },
+    },
+    stack: ["Vue", "JavaScript", "Pinia", "I18n"],
+    tags: ["Vue", "JavaScript", "Pinia", "I18n"],
+    links: {
+      github: "https://github.com/AeRogue666/WeatherApp",
+      demo: "",
+    },
+    translations: {
+      fr: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+      en: {
+        title: "",
+        summary: "",
+        feed_title: "",
+        feed_summary: "",
+        role: "",
+        context: "",
+        problem: "",
+        solution: "",
+        technicalChoices: [
+          {
+            title: "",
+            description: "",
+          },
+        ],
+        accessibility: "",
+        learnings: [],
+      },
+    },
+  }, */

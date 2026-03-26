@@ -78,6 +78,10 @@ watchEffect(() => {
         twitterCard: 'summary_large_image',
     });
 });
+
+const src = computed(() => project.value?.image?.sources.feed?.mobile || project.value?.image?.sources.detail?.mobile || ''),
+    tabletSrc = computed(() => project.value?.image?.sources.feed?.tablet || project.value?.image?.sources.detail?.tablet || src),
+    desktopSrc = computed(() => project.value?.image?.sources.feed?.desktop || project.value?.image?.sources.detail?.desktop || tabletSrc);
 </script>
 
 <template>
@@ -99,10 +103,10 @@ watchEffect(() => {
                 {{ project.summary }}
             </p>
 
-            <NuxtImg :src="project.image?.sources.detail.mobile"
-                :srcset="`${project.image?.sources.detail.mobile} 640w, ${project.image?.sources.detail.tablet} 768w, ${project.image?.sources.detail.desktop} 1024w`"
+            <NuxtImg :src="src"
+                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
                 width="1280" height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="project.image?.alt"
-                class="my-2 rounded-lg" :placeholder="true" />
+                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" :placeholder="true" />
             <!-- width="768" height="432" -->
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->
 

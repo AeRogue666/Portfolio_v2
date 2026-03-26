@@ -78,6 +78,10 @@ watchEffect(() => {
         twitterCard: 'summary_large_image',
     });
 });
+
+const src = computed(() => update.value?.image?.sources.feed?.mobile || update.value?.image?.sources.detail?.mobile || ''),
+    tabletSrc = computed(() => update.value?.image?.sources.feed?.tablet || update.value?.image?.sources.detail?.tablet || src),
+    desktopSrc = computed(() => update.value?.image?.sources.feed?.desktop || update.value?.image?.sources.detail?.desktop || tabletSrc);
 </script>
 
 <template>
@@ -100,10 +104,10 @@ watchEffect(() => {
                 {{ update.summary }}
             </p>
 
-            <NuxtImg :src="update.image?.sources.detail.mobile"
-                :srcset="`${update.image?.sources.detail.mobile} 640w, ${update.image?.sources.detail.tablet} 768w, ${update.image?.sources.detail.desktop} 1024w`"
+            <NuxtImg :src="src"
+                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
                 width="1280" height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="update.image?.alt"
-                class="my-2 rounded-lg" :placeholder="true" />
+                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" :placeholder="true" />
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->
             <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" -->
             <!-- width="768" height="432" -->

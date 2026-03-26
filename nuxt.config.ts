@@ -1,4 +1,9 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+const securityHeaders = {
+  "X-Frame-Options": "DENY",
+  "X-Content-Type-Options": "nosniff",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+};
+
 export default defineNuxtConfig({
   ssr: true,
   modules: [
@@ -32,11 +37,10 @@ export default defineNuxtConfig({
       xxl: 1536,
       avatar: 160,
       avatar2x: 320,
-      hero: 1920,  
+      hero: 1920,
     },
-    domains: [
-      'github.com', 'avatars.githubusercontent.com'
-    ]
+    domains: ["github.com", "avatars.githubusercontent.com"],
+    provider: 'ipx'
   },
   app: {
     head: {
@@ -52,27 +56,15 @@ export default defineNuxtConfig({
   },
   routeRules: {
     "/": {
-      headers: {
-        "X-Frame-Options": "DENY",
-        "X-Content-Type-Options": "nosniff",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-      },
+      headers: securityHeaders,
       appLayout: "index-header",
     },
     "/feed": {
-      headers: {
-        "X-Frame-Options": "DENY",
-        "X-Content-Type-Options": "nosniff",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-      },
+      headers: securityHeaders,
       appLayout: "feed-header",
     },
     "/**": {
-      headers: {
-        "X-Frame-Options": "DENY",
-        "X-Content-Type-Options": "nosniff",
-        "Referrer-Policy": "strict-origin-when-cross-origin",
-      },
+      headers: securityHeaders,
       appLayout: "default",
     },
   },

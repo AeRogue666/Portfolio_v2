@@ -42,7 +42,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
             <ContentRenderer :value="page" />
         </article>
     </template>
-    <template>
+    <template v-else>
         <p class="fs-body">
             {{ t('error.content_unavailable') }}
         </p>
