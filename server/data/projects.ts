@@ -221,7 +221,7 @@ export const projects: Project[] = [
           {
             title: "UI/UX moderne",
             description:
-              "A modern UX/UI strategy centred around a complete interface overhaul to ensure an optimal, smooth and accessible user experience.",
+              "A modern UX/UI strategy centered around a complete interface overhaul to ensure an optimal, smooth and accessible user experience.",
           },
         ],
         accessibility:
@@ -262,40 +262,80 @@ export const projects: Project[] = [
     },
     translations: {
       fr: {
-        title: "",
+        title: "Portfolio axé sur le contenu et centré sur l'utilisateur",
         summary: "",
-        feed_title: "Portfolio v2 - Accessibility-first Content-driven project",
-        feed_summary: "Version 2 of my Portfolio - Made with Nuxt 4.2+ and Accessibility-First in mind",
-        role: "",
-        context: "",
-        problem: "",
-        solution: "",
+        feed_title: "Portfolio v2 - Projet axé sur le contenu et l'accessibilité avant tout",
+        feed_summary: "Version 2 de mon portfolio - Réalisé avec Nuxt 4.2+ et dans une optique d'accessibilité avant tout",
+        role: "Développeur Full-Stack",
+        context: "En constatant que le premier portfolio réalisé à l'issue de ma formation de développeur web ne correspondait plus à mes attentes, mes objectifs et mes compétences, j'ai travaillé sur la conception d'un portfolio mettant au centre l'accessibilité, le contenu et l'utilisateur en n'oubliant pas que c'est aussi un laboratoire où seront testés divers technologies.",
+        problem: "Le principal défi consistait à repartir de zéro, avec une idée en tête : Un portfolio évolutif sur lequel je puisse publier de façon régulière des posts car ce n'est pas juste un portfolio mais un espace d'échange entre l'utilisateur et moi.",
+        solution: "Utiliser Nuxt avec Nuxt Content et incorporer dans cette alchimie, le CMS Nuxt Studio, un éditeur de contenu Markdown développé par l'équipe du framework Nuxt, récemment devenu open-source.",
         technicalChoices: [
           {
-            title: "",
-            description: "",
+            title: "Nuxt 4",
+            description:
+              "Un framework front-end qui allie modernité, performance, évolutivité, et extensibilité pour répondre aux besoins actuels du marché.",
+          },
+          {
+            title: "Nuxt Content + Nuxt Studio + Markdown",
+            description:
+              "Un module Nuxt basé sur Git fonctionnant et un CMS supportant l'édition de contenu Markdown afin de permettre d'optimiser la gestion des contenus.",
+          },
+          {
+            title: "Pinia",
+            description:
+              "Un framework de gestion d'état global offrant une approche de gestion plus légère, modulaire et intuitive et ce de manière fluide et efficace.",
+          },
+          {
+            title: "UI/UX moderne",
+            description:
+              "Une stratégie UX/UI moderne s'articulant autour de l'utilisateur, du contenu et de l'accessibilité des interfaces pour garantir une expérience utilisateur optimiale, fluide et accessible.",
           },
         ],
-        accessibility: "",
-        learnings: [],
+        accessibility: "Afin d'optimiser l'expérience utilisateur, je me suis assuré de loa conformité du projet avec les règles d'accessibilité en vigueur (RGAA 4.2+ et WCAG 2.1) en mettant en place un Audit d'accessibilité (Tests navigateur assisté par des outils internes, tests avec lecteurs d'écrans, tets clavier, retours visuels et textuels lors des différentes actions, changement de thème et de langue, contrastes, création d'une page de rapport d'accessibilité, etc.) garantissant une navigation fluide et accessible.",
+        learnings: [
+          "Conception d'une architecture full-stack moderne sans API externe dans un souci d'amélioration continue de l'expérience utilisateur.",
+          "Mise en place de tout le processus d'un Audit Accessibilité et la complexité qui se situe derrière le terme 'Site accessible', afin de garantir la conformité du projet avec les réglementations en vigueur.",
+          "Analyse de l'expérience utilisateur (UX) et des aspects d'accessibilité numérique dans le cadre d'un projet de développement d'un portfolio évolutif.",
+        ],
       },
       en: {
-        title: "",
-        summary: "",
-        feed_title: "",
-        feed_summary: "",
-        role: "",
-        context: "",
-        problem: "",
-        solution: "",
+        title: "Content-driven & User-centered portfolio",
+        summary: "An accessible, scalable, user-centered portfolio as a social feed developed with Nuxt and Markdown",
+        feed_title: "Portfolio v2 - Accessibility-first Content-driven project",
+        feed_summary: "Accessibility-first & user-centered portfolio developed with Nuxt and Markdown",
+        role: "Full-stack Developer",
+        context: "Realizing that the first portfolio I created after completing my web development training no longer met my expectations, goals, or skill level, I set out to design a portfolio that prioritizes accessibility, content, and the user, while also serving as a testing ground for various technologies.",
+        problem: "The main challenge was to start from scratch, with one idea in mind: a dynamic portfolio where I could regularly publish posts, because it’s not just a portfolio but a space for interaction between the user and me.",
+        solution: "Using Nuxt with Nuxt Content and incorporating into this mix the Nuxt Studio CMS, a Markdown content editor developed by the Nuxt framework team, which recently became open-source.",
         technicalChoices: [
           {
-            title: "",
-            description: "",
+            title: "Nuxt 4",
+            description:
+              "A front-end framework that combines modernity, performance, scalability, and extensibility to meet current market needs.",
+          },
+          {
+            title: "Nuxt Content + Nuxt Studio + Markdown",
+            description:
+              "A fully functional Git-based Nuxt module and a CMS that supports Markdown content editing help streamline contnet management.",
+          },
+          {
+            title: "Pinia",
+            description:
+              "A global state management framework offering a lighter, modular and intuitive management approach to state management, all in a seamless and efficient manner.",
+          },
+          {
+            title: "UI/UX moderne",
+            description:
+              "A modern UX/UI strategy centered on the user, content, and interface accessibility to ensure an optimal, seamless, and accessible user experience.",
           },
         ],
-        accessibility: "",
-        learnings: [],
+        accessibility: "To optimize the user experience, I ensured the project's compliance with current accessibility guidelines (RGAA 4.2+ and WCAG 2.1) by conducting an accessibility audit (browser testing using onternal tools, screen reader testing, keyboard testing, visual and textual feedback during various actions, theme and language switching, contrast checks, creation of an accessibility report page, etc.), ensuring smooth and accessible navigation.",
+        learnings: [
+          "Designing a modern full-stack architecture without external APIs to continuously improve the user experience.",
+          "Implementing the entire accessiblity audit process and addressing the complexities behind the term 'accessible website' to ensure the project complies with current regulations.",
+          "Analysis of user experience (UX) and digital accessibility aspects as part of a project to develop a scalable portfolio."
+        ],
       },
     },
   },
