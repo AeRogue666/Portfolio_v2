@@ -40,6 +40,7 @@ export default defineNuxtConfig({
       hero: 1920,
     },
     domains: ["github.com", "avatars.githubusercontent.com"],
+    provider: "ipx",
   },
   app: {
     head: {
