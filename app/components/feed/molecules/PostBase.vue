@@ -8,7 +8,7 @@ const props = defineProps<{
 }>();
 
 const cardStyles = computed(() => {
-    const baseClasses = 'flex flex-col w-full rounded-2xl transition-all duration-300 hover:shadow-lg';
+    const baseClasses = 'flex flex-col w-full py-10 rounded-2xl transition-all duration-300 hover:shadow-lg';
 
     switch (props.cardType) {
         case 'project':
@@ -24,7 +24,7 @@ const cardStyles = computed(() => {
 </script>
 
 <template>
-    <article :class="[cardStyles, { 'is-pinned': pinned }]" class="flex flex-col w-full py-10">
+    <article :class="[cardStyles, { 'is-pinned': pinned }]">
         <span class="sr-only fs-body">{{ ariaRoleDescription }}</span>
         <div class="flex flex-col w-full gap-6">
             <header v-if="$slots.meta" class="flex flex-col mx-6 gap-4">
