@@ -1,15 +1,17 @@
 import type { Locale } from "@/types/i18n";
-import type { Update } from "@/types/update";
-import { updates } from "#server/data/updates";
-import { resolveWithLocale } from "#server/lib/resolve";
 
 // Deviendra prisma.update.findUnique({ where: { slug } })
 export default cachedEventHandler(
-  (event) => {
+  async (event) => {
     const query = getQuery(event),
       slug = event.context.params?.slug,
-      locale: Locale = query.locale === "fr" ? "fr" : "en",
-      update: Update | any = updates.find((u) => u.slug === slug);
+      locale: Locale = query.locale === "fr" ? "fr" : "en";
+    // update: Update | any = updates.find((u) => u.slug === slug);
+
+    const update = await queryCollection(event, "updates")
+      .where("slug", "=", slug)
+      .where("locale", "=", locale)
+      .first();
 
     if (!update)
       throw createError({
@@ -17,10 +19,12 @@ export default cachedEventHandler(
         statusMessage: "Update unavailable",
       });
 
-    const t = update.translations[locale];
+    return update;
+    
+    /* const t = update.translations[locale];
     if (!t) throw createError({ statusCode: 404 });
 
-    return resolveWithLocale(update, locale);
+    return resolveWithLocale(update, locale); */
   },
   {
     maxAge: 60 * 10, // 10 minutes

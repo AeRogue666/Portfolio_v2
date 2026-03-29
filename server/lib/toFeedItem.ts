@@ -1,44 +1,37 @@
 import type { FeedItem } from "@/types/feed";
-import type { Locale } from "@/types/i18n";
-import { resolveWithLocale } from "./resolve";
-
-// Deviendra ToFeedItem(prismaObject)
 
 type FeedSource = {
   slug?: string;
-  date: string;
+  created_at: string;
+  updated_at?: string | null;
   pinned?: boolean;
   tags?: string[];
   image?: any;
   kind: Exclude<FeedItem["kind"], "pinned">;
-  translations: Record<
-    Locale,
-    {
-      title: string;
-      summary?: string;
-      feed_title?: string;
-      feed_summary?: string;
-    }
-  >;
+  title?: string | null;
+  summary?: string | null;
+  feed_title?: string | null;
+  feed_summary?: string | null;
 };
 
-export function toFeedItem(source: FeedSource, locale: Locale): FeedItem {
-  const r = resolveWithLocale(source, locale);
-
-  const kind: FeedItem['kind'] = r.pinned ? 'pinned' : r.kind;
+export function toFeedItem(source: FeedSource): FeedItem {
+  const kind: FeedItem["kind"] = source.pinned ? "pinned" : source.kind;
+  const effectiveDate = source.updated_at ?? source.created_at;
 
   return {
-    id: r.slug ? `${r.kind}-${r.slug}` : r.kind,
+    id: source.slug ? `${source.kind}-${source.slug}` : source.kind,
     kind,
-    kindFallback: r.pinned ? r.kind : undefined,
-    title: r.title,
-    summary: r.summary,
-    feed_title: r.feed_title,
-    feed_summary: r.feed_summary,
-    slug: r.slug,
-    date: r.date,
-    pinned: r.pinned,
-    tags: r.tags,
-    image: r.image,
+    kindFallback: source.pinned ? source.kind : undefined,
+    title: source.title ?? "",
+    summary: source.summary ?? undefined,
+    feed_title: source.feed_title ?? undefined,
+    feed_summary: source.feed_summary ?? undefined,
+    slug: source.slug,
+    date: effectiveDate,
+    created_at: source.created_at,
+    updated_at: source.updated_at ?? undefined,
+    pinned: source.pinned,
+    tags: source.tags,
+    image: source.image,
   };
 }

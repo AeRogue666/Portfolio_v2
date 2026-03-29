@@ -3,7 +3,7 @@ import type { Update } from "@/types/update";
 export const updates: Update[] = [
   {
     slug: "exploration-prisma",
-    date: "2025-05-06",
+    created_at: "2025-05-06",
     kind: "update",
     pinned: false,
     tags: ["Full-stack", "Fullstack", "Prisma", "Compétence"],
