@@ -73,7 +73,7 @@ export default defineNuxtConfig({
   vite: {
     logLevel: "warn",
     optimizeDeps: {
-      include: ["zod", "@vueuse/integrations/useFocusTrap", "dayjs"],
+      include: ["zod", "@vueuse/integrations/useFocusTrap", "dayjs", "dayjs/locale/fr", "dayjs/locale/en"],
     },
   },
   devtools: { enabled: false },
