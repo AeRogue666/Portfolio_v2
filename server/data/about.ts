@@ -5,7 +5,7 @@ export const about: About = {
   kind: "about",
   pinned: false,
   tags: ["profil", "parcours"],
-  date: "2026-02-02",
+  created_at: "2026-02-02",
   translations: {
     fr: {
       title: "A propos",
