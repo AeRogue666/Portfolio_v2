@@ -171,7 +171,8 @@
       "update": "Update",
       "about": "About",
       "pinned": "Pinned"
-    }
+    },
+    "updated_on": "Updated on"
   },
   "project": {
     "published_on": "Published on",

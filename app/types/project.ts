@@ -15,7 +15,8 @@ interface ProjectTechnicalChoices {
 export interface Project {
   slug: string;
   kind: FeedKind;
-  date: string;
+  created_at: string;
+  updated_at?: string;
   pinned?: boolean;
   image?: ResponsiveImage;
   tags?: string[];
@@ -41,7 +42,8 @@ export interface ProjectTranslation {
 export interface ProjectResolved extends ProjectTranslation {
   slug: string;
   kind: FeedKind;
-  date: string;
+  created_at: string;
+  updated_at?: string;
   pinned?: boolean;
   image?: ResponsiveImage;
   tags?: string[];

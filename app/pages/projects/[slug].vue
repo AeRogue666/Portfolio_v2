@@ -82,6 +82,9 @@ watchEffect(() => {
 const src = computed(() => project.value?.image?.sources.feed?.mobile || project.value?.image?.sources.detail?.mobile || ''),
     tabletSrc = computed(() => project.value?.image?.sources.feed?.tablet || project.value?.image?.sources.detail?.tablet || src),
     desktopSrc = computed(() => project.value?.image?.sources.feed?.desktop || project.value?.image?.sources.detail?.desktop || tabletSrc);
+
+const created_atDate = computed(() => dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 </script>
 
 <template>
@@ -94,7 +97,11 @@ const src = computed(() => project.value?.image?.sources.feed?.mobile || project
             </UBreadcrumb>
             <p class="fs-small text-(--text-2)">
                 {{ t('project.published_on') }}
-                <time :datetime="project.date">{{ dayjs(project.date).format('DD MMMM YYYY') }}</time>
+                <time :datetime="project.created_at">{{ created_atDate }}</time>
+                <template>
+                    {{ t('post.updated_on') }}
+                <time :datetime="project.updated_at">{{ updated_atDate }}</time>
+                </template>
             </p>
 
             <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">{{ project.title }}
@@ -132,7 +139,8 @@ const src = computed(() => project.value?.image?.sources.feed?.mobile || project
             </dl>
         </template>
 
-        <section aria-labelledby="context">
+        <ContentRenderer :value="project" class="prose prose-neutral dark:prose-invert max-w-none" />
+        <!-- <section aria-labelledby="context">
             <h2 class="fs-title font-semibold leading-snug">
                 {{ t('project.context') }}
             </h2>
@@ -189,7 +197,7 @@ const src = computed(() => project.value?.image?.sources.feed?.mobile || project
                     </p>
                 </li>
             </ul>
-        </section>
+        </section> -->
 
         <template #footer>
             <a v-if="project.links?.github" :href="project.links.github"

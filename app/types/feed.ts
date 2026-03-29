@@ -18,6 +18,8 @@ export interface FeedItem {
   feed_summary?: string;
   slug?: string;
   date: string;
+  created_at: string;
+  updated_at?: string;
   tags?: string[];
   pinned?: boolean;
   image?: ResponsiveImage;

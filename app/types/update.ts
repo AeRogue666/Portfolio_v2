@@ -4,7 +4,8 @@ import type { ResponsiveImage } from "./media";
 
 export interface Update {
   slug: string;
-  date: string;
+  created_at: string;
+  updated_at?: string;
   kind: FeedKind;
   pinned?: boolean;
   tags: string[];
@@ -22,7 +23,8 @@ export interface UpdateTranslation {
 
 export interface UpdateResolved extends UpdateTranslation {
   slug: string;
-  date: string;
+  created_at: string;
+  updated_at?: string;
   kind: FeedKind;
   pinned?: boolean;
   tags: string[];

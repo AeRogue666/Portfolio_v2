@@ -171,7 +171,8 @@
       "update": "Mise à jour",
       "about": "A propos",
       "pinned": "Epinglé"
-    }
+    },
+    "updated_on": "Mis à jour le"
   },
   "project": {
     "published_on": "Publié le",
