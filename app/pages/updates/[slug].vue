@@ -82,6 +82,9 @@ watchEffect(() => {
 const src = computed(() => update.value?.image?.sources.feed?.mobile || update.value?.image?.sources.detail?.mobile || ''),
     tabletSrc = computed(() => update.value?.image?.sources.feed?.tablet || update.value?.image?.sources.detail?.tablet || src),
     desktopSrc = computed(() => update.value?.image?.sources.feed?.desktop || update.value?.image?.sources.detail?.desktop || tabletSrc);
+
+    const created_atDate = computed(() => dayjs(update.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(update.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 </script>
 
 <template>
@@ -94,7 +97,11 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
             </UBreadcrumb>
             <p class="fs-small text-(--text-2) leading-snug">
                 {{ t('update.published_on') }}
-                <time :datetime="update.date">{{ dayjs(update.date).format('DD MMMM YYYY') }}</time>
+                <time :datetime="update.created_at">{{ created_atDate }}</time>
+                <template>
+                    {{ t('post.updated_on') }}
+                <time :datetime="update.updated_at">{{ updated_atDate }}</time>
+                </template>
             </p>
 
             <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
@@ -124,14 +131,15 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
             </dl>
         </template>
 
-        <section aria-labelledby="content">
+        <ContentRenderer :value="update" class="prose prose-neutral dark:prose-invert max-w-none" />
+        <!-- <section aria-labelledby="content">
             <h2 id="content" class="fs-title font-semibold leading-snug">
                 {{ t('update.content') }}
             </h2>
             <p class="fs-body text-(--text-2) leading-snug max-w-[65ch]">
                 {{ update.content }}
             </p>
-        </section>
+        </section> -->
 
         <template #footer>
 

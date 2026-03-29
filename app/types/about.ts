@@ -4,7 +4,8 @@ import type { Locale } from "./i18n";
 export interface About {
   slug: string;
   kind: FeedKind;
-  date: string;
+  created_at: string;
+  updated_at?: string;
   pinned?: boolean;
   tags?: string[];
   translations: Record<Locale, AboutTranslation>;
@@ -17,7 +18,8 @@ export interface AboutTranslation {
 
 export interface AboutResolved extends AboutTranslation {
   slug: string;
-  date: string;
+  created_at: string;
+  updated_at?: string;
   kind: FeedKind;
   pinned?: boolean;
   tags?: string[];
