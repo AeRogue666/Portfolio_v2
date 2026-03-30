@@ -132,6 +132,7 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
         </template>
 
         <ContentRenderer :value="update" class="prose prose-neutral dark:prose-invert max-w-none" />
+        
         <!-- <section aria-labelledby="content">
             <h2 id="content" class="fs-title font-semibold leading-snug">
                 {{ t('update.content') }}

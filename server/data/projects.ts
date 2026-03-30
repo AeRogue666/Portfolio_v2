@@ -3,7 +3,7 @@ import type { Project } from "@/types/project";
 export const projects: Project[] = [
   {
     slug: "plateforme-gestion-recettes",
-    date: "2024-12-03",
+    created_at: "2024-12-03",
     kind: "project",
     pinned: true,
     image: {
@@ -120,7 +120,7 @@ export const projects: Project[] = [
   {
     slug: "front-ecommerce-headless",
     kind: "project",
-    date: "2025-06-20",
+    created_at: "2025-06-20",
     pinned: false,
     image: {
       alt: "",
@@ -237,7 +237,7 @@ export const projects: Project[] = [
   {
     slug: "portfolio-v2",
     kind: "project",
-    date: "2026-02-11",
+    created_at: "2026-02-11",
     pinned: false,
     image: {
       alt: "",
@@ -254,8 +254,8 @@ export const projects: Project[] = [
         },
       },
     },
-    stack: ["Nuxt", "TypeScript", "Pinia", "I18n", "Focus-trap", "Resend", "Upstash/Redis", "Markdown", "Prisma", "PostgreSQL"],
-    tags: ["Nuxt", "TypeScript", "Pinia", "I18n", "Prisma", "PostgreSQL"],
+    stack: ["Nuxt", "TypeScript", "Pinia", "I18n", "Focus-trap", "Resend", "Upstash/Redis", "Markdown", "Nuxt Studio"],
+    tags: ["Nuxt", "TypeScript", "Pinia", "I18n", "Nuxt Studio"],
     links: {
       github: "https://github.com/AeRogue666/Portfolio_v2",
       demo: "https://aureldev.com",
@@ -344,7 +344,7 @@ export const projects: Project[] = [
 /* {
     slug: "front-pomodoro-timer",
     kind: "project",
-    date: "2025-11-25",
+    created_at: "2025-11-25",
     pinned: false,
     image: {
       alt: "",
@@ -409,7 +409,7 @@ export const projects: Project[] = [
   /* {
     slug: "front-weather-aggregator",
     kind: "project",
-    date: "2025-11-26",
+    created_at: "2025-11-26",
     pinned: false,
     image: {
       alt: "",

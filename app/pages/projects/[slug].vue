@@ -97,10 +97,10 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
             </UBreadcrumb>
             <p class="fs-small text-(--text-2)">
                 {{ t('project.published_on') }}
-                <time :datetime="project.created_at">{{ created_atDate }}</time>
+                <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
                 <template>
                     {{ t('post.updated_on') }}
-                <time :datetime="project.updated_at">{{ updated_atDate }}</time>
+                <time v-if="project.updated_at" :datetime="project.updated_at">{{ updated_atDate }}</time>
                 </template>
             </p>
 
