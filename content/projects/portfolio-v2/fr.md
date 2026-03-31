@@ -1,44 +1,45 @@
 ---
-slug: portfolio-v2
-locale: fr
-created_at: 2026-02-11
-kind: project
-pinned: false
-tags:
-    - Nuxt
-    - TypeScript
-    - Pinia
-    - I18n
-    - Nuxt Studio
-stack:
-    - Nuxt
-    - TypeScript
-    - Pinia
-    - I18n
-    - Focus-trap
-    - Resend
-    - Upstash/Redis
-    - Markdown
-    - Nuxt Studio
-links:
-    github: https://github.com/AeRogue666/Portfolio_v2
-    demo: https://www.aureldev.com
-image:
-    alt: Capture d'écran du portfolio v2
-    sources:
-        feed:
-            mobile: /images/project/portfolio-v2/mobile.png
-            desktop: /images/project/portfolio-v2/desktop.png
-            tablet: /images/project/portfolio-v2/mobile.png
-        detail:
-            mobile: /images/project/portfolio-v2/mobile.png
-            desktop: /images/project/portfolio-v2/desktop.png
-            tablet: /images/project/portfolio-v2/mobile.png
-role: Développeur full-stack
 title: Portfolio axé sur le contenu et centré sur l'utilisateur
-summary: Une boutique ligne qui propose une sélection de produits asiatiques dans plusieurs langues. Elle est dotée d'un catalogue, d'un panier, d'un système de gestion des commandes et d'une interface administrable via un CMS développé avec Nuxt 4, Pinia et Directus.
-feed_title: Portfolio v2 - Projet axé sur le contenu et l'accessibilité
-feed_summary: Version 2 de mon portfolio - Réalisé avec Nuxt 4.2+ et dans une optique d'accessibilité avant tout
+created_at: 2026-02-11
+description: Un portfolio centré sur l'utilisateur, l'accessibilité et le contenu réalisé avec Nuxt + Nuxt Content et Nuxt Studio
+feed_summary: Version 2 de mon portfolio - Réalisé avec Nuxt et Nuxt Content dans une optique d'accessibilité et centré sur l'utilisateur avant tout
+feed_title: Portfolio v2
+image:
+  alt: Capture d'écran du portfolio v2
+  sources:
+    feed:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
+    detail:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
+kind: project
+links:
+  github: https://github.com/AeRogue666/Portfolio_v2
+  demo: https://www.aureldev.com
+locale: fr
+pinned: false
+previewUrl: /projects/portfolio-v2
+role: Développeur full-stack
+slug: portfolio-v2
+stack:
+  - Nuxt
+  - TypeScript
+  - Pinia
+  - I18n
+  - Focus-trap
+  - Resend
+  - Upstash/Redis
+  - Markdown
+  - Nuxt Studio
+tags:
+  - Nuxt
+  - TypeScript
+  - Pinia
+  - I18n
+  - Nuxt Studio
 ---
 
 En constatant que le premier portfolio réalisé à l'issue de ma formation de développeur web ne correspondait plus à mes attentes, mes objectifs et mes compétences, j'ai travaillé sur la conception d'un portfolio mettant au centre l'accessibilité, le contenu et l'utilisateur en n'oubliant pas que c'est aussi un laboratoire où seront testés divers technologies.

@@ -1,6 +1,7 @@
-# Legal Mentions
-
-<time datetime="07-03-2026">Effective as of 7 March 2026.</time>
+---
+title: Legal Mentions
+description: Effective as of 7 March 2026.
+---
 
 In accordance with the provisions of Law No. 2004-575 of June 21, 2004 on confidence in the digital economy, users and visitors, hereinafter referred to as the "User," of the aureldev.com website, hereinafter referred to as the "Site," are hereby informed of the following legal notices.
 

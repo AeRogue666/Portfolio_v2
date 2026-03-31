@@ -1,6 +1,7 @@
-# Mentions légales
-
-<time datetime="07-03-2026">En vigueur au 7 Mars 2026.</time>
+---
+title: Mentions légales
+description: En vigueur au 7 Mars 2026.
+---
 
 Conformément aux dispositions de la loi n°2004-575 du 21 juin 2004 pour la Confiance en l'économie numérique, il est porté à la connaissance des utilisateurs et visiteurs, ci-après l'"**Utilisateur**", du site aureldev.com, ci-après le "**Site**", les présentes mentions légales.
 

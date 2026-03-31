@@ -18,6 +18,7 @@ export interface Project {
   created_at: string;
   updated_at?: string;
   pinned?: boolean;
+  previewUrl?: string;
   image?: ResponsiveImage;
   tags?: string[];
   stack?: string[];
@@ -27,7 +28,7 @@ export interface Project {
 
 export interface ProjectTranslation {
   title: string;
-  summary: string;
+  description: string;
   feed_title: string;
   feed_summary: string;
   role: string;
@@ -45,6 +46,7 @@ export interface ProjectResolved extends ProjectTranslation {
   created_at: string;
   updated_at?: string;
   pinned?: boolean;
+  previewUrl?: string;
   image?: ResponsiveImage;
   tags?: string[];
   stack?: string[];

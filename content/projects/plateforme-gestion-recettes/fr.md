@@ -1,38 +1,39 @@
 ---
-slug: plateforme-gestion-recettes
-locale: fr
-created_at: 2024-03-12
-kind: project
-pinned: true
-tags:
-    - Express
-    - Directus
-    - PostgreSQL
-    - Recettes
-    - Permissions
-    - Rôles
-stack:
-    - Express
-    - Directus
-    - PostgreSQL
-links:
-    github: https://github.com/AeRogue666/Project1-Recipes-Website
-image:
-    alt: Capture d'écran de la plateforme de gestion de recettes
-    sources:
-        feed:
-            mobile: /images/project/plateforme-gestion-recettes/mobile.PNG
-            desktop: /images/project/plateforme-gestion-recettes/desktop.PNG
-            tablet: /images/project/plateforme-gestion-recettes/mobile.PNG
-        detail:
-            mobile: /images/project/plateforme-gestion-recettes/mobile.PNG
-            desktop: /images/project/plateforme-gestion-recettes/desktop.PNG
-            tablet: /images/project/plateforme-gestion-recettes/mobile.PNG
-role: Développeur full-stack
 title: Plateforme de gestions de recettes multi-rôles
-summary: Une plateforme de gestion de recettes culinaires avec rôles utilisateurs, création et modification de recettes et gestion complète des autorisations développée avec Express et Directus.
-feed_title: Plateforme de recettes multi-rôles
+created_at: 2024-03-12
+description: Une plateforme de gestion de recettes culinaires avec rôles utilisateurs, création et modification de recettes et gestion complète des autorisations développée avec Express et Directus.
 feed_summary: Plateforme de gestion de recettes multi-rôles développé avec Express et Directus
+feed_title: Plateforme de recettes multi-rôles
+image:
+  alt: Capture d'écran de la plateforme de gestion de recettes
+  sources:
+    feed:
+      mobile: /images/project/plateforme-gestion-recettes/mobile.PNG
+      desktop: /images/project/plateforme-gestion-recettes/desktop.PNG
+      tablet: /images/project/plateforme-gestion-recettes/mobile.PNG
+    detail:
+      mobile: /images/project/plateforme-gestion-recettes/mobile.PNG
+      desktop: /images/project/plateforme-gestion-recettes/desktop.PNG
+      tablet: /images/project/plateforme-gestion-recettes/mobile.PNG
+kind: project
+links:
+  github: https://github.com/AeRogue666/Project1-Recipes-Website
+locale: fr
+pinned: true
+previewUrl: /projects/plateforme-gestion-recettes
+role: Développeur full-stack
+slug: plateforme-gestion-recettes
+stack:
+  - Express
+  - Directus
+  - PostgreSQL
+tags:
+  - Express
+  - Directus
+  - PostgreSQL
+  - Recettes
+  - Permissions
+  - Rôles
 ---
 
 Gérer des recettes, c'est simple. Gérer *qui peut faire quoi* sur ces recettes - créer, modifier, supprimer ou attribuer des rôles et des permissions - c'est là que ça devient intéressant.

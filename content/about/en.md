@@ -1,4 +1,7 @@
-# About
+---
+title: About
+description: A page about Aureldev
+---
 
 Good morning, Aurélien, 26 years old.
 

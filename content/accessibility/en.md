@@ -1,6 +1,7 @@
-# Accessibility statement
-
-<time datetime="23-03-2026">Updated 23 March 2026.</time>
+---
+title: Accessibility statement
+description: Updated 23 March 2026.
+---
 
 This website is a personal portfolio designed to showcase my projects, background, and skills, with a strong focus on digital accessibility.
 
@@ -33,7 +34,7 @@ These issues are part of the planned improvement roadmap.
 ## Reporting an issue
 
 If you encounter an accessibility issue or a bug, you can report it via the dedicated page:
-***/report**
+\***/report**
 
 Every feedback helps Improve the experience for everyone.
 

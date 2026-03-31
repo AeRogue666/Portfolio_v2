@@ -1,8 +1,9 @@
-# Terms and Conditions of Use
+---
+title: Terms and Conditions of Use
+description: Effective as of 7 March 2026.
+---
 
-<time datetime="07-03-2026">Effective as of 7 March 2026.</time>
-
-The purpose of these general terms and conditions of use, hereinafter referred to as "**T&Cs**", is to provide a legal framework for the terms and conditions governing the provision of the aureldev.com website, hereinafter referred to as the "**Site**", and the services offered by aureldev.com, and to define the terms and conditions of access and use of the services by the "**User**".
+The purpose of these general terms and conditions of use, hereinafter referred to as "**T\&Cs**", is to provide a legal framework for the terms and conditions governing the provision of the aureldev.com website, hereinafter referred to as the "**Site**", and the services offered by aureldev.com, and to define the terms and conditions of access and use of the services by the "**User**".
 
 ## Article 1: Legal notices
 
@@ -14,9 +15,8 @@ For more information, all legal notices are available on the Site under the head
 The Site provides Users with free access to the following services:
 
 - Viewing and reading content and articles on projects, technologies and technical and technological advances in the field of web development.
-
 - The site is accessible free of charge from any location to any User with Internet access.
-  All costs incurred by the User to access the service (hardware, software, Internet connection, etc.) are at their own expense.
+- All costs incurred by the User to access the service (hardware, software, Internet connection, etc.) are at their own expense.
 
 ## Article 3: Data collection
 

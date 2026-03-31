@@ -1,6 +1,7 @@
-# Conditions Générales d'Utilisation
-
-<time datetime="07-03-2026">En vigueur au 7 Mars 2026.</time>
+---
+title: Conditions Générales d'Utilisation
+description: En vigueur au 7 Mars 2026.
+---
 
 Les présentes conditions générales d'utilisation ci-après "**CGU**" ont pour objet l'encadrement juridique des modalités de mise à disposition du site aureldev.com, ci-après le "**Site**", et des services par aureldev.com et de définir les conditions d'accès et d'utilisation des services par l'"**Utilisateur**".
 
@@ -16,9 +17,8 @@ Pour en savoir plus, toutes les mentions légales sont accessibles sur le site �
 Le Site permet à l'Utilisateur un accès gratuit aux services suivants:
 
 - Visualiser et lire des contenus et articles issues de projets, technologies et avancées techniques et technologiques dans le domaine du développement web.
-
 - Le site est accessible gratuitement en tout lieu à tout Utilisateur ayant un accès à Internet.
-Tous les frais supportées par l'Utilisateur pour accéder au service (matériel informatique, logiciels, connexion Internet, etc.) sont à sa charge.
+- Tous les frais supportées par l'Utilisateur pour accéder au service (matériel informatique, logiciels, connexion Internet, etc.) sont à sa charge.
 
 ## Article 3: Collecte des données
 

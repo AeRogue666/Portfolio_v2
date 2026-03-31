@@ -1,38 +1,39 @@
 ---
-slug: front-ecommerce-headless
-locale: en
-created_at: 2025-06-20
-kind: project
-pinned: false
-tags:
-    - Nuxt
-    - TypeScript
-    - E-commerce
-    - Directus
-    - Pinia
-stack:
-    - Nuxt
-    - TypeScript
-    - Directus
-    - Pinia
-links:
-    github: https://github.com/AeRogue666/Epices-du-monde
-image:
-    alt: Screenshot of the asian online store
-    sources:
-        feed:
-            mobile: /images/project/front-ecommerce-headless/mobile.PNG
-            desktop: /images/project/front-ecommerce-headless/desktop.PNG
-            tablet: /images/project/front-ecommerce-headless/mobile.PNG
-        detail:
-            mobile: /images/project/front-ecommerce-headless/mobile.PNG
-            desktop: /images/project/front-ecommerce-headless/desktop.PNG
-            tablet: /images/project/front-ecommerce-headless/mobile.PNG
-role: Full-stack developer
 title: Asian online store - Nuxt 4 + Directus
-summary: An online shop offering a selection of Asian products with multilingual support available. It features a catalogue, a shopping basket, and an interface that can be managed via a CMS developed with Nuxt 4, Pinia, and Directus.
-feed_title: Headless Asian store
+created_at: 2025-06-20
+description: A multilanguage online shop offering a selection of Asian products, made with Nuxt and Directus.
 feed_summary: A multilingual headless Asian online shop developed with Nuxt and Directus technologies
+feed_title: Headless Asian store
+image:
+  alt: Screenshot of the asian online store
+  sources:
+    feed:
+      mobile: /images/project/front-ecommerce-headless/mobile.PNG
+      desktop: /images/project/front-ecommerce-headless/desktop.PNG
+      tablet: /images/project/front-ecommerce-headless/mobile.PNG
+    detail:
+      mobile: /images/project/front-ecommerce-headless/mobile.PNG
+      desktop: /images/project/front-ecommerce-headless/desktop.PNG
+      tablet: /images/project/front-ecommerce-headless/mobile.PNG
+kind: project
+links:
+  github: https://github.com/AeRogue666/Epices-du-monde
+locale: en
+pinned: false
+previewUrl: /projects/front-ecommerce-headless
+role: Full-stack developer
+slug: front-ecommerce-headless
+stack:
+  - Nuxt
+  - TypeScript
+  - Directus
+  - Pinia
+tags:
+  - Nuxt
+  - TypeScript
+  - E-commerce
+  - Directus
+  - Pinia
 ---
 
 Inspired by the website epices-du-monde.com, my goal was to modernise the UI/UX of an online shop dedicated to Asian products. I also wanted to experiment with a headless architecture using Nuxt 4 and Directus.

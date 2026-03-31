@@ -8,6 +8,7 @@ export interface Update {
   updated_at?: string;
   kind: FeedKind;
   pinned?: boolean;
+  previewUrl?: string;
   tags: string[];
   image: ResponsiveImage;
   translations: Record<Locale, UpdateTranslation>;
@@ -15,7 +16,7 @@ export interface Update {
 
 export interface UpdateTranslation {
   title: string;
-  summary: string;
+  description: string;
   feed_title: string;
   feed_summary: string;
   content: string;
@@ -27,6 +28,7 @@ export interface UpdateResolved extends UpdateTranslation {
   updated_at?: string;
   kind: FeedKind;
   pinned?: boolean;
+  previewUrl?: string;
   tags: string[];
   image: ResponsiveImage;
 }

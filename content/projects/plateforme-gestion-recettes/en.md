@@ -1,38 +1,39 @@
 ---
-slug: plateforme-gestion-recettes
-locale: en
-created_at: 2024-03-12
-kind: project
-pinned: true
-tags:
-    - Express
-    - Directus
-    - PostgreSQL
-    - Recettes
-    - Permissions
-    - Roles
-stack:
-    - Express
-    - Directus
-    - PostgreSQL
-links:
-    github: https://github.com/AeRogue666/Project1-Recipes-Website
-image:
-    alt: Screenshot of the recipe management platform
-    sources:
-        feed:
-            mobile: /images/project/plateforme-gestion-recettes/mobile.PNG
-            desktop: /images/project/plateforme-gestion-recettes/desktop.PNG
-            tablet: /images/project/plateforme-gestion-recettes/mobile.PNG
-        detail:
-            mobile: /images/project/plateforme-gestion-recettes/mobile.PNG
-            desktop: /images/project/plateforme-gestion-recettes/desktop.PNG
-            tablet: /images/project/plateforme-gestion-recettes/mobile.PNG
-role: Full-stack developer
 title: Multi-role recipe management platform
-summary: Culinary recipe management platform with users roles, recipe creation and modification, and comprehensive permissions management developed with Express and Directus.
-feed_title: Multi-role recipe platform
+created_at: 2024-03-12
+description: Culinary recipe management platform with users roles, recipe creation and modification, and comprehensive permissions management developed with Express and Directus.
 feed_summary: Multi-role recipe management platform developed with Express and Directus
+feed_title: Multi-role recipe platform
+image:
+  alt: Screenshot of the recipe management platform
+  sources:
+    feed:
+      mobile: /images/project/plateforme-gestion-recettes/mobile.PNG
+      desktop: /images/project/plateforme-gestion-recettes/desktop.PNG
+      tablet: /images/project/plateforme-gestion-recettes/mobile.PNG
+    detail:
+      mobile: /images/project/plateforme-gestion-recettes/mobile.PNG
+      desktop: /images/project/plateforme-gestion-recettes/desktop.PNG
+      tablet: /images/project/plateforme-gestion-recettes/mobile.PNG
+kind: project
+links:
+  github: https://github.com/AeRogue666/Project1-Recipes-Website
+locale: en
+pinned: true
+previewUrl: /projects/plateforme-gestion-recettes
+role: Full-stack developer
+slug: plateforme-gestion-recettes
+stack:
+  - Express
+  - Directus
+  - PostgreSQL
+tags:
+  - Express
+  - Directus
+  - PostgreSQL
+  - Recettes
+  - Permissions
+  - Roles
 ---
 
 Managin recipes is simple. Managing *who can do what* with those recipes - creating, editing, deleting, or assigning roles and permissions - that's where it gets interesting.
