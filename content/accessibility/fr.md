@@ -1,6 +1,7 @@
-# Déclaration d'accessibilité
-
-<time datetime="23-03-2026">Mis à jour le 23 Mars 2026.</time>
+---
+title: Déclaration d'accessibilité
+description: Mis à jour le 23 Mars 2026.
+---
 
 Ce site est un portfolio personnel conçu pour présenter mes projets, mon parcours et mes compétences en développement web, avec une attention particulière portée à l'accessibilité numérique.
 

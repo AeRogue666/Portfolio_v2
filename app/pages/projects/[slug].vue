@@ -107,7 +107,7 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
             <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">{{ project.title }}
             </h1>
             <p class="fs-subtitle text-(--text-2) leading-snug">
-                {{ project.summary }}
+                {{ project.description }}
             </p>
 
             <NuxtImg :src="src"

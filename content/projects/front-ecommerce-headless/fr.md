@@ -1,38 +1,39 @@
 ---
-slug: front-ecommerce-headless
-locale: fr
-created_at: 2025-06-20
-kind: project
-pinned: false
-tags:
-    - Nuxt
-    - TypeScript
-    - E-commerce
-    - Directus
-    - Pinia
-stack:
-    - Nuxt
-    - TypeScript
-    - Directus
-    - Pinia
-links:
-    github: https://github.com/AeRogue666/Epices-du-monde
-image:
-    alt: Capture d'écran de la boutique asiatique en ligne
-    sources:
-        feed:
-            mobile: /images/project/front-ecommerce-headless/mobile.PNG
-            desktop: /images/project/front-ecommerce-headless/desktop.PNG
-            tablet: /images/project/front-ecommerce-headless/mobile.PNG
-        detail:
-            mobile: /images/project/front-ecommerce-headless/mobile.PNG
-            desktop: /images/project/front-ecommerce-headless/desktop.PNG
-            tablet: /images/project/front-ecommerce-headless/mobile.PNG
-role: Développeur full-stack
 title: Boutique asiatique en ligne - Nuxt 4 + Directus
-summary: Une boutique ligne qui propose une sélection de produits asiatiques dans plusieurs langues. Elle est dotée d'un catalogue, d'un panier, d'un système de gestion des commandes et d'une interface administrable via un CMS développé avec Nuxt 4, Pinia et Directus.
-feed_title: Boutique asiatique headless
+created_at: 2025-06-20
+description: Une boutique ligne multilingue qui propose une sélection de produits asiatiques, réalisée avec Nuxt et Directus.
 feed_summary: Une boutique asiatique headless multilingue développée avec les technologies Nuxt et Directus
+feed_title: Boutique asiatique headless
+image:
+  alt: Capture d'écran de la boutique asiatique en ligne
+  sources:
+    feed:
+      mobile: /images/project/front-ecommerce-headless/mobile.PNG
+      desktop: /images/project/front-ecommerce-headless/desktop.PNG
+      tablet: /images/project/front-ecommerce-headless/mobile.PNG
+    detail:
+      mobile: /images/project/front-ecommerce-headless/mobile.PNG
+      desktop: /images/project/front-ecommerce-headless/desktop.PNG
+      tablet: /images/project/front-ecommerce-headless/mobile.PNG
+kind: project
+links:
+  github: https://github.com/AeRogue666/Epices-du-monde
+locale: fr
+pinned: false
+previewUrl: /projects/front-ecommerce-headless
+role: Développeur full-stack
+slug: front-ecommerce-headless
+stack:
+  - Nuxt
+  - TypeScript
+  - Directus
+  - Pinia
+tags:
+  - Nuxt
+  - TypeScript
+  - E-commerce
+  - Directus
+  - Pinia
 ---
 
 En m'inspirant du site epices-du-monde.com, j'ai eu pour objectif de moderniser l'UI/UX d'une boutique en ligne dédiée aux produits asiatiques.

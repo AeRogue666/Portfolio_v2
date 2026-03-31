@@ -25,6 +25,7 @@
     "focus-trap": "^8.0.0",
     "markdown-it": "^14.1.0",
     "nuxt": "^4.4.2",
+    "nuxt-studio": "^1.5.1",
     "resend": "^6.9.4",
     "tailwindcss": "^4.2.2"
   },

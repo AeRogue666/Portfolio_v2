@@ -108,7 +108,7 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
                 {{ update.title }}
             </h1>
             <p class="fs-subtitle text-(--text-2) leading-snug max-w-[65ch]">
-                {{ update.summary }}
+                {{ update.description }}
             </p>
 
             <NuxtImg :src="src"

@@ -1,4 +1,7 @@
-# A propos
+---
+title: A propos
+description: Une page à propos de Aureldev
+---
 
 Bonjour, Aurélien, 26 ans.
 

@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     "@tailwindcss/vite",
     "@nuxtjs/i18n",
     "@nuxt/image",
+    "nuxt-studio",
   ],
   css: ["~/assets/styles/main.css"],
   plugins: [],
@@ -52,6 +53,15 @@ export default defineNuxtConfig({
     resendApiKey: "",
     upstashRedisUrl: "",
     upstashRedisToken: "",
+  },
+  studio: {
+    route: '/_studio',
+    /* repository: {
+      provider: 'github',
+      owner: 'AeRogue666',
+      repo: 'Portfolio_v2',
+      branch: 'main',
+    } */
   },
   routeRules: {
     "/": {
