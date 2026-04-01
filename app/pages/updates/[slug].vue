@@ -69,9 +69,9 @@ watchEffect(() => {
 
     useSeoMeta({
         title: update.value?.title,
-        description: update.value?.summary,
+        description: update.value?.description,
         ogTitle: update.value?.title,
-        ogDescription: update.value?.summary,
+        ogDescription: update.value?.description,
         ogType: 'article',
         ogImage: update.value?.image?.sources.detail.desktop,
         ogImageAlt: update.value?.image?.alt,
@@ -83,7 +83,7 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
     tabletSrc = computed(() => update.value?.image?.sources.feed?.tablet || update.value?.image?.sources.detail?.tablet || src),
     desktopSrc = computed(() => update.value?.image?.sources.feed?.desktop || update.value?.image?.sources.detail?.desktop || tabletSrc);
 
-    const created_atDate = computed(() => dayjs(update.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+const created_atDate = computed(() => dayjs(update.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
     updated_atDate = computed(() => dayjs(update.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 </script>
 
@@ -100,7 +100,7 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
                 <time :datetime="update.created_at">{{ created_atDate }}</time>
                 <template>
                     {{ t('post.updated_on') }}
-                <time :datetime="update.updated_at">{{ updated_atDate }}</time>
+                    <time :datetime="update.updated_at">{{ updated_atDate }}</time>
                 </template>
             </p>
 
@@ -111,9 +111,8 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
                 {{ update.description }}
             </p>
 
-            <NuxtImg :src="src"
-                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
-                width="1280" height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="update.image?.alt"
+            <NuxtImg :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" width="1280"
+                height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="update.image?.alt"
                 class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" :placeholder="true" />
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->
             <!-- sizes="(min-width: 80rem) 64rem, (min-width: 64rem) 80vw, 100vw" -->
@@ -132,7 +131,7 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
         </template>
 
         <ContentRenderer :value="update" class="prose prose-neutral dark:prose-invert max-w-none" />
-        
+
         <!-- <section aria-labelledby="content">
             <h2 id="content" class="fs-title font-semibold leading-snug">
                 {{ t('update.content') }}
@@ -147,3 +146,41 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
         </template>
     </ArticleLayout>
 </template>
+
+<style lang="css">
+h1 {
+    font-size: var(--font-size-heading);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: var(--font-size-title);
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: var(--font-size-subtitle);
+    line-height: 1.4;
+}
+
+.lead {
+    font-size: var(--font-size-lead);
+    line-height: 1.6;
+}
+
+p,
+li,
+td,
+dd {
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+}
+
+small,
+time,
+caption,
+.metadata {
+    font-size: var(--font-size-small);
+    line-height: 1.5;
+}
+</style>

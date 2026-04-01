@@ -248,5 +248,10 @@
     "test_environment": {
       "keyboard_navigation": "Exhaustive keyboard navigation (Tab, Escape, Enter)"
     }
+  },
+  "studio": {
+    "tooltips": {
+      "toggleStudio": "Toggle Studio"
+    }
   }
 }

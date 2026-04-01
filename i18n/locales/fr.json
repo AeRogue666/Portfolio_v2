@@ -248,5 +248,10 @@
     "test_environment": {
       "keyboard_navigation": "Navigation clavier exhaustive (Tab, Echap, Entrer)"
     }
+  },
+  "studio": {
+    "tooltips": {
+      "toggleStudio": "Afficher Studio"
+    }
   }
 }

@@ -69,9 +69,9 @@ watchEffect(() => {
 
     useSeoMeta({
         title: project.value?.title,
-        description: project.value?.summary,
+        description: project.value?.description,
         ogTitle: project.value?.title,
-        ogDescription: project.value?.summary,
+        ogDescription: project.value?.description,
         ogType: 'article',
         ogImage: project.value?.image?.sources.detail.desktop,
         ogImageAlt: project.value?.image?.alt,
@@ -100,7 +100,7 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
                 <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
                 <template>
                     {{ t('post.updated_on') }}
-                <time v-if="project.updated_at" :datetime="project.updated_at">{{ updated_atDate }}</time>
+                    <time v-if="project.updated_at" :datetime="project.updated_at">{{ updated_atDate }}</time>
                 </template>
             </p>
 
@@ -110,9 +110,8 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
                 {{ project.description }}
             </p>
 
-            <NuxtImg :src="src"
-                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
-                width="1280" height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="project.image?.alt"
+            <NuxtImg :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" width="1280"
+                height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="project.image?.alt"
                 class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" :placeholder="true" />
             <!-- width="768" height="432" -->
             <!-- sizes="xs:100vw md:80vw lg:64rem" -->
@@ -211,3 +210,41 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
         </template>
     </ArticleLayout>
 </template>
+
+<style lang="css">
+h1 {
+    font-size: var(--font-size-heading);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: var(--font-size-title);
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: var(--font-size-subtitle);
+    line-height: 1.4;
+}
+
+.lead {
+    font-size: var(--font-size-lead);
+    line-height: 1.6;
+}
+
+p,
+li,
+td,
+dd {
+    font-size: var(--font-size-body);
+    line-height: 1.6;
+}
+
+small,
+time,
+caption,
+.metadata {
+    font-size: var(--font-size-small);
+    line-height: 1.5;
+}
+</style>

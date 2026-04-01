@@ -1,21 +1,24 @@
 import { Resend } from "resend";
 import { ContactFormSchema } from '@/utils/schemas/contact';
 import { contactTemplate } from "#server/templates/contactEmail";
-import { rateLimit } from "#server/lib/rateLimit";
+import { checkRateLimit } from "#server/lib/rateLimit";
 import { logEvent } from "#server/lib/logger";
 import { containsSpam } from "#server/lib/spamFilter";
 
 /* HANDLER */
-
 export default defineEventHandler(async (event) => {
   const ip =
     getHeader(event, "x-forwarded-for")?.split(",")[0] ??
     event.node.req.socket.remoteAddress ??
     "unknown";
 
-  if (await rateLimit(ip)) {
-    logEvent("contact_rate_limited", { ip });
+  const { limited } = await checkRateLimit(ip, {
+    windowSeconds: 600,
+    maxRequests: 5,
+  });
 
+  if (limited) {
+    logEvent("contact_rate_limited", { ip });
     throw createError({
       statusCode: 429,
       statusMessage: "Too many reports. Please try again later.",
@@ -61,6 +64,5 @@ export default defineEventHandler(async (event) => {
   });
 
   logEvent("contact_success", { ip, email });
-
   return { success: true };
 });
