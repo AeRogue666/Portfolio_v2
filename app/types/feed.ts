@@ -28,4 +28,6 @@ export interface FeedItem {
 export interface FeedResponse {
   total: number;
   items: FeedItem[];
+  hasMore: boolean,
+  availableTags: string[];
 }

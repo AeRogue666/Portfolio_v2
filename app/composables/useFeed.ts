@@ -10,7 +10,7 @@ export function useFeed(options?: UseFeedOptions) {
   const router = useRouter();
   const { locale } = useI18n();
 
-  const limit = options?.limit ?? 5,
+  const limit = options?.limit ?? 10,
     offset = ref<number>(0);
 
   // Etat du filtrage depuis l'URL
@@ -70,26 +70,27 @@ export function useFeed(options?: UseFeedOptions) {
           limit,
           offset: offset.value,
           locale: locale.value,
+          tags: selectedTags.value.join(','),
         },
       }),
     {
-      watch: [locale, offset],
+      watch: [locale, offset, selectedTags],
     },
   );
-
+  
   // Items bruts du serveur
   const serverItems = computed(() => data.value?.items ?? []);
   const serverTotal = computed(() => data.value?.total ?? 0);
 
-  // Obtenir tous les tags disponbiles (depuis tous les items du serveur)
-  const availableTags = computed<string[]>(() => {
+  // Obtenir tous les tags disponibles (depuis tous les items du serveur)
+  const availableTags = computed(() => data.value?.availableTags ?? []); /* computed<string[]>(() => {
     const tags = new Set<string>();
 
     serverItems.value.forEach((item) => {
       item.tags?.forEach((tag) => tags.add(tag));
     });
     return Array.from(tags).sort();
-  });
+  }); */
 
   // Les posts épinglés sont extraits en amont, avant tout filtrage ou tri.
   // Ils doivent toujours apparaître en première position (position 0)
@@ -150,9 +151,9 @@ export function useFeed(options?: UseFeedOptions) {
   const items = computed(() => sortedAndFiltered.value);
 
   // Charger plus de posts (pagination serveur)
-  function loadMore() {
+  const loadMore = () => {
     offset.value += limit;
-  }
+  };
 
   // Mettre à jour les tags sélectionnés (persiste en URL)
   const setSelectedTags = (tags: string[]) => {
@@ -210,6 +211,7 @@ export function useFeed(options?: UseFeedOptions) {
     // Données brutes serveur
     serverItems: computed(() => serverItems.value),
     serverTotal: computed(() => serverTotal.value),
+    hasMore: computed(() => data.value?.hasMore ?? false),
 
     // Données filtrées + triées (à afficher)
     items: computed(() => items.value),

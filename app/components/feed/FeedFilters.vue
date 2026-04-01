@@ -2,31 +2,67 @@
 import type { SelectItem } from '@nuxt/ui';
 import type { FeedKind } from '~/app/types/feed';
 import type { FeedSortValue } from '~/app/types/feedFilters';
+import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
 
-interface Props {
+const props = defineProps<{
     availableTags: string[];
     selectedTags: string[];
     selectedKinds: FeedKind[];
     sortBy: FeedSortValue;
     hasActiveFilters: boolean;
     activeFiltersCount: number;
-}
+}>();
 
-interface Emits {
+const emit = defineEmits<{
     'toggle-tag': [tag: string];
     'toggle-kind': [kind: FeedKind];
     'set-sort': [sort: FeedSortValue];
     'reset-filters': [];
-}
+}>();
 
-const props = defineProps<Props>();
-const emit = defineEmits<Emits>();
 const { t } = useI18n(),
     accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode();
 
-const isFiltersOpen = ref(false);
 const filtersPanelRef = ref<HTMLElement | null>(null);
+const isFiltersOpen = ref(false);
+
+const { activate, deactivate } = useFocusTrap(filtersPanelRef, {
+    immediate: false,
+    escapeDeactivates: true,
+    allowOutsideClick: true,
+    returnFocusOnDeactivate: true,
+});
+
+const handleToggleFilters = () => {
+    isFiltersOpen.value = !isFiltersOpen.value;
+    if (isFiltersOpen.value) {
+        nextTick(() => {
+            activate();
+
+            if (!isFiltersOpen.value || !filtersPanelRef.value) return;
+            const focusableElements = filtersPanelRef.value.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            if (focusableElements.length === 0) return;
+
+            const firstElement = focusableElements[0] as HTMLElement;
+            const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+            const activeElement = document.activeElement;
+
+            if (activeElement === firstElement) {
+                firstElement.focus();
+            } else if(activeElement === lastElement) {
+                lastElement.focus();
+            }
+        });
+    } else {
+        deactivate();
+    }
+};
+
+const handleCloseFilters = () => {
+    isFiltersOpen.value = false;
+    deactivate();
+};
 
 // Computed pour synchroniser sortBy (prop) avec le USelect
 const sortValue = computed<FeedSortValue>({
@@ -57,64 +93,18 @@ const grayscale = computed({
     set: () => accessibilityStore.toggleGrayscale(),
 });
 
-// Gestion de la touche Escape
-const handleKeyDown = (event: KeyboardEvent) => {
-    if (event.key === 'Escape' && isFiltersOpen.value) {
-        isFiltersOpen.value = false
-    }
-};
+// Props
+const isTagSelected = (tag: string): boolean => props.selectedTags.includes(tag),
+    isKindSelected = (kind: FeedKind): boolean => props.selectedKinds.includes(kind);
 
-// Gestion du focus trap (Tab et Shift+Tab)
-const handlePanelKeyDown = (event: KeyboardEvent) => {
-    if (!isFiltersOpen.value || !filtersPanelRef.value) return;
-
-    const focusableElements = filtersPanelRef.value.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-
-    if (focusableElements.length === 0) return;
-
-    const firstElement = focusableElements[0] as HTMLElement;
-    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
-    const activeElement = document.activeElement;
-
-    // Tab sur le dernier élément -> focus au premier
-    if (event.key === 'Tab' && !event.shiftKey && activeElement === lastElement) {
-        event.preventDefault();
-        firstElement.focus();
-    }
-
-    // Shift+Tab sur le premier élément -> focus au dernier
-    if (event.key === 'Tab' && event.shiftKey && activeElement === firstElement) {
-        event.preventDefault();
-        lastElement.focus();
-    }
-};
-
-const handleTagClick = (tag: string) => {
-    emit('toggle-tag', tag);
-};
-const handleKindClick = (kind: FeedKind) => emit('toggle-kind', kind);
+// Actions Handlers
+const handleTagClick = (tag: string) => emit('toggle-tag', tag),
+    handleKindClick = (kind: FeedKind) => emit('toggle-kind', kind);
 
 const handleResetFilters = () => {
     emit('reset-filters');
-    isFiltersOpen.value = false;
+    handleCloseFilters();
 };
-const handleCloseFilters = () => {
-    isFiltersOpen.value = false;
-};
-
-const isTagSelected = (tag: string): boolean => {
-    return props.selectedTags.includes(tag);
-};
-
-const isKindSelected = (kind: FeedKind): boolean => props.selectedKinds.includes(kind);
-
-onMounted(() => {
-    document.addEventListener('keydown', handleKeyDown);
-});
-
-onUnmounted(() => {
-    document.removeEventListener('keydown', handleKeyDown);
-})
 </script>
 
 <template>
@@ -143,8 +133,8 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Bouton Filtres (CollapsibleMenu) -->
-                <UButton @click="isFiltersOpen = !isFiltersOpen" :aria-expanded="isFiltersOpen"
-                    aria-controls="filters-panel" variant="ghost" color="neutral" size="xl"
+                <UButton @click="handleToggleFilters" :aria-expanded="isFiltersOpen" aria-controls="filters-panel"
+                    variant="ghost" color="neutral" size="xl"
                     class="bg-(--bg-2) text-base text-(--text) font-medium hover:bg-(--bg-2) focus-visible:bg-(--bg-2) focus:ring-2 focus:ring-inverted fs-body">
                     <Icon name="fa7-solid:sliders" />
                     {{ t('filters.filters') }}
@@ -157,7 +147,7 @@ onUnmounted(() => {
         <Transition name="slide-down">
             <div v-show="isFiltersOpen" ref="filtersPanelRef" id="filters-panel"
                 class="mb-6 p-4 bg-(--bg-2) rounded border border-(--border-subtle)" role="region"
-                :aria-label="t('filters.filter_options')" @keydown="handlePanelKeyDown">
+                :aria-label="t('filters.filter_options')">
 
                 <!-- Header du panel avec bouton fermeture -->
                 <div class="flex justify-between items-center mb-4 pb-3 border-b border-(--border-subtle)">
