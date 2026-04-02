@@ -21,7 +21,7 @@ links:
   demo: https://www.aureldev.com
 locale: en
 pinned: false
-previewUrl: /projects/portfolio-v2
+previewUrl: /projects/portfolio-v2/
 role: Full-stack developer
 slug: portfolio-v2
 stack:
@@ -42,27 +42,98 @@ tags:
   - Nuxt Studio
 ---
 
-Realizing that the first portfolio I created after completing my web development training no longer met my expectations, goals, or skill level, I set out to design a portfolio that prioritizes accessibility, content, and the user, while also serving as a testing ground for various technologies.
+There are projects we finish... and others we abandon without really admitting it. My portfolio fell ino the latter category.
 
-## The underlying issue
+On paper, it checked all the boxes, but in reality, it no longer reflected who I was.
 
-The main challenge was to start from scratch, with one idea in mind: a dynamic portfolio where I could regularly publish posts, because it’s not just a portfolio but a space for interaction between the user and me.
+After careful consideration, I made a decision: to start from scratch.
 
-Using Nuxt with Nuxt Content and incorporating into this mix the Nuxt Studio CMS, a Markdown content editor developed by the Nuxt framework team, which recently became open-source.
+Not to make it "better", no.
+But to do it *right*.
 
-## Used technologies
+## Starting with a blank page
 
-**Nuxt 4** to combine modernity, performance, scalability, and extensibility to meet current market needs.
-**Directus + PostgreSQL** to optimises content and permission management.
-**Pinia** enable seamless and efficient management of user preferences and offer a more lighter, modular and intuitive management approach.
-**A modern UX/UI strategy** centered on the user, content, and interface accessibility to ensure an optimal, seamless, and accessible user experience.
+It's all well and good to start from scratch, but starting over means a blank page.
+This new portfolio wasn't born out of a desire to redesign, but from a realization: my needs had changed.
 
-## And Accessibility?
+I no longer wanted a simple showcase site.
+I wanted a living space.
 
-To optimize the user experience, I ensured the project's compliance with current accessibility guidelines (RGAA 4.2+ and WCAG 2.1) by conducting an accessibility audit (browser testing using onternal tools, screen reader testing, keyboard testing, visual and textual feedback during various actions, theme and language switching, contrast checks, creation of an accessibility report page, etc.), ensuring smooth and accessible navigation.
+A space where I could post regularly, document my projects, explain my technical choiuces, express myself freely, expriment, share my discoveries, and above all, create a direct connection with the people who visit it.
 
-## What I learned most
+That's when the idea took hold: to build an evolving portfolio, designed as a content platform, dedicated to users and content.
 
-Designing a modern full-stack architecture without external APIs to continuously improve the user experience.
-Implementing the entire accessiblity audit process and addressing the complexities behind the term 'accessible website' to ensure the project complies with current regulations.
-Analysis of user experience (UX) and digital accessibility aspects as part of a project to develop a scalable portfolio.
+## Choosing the Foundation
+
+Very quickly, a tech stack took shape.
+
+On my first portfolio, I had used Vue 3, so I had to use Nuxt 4, its "big brother".
+
+Don't see this as some kind of obligation or a case of "I needed a project to test this new technology", because it was already a tool in my developer's toolkit.
+I chose it for its ability to balance performance, flexibility, and a modern approach to full-stack development and, between you and me, Nuxt is awesome!
+
+Around it, I built a content-centric ecosystem:
+
+- **Nuxt Content,** for structuring and serving data.
+- **Nuxt Studio**, as the editing surface.
+- **Markdown**, as the sole markup language.
+
+A single source of truth.
+Readable, versioned, and controlled.
+
+When it comes to users experience and post management (the feed), **Pinia** allowed me to manager user preferences (theme, language, accessibility) with a simple, modular approach, without weighing down the architecture.
+But ultimately, the technology was just a means to an end; the real challenge lay elsewhere.
+
+## Putting the user first
+
+Every choice regarding design, navigation, or structure was guided by the same question:
+
+> Does this truly help the user?
+
+I designed an interface that is intentionnaly minimalist, allowing the content to take center stage.
+Fewer "WOW" visual effects, more clarity.
+Less cognitive friction, more fluidity.
+
+The goal: to enable a natural, intuitive, almost invisible reading experience, as if the user were on a social media platform or reading an online news article.
+
+## Accessibility as a Requirement, Not an Option
+
+Very early in the project in fact, right from the concept phase another aspect came into focus: accessibility.
+
+Not just a simple checklist, but a genuine process.
+And where there's a process, there are rules and standards.
+
+To that end, I relied on the **RGAA 4.2+** and **WCAG 2.1** standards, and I conducted a comprehensive audit:
+
+- Keyboard navigation
+- Testing with screen readers
+- Contrast management
+- Visual and textual feedback
+- Adaptation to theme and language changes
+
+I even designed [a page dedicated to the accessibility report](/accessibility-report).
+
+Because an accessible website isn’t just something you claim.
+It’s something you prove.
+
+## What This Project Has Changed
+
+This portfolio has become much more than a technical project.
+
+It has allowed me to:
+
+- Rethink a full-stack architecture without relying on external APIs
+- Gain a concrete understanding of what it means to "make a website accessible"
+- Deepen my thinking about user experience, beyond just interfaces
+
+But above all, it taught me one essential thing:
+
+> A good project isn’t limited to what it shows. It’s measured by how it’s used.
+
+## Final Thoughts
+
+Today, this portfolio continues to evolve.
+Like a laboratory.
+Like a logbook.
+
+And perhaps, as the starting point for something bigger.
