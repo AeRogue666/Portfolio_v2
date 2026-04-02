@@ -1,4 +1,4 @@
-import type { FeedItem, FeedKind, FeedResponse } from "@/types/feed";
+import type { FeedKind, FeedResponse } from "@/types/feed";
 import type { FeedSortValue } from "../types/feedFilters";
 
 interface UseFeedOptions {
@@ -13,7 +13,9 @@ export function useFeed(options?: UseFeedOptions) {
   const limit = options?.limit ?? 10,
     offset = ref<number>(0);
 
-  // Etat du filtrage depuis l'URL
+  /* ======
+      Récupérer les filtres depuis l'URL
+    ====== */
   const selectedTags = computed<string[]>(() => {
     const tags = route.query.tags;
     if (!tags) return [];
@@ -59,9 +61,13 @@ export function useFeed(options?: UseFeedOptions) {
   });
 
   const feedKey = computed(
-    () => `feed-${locale.value}-${offset.value}:${limit}`,
+    () =>
+      `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
   );
 
+  /* ======
+    Requête au serveur (et filtrage)
+    ====== */
   const { data, status, error, refresh } = useAsyncData(
     feedKey,
     () =>
@@ -70,110 +76,58 @@ export function useFeed(options?: UseFeedOptions) {
           limit,
           offset: offset.value,
           locale: locale.value,
-          tags: selectedTags.value.join(','),
+          tags: selectedTags.value.join(","),
+          kinds: selectedKinds.value.join(","),
+          sort: sortBy.value,
         },
       }),
     {
-      watch: [locale, offset, selectedTags],
+      watch: [locale, offset, selectedTags, selectedKinds, sortBy],
     },
   );
-  
-  // Items bruts du serveur
-  const serverItems = computed(() => data.value?.items ?? []);
-  const serverTotal = computed(() => data.value?.total ?? 0);
 
-  // Obtenir tous les tags disponibles (depuis tous les items du serveur)
-  const availableTags = computed(() => data.value?.availableTags ?? []); /* computed<string[]>(() => {
-    const tags = new Set<string>();
+  /* ======
+    Données du serveur
+    ====== */
+  const items = computed(() => data.value?.items ?? []);
+  const total = computed(() => data.value?.total ?? 0);
+  const availableTags = computed(() => data.value?.availableTags ?? []);
+  const hasMore = computed(() => data.value?.hasMore ?? []);
 
-    serverItems.value.forEach((item) => {
-      item.tags?.forEach((tag) => tags.add(tag));
-    });
-    return Array.from(tags).sort();
-  }); */
-
-  // Les posts épinglés sont extraits en amont, avant tout filtrage ou tri.
-  // Ils doivent toujours apparaître en première position (position 0)
-  // quels que soient les filtres de tags actifs ou l'option de tri sélectionnée.
-  const pinnedItems = computed<FeedItem[]>(() =>
-    serverItems.value.filter((item) => item.pinned),
-  );
-
-  // Filtrer les items NON épinglés par tags (logique OR).
-  // Les épinglés sont délibérément exclus ici : ils ne participent pas au filtrage.
-  const filteredByTags = computed<FeedItem[]>(() => {
-    const nonPinned = serverItems.value.filter((item) => !item.pinned);
-
-    if (selectedTags.value.length === 0) {
-      return nonPinned;
-    }
-
-    return nonPinned.filter((item) =>
-      item.tags?.some((tag) => selectedTags.value.includes(tag)),
-    );
-  });
-
-  // Filter par kind (logique OR) - s'applique après le filtre par tags.
-  // Les épinglés sont là aussi exclus: ils ont leur propre pipeline.
-  const filteredByKinds = computed<FeedItem[]>(() => {
-    if (selectedKinds.value.length === 0) {
-      return filteredByTags.value;
-    }
-    return filteredByTags.value.filter((item) =>
-      selectedKinds.value.includes(item.kindFallback ?? item.kind),
-    );
-  });
-
-  // Appliquer le tri aux posts normaux, puis réinjecter les épinglés en tête.
-  const sortedAndFiltered = computed<FeedItem[]>(() => {
-    const regularItems = filteredByKinds.value;
-
-    const compareFn = (a: FeedItem, b: FeedItem) => {
-      switch (sortBy.value) {
-        case "recent":
-          return new Date(b.date).getTime() - new Date(a.date).getTime();
-        case "oldest":
-          return new Date(a.date).getTime() - new Date(b.date).getTime();
-        case "alpha":
-          return a.title.localeCompare(b.title, locale.value);
-        case "alpha-desc":
-          return b.title.localeCompare(a.title, locale.value);
-        default:
-          return 0;
-      }
-    };
-
-    // Les épinglés sont réinjectés ici, toujours en tête, dans leur ordre d'origine, suivis des posts normaux triés selon le critère actif.
-    return [...pinnedItems.value, ...regularItems.sort(compareFn)];
-  });
-
-  // Items finaux à afficher (triés + filtrés)
-  const items = computed(() => sortedAndFiltered.value);
-
-  // Charger plus de posts (pagination serveur)
-  const loadMore = () => {
-    offset.value += limit;
-  };
-
-  // Mettre à jour les tags sélectionnés (persiste en URL)
-  const setSelectedTags = (tags: string[]) => {
-    router.push({
-      query: {
-        ...route.query,
-        tags: tags.length > 0 ? tags.join(",") : undefined,
-      },
-    });
-  };
-
-  // Ajouter/retirer un tag
+  /* ======
+    Actions pour modifier les filtres (persiste en URL)
+    Les posts épinglés sont extraits en amont (avant filtrage et tri) et apparaissent toujours en position 0.
+    ====== */
   const toggleTag = (tag: string) => {
     const newTags = selectedTags.value.includes(tag)
       ? selectedTags.value.filter((t) => t !== tag)
       : [...selectedTags.value, tag];
-    setSelectedTags(newTags);
+
+    offset.value = 0;
+    router.push({
+      query: {
+        ...route.query,
+        tags: newTags.length > 0 ? newTags.join(",") : undefined,
+      },
+    });
+  };
+
+  const toggleKind = (kind: FeedKind) => {
+    const newKinds = selectedKinds.value.includes(kind)
+      ? selectedKinds.value.filter((k) => k !== kind)
+      : [...selectedKinds.value, kind];
+
+    offset.value = 0;
+    router.push({
+      query: {
+        ...route.query,
+        tags: newKinds.length > 0 ? newKinds.join(",") : undefined,
+      },
+    });
   };
 
   const setSortBy = (sort: FeedSortValue) => {
+    offset.value = 0;
     router.push({
       query: {
         ...route.query,
@@ -182,56 +136,32 @@ export function useFeed(options?: UseFeedOptions) {
     });
   };
 
-  // Mettre à jour les kinds sélectionnés (persiste en URL)
-  const setSelectedKinds = (kinds: FeedKind[]) => {
-    router.push({
-      query: {
-        ...route.query,
-        kinds: kinds.length > 0 ? kinds.join(',') : undefined,
-      }
-    })
-  };
-
-  // Ajouter/retirer un kind
-  const toggleKind = (kind: FeedKind) => {
-    const newKinds = selectedKinds.value.includes(kind)
-    ? selectedKinds.value.filter((k) => k !== kind)
-    : [...selectedKinds.value, kind];
-    setSelectedKinds(newKinds);
-  };
-
   // Réinitialiser tous les filtres
   const resetFilters = () => {
+    offset.value = 0;
     router.push({
       query: {},
     });
   };
 
+  const loadMore = () => {
+    offset.value += limit;
+  };
+
   return {
-    // Données brutes serveur
-    serverItems: computed(() => serverItems.value),
-    serverTotal: computed(() => serverTotal.value),
-    hasMore: computed(() => data.value?.hasMore ?? false),
-
-    // Données filtrées + triées (à afficher)
     items: computed(() => items.value),
+    total: computed(() => total.value),
     availableTags: computed(() => availableTags.value),
-    total: computed(() => serverTotal.value),
+    hasMore: computed(() => data.value?.hasMore ?? false),
+    status,
+    error,
 
-    // Etat de filtrage/tri depuis URL
     selectedTags: computed(() => selectedTags.value),
     selectedKinds: computed(() => selectedKinds.value),
     sortBy: computed(() => sortBy.value),
 
-    // Etat du chargement
-    status,
-    error,
-
-    // Actions
     toggleTag,
-    setSelectedTags,
     toggleKind,
-    setSelectedKinds,
     setSortBy,
     resetFilters,
     loadMore,

@@ -54,7 +54,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
                 </div>
             </section>
             <ResponsiveImage v-if="post.image" :image="post.image" class="rounded-xl overflow-hidden" />
-            <div v-else class="w-full h-49.5 lg:h-82 bg-(--bg-3) my-2 rounded-xl overflow-hidden"></div>
+            <div v-else class="w-full h-49.5 lg:h-47 bg-(--bg-3) my-2 rounded-xl overflow-hidden"></div>
         </template>
 
         <h2 class="fs-title font-semibold leading-snug text-(--text)">

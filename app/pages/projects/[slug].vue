@@ -85,6 +85,10 @@ const src = computed(() => project.value?.image?.sources.feed?.mobile || project
 
 const created_atDate = computed(() => dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
     updated_atDate = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+
+/* <NuxtImg :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" width="1280"
+                height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="project.image?.alt"
+                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" :placeholder="true" /> */
 </script>
 
 <template>
@@ -110,11 +114,12 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
                 {{ project.description }}
             </p>
 
-            <NuxtImg :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" width="1280"
-                height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="project.image?.alt"
-                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" :placeholder="true" />
-            <!-- width="768" height="432" -->
-            <!-- sizes="xs:100vw md:80vw lg:64rem" -->
+            <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
+                alt: project.image?.alt,
+                srcset: `${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`,
+                sizes: 'sm:100vw md:80vw lg:64rem'
+            }" :widths="[320, 640, 960, 1280, 1536, 1920]" format="png" placeholder="blur"
+                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" />
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <div>

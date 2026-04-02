@@ -36,25 +36,110 @@ tags:
   - Pinia
 ---
 
-Inspired by the website epices-du-monde.com, my goal was to modernise the UI/UX of an online shop dedicated to Asian products. I also wanted to experiment with a headless architecture using Nuxt 4 and Directus.
+This story began with a sense of frustration.
 
-## The underlying issue
+One day, while browsing the internet in search of something—I’m not quite sure what, I stumbled upon an online store selling Asian products, epices-du-monde.com, and I quickly realized something was off.
+The site serves its purpose the products are there but the experience clearly belongs to another era.
 
-The original website had several shortcomings in terms of design, use of icons and alternative text. The challenge was therefore to create a modern and efficient interface while maintaining a reliable and high-performance back-end structure.
+A dated design.
+A rigid Bootstrap framework.
+And above all, accessibility that leaves much to be desired, or is even absent in certain key areas (such as alt text for some images or text on buttons, which, incidentally, have only an icon as a visual cue).
 
-I implemented a database with Directus + PostgreSQL, a Nuxt 4 frontend, Nuxt UI (Reka UI) with Pinia for shopping cart and product management, and complete interactions (selection of number of items, price display, addition to shopping cart). The project is still under development, particularly with regard to authentication and the administrator panel.
+It was as if I were standing before a Torii gate that had fallen into disrepair, having lost its connection between spirits and humans.
 
-## Used technologies
+Rather than simply criticizing as I so often enjoy doing, I wanted to do better.
 
-**Nuxt 4** to combine modernity, performance, scalability, and extensibility to meet current market needs.
-**Directus + PostgreSQL** to optimises content and permission management.
-**Pinia and some cookies** enable seamless and efficient management of user preferences and shopping cart status, but above all, they offer a more lighter, modular and intuitive management approach.
-**A modern UX/UI strategy** focused on a complete interface overhaul to ensure an optimal, smooth and accessible user experience.
+``What if I redesigned this store, but brought it up to today's standards?``
 
-## And Accessibility?
+## Modernizing Without Losing the Essence
 
-In order to optimise the user experience, it is essential to ensure that interactive elements are accessible via navigation, keyboard and labels. In addition, I made sure to check contrasts and visual and textual feedback during various actions, which are crucial elements for ensuring smooth and intuitive navigation.
+The goal wasn’t to reinvent the store, but to evolve it.
 
-## What I learned most
+Preserve its identity.
+Stay true to its purpose.
+But completely rethink the way it’s used.
 
-By designing a modern front-end architecture with a focus on continousy improving the user experience, as well as optiizing the online purchasing process for customers, with integrated basket and cookie management through the use of Pinia, and above all, the analysis of user experience (UX) and digital accessibility aspects as part of an e-commerce development project that closely resembles what can be found on the internet, rather than a simple test project.
+Very quickly, one approach stood out: switching to a headless architecture.
+
+Clearly separating data management from the user experience, in order to gain flexibility and, above all, lay the groundwork for future developments.
+
+## Rethinking the Architecture
+
+I built the project around two main components:
+
+- **Directus + PostgreSQL** to manage products, content, and permissions
+- **Nuxt 2** for the front end, using a modern, high-performance, and scalable approach (which, incidentally, has evolved over time from Nuxt 2 to Nuxt 3 and then Nuxt 4)
+
+For the interface, I relied on **Nuxt UI (Reka UI)** to lay a solid foundation, while maintaining complete freedom in the design.
+
+Then I tackled the essentials: the checkout process.
+
+I implemented:
+
+- Selecting the number of items
+- Dynamic price updates
+- Adding to cart
+- State persistence via Pinia and cookies
+
+Simple, yet crucial mechanics.
+Because an e-commerce site isn’t judged solely on its appearance, but also on its fluidity.
+
+The project is still in progress, particularly regarding authentication and the admin panel, but the user experience is already at the heart of the system.
+
+## A User-Centric Redesign
+
+This project is, above all, a complete UX/UI redesign.
+
+I reviewed each screen with one question in mind:
+
+“Is it clear, fast, and effortlessly understandable?”
+
+I focused on:
+
+- Visual hierarchy
+- Content readability
+- Navigation between products
+- Highlighting key actions
+
+The goal: to simplify the user journey as much as possible.
+
+Less friction, more clarity.
+
+## Addressing a Blind Spot: Accessibility
+
+One of the most glaring issues with the original site was the lack of best practices for accessibility.
+
+I couldn’t ignore this during a redesign—otherwise, how could I call myself a “Full-Stack Developer specializing in Accessibility”?
+
+So, from the very beginning, I incorporated:
+
+- Relevant alt text (no “A bottle”)
+- Clear labels for interactive elements
+- Functional keyboard navigation
+- Verified contrast ratios
+- Consistent visual and textual feedback
+
+This work isn’t just a “little extra”; it’s an integral part of the product.
+[What should we tell the developer?](https://tenor.com/fr/view/fdp-chauffeur-artus-un-ptit-truc-en-plus-qu'est-ce-qu'on-dit-au-chauffeur-gif-14920102969982686065)
+
+## What This Project Taught Me
+
+This project helped me reach a new level.
+
+Not just technically, but in how I approach product design.
+
+I gained deeper insight into:
+
+- Implementing a complete headless architecture
+- The actual logic behind an e-commerce journey
+- State management with Pinia in a real-world context
+- The importance of UX and accessibility in real-world use cases
+
+But above all, it reminded me of something essential:
+
+```Modernizing isn’t about starting from scratch; it’s about understanding what already exists.. and deciding what deserves to evolve.```
+
+## Final Thoughts
+
+Today, the project continues to move forward, and as is often the case, it’s not just a redesign.
+It’s a transition.

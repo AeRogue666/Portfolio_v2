@@ -36,26 +36,110 @@ tags:
   - Pinia
 ---
 
-En m'inspirant du site epices-du-monde.com, j'ai eu pour objectif de moderniser l'UI/UX d'une boutique en ligne dédiée aux produits asiatiques.
-J'ai également souhaité expérimenter une architecture headless avec Nuxt 4 et Directus.
+Cette histoire a commencée par une frustration.
 
-## Le problème de fond
+Un jour, alors que je naviguais sur internet en quête d'un je ne sais quoi, je suis tombé sur une boutique en ligne de produits asiatiques, epices-du-monde.com et je me suis vite rendu compte d'un décalage.
+Le site remplit son rôle, les produits sont là.. mais l'expérience, elle, appartient clairement à une autre époque.
 
-Le site d'origine présentait plusieurs lacunes en matière de design, d'utilisation des icônes et de présence de textes alternatifs. L'enjeu était donc de créer une interface moderne et efficace tout en préservant une structure back-end fiable et performante.
+Un design veilissant.
+Une base Bootstrap rigide.
+Et surtout, une accessibilité largement perfectible, voire absente à certains endroits clés (comme les textes alternatifs sur certaines images ou les textes sur les boutons, qui d'ailleurs n'ont pour signal visuel qu'un icône).
 
-J'ai implémenté une base de données avec Directus + PostgreSQL, un frontend Nuxt 4, Nuxt UI (Reka UI) avec Pinia pour la estion du panier et des produits, et des interactions complètes (sélection du nombren d'articles, affichage du prix, ajout au panier). Le projet est toujours en développement, notamment pour ce qui concerne l'authentification et le panel administrateur.
+Comme si je m'étais trouvé face à une porte Torii qui n'était plus entretenue, qui avait perdue ce lien entre esprits et humains.
 
-## Les technologiques utilisées
+Plutôt que de simplement critiquer comme j'apprécie tant faire, j'ai eu envie de faire mieux.
 
-**Nuxt 4** pour allier modernité, performance, évolutivité, et extensibilité afin de répondre aux besoins actuels du marché.
-**Directus + PostgreSQL** afin d'optimiser la gestion des contenus et des autorisations.
-**Pinia et des cookies** permettant de gérer les préférences utilisateurs et l'état du panier de manière fluide et efficace mais surtout une approche de gestion plus légère, modulaire et intuitive.
-**Une stratégie UX/UI moderne** s'articulant autour d'une refonte complète de l'interface afin de garantir une expérience utilisateur optimale, fluide et accessible.
+``Et si je reconstruisais cette boutique, mais avec les standards actuels ?``
 
-## Et l'accessibilité ?
+## Moderniser sans dénaturer
 
-Afin d'optimiser l'expérience utilisateur, il est essentiel de garantir l'accessibilité des éléments interactifs via la navigation, le clavier et les labels. En outre, je me suis assuré de la vérification des contrastes et des retours visuels et textuels lors des différentes actions, des éléments cruciaux pour assurer une navigation fluide et intuitive.
+L'objectif n'était pas de réinventer la boutique, mais de la faire évoluer.
 
-## Ce qui m'a appris le plus
+Conserver son identité.
+Respecter son intention.
+Mais repenser entièrement la manière dont elle est utilisée.
 
-Le fait d'avoir conçu une architecture frontend moderne dans un souci d'amélioration continue de l'expérience utilisateur, mais aussi l'optimisation du processus d'achat en ligne pour les clients, avec une gestion intégrée des paniers et des cookies, grâce à l'utilisation de Pinia et surtout l'analyse de l'expérience utilisateur (UX) et des aspects d'accessibilité numérique dans le cadre d'un projet de développement e-commerce se rapprochant nettement de ce que l'on peut trouver sur internet, et non un simple projet test.
+Très vite, une approche s'est imposée : passer sur une architecture headless.
+
+Séparer clairement la gestion des données de l'expérience utilisateur, afin de gagner en flexibilité et surtout, préparer le terrain pour des évolutions futures.
+
+## Repenser l'architecture
+
+J'ai construit le projet autour de deux briques principales :
+
+- **Directus + PostgreSQL** pour gérer les produits, les contenus et les permissions
+- **Nuxt 2** pour le front, avec une approche moderne, performante et évolutive (qui a d'ailleurs évolué au cours du temps de Nuxt 2 à Nuxt 3 puis Nuxt 4)
+
+Côté interface, je me suis appuyé sur **Nuxt UI (Reka UI)** pour poser des bases solides, tout en gardant une liberté totale sur le design.
+
+Puis je me suis attaque à l'essentiel : le parcours d'achat.
+
+J'ai mis en place :
+
+- La sélection du nombre d'articles
+- La mise à jour dynamique du prix
+- L'ajout au panier
+- La persistance via Pinia et des cookies
+
+Des mécaniques simples, mais cruciales.
+Parce qu'un site e-commerce ne se juge pas sur son apparence uniquement mais sur sa fluidité aussi.
+
+Le projet est encore en cours, notamment sur l'authentification et le panel administrateur, mais l'expérience utilisateur est déjà au coeur du système.
+
+## Une refonte centrée sur l'usage
+
+Ce projet est avant tout une refonte UX/UI complète.
+
+J'ai repris chaque écran avec une question en tête :
+
+``Est-ce que c'est clair, rapide et compréhensible sans effort ?``
+
+J'ai travaillé sur :
+
+- La hiérarchie visuelle
+- La lisibilité des contenus
+- La navigation entre les produits
+- La mise en avant des actions clés
+
+L'objectif : simplifier au maximum le parcours utilisateur.
+
+Moins de friction, plus d'évidence.
+
+## Corriger un angle mort : l'accessibilité
+
+L'un des points les plus marquants du site d'origine était l'absence de bonnes pratiques d'accessibilité.
+
+Impossible de l'ignorer dans une refonte, sinon comment oserais-je me dire "Développeur full-stack spécialiste en Accessibilité" ?
+
+J'ai donc intégré dès le départ :
+
+- Des textes alternatifs pertinents (pas de "Une bouteille")
+- Des labels clairs pour les éléments interactifs
+- Une navigation clavier fonctionnelle
+- Des contrastes vérifiés
+- Des retours visuels et textuels cohérents
+
+Ce travail n'est pas un "petit truc en plus", il fait partie du produit.
+[Qu'est-ce que l'on dit au développeur ?](https://tenor.com/fr/view/fdp-chauffeur-artus-un-ptit-truc-en-plus-qu'est-ce-qu'on-dit-au-chauffeur-gif-14920102969982686065)
+
+## Ce que ce projet m'a appris
+
+Ce projet m'a permis de passer un cap.
+
+Pas seulement techniquement, mais dans ma manière de concevoir un produit.
+
+J'y ai approfondi :
+
+- La mise en place d'une architecture headless complète
+- Les logiques réelles d'un parcours e-commerce
+- La gestion d'état avec Pinia dans un contexte concret
+- L'importance de l'UX et de l'accessibilité dans des cas d'usages réels
+
+Mais surtout, il m'a rappelé quelque chose d'essentiel :
+
+```Moderniser, ce n'est pas repartir de zéro, c'est comprendre ce qui existe déjà.. et décider ce qui mérite d'évoluer.``
+
+## Le mot de la fin
+
+Aujourd'hui le projet continue d'avancer, et comme souvent, ce n'est pa seulement une refonte.
+C'est une transition.

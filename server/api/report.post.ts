@@ -48,8 +48,8 @@ export default defineEventHandler(async (event) => {
   const resend = new Resend(config.resendApiKey);
 
   await resend.emails.send({
-    from: "Report <report@aureldev.dev>",
-    to: ["pro@aureldev.dev"],
+    from: "Report <onboarding@resend.dev>",
+    to: ["contact@aureldev.com"],
     subject: `[Report] ${body.issue.toUpperCase()}`,
     text: `
         Issue: ${body.issue}

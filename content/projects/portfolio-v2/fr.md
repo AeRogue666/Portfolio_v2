@@ -21,7 +21,7 @@ links:
   demo: https://www.aureldev.com
 locale: fr
 pinned: false
-previewUrl: /projects/portfolio-v2
+previewUrl: /projects/portfolio-v2/
 role: Développeur full-stack
 slug: portfolio-v2
 stack:
@@ -42,27 +42,98 @@ tags:
   - Nuxt Studio
 ---
 
-En constatant que le premier portfolio réalisé à l'issue de ma formation de développeur web ne correspondait plus à mes attentes, mes objectifs et mes compétences, j'ai travaillé sur la conception d'un portfolio mettant au centre l'accessibilité, le contenu et l'utilisateur en n'oubliant pas que c'est aussi un laboratoire où seront testés divers technologies.
+Il y a des projets que l'on termine.. et d'autres que l'on abandonne sans vraiment l'admettre. Mon premier portfolio faisait partie de cette seconde catégorie.
 
-## Le problème de fond
+Sur le papier, il cochait toutes les cases mais en réalité, il ne me ressemblait plus.
 
-Le principal défi consistait à repartir de zéro, avec une idée en tête : Un portfolio évolutif sur lequel je puisse publier de façon régulière des posts car ce n'est pas juste un portfolio mais un espace d'échange entre l'utilisateur et moi.
+Après mûre réflexion, j'ai pris une décision : repartir de zéro.
 
-Utiliser Nuxt avec Nuxt Content et incorporer dans cette alchimie, le CMS Nuxt Studio, un éditeur de contenu Markdown développé par l'équipe du framework Nuxt, récemment devenu open-source.
+Pas pour faire "mieux", non.
+Mais pour faire *juste*.
 
-## Les technologiques utilisées
+## Repartir d'une page blanche
 
-**Nuxt 4** pour allier modernité, performance, évolutivité, et extensibilité afin de répondre aux besoins actuels du marché.
-**Nuxt Content + Nuxt Studio + Markdown** afin de permettre d'optimiser la gestion des contenus tout en ayant une seule source de vérité, le tout écrit en Markdown.
-**Pinia** permettant de gérer les préférences utilisateurs de manière fluide et efficace mais surtout une approche de gestion plus légère, modulaire et intuitive.
-**Une stratégie UX/UI moderne** s'articulant autour de l'utilisateur, du contenu et de l'accessibilité des interfaces pour garantir une expérience utilisateur optimale, fluide et accessible.
+C'est bien beau de repartir de zéro, mais qui dit tout refaire, dit page blanche.
+Ce nouveau portfolio n'est pas né d'une envie de redesign, mais d'un constat : je n'avais plus les même besoins.
 
-## Et l'accessibilité ?
+Je ne voulais pus d'un simple site vitrine.
+Je voulais un lieu vivant.
 
-Afin d'optimiser l'expérience utilisateur, je me suis assuré de loa conformité du projet avec les règles d'accessibilité en vigueur (RGAA 4.2+ et WCAG 2.1) en mettant en place un Audit d'accessibilité (Tests navigateur assisté par des outils internes, tests avec lecteurs d'écrans, tets clavier, retours visuels et textuels lors des différentes actions, changement de thème et de langue, contrastes, création d'une page de rapport d'accessibilité, etc.) garantissant une navigation fluide et accessible.
+Un espace où publier régulièrement, documenter mes projets, raconter mes choix techniques, m'exprimer librement, expérimenter et partager mes découvertes et surtout créer un lien direct avec les personnes qui le consultent.
 
-## Ce qui m'a appris le plus
+C'est là que l'idée s'est imposée : construire un portfolio évolutif, pensé comme une plateforme de contenu, dédié aux utilisateurs et aux contenus.
 
-Conception d'une architecture full-stack moderne sans API externe dans un souci d'amélioration continue de l'expérience utilisateur.
-Mise en place de tout le processus d'un Audit Accessibilité et la complexité qui se situe derrière le terme 'Site accessible', afin de garantir la conformité du projet avec les réglementations en vigueur.
-Analyse de l'expérience utilisateur (UX) et des aspects d'accessibilité numérique dans le cadre d'un projet de développement d'un portfolio évolutif.
+## Le choix des fondations
+
+Très vite, une stack s'est dessinée.
+
+Sur le premier portfolio, j'avais employé Vue 3, je me devais d'employer Nuxt 4, le "grand frère".
+N'y voyez pas là une forme d'obligation ou de "il me fallait un projet pour tester cette nouvelle technologie", car c'était déjà un outil présent dans mon bagage de développeur.
+Je l'ai choisi pour sa capacité à concilier performance, flexibilité et vision moderne du développement full-stack, et parce qu'entre nous, Nuxt c'est le feu !
+
+Autour de lui, j'ai construit un écosystème centré sur le contenu :
+
+- **Nuxt Content**, pour structurer et servir les données.
+- **Nuxt Studio**, comme interface d'édition.
+- **Markdown**, comme langage unique.
+
+Une seule source de vérité.
+Lisible, versionnée, maîtrisée.
+
+Côté expérience utilisateur et gestion des posts (le feed), **Pinia** m'a peris de gérer les préférences utilisateurs (thème, langue, accessibilité) avec une approche simple et modulaire, sans alourdir l'architecture.
+Mais au fond, la technique n'était qu'un moyen, le véritable enjeu était ailleurs.
+
+## Penser d'abord à l'utilisateur
+
+Chaque choix de design, de navigation ou de structure a été guidé par une même question :
+
+> Est-ce que cela aide vraiment l'utilisateur ?
+
+J'ai construit une interface volontairement sobre, où le contenu prend le dessus.
+Moins d'effets visuels "WOW", plus de clarté.
+Moins de friction cognitive, plus de fluidité.
+
+L'objectif : permettre une lecture naturelle, intuitive, presque invisible, comme si l'utilisateur se trouvait sur un réseau social ou un article d'un média en ligne.
+
+## L'accessibilité comme exigence, pas comme option
+
+Très tôt dans le projet, à vrai dire dès le concept, un autre chanter s'est ouvert : celui de l'accessibilité.
+
+Pas une simple checklist, un vrai processus.
+Et qui dit processus, dit règles, normes.
+
+Pour cela, je me suis appuyé sur les standards **RGAA 4.2+** et **WCAG 2.1**, et j'ai mené un audit complet :
+
+- Navigation clavier
+- Tests avec lecteurs d'écran
+- Gestion des contrastes
+- Retours visuels et textuels
+- Adaptation aux changements de thème et de langue
+
+J'ai même conçu [une page dédiée au rapport d'accessibilité](/accessibility-report).
+
+Parce qu'un site accessible, cela ne se déclare pas.
+Cela se démontre.
+
+## Ce que ce projet a changé
+
+Ce portfolio est devenur bien plus qu'un projet technique.
+
+Il m'a permis de :
+
+- Repenser une architecture full-stack sans dépendance à des APIs externes
+- Comprendre concrètement ce que signifie "rendre un site accessible"
+- Approfondir ma réflexion sur l'expérience utilisateur, au-delà des interfaces
+
+Mais surtout, il m'a appris une chose essentielle :
+
+> Un bon projet ne se limite pas à ce qu'il montre.
+> Il se mesure à la manière dont il est utilisée.
+
+## Le mot de la fin
+
+Aujourd'hui, ce portfolio continue d'évoluer.
+Tel un laboratoire.
+Tel un carnet de bord.
+
+Et peut-être, comme le point de départ de quelque chose de plus grand.
