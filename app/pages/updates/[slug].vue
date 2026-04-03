@@ -86,9 +86,19 @@ const src = computed(() => update.value?.image?.sources.feed?.mobile || update.v
 const created_atDate = computed(() => dayjs(update.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
     updated_atDate = computed(() => dayjs(update.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 
-/* <NuxtImg :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" width="1280"
-                height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="project.image?.alt"
-                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" :placeholder="true" /> */
+/* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
+                alt: update.image?.alt,
+                srcset: `${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`,
+                sizes: 'sm:100vw md:80vw lg:64rem',
+                class: 'my-2 rounded-lg border-2 border-solid border-(--border-subtle)'
+            }" :widths="[320, 640, 960, 1280, 1536, 1920]" format="png" placeholder="blur" /> */
+
+/* <picture>
+                <source :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" type="image/png"
+                    :widths="[320, 640, 960, 1280, 1536, 1920]" />
+                <img :src="src" :alt="update.image?.alt" sizes="sm:100vw md:80vw lg:64rem"
+                    class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" />
+            </picture> */
 </script>
 
 <template>
@@ -115,12 +125,10 @@ const created_atDate = computed(() => dayjs(update.value?.created_at).locale(loc
                 {{ update.description }}
             </p>
 
-            <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
-                alt: update.image?.alt,
-                srcset: `${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`,
-                sizes: 'sm:100vw md:80vw lg:64rem'
-            }" :widths="[320, 640, 960, 1280, 1536, 1920]" format="png" placeholder="blur"
-                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" />
+            <NuxtImg :src="src" :alt="update.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
+                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
+                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
+                placeholder="blur" />
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <dt class="fs-lead font-semibold leading-snug">
