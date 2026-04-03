@@ -26,6 +26,15 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: '/terms'
     },
 ];
+
+useSeoMeta(({
+    title: t('seo.page.title', { pagetitle: t('breadcrumb.terms_of_use') }),
+    description: t('seo.page.description', { pagetitle: t('breadcrumb.terms_of_use') }),
+    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.terms_of_use') }),
+    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.terms_of_use') }),
+    ogImage: '/images/project/portfolio-v2/desktop.png',
+    twitterCard: 'summary_large_image',
+}));
 </script>
 
 <template>

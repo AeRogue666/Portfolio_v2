@@ -37,7 +37,7 @@ useSeoMeta(({
     description: t('seo.feed.description'),
     ogTitle: t('seo.feed.title'),
     ogDescription: t('seo.feed.description'),
-    ogImage: '/images/project/front-ecommerce-headless/desktop.png',
+    ogImage: '/images/project/portfolio-v2/desktop.png',
     twitterCard: 'summary_large_image',
 }));
 </script>

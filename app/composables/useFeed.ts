@@ -92,7 +92,7 @@ export function useFeed(options?: UseFeedOptions) {
   const items = computed(() => data.value?.items ?? []);
   const total = computed(() => data.value?.total ?? 0);
   const availableTags = computed(() => data.value?.availableTags ?? []);
-  const hasMore = computed(() => data.value?.hasMore ?? []);
+  const hasMore = computed(() => data.value?.hasMore ?? false);
 
   /* ======
     Actions pour modifier les filtres (persiste en URL)
@@ -152,7 +152,7 @@ export function useFeed(options?: UseFeedOptions) {
     items: computed(() => items.value),
     total: computed(() => total.value),
     availableTags: computed(() => availableTags.value),
-    hasMore: computed(() => data.value?.hasMore ?? false),
+    hasMore,
     status,
     error,
 

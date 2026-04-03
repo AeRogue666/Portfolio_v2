@@ -11,7 +11,7 @@ const imgClasses = "rounded-xl border-2 border-solid border-(--border-subtle) ov
 </script>
 
 <template>
-    <UCarousel v-slot="{ item, index }" class-names loop arrows dots :autoplay="{ delay: 2000 }" :items="items">
+    <UCarousel v-slot="{ item, index }" class-names loop arrows dots :autoplay="{ delay: 6000 }" :items="items">
         <NuxtLink :id="`carousel-${index}`" :to="item.link">
             <NuxtPicture :src="item.image"
                 :img-attrs="{ alt: item.alt, sizes: 'sm:100vw md:80vw lg:64rem', class: imgClasses }"

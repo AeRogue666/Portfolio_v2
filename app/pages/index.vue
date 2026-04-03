@@ -94,7 +94,7 @@ useSeoMeta(({
     description: t('seo.home.description'),
     ogTitle: t('seo.home.title'),
     ogDescription: t('seo.home.description'),
-    ogImage: '/images/project/front-ecommerce-headless/desktop.png',
+    ogImage: '/images/project/portfolio-v2/desktop.png',
     twitterCard: 'summary_large_image',
 }));
 </script>
@@ -153,8 +153,8 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names loop arrows dots
-                :autoplay="{ delay: 2000 }" :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
+            <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names arrows dots
+                :autoplay="{ delay: 6000 }" :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
                     item: 'basis-full',
                     prev: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg-(--bg-3) text-(--text-2) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90',
                     next: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg(--bg-3) text-(--text) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90'

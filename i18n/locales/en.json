@@ -61,8 +61,12 @@
       "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed"
     },
     "feed": {
-      "title": "Portfolio of Aureldev - Accessibility-first Full-stack Developer",
-      "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed"
+      "title": "Feed - Portfolio of Aureldev",
+      "description": "Discover the content of the feed"
+    },
+    "page": {
+      "title": "{pagetitle} - Portfolio of Aureldev",
+      "description": "Discover the content of the {pagetitle} page"
     }
   },
   "index": {
