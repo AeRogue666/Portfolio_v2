@@ -86,9 +86,18 @@ const src = computed(() => project.value?.image?.sources.feed?.mobile || project
 const created_atDate = computed(() => dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
     updated_atDate = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 
-/* <NuxtImg :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" width="1280"
-                height="960" sizes="xs:100vw md:80vw lg:64rem" :alt="project.image?.alt"
-                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" :placeholder="true" /> */
+/* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
+                alt: project.image?.alt,
+                srcset: `${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`,
+                sizes: 'sm:100vw md:80vw lg:64rem',
+                class: 'my-2 rounded-lg border-2 border-solid border-(--border-subtle)'
+            }" :widths="[320, 640, 960, 1280, 1536, 1920]" format="png" placeholder="blur" /> */
+/* <picture>
+                <source :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" type="image/png"
+                    :widths="[320, 640, 960, 1280, 1536, 1920]" />
+                <img :src="src" :alt="project.image?.alt" sizes="sm:100vw md:80vw lg:64rem"
+                    class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" />
+            </picture> */
 </script>
 
 <template>
@@ -108,18 +117,17 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
                 </template>
             </p>
 
-            <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">{{ project.title }}
+            <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                {{ project.title }}
             </h1>
             <p class="fs-subtitle text-(--text-2) leading-snug">
                 {{ project.description }}
             </p>
 
-            <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
-                alt: project.image?.alt,
-                srcset: `${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`,
-                sizes: 'sm:100vw md:80vw lg:64rem'
-            }" :widths="[320, 640, 960, 1280, 1536, 1920]" format="png" placeholder="blur"
-                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" />
+            <NuxtImg :src="src" :alt="project.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
+                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
+                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
+                placeholder="blur" />
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <div>
@@ -144,64 +152,6 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
         </template>
 
         <ContentRenderer :value="project" class="prose prose-neutral dark:prose-invert max-w-none" />
-        <!-- <section aria-labelledby="context">
-            <h2 class="fs-title font-semibold leading-snug">
-                {{ t('project.context') }}
-            </h2>
-            <p class="fs-body text-(--text-2) leading-snug">
-                {{ project.context }}
-            </p>
-        </section>
-
-        <section aria-labelledby="problem">
-            <h2 id="problem" class="fs-title font-semibold leading-snug">
-                {{ t('project.problem') }}
-            </h2>
-            <p class="fs-body text-(--text-2) leading-snug">
-                {{ project.problem }}
-            </p>
-        </section>
-
-        <section aria-labelledby="solution">
-            <h2 id="solution" class="fs-title font-semibold leading-snug">
-                {{ t('project.solution') }}
-            </h2>
-            <p class="fs-body text-(--text-2) leading-snug">
-                {{ project.solution }}
-            </p>
-        </section>
-
-        <section aria-labelledby="tech">
-            <h2 id="tech" class="fs-title font-semibold leading-snug">
-                {{ t('project.technical_choices') }}
-            </h2>
-            <ul class="flex flex-col justify-center items-baseline">
-                <li v-for="tech in project.technicalChoices" :key="tech.title"
-                    class="fs-body text-(--text-2) leading-snug">
-                    <strong>{{ tech.title }}</strong> - {{ tech.description }}
-                </li>
-            </ul>
-        </section>
-
-        <section aria-labelledby="a11y">
-            <h2 id="a11y" class="fs-title font-semibold leading-snug">
-                {{ t('project.accessibility') }}
-            </h2>
-            <p class="fs-body text-(--text-2) leading-snug">
-                {{ project.accessibility }}</p>
-        </section>
-
-        <section aria-labelledby="results">
-            <h2 id="results" class="fs-title font-semibold leading-snug">
-                {{ t('project.learnings') }}
-            </h2>
-            <ul>
-                <li v-for="learning in project.learnings" class="flex flex-col" :key="learning">
-                    <p class="fs-body text-(--text-2) leading-snug">{{ learning }}
-                    </p>
-                </li>
-            </ul>
-        </section> -->
 
         <template #footer>
             <a v-if="project.links?.github" :href="project.links.github"
