@@ -37,7 +37,7 @@ export const projects: Project[] = [
     translations: {
       fr: {
         title: "Plateforme de gestions de recettes multi-rôles",
-        summary:
+        description:
           "Une plateforme de gestion de recettes culinaires avec rôles utilisateurs, création et modification de recettes et gestion complète des autorisations développée avec Express et Directus.",
         feed_title: "Plateforme de recettes multi-rôles",
         feed_summary:
@@ -77,7 +77,7 @@ export const projects: Project[] = [
       },
       en: {
         title: "Multi-role recipe management platform",
-        summary:
+        description:
           "Culinary recipe management platform with users roles, recipe creation and modification, and comprehensive permissions management developed with Express and Directus",
         feed_title: "Multi-role recipe platform",
         feed_summary:
@@ -146,7 +146,7 @@ export const projects: Project[] = [
     translations: {
       fr: {
         title: "Boutique asiatique en ligne - Nuxt 4 + Directus",
-        summary:
+        description:
           "Une boutique ligne qui propose une sélection de produits asiatiques dans plusieurs langues. Elle est dotée d'un catalogue, d'un panier, d'un système de gestion des commandes et d'une interface administrable via un CMS développé avec Nuxt 4, Pinia et Directus.",
         feed_title: "Boutique asiatique headless",
         feed_summary:
@@ -190,7 +190,7 @@ export const projects: Project[] = [
       },
       en: {
         title: "Asian online store - Nuxt 4 + Directus",
-        summary:
+        description:
           "An online shop offering a selection of Asian products with multilingual support available. It features a catalogue, a shopping basket, and an interface that can be managed via a CMS developed with Nuxt 4, Pinia, and Directus.",
         feed_title: "Headless Asian store",
         feed_summary:
@@ -263,7 +263,7 @@ export const projects: Project[] = [
     translations: {
       fr: {
         title: "Portfolio axé sur le contenu et centré sur l'utilisateur",
-        summary: "",
+        description: "",
         feed_title: "Portfolio v2 - Projet axé sur le contenu et l'accessibilité avant tout",
         feed_summary: "Version 2 de mon portfolio - Réalisé avec Nuxt 4.2+ et dans une optique d'accessibilité avant tout",
         role: "Développeur Full-Stack",
@@ -301,7 +301,7 @@ export const projects: Project[] = [
       },
       en: {
         title: "Content-driven & User-centered portfolio",
-        summary: "An accessible, scalable, user-centered portfolio as a social feed developed with Nuxt and Markdown",
+        description: "An accessible, scalable, user-centered portfolio as a social feed developed with Nuxt and Markdown",
         feed_title: "Portfolio v2 - Accessibility-first Content-driven project",
         feed_summary: "Accessibility-first & user-centered portfolio developed with Nuxt and Markdown",
         role: "Full-stack Developer",
@@ -370,7 +370,7 @@ export const projects: Project[] = [
     translations: {
       fr: {
         title: "",
-        summary: "",
+        description: "",
         feed_title: "",
         feed_summary: "",
         role: "",
@@ -388,7 +388,7 @@ export const projects: Project[] = [
       },
       en: {
         title: "",
-        summary: "",
+        description: "",
         feed_title: "",
         feed_summary: "",
         role: "",
@@ -435,7 +435,7 @@ export const projects: Project[] = [
     translations: {
       fr: {
         title: "",
-        summary: "",
+        description: "",
         feed_title: "",
         feed_summary: "",
         role: "",
@@ -453,7 +453,7 @@ export const projects: Project[] = [
       },
       en: {
         title: "",
-        summary: "",
+        description: "",
         feed_title: "",
         feed_summary: "",
         role: "",

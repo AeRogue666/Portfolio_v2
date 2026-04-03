@@ -109,6 +109,15 @@ const grayscale = computed({
     get: () => accessibilityStore.grayscale,
     set: () => accessibilityStore.toggleGrayscale(),
 });
+
+useSeoMeta(({
+    title: t('seo.page.title', { pagetitle: t('breadcrumb.report') }),
+    description: t('seo.page.description', { pagetitle: t('breadcrumb.report') }),
+    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.report') }),
+    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.report') }),
+    ogImage: '/images/project/portfolio-v2/desktop.png',
+    twitterCard: 'summary_large_image',
+}));
 </script>
 
 <template>

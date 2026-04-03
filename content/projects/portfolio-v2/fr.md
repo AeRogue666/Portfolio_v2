@@ -5,7 +5,7 @@ description: Un portfolio centré sur l'utilisateur, l'accessibilité et le cont
 feed_summary: Version 2 de mon portfolio - Réalisé avec Nuxt et Nuxt Content dans une optique d'accessibilité et centré sur l'utilisateur avant tout
 feed_title: Portfolio v2
 image:
-  alt: Capture d'écran du portfolio v2
+  alt: Capture d'écran de la page d'accueil du portfolio v2
   sources:
     feed:
       mobile: /images/project/portfolio-v2/mobile.png

@@ -1,6 +1,7 @@
 export type ContrastMode = "normal" | "high" | "low";
 export type FontScale = 1 | 1.25 | 1.5 | 1.75 | 2;
 export type FontFamily = "source-sans" | "atkinson" | "roboto";
+export type ReadingDirection = "ltr" | "rtl";
 
 export interface AccessibilityState {
   fontScale: FontScale;
@@ -8,6 +9,7 @@ export interface AccessibilityState {
   contrast: ContrastMode;
   underlineLinks: boolean;
   fontFamily: FontFamily;
+  direction: ReadingDirection
 }
 
 const DEFAULT_STATE: AccessibilityState = {
@@ -16,6 +18,7 @@ const DEFAULT_STATE: AccessibilityState = {
   contrast: "normal",
   underlineLinks: false,
   fontFamily: "source-sans",
+  direction: "ltr",
 };
 
 export const useAccessibilityStore = defineStore("accessibility", {
@@ -30,6 +33,7 @@ export const useAccessibilityStore = defineStore("accessibility", {
       html.dataset.grayscale = String(this.grayscale);
       html.dataset.underline = String(this.underlineLinks);
       html.dataset.font = this.fontFamily;
+      html.dir = this.direction;
     },
     reset() {
       Object.assign(this, DEFAULT_STATE);

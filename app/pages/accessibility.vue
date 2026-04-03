@@ -26,6 +26,15 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: '/accessibility'
     },
 ];
+
+useSeoMeta(({
+    title: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility') }),
+    description: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility') }),
+    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility') }),
+    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility') }),
+    ogImage: '/images/project/portfolio-v2/desktop.png',
+    twitterCard: 'summary_large_image',
+}));
 </script>
 
 <template>

@@ -5,7 +5,7 @@ description: An accessible, scalable, user-centered portfolio as a social feed d
 feed_summary: Version 2 of my portfolio - Accessibility-first & user-centered portfolio developed with Nuxt and Nuxt content
 feed_title: Portfolio v2
 image:
-  alt: Screenshot of the portfolio v2
+  alt: Screenshot of the portfolio v2 index page
   sources:
     feed:
       mobile: /images/project/portfolio-v2/mobile.png

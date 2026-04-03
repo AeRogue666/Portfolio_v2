@@ -26,6 +26,15 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: '/legal-notices'
     },
 ];
+
+useSeoMeta(({
+    title: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }),
+    description: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }),
+    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }),
+    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }),
+    ogImage: '/images/project/portfolio-v2/desktop.png',
+    twitterCard: 'summary_large_image',
+}));
 </script>
 
 <template>

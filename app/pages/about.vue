@@ -22,6 +22,15 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: '/about'
     },
 ];
+
+useSeoMeta(({
+    title: t('seo.page.title', { pagetitle: t('breadcrumb.about') }),
+    description: t('seo.page.description', { pagetitle: t('breadcrumb.about') }),
+    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.about') }),
+    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.about') }),
+    ogImage: '/images/project/portfolio-v2/desktop.png',
+    twitterCard: 'summary_large_image',
+}));
 </script>
 
 <template>

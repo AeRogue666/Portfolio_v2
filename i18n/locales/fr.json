@@ -61,8 +61,12 @@
       "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur"
     },
     "feed": {
-      "title": "Portfolio d'Aureldev - Développer Full-stack orienté accessibilité",
-      "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur"
+      "title": "Fil d'actualité - Portfolio d'Aureldev",
+      "description": "Decouvrez le contenu du fil d'actualité"
+    },
+    "page": {
+      "title": "{pagetitle} - Portfolio d'Aureldev",
+      "description": "Découvrez le contenu de la page {pagetitle}"
     }
   },
   "index": {
