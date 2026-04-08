@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProcessCard from './molecules/ProcessCard.vue';
+import ProcessCard from '../molecules/ProcessCard.vue';
 
 const { t } = useI18n();
 
