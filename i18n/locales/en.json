@@ -121,6 +121,26 @@
         }
       }
     },
+    "plan_section": {
+      "tag": "",
+      "title": "My services",
+      "description": "",
+      "more_info_button": "Learn more",
+      "plan": {
+        "1": {
+          "title": "Web",
+          "description": "Whether you choose a CMS or a custom-built solution, the choise is yours"
+        },
+        "2": {
+          "title": "Accessibility",
+          "description": "Important topics to discuss"
+        },
+        "3": {
+          "title": "Digital training",
+          "description": "To stay up to date"
+        }
+      }
+    },
     "contact_section": {
       "tag": "Contact",
       "title": "Ready to discuss it?",

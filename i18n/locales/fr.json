@@ -121,6 +121,26 @@
         }
       }
     },
+    "plan_section": {
+      "tag": "",
+      "title": "Mes prestations",
+      "description": "",
+      "more_info_button": "En savoir plus",
+      "plan": {
+        "1": {
+          "title": "Web",
+          "description": "Avec un CMS ou fait maison, c'est vous qui choisissez"
+        },
+        "2": {
+          "title": "Accessibilité & Performance",
+          "description": "Des sujets importants à aborder"
+        },
+        "3": {
+          "title": "Formation au Numérique",
+          "description": "Pour rester à la pointe"
+        }
+      }
+    },
     "contact_section": {
       "tag": "Contact",
       "title": "Prêt à en discuter ?",
@@ -220,7 +240,7 @@
     "updates": "Mises à jour",
     "about": "A propos",
     "accessibility": "Accessibilité",
-    "accessibility_report":"Rapport d'accessibilité",
+    "accessibility_report": "Rapport d'accessibilité",
     "report": "Signaler un incident",
     "legal_notices": "Mentions légales",
     "terms_of_use": "Conditions Générales d'Utilisation"

@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import type { FeedResponse } from '../types/feed';
+import IndexSection from '../components/index/IndexSection.vue';
+import LandingSection from '../components/index/LandingSection.vue';
+import ExpertiseContainer from '../components/index/organisms/ExpertiseContainer.vue';
+import PlansContainer from '../components/index/organisms/PlansContainer.vue';
 import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
 import CarouselWrapper from '../components/index/organisms/CarouselWrapper.vue';
-import IndexSection from '../components/index/IndexSection.vue';
-import type { FeedResponse } from '../types/feed';
-import LandingSection from '../components/index/LandingSection.vue';
-import ExpertiseContainer from '../components/index/ExpertiseContainer.vue';
 
 const { t, locale } = useI18n(),
     colorMode = useColorMode(),
@@ -46,32 +47,6 @@ const realisationsCarouselItems = computed(() => {
         }));
 });
 
-/* const realisationsCarouselItems = ref<{
-    image: string;
-    alt: string;
-    description: string;
-    link: string;
-}[]>([
-    {
-        image: '/images/project/plateforme-gestion-recettes/desktop.png',
-        alt: '',
-        description: 'A multi-role recipe management platform',
-        link: '/projects/plateforme-gestion-recettes'
-    },
-    {
-        image: '/images/project/front-ecommerce-headless/desktop.png',
-        alt: '',
-        description: 'An asian online store',
-        link: '/projects/front-ecommerce-headless'
-    },
-    {
-        image: '/images/update/exploration-prisma/desktop.png',
-        alt: '',
-        description: 'Exploration of Prisma possibilities',
-        link: '/updates/exploration-prisma'
-    }
-]); */
-
 onMounted(() => {
     watch(
         () => colorMode.value,
@@ -83,7 +58,7 @@ onMounted(() => {
             fillColor.value =
                 mode === 'dark'
                     ? undefined
-                    : ['--bg', '--bg', '--bg', '--bg', '--bg']
+                    : ['--bg', '--bg', '--bg', '--bg', '--bg', '--bg']
         },
         { immediate: true }
     );
@@ -218,7 +193,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Expertise section -->
-        <!-- <IndexSection id="expertise-section" :class="'bg-(--bg-elevated)'" :fill="fillColor?.[3] ?? '--card-about-bg'">
+        <IndexSection id="expertise-section" :class="'bg-(--bg-elevated)'" :fill="fillColor?.[3] ?? '--card-about-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.expertise_section.tag') }}
@@ -239,10 +214,34 @@ useSeoMeta(({
             </template>
 
             <ExpertiseContainer />
-        </IndexSection> -->
+        </IndexSection>
+
+        <!-- Plan section -->
+        <IndexSection id="plan-section" :class="'bg-(--bg-elevated)'" :fill="fillColor?.[4] ?? '--card-about-bg'">
+            <template #tag>
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
+                    {{ t('index.plan_section.tag') }}
+                </span>
+            </template>
+
+            <template #title>
+                <h2 id="expertise-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
+                    {{ t('index.plan_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                    {{ t('index.plan_section.description') }}
+                </p>
+            </template>
+
+            <PlansContainer />
+        </IndexSection>
 
         <!-- Contact section -->
-        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" :fill="fillColor?.[4] ?? '--bg-2'">
+        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" :fill="fillColor?.[5] ?? '--bg-2'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.contact_section.tag') }}

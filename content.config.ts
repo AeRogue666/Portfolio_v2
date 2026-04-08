@@ -8,10 +8,12 @@ const responsiveSourceSchema = z.object({
 
 const responsiveImageSchema = z.object({
   alt: z.string(),
-  sources: z.object({
-    feed: responsiveSourceSchema,
-    detail: responsiveSourceSchema,
-  }).optional(),
+  sources: z
+    .object({
+      feed: responsiveSourceSchema,
+      detail: responsiveSourceSchema,
+    })
+    .optional(),
 });
 
 export default defineContentConfig({
@@ -41,7 +43,8 @@ export default defineContentConfig({
         role: z.string().optional(),
         tags: z.array(z.string()).optional().default([]),
         stack: z.array(z.string()).optional().default([]),
-        links: z.object({
+        links: z
+          .object({
             github: z.string().optional(),
             demo: z.string().optional(),
           })
