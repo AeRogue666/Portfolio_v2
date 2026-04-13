@@ -1,6 +1,17 @@
 ---
 title: About
-description: A page about Aureldev
+created_at: 2026-04-13
+description: Full-stack developer focused on accessibility and produt quality. I enjoy building robust, and useful interfaces.
+feed_summary: A page about Aureldev
+feed_title: About
+kind: about
+locale: en
+pinned: false
+previewUrl: /about
+slug: about
+tags:
+  - profil
+  - parcours
 ---
 
 Good morning, Aurélien, 26 years old.

@@ -43,8 +43,20 @@
   --card-about-bg: #fff9ec; /** Vanilla cream **/
   --card-about-accent: #b8762d; /** Golden Copper **/
 
-  --card-client-bg: #f0ead6;
-  --card-client-accent: #8d5a2b;
+  --card-note-bg: #fff7e7; /** Old Lace **/
+  --card-note-accent: #c67a2f; /** Bronze **/
+
+  --card-read-bg: #fcf3df; /** Ivory mist **/
+  --card-read-accent: #c3752f; /** Copper **/
+
+  --card-job-bg: #dad5c3; /** Bone **/
+  --card-job-accent: #744b23; /** Brown dark **/
+
+  --card-client-bg: #f8f0dc; /** Eggshell **/
+  --card-client-accent: #b16c2e; /** Copper **/
+
+  --card-talk-bg: #e5e0cd; /** Eggshell **/
+  --card-talk-accent: #805227; /** Saddle brown **/
 
   /* Shadows */
   --shadow-sm: 0 1px 2px oklch(29.797% 0.0421 59.168 / 0.08);

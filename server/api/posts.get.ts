@@ -1,5 +1,4 @@
 import type { Locale } from "@/types/i18n";
-import { about } from "#server/data/about";
 import { toFeedItem } from "#server/lib/toFeedItem";
 
 export default cachedEventHandler(
@@ -15,21 +14,12 @@ export default cachedEventHandler(
 
     const sortBy = (query.sort as string) ?? "recent";
 
-    const [projects, experiments, clients] = await Promise.all([
+    const [projects, experiments, about, clients] = await Promise.all([
       queryCollection(event, "projects").where("locale", "=", locale).all(),
       queryCollection(event, "experiments").where("locale", "=", locale).all(),
+      queryCollection(event, 'about').where("locale", "=", locale).all(),
       queryCollection(event, 'clients').where("locale", "=", locale).all(),
     ]);
-
-    const aboutItem = about.translations[locale];
-    const aboutFeedSource = {
-      ...aboutItem,
-      slug: about.slug,
-      created_at: about.created_at,
-      pinned: about.pinned ?? false,
-      tags: about.tags,
-      kind: "about" as const,
-    };
 
     /* ======
       Feed complet
@@ -37,8 +27,8 @@ export default cachedEventHandler(
     let feed = [
       ...projects.map((p) => toFeedItem({ ...p, kind: "project" as const })),
       ...experiments.map((u) => toFeedItem({ ...u, kind: "experiment" as const })),
+      ...about.map((a) => toFeedItem({ ...a, kind: "about" as const })),
       ...clients.map((c) => toFeedItem({ ...c, kind: "client" as const })),
-      toFeedItem(aboutFeedSource),
     ];
 
     /* ======

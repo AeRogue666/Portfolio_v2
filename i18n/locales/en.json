@@ -124,8 +124,8 @@
     "plan_section": {
       "tag": "",
       "title": "My services",
-      "description": "",
-      "more_info_button": "Learn more",
+      "description": "What I propose",
+      "learn_more_button": "Learn more",
       "plan": {
         "1": {
           "title": "Web",
@@ -281,6 +281,20 @@
   },
   "client": {
     "testimony": "Testimony"
+  },
+  "sendmessagemodal": {
+    "types": {
+      "accessibility_audit": "Accessibility Audit / Compliance WCAG",
+      "performance-seo_audit": "Performance & SEO Audit",
+      "professionnal_contact": "Professionnal contact",
+      "simple_message": "Simple message",
+      "website_creation": "Website creation (internet or internal)",
+      "website_redesign": "Website redesign (internet or internal)",
+      "digital_training": "Digital training"
+    }
+  },
+  "plans": {
+
   },
   "studio": {
     "tooltips": {

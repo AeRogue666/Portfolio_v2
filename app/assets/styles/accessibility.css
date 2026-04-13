@@ -67,8 +67,20 @@ html[data-grayscale="true"] {
   --card-about-bg: #f9f9f9;
   --card-about-accent: #555555;
 
-  --card-client-bg: #f0f0f0;
-  --card-client-accent: #3a3a3a;
+  --card-note-bg: #f8f8f8; /** Old Lace **/
+  --card-note-accent: #505050; /** Bronze **/
+
+  --card-read-bg: #f5f5f5; /** Ivory mist **/
+  --card-read-accent: #464646; /** Copper **/
+
+  --card-job-bg: #dadada; /** Bone **/
+  --card-job-accent: #353535; /** Brown **/
+
+  --card-client-bg: #f3f3f3; /** Eggshell **/
+  --card-client-accent: #424242; /** Copper **/
+
+  --card-talk-bg: #e5e5e5; /** Eggshell **/
+  --card-talk-accent: #383838; /** Saddle brown **/
 }
 
 html[data-grayscale="true"] image {
