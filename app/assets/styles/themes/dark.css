@@ -29,9 +29,12 @@
 --card-project-bg: #3a2a14; /** Deep Warm Brown **/
 --card-project-accent: #e89850; /** Lighted Chai orange **/
 
---card-update-bg: #2e2318; /** Dark Brown Sepia **/
---card-update-accent: #c4855a; /** Lighted Chai brown **/
+--card-experiment-bg: #2e2318; /** Dark Brown Sepia **/
+--card-experiment-accent: #c4855a; /** Lighted Chai brown **/
 
 --card-about-bg: #352b18; /** Dark Vanilla brown **/
 --card-about-accent: #d9954a; /** Luminous Golden Copper **/
+
+--card-client-bg: #2e2318;
+--card-client-accent: #c4855a;
 }

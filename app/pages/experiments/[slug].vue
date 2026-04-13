@@ -3,15 +3,15 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
 import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
-import type { UpdateResolved } from '@/types/update';
+import type { ExperimentResolved } from '~/app/types/experiment';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
 
-const asyncKey = computed(() => `update-${route.params.slug}-${locale.value}`);
-const { data: update, error } = await useAsyncData<UpdateResolved>(
+const asyncKey = computed(() => `experiment-${route.params.slug}-${locale.value}`);
+const { data: experiment, error } = await useAsyncData<ExperimentResolved>(
     () => asyncKey.value,
-    () => $fetch(`/api/updates/${route.params.slug}`, {
+    () => $fetch(`/api/experiments/${route.params.slug}`, {
         query: { locale: locale.value }
     }),
     {
@@ -19,7 +19,7 @@ const { data: update, error } = await useAsyncData<UpdateResolved>(
     }
 );
 if (error.value) {
-    throw createError({ statusCode: 404, message: 'update data is not found', statusMessage: 'update data is not found', cause: error.value, fatal: true });
+    throw createError({ statusCode: 404, message: 'experiment data is not found', statusMessage: 'experiment data is not found', cause: error.value, fatal: true });
 }
 
 const breadcrumbItems: BreadcrumbItem[] = [
@@ -28,21 +28,21 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: '/feed'
     },
     {
-        label: t('breadcrumb.updates'),
+        label: t('breadcrumb.experiments'),
         to: ''
     },
     {
-        label: update.value?.title,
-        to: `/updates/${update.value?.slug}`
+        label: experiment.value?.title,
+        to: `/experiments/${experiment.value?.slug}`
     }
 ];
 
 /* useSchemaOrg([
     defineupdate({
-        name: update.value?.title,
-        description: update.value?.summary,
-        datePublished: update.value?.date,
-        image: update.value?.image?.sources.desktop,
+        name: experiment.value?.title,
+        description: experiment.value?.summary,
+        datePublished: experiment.value?.date,
+        image: experiment.value?.image?.sources.desktop,
         author: {
             type: 'Person',
             name: 'Aureldev'
@@ -65,29 +65,29 @@ useHead(() => ({
 }));
 
 watchEffect(() => {
-    if (!update.value) return;
+    if (!experiment.value) return;
 
     useSeoMeta({
-        title: update.value?.title,
-        description: update.value?.description,
-        ogTitle: update.value?.title,
-        ogDescription: update.value?.description,
+        title: experiment.value?.title,
+        description: experiment.value?.description,
+        ogTitle: experiment.value?.title,
+        ogDescription: experiment.value?.description,
         ogType: 'article',
-        ogImage: update.value?.image?.sources.detail.desktop,
-        ogImageAlt: update.value?.image?.alt,
+        ogImage: experiment.value?.image?.sources.detail.desktop,
+        ogImageAlt: experiment.value?.image?.alt,
         twitterCard: 'summary_large_image',
     });
 });
 
-const src = computed(() => update.value?.image?.sources.feed?.mobile || update.value?.image?.sources.detail?.mobile || ''),
-    tabletSrc = computed(() => update.value?.image?.sources.feed?.tablet || update.value?.image?.sources.detail?.tablet || src),
-    desktopSrc = computed(() => update.value?.image?.sources.feed?.desktop || update.value?.image?.sources.detail?.desktop || tabletSrc);
+const src = computed(() => experiment.value?.image?.sources.detail?.mobile || experiment.value?.image?.sources.feed?.mobile || ''),
+    tabletSrc = computed(() => experiment.value?.image?.sources.detail?.tablet || experiment.value?.image?.sources.feed?.tablet || src),
+    desktopSrc = computed(() => experiment.value?.image?.sources.detail?.desktop || experiment.value?.image?.sources.feed?.desktop || tabletSrc);
 
-const created_atDate = computed(() => dayjs(update.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(update.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+const created_atDate = computed(() => dayjs(experiment.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(experiment.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 
 /* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
-                alt: update.image?.alt,
+                alt: experiment.image?.alt,
                 srcset: `${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`,
                 sizes: 'sm:100vw md:80vw lg:64rem',
                 class: 'my-2 rounded-lg border-2 border-solid border-(--border-subtle)'
@@ -96,13 +96,13 @@ const created_atDate = computed(() => dayjs(update.value?.created_at).locale(loc
 /* <picture>
                 <source :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" type="image/png"
                     :widths="[320, 640, 960, 1280, 1536, 1920]" />
-                <img :src="src" :alt="update.image?.alt" sizes="sm:100vw md:80vw lg:64rem"
+                <img :src="src" :alt="experiment.image?.alt" sizes="sm:100vw md:80vw lg:64rem"
                     class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" />
             </picture> */
 </script>
 
 <template>
-    <ArticleLayout v-if="update">
+    <ArticleLayout v-if="experiment">
         <template #header>
             <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                 <template #separator>
@@ -110,46 +110,46 @@ const created_atDate = computed(() => dayjs(update.value?.created_at).locale(loc
                 </template>
             </UBreadcrumb>
             <p class="fs-small text-(--text-2) leading-snug">
-                {{ t('update.published_on') }}
-                <time :datetime="update.created_at">{{ created_atDate }}</time>
-                <template>
+                {{ t('experiment.published_on') }}
+                <time :datetime="experiment.created_at">{{ created_atDate }}</time>
+                <template v-if="experiment.updated_at">
                     {{ t('post.updated_on') }}
-                    <time :datetime="update.updated_at">{{ updated_atDate }}</time>
+                    <time :datetime="experiment.updated_at">{{ updated_atDate }}</time>
                 </template>
             </p>
 
             <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ update.title }}
+                {{ experiment.title }}
             </h1>
             <p class="fs-subtitle text-(--text-2) leading-snug max-w-[65ch]">
-                {{ update.description }}
+                {{ experiment.description }}
             </p>
 
-            <NuxtImg :src="src" :alt="update.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
+            <NuxtImg :src="src" :alt="experiment.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
                 :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
                 class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
                 placeholder="blur" />
 
             <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
                 <dt class="fs-lead font-semibold leading-snug">
-                    {{ t('update.tags') }}
+                    {{ t('experiment.tags') }}
                 </dt>
                 <dd class="flex flex-wrap gap-2">
-                    <PostBadge v-for="tech in update.tags" :label="tech" :key="tech" :variant="'soft'"
+                    <PostBadge v-for="tech in experiment.tags" :label="tech" :key="tech" :variant="'soft'"
                         :color="'neutral'" :size="'md'"
                         :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
                 </dd>
             </dl>
         </template>
 
-        <ContentRenderer :value="update" class="prose prose-neutral dark:prose-invert max-w-none" />
+        <ContentRenderer :value="experiment" class="prose prose-neutral dark:prose-invert max-w-none" />
 
         <!-- <section aria-labelledby="content">
             <h2 id="content" class="fs-title font-semibold leading-snug">
-                {{ t('update.content') }}
+                {{ t('experiment.content') }}
             </h2>
             <p class="fs-body text-(--text-2) leading-snug max-w-[65ch]">
-                {{ update.content }}
+                {{ experiment.content }}
             </p>
         </section> -->
 

@@ -61,11 +61,14 @@ html[data-grayscale="true"] {
   --card-project-bg: #f6f6f6;
   --card-project-accent: #4a4a4a;
 
-  --card-update-bg: #f0f0f0;
-  --card-update-accent: #3a3a3a;
+  --card-experiment-bg: #f0f0f0;
+  --card-experiment-accent: #3a3a3a;
 
   --card-about-bg: #f9f9f9;
   --card-about-accent: #555555;
+
+  --card-client-bg: #f0f0f0;
+  --card-client-accent: #3a3a3a;
 }
 
 html[data-grayscale="true"] image {

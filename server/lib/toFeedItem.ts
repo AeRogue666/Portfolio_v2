@@ -2,16 +2,20 @@ import type { FeedItem } from "@/types/feed";
 
 type FeedSource = {
   slug?: string;
+  kind: Exclude<FeedItem["kind"], "pinned">;
+  title?: string | null;
+  description?: string | null;
+  feed_title?: string | null;
+  feed_summary?: string | null;
   created_at: string;
   updated_at?: string | null;
   pinned?: boolean;
   tags?: string[];
   image?: any;
-  kind: Exclude<FeedItem["kind"], "pinned">;
-  title?: string | null;
-  summary?: string | null;
-  feed_title?: string | null;
-  feed_summary?: string | null;
+  customer_name?: string;
+  testimony?: string;
+  previewUrl?: string;
+  links?: any;
 };
 
 export function toFeedItem(source: FeedSource): FeedItem {
@@ -23,7 +27,7 @@ export function toFeedItem(source: FeedSource): FeedItem {
     kind,
     kindFallback: source.pinned ? source.kind : undefined,
     title: source.title ?? "",
-    summary: source.summary ?? undefined,
+    description: source.description ?? undefined,
     feed_title: source.feed_title ?? undefined,
     feed_summary: source.feed_summary ?? undefined,
     slug: source.slug,
@@ -33,5 +37,9 @@ export function toFeedItem(source: FeedSource): FeedItem {
     pinned: source.pinned,
     tags: source.tags,
     image: source.image,
+    customer_name: source.customer_name,
+    testimony: source.testimony,
+    previewUrl: source.previewUrl,
+    links: source.links,
   };
 }

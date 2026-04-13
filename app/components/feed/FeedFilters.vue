@@ -83,8 +83,13 @@ const sortOptions = computed<SelectItem[]>(() =>
 // Kinds disponibles - "pinned" est intentionnellement absent : c'est un état dérivé (kindFallback), pas un type que l'utilsiateur choisit de filtrer
 const availableKinds: { value: FeedKind; labelKey: string }[] = [
     { value: 'project', labelKey: 'post.type.project' },
-    { value: 'update', labelKey: 'post.type.update' },
+    { value: 'experiment', labelKey: 'post.type.experiment' },
     { value: 'about', labelKey: 'post.type.about' },
+    { value: 'client', labelKey: 'post.type.client' },
+    { value: 'note', labelKey: 'post.type.note' },
+    { value: 'job', labelKey: 'post.type.job' },
+    { value: 'read', labelKey: 'post.type.read' },
+    { value: 'talk', labelKey: 'post.type.talk' },
 ];
 
 // Grayscale

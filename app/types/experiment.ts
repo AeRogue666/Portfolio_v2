@@ -2,7 +2,7 @@ import type { FeedKind } from "./feed";
 import type { Locale } from "./i18n";
 import type { ResponsiveImage } from "./media";
 
-export interface Update {
+export interface Experiment {
   slug: string;
   created_at: string;
   updated_at?: string;
@@ -11,10 +11,10 @@ export interface Update {
   previewUrl?: string;
   tags: string[];
   image: ResponsiveImage;
-  translations: Record<Locale, UpdateTranslation>;
+  translations: Record<Locale, ExperimentTranslation>;
 }
 
-export interface UpdateTranslation {
+export interface ExperimentTranslation {
   title: string;
   description: string;
   feed_title: string;
@@ -22,7 +22,7 @@ export interface UpdateTranslation {
   content: string;
 }
 
-export interface UpdateResolved extends UpdateTranslation {
+export interface ExperimentResolved extends ExperimentTranslation {
   slug: string;
   created_at: string;
   updated_at?: string;

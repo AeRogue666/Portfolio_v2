@@ -192,9 +192,14 @@
     "default_post": "Post",
     "type": {
       "project": "Projet",
-      "update": "Mise à jour",
+      "experiment": "Expérience",
       "about": "A propos",
-      "pinned": "Epinglé"
+      "pinned": "Epinglé",
+      "client": "Client",
+      "note": "Note",
+      "read": "Lecture",
+      "job": "Métier",
+      "talk": "Intervention"
     },
     "updated_on": "Mis à jour le"
   },
@@ -211,7 +216,7 @@
     "watch_code": "Voir le code",
     "watch_demo": "Voir la démo"
   },
-  "update": {
+  "experiment": {
     "published_on": "Publié le",
     "tags": "Tags",
     "content": "Contenu"
@@ -237,13 +242,14 @@
   "breadcrumb": {
     "feed": "Fil",
     "projects": "Projets",
-    "updates": "Mises à jour",
+    "experiments": "Expériences",
     "about": "A propos",
     "accessibility": "Accessibilité",
     "accessibility_report": "Rapport d'accessibilité",
     "report": "Signaler un incident",
     "legal_notices": "Mentions légales",
-    "terms_of_use": "Conditions Générales d'Utilisation"
+    "terms_of_use": "Conditions Générales d'Utilisation",
+    "clients": "Clients"
   },
   "report": {
     "title": "Signaler un incident",
@@ -272,6 +278,9 @@
     "test_environment": {
       "keyboard_navigation": "Navigation clavier exhaustive (Tab, Echap, Entrer)"
     }
+  },
+  "client": {
+    "testimony": "Témoignage"
   },
   "studio": {
     "tooltips": {

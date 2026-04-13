@@ -79,9 +79,9 @@ watchEffect(() => {
     });
 });
 
-const src = computed(() => project.value?.image?.sources.feed?.mobile || project.value?.image?.sources.detail?.mobile || ''),
-    tabletSrc = computed(() => project.value?.image?.sources.feed?.tablet || project.value?.image?.sources.detail?.tablet || src),
-    desktopSrc = computed(() => project.value?.image?.sources.feed?.desktop || project.value?.image?.sources.detail?.desktop || tabletSrc);
+const src = computed(() => project.value?.image?.sources.detail?.mobile || project.value?.image?.sources.feed?.mobile || ''),
+    tabletSrc = computed(() => project.value?.image?.sources.detail?.tablet || project.value?.image?.sources.feed?.tablet || src),
+    desktopSrc = computed(() => project.value?.image?.sources.detail?.desktop || project.value?.image?.sources.feed?.desktop || tabletSrc);
 
 const created_atDate = computed(() => dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
     updated_atDate = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
@@ -111,7 +111,7 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
             <p class="fs-small text-(--text-2)">
                 {{ t('project.published_on') }}
                 <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
-                <template>
+                <template v-if="project.updated_at">
                     {{ t('post.updated_on') }}
                     <time v-if="project.updated_at" :datetime="project.updated_at">{{ updated_atDate }}</time>
                 </template>

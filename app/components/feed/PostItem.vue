@@ -61,7 +61,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
             {{ post.feed_title ? post.feed_title : post.title }}
         </h2>
         <p class="fs-body leading-relaxed text-(--text-2) max-w-prose">
-            {{ post.feed_summary ? post.feed_summary : post.summary }}
+            {{ post.feed_summary ? post.feed_summary : post.description }}
         </p>
 
         <div v-if="post.tags && post.tags.length > 0" class="flex flex-wrap gap-2 mt-2">

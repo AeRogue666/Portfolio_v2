@@ -14,14 +14,17 @@ const { t, locale } = useI18n(),
 
 useSidebarFocusState();
 
-const clientsCarouselItems = ref<{
-    title: string; // '70 millions', '30%', etc.
-    description: string; // 'happy users', 'more efficiency on the website'
-    image: string;
-    alt: string;
-    link: string; // /customers/[slug] or /customers-stories/[slug]
-    customer_name: string;
-}[]>([]);
+interface ClientData {
+    title?: string
+    description?: string
+    testimony?: string
+    customer_name?: string
+    image?: string
+    alt?: string
+    link?: string
+}
+
+const clientsData = ref<ClientData[]>([]);
 
 const { data: postsData } = await useAsyncData(
     () => `index-projects-${locale.value}`,
@@ -34,6 +37,20 @@ const { data: postsData } = await useAsyncData(
 const realisationsCarouselItems = computed(() => {
     if (!postsData.value?.items) return [];
 
+    // Filter Clients data
+    postsData.value.items.filter(item =>
+        (item.kind === 'client' || item.kindFallback === 'client') && item.image
+    ).map(item => clientsData.value.push({
+        title: item.feed_title,
+        description: item.feed_summary,
+        testimony: item.testimony,
+        customer_name: item.customer_name,
+        image: item.image!.sources.feed?.mobile || '',
+        alt: item.image!.alt,
+        link: `/clients/${item.slug}`,
+    }));
+
+    // Filter Projects data
     return postsData.value.items.filter(item =>
         (item.kind === 'project' || item.kindFallback === 'project') && item.image
     )
@@ -78,7 +95,7 @@ useSeoMeta(({
     <UContainer class="max-w-none">
         <!-- Landing section -->
         <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1"
-            :fill="fillColor?.[0] ?? '--card-update-bg'">
+            :fill="fillColor?.[0] ?? '--card-experiment-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
                     {{ t('index.user_title') }}
@@ -107,8 +124,8 @@ useSeoMeta(({
         </LandingSection>
 
         <!-- Clients section -->
-        <IndexSection v-if="clientsCarouselItems.length !== 0" id="client-section" :class="'bg-(--card-project-bg)'"
-            :fill="fillColor?.[1] ?? '--card-update-bg'">
+        <IndexSection v-if="clientsData.length !== 0" id="client-section" :class="'bg-(--card-project-bg)'"
+            :fill="fillColor?.[1] ?? '--card-experiment-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.client_section.tag') }}
@@ -128,8 +145,8 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names arrows dots
-                :autoplay="{ delay: 6000 }" :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
+            <UCarousel v-if="clientsData.length !== 0" v-slot="{ item }" class-names arrows dots
+                :autoplay="{ delay: 6000 }" :items="clientsData" class="w-full max-w-md my-10" :ui="{
                     item: 'basis-full',
                     prev: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg-(--bg-3) text-(--text-2) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90',
                     next: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg(--bg-3) text-(--text) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90'
@@ -139,21 +156,20 @@ useSeoMeta(({
                     <div class="flex flex-col items-start w-full my-auto">
                         <h3 class="fs-subtitle font-semibold mb-4">
                             {{ item.title }}
+                            <p class="fs-lead font-normal lg:text-center text-(--text) mb-3">
+                                {{ item.description }}
+                            </p>
                         </h3>
+
                         <span class="fs-body font-normal lg:text-center text-(--text) mb-3">
-                            {{ item.description }}
+                            {{ item.testimony }}
                         </span>
                     </div>
 
-                    <div class="flex flex-col lg:w-[75%] gap-4">
+                    <div class="flex flex-col lg:w-[50%] gap-4">
                         <NuxtImg :src="item.image" :alt="item.alt" sizes="xs:40vw md:10vw lg:20rem"
-                            class="rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
+                            class="w-min rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
                             loading="lazy" :placeholder="true" />
-
-                        <UButton :id="`button-customerscarousel-${item.customer_name}`" variant="ghost" color="neutral"
-                            icon="fa7-solid:arrow-right" size="md" class="w-auto">
-                            {{ t('index.client_section.button', { customer_name: item.customer_name }) }}
-                        </UButton>
                     </div>
                 </NuxtLink>
             </UCarousel>
@@ -165,7 +181,8 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Realisations section -->
-        <IndexSection id="campain-section" :class="'bg-(--card-update-bg)'" :fill="fillColor?.[2] ?? '--card-about-bg'">
+        <IndexSection id="campain-section" :class="'bg-(--card-experiment-bg)'"
+            :fill="fillColor?.[2] ?? '--card-about-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.campain_section.tag') }}

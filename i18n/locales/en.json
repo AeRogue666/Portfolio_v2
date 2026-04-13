@@ -192,9 +192,14 @@
     "default_post": "Post",
     "type": {
       "project": "Project",
-      "update": "Update",
+      "experiment": "Experiment",
       "about": "About",
-      "pinned": "Pinned"
+      "pinned": "Pinned",
+      "client": "Client",
+      "note": "Note",
+      "read": "Read",
+      "job": "Job",
+      "talk": "Talk"
     },
     "updated_on": "Updated on"
   },
@@ -211,7 +216,7 @@
     "watch_code": "Watch code",
     "watch_demo": "Watch demo"
   },
-  "update": {
+  "experiment": {
     "published_on": "Published on",
     "tags": "Tags",
     "content": "Content"
@@ -237,13 +242,14 @@
   "breadcrumb": {
     "feed": "Feed",
     "projects": "Projects",
-    "updates": "Updates",
+    "experiments": "Experiments",
     "about": "About",
     "accessibility": "Accessibility",
     "accessibility_report": "Accessibility report",
     "report": "Report a problem",
     "legal_notices": "Legal notices",
-    "terms_of_use": "Terms of Use"
+    "terms_of_use": "Terms of Use",
+    "clients": "Clients"
   },
   "report": {
     "title": "Report a problem",
@@ -272,6 +278,9 @@
     "test_environment": {
       "keyboard_navigation": "Exhaustive keyboard navigation (Tab, Escape, Enter)"
     }
+  },
+  "client": {
+    "testimony": "Testimony"
   },
   "studio": {
     "tooltips": {
