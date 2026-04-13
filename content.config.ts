@@ -96,5 +96,41 @@ export default defineContentConfig({
         image: responsiveImageSchema.optional(),
       }),
     }),
+
+    about: defineCollection({
+      type: "page",
+      source: "about/**/*.md",
+      schema: z.object({
+        slug: z.string(),
+        locale: z.enum(["fr", "en"]),
+        kind: z.literal("about"),
+        pinned: z.boolean().optional().default(false),
+        previewUrl: z.string().optional(),
+        created_at: z.string(),
+        updated_at: z.string().optional(),
+        title: z.string().default(""),
+        description: z.string().default(""),
+        feed_title: z.string().default(""),
+        feed_summary: z.string().default(""),
+        tags: z.array(z.string()).optional().default([]),
+        image: responsiveImageSchema.optional(),
+      }),
+    }),
+
+    plans: defineCollection({
+      type: "page",
+      source: "plans/**/*.md",
+      schema: z.object({
+        slug: z.string(),
+        locale: z.enum(["fr", "en"]),
+        previewUrl: z.string().optional(),
+        created_at: z.string(),
+        updated_at: z.string().optional(),
+        date: z.string().optional(),
+        title: z.string().default(""),
+        description: z.string().default(""),
+        image: responsiveImageSchema.optional(),
+      }),
+    }),
   },
 });

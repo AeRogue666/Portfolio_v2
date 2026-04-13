@@ -1,74 +1,43 @@
 <script setup lang="ts">
-import type { PricingPlanProps } from '@nuxt/ui';
+import type { PlanResolved } from '~/app/types/plan';
 
-const { t, locale } = useI18n();
+const props = defineProps<{
+    plans: PlanResolved[];
+}>();
 
-const plans = ref<PricingPlanProps[]>([
-    {
-        title: t('index.plan_section.plan.1.title'),
-        description: t('index.plan_section.plan.1.description'),
-        features: locale.value == 'fr' ? [
-            "Sites vitrines sous WordPress ou Shopify",
-            "Sites internet réalisés avec un framework moderne (Vue, Nuxt, Express, Prisma)",
-            "Applications web internes",
-            "Intégration HTML5, CSS3, jQuery, JavaScript, TypeScript",
-            "Webdesign",
-            "Référencement naturel (SEO)",
-            "Fusion de données / Automatisation"
-        ] : [
-            "Showcase websites built with WordPress or Shopify",
-            "Websites built using a modern framework (Vue, Nuxt, Express, Prisma)",
-            "Internal web applications",
-            "Integration of HTML5, CSS3, jQuery, JavaScript, TypeScript",
-            "Web design",
-            "Search engine optimization (SEO)",
-            "Data integration / Automation"
-        ],
-    },
-    {
-        title: t('index.plan_section.plan.2.title'),
-        description: t('index.plan_section.plan.2.description'),
-        price: '',
-        features: locale.value == 'fr' ? [
-            "Audit Accessibilité",
-            "Bonnes pratiques",
-            "Mise en conformité (WCAG 2.2 /RGAA 4+)",
-            "Audit Performance & SEO"
-        ] : [
-            "Accessibility Audit",
-            "Best practices",
-            "Compliance (WCAG 2.2 /RGAA 4+)",
-            "Performance & SEO AUdit"
-        ],
-    },
-    {
-        title: t('index.plan_section.plan.3.title'),
-        description: t('index.plan_section.plan.3.description'),
-        price: '',
-        features: locale.value == 'fr' ? [
-            "Apprendre à utiliser l'IA",
-            "Détecter des contenus générés par IA",
-            "Utiliser des outils modernes (logiciels, applications web)",
-            "Apprendre à naviguer sur Internet de manière sécurisée",
-            "Apprendre à utiliser un ordinateur",
-            "Apprendre à utiliser un client de messagerie mail"
-        ] : [
-            "Learning to use AI",
-            "Detecting AI-generated content",
-            "Using modern tools (software, web applications)",
-            "Learning to browse the Internet safely",
-            "Learning to use a computer",
-            "Learning to use an email client"
-        ],
-    },
-]);
+const { t } = useI18n();
+
+onMounted(() => {
+    console.log(props.plans)
+})
 </script>
 
 <template>
     <UPricingPlans>
-        <UPricingPlan v-for="(plan, i) in plans" :key="i" v-bind="plan" class="bg-(--bg-2)" orientation="vertical" :ui="{
-            description: 'text-(--text-3)',
-            featureTitle: 'text-(--text-2)'
-        }" />
+        <UPricingPlan v-for="(plan, i) in plans" :key="i" v-bind="plan" class="bg-(--card-note-bg)"
+            orientation="vertical" :button="{
+                label: t('index.plan_section.learn_more_button')
+            }" :ui="{
+                description: 'text-(--text-3)',
+                featureTitle: 'text-(--text-2)'
+            }">
+
+            <template #features v-if="plan.features">
+                <ul class="flex flex-col gap-3 flex-1 mt-6 grow-0">
+                    <li v-for="(feature, i) of plan.features" class="flex items-center gap-2 min-w-0" :key="i">
+                        <span class="iconify fa7-solid:check size-5 shrink-0 text-primary" aria-hidden="true"></span>
+                        <span class="text-(--text-muted) text-sm truncate">{{ feature }}</span>
+                    </li>
+                </ul>
+            </template>
+            
+            <template #button>
+                <NuxtLink :to="`/plans/${plan.slug}`"
+                    class="inline-flex items-center px-5 py-2.5 gap-2 rounded-lg border border-(--accent)/40 text-(--accent) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body">
+                    {{ t('index.plan_section.learn_more_button') }}
+                    <UIcon name="fa7-solid:arrow-right" class="text-sm" />
+                </NuxtLink>
+            </template>
+        </UPricingPlan>
     </UPricingPlans>
 </template>

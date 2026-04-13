@@ -1,40 +1,53 @@
 @import "tailwindcss";
 
-[data-theme="light"], .light {
-/* Backgrounds */
---bg-primary: #fdfbd4; /** Chai cream **/ /* #f5efe6; */
---bg-secondary: #f5f0d0;
---bg-elevated: #fffef8;
+[data-theme="light"],
+.light {
+  /* Backgrounds */
+  --bg-primary: #fdfbd4; /** Chai cream **/ /* #f5efe6; */
+  --bg-secondary: #f5f0d0;
+  --bg-elevated: #fffef8;
 
-/* Text */
---text-primary: #3d2817; /** Deep dark Brown **/ /* #1f1f1f; */
---text-secondary: #5c3d24; /** Medium Brown **/ /* #2b1e16; */
---text-muted: #7a5c42; /** Light Brown **/ /* #6b6b6b; */
+  /* Text */
+  --text-primary: #3d2817; /** Deep dark Brown **/ /* #1f1f1f; */
+  --text-secondary: #5c3d24; /** Medium Brown **/ /* #2b1e16; */
+  --text-muted: #7a5c42; /** Light Brown **/ /* #6b6b6b; */
 
-/* Accent */
---accent: #c86f28; /** Spicy Orange **/
---accent-hover: #b35e1f;
+  /* Accent */
+  --accent: #c86f28; /** Spicy Orange **/
+  --accent-hover: #b35e1f;
 
-/* States */
---focus: #d47e30;
---border-subtle: #d4c4a8; /* #cfc4b8; */
---border-medium: #b8a58a;
+  /* States */
+  --focus: #d47e30;
+  --border-subtle: #d4c4a8; /* #cfc4b8; */
+  --border-medium: #b8a58a;
 
-/* Feeedback */
---success: #5a7c3e; /** Green olive **/
---warning: #b8762d; /** Copper Orange **/
---danger: #A33a2b; /** Red dirt **/
+  /* Feeedback */
+  --success: #5a7c3e; /** Green olive **/
+  --warning: #b8762d; /** Copper Orange **/
+  --danger: #a33a2b; /** Red dirt **/
 
-/* Card types */
---card-project-bg: #fff5e1; /** Peach cream **/
---card-project-accent: #d47e30; /** Chai orange **/
+  /* Card types */
+  --card-project-bg: #fff5e1; /** Peach cream **/
+  --card-project-accent: #d47e30; /** Chai orange **/
 
---card-experiment-bg: #f0ead6; /** Soft beige **/
---card-experiment-accent: #8d5a2b; /** Chai brown **/
+  --card-experiment-bg: #f0ead6; /** Soft beige **/
+  --card-experiment-accent: #8d5a2b; /** Chai brown **/
 
---card-about-bg: #fff9ec; /** Vanilla cream **/
---card-about-accent: #b8762d; /** Golden Copper **/
+  --card-about-bg: #fff9ec; /** Vanilla cream **/
+  --card-about-accent: #b8762d; /** Golden Copper **/
 
---card-client-bg: #f0ead6;
---card-client-accent: #8d5a2b;
+  --card-note-bg: #fff7e7; /** Old Lace **/
+  --card-note-accent: #c67a2f; /** Bronze **/
+
+  --card-read-bg: #fcf3df; /** Ivory mist **/
+  --card-read-accent: #c3752f; /** Copper **/
+
+  --card-job-bg: #dad5c3; /** Bone **/
+  --card-job-accent: #744b23; /** Brown dark **/
+
+  --card-client-bg: #f8f0dc; /** Eggshell **/
+  --card-client-accent: #b16c2e; /** Copper **/
+
+  --card-talk-bg: #e5e0cd; /** Eggshell **/
+  --card-talk-accent: #805227; /** Saddle brown **/
 }

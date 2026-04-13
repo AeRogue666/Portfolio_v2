@@ -124,8 +124,8 @@
     "plan_section": {
       "tag": "",
       "title": "Mes prestations",
-      "description": "",
-      "more_info_button": "En savoir plus",
+      "description": "Ce que je propose",
+      "learn_more_button": "En savoir plus",
       "plan": {
         "1": {
           "title": "Web",
@@ -136,7 +136,7 @@
           "description": "Des sujets importants à aborder"
         },
         "3": {
-          "title": "Formation au Numérique",
+          "title": "Formations au Numérique",
           "description": "Pour rester à la pointe"
         }
       }
@@ -281,6 +281,17 @@
   },
   "client": {
     "testimony": "Témoignage"
+  },
+  "sendmessagemodal": {
+    "types": {
+      "accessibility_audit": "Audit Accessibilité / Mise en conformité WCAG",
+      "performance-seo_audit": "Audit Performance & SEO",
+      "professionnal_contact": "Prise de contact professionnelle",
+      "simple_message": "Simple message",
+      "website_creation": "Création d'un site (internet ou interne)",
+      "website_redesign": "Redesign d'un site (internet ou interne)",
+      "digital_training": "Formation au numérique"
+    }
   },
   "studio": {
     "tooltips": {

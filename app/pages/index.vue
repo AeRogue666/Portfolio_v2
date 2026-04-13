@@ -6,6 +6,7 @@ import ExpertiseContainer from '../components/index/organisms/ExpertiseContainer
 import PlansContainer from '../components/index/organisms/PlansContainer.vue';
 import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
 import CarouselWrapper from '../components/index/organisms/CarouselWrapper.vue';
+import type { PlanResolved, PlanResponse } from '../types/plan';
 
 const { t, locale } = useI18n(),
     colorMode = useColorMode(),
@@ -13,18 +14,6 @@ const { t, locale } = useI18n(),
     fillColor = ref<string[] | undefined>(undefined);
 
 useSidebarFocusState();
-
-interface ClientData {
-    title?: string
-    description?: string
-    testimony?: string
-    customer_name?: string
-    image?: string
-    alt?: string
-    link?: string
-}
-
-const clientsData = ref<ClientData[]>([]);
 
 const { data: postsData } = await useAsyncData(
     () => `index-projects-${locale.value}`,
@@ -34,13 +23,13 @@ const { data: postsData } = await useAsyncData(
     { watch: [locale] }
 );
 
-const realisationsCarouselItems = computed(() => {
+const clientsCarouselItems = computed(() => {
     if (!postsData.value?.items) return [];
 
     // Filter Clients data
-    postsData.value.items.filter(item =>
+    return postsData.value.items.filter(item =>
         (item.kind === 'client' || item.kindFallback === 'client') && item.image
-    ).map(item => clientsData.value.push({
+    ).map(item => ({
         title: item.feed_title,
         description: item.feed_summary,
         testimony: item.testimony,
@@ -49,6 +38,10 @@ const realisationsCarouselItems = computed(() => {
         alt: item.image!.alt,
         link: `/clients/${item.slug}`,
     }));
+})
+
+const realisationsCarouselItems = computed(() => {
+    if (!postsData.value?.items) return [];
 
     // Filter Projects data
     return postsData.value.items.filter(item =>
@@ -62,6 +55,20 @@ const realisationsCarouselItems = computed(() => {
             description: item.feed_title ?? item.title,
             link: `/projects/${item.slug}`,
         }));
+});
+
+const { data: plansData } = await useAsyncData(
+    () => `index-plans-${locale.value}`,
+    () => $fetch<PlanResponse>('/api/plans', {
+        query: { locale: locale.value }
+    }),
+    { watch: [locale] }
+);
+
+const plansContainerItems = computed(() => {
+    if(!plansData.value?.items) return [];
+
+    return plansData.value.items;
 });
 
 onMounted(() => {
@@ -95,7 +102,7 @@ useSeoMeta(({
     <UContainer class="max-w-none">
         <!-- Landing section -->
         <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1"
-            :fill="fillColor?.[0] ?? '--card-experiment-bg'">
+            :fill="fillColor?.[0] ?? '--bg-3'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
                     {{ t('index.user_title') }}
@@ -124,8 +131,7 @@ useSeoMeta(({
         </LandingSection>
 
         <!-- Clients section -->
-        <IndexSection v-if="clientsData.length !== 0" id="client-section" :class="'bg-(--card-project-bg)'"
-            :fill="fillColor?.[1] ?? '--card-experiment-bg'">
+        <IndexSection id="client-section" :class="'bg-(--bg-3)'" :fill="fillColor?.[1] ?? '--card-experiment-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.client_section.tag') }}
@@ -145,8 +151,8 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <UCarousel v-if="clientsData.length !== 0" v-slot="{ item }" class-names arrows dots
-                :autoplay="{ delay: 6000 }" :items="clientsData" class="w-full max-w-md my-10" :ui="{
+            <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names arrows dots
+                :autoplay="{ delay: 6000 }" :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
                     item: 'basis-full',
                     prev: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg-(--bg-3) text-(--text-2) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90',
                     next: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg(--bg-3) text-(--text) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90'
@@ -182,7 +188,7 @@ useSeoMeta(({
 
         <!-- Realisations section -->
         <IndexSection id="campain-section" :class="'bg-(--card-experiment-bg)'"
-            :fill="fillColor?.[2] ?? '--card-about-bg'">
+            :fill="fillColor?.[2] ?? '--card-project-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.campain_section.tag') }}
@@ -210,7 +216,8 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Expertise section -->
-        <IndexSection id="expertise-section" :class="'bg-(--bg-elevated)'" :fill="fillColor?.[3] ?? '--card-about-bg'">
+        <IndexSection id="expertise-section" :class="'bg-(--card-project-bg)'"
+            :fill="fillColor?.[3] ?? '--card-job-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.expertise_section.tag') }}
@@ -234,7 +241,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Plan section -->
-        <IndexSection id="plan-section" :class="'bg-(--bg-elevated)'" :fill="fillColor?.[4] ?? '--card-about-bg'">
+        <IndexSection id="plan-section" :class="'bg-(--card-job-bg)'" :fill="fillColor?.[4] ?? '--card-about-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.plan_section.tag') }}
@@ -254,7 +261,7 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <PlansContainer />
+            <PlansContainer :plans="plansContainerItems" />
         </IndexSection>
 
         <!-- Contact section -->

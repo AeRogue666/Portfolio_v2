@@ -1,6 +1,17 @@
 ---
 title: A propos
-description: Une page à propos de Aureldev
+created_at: 2026-04-13
+description: Développeur full-stack passionné par l'accessibilité et la qualité produit. Je crée des interfaces claires, robustes et utiles.
+feed_summary: Une page à propos de Aureldev
+feed_title: A propos
+kind: about
+locale: fr
+pinned: false
+previewUrl: /about
+slug: about
+tags:
+  - profil
+  - parcours
 ---
 
 Bonjour, Aurélien, 26 ans.

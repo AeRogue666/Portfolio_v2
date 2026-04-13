@@ -13,7 +13,7 @@ export interface About {
 
 export interface AboutTranslation {
   title: string;
-  summary: string;
+  description: string;
 }
 
 export interface AboutResolved extends AboutTranslation {
