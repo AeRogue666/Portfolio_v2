@@ -33,8 +33,8 @@ export function useFeed(options?: UseFeedOptions) {
     return [];
   });
 
-  // Kinds sélectionnés depuis l'URL (?kinds=project,update)
-  const VALID_KINDS: FeedKind[] = ["project", "update", "about", "pinned"];
+  // Kinds sélectionnés depuis l'URL (?kinds=project,experiment)
+  const VALID_KINDS: FeedKind[] = ["project", "experiment", "about", "pinned", "client", "note", "read", "talk", "job"];
   const selectedKinds = computed<FeedKind[]>(() => {
     const kinds = route.query.kinds;
     const raw =

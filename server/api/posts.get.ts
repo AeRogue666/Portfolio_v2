@@ -15,9 +15,10 @@ export default cachedEventHandler(
 
     const sortBy = (query.sort as string) ?? "recent";
 
-    const [projects, updates] = await Promise.all([
+    const [projects, experiments, clients] = await Promise.all([
       queryCollection(event, "projects").where("locale", "=", locale).all(),
-      queryCollection(event, "updates").where("locale", "=", locale).all(),
+      queryCollection(event, "experiments").where("locale", "=", locale).all(),
+      queryCollection(event, 'clients').where("locale", "=", locale).all(),
     ]);
 
     const aboutItem = about.translations[locale];
@@ -35,7 +36,8 @@ export default cachedEventHandler(
       ====== */
     let feed = [
       ...projects.map((p) => toFeedItem({ ...p, kind: "project" as const })),
-      ...updates.map((u) => toFeedItem({ ...u, kind: "update" as const })),
+      ...experiments.map((u) => toFeedItem({ ...u, kind: "experiment" as const })),
+      ...clients.map((c) => toFeedItem({ ...c, kind: "client" as const })),
       toFeedItem(aboutFeedSource),
     ];
 
@@ -120,4 +122,4 @@ export default cachedEventHandler(
   },
 );
 
-// deviendra prisma.post.findMany({ where: { kind: { in: ['about','project','update'] } } })
+// deviendra prisma.post.findMany({ where: { kind: { in: ['about','project','experiment'] } } })

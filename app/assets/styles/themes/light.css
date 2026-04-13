@@ -29,9 +29,12 @@
 --card-project-bg: #fff5e1; /** Peach cream **/
 --card-project-accent: #d47e30; /** Chai orange **/
 
---card-update-bg: #f0ead6; /** Soft beige **/
---card-update-accent: #8d5a2b; /** Chai brown **/
+--card-experiment-bg: #f0ead6; /** Soft beige **/
+--card-experiment-accent: #8d5a2b; /** Chai brown **/
 
 --card-about-bg: #fff9ec; /** Vanilla cream **/
 --card-about-accent: #b8762d; /** Golden Copper **/
+
+--card-client-bg: #f0ead6;
+--card-client-accent: #8d5a2b;
 }

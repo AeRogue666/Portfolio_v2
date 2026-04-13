@@ -13,10 +13,20 @@ const cardStyles = computed(() => {
     switch (props.cardType) {
         case 'project':
             return `${baseClasses} bg-(--card-project-bg) border-l-4 border-l-(--card-project-accent)`;
-        case 'update':
-            return `${baseClasses} bg-(--card-update-bg) border-l-4 border-l-(--card-update-accent)`;
+        case 'experiment':
+            return `${baseClasses} bg-(--card-experiment-bg) border-l-4 border-l-(--card-experiment-accent)`;
         case 'about':
             return `${baseClasses} bg-(--card-about-bg) border-l-4 border-l-(--card-about-accent)`;
+        case 'client':
+            return `${baseClasses} bg-(--card-client-bg) border-l-4 border-l-(--card-client-accent)`;
+        case 'note':
+            return `${baseClasses} bg-(--card-note-bg) border-l-4 border-l-(--card-note-accent)`;
+        case 'read':
+            return `${baseClasses} bg-(--card-read-bg) border-l-4 border-l-(--card-read-accent)`;
+        case 'talk':
+            return `${baseClasses} bg-(--card-talk-bg) border-l-4 border-l-(--card-talk-accent)`;
+        case 'job':
+            return `${baseClasses} bg-(--card-job-bg) border-l-4 border-l-(--card-job-accent)`;
         default:
             return `${baseClasses} bg-(--bg-2) border border-(--border-subtle)`;
     }
