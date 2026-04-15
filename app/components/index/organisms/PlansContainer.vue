@@ -21,15 +21,6 @@ onMounted(() => {
                 description: 'text-(--text-3)',
                 featureTitle: 'text-(--text-2)'
             }">
-
-            <template #features v-if="plan.features">
-                <ul class="flex flex-col gap-3 flex-1 mt-6 grow-0">
-                    <li v-for="(feature, i) of plan.features" class="flex items-center gap-2 min-w-0" :key="i">
-                        <span class="iconify fa7-solid:check size-5 shrink-0 text-primary" aria-hidden="true"></span>
-                        <span class="text-(--text-muted) text-sm truncate">{{ feature }}</span>
-                    </li>
-                </ul>
-            </template>
             
             <template #button>
                 <NuxtLink :to="`/plans/${plan.slug}`"

@@ -14,7 +14,9 @@ export interface Plan {
 
 export interface PlanTranslation {
   title: string;
-  description: string;
+  description?: string;
+  feed_title?: string;
+  feed_summary?: string;
   features?: string[];
 }
 
@@ -26,9 +28,4 @@ export interface PlanResolved extends PlanTranslation {
   previewUrl?: string;
   image?: ResponsiveImage;
   tags?: string[];
-}
-
-export interface PlanResponse {
-  total: number;
-  items: PlanResolved[];
 }

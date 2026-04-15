@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { FeedResponse } from '../types/feed';
+import type { PlanResponse } from '@/types/planFeed';
 import IndexSection from '../components/index/IndexSection.vue';
 import LandingSection from '../components/index/LandingSection.vue';
 import ExpertiseContainer from '../components/index/organisms/ExpertiseContainer.vue';
 import PlansContainer from '../components/index/organisms/PlansContainer.vue';
 import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
 import CarouselWrapper from '../components/index/organisms/CarouselWrapper.vue';
-import type { PlanResolved, PlanResponse } from '../types/plan';
 
 const { t, locale } = useI18n(),
     colorMode = useColorMode(),
@@ -15,18 +15,22 @@ const { t, locale } = useI18n(),
 
 useSidebarFocusState();
 
-const { data: postsData } = await useAsyncData(
-    () => `index-projects-${locale.value}`,
+// Clients + Realisations sections
+const postsAsyncKey = computed(() => `index-projects-${locale.value}`);
+const { data: postsData, error: postsError } = await useAsyncData(
+    () => postsAsyncKey.value,
     () => $fetch<FeedResponse>('/api/posts', {
         query: { locale: locale.value }
     }),
     { watch: [locale] }
 );
+if (postsError.value) {
+    throw createError({ status: 404, statusMessage: 'Posts data not found', cause: postsError.value, fatal: true })
+} 
 
 const clientsCarouselItems = computed(() => {
     if (!postsData.value?.items) return [];
 
-    // Filter Clients data
     return postsData.value.items.filter(item =>
         (item.kind === 'client' || item.kindFallback === 'client') && item.image
     ).map(item => ({
@@ -38,12 +42,10 @@ const clientsCarouselItems = computed(() => {
         alt: item.image!.alt,
         link: `/clients/${item.slug}`,
     }));
-})
-
-const realisationsCarouselItems = computed(() => {
+}),
+realisationsCarouselItems = computed(() => {
     if (!postsData.value?.items) return [];
 
-    // Filter Projects data
     return postsData.value.items.filter(item =>
         (item.kind === 'project' || item.kindFallback === 'project') && item.image
     )
@@ -57,18 +59,23 @@ const realisationsCarouselItems = computed(() => {
         }));
 });
 
-const { data: plansData } = await useAsyncData(
-    () => `index-plans-${locale.value}`,
-    () => $fetch<PlanResponse>('/api/plans', {
+// Plans section
+const plansAsyncKey = computed(() => `index-plans-${locale.value}`);
+const { data: plansData, error: plansError } = await useAsyncData<PlanResponse>(
+    () => plansAsyncKey.value,
+    () => $fetch('/api/plans', {
         query: { locale: locale.value }
     }),
     { watch: [locale] }
 );
+if (plansError.value) {
+    throw createError({ status: 404, statusMessage: 'Pricing plans data not found', cause: plansError.value, fatal: true })
+} 
 
 const plansContainerItems = computed(() => {
     if(!plansData.value?.items) return [];
 
-    return plansData.value.items;
+    return plansData.value.items
 });
 
 onMounted(() => {
