@@ -8,7 +8,7 @@ export default cachedEventHandler(
     
     const plans = await queryCollection(event, "plans")
       .where("locale", "=", locale)
-      .all()
+      .all();
 
     let feed = [
       ...plans.map((p) => toPlanItem({ ...p }))

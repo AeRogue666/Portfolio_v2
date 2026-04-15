@@ -32,7 +32,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
     },
     {
         label: page.value?.customer_name,
-        to: page.value?.previewUrl
+        to: route.path
     },
 ];
 
@@ -62,6 +62,10 @@ watchEffect(() => {
         ogImageAlt: page.value?.image?.alt,
         twitterCard: 'summary_large_image',
     }));
+});
+
+onMounted(() => {
+    console.log(page.value)
 });
 
 const src = computed(() => page.value?.image?.sources?.detail?.mobile || page.value?.image?.sources?.feed?.mobile || ''),

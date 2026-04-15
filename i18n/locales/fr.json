@@ -249,7 +249,8 @@
     "report": "Signaler un incident",
     "legal_notices": "Mentions légales",
     "terms_of_use": "Conditions Générales d'Utilisation",
-    "clients": "Clients"
+    "clients": "Clients",
+    "plans": "Plans"
   },
   "report": {
     "title": "Signaler un incident",
@@ -292,6 +293,11 @@
       "website_redesign": "Redesign d'un site (internet ou interne)",
       "digital_training": "Formation au numérique"
     }
+  },
+  "plans": {
+    "website": "Web",
+    "accessibilite": "Accessibilité",
+    "formations": "Formation au numérique"
   },
   "studio": {
     "tooltips": {

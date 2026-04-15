@@ -1,8 +1,10 @@
-import type { PlanResolved } from "@/types/plan";
+import type { PlanItem } from '@/types/planFeed';
 
 type PlanSource = {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
+  feed_title?: string;
+  feed_summary?: string;
   slug: string;
   date?: string;
   created_at: string;
@@ -13,12 +15,14 @@ type PlanSource = {
   tags?: string[];
 };
 
-export function toPlanItem(source: PlanSource): PlanResolved {
+export function toPlanItem(source: PlanSource): PlanItem {
   const effectiveDate = source.updated_at ?? source.created_at;
 
   return {
-    title: source.title,
+    title: source.title ?? '',
     description: source.description,
+    feed_title: source.feed_title,
+    feed_summary: source.feed_summary,
     slug: source.slug,
     date: effectiveDate,
     created_at: source.created_at,
@@ -26,6 +30,6 @@ export function toPlanItem(source: PlanSource): PlanResolved {
     previewUrl: source.previewUrl,
     image: source.image,
     features: source.features,
-    tags: source.tags
+    tags: source.tags,
   };
 }

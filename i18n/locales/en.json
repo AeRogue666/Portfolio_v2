@@ -249,7 +249,8 @@
     "report": "Report a problem",
     "legal_notices": "Legal notices",
     "terms_of_use": "Terms of Use",
-    "clients": "Clients"
+    "clients": "Clients",
+    "plans": "Plans"
   },
   "report": {
     "title": "Report a problem",
@@ -294,7 +295,9 @@
     }
   },
   "plans": {
-
+    "website": "Web",
+    "accessibilite": "Accessibility",
+    "formations": "Digital training"
   },
   "studio": {
     "tooltips": {

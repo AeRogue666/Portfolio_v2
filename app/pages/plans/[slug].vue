@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
+import type { PlanResolved } from '~/app/types/plan';
+import dayjs from 'dayjs';
+import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
-const { t, locale } = useI18n();
+const route = useRoute(),
+    { t, locale, locales } = useI18n();
 
-const contentPath = computed(() => `/plans/${locale.value}`);
+const asyncKey = computed(() => `plans-${route.params.slug}-${locale.value}`);
 
-const { data: page, error } = await useAsyncData(
-    () => `plans-${locale.value}`,
-    () =>
-        queryCollection('content')
-            .path(contentPath.value) // .where('path', '=', `/legalmention/${locale.value}`)
-            .first()
+const { data: page, error } = await useAsyncData<PlanResolved>(
+    () => asyncKey.value,
+    () => $fetch(`/api/plans/${route.params.slug}`, {
+        query: { locale: locale.value }
+    }),
+    {
+        watch: [locale]
+    }
 );
+
 if (error.value) {
     throw createError({ status: 404, statusMessage: 'Pricing plans data not found', cause: error.value, fatal: true })
 }
@@ -23,33 +30,73 @@ const breadcrumbItems: BreadcrumbItem[] = [
     },
     {
         label: t('breadcrumb.plans'),
-        to: '/plans'
+        to: ''
     },
+    {
+        label: page.value?.title,
+        to: route.path
+    }
 ];
 
-useSeoMeta(({
-    title: t('seo.page.title', { pagetitle: t('breadcrumb.plans') }),
-    description: t('seo.page.description', { pagetitle: t('breadcrumb.plans') }),
-    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.plans') }),
-    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.plans') }),
-    ogImage: '/images/project/portfolio-v2/desktop.png',
-    twitterCard: 'summary_large_image',
+useHead(() => ({
+    link: [
+        {
+            rel: 'canonical',
+            href: `https://aureldev.dev/projects/${route.params.slug}`
+        },
+        ...locales.value.map(l => ({
+            rel: 'alternate',
+            hreflang: l.code,
+            href: `https://aureldev.dev/${l.code}/${route.params.slug}`
+        }))
+    ]
 }));
+
+watchEffect(() => {
+    if (!page.value) return;
+
+    useSeoMeta(({
+        title: t('seo.page.title', { pagetitle: page.value?.title }),
+        description: t('seo.page.description', { pagetitle: page.value?.description }),
+        ogTitle: t('seo.page.title', { pagetitle: page.value?.title }),
+        ogDescription: t('seo.page.description', { pagetitle: page.value?.description }),
+    }));
+});
+
+onMounted(() => {
+    console.log(page.value)
+});
+
+const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 </script>
 
 <template>
     <template v-if="page">
-        <article>
-            <header>
-                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                    <template #separator>
-                        <span class="mx-2 text-(--text-muted)">/</span>
-                    </template>
-                </UBreadcrumb>
-            </header>
+        <ArticleLayout style="font-size: var(--step-0);">
+            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
+                <template #separator>
+                    <span class="mx-2 text-(--text-muted)">/</span>
+                </template>
+            </UBreadcrumb>
+            <p class="fs-small text-(--text-2)">
+                {{ t('project.published_on') }}
+                <time v-if="page.created_at" :datetime="page.created_at">{{ created_atDate }}</time>
+                <template v-if="page.updated_at">
+                    {{ t('post.updated_on') }}
+                    <time v-if="page.updated_at" :datetime="page.updated_at">{{ updated_atDate }}</time>
+                </template>
+            </p>
+
+            <h1 id="client-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                {{ page.title }} - 
+                <span class="fs-subtitle text-(--text-2) leading-snug">
+                    {{ page.description }}
+                </span>
+            </h1>
 
             <ContentRenderer :value="page" />
-        </article>
+        </ArticleLayout>
     </template>
     <template v-else>
         <p class="fs-body">

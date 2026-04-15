@@ -33,7 +33,6 @@ export interface FeedItem {
   pinned?: boolean;
   image?: ResponsiveImage;
   previewUrl?: string;
-  client_links?: string;
   links: FeedLinks;
   customer_name?: string;
   testimony?: string;
