@@ -72,15 +72,17 @@
   "index": {
     "user_title": "Aureldev",
     "landing_section": {
-      "title": "Développeur Full-stack orienté Accessibilité",
-      "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur",
-      "title_accent": "Développeur Full-stack",
-      "title_rest": "orienté Accessibilité",
-      "cta": "Découvrez le fil d'actualité"
+      "title": "Un site web qui attire des clients, pas juste un site design.",
+      "description": "Des sites rapides, accessibles à tous.. et que vous comprenez vraiment.",
+      "title_accent": "Un site web qui attire des clients,",
+      "title_rest": "pas juste un site design",
+      "cta_project": "Discuter de votre projet",
+      "cta_feed": "Découvrez le fil d'actualité",
+      "cta_audit": "Obtenir un audit gratuit"
     },
     "client_section": {
-      "tag": "Ils me font confiance",
-      "title": "Témoignages de clients",
+      "tag": "Témoignages clients",
+      "title": "Ils m'ont fait confiance",
       "description": "",
       "be_the_first": "Soyez le premier !",
       "button": "Lire le témoigagne de {customer_name}"
@@ -121,8 +123,8 @@
         }
       }
     },
-    "plan_section": {
-      "tag": "",
+    "services_section": {
+      "tag": "Choisissez l'offre adaptée à votre besoin. Je vous accompagne ensuite pour aller plus loin.",
       "title": "Mes prestations",
       "description": "Ce que je propose",
       "learn_more_button": "En savoir plus",
@@ -250,7 +252,7 @@
     "legal_notices": "Mentions légales",
     "terms_of_use": "Conditions Générales d'Utilisation",
     "clients": "Clients",
-    "plans": "Plans"
+    "services": "Services"
   },
   "report": {
     "title": "Signaler un incident",

@@ -1,12 +1,11 @@
 <script setup lang="ts">
 import type { FeedResponse } from '../types/feed';
-import type { PlanResponse } from '@/types/planFeed';
+import type { ServiceResponse } from '~/app/types/service';
 import IndexSection from '../components/index/IndexSection.vue';
 import LandingSection from '../components/index/LandingSection.vue';
 import ExpertiseContainer from '../components/index/organisms/ExpertiseContainer.vue';
-import PlansContainer from '../components/index/organisms/PlansContainer.vue';
+import ServicesContainer from '../components/index/organisms/ServicesContainer.vue';
 import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
-import CarouselWrapper from '../components/index/organisms/CarouselWrapper.vue';
 
 const { t, locale } = useI18n(),
     colorMode = useColorMode(),
@@ -26,7 +25,7 @@ const { data: postsData, error: postsError } = await useAsyncData(
 );
 if (postsError.value) {
     throw createError({ status: 404, statusMessage: 'Posts data not found', cause: postsError.value, fatal: true })
-} 
+}
 
 const clientsCarouselItems = computed(() => {
     if (!postsData.value?.items) return [];
@@ -43,40 +42,45 @@ const clientsCarouselItems = computed(() => {
         link: `/clients/${item.slug}`,
     }));
 }),
-realisationsCarouselItems = computed(() => {
-    if (!postsData.value?.items) return [];
+    realisationsCarouselItems = computed(() => {
+        if (!postsData.value?.items) return [];
 
-    return postsData.value.items.filter(item =>
-        (item.kind === 'project' || item.kindFallback === 'project') && item.image
-    )
-        .map(item => ({
-            image: item.image!.sources.detail?.mobile
-                || item.image!.sources.feed?.mobile
-                || '',
-            alt: item.image!.alt,
-            description: item.feed_title ?? item.title,
-            link: `/projects/${item.slug}`,
-        }));
-});
+        return postsData.value.items.filter(item =>
+            (item.kind === 'project' || item.kindFallback === 'project') && item.image
+        )
+            .map(item => ({
+                image: item.image!.sources.detail?.mobile
+                    || item.image!.sources.feed?.mobile
+                    || '',
+                alt: item.image!.alt,
+                description: item.feed_title ?? item.title,
+                link: `/projects/${item.slug}`,
+            }));
+    });
 
-// Plans section
-const plansAsyncKey = computed(() => `index-plans-${locale.value}`);
-const { data: plansData, error: plansError } = await useAsyncData<PlanResponse>(
-    () => plansAsyncKey.value,
-    () => $fetch('/api/plans', {
+// Services section
+const servicesAsyncKey = computed(() => `index-services-${locale.value}`);
+const { data: servicesData, error: servicesError } = await useAsyncData<ServiceResponse>(
+    () => servicesAsyncKey.value,
+    () => $fetch('/api/services', {
         query: { locale: locale.value }
     }),
     { watch: [locale] }
 );
-if (plansError.value) {
-    throw createError({ status: 404, statusMessage: 'Pricing plans data not found', cause: plansError.value, fatal: true })
-} 
+if (servicesError.value) {
+    throw createError({ status: 404, statusMessage: 'Pricing services data not found', cause: servicesError.value, fatal: true })
+}
 
-const plansContainerItems = computed(() => {
-    if(!plansData.value?.items) return [];
+const servicesContainerItems = computed(() => {
+    if (!servicesData.value?.items) return [];
 
-    return plansData.value.items
+    return servicesData.value.items
 });
+
+// Problems section
+const problemsData = await queryCollection('problems')
+    .where('locale', '=', locale.value)
+    .first();
 
 onMounted(() => {
     watch(
@@ -130,11 +134,17 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <NuxtLink to="/feed"
+            <SendMessageModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
+                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+
+            <SendMessageModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
+                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+
+            <!-- <NuxtLink to="/feed"
                 class="inline-flex items-center px-5 py-2.5 gap-2 rounded-lg border border-(--accent)/40 text-(--accent) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body">
-                {{ t('index.landing_section.cta') }}
                 <UIcon name="fa7-solid:arrow-right" class="text-sm" />
-            </NuxtLink>
+                {{ t('index.landing_section.cta_feed') }}
+            </NuxtLink> -->
         </LandingSection>
 
         <!-- Clients section -->
@@ -194,7 +204,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Realisations section -->
-        <IndexSection id="campain-section" :class="'bg-(--card-experiment-bg)'"
+        <!-- <IndexSection id="campain-section" :class="'bg-(--card-experiment-bg)'"
             :fill="fillColor?.[2] ?? '--card-project-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
@@ -220,9 +230,130 @@ useSeoMeta(({
                 prev: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg-(--bg-3) text-(--text-2) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90',
                 next: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg(--bg-3) text-(--text) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90'
             }" />
+        </IndexSection> -->
+
+        <!-- Section Problème -->
+        <!--
+            Aujourd'hui, beaucoup de sites web :
+                - sont lents
+                - ne sont pas bien référencés
+                - ne donnent pas confiance
+                - ne convertissent pas
+
+            Résultat : vous perdez des clients sans le savoir.
+        -->
+        <IndexSection>
+            <template #tag>
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
+                    {{ t('index.problem_section.tag') }}
+                </span>
+            </template>
+
+            <template #title>
+                <h2 id="campain-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
+                    {{ t('index.problem_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                    {{ t('index.problem_section.description') }}
+                </p>
+            </template>
+
+            <ContentRenderer v-if="problemsData" :value="problemsData" />
+            <span>{{ problemsData }}</span>
         </IndexSection>
 
-        <!-- Expertise section -->
+        <!-- Section Solution -->
+        <!-- 
+            "Un site pensé pour votre activité"
+
+            Je ne crée pas juste des sites.
+            Je crée des outils qui :
+                - donnent confiance à vos visiteurs
+                - sont rapides et agréables à utiliser
+                - sont visibles sur Google
+                - vous apportent des contacts
+        -->
+
+        <!-- Plan section (Offres) -->
+        <!-- 
+            "Ce que je peux faire pour vous"
+
+            Création de site (title)
+            
+            Un site clair, professionnel et efficace
+            -> Idéal si vous partez de zéro ou souhaitez une refonte
+
+            Optimisation & SEO (title)
+
+            Amélioration de votre site existant
+            -> Plus rapide, mieux référencé, plus efficace
+
+            Accompagnement (title)
+
+            Support, maintenance et conseils
+            -> Pour un site fiable sur le long terme
+
+            Mettre un texte + lien : "Je propose également des formations numériques -> en savoir plus"
+        -->
+
+        <IndexSection id="services-section" :class="'bg-(--card-job-bg)'" :fill="fillColor?.[4] ?? '--card-about-bg'">
+            <template #tag>
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
+                    {{ t('index.services_section.tag') }}
+                </span>
+            </template>
+
+            <template #title>
+                <h2 id="expertise-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
+                    {{ t('index.services_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="font-normal lg:text-center w-full text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                    {{ t('index.services_section.description') }}
+                </p>
+            </template>
+
+            <ServicesContainer :services="servicesContainerItems" />
+        </IndexSection>
+            
+        <!-- <IndexSection id="services-section" :class="'bg-(--card-job-bg)'" :fill="fillColor?.[4] ?? '--card-about-bg'">
+            <template #tag>
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
+                    {{ t('index.plan_section.tag') }}
+                </span>
+            </template>
+
+            <template #title>
+                <h2 id="expertise-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
+                    {{ t('index.plan_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                    {{ t('index.plan_section.description') }}
+                </p>
+            </template>
+        </IndexSection> -->
+
+        <!-- Expertise section (Process) -->
+        <!--
+            "Comment ça se passe ?"
+
+            1. On échange sur votre besoin
+            2. Je vous propose une solution simple et claire
+            3. Je crée ou améliore votre site et vous tiens au courant sur son avancée
+            4. On teste et optimise ensemble
+            5. Le site est désormais à vous mais je vous accompagne si besoin
+        -->
         <IndexSection id="expertise-section" :class="'bg-(--card-project-bg)'"
             :fill="fillColor?.[3] ?? '--card-job-bg'">
             <template #tag>
@@ -247,31 +378,25 @@ useSeoMeta(({
             <ExpertiseContainer />
         </IndexSection>
 
-        <!-- Plan section -->
-        <IndexSection id="plan-section" :class="'bg-(--card-job-bg)'" :fill="fillColor?.[4] ?? '--card-about-bg'">
-            <template #tag>
-                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
-                    {{ t('index.plan_section.tag') }}
-                </span>
-            </template>
+        <!-- Section différenciation (ou la fin de la section process) -->
+        <!--
+            "Pourquoi travailler avec moi ?"
 
-            <template #title>
-                <h2 id="expertise-title"
-                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
-                    {{ t('index.plan_section.title') }}
-                </h2>
-            </template>
+            - Approche centrée utilisateur
+            - Accessibilité (votre site est accessible à tous)
+            - Performance (site rapide)
+            - Explications simples, sans jargon
+        -->
 
-            <template #description>
-                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
-                    {{ t('index.plan_section.description') }}
-                </p>
-            </template>
+        <!-- Contact section (CTA) -->
+        <!--
+            "Prêt à améliorer votre présence en ligne ?"
 
-            <PlansContainer :plans="plansContainerItems" />
-        </IndexSection>
+            Ne laissez pas votre site vous faire perdre des clients.
 
-        <!-- Contact section -->
+            [Discuter de votre projet]
+            [Me contacter]
+        -->
         <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" :fill="fillColor?.[5] ?? '--bg-2'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
@@ -292,7 +417,8 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <SendMessageModal />
+            <SendMessageModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
+                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </IndexSection>
     </UContainer>
 </template>

@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import {
-    ContactFormSchema,
-    type ContactFormState,
-} from "@/utils/schemas/contact";
+import { ContactFormSchema, type ContactFormState } from "@/utils/schemas/contact";
 import type { FormSubmitEvent, SelectMenuItem } from "@nuxt/ui";
+
+const props = defineProps<{
+    ctaLabel?: string;
+    ctaClass?: string;
+    ctaIcon?: string;
+}>();
 
 const state = reactive<ContactFormState>({
     type: "simple_contact",
@@ -120,8 +123,8 @@ const typeError = computed(() => {
     }">
         <template #default>
             <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" color="neutral"
-                variant="solid" size="xl" class="bg-(--bg-3) text-(--text) fs-body"
-                :label="t('sidebar-left.modal-message.send-message_button_label')" />
+                variant="solid" size="xl" :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'" :icon="props.ctaIcon || 'fa7-solid:message'"
+                :label="props.ctaLabel || t('sidebar-left.modal-message.send-message_button_label')" />
         </template>
 
         <template #body>

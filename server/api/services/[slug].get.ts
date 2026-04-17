@@ -5,32 +5,32 @@ export default cachedEventHandler(
     const query = getQuery(event),
       slug = event.context.params?.slug,
       locale: Locale = query.locale === "fr" ? "fr" : "en";
-    // plan = plans.find((p) => p.slug === slug);
+    // service = services.find((p) => p.slug === slug);
 
-    const plan = await queryCollection(event, "plans")
+    const service = await queryCollection(event, "services")
       .where("slug", "=", slug)
       .where("locale", "=", locale)
       .first();
 
-    if (!plan)
+    if (!service)
       throw createError({
         statusCode: 404,
-        statusMessage: "Plan unavailable",
+        statusMessage: "Services unavailable",
       });
 
-    return plan;
+    return service;
 
-    /* const t = plan.translations[locale];
+    /* const t = service.translations[locale];
   if (!t) throw createError({ statusCode: 404 });
 
-  return resolveWithLocale(plan, locale); */
+  return resolveWithLocale(service, locale); */
   },
   {
     maxAge: 60 * 10, // 10 minutes
     getKey: (event) => {
       const slug = event.context.params?.slug;
       const locale = getQuery(event).locale ?? "en";
-      return `plan-${slug}-${locale}`;
+      return `service-${slug}-${locale}`;
     },
   },
 );

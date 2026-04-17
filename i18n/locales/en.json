@@ -72,11 +72,13 @@
   "index": {
     "user_title": "Aureldev",
     "landing_section": {
-      "title": "Accessibility-first Full-stack Developer",
-      "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed",
-      "title_accent": "Accessibility-first",
-      "title_rest": "Full-stack Developer",
-      "cta": "Discover the feed"
+      "title": "A website that attracts customers, not just a well-designed site.",
+      "description": "Fast websites that are accessible to everyone.. and that you can really understand.",
+      "title_accent": "A website that attracts customers,",
+      "title_rest": "not just a well-designed site",
+      "cta_project": "Discuss your project",
+      "cta_feed": "Discover the feed",
+      "cta_audit": "Get a Free audit"
     },
     "client_section": {
       "tag": "They trust me",
@@ -121,8 +123,8 @@
         }
       }
     },
-    "plan_section": {
-      "tag": "",
+    "services_section": {
+      "tag": "Choose the plan that best suits your needs. I'll then help you take it to the next level.",
       "title": "My services",
       "description": "What I propose",
       "learn_more_button": "Learn more",
@@ -250,7 +252,7 @@
     "legal_notices": "Legal notices",
     "terms_of_use": "Terms of Use",
     "clients": "Clients",
-    "plans": "Plans"
+    "services": "Plans"
   },
   "report": {
     "title": "Report a problem",
