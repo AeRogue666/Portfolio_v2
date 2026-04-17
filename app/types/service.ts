@@ -1,7 +1,7 @@
 import type { Locale } from "./i18n";
 import type { ResponsiveImage } from "./media";
 
-export interface Plan {
+export interface Service {
   slug: string;
   created_at: string;
   updated_at?: string;
@@ -9,18 +9,18 @@ export interface Plan {
   previewUrl?: string;
   image?: ResponsiveImage;
   tags?: string[];
-  translations: Record<Locale, PlanTranslation>;
+  highlighted: boolean;
+  translations: Record<Locale, ServiceTranslation>;
 }
 
-export interface PlanTranslation {
+export interface ServiceTranslation {
   title: string;
   description?: string;
   feed_title?: string;
   feed_summary?: string;
-  features?: string[];
 }
 
-export interface PlanResolved extends PlanTranslation {
+export interface ServiceResolved extends ServiceTranslation {
   slug: string;
   created_at: string;
   updated_at?: string;
@@ -28,4 +28,10 @@ export interface PlanResolved extends PlanTranslation {
   previewUrl?: string;
   image?: ResponsiveImage;
   tags?: string[];
+  highlighted: boolean;
+}
+
+export interface ServiceResponse {
+  total: number;
+  items: ServiceResolved[];
 }

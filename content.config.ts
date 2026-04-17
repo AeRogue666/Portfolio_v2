@@ -73,6 +73,26 @@ export default defineContentConfig({
       }),
     }),
 
+    about: defineCollection({
+      type: "page",
+      source: "about/**/*.md",
+      schema: z.object({
+        slug: z.string(),
+        locale: z.enum(["fr", "en"]),
+        kind: z.literal("about"),
+        pinned: z.boolean().optional().default(false),
+        previewUrl: z.string().optional(),
+        created_at: z.string(),
+        updated_at: z.string().optional(),
+        title: z.string().default(""),
+        description: z.string().default(""),
+        feed_title: z.string().default(""),
+        feed_summary: z.string().default(""),
+        tags: z.array(z.string()).optional().default([]),
+        image: responsiveImageSchema.optional(),
+      }),
+    }),
+
     clients: defineCollection({
       type: "page",
       source: "clients/**/*.md",
@@ -97,29 +117,9 @@ export default defineContentConfig({
       }),
     }),
 
-    about: defineCollection({
+    services: defineCollection({
       type: "page",
-      source: "about/**/*.md",
-      schema: z.object({
-        slug: z.string(),
-        locale: z.enum(["fr", "en"]),
-        kind: z.literal("about"),
-        pinned: z.boolean().optional().default(false),
-        previewUrl: z.string().optional(),
-        created_at: z.string(),
-        updated_at: z.string().optional(),
-        title: z.string().default(""),
-        description: z.string().default(""),
-        feed_title: z.string().default(""),
-        feed_summary: z.string().default(""),
-        tags: z.array(z.string()).optional().default([]),
-        image: responsiveImageSchema.optional(),
-      }),
-    }),
-
-    plans: defineCollection({
-      type: "page",
-      source: "plans/**/*.md",
+      source: "services/**/*.md",
       schema: z.object({
         slug: z.string(),
         locale: z.enum(["fr", "en"]),
@@ -133,6 +133,19 @@ export default defineContentConfig({
         feed_summary: z.string().default(""),
         features: z.array(z.string()).optional(),
         image: responsiveImageSchema.optional(),
+      }),
+    }),
+
+    // Landing page
+    problems: defineCollection({
+      type: "page",
+      "source": "index/problem_section/*.md",
+      schema: z.object({
+        locale: z.enum(["fr", "en"]),
+        tag: z.string().optional(),
+        title: z.string(),
+        description: z.string(),
+        highlighted: z.boolean().default(false),
       }),
     }),
   },

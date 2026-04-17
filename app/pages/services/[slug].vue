@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import type { PlanResolved } from '~/app/types/plan';
+import type { ServiceResolved } from '~/app/types/service';
 import dayjs from 'dayjs';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
 
-const asyncKey = computed(() => `plans-${route.params.slug}-${locale.value}`);
+const asyncKey = computed(() => `services-${route.params.slug}-${locale.value}`);
 
-const { data: page, error } = await useAsyncData<PlanResolved>(
+const { data: page, error } = await useAsyncData<ServiceResolved>(
     () => asyncKey.value,
-    () => $fetch(`/api/plans/${route.params.slug}`, {
+    () => $fetch(`/api/services/${route.params.slug}`, {
         query: { locale: locale.value }
     }),
     {
@@ -20,7 +20,7 @@ const { data: page, error } = await useAsyncData<PlanResolved>(
 );
 
 if (error.value) {
-    throw createError({ status: 404, statusMessage: 'Pricing plans data not found', cause: error.value, fatal: true })
+    throw createError({ status: 404, statusMessage: 'Services data not found', cause: error.value, fatal: true })
 }
 
 const breadcrumbItems: BreadcrumbItem[] = [
@@ -29,7 +29,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: '/feed'
     },
     {
-        label: t('breadcrumb.plans'),
+        label: t('breadcrumb.services'),
         to: ''
     },
     {
