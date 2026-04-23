@@ -4,6 +4,10 @@ created_at: 2026-02-11
 description: 
 feed_title: 30%
 feed_summary: more efficiency on the website
+customer_name: Customer name
+customer_job: Customer job
+customer_city: Customer city
+customer_enterprise_name: Customer Name
 testimony: With the help of Aureldev, our website became much more speedier and our clients really appreciate the difference
 image:
   alt: Customer name logo

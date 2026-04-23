@@ -4,7 +4,10 @@ created_at: 2026-02-11
 description: +30% de demandes clients
 feed_title: +30%
 feed_summary: de demandes clients
-customer_name: Customer Name
+customer_name: Customer name
+customer_job: Customer job
+customer_city: Customer city
+customer_enterprise_name: Customer Name
 testimony: Notre site était lent et peu clair. Aujourd'hui, il nous apporte de vrais contacts.
 image:
   alt: Logo de Customer name

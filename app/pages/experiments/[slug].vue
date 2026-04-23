@@ -102,49 +102,50 @@ const created_atDate = computed(() => dayjs(experiment.value?.created_at).locale
 </script>
 
 <template>
-    <ArticleLayout v-if="experiment">
-        <template #header>
-            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                <template #separator>
-                    <span class="mx-2 text-(--text-muted)">/</span>
-                </template>
-            </UBreadcrumb>
-            <p class="fs-small text-(--text-2) leading-snug">
-                {{ t('experiment.published_on') }}
-                <time :datetime="experiment.created_at">{{ created_atDate }}</time>
-                <template v-if="experiment.updated_at">
-                    {{ t('post.updated_on') }}
-                    <time :datetime="experiment.updated_at">{{ updated_atDate }}</time>
-                </template>
-            </p>
+    <template v-if="experiment">
+        <ArticleLayout class="fs-body">
+            <template #header>
+                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)">/</span>
+                    </template>
+                </UBreadcrumb>
+                <p class="fs-small text-(--text-2) leading-snug">
+                    {{ t('experiment.published_on') }}
+                    <time :datetime="experiment.created_at">{{ created_atDate }}</time>
+                    <template v-if="experiment.updated_at">
+                        {{ t('post.updated_on') }}
+                        <time :datetime="experiment.updated_at">{{ updated_atDate }}</time>
+                    </template>
+                </p>
 
-            <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ experiment.title }}
-            </h1>
-            <p class="fs-subtitle text-(--text-2) leading-snug max-w-[65ch]">
-                {{ experiment.description }}
-            </p>
+                <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                    {{ experiment.title }}
+                </h1>
+                <p class="fs-subtitle text-(--text-2) leading-snug max-w-[65ch]">
+                    {{ experiment.description }}
+                </p>
 
-            <NuxtImg :src="src" :alt="experiment.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
-                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
-                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
-                placeholder="blur" />
+                <NuxtImg :src="src" :alt="experiment.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
+                    :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
+                    class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
+                    placeholder="blur" />
 
-            <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
-                <dt class="fs-lead font-semibold leading-snug">
-                    {{ t('experiment.tags') }}
-                </dt>
-                <dd class="flex flex-wrap gap-2">
-                    <PostBadge v-for="tech in experiment.tags" :label="tech" :key="tech" :variant="'soft'"
-                        :color="'neutral'" :size="'md'"
-                        :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
-                </dd>
-            </dl>
-        </template>
+                <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
+                    <dt class="fs-lead font-semibold leading-snug">
+                        {{ t('experiment.tags') }}
+                    </dt>
+                    <dd class="flex flex-wrap gap-2">
+                        <PostBadge v-for="tech in experiment.tags" :label="tech" :key="tech" :variant="'soft'"
+                            :color="'neutral'" :size="'md'"
+                            :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
+                    </dd>
+                </dl>
+            </template>
 
-        <ContentRenderer :value="experiment" class="prose prose-neutral dark:prose-invert max-w-none" />
+            <ContentRenderer :value="experiment" class="prose prose-neutral dark:prose-invert max-w-none" />
 
-        <!-- <section aria-labelledby="content">
+            <!-- <section aria-labelledby="content">
             <h2 id="content" class="fs-title font-semibold leading-snug">
                 {{ t('experiment.content') }}
             </h2>
@@ -153,10 +154,16 @@ const created_atDate = computed(() => dayjs(experiment.value?.created_at).locale
             </p>
         </section> -->
 
-        <template #footer>
+            <template #footer>
 
-        </template>
-    </ArticleLayout>
+            </template>
+        </ArticleLayout>
+    </template>
+    <template v-else>
+        <p class="fs-body">
+            {{ t('error.content_unavailable') }}
+        </p>
+    </template>
 </template>
 
 <style lang="css">

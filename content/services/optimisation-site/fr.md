@@ -3,10 +3,12 @@ title: Améliorer votre site pour générer plus de clients
 created_at: 2026-02-11
 description: Optimisez votre site existant pour gagner en visibilité et en conversions.
 feed_title: Optimisation & SEO
-feed_summary: Améliorez votre site pour attirer plus de clients.
+feed_summary: Amélioration de votre site existant
+            -> Plus rapide, mieux référencé, plus efficace
 locale: fr
 previewUrl: /services/optimisation-site
 slug: optimisation-site
+tag: Optimisation
 highlighted: false
 ---
 

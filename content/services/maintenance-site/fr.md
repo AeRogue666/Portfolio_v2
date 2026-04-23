@@ -3,10 +3,12 @@ title: Un site fiable, sans stress
 created_at: 2026-02-11
 description: Maintenance, sécurité et accompagnement pour un site toujours performant.
 feed_title: Maintenance & accompagnement
-feed_summary: Un site sécurisé, à jour et suivi dans le temps.
+feed_summary:  Support, maintenance et conseils
+            -> Pour un site sécurisé, à jour et fiable sur le long terme.
 locale: fr
 previewUrl: /services/maintenance-site
 slug: maintenance-site
+tag: Maintenance
 highlighted: false
 ---
 

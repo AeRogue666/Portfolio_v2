@@ -4,13 +4,13 @@
 .light {
   /* Backgrounds */
   --bg-primary: #fdfbd4; /** Chai cream **/ /* #f5efe6; */
-  --bg-secondary: #f5f0d0;
+  --bg-secondary: #e8dcbb;
   --bg-elevated: #fffef8;
 
   /* Text */
-  --text-primary: #3d2817; /** Deep dark Brown **/ /* #1f1f1f; */
-  --text-secondary: #5c3d24; /** Medium Brown **/ /* #2b1e16; */
-  --text-muted: #7a5c42; /** Light Brown **/ /* #6b6b6b; */
+  --text-primary: #2a1f16; /** Deep dark Brown **/
+  --text-secondary: #3d2d21; /** Medium Brown **/
+  --text-muted: #7a5c42; /** Light Brown **/
 
   /* Accent */
   --accent: #c86f28; /** Spicy Orange **/

@@ -73,7 +73,7 @@ const created_atDate = computed(() => dayjs(page.value?.created_at).locale(local
 
 <template>
     <template v-if="page">
-        <ArticleLayout style="font-size: var(--step-0);">
+        <ArticleLayout class="fs-body">
             <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                 <template #separator>
                     <span class="mx-2 text-(--text-muted)">/</span>

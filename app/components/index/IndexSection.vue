@@ -7,7 +7,7 @@ defineProps<{
 
 <template>
     <section
-        class="flex flex-col justify-between items-center w-full h-auto mt-[6vh] py-30 gap-10 overflow-hidden rounded-2xl bg-(--bg-3) relative"
+        class="flex flex-col justify-between items-center w-full h-auto mt-[6vh] py-30 gap-10 overflow-hidden rounded-2xl relative"
         :class="class">
         <!-- A - Grain : Texture subtile en arrière-plan -->
         <div class="absolute inset-0 landing-grain pointer-events-none z-0" aria-hidden="true"></div>

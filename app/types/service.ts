@@ -9,6 +9,7 @@ export interface Service {
   previewUrl?: string;
   image?: ResponsiveImage;
   tags?: string[];
+  tag?: string;
   highlighted: boolean;
   translations: Record<Locale, ServiceTranslation>;
 }
@@ -27,6 +28,7 @@ export interface ServiceResolved extends ServiceTranslation {
   date?: string;
   previewUrl?: string;
   image?: ResponsiveImage;
+  tag?: string;
   tags?: string[];
   highlighted: boolean;
 }

@@ -7,6 +7,7 @@ feed_summary: Gagnez en autonomie avec le digital.
 locale: fr
 previewUrl: /services/formation
 slug: formation
+tag: Formations
 highlighted: false
 ---
 

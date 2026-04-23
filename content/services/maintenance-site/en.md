@@ -7,19 +7,49 @@ previewUrl: /services/accompagnement
 slug: accompagnement
 feed_title: Support
 feed_summary: A reliable website with ongoing support.
+tag: Support
 highlighted: false
 ---
 
-## Websites built with a CMS
+## Votre site, sans prise de tête
 
-## Websites built using a modern framework
+Un site web demande du suivi :
 
-## Internal web applications
+- Mises à jour
+- Sécurité
+- Maintenance
+- Corrections
 
-## Integration of HTML5, CSS3, jQuery, JavaScript, TypeScript
+Sans ça, il devient vite obsolète ou vulnérable.
 
-## Web design
+---
 
-## Search engine optimization (SEO)
+## Ce que je prends en charge
 
-## Data integration / Automation
+- Maintenance technique
+- Mises à jour régulières
+- Sécurité du site
+- Support en cas de problèmes
+- Conseils et accompagnement
+
+---
+
+## Résultat
+
+Un site fiable, sécurisé et toujours à jour.
+
+Vous pouvez vous concentrer sur votre activité, sereinement.
+
+---
+
+## Idéal pour
+
+- Tous les clients
+- Ceux qui veulent un suivi long terme
+- Ceux qui ne veulent pas gérer la technique
+
+---
+
+## Tarif
+
+A partir de prix/mois

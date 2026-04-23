@@ -6,12 +6,12 @@
 :root {
   /* Backgrounds */
   --bg-primary: #fdfbd4;
-  --bg-secondary: #f5f0d0;
+  --bg-secondary: #e8dcbb;
   --bg-elevated: #fffef8;
 
   /* Text */
-  --text-primary: #3d2817;
-  --text-secondary: #5c3d24;
+  --text-primary: #2a1f16;
+  --text-secondary: #3d2d21;
   --text-muted: #7A5c42;
 
   /* Accent */

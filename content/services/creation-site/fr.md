@@ -3,10 +3,12 @@ title: Site web qui génère des clients
 created_at: 2026-02-11
 description: Un site clair, rapide et conçu pour transformer vos visiteurs en clients.
 feed_title: Création de site
-feed_summary: Un site conçu pour attirer et convertir vos futurs clients.
+feed_summary: Un site clair, professionnel et efficace
+            -> Idéal si vous partez de zéro ou souhaitez une refonte
 locale: fr
 previewUrl: /services/creation-site
 slug: creation-site
+tag: Website
 highlighted: true
 ---
 
