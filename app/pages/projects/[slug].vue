@@ -101,69 +101,76 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
 </script>
 
 <template>
-    <ArticleLayout v-if="project" style="font-size: var(--step-0);">
-        <template #header>
-            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                <template #separator>
-                    <span class="mx-2 text-(--text-muted)">/</span>
-                </template>
-            </UBreadcrumb>
-            <p class="fs-small text-(--text-2)">
-                {{ t('project.published_on') }}
-                <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
-                <template v-if="project.updated_at">
-                    {{ t('post.updated_on') }}
-                    <time v-if="project.updated_at" :datetime="project.updated_at">{{ updated_atDate }}</time>
-                </template>
-            </p>
+    <template v-if="project">
+        <ArticleLayout class="fs-body">
+            <template #header>
+                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)">/</span>
+                    </template>
+                </UBreadcrumb>
+                <p class="fs-small text-(--text-2)">
+                    {{ t('project.published_on') }}
+                    <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
+                    <template v-if="project.updated_at">
+                        {{ t('post.updated_on') }}
+                        <time v-if="project.updated_at" :datetime="project.updated_at">{{ updated_atDate }}</time>
+                    </template>
+                </p>
 
-            <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ project.title }}
-            </h1>
-            <p class="fs-subtitle text-(--text-2) leading-snug">
-                {{ project.description }}
-            </p>
+                <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                    {{ project.title }}
+                </h1>
+                <p class="fs-subtitle text-(--text-2) leading-snug">
+                    {{ project.description }}
+                </p>
 
-            <NuxtImg :src="src" :alt="project.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
-                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
-                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
-                placeholder="blur" />
+                <NuxtImg :src="src" :alt="project.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
+                    :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
+                    class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
+                    placeholder="blur" />
 
-            <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
-                <div>
-                    <dt class="fs-lead font-semibold leading-snug">
-                        {{ t('project.role') }}
-                    </dt>
-                    <dd class="fs-body text-(--text-2) leading-snug">
-                        {{ project.role }}
-                    </dd>
-                </div>
-                <div>
-                    <dt class="fs-lead font-semibold leading-snug">
-                        {{ t('project.stack') }}
-                    </dt>
-                    <dd class="flex flex-wrap gap-2">
-                        <PostBadge v-for="tech in project.stack" :label="tech" :key="tech" :variant="'soft'"
-                            :color="'neutral'" :size="'md'"
-                            :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
-                    </dd>
-                </div>
-            </dl>
-        </template>
+                <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
+                    <div>
+                        <dt class="fs-lead font-semibold leading-snug">
+                            {{ t('project.role') }}
+                        </dt>
+                        <dd class="fs-body text-(--text-2) leading-snug">
+                            {{ project.role }}
+                        </dd>
+                    </div>
+                    <div>
+                        <dt class="fs-lead font-semibold leading-snug">
+                            {{ t('project.stack') }}
+                        </dt>
+                        <dd class="flex flex-wrap gap-2">
+                            <PostBadge v-for="tech in project.stack" :label="tech" :key="tech" :variant="'soft'"
+                                :color="'neutral'" :size="'md'"
+                                :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
+                        </dd>
+                    </div>
+                </dl>
+            </template>
 
-        <ContentRenderer :value="project" class="prose prose-neutral dark:prose-invert max-w-none" />
+            <ContentRenderer :value="project" class="prose prose-neutral dark:prose-invert max-w-none" />
 
-        <template #footer>
-            <a v-if="project.links?.github" :href="project.links.github"
-                class="inline-flex items-center gap-2 fs-body text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors">
-                {{ t('project.watch_code') }}
-            </a>
-            <a v-if="project.links?.demo" :href="project.links.demo"
-                class="inline-flex items-center gap-2 fs-body text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors">
-                {{ t('project.watch_demo') }}
-            </a>
-        </template>
-    </ArticleLayout>
+            <template #footer>
+                <a v-if="project.links?.github" :href="project.links.github"
+                    class="inline-flex items-center gap-2 fs-body text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors">
+                    {{ t('project.watch_code') }}
+                </a>
+                <a v-if="project.links?.demo" :href="project.links.demo"
+                    class="inline-flex items-center gap-2 fs-body text-(--accent) hover:text-(--accent-hover) font-medium text-scalable transition-colors">
+                    {{ t('project.watch_demo') }}
+                </a>
+            </template>
+        </ArticleLayout>
+    </template>
+    <template v-else>
+        <p class="fs-body">
+            {{ t('error.content_unavailable') }}
+        </p>
+    </template>
 </template>
 
 <style lang="css">

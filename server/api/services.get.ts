@@ -11,7 +11,10 @@ export default cachedEventHandler(
       .all();
 
     let feed = [
-      ...services.map((s) => toServiceItem({ ...s }))
+      ...services.map((s) => toServiceItem({
+        ...s,
+        highlighted: false
+      }))
     ];
 
     return {

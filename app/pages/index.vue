@@ -3,14 +3,14 @@ import type { FeedResponse } from '../types/feed';
 import type { ServiceResponse } from '~/app/types/service';
 import IndexSection from '../components/index/IndexSection.vue';
 import LandingSection from '../components/index/LandingSection.vue';
-import ExpertiseContainer from '../components/index/organisms/ExpertiseContainer.vue';
+import ClientCarousel from '../components/index/organisms/ClientCarousel.vue';
+import ProcessContainer from '../components/index/organisms/ProcessContainer.vue';
 import ServicesContainer from '../components/index/organisms/ServicesContainer.vue';
 import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
+import dayjs from 'dayjs';
 
 const { t, locale } = useI18n(),
-    colorMode = useColorMode(),
-    avatarSrc = ref('https://avatars.githubusercontent.com/u/38510448?v=4'),
-    fillColor = ref<string[] | undefined>(undefined);
+    colorMode = useColorMode();
 
 useSidebarFocusState();
 
@@ -33,30 +33,20 @@ const clientsCarouselItems = computed(() => {
     return postsData.value.items.filter(item =>
         (item.kind === 'client' || item.kindFallback === 'client') && item.image
     ).map(item => ({
-        title: item.feed_title,
-        description: item.feed_summary,
+        title: item.feed_title ?? item.title,
+        description: item.feed_summary ?? item.description,
         testimony: item.testimony,
         customer_name: item.customer_name,
-        image: item.image!.sources.feed?.mobile || '',
+        customer_job: item.customer_job,
+        customer_city: item.customer_city,
+        customer_enterprise_name: item.customer_enterprise_name,
+        image: item.image!.sources.feed?.mobile
+            || item.image!.sources.detail?.mobile
+            || '',
         alt: item.image!.alt,
         link: `/clients/${item.slug}`,
-    }));
-}),
-    realisationsCarouselItems = computed(() => {
-        if (!postsData.value?.items) return [];
-
-        return postsData.value.items.filter(item =>
-            (item.kind === 'project' || item.kindFallback === 'project') && item.image
-        )
-            .map(item => ({
-                image: item.image!.sources.detail?.mobile
-                    || item.image!.sources.feed?.mobile
-                    || '',
-                alt: item.image!.alt,
-                description: item.feed_title ?? item.title,
-                link: `/projects/${item.slug}`,
-            }));
-    });
+    }))
+});
 
 // Services section
 const servicesAsyncKey = computed(() => `index-services-${locale.value}`);
@@ -70,41 +60,138 @@ const { data: servicesData, error: servicesError } = await useAsyncData<ServiceR
 if (servicesError.value) {
     throw createError({ status: 404, statusMessage: 'Pricing services data not found', cause: servicesError.value, fatal: true })
 }
-
 const servicesContainerItems = computed(() => {
     if (!servicesData.value?.items) return [];
 
-    return servicesData.value.items
+    const servicesItems = servicesData.value.items;
+    const filteredElements = servicesItems.filter(item => item.slug == 'formation');
+    const nonFilteredElements = servicesItems.filter(item => item.slug !== 'formation');
+
+    return [...nonFilteredElements, ...filteredElements];
 });
 
-// Problems section
-const problemsData = await queryCollection('problems')
-    .where('locale', '=', locale.value)
-    .first();
+interface Element {
+    title: string,
+    description?: string,
+    icon: string,
+    size?: string | number | undefined,
+    class?: string,
+    iconClass?: string,
+}
 
-onMounted(() => {
-    watch(
-        () => colorMode.value,
-        (mode) => {
-            avatarSrc.value =
-                mode === 'dark'
-                    ? 'https://github.com/nuxt.png'
-                    : 'https://avatars.githubusercontent.com/u/38510448?v=4'
-            fillColor.value =
-                mode === 'dark'
-                    ? undefined
-                    : ['--bg', '--bg', '--bg', '--bg', '--bg', '--bg']
-        },
-        { immediate: true }
-    );
-});
+const expertiseElements = reactive<Element[]>([
+    {
+        title: t('index.expertise_section.process.1.title'),
+        description: t('index.expertise_section.process.1.description'),
+        icon: 'fa7-solid:magnifying-glass',
+        size: 'xl',
+        class: 'bg-cyan-500',
+        iconClass: 'bg-blue-500',
+    },
+    {
+        title: t('index.expertise_section.process.2.title'),
+        description: t('index.expertise_section.process.2.description'),
+        icon: 'fa7-solid:pen-ruler',
+        size: 'xl',
+        class: 'bg-pink-500',
+        iconClass: 'size-24 bg-white',
+    },
+    {
+        title: t('index.expertise_section.process.3.title'),
+        description: t('index.expertise_section.process.3.description'),
+        icon: 'fa7-solid:shapes',
+        size: 'xl',
+        class: 'bg-green-500',
+        iconClass: 'size-24 bg-white',
+    },
+    {
+        title: t('index.expertise_section.process.4.title'),
+        description: t('index.expertise_section.process.4.description'),
+        icon: 'fa7-solid:warning',
+        size: 'xl',
+        class: 'bg-orange-500',
+        iconClass: 'size-24 bg-white',
+    },
+    {
+        title: t('index.expertise_section.process.5.title'),
+        description: t('index.expertise_section.process.5.description'),
+        icon: 'fa7-solid:comments',
+        size: 'xl',
+        class: 'bg-yellow-500',
+        iconClass: 'size-24 bg-white',
+    },
+    /* {
+        title: t('index.expertise_section.process.3.title'),
+        description: t('index.expertise_section.process.3.description'),
+        icon: 'fa7-solid:dollar-sign',
+        size: 'xl',
+        class: 'bg-green-500',
+        iconClass: 'size-24 bg-white',
+    }, */
+]);
+
+const differenciationElements = reactive<Element[]>([
+    {
+        title: t('index.differenciation_section.process.1.title'),
+        description: t('index.differenciation_section.process.1.description'),
+        icon: 'fa7-solid:user-check',
+        size: 'xl',
+        class: 'bg-yellow-500',
+        iconClass: 'size-24 bg-white',
+    },
+    {
+        title: t('index.differenciation_section.process.2.title'),
+        description: t('index.differenciation_section.process.2.description'),
+        icon: 'fa7-brands:accessible-icon',
+        size: 'xl',
+        class: 'bg-purple-500',
+        iconClass: 'size-24 bg-white',
+    },
+    {
+        title: t('index.differenciation_section.process.3.title'),
+        description: t('index.differenciation_section.process.3.description'),
+        icon: 'fa7-solid:arrow-trend-up',
+        size: 'xl',
+        class: 'bg-green-500',
+        iconClass: 'size-24 bg-white',
+    },
+    {
+        title: t('index.differenciation_section.process.4.title'),
+        description: t('index.differenciation_section.process.4.description'),
+        icon: 'fa7-brands:kakao-talk',
+        size: 'xl',
+        class: 'bg-lime-500',
+        iconClass: 'size-24 bg-white',
+    },
+    {
+        title: t('index.differenciation_section.process.5.title'),
+        description: t('index.differenciation_section.process.5.description'),
+        icon: 'material-symbols:language-french',
+        size: 'xl',
+        class: 'bg-blue-500',
+        iconClass: 'size-24 bg-white',
+    },
+]);
+
+const articlePublishedTime = computed(() => dayjs('01-01-2026').locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(new Date()).locale(locale.value).format());
 
 useSeoMeta(({
     title: t('seo.home.title'),
     description: t('seo.home.description'),
     ogTitle: t('seo.home.title'),
     ogDescription: t('seo.home.description'),
-    ogImage: '/images/project/portfolio-v2/desktop.png',
+    ogType: 'website',
+    ogLocale: locale.value,
+    ogUrl: 'https://aureldev.com',
+    ogSiteName: 'Aureldev',
+    articlePublishedTime: articlePublishedTime.value,
+    articleModifiedTime: articleModifiedTime.value,
+    ogImageWidth: '1920',
+    ogImageHeight: '1080',
+    ogImage: '/images/logo/AurelDev_logo_fond_violet_texte_blanc.png',
+    ogImageType: 'image/png',
+    ogImageAlt: t('seo.home.description'),
     twitterCard: 'summary_large_image',
 }));
 </script>
@@ -112,8 +199,7 @@ useSeoMeta(({
 <template>
     <UContainer class="max-w-none">
         <!-- Landing section -->
-        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1"
-            :fill="fillColor?.[0] ?? '--bg-3'">
+        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="'--bg-3'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
                     {{ t('index.user_title') }}
@@ -139,16 +225,12 @@ useSeoMeta(({
 
             <SendMessageModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
-
-            <!-- <NuxtLink to="/feed"
-                class="inline-flex items-center px-5 py-2.5 gap-2 rounded-lg border border-(--accent)/40 text-(--accent) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body">
-                <UIcon name="fa7-solid:arrow-right" class="text-sm" />
-                {{ t('index.landing_section.cta_feed') }}
-            </NuxtLink> -->
         </LandingSection>
 
         <!-- Clients section -->
-        <IndexSection id="client-section" :class="'bg-(--bg-3)'" :fill="fillColor?.[1] ?? '--card-experiment-bg'">
+        <!-- A ajouter : 
+         Prénom + métier + ville -> Contexte AVANT / APRES -->
+        <IndexSection id="client-section" :class="'bg-(--bg-3)'" :fill="'--card-experiment-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.client_section.tag') }}
@@ -168,7 +250,13 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names arrows dots
+            <ClientCarousel v-if="clientsCarouselItems.length !== 0" :client="clientsCarouselItems" />
+            <div v-else class="flex justify-center items-center w-full my-10">
+                <span class="text-base font-semibold lg:text-center text-(--text) mb-3 fs-body">
+                    {{ t('index.client_section.be_the_first') }}
+                </span>
+            </div>
+            <!-- <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names arrows dots
                 :autoplay="{ delay: 6000 }" :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
                     item: 'basis-full',
                     prev: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg-(--bg-3) text-(--text-2) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90',
@@ -179,11 +267,12 @@ useSeoMeta(({
                     <div class="flex flex-col items-start w-full my-auto">
                         <h3 class="fs-subtitle font-semibold mb-4">
                             {{ item.title }}
-                            <p class="fs-lead font-normal lg:text-center text-(--text) mb-3">
+                            <p v-if="item.description" class="fs-lead font-normal lg:text-center text-(--text) mb-3">
                                 {{ item.description }}
                             </p>
                         </h3>
 
+                        
                         <span class="fs-body font-normal lg:text-center text-(--text) mb-3">
                             {{ item.testimony }}
                         </span>
@@ -200,107 +289,11 @@ useSeoMeta(({
                 <span class="text-base font-semibold lg:text-center text-(--text) mb-3 fs-body">
                     {{ t('index.client_section.be_the_first') }}
                 </span>
-            </div>
+            </div> -->
         </IndexSection>
-
-        <!-- Realisations section -->
-        <!-- <IndexSection id="campain-section" :class="'bg-(--card-experiment-bg)'"
-            :fill="fillColor?.[2] ?? '--card-project-bg'">
-            <template #tag>
-                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
-                    {{ t('index.campain_section.tag') }}
-                </span>
-            </template>
-
-            <template #title>
-                <h2 id="campain-title"
-                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
-                    {{ t('index.campain_section.title') }}
-                </h2>
-            </template>
-
-            <template #description>
-                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
-                    {{ t('index.campain_section.description') }}
-                </p>
-            </template>
-
-            <CarouselWrapper :items="realisationsCarouselItems" class="w-full max-w-md mx-auto my-10" :ui="{
-                item: 'basis-[90%] transition-opacity [&:not(.is-snapped)]:opacity-10',
-                prev: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg-(--bg-3) text-(--text-2) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90',
-                next: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg(--bg-3) text-(--text) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90'
-            }" />
-        </IndexSection> -->
-
-        <!-- Section Problème -->
-        <!--
-            Aujourd'hui, beaucoup de sites web :
-                - sont lents
-                - ne sont pas bien référencés
-                - ne donnent pas confiance
-                - ne convertissent pas
-
-            Résultat : vous perdez des clients sans le savoir.
-        -->
-        <IndexSection>
-            <template #tag>
-                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
-                    {{ t('index.problem_section.tag') }}
-                </span>
-            </template>
-
-            <template #title>
-                <h2 id="campain-title"
-                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
-                    {{ t('index.problem_section.title') }}
-                </h2>
-            </template>
-
-            <template #description>
-                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
-                    {{ t('index.problem_section.description') }}
-                </p>
-            </template>
-
-            <ContentRenderer v-if="problemsData" :value="problemsData" />
-            <span>{{ problemsData }}</span>
-        </IndexSection>
-
-        <!-- Section Solution -->
-        <!-- 
-            "Un site pensé pour votre activité"
-
-            Je ne crée pas juste des sites.
-            Je crée des outils qui :
-                - donnent confiance à vos visiteurs
-                - sont rapides et agréables à utiliser
-                - sont visibles sur Google
-                - vous apportent des contacts
-        -->
 
         <!-- Plan section (Offres) -->
-        <!-- 
-            "Ce que je peux faire pour vous"
-
-            Création de site (title)
-            
-            Un site clair, professionnel et efficace
-            -> Idéal si vous partez de zéro ou souhaitez une refonte
-
-            Optimisation & SEO (title)
-
-            Amélioration de votre site existant
-            -> Plus rapide, mieux référencé, plus efficace
-
-            Accompagnement (title)
-
-            Support, maintenance et conseils
-            -> Pour un site fiable sur le long terme
-
-            Mettre un texte + lien : "Je propose également des formations numériques -> en savoir plus"
-        -->
-
-        <IndexSection id="services-section" :class="'bg-(--card-job-bg)'" :fill="fillColor?.[4] ?? '--card-about-bg'">
+        <IndexSection id="services-section" :class="'bg-(--card-job-bg)'" :fill="'--card-about-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.services_section.tag') }}
@@ -322,40 +315,9 @@ useSeoMeta(({
 
             <ServicesContainer :services="servicesContainerItems" />
         </IndexSection>
-            
-        <!-- <IndexSection id="services-section" :class="'bg-(--card-job-bg)'" :fill="fillColor?.[4] ?? '--card-about-bg'">
-            <template #tag>
-                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
-                    {{ t('index.plan_section.tag') }}
-                </span>
-            </template>
-
-            <template #title>
-                <h2 id="expertise-title"
-                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
-                    {{ t('index.plan_section.title') }}
-                </h2>
-            </template>
-
-            <template #description>
-                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
-                    {{ t('index.plan_section.description') }}
-                </p>
-            </template>
-        </IndexSection> -->
 
         <!-- Expertise section (Process) -->
-        <!--
-            "Comment ça se passe ?"
-
-            1. On échange sur votre besoin
-            2. Je vous propose une solution simple et claire
-            3. Je crée ou améliore votre site et vous tiens au courant sur son avancée
-            4. On teste et optimise ensemble
-            5. Le site est désormais à vous mais je vous accompagne si besoin
-        -->
-        <IndexSection id="expertise-section" :class="'bg-(--card-project-bg)'"
-            :fill="fillColor?.[3] ?? '--card-job-bg'">
+        <IndexSection id="expertise-section" :class="'bg-(--card-project-bg)'" :fill="'--card-job-bg'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.expertise_section.tag') }}
@@ -375,29 +337,35 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <ExpertiseContainer />
+            <ProcessContainer :elements="expertiseElements" />
         </IndexSection>
 
         <!-- Section différenciation (ou la fin de la section process) -->
-        <!--
-            "Pourquoi travailler avec moi ?"
+        <IndexSection id="differenciation-section" :class="'bg-(--card-job-bg)'" :fill="'--card-about-bg'">
+            <template #tag>
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
+                    {{ t('index.differenciation_section.tag') }}
+                </span>
+            </template>
 
-            - Approche centrée utilisateur
-            - Accessibilité (votre site est accessible à tous)
-            - Performance (site rapide)
-            - Explications simples, sans jargon
-        -->
+            <template #title>
+                <h2 id="differenciation-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
+                    {{ t('index.differenciation_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                    {{ t('index.differenciation_section.description') }}
+                </p>
+            </template>
+
+            <ProcessContainer :elements="differenciationElements" />
+        </IndexSection>
 
         <!-- Contact section (CTA) -->
-        <!--
-            "Prêt à améliorer votre présence en ligne ?"
-
-            Ne laissez pas votre site vous faire perdre des clients.
-
-            [Discuter de votre projet]
-            [Me contacter]
-        -->
-        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" :fill="fillColor?.[5] ?? '--bg-2'">
+        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" :fill="'--bg-2'">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.contact_section.tag') }}
@@ -418,6 +386,9 @@ useSeoMeta(({
             </template>
 
             <SendMessageModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
+                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+
+            <SendMessageModal :cta-label="t('index.landing_section.cta_contact_me')" :cta-icon="'fa7-solid:message'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </IndexSection>
     </UContainer>

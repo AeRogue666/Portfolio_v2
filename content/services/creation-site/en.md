@@ -7,19 +7,55 @@ previewUrl: /services/creation-site
 slug: creation-site
 feed_title: Website creation
 feed_summary: A clear, fast website designed to generate leads.
+tag: Website 
 highlighted: true
 ---
 
-## Websites built with a CMS
+## Un site qui travaille pour vous
 
-## Websites built using a modern framework
+Vous avez besoin d'un site, mais pas juste d'un site "joli".
 
-## Internal web applications
+Vous avez besoin d'un site qui :
 
-## Integration of HTML5, CSS3, jQuery, JavaScript, TypeScript
+- Inspire confiance
+- Donne envie de vous contacter
+- Transforme vos visiteurs en clients
 
-## Web design
+C'est exactement ce que je crée.
 
-## Search engine optimization (SEO)
+---
 
-## Data integration / Automation
+## Ce que vous obtenez
+
+- Un site web professionnel (vitrine ou refonte)
+- Un design clair et moderne
+- Une structure pensée pour convertir
+- Un site rapide et fluide
+- Une base SEO solide pour être visible
+- Une version mobile optimisée
+- Une formation pour être autonome
+
+---
+
+## Résultat
+
+Un site simple, effiace, qui vous apporte des contacts.
+
+---
+
+## Idéal pour
+
+- Indépendants
+- Artisans
+- Petites entreprises
+- Toute personne qui veut un site utilez (pas juste décoratif)
+
+---
+
+## Pourquoi c'est différent
+
+Contrairement à beaucoup de sites, le vôtre sera rapide, accessibles à tous.. et compréhensible pour vous.
+
+## Tarif
+
+A partir de "prix"

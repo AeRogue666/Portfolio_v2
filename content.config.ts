@@ -108,6 +108,9 @@ export default defineContentConfig({
         feed_summary: z.string().default(""),
         testimony: z.string().optional().default(""),
         customer_name: z.string().optional().default(""),
+        customer_job: z.string().optional().default(""),
+        customer_city: z.string().optional().default(""),
+        customer_enterprise_name: z.string().optional().default(""),
         links: z
           .object({
             website: z.string().optional(),
@@ -132,20 +135,8 @@ export default defineContentConfig({
         feed_title: z.string().default(""),
         feed_summary: z.string().default(""),
         features: z.array(z.string()).optional(),
+        tag: z.string().default(""),
         image: responsiveImageSchema.optional(),
-      }),
-    }),
-
-    // Landing page
-    problems: defineCollection({
-      type: "page",
-      "source": "index/problem_section/*.md",
-      schema: z.object({
-        locale: z.enum(["fr", "en"]),
-        tag: z.string().optional(),
-        title: z.string(),
-        description: z.string(),
-        highlighted: z.boolean().default(false),
       }),
     }),
   },

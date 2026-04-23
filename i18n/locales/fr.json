@@ -57,8 +57,8 @@
   },
   "seo": {
     "home": {
-      "title": "Portfolio d'Aureldev - Développer Full-stack orienté accessibilité",
-      "description": "Decouvrez un portfolio façon 'réseau social', accessible, évolutif et centré sur l'utilisateur"
+      "title": "Création de sites internet - Développement Web - Accessibilité",
+      "description": "Création de sites internet accessibles, évolutifs et centré sur l'utilisateur avec Wordpress, WooCommerce, Shopify, Nuxt ou Vue."
     },
     "feed": {
       "title": "Fil d'actualité - Portfolio d'Aureldev",
@@ -70,7 +70,7 @@
     }
   },
   "index": {
-    "user_title": "Aureldev",
+    "user_title": "Par Aureldev",
     "landing_section": {
       "title": "Un site web qui attire des clients, pas juste un site design.",
       "description": "Des sites rapides, accessibles à tous.. et que vous comprenez vraiment.",
@@ -78,7 +78,8 @@
       "title_rest": "pas juste un site design",
       "cta_project": "Discuter de votre projet",
       "cta_feed": "Découvrez le fil d'actualité",
-      "cta_audit": "Obtenir un audit gratuit"
+      "cta_audit": "Obtenir un audit gratuit",
+      "cta_contact_me": "Me contacter"
     },
     "client_section": {
       "tag": "Témoignages clients",
@@ -92,54 +93,73 @@
       "title": "Mes réalisations",
       "description": "Découvrez mon laboratoire et comment j'ai pu créer ces fabuleux projets"
     },
+    "problem_section": {
+      "tag": "",
+      "title": "Problèmes",
+      "description": ""
+    },
+    "solution_section": {
+      "tag": "",
+      "title": "Solution",
+      "description": ""
+    },
+    "services_section": {
+      "tag": "Services",
+      "title": "Mes prestations",
+      "description": "Choisissez l'offre adaptée à votre besoin. Je vous accompagne ensuite pour aller plus loin.",
+      "learn_more_button": "En savoir plus"
+    },
     "expertise_section": {
       "tag": "Déroulé d'un projet",
       "title": "Mon expertise",
-      "description": "Je vous accompagne de A à Z lors de la mise en place de votre projet, en procédant de la manière suivante",
+      "description": "Mais dis-moi, comment ça se passe ?",
       "process": {
         "1": {
           "title": "Etude de vos objectifs",
-          "description": "Nous étudions ensemble vos objectifs"
+          "description": "On échange sur votre besoin."
         },
         "2": {
           "title": "Proposition d'un Projet Digital sur mesure",
-          "description": "Projet digital répondant à vos besoins"
+          "description": "Je vous propose une solution simple et claire et nous validons ensemble le projet, le budget et une deadline acceptable."
         },
         "3": {
-          "title": "Validation budgétaire et deadline",
-          "description": "Nous validons ensemble un budget ainsi qu'une deadline raisonnable"
+          "title": "Let's work!",
+          "description": "Je crée ou améliore votre site et vous tiens au courant sur son avancée."
         },
         "4": {
-          "title": "Pas à pas",
-          "description": "Nous produisons le projet et vous tenons au courant sur son avancé de manière régulière"
+          "title": "Test In Real Life",
+          "description": "On teste en conditions réelles et on optimise ensemble."
         },
         "5": {
-          "title": "Crash Test",
-          "description": "Nous effectuons des crash tests du projet avec votre équipe en conditions réelles"
-        },
-        "6": {
           "title": "Suivis après vente",
-          "description": "Votre projet vous appartient désormais, mais nous assurons le support !"
+          "description": "Le site est désormais à vous mais je vous accompagne si besoin."
         }
       }
     },
-    "services_section": {
-      "tag": "Choisissez l'offre adaptée à votre besoin. Je vous accompagne ensuite pour aller plus loin.",
-      "title": "Mes prestations",
-      "description": "Ce que je propose",
-      "learn_more_button": "En savoir plus",
-      "plan": {
+    "differenciation_section": {
+      "tag": "Differenciation",
+      "title": "Pourquoi travailler avec moi ?",
+      "description": "Voici quelques bonnes raisons.",
+      "process": {
         "1": {
-          "title": "Web",
-          "description": "Avec un CMS ou fait maison, c'est vous qui choisissez"
+          "title": "Approche centrée utilisateur",
+          "description": "Du design, oui, mais toujours avec l'utilisateur en tête"
         },
         "2": {
-          "title": "Accessibilité & Performance",
-          "description": "Des sujets importants à aborder"
+          "title": "Accessibilité : votre site est accessible à tous",
+          "description": "A quoi bon réaliser un site si personne ne peux l'utiliser ?"
         },
         "3": {
-          "title": "Formations au Numérique",
-          "description": "Pour rester à la pointe"
+          "title": "Performance : site rapide et correctement référencé",
+          "description": "Si rapide que même Usain Bolt est à la traine !"
+        },
+        "4": {
+          "title": "Explications simples, sans jargon",
+          "description": "Toujours avec pédagogie, je vous explique avec un vocabulaire adapté car je le sais, vous n'êtes pas Ingénieur(e) en informatique."
+        },
+        "5": {
+          "title": "Tout est réalisé et hébergé localement. Vive la France !",
+          "description": "La souverenaité numérique a son importance elle aussi."
         }
       }
     },

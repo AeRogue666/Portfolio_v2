@@ -4,27 +4,31 @@
         <changefreq>weekly</changefreq>
     </url>
     <url>
+        <loc>https://www.aureldev.fr/</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
+        <loc>https://aureldev.fr/feed</loc>
+        <changefreq>weekly</changefreq>
+    </url>
+    <url>
         <loc>https://aureldev.fr/projects/</loc>
         <changefreq>weekly</changefreq>
     </url>
     <url>
-        <loc>https://aureldev.fr/projects/plateforme-gestion-contenu</loc>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://aureldev.fr/projects/front-ecommerce-headless</loc>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://aureldev.fr/updates/</loc>
-        <changefreq>weekly</changefreq>
-    </url>
-    <url>
-        <loc>https://aureldev.fr/updates/exploration-prisma-neon</loc>
+        <loc>https://aureldev.fr/experiments/</loc>
         <changefreq>weekly</changefreq>
     </url>
     <url>
         <loc>https://aureldev.fr/about</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://aureldev.fr/clients/</loc>
+        <changefreq>monthly</changefreq>
+    </url>
+    <url>
+        <loc>https://aureldev.fr/services/</loc>
         <changefreq>monthly</changefreq>
     </url>
     <url>
@@ -36,11 +40,19 @@
         <changefreq>yearly</changefreq>
     </url>
     <url>
-        <loc>https://aureldev.fr/</loc>
-        <changefreq>weekly</changefreq>
+        <loc>https://aureldev.fr/accessibility-report</loc>
+        <changefreq>yearly</changefreq>
     </url>
     <url>
         <loc>https://aureldev.fr/robots.txt</loc>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
+        <loc>https://aureldev.fr/legal-notices</loc>
+        <changefreq>yearly</changefreq>
+    </url>
+    <url>
+        <loc>https://aureldev.fr/terms</loc>
         <changefreq>yearly</changefreq>
     </url>
     <url>

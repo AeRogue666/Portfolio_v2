@@ -5,7 +5,7 @@ import IconButton from '../../ui/IconButton.vue';
 
 const { t } = useI18n(),
     colorMode = useColorMode(),
-    avatarSrc = ref('https://avatars.githubusercontent.com/u/38510448?v=4');
+    avatarSrc = ref('/images/logo/AurelDev_logo_fond_blanc_texte_violet.png');
 
 const itemsNavigation = computed<NavigationMenuItem[]>(() => [
     {
@@ -54,8 +54,8 @@ onMounted(() => {
         (mode) => {
             avatarSrc.value =
                 mode === 'dark'
-                    ? 'https://github.com/nuxt.png'
-                    : 'https://avatars.githubusercontent.com/u/38510448?v=4'
+                    ? '/images/logo/AurelDev_logo_fond_violet_texte_blanc.png'
+                    : '/images/logo/AurelDev_logo_fond_blanc_texte_violet.png'
         },
         { immediate: true }
     );

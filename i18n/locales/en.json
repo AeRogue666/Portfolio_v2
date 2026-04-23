@@ -57,8 +57,8 @@
   },
   "seo": {
     "home": {
-      "title": "Portfolio of Aureldev - Accessibility-first Full-stack Developer",
-      "description": "Discover an Accessible, Scalable, User-centered portfolio as a social feed"
+      "title": "Website creation - Web Development - Accessibility",
+      "description": "Creation of accessible, scalable, user-centered websites with Wordpress, WooCommerce, Shopify, Nuxt or Vue."
     },
     "feed": {
       "title": "Feed - Portfolio of Aureldev",
@@ -123,10 +123,20 @@
         }
       }
     },
+    "problem_section": {
+      "tag": "",
+      "title": "Problems",
+      "description": ""
+    },
+    "solution_section": {
+      "tag": "",
+      "title": "Solution",
+      "description": ""
+    },
     "services_section": {
-      "tag": "Choose the plan that best suits your needs. I'll then help you take it to the next level.",
+      "tag": "Services",
       "title": "My services",
-      "description": "What I propose",
+      "description": "Choose the plan that best suits your needs. I'll then help you take it to the next level.",
       "learn_more_button": "Learn more",
       "plan": {
         "1": {

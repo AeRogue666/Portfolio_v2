@@ -7,6 +7,7 @@ previewUrl: /services/optimisation-site
 slug: optimisation-site
 feed_title: Optimization
 feed_summary: Improve your website to attract more customers.
+tag: Optimization
 highlighted: false
 ---
 

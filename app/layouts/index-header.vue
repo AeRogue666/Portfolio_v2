@@ -15,8 +15,8 @@ useHead(() => ({
 
     <div class="min-h-screen">
         <div class="relative min-w-0">
-            <!-- FEED CONTAINER -->
-            <main id="main-content" tabindex="-1" aria-labelledby="feed-title"
+            <!-- INDEX CONTAINER -->
+            <main id="main-content" tabindex="-1"
                 class="w-full max-w-auto mx-auto fs-body">
                 <NuxtPage />
             </main>

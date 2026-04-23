@@ -69,7 +69,7 @@ onMounted(() => {
 });
 
 const src = computed(() => page.value?.image?.sources?.detail?.mobile || page.value?.image?.sources?.feed?.mobile || ''),
-    tabletSrc = computed(() => page.value?.image?.sources?.detail?.tablet || page.value?.image?.sources?.feed?.tablet  || src),
+    tabletSrc = computed(() => page.value?.image?.sources?.detail?.tablet || page.value?.image?.sources?.feed?.tablet || src),
     desktopSrc = computed(() => page.value?.image?.sources?.detail?.desktop || page.value?.image?.sources?.feed?.desktop || tabletSrc);
 
 const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
@@ -78,7 +78,7 @@ const created_atDate = computed(() => dayjs(page.value?.created_at).locale(local
 
 <template>
     <template v-if="page">
-        <ArticleLayout style="font-size: var(--step-0);">
+        <ArticleLayout class="fs-body">
             <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                 <template #separator>
                     <span class="mx-2 text-(--text-muted)">/</span>
@@ -94,11 +94,11 @@ const created_atDate = computed(() => dayjs(page.value?.created_at).locale(local
             </p>
 
             <h1 id="client-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ page.title }} 
-                <span class="fs-subtitle text-(--text-2) leading-snug">
-                    {{ page.description }} - {{ page.customer_name }}
-                </span>
+                {{ page.title }}
             </h1>
+            <span class="fs-subtitle text-(--text-2) leading-snug">
+                {{ t('client.subtitle') }} {{ page.customer_enterprise_name }}
+            </span>
 
             <NuxtImg :src="src" :alt="page.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
                 :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
