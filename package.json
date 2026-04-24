@@ -18,6 +18,8 @@
     "@nuxt/image": "^2.0.0",
     "@nuxt/ui": "^4.6.1",
     "@nuxtjs/i18n": "^10.2.4",
+    "@nuxtjs/robots": "^6.0.7",
+    "@nuxtjs/sitemap": "^8.0.13",
     "@pinia/nuxt": "^0.11.3",
     "@upstash/redis": "^1.37.0",
     "better-sqlite3": "^12.8.0",

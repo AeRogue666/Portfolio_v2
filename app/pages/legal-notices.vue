@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
+import dayjs from 'dayjs';
 
-const { t, locale } = useI18n();
+const { t, locale, locales } = useI18n(),
+    route = useRoute();
 
 const contentPath = computed(() => `/legal_notices/${locale.value}`);
 
@@ -12,7 +14,7 @@ const { data: page, error } = await useAsyncData(
             .path(contentPath.value) // .where('path', '=', `/legal_notices/${locale.value}`)
             .first()
 );
-if(error.value) {
+if (error.value) {
     throw createError({ status: 404, statusMessage: 'Legal notices data not found', cause: error.value, fatal: true })
 }
 
@@ -27,28 +29,65 @@ const breadcrumbItems: BreadcrumbItem[] = [
     },
 ];
 
-useSeoMeta(({
+const articlePublishedTime = computed(() => dayjs(page.value?.created_at).locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format());
+const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+
+useHeadSafe(() => ({
     title: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }),
-    description: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }),
-    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }),
-    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }),
-    ogImage: '/images/project/portfolio-v2/desktop.png',
-    twitterCard: 'summary_large_image',
+    meta: [
+        // Meta names
+        { name: 'description', content: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }) },
+        // Meta properties
+        { property: 'og:title', content: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }) },
+        { property: 'og:description', content: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }) },
+        { property: 'og:type', content: 'article' },
+        { property: 'article:author', content: 'Aureldev' },
+        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
+        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
+    ],
+    link: [
+        {
+            rel: 'canonical',
+            href: `https://aureldev.com${route.path}`
+        },
+        ...locales.value.map(l => ({
+            rel: 'alternate',
+            hreflang: l.code,
+            href: `https://aureldev.com${route.path}`
+        }))
+    ]
 }));
 </script>
 
 <template>
-    <article v-if="page">
-        <header>
-            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                <template #separator>
-                    <span class="mx-2 text-(--text-muted)">/</span>
-                </template>
-            </UBreadcrumb>
-        </header>
-        
-        <ContentRenderer :value="page" />
-    </article>
+    <template v-if="page">
+        <article class="prose prose-neutral w-full max-w-7xl mx-auto px-4 py-10 prose-headings:scroll-mt-24 fs-body"
+            aria-labelledby="article-title">
+            <header class="flex flex-col mb-10">
+                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)">/</span>
+                    </template>
+                </UBreadcrumb>
+
+                <div class="inline-flex gap-6">
+                    <p class="fs-small text-(--text-2)">
+                        {{ t('page.effective_as') }}
+                        <time :datetime="updated_atDate ?? created_atDate">
+                            {{ updated_atDate ?? created_atDate }}
+                        </time>
+                    </p>
+                </div>
+
+                <h1 id="article-title" class="fs-heading font-bold">{{ page.title }}</h1>
+                <p class="text-(--text-2) fs-subtitle leading-snug">{{ page.description }}</p>
+            </header>
+
+            <ContentRenderer :value="page" />
+        </article>
+    </template>
     <p v-else class="fs-body">
         {{ t('error.content_unavailable') }}
     </p>

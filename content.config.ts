@@ -22,8 +22,17 @@ export default defineContentConfig({
       type: "page",
       source: {
         include: "**/*.md",
-        exclude: ["projects/**", "experiments/**", "clients/**"],
+        exclude: ["projects/**", "experiments/**", "clients/**", "about/**", "services/**"],
       },
+      schema: z.object({
+        slug: z.string(),
+        locale: z.enum(["fr", "en"]),
+        previewUrl: z.string().optional(),
+        created_at: z.string(),
+        updated_at: z.string().optional(),
+        title: z.string().default(""),
+        description: z.string().default(""),
+      })
     }),
     projects: defineCollection({
       type: "page",
@@ -99,6 +108,8 @@ export default defineContentConfig({
       schema: z.object({
         slug: z.string(),
         locale: z.enum(["fr", "en"]),
+        kind: z.literal("client"),
+        pinned: z.boolean().optional().default(false),
         previewUrl: z.string().optional(),
         created_at: z.string(),
         updated_at: z.string().optional(),

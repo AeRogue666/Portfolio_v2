@@ -1,6 +1,8 @@
 ---
 title: Terms and Conditions of Use
-description: Effective as of 7 March 2026.
+description: Legal framework for the terms and conditions governing the provision of the aureldev.com website
+created_at: 2026-03-07
+updated_at: 2026-03-07
 ---
 
 The purpose of these general terms and conditions of use, hereinafter referred to as "**T\&Cs**", is to provide a legal framework for the terms and conditions governing the provision of the aureldev.com website, hereinafter referred to as the "**Site**", and the services offered by aureldev.com, and to define the terms and conditions of access and use of the services by the "**User**".

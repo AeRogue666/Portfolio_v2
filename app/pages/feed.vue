@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import dayjs from 'dayjs';
+
 const feedStore = useFeedStore(),
-    { t } = useI18n();
+    { t, locale, locales } = useI18n(),
+    route = useRoute();
 
 const {
     items,
@@ -32,12 +35,41 @@ watch(items, (newItems) => {
 
 const hasActiveFilters = computed(() => selectedTags.value.length > 0 || selectedKinds.value.length > 0);
 
-useSeoMeta(({
+const articlePublishedTime = computed(() => dayjs(items.value[0]?.created_at).locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(items.value[0]?.updated_at).locale(locale.value).format());
+
+useHeadSafe(() => ({
     title: t('seo.feed.title'),
-    description: t('seo.feed.description'),
-    ogTitle: t('seo.feed.title'),
-    ogDescription: t('seo.feed.description'),
-    ogImage: '/images/project/portfolio-v2/desktop.png',
+    meta: [
+        // Meta names
+        { name: 'description', content: t('seo.feed.description') },
+        // Meta properties
+        { property: 'og:title', content: t('seo.feed.title') },
+        { property: 'og:description', content: t('seo.feed.description') },
+        { property: 'og:type', content: 'website' },
+        { property: 'article:author', content: 'Aureldev' },
+        { property: 'article:published_time', content: articlePublishedTime.value },
+        { property: 'article:modified_time', content: articleModifiedTime.value },
+        { property: 'og:image', content: '/images/project/portfolio-v2/desktop.png' },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '1920' },
+        { property: 'og:image:height', content: '1080' },
+    ],
+    link: [
+        {
+            rel: 'canonical',
+            href: `https://aureldev.com${route.path}`
+        },
+        ...locales.value.map(l => ({
+            rel: 'alternate',
+            hreflang: l.code,
+            href: `https://aureldev.com${route.path}`
+        }))
+    ]
+}));
+
+useSeoMeta(({
+    ogImageAlt: t('seo.feed.description'),
     twitterCard: 'summary_large_image',
 }));
 </script>

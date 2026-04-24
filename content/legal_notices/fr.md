@@ -1,6 +1,8 @@
 ---
 title: Mentions légales
-description: En vigueur au 7 Mars 2026.
+description: Mentions légales obligatoires pour la confiance en l'économie numérique
+created_at: 2026-03-07
+updated_at: 2026-03-07
 ---
 
 Conformément aux dispositions de la loi n°2004-575 du 21 juin 2004 pour la Confiance en l'économie numérique, il est porté à la connaissance des utilisateurs et visiteurs, ci-après l'"**Utilisateur**", du site aureldev.com, ci-après le "**Site**", les présentes mentions légales.

@@ -22,6 +22,10 @@ if (error.value) {
     throw createError({ statusCode: 404, message: 'project data is not found', statusMessage: 'project data is not found', cause: error.value, fatal: true });
 }
 
+watchEffect(() => {
+    if (!project.value) return;
+});
+
 const breadcrumbItems: BreadcrumbItem[] = [
     {
         label: t('breadcrumb.feed'),
@@ -50,41 +54,49 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-useHead(() => ({
-    link: [
-        {
-            rel: 'canonical',
-            href: `https://aureldev.dev/projects/${route.params.slug}`
-        },
-        ...locales.value.map(l => ({
-            rel: 'alternate',
-            hreflang: l.code,
-            href: `https://aureldev.dev/${l.code}/${route.params.slug}`
-        }))
-    ]
-}));
-
-watchEffect(() => {
-    if (!project.value) return;
-
-    useSeoMeta({
-        title: project.value?.title,
-        description: project.value?.description,
-        ogTitle: project.value?.title,
-        ogDescription: project.value?.description,
-        ogType: 'article',
-        ogImage: project.value?.image?.sources.detail.desktop,
-        ogImageAlt: project.value?.image?.alt,
-        twitterCard: 'summary_large_image',
-    });
-});
+const articlePublishedTime = computed(() => dayjs(project.value?.created_at).locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format());
+const created_atDate = computed(() => dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 
 const src = computed(() => project.value?.image?.sources.detail?.mobile || project.value?.image?.sources.feed?.mobile || ''),
     tabletSrc = computed(() => project.value?.image?.sources.detail?.tablet || project.value?.image?.sources.feed?.tablet || src),
     desktopSrc = computed(() => project.value?.image?.sources.detail?.desktop || project.value?.image?.sources.feed?.desktop || tabletSrc);
 
-const created_atDate = computed(() => dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+useHeadSafe(() => ({
+    title: project.value?.title,
+    meta: [
+        // Meta names
+        { name: 'description', content: project.value?.description },
+        // Meta properties
+        { property: 'og:title', content: project.value?.title },
+        { property: 'og:description', content: project.value?.description },
+        { property: 'og:type', content: 'article' },
+        { property: 'article:author', content: 'Aureldev' },
+        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
+        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
+        { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '1920' },
+        { property: 'og:image:height', content: '1080' },
+    ],
+    link: [
+        {
+            rel: 'canonical',
+            href: `https://aureldev.com${route.path}`
+        },
+        ...locales.value.map(l => ({
+            rel: 'alternate',
+            hreflang: l.code,
+            href: `https://aureldev.com${route.path}`
+        }))
+    ]
+}));
+
+useSeoMeta(({
+    ogImageAlt: project.value?.image?.alt,
+    twitterCard: 'summary_large_image',
+}));
 
 /* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
                 alt: project.image?.alt,
@@ -111,10 +123,10 @@ const created_atDate = computed(() => dayjs(project.value?.created_at).locale(lo
                 </UBreadcrumb>
                 <p class="fs-small text-(--text-2)">
                     {{ t('project.published_on') }}
-                    <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
-                    <template v-if="project.updated_at">
+                    <time v-if="created_atDate" :datetime="project.created_at">{{ created_atDate }}</time>
+                    <template v-if="created_atDate">
                         {{ t('post.updated_on') }}
-                        <time v-if="project.updated_at" :datetime="project.updated_at">{{ updated_atDate }}</time>
+                        <time :datetime="project.updated_at">{{ updated_atDate }}</time>
                     </template>
                 </p>
 

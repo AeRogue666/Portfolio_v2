@@ -1,6 +1,8 @@
 ---
 title: Déclaration d'accessibilité
-description: Mis à jour le 23 Mars 2026.
+description: Résultat de l'évaluation effective de la conformité des services proposés au public en ligne à la norme de référence
+created_at: 2026-03-01
+updated_at: 2026-03-23
 ---
 
 Ce site est un portfolio personnel conçu pour présenter mes projets, mon parcours et mes compétences en développement web, avec une attention particulière portée à l'accessibilité numérique.

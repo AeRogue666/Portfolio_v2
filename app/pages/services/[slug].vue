@@ -38,37 +38,57 @@ const breadcrumbItems: BreadcrumbItem[] = [
     }
 ];
 
-useHead(() => ({
+const articlePublishedTime = computed(() => dayjs(page.value?.created_at).locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format());
+const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+
+const src = computed(() => page.value?.image?.sources.detail?.mobile || page.value?.image?.sources.feed?.mobile || ''),
+    tabletSrc = computed(() => page.value?.image?.sources.detail?.tablet || page.value?.image?.sources.feed?.tablet || src),
+    desktopSrc = computed(() => page.value?.image?.sources.detail?.desktop || page.value?.image?.sources.feed?.desktop || tabletSrc);
+
+useHeadSafe(() => ({
+    title: t('seo.page.title', { pagetitle: page.value?.title }),
+    meta: [
+        // Meta names
+        { name: 'description', content: t('seo.page.description', { pagetitle: page.value?.description }) },
+        // Meta properties
+        { property: 'og:title', content: t('seo.page.title', { pagetitle: page.value?.title }) },
+        { property: 'og:description', content: t('seo.page.description', { pagetitle: page.value?.description }) },
+        { property: 'og:type', content: 'article' },
+        { property: 'article:author', content: 'Aureldev' },
+        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
+        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
+        { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '1920' },
+        { property: 'og:image:height', content: '1080' },
+    ],
     link: [
         {
             rel: 'canonical',
-            href: `https://aureldev.dev/projects/${route.params.slug}`
+            href: `https://aureldev.com${route.path}`
         },
         ...locales.value.map(l => ({
             rel: 'alternate',
             hreflang: l.code,
-            href: `https://aureldev.dev/${l.code}/${route.params.slug}`
+            href: `https://aureldev.com${route.path}`
         }))
     ]
 }));
 
+useSeoMeta(({
+    ogImageAlt: page.value?.image?.alt,
+    twitterCard: 'summary_large_image',
+}));
+
 watchEffect(() => {
     if (!page.value) return;
-
-    useSeoMeta(({
-        title: t('seo.page.title', { pagetitle: page.value?.title }),
-        description: t('seo.page.description', { pagetitle: page.value?.description }),
-        ogTitle: t('seo.page.title', { pagetitle: page.value?.title }),
-        ogDescription: t('seo.page.description', { pagetitle: page.value?.description }),
-    }));
 });
 
 onMounted(() => {
     console.log(page.value)
 });
-
-const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 </script>
 
 <template>

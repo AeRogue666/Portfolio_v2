@@ -50,41 +50,53 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-useHead(() => ({
-    link: [
-        {
-            rel: 'canonical',
-            href: `https://aureldev.dev/updates/${route.params.slug}`
-        },
-        ...locales.value.map(l => ({
-            rel: 'alternate',
-            hreflang: l.code,
-            href: `https://aureldev.dev/${l.code}/${route.params.slug}`
-        }))
-    ]
-}));
-
-watchEffect(() => {
-    if (!experiment.value) return;
-
-    useSeoMeta({
-        title: experiment.value?.title,
-        description: experiment.value?.description,
-        ogTitle: experiment.value?.title,
-        ogDescription: experiment.value?.description,
-        ogType: 'article',
-        ogImage: experiment.value?.image?.sources.detail.desktop,
-        ogImageAlt: experiment.value?.image?.alt,
-        twitterCard: 'summary_large_image',
-    });
-});
+const articlePublishedTime = computed(() => dayjs(experiment.value?.created_at).locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(experiment.value?.updated_at).locale(locale.value).format());
+const created_atDate = computed(() => dayjs(experiment.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(experiment.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 
 const src = computed(() => experiment.value?.image?.sources.detail?.mobile || experiment.value?.image?.sources.feed?.mobile || ''),
     tabletSrc = computed(() => experiment.value?.image?.sources.detail?.tablet || experiment.value?.image?.sources.feed?.tablet || src),
     desktopSrc = computed(() => experiment.value?.image?.sources.detail?.desktop || experiment.value?.image?.sources.feed?.desktop || tabletSrc);
 
-const created_atDate = computed(() => dayjs(experiment.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(experiment.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+useHeadSafe(() => ({
+    title: experiment.value?.title,
+    meta: [
+        // Meta names
+        { name: 'description', content: experiment.value?.description },
+        // Meta properties
+        { property: 'og:title', content: experiment.value?.title },
+        { property: 'og:description', content: experiment.value?.description },
+        { property: 'og:type', content: 'article' },
+        { property: 'article:author', content: 'Aureldev' },
+        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
+        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
+        { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '1920' },
+        { property: 'og:image:height', content: '1080' },
+    ],
+    link: [
+        {
+            rel: 'canonical',
+            href: `https://aureldev.com${route.path}`
+        },
+        ...locales.value.map(l => ({
+            rel: 'alternate',
+            hreflang: l.code,
+            href: `https://aureldev.com${route.path}`
+        }))
+    ]
+}));
+
+useSeoMeta(({
+    ogImageAlt: experiment.value?.image?.alt,
+    twitterCard: 'summary_large_image',
+}));
+
+watchEffect(() => {
+    if (!experiment.value) return;
+});
 
 /* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
                 alt: experiment.image?.alt,
