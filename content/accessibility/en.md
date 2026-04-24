@@ -1,6 +1,8 @@
 ---
 title: Accessibility statement
 description: Updated 23 March 2026.
+created_at: 2026-03-01
+updated_at: 2026-03-23
 ---
 
 This website is a personal portfolio designed to showcase my projects, background, and skills, with a strong focus on digital accessibility.

@@ -321,6 +321,11 @@
     "accessibilite": "Accessibilité",
     "formations": "Formation au numérique"
   },
+  "page": {
+    "created_on": "Publié le",
+    "updated_on": "Mis à jour le",
+    "effective_as": "En vigueur au"
+  },
   "studio": {
     "tooltips": {
       "toggleStudio": "Afficher Studio"

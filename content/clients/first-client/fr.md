@@ -4,6 +4,8 @@ created_at: 2026-02-11
 description: +30% de demandes clients
 feed_title: +30%
 feed_summary: de demandes clients
+kind: client
+pinned: false
 customer_name: Customer name
 customer_job: Customer job
 customer_city: Customer city

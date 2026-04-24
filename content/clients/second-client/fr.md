@@ -3,7 +3,9 @@ title: Refonte du site
 created_at: 2026-02-11
 description: Site plus rapide et mieux référencé
 feed_title: Site plus rapide et mieux référencé
-feed_summary: 
+feed_summary: Site plus rapide et mieux référencé
+kind: client
+pinned: false
 customer_name: Customer name
 customer_job: Customer job
 customer_city: Customer city

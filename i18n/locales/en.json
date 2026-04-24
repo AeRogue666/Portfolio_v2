@@ -311,6 +311,11 @@
     "accessibilite": "Accessibility",
     "formations": "Digital training"
   },
+  "page": {
+    "created_on": "Published on",
+    "updated_on": "Updated on",
+    "effective_as": "Effective as"
+  },
   "studio": {
     "tooltips": {
       "toggleStudio": "Toggle Studio"

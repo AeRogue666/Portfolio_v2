@@ -1,6 +1,8 @@
 ---
 title: Legal Mentions
-description: Effective as of 7 March 2026.
+description: Legal mentions on confidence in the digital economy
+created_at: 2026-03-07
+updated_at: 2026-03-07
 ---
 
 In accordance with the provisions of Law No. 2004-575 of June 21, 2004 on confidence in the digital economy, users and visitors, hereinafter referred to as the "User," of the aureldev.com website, hereinafter referred to as the "Site," are hereby informed of the following legal notices.

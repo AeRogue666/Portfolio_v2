@@ -5,7 +5,7 @@ import IconButton from '../../ui/IconButton.vue';
 
 const { t } = useI18n(),
     colorMode = useColorMode(),
-    avatarSrc = ref('/images/logo/AurelDev_logo_fond_blanc_texte_violet.png');
+    avatarSrc = ref('/images/logo/logo_dark_theme.png');
 
 const itemsNavigation = computed<NavigationMenuItem[]>(() => [
     {
@@ -54,8 +54,8 @@ onMounted(() => {
         (mode) => {
             avatarSrc.value =
                 mode === 'dark'
-                    ? '/images/logo/AurelDev_logo_fond_violet_texte_blanc.png'
-                    : '/images/logo/AurelDev_logo_fond_blanc_texte_violet.png'
+                    ? '/images/logo/logo_dark_theme.png'
+                    : '/images/logo/logo_light_theme.png'
         },
         { immediate: true }
     );
@@ -75,8 +75,8 @@ onMounted(() => {
                         alt: t('sidebar-left.user_alternative_text')
                     }" :ui="{
                         root: 'items-center',
-                        name: 'text-(length:--step-2) text-2xl text-(--text-1) font-semibold tracking-tight leading-snug',
-                        description: 'text-(length:--step-0) leading-relaxed text-(--text-2)',
+                        name: 'fs-subtitle text-2xl text-(--text) font-semibold tracking-tight leading-snug',
+                        description: 'fs-body leading-relaxed text-(--text-2)',
                         avatar: 'size-40 bg-(--bg-2)'
                     }" />
                 <span class="fs-small text-(--text-muted) leading-relaxed max-w-[65ch]">

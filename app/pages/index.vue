@@ -9,8 +9,18 @@ import ServicesContainer from '../components/index/organisms/ServicesContainer.v
 import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
 import dayjs from 'dayjs';
 
-const { t, locale } = useI18n(),
-    colorMode = useColorMode();
+interface Element {
+    title: string,
+    description?: string,
+    icon: string,
+    size?: string | number | undefined,
+    class?: string,
+    iconClass?: string,
+}
+
+const { t, locale, locales } = useI18n(),
+    colorMode = useColorMode(),
+    route = useRoute();
 
 useSidebarFocusState();
 
@@ -70,15 +80,7 @@ const servicesContainerItems = computed(() => {
     return [...nonFilteredElements, ...filteredElements];
 });
 
-interface Element {
-    title: string,
-    description?: string,
-    icon: string,
-    size?: string | number | undefined,
-    class?: string,
-    iconClass?: string,
-}
-
+// Expertise section
 const expertiseElements = reactive<Element[]>([
     {
         title: t('index.expertise_section.process.1.title'),
@@ -120,16 +122,9 @@ const expertiseElements = reactive<Element[]>([
         class: 'bg-yellow-500',
         iconClass: 'size-24 bg-white',
     },
-    /* {
-        title: t('index.expertise_section.process.3.title'),
-        description: t('index.expertise_section.process.3.description'),
-        icon: 'fa7-solid:dollar-sign',
-        size: 'xl',
-        class: 'bg-green-500',
-        iconClass: 'size-24 bg-white',
-    }, */
 ]);
 
+// Differenciation section
 const differenciationElements = reactive<Element[]>([
     {
         title: t('index.differenciation_section.process.1.title'),
@@ -173,24 +168,61 @@ const differenciationElements = reactive<Element[]>([
     },
 ]);
 
+const fillColors = ref<string[] | undefined>(undefined),
+    bgColors = ref<string[] | undefined>(undefined);
+
+watch(() => colorMode.value,
+    (mode) => {
+        fillColors.value =
+            mode === 'dark'
+                ? ['--bg-3', '--card-experiment-bg', '--card-about-bg', '--card-job-bg', '--card-about-bg', '--bg-2']
+                : ['--card-client-bg', '--card-experiment-bg', '--card-project-bg', '--card-read-bg', '--card-about-bg', '--bg-2']
+        bgColors.value =
+            mode === 'dark'
+                ? ['bg-(--bg-3)', 'bg-(--card-job-bg)', 'bg-(--card-project-bg)', 'bg-(--card-job-bg)', 'bg-(--card-about-bg)']
+                : ['bg-(--card-client-bg)', 'bg-(--card-experiment-bg)', 'bg-(--card-project-bg)', 'bg-(--card-read-bg)', 'bg-(--card-about-bg)']
+    },
+    { immediate: true });
+
 const articlePublishedTime = computed(() => dayjs('01-01-2026').locale(locale.value).format()),
     articleModifiedTime = computed(() => dayjs(new Date()).locale(locale.value).format());
 
-useSeoMeta(({
+useHeadSafe(() => ({
     title: t('seo.home.title'),
-    description: t('seo.home.description'),
-    ogTitle: t('seo.home.title'),
-    ogDescription: t('seo.home.description'),
-    ogType: 'website',
-    ogLocale: locale.value,
-    ogUrl: 'https://aureldev.com',
-    ogSiteName: 'Aureldev',
-    articlePublishedTime: articlePublishedTime.value,
-    articleModifiedTime: articleModifiedTime.value,
-    ogImageWidth: '1920',
-    ogImageHeight: '1080',
-    ogImage: '/images/logo/AurelDev_logo_fond_violet_texte_blanc.png',
-    ogImageType: 'image/png',
+    meta: [
+        // Meta names
+        { name: 'description', content: t('seo.home.description') },
+        { name: 'application-name', content: 'Aureldev' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        // Meta properties
+        { property: 'og:title', content: t('seo.home.title') },
+        { property: 'og:description', content: t('seo.home.description') },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:locale', content: locale.value },
+        { property: 'og:url', content: 'https://aureldev.com' },
+        { property: 'og:site:name', content: 'Aureldev' },
+        { property: 'article:author', content: 'Aureldev' },
+        { property: 'article:published_time', content: articlePublishedTime.value },
+        { property: 'article:modified_time', content: articleModifiedTime.value },
+        { property: 'og:image', content: '/images/logo/AurelDev_logo_fond_violet_texte_blanc.png' },
+        { property: 'og:image:type', content: 'image/png' },
+        { property: 'og:image:width', content: '1920' },
+        { property: 'og:image:height', content: '1080' },
+    ],
+    link: [
+        {
+            rel: 'canonical',
+            href: `https://aureldev.com${route.path}`
+        },
+        ...locales.value.map(l => ({
+            rel: 'alternate',
+            hreflang: l.code,
+            href: `https://aureldev.com${route.path}`
+        }))
+    ]
+}));
+
+useSeoMeta(({
     ogImageAlt: t('seo.home.description'),
     twitterCard: 'summary_large_image',
 }));
@@ -199,7 +231,7 @@ useSeoMeta(({
 <template>
     <UContainer class="max-w-none">
         <!-- Landing section -->
-        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="'--bg-3'">
+        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="fillColors?.[0]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
                     {{ t('index.user_title') }}
@@ -230,7 +262,7 @@ useSeoMeta(({
         <!-- Clients section -->
         <!-- A ajouter : 
          Prénom + métier + ville -> Contexte AVANT / APRES -->
-        <IndexSection id="client-section" :class="'bg-(--bg-3)'" :fill="'--card-experiment-bg'">
+        <IndexSection id="client-section" :class="bgColors?.[0]" :fill="fillColors?.[1]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.client_section.tag') }}
@@ -256,44 +288,10 @@ useSeoMeta(({
                     {{ t('index.client_section.be_the_first') }}
                 </span>
             </div>
-            <!-- <UCarousel v-if="clientsCarouselItems.length !== 0" v-slot="{ item }" class-names arrows dots
-                :autoplay="{ delay: 6000 }" :items="clientsCarouselItems" class="w-full max-w-md my-10" :ui="{
-                    item: 'basis-full',
-                    prev: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg-(--bg-3) text-(--text-2) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90',
-                    next: 'bg-(--bg-2) active:bg-(--bg-2) disabled:bg(--bg-3) text-(--text) active:text-(--text-2) disactive:text(--text-muted) hover:bg(--bg-3)/90 focus-visible:bg(--bg-3)/90'
-                }">
-                <NuxtLink :to="item.link"
-                    class="flex flex-col items-center w-auto h-auto lg:h-92 p-3 lg:p-4 rounded-lg shrink-0 grow-0">
-                    <div class="flex flex-col items-start w-full my-auto">
-                        <h3 class="fs-subtitle font-semibold mb-4">
-                            {{ item.title }}
-                            <p v-if="item.description" class="fs-lead font-normal lg:text-center text-(--text) mb-3">
-                                {{ item.description }}
-                            </p>
-                        </h3>
-
-                        
-                        <span class="fs-body font-normal lg:text-center text-(--text) mb-3">
-                            {{ item.testimony }}
-                        </span>
-                    </div>
-
-                    <div class="flex flex-col lg:w-[50%] gap-4">
-                        <NuxtImg :src="item.image" :alt="item.alt" sizes="xs:40vw md:10vw lg:20rem"
-                            class="w-min rounded-xl overflow-hidden object-cover transition-transform duration-300 hover:scale-105"
-                            loading="lazy" :placeholder="true" />
-                    </div>
-                </NuxtLink>
-            </UCarousel>
-            <div v-else class="flex justify-center items-center w-full my-10">
-                <span class="text-base font-semibold lg:text-center text-(--text) mb-3 fs-body">
-                    {{ t('index.client_section.be_the_first') }}
-                </span>
-            </div> -->
         </IndexSection>
 
         <!-- Plan section (Offres) -->
-        <IndexSection id="services-section" :class="'bg-(--card-job-bg)'" :fill="'--card-about-bg'">
+        <IndexSection id="services-section" :class="bgColors?.[1]" :fill="fillColors?.[2]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.services_section.tag') }}
@@ -317,7 +315,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Expertise section (Process) -->
-        <IndexSection id="expertise-section" :class="'bg-(--card-project-bg)'" :fill="'--card-job-bg'">
+        <IndexSection id="expertise-section" :class="bgColors?.[2]" :fill="fillColors?.[3]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.expertise_section.tag') }}
@@ -341,7 +339,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Section différenciation (ou la fin de la section process) -->
-        <IndexSection id="differenciation-section" :class="'bg-(--card-job-bg)'" :fill="'--card-about-bg'">
+        <IndexSection id="differenciation-section" :class="bgColors?.[3]" :fill="fillColors?.[4]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.differenciation_section.tag') }}
@@ -365,7 +363,7 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Contact section (CTA) -->
-        <IndexSection id="contact-section" :class="'bg-(--card-about-bg)'" :fill="'--bg-2'">
+        <IndexSection id="contact-section" :class="bgColors?.[4]" :fill="fillColors?.[5]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.contact_section.tag') }}

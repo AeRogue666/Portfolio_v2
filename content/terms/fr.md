@@ -1,6 +1,8 @@
 ---
 title: Conditions Générales d'Utilisation
-description: En vigueur au 7 Mars 2026.
+description: Encadrement juridique des modalités de mise à disposition du site aureldev.com
+created_at: 2026-03-07
+updated_at: 2026-03-07
 ---
 
 Les présentes conditions générales d'utilisation ci-après "**CGU**" ont pour objet l'encadrement juridique des modalités de mise à disposition du site aureldev.com, ci-après le "**Site**", et des services par aureldev.com et de définir les conditions d'accès et d'utilisation des services par l'"**Utilisateur**".

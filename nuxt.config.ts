@@ -9,10 +9,12 @@ export default defineNuxtConfig({
   modules: [
     "@nuxt/content",
     "@nuxt/ui",
-    "@pinia/nuxt",
-    "@tailwindcss/vite",
-    "@nuxtjs/i18n",
     "@nuxt/image",
+    "@pinia/nuxt",
+    "@nuxtjs/i18n",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
+    "@tailwindcss/vite",
     "nuxt-studio",
   ],
   css: ["~/assets/styles/main.css"],
@@ -55,7 +57,7 @@ export default defineNuxtConfig({
     upstashRedisToken: "",
   },
   studio: {
-    route: '/_studio',
+    route: "/_studio",
     /* repository: {
       provider: 'github',
       owner: 'AeRogue666',
@@ -77,13 +79,23 @@ export default defineNuxtConfig({
       appLayout: "default",
     },
   },
+  site: {
+    url: "https://aureldev.com",
+    name: "Aureldev",
+  },
   build: {
     transpile: [],
   },
   vite: {
     logLevel: "warn",
     optimizeDeps: {
-      include: ["zod", "@vueuse/integrations/useFocusTrap", "dayjs", "dayjs/locale/fr", "dayjs/locale/en"],
+      include: [
+        "zod",
+        "@vueuse/integrations/useFocusTrap",
+        "dayjs",
+        "dayjs/locale/fr",
+        "dayjs/locale/en",
+      ],
     },
   },
   devtools: { enabled: false },
