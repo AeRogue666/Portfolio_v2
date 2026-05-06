@@ -1,4 +1,4 @@
-import type { ServiceResolved } from '@/types/service';
+import type { ServiceResolved } from "@/types/service";
 
 type ServiceSource = {
   title?: string;
@@ -13,13 +13,22 @@ type ServiceSource = {
   image?: any;
   tags?: string[];
   highlighted: boolean;
+  packages?: Array<{
+    title: string;
+    children: Array<{
+      title: string;
+      price: string;
+      ttc: boolean;
+      features: string[];
+    }>;
+  }>;
 };
 
 export function toServiceItem(source: ServiceSource): ServiceResolved {
   const effectiveDate = source.updated_at ?? source.created_at;
 
   return {
-    title: source.title ?? '',
+    title: source.title ?? "",
     description: source.description,
     feed_title: source.feed_title,
     feed_summary: source.feed_summary,
@@ -30,6 +39,7 @@ export function toServiceItem(source: ServiceSource): ServiceResolved {
     previewUrl: source.previewUrl,
     image: source.image,
     tags: source.tags,
-    highlighted: source.highlighted
+    highlighted: source.highlighted,
+    packages: source.packages,
   };
 }

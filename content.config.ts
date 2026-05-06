@@ -22,7 +22,13 @@ export default defineContentConfig({
       type: "page",
       source: {
         include: "**/*.md",
-        exclude: ["projects/**", "experiments/**", "clients/**", "about/**", "services/**"],
+        exclude: [
+          "projects/**",
+          "experiments/**",
+          "clients/**",
+          "about/**",
+          "services/**",
+        ],
       },
       schema: z.object({
         slug: z.string(),
@@ -32,7 +38,7 @@ export default defineContentConfig({
         updated_at: z.string().optional(),
         title: z.string().default(""),
         description: z.string().optional().default(""),
-      })
+      }),
     }),
     projects: defineCollection({
       type: "page",
@@ -147,6 +153,23 @@ export default defineContentConfig({
         feed_summary: z.string().default(""),
         features: z.array(z.string()).optional(),
         tag: z.string().default(""),
+        packages: z
+          .array(
+            z.object({
+              title: z.string().default(""),
+              children: z.array(
+                z
+                  .object({
+                    title: z.string().default(""),
+                    price: z.string().default(""),
+                    ttc: z.boolean().default(false),
+                    features: z.array(z.string()),
+                  })
+                  .optional(),
+              ),
+            }),
+          )
+          .optional(),
         image: responsiveImageSchema.optional(),
       }),
     }),

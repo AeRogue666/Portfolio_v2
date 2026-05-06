@@ -1,11 +1,14 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import type { ServiceResolved } from '~/app/types/service';
+import type { ServiceResolved } from '@/types/service';
 import dayjs from 'dayjs';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
+import PackagesContainer from '@/components/index/organisms/PackagesContainer.vue'
+import SendMessageModal from '@/components/layout/organisms/SendMessageModal.vue';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
+useSidebarFocusState();
 
 const asyncKey = computed(() => `services-${route.params.slug}-${locale.value}`);
 
@@ -85,10 +88,6 @@ useSeoMeta(({
 watchEffect(() => {
     if (!page.value) return;
 });
-
-onMounted(() => {
-    console.log(page.value)
-});
 </script>
 
 <template>
@@ -109,13 +108,34 @@ onMounted(() => {
             </p>
 
             <h1 id="client-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ page.title }} - 
+                {{ page.title }} -
                 <span class="fs-subtitle text-(--text-2) leading-snug">
                     {{ page.description }}
                 </span>
             </h1>
 
+            <div>
+                <p class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ t('plans.warning.title') }}</p>
+                <p class="fs-body text-(--text-2) leading-snug">{{ t('plans.warning.description') }}</p>
+            </div>
+
             <ContentRenderer :value="page" />
+
+            <ul>
+                <li v-for="(content, i) in page.packages" :key="i" class="flex flex-col mb-6 gap-6">
+                    <h3 class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ content.title }}</h3>
+                    <PackagesContainer :services="content.children" />
+                </li>
+            </ul>
+
+            <div class="flex flex-col md:flex-row justify-evenly">
+                <SendMessageModal :cta-label="t('index.landing_section.cta_project')"
+                    :cta-icon="'fa7-solid:comment-dots'"
+                    :cta-class="'w-min px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+
+                <SendMessageModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
+                    :cta-class="'w-min px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+            </div>
         </ArticleLayout>
     </template>
     <template v-else>

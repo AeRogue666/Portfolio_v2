@@ -57,4 +57,6 @@ Un site plus rapide, plus visible.. et qui convertit davantage.
 
 ## Tarif
 
-A partir de "prix"
+A partir de 250€ H.T*
+
+*Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
