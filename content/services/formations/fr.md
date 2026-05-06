@@ -50,4 +50,4 @@ Plus d'autonomie, plus de confiance.. moins de stress.
 
 ## Tarif
 
-A partir de prix/heure
+A partir de 50€/heure H.T

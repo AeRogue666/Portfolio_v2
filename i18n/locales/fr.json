@@ -329,7 +329,11 @@
   "plans": {
     "website": "Web",
     "accessibilite": "Accessibilité",
-    "formations": "Formation au numérique"
+    "formations": "Formation au numérique",
+    "warning": {
+      "title": "Important",
+      "description": "Les tarifs indiqués sur cette page sont d'ordre indicatifs et ne représente en aucun cas la réalité. Un devis sur la création, l'optimisation ou la maintenance d'un site internet s'étudie au cas par cas en fonction de vos besoins et demandes. Il vous ait possible de supprimer certaines fonctionnalités pour alléger le tarif ou au contraire, ajouter de nouvelles fonctions pour étoffer votre projet."
+    }
   },
   "page": {
     "created_on": "Publié le",

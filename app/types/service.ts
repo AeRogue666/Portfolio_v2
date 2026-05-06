@@ -19,6 +19,15 @@ export interface ServiceTranslation {
   description?: string;
   feed_title?: string;
   feed_summary?: string;
+  packages?: Array<{
+    title: string;
+    children: Array<{
+      title: string;
+      price: string;
+      ttc: boolean;
+      features: string[];
+    }>;
+  }>;
 }
 
 export interface ServiceResolved extends ServiceTranslation {

@@ -22,7 +22,6 @@ interface Element {
 const { t, locale, locales } = useI18n(),
     colorMode = useColorMode(),
     route = useRoute();
-
 useSidebarFocusState();
 
 // Clients sections
@@ -174,25 +173,25 @@ const questionElements = reactive<Element[]>([
         title: t('index.problem_section.problem.1.title'),
         icon: 'fa7-solid:eye',
         size: 'xl',
-        iconClass: 'size-8',
+        iconClass: 'size-16 md:size-8',
     },
     {
         title: t('index.problem_section.problem.2.title'),
         icon: 'fa7-solid:arrow-trend-up',
         size: 'xl',
-        iconClass: 'size-8',
+        iconClass: 'size-16 md:size-8',
     },
     {
         title: t('index.problem_section.problem.3.title'),
         icon: 'fa7-solid:gear',
         size: 'xl',
-        iconClass: 'size-8',
+        iconClass: 'size-16 md:size-8',
     },
     {
         title: t('index.problem_section.problem.4.title'),
         icon: 'fa7-solid:tachometer-fast',
         size: 'xl',
-        iconClass: 'size-8',
+        iconClass: 'size-16 md:size-8',
     },
 ]);
 
@@ -388,8 +387,6 @@ useSeoMeta(({
         </IndexSection>
 
         <!-- Clients section -->
-        <!-- A ajouter : 
-         Prénom + métier + ville -> Contexte AVANT / APRES -->
         <IndexSection id="client-section" :class="bgColors?.[4]" :fill="fillColors?.[5]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
