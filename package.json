@@ -22,7 +22,7 @@
     "@nuxtjs/sitemap": "^8.0.13",
     "@pinia/nuxt": "^0.11.3",
     "@upstash/redis": "^1.37.0",
-    "better-sqlite3": "^12.8.0",
+    "better-sqlite3": "^12.9.0",
     "dayjs": "^1.11.20",
     "focus-trap": "^8.0.1",
     "markdown-it": "^14.1.0",

@@ -6,6 +6,7 @@ import LandingSection from '../components/index/LandingSection.vue';
 import ClientCarousel from '../components/index/organisms/ClientCarousel.vue';
 import ProcessContainer from '../components/index/organisms/ProcessContainer.vue';
 import ServicesContainer from '../components/index/organisms/ServicesContainer.vue';
+import QuestionContainer from '../components/index/organisms/QuestionContainer.vue';
 import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
 import dayjs from 'dayjs';
 
@@ -24,24 +25,24 @@ const { t, locale, locales } = useI18n(),
 
 useSidebarFocusState();
 
-// Clients + Realisations sections
-const postsAsyncKey = computed(() => `index-projects-${locale.value}`);
-const { data: postsData, error: postsError } = await useAsyncData(
-    () => postsAsyncKey.value,
+// Clients sections
+const clientsAsyncKey = computed(() => `index-clients-${locale.value}`);
+const { data: clientsData, error: clientsError } = await useAsyncData(
+    () => clientsAsyncKey.value,
     () => $fetch<FeedResponse>('/api/posts', {
         query: { locale: locale.value }
     }),
     { watch: [locale] }
 );
-if (postsError.value) {
-    throw createError({ status: 404, statusMessage: 'Posts data not found', cause: postsError.value, fatal: true })
+if (clientsError.value) {
+    throw createError({ status: 404, statusMessage: 'Posts data not found', cause: clientsError.value, fatal: true })
 }
 
 const clientsCarouselItems = computed(() => {
-    if (!postsData.value?.items) return [];
+    if (!clientsData.value?.items) return [];
 
-    return postsData.value.items.filter(item =>
-        (item.kind === 'client' || item.kindFallback === 'client') && item.image
+    return clientsData.value.items.filter(item =>
+        (item.kind === "client" || item.kindFallback === "client") && item.image
     ).map(item => ({
         title: item.feed_title ?? item.title,
         description: item.feed_summary ?? item.description,
@@ -168,21 +169,48 @@ const differenciationElements = reactive<Element[]>([
     },
 ]);
 
-const fillColors = ref<string[] | undefined>(undefined),
-    bgColors = ref<string[] | undefined>(undefined);
+const questionElements = reactive<Element[]>([
+    {
+        title: t('index.problem_section.problem.1.title'),
+        icon: 'fa7-solid:eye',
+        size: 'xl',
+        iconClass: 'size-8',
+    },
+    {
+        title: t('index.problem_section.problem.2.title'),
+        icon: 'fa7-solid:arrow-trend-up',
+        size: 'xl',
+        iconClass: 'size-8',
+    },
+    {
+        title: t('index.problem_section.problem.3.title'),
+        icon: 'fa7-solid:gear',
+        size: 'xl',
+        iconClass: 'size-8',
+    },
+    {
+        title: t('index.problem_section.problem.4.title'),
+        icon: 'fa7-solid:tachometer-fast',
+        size: 'xl',
+        iconClass: 'size-8',
+    },
+]);
+
+const fillColors = ref<string[]>(['--bg-3', '--card-experiment-bg', '--card-about-bg', '--card-job-bg', '--card-about-bg', '--bg-2', '--bg-3']),
+    bgColors = ref<string[]>(['bg-(--bg-3)', 'bg-(--card-job-bg)', 'bg-(--card-project-bg)', 'bg-(--card-job-bg)', 'bg-(--card-about-bg)', 'bg-(--bg-2)']);
 
 watch(() => colorMode.value,
     (mode) => {
         fillColors.value =
             mode === 'dark'
-                ? ['--bg-3', '--card-experiment-bg', '--card-about-bg', '--card-job-bg', '--card-about-bg', '--bg-2']
+                ? ['--bg-3', '--card-experiment-bg', '--card-about-bg', '--card-job-bg', '--card-about-bg', '--bg-2', '--bg-3']
                 : ['--card-client-bg', '--card-experiment-bg', '--card-project-bg', '--card-read-bg', '--card-about-bg', '--bg-2']
         bgColors.value =
             mode === 'dark'
-                ? ['bg-(--bg-3)', 'bg-(--card-job-bg)', 'bg-(--card-project-bg)', 'bg-(--card-job-bg)', 'bg-(--card-about-bg)']
-                : ['bg-(--card-client-bg)', 'bg-(--card-experiment-bg)', 'bg-(--card-project-bg)', 'bg-(--card-read-bg)', 'bg-(--card-about-bg)']
+                ? ['bg-(--bg-3)', 'bg-(--card-job-bg)', 'bg-(--card-project-bg)', 'bg-(--card-job-bg)', 'bg-(--card-about-bg)', 'bg-(--bg-3)']
+                : ['bg-(--bg-2)', 'bg-(--card-experiment-bg)', 'bg-(--card-project-bg)', 'bg-(--card-read-bg)', 'bg-(--card-about-bg)', 'bg-(--bg-2)']
     },
-    { immediate: true });
+    { immediate: false });
 
 const articlePublishedTime = computed(() => dayjs('01-01-2026').locale(locale.value).format()),
     articleModifiedTime = computed(() => dayjs(new Date()).locale(locale.value).format());
@@ -259,35 +287,32 @@ useSeoMeta(({
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </LandingSection>
 
-        <!-- Clients section -->
-        <!-- A ajouter : 
-         Prénom + métier + ville -> Contexte AVANT / APRES -->
-        <IndexSection id="client-section" :class="bgColors?.[0]" :fill="fillColors?.[1]">
+        <!-- CTA section -->
+        <IndexSection id="problem-section" :class="bgColors?.[0]" :fill="fillColors?.[1]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
-                    {{ t('index.client_section.tag') }}
+                    {{ t('index.problem_section.tag') }}
                 </span>
             </template>
 
             <template #title>
-                <h2 id="clients-title"
+                <h2 id="problem-title"
                     class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
-                    {{ t('index.client_section.title') }}
+                    {{ t('index.problem_section.title') }}
                 </h2>
             </template>
 
             <template #description>
-                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
-                    {{ t('index.client_section.description') }}
+                <p class="font-normal lg:text-center w-full text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                    {{ t('index.problem_section.description') }}
                 </p>
             </template>
 
-            <ClientCarousel v-if="clientsCarouselItems.length !== 0" :client="clientsCarouselItems" />
-            <div v-else class="flex justify-center items-center w-full my-10">
-                <span class="text-base font-semibold lg:text-center text-(--text) mb-3 fs-body">
-                    {{ t('index.client_section.be_the_first') }}
-                </span>
-            </div>
+            <QuestionContainer :elements="questionElements" />
+
+            <p class="font-normal lg:text-center w-full text-(--text-2) my-6 sm:px-16 xl:px-48 fs-lead">
+                {{ t('index.problem_section.solution') }}
+            </p>
         </IndexSection>
 
         <!-- Plan section (Offres) -->
@@ -362,8 +387,39 @@ useSeoMeta(({
             <ProcessContainer :elements="differenciationElements" />
         </IndexSection>
 
+        <!-- Clients section -->
+        <!-- A ajouter : 
+         Prénom + métier + ville -> Contexte AVANT / APRES -->
+        <IndexSection id="client-section" :class="bgColors?.[4]" :fill="fillColors?.[5]">
+            <template #tag>
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
+                    {{ t('index.client_section.tag') }}
+                </span>
+            </template>
+
+            <template #title>
+                <h2 id="clients-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
+                    {{ t('index.client_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                    {{ t('index.client_section.description') }}
+                </p>
+            </template>
+
+            <ClientCarousel v-if="clientsCarouselItems.length !== 0" :client="clientsCarouselItems" />
+            <div v-else class="flex justify-center items-center w-full my-10">
+                <span class="text-base font-semibold lg:text-center text-(--text) mb-3 fs-body">
+                    {{ t('index.client_section.be_the_first') }}
+                </span>
+            </div>
+        </IndexSection>
+
         <!-- Contact section (CTA) -->
-        <IndexSection id="contact-section" :class="bgColors?.[4]" :fill="fillColors?.[5]">
+        <IndexSection id="contact-section" :class="bgColors?.[5]" :fill="fillColors?.[6]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
                     {{ t('index.contact_section.tag') }}

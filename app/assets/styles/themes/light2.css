@@ -4,20 +4,20 @@
 .light {
   /* Backgrounds */
   --bg-primary: #fdfbd4; /** Chai cream **/ /* #f5efe6; */
-  --bg-secondary: #f2f0cb;
-  --bg-elevated: #e8e6c3;
+  --bg-secondary: #e8dcbb;
+  --bg-elevated: #fffef8;
 
   /* Text */
-  --text-primary: #38240d; /** Deep dark Brown **/
-  --text-secondary: #422a14; /** Medium Brown **/
-  --text-muted: #4d3a29; /** Light Brown **/
+  --text-primary: #2a1f16; /** Deep dark Brown **/
+  --text-secondary: #3d2d21; /** Medium Brown **/
+  --text-muted: #7a5c42; /** Light Brown **/
 
   /* Accent */
-  --accent: #c05800; /** Chai orange **/
+  --accent: #c86f28; /** Spicy Orange **/
   --accent-hover: #b35e1f;
 
   /* States */
-  --focus: #803e00; /** Spicy Orange **/
+  --focus: #d47e30;
   --border-subtle: #d4c4a8; /* #cfc4b8; */
   --border-medium: #b8a58a;
 

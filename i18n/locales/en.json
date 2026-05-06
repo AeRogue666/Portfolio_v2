@@ -125,13 +125,23 @@
     },
     "problem_section": {
       "tag": "",
-      "title": "Problems",
-      "description": ""
-    },
-    "solution_section": {
-      "tag": "",
-      "title": "Solution",
-      "description": ""
+      "title": "A problem, a solution",
+      "description": "Vous voulez enfin mettre en place les bonnes actions pour vous rendre visible et vendre vos services ou produits ?",
+      "problem": {
+        "1": {
+          "title": "Avoir un site qui vous permet de gagner en visibilité, crédibilité et notoriété."
+        },
+        "2": {
+          "title": "Comprendre votre site que vous saurez enfin en mesure de prendre en main et de faire évoluer en même temps que votre business."
+        },
+        "3": {
+          "title": "Maîtriser un outil qui centralise vos activités et vous permet de trouver des clients 24h sur 24, 7 jours sur 7."
+        },
+        "4": {
+          "title": "Utiliser un site rapide et respectueux des bonnes pratiques en matière d'accessibilité (RGAA, WCAG), de sécurité et de gestion des données utilisateurs (RGPD)."
+        }
+      },
+      "solution": "Vous êtes au bon endroit."
     },
     "services_section": {
       "tag": "Services",

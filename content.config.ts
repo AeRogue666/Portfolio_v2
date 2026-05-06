@@ -31,7 +31,7 @@ export default defineContentConfig({
         created_at: z.string(),
         updated_at: z.string().optional(),
         title: z.string().default(""),
-        description: z.string().default(""),
+        description: z.string().optional().default(""),
       })
     }),
     projects: defineCollection({
@@ -118,7 +118,7 @@ export default defineContentConfig({
         feed_title: z.string().default(""),
         feed_summary: z.string().default(""),
         testimony: z.string().optional().default(""),
-        customer_name: z.string().optional().default(""),
+        customer_name: z.string().default(""),
         customer_job: z.string().optional().default(""),
         customer_city: z.string().optional().default(""),
         customer_enterprise_name: z.string().optional().default(""),
