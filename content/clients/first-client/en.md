@@ -9,8 +9,8 @@ pinned: false
 customer_name: Customer name
 customer_job: Customer job
 customer_city: Customer city
-customer_enterprise_name: Customer Name
-testimony: With the help of Aureldev, our website became much more speedier and our clients really appreciate the difference
+customer_enterprise_name: Customer Enterprise Name
+testimony: Notre site était lent et peu clair. Aujourd'hui, il nous apporte de vrais contacts.
 image:
   alt: Customer name logo
   sources:

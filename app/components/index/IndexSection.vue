@@ -10,7 +10,7 @@ defineProps<{
         class="flex flex-col justify-between items-center w-full h-auto mt-[6vh] py-30 gap-10 overflow-hidden rounded-2xl relative"
         :class="class">
         <!-- A - Grain : Texture subtile en arrière-plan -->
-        <div class="absolute inset-0 landing-grain pointer-events-none z-0" aria-hidden="true"></div>
+        <div class="absolute inset-0 pointer-events-none z-0" aria-hidden="true"></div>
 
         <div class="flex flex-col items-center w-full px-4 relative gap-4 z-10">
             <slot name="tag"></slot>
@@ -26,31 +26,4 @@ defineProps<{
                 :fill="`var(${fill})`" />
         </svg>
     </section>
-
-    <!-- <section class="flex flex-col justify-between items-center w-full h-auto mt-[6vh] py-6 gap-12" :class="class">
-        <slot name="header"></slot>
-        <div class="flex flex-col items-center w-full">
-            <slot name="tag"></slot>
-
-            <slot name="title"></slot>
-            
-            <slot name="description"></slot>
-            
-            <slot></slot>
-        </div>
-    </section> -->
 </template>
-
-<style lang="css" scoped>
-.landing-grain {
-    background-image: url("data:image/svg+xml,%3Csvg, viewBow='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/£3E£3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
-    background-size: 256px 256px;
-}
-
-.landing-halo {
-    transform: translateX(-50%);
-    background: radial-gradient(ellipse at center,
-            color-mix(in srgb, var(--accent) 20%, transparent) 0%,
-            transparent 68%);
-}
-</style>

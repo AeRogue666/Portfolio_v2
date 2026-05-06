@@ -1,3 +1,4 @@
+import type { FeedKind } from "./feed";
 import type { Locale } from "./i18n";
 import type { ResponsiveImage } from "./media";
 
@@ -7,6 +8,8 @@ interface ClientLinks {
 
 export interface Client {
   id: string;
+  kind: FeedKind;
+  pinned: boolean;
   slug: string;
   date: string;
   customer_name: string;
@@ -24,11 +27,15 @@ export interface Client {
 export interface ClientTranslation {
   title: string;
   description: string;
+  feed_title: string;
+  feed_summary: string;
   testimony: string;
 }
 
 export interface ClientResolved extends ClientTranslation {
   id: string;
+  kind: FeedKind;
+  pinned: boolean;
   slug: string;
   date: string;
   customer_name: string;
