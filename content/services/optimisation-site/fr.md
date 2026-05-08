@@ -6,6 +6,15 @@ feed_title: Optimisation & SEO
 feed_summary: Amélioration de votre site existant
             -> Plus rapide, mieux référencé, plus efficace
 locale: fr
+packages:
+  - title: Forfaits uniques d'optimisation de site
+    children:
+      - title: Site vitrine de petite taille
+        price: 250€
+      - title: Site vitrine complet
+        price: 500€
+      - title: Site E-commerce complet
+        price: 800€
 previewUrl: /services/optimisation-site
 slug: optimisation-site
 tag: Optimisation
@@ -57,6 +66,4 @@ Un site plus rapide, plus visible.. et qui convertit davantage.
 
 ## Tarif
 
-A partir de 250€ H.T*
-
-*Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
+\*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)

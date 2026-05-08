@@ -2,10 +2,18 @@
 title: Site web qui génère des clients
 created_at: 2026-02-11
 description: Un site clair, rapide et conçu pour transformer vos visiteurs en clients.
+feed_summary: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro ou souhaitez une refonte
 feed_title: Création de site
-feed_summary: Un site clair, professionnel et efficace
-            -> Idéal si vous partez de zéro ou souhaitez une refonte
 locale: fr
+packages:
+  - title: Forfaits uniques de création de site
+    children:
+      - title: Site vitrine de petite taille
+        price: 500€
+      - title: Site vitrine complet
+        price: 1000€
+      - title: Site E-commerce complet
+        price: 1600€
 previewUrl: /services/creation-site
 slug: creation-site
 tag: Website
@@ -92,18 +100,9 @@ Et vous avez payé pour !
 
 ---
 
-## Tarif
-
-- Site vitrine de petite taille (Mini-site Wordpress) : A partir de 500€ H.T*
-- Site vitrine complet : A partir de 1000€ H.T*
-- Site e-commerce complet : A partir de 1600€ H.T*
-
----
-
 ## Technologies
 
-Ici, nous utilisons WordPress (et WooCommerce - extension de WordPress pour le e-commerce), le leader mondial du CMS (Gestionnaire de contenus).
-Mais si vous savez, celui qui permet de faire des sites esthétiques et rapides, utilisés par :
+Ici, nous utilisons WordPress (et WooCommerce - extension de WordPress pour le e-commerce), le leader mondial du CMS (Gestionnaire de contenus).--- Unknown node: hardBreak ---Mais si vous savez, celui qui permet de faire des sites esthétiques et rapides, utilisés par :
 
 - Bouygues
 - Dassault Aviation
@@ -111,6 +110,7 @@ Mais si vous savez, celui qui permet de faire des sites esthétiques et rapides,
 - Club Med Corporate
 - Sony Music
 - M6
+
 Et bien d'autres !
 
 Mais si vous souhaitez un site internet conçu avec autre chose qu'un CMS, nous pouvons réaliser votre projet avec Nuxt/Vue et Vuetify, les frameworks qui font fonctionner :
@@ -124,13 +124,11 @@ Mais si vous souhaitez un site internet conçu avec autre chose qu'un CMS, nous 
 - Hostinger
 - UpWork
 - Malt
+
 Et bien d'autres !
 
 ---
 
-## Autre demande
+## Tarif
 
-Vous souhaitez créer votre site par vous-même mais ne savez pas par où commencer ?
-N'hésitez pas à nous contacter, nous serons ravis d'en discuter avec vous !
-
-*Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
+\*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)

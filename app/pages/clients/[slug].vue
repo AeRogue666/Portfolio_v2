@@ -93,34 +93,57 @@ const created_atDate = computed(() => dayjs(page.value?.created_at).locale(local
                 </template>
             </p>
 
-            <h1 id="client-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+            <h1 id="client-title" class="flex flex-col fs-heading font-semibold tracking-tight leading-snug mt-2">
                 {{ page.title }}
+                <span class="fs-subtitle font-normal text-(--text-2) leading-snug">
+                    {{ page.description }}
+                </span>
             </h1>
-            <span class="fs-subtitle text-(--text-2) leading-snug">
-                {{ t('client.subtitle') }} {{ page.customer_enterprise_name }}
-            </span>
 
             <NuxtImg :src="src" :alt="page.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
                 :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
                 class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
                 placeholder="blur" />
 
+            <div class="flex flex-col">
+                <h2 class="font-semibold leading-snug tracking-tight lg:font-extrabold lg:leading-none mb-4 fs-title">
+                    {{ t('client.enterprise_name') }}
+                </h2>
+                <span class="fs-subtitle text-(--text-2) leading-snug">
+                    {{ page.customer_enterprise_name }}
+                </span>
+            </div>
+
             <ContentRenderer :value="page" />
 
-            <div class="flex flex-col">
-                <h2 id="testimony-title"
-                    class="font-semibold leading-snug tracking-tight lg:font-extrabold lg:leading-none mb-4 fs-title">
-                    {{ t('client.testimony') }}
-                </h2>
-                <blockquote>
-                    <p class="fs-body text-(--text-2) leading-snug">
-                        "{{ page.testimony }}"
-                    </p>
-                </blockquote>
-                <p class="fs-small text-(--text-2) leading-snug">
-                    <cite>{{ page.customer_name }}</cite>
-                </p>
-            </div>
+            <h2 id="testimony-title"
+                class="font-semibold leading-snug tracking-tight lg:font-extrabold lg:leading-none mb-4 fs-title">
+                {{ t('client.testimony') }}
+            </h2>
+
+            <UPageCard class="flex flex-col items-baseline w-auto h-auto p-3 bg-(--bg-2) rounded-lg shrink-0 grow-0"
+                :ui="{
+                    description: 'font-semibold text-(--text) mb-3 fs-lead'
+                }">
+                <template #description>
+                    <p class="line-clamp-3 md:line-clamp-5">“{{ page.testimony }}”</p>
+                </template>
+                <template #footer>
+                    <UUser :avatar="page.image" :name="page.customer_name" size="xl" orientation="horizontal"
+                        :key="`client-avatar-${page.customer_name}`" :ui="{
+                            root: 'items-center',
+                            name: 'fs-small text-2xl text-(--text) font-semibold tracking-tight leading-snug',
+                            description: 'flex flex-col fs-small leading-relaxed text-(--text-2)',
+                            avatar: 'size-16 bg-(--bg)'
+                        }">
+                        <template #description>
+                            <span>{{ page.customer_job }} {{ t('client.employed_at') }}
+                                {{ page.customer_enterprise_name }}
+                            </span>
+                        </template>
+                    </UUser>
+                </template>
+            </UPageCard>
         </ArticleLayout>
     </template>
     <template v-else>
