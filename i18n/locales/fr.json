@@ -117,12 +117,16 @@
       "tag": "Services",
       "title": "Mes prestations",
       "description": "Choisissez l'offre adaptée à votre besoin. Je vous accompagne ensuite pour aller plus loin.",
-      "learn_more_button": "En savoir plus"
+      "learn_more_button": "En savoir plus",
+      "want_more": {
+        "question": "Vous souhaitez créer votre site par vous-même mais ne savez pas par où commencer ?",
+        "answer": "N'hésitez pas à le contacter, je serais ravis d'en discuter avec vous !"
+      }
     },
     "expertise_section": {
       "tag": "Déroulé d'un projet",
       "title": "Mon expertise",
-      "description": "Mais dis-moi, comment ça se passe ?",
+      "description": "Mais dites moi, comment ça se passe ?",
       "process": {
         "1": {
           "title": "Etude de vos objectifs",
@@ -168,8 +172,8 @@
           "description": "Toujours avec pédagogie, je vous explique avec un vocabulaire adapté car je le sais, vous n'êtes pas Ingénieur(e) en informatique."
         },
         "5": {
-          "title": "Tout est réalisé et hébergé localement. Vive la France !",
-          "description": "La souverenaité numérique a son importance elle aussi."
+          "title": "Tout est réalisé et hébergé localement",
+          "description": "La souveraineté numérique a son importance elle aussi."
         }
       }
     },
@@ -313,7 +317,9 @@
     }
   },
   "client": {
-    "testimony": "Témoignage"
+    "enterprise_name": "Client",
+    "testimony": "Témoignage",
+    "employed_at": "chez"
   },
   "sendmessagemodal": {
     "types": {
@@ -339,10 +345,5 @@
     "created_on": "Publié le",
     "updated_on": "Mis à jour le",
     "effective_as": "En vigueur au"
-  },
-  "studio": {
-    "tooltips": {
-      "toggleStudio": "Afficher Studio"
-    }
   }
 }

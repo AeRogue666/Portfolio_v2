@@ -8,6 +8,15 @@ slug: creation-site
 feed_title: Website creation
 feed_summary: Un site clair, professionnel et efficace
             -> Idéal si vous partez de zéro ou souhaitez une refonte
+packages:
+  - title: Forfaits uniques de création de site
+    children:
+      - title: Site vitrine de petite taille
+        price: 500€
+      - title: Site vitrine complet
+        price: 1000€
+      - title: Site E-commerce complet
+        price: 1600€
 tag: Website 
 highlighted: true
 ---
@@ -94,9 +103,7 @@ Et vous avez payé pour !
 
 ## Tarif
 
-- Site vitrine de petite taille (Mini-site Wordpress) : A partir de 500€ H.T*
-- Site vitrine complet : A partir de 1000€ H.T*
-- Site e-commerce complet : A partir de 1600€ H.T*
+\*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
 
 ---
 
@@ -132,5 +139,3 @@ Et bien d'autres !
 
 Vous souhaitez créer votre site par vous-même mais ne savez pas par où commencer ?
 N'hésitez pas à nous contacter, nous serons ravis d'en discuter avec vous !
-
-*Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)

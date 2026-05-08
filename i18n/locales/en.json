@@ -78,7 +78,8 @@
       "title_rest": "not just a well-designed site",
       "cta_project": "Discuss your project",
       "cta_feed": "Discover the feed",
-      "cta_audit": "Get a Free audit"
+      "cta_audit": "Get a Free audit",
+      "cta_contact_me": "Contact me"
     },
     "client_section": {
       "tag": "They trust me",
@@ -92,74 +93,87 @@
       "title": "My achievements",
       "description": "Discover my laboratory and how I was able to create these fabulous projects."
     },
-    "expertise_section": {
-      "tag": "Project timeline",
-      "title": "My expertise",
-      "description": "I will support you from start to finish in setting up your project, proceeding as follows",
-      "process": {
-        "1": {
-          "title": "Reviewing your goals",
-          "description": "We'll work together to review your goals"
-        },
-        "2": {
-          "title": "Proposing a Custom Digital Project",
-          "description": "A digital project tailored to your needs"
-        },
-        "3": {
-          "title": "Budget and deadline approval",
-          "description": "We work together to apprtove a budget and a reasonable deadline"
-        },
-        "4": {
-          "title": "Step-by-Step",
-          "description": "We develop the project and keep you regularly updated on its progress"
-        },
-        "5": {
-          "title": "Crash Test",
-          "description": "We conduct crash tests on the project with your team under real-world conditions"
-        },
-        "6": {
-          "title": "Post-Sales Support",
-          "description": "Your project is now yours, but we provide support"
-        }
-      }
-    },
     "problem_section": {
       "tag": "",
       "title": "A problem, a solution",
-      "description": "Vous voulez enfin mettre en place les bonnes actions pour vous rendre visible et vendre vos services ou produits ?",
+      "description": "Are you ready to finally take the right steps to boost your visibility and sell your services or products?",
       "problem": {
         "1": {
-          "title": "Avoir un site qui vous permet de gagner en visibilité, crédibilité et notoriété."
+          "title": "HAve a website that helps you gain visibility, credibility, and recognition."
         },
         "2": {
-          "title": "Comprendre votre site que vous saurez enfin en mesure de prendre en main et de faire évoluer en même temps que votre business."
+          "title": "Once you understand your website, you'll finally be able to take control of it and grow it alongside your business."
         },
         "3": {
-          "title": "Maîtriser un outil qui centralise vos activités et vous permet de trouver des clients 24h sur 24, 7 jours sur 7."
+          "title": "Master a tool that centralizes your operations and helps you find customers 24/7."
         },
         "4": {
-          "title": "Utiliser un site rapide et respectueux des bonnes pratiques en matière d'accessibilité (RGAA, WCAG), de sécurité et de gestion des données utilisateurs (RGPD)."
+          "title": "Use a fast website that adheres to best practices in accessibility (WCAG), security, and user data management (GDPR)."
         }
       },
-      "solution": "Vous êtes au bon endroit."
+      "solution": "You've come to the right place."
     },
     "services_section": {
       "tag": "Services",
       "title": "My services",
       "description": "Choose the plan that best suits your needs. I'll then help you take it to the next level.",
       "learn_more_button": "Learn more",
-      "plan": {
+      "want_more": {
+        "question": "Would you like to build your own website but don't know where to start?",
+        "answer": "Feel free to contact me - I'd be happy to discuss it with you!"
+      }
+    },
+    "expertise_section": {
+      "tag": "Project timeline",
+      "title": "My expertise",
+      "description": "But tell me, how is it going?",
+      "process": {
         "1": {
-          "title": "Web",
-          "description": "Whether you choose a CMS or a custom-built solution, the choise is yours"
+          "title": "Review of your goals",
+          "description": "We'll dicuss your needs."
         },
         "2": {
-          "title": "Accessibility",
-          "description": "Important topics to discuss"
+          "title": "Proposal for a Custom Digital Project",
+          "description": "I'll propose a simple and clear solution, and together we'll finalize the project, budget, and an acceptable deadline."
         },
         "3": {
-          "title": "Digital training",
-          "description": "To stay up to date"
+          "title": "Let's work!",
+          "description": "I create or improve your website and keep you updated on its progress."
+        },
+        "4": {
+          "title": "Real-World Testing",
+          "description": "We test under real-world conditions and optimize it together."
+        },
+        "5": {
+          "title": "Post-Launch Support",
+          "description": "The website is now yours, but I'm here to assist you if needed."
+        }
+      }
+    },
+    "differenciation_section": {
+      "tag": "Differentiation",
+      "title": "Why work with me?",
+      "description": "Here are a few good reasons.",
+      "process": {
+        "1": {
+          "title": "User-centered approach.",
+          "description": "Design, yes, but always with the user in mind."
+        },
+        "2": {
+          "title": "Accessibility: Your site is accessible to everyone",
+          "description": "What's the point of building a site if no one can use it?"
+        },
+        "3": {
+          "title": "Performance: a fast and properly optimized site",
+          "description": "So fast that even Usain Bolt is left in the dust!"
+        },
+        "4": {
+          "title": "Simple explanations, no jargon.",
+          "description": "Always in an educational manner, I explain things using appropriate vocabulary because I know you're not a computer engineer."
+        },
+        "5": {
+          "title": "Everything is built and hosted locally",
+          "description": "Digital sovereignty matters too."
         }
       }
     },
@@ -303,7 +317,9 @@
     }
   },
   "client": {
-    "testimony": "Testimony"
+    "enterprise_name": "Client",
+    "testimony": "Testimony",
+    "employed_at": "at"
   },
   "sendmessagemodal": {
     "types": {
@@ -322,17 +338,12 @@
     "formations": "Digital training",
     "warning": {
       "title": "Important",
-      "description": "Les tarifs indiqués sur cette page sont d'ordre indicatifs et ne représente en aucun cas la réalité. Un devis sur la création, l'optimisation ou la maintenance d'un site internet s'étudie au cas par cas en fonction de vos besoins et demandes. Il vous ait possible de supprimer certaines fonctionnalités pour alléger le tarif ou au contraire, ajouter de nouvelles fonctions pour étoffer votre projet."
+      "description": "The prices listed on this page are for reference only and do not reflect actual costs. A quote for website creation, optimization, or maintenance is determined on a case-by-case basis depending on your needs and requirements. You can choose to remove certain features to reduce the cost or, conversely, add new features to enhance your project."
     }
   },
   "page": {
     "created_on": "Published on",
     "updated_on": "Updated on",
     "effective_as": "Effective as"
-  },
-  "studio": {
-    "tooltips": {
-      "toggleStudio": "Toggle Studio"
-    }
   }
 }

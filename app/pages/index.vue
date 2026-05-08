@@ -336,6 +336,13 @@ useSeoMeta(({
             </template>
 
             <ServicesContainer :services="servicesContainerItems" />
+
+            <p class="flex flex-col font-normal lg:text-center w-full text-(--text-2) my-6 sm:px-16 xl:px-48 fs-lead">
+                <span>{{ t('index.services_section.want_more.question') }}</span>
+                <span>{{ t('index.services_section.want_more.answer') }}</span>
+            </p>
+            <SendMessageModal :cta-label="t('index.landing_section.cta_contact_me')" :cta-icon="'fa7-solid:message'"
+                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </IndexSection>
 
         <!-- Expertise section (Process) -->

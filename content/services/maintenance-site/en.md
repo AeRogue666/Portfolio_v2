@@ -7,6 +7,44 @@ previewUrl: /services/accompagnement
 slug: accompagnement
 feed_title: Support
 feed_summary: A reliable website with ongoing support.
+packages:
+  - title: Forfaits mensuels de maintenance préventive
+    children:
+      - title: Site One-Page
+        price: 30€/mois
+        features:
+          - Mises à jours du site
+          - Plugins sécurisés
+          - Sauvegardes automatiques
+          - Monitoring 24/7
+          - Suivi des performances de base
+          - Rapport mensuel simplifié
+      - title: Site Vitrine
+        price: 50€/mois
+        features:
+          - Mises à jours avec vérification après déploiement
+          - Sauvegardes automatiques externalisées
+          - Monitoring 24/7 + sécurité renforcée
+          - Optimisation des performances
+          - Rapport technique mensuel détaillé
+      - title: Site E-commerce
+        price: 70€/mois
+        features:
+          - Mises à jours testées
+          - Sauvegardes automatiques externalisées quotidiennes (priorisation des données critiques)
+          - Monitoring avancé
+          - Optimisation des performances
+          - Rapport technique mpensuel détaillé
+  - title: Forfaits horaires d'interventions ponctuelles
+    children:
+      - title: Maintenance heure
+        price: 50€/heure
+        features:
+          - Idéal pour corriger un bug ou faire évoluer votre site rapidement
+          - Devis clair et validé en amont
+          - Intervention rapide en fonction de l'urgence
+          - Facturation transparente (temps réel ou forfaitaire)
+          - Rapport détaillé après chaque action
 tag: Support
 highlighted: false
 ---
