@@ -418,7 +418,7 @@ useSeoMeta(({
         </section>
 
         <!-- Conclusion -->
-        <section class="mb-12 p-6 bg-(--bg-secondary) rounded-lg border-1-4 border-green-500"
+        <section class="mb-12 p-6 bg-(--bg-2) rounded-lg border-1-4 border-green-500"
             aria-labelledby="conclusion-heading">
             <h2 id="conclusion-heading" class="font-bold mb-4 fs-title">
                 {{ reportData.conclusionTitle }}

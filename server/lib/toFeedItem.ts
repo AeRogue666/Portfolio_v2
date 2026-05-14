@@ -12,10 +12,10 @@ type FeedSource = {
   pinned?: boolean;
   tags?: string[];
   image?: any;
-  customer_name: string;
+  customer_name?: string;
   customer_job?: string;
   customer_city?: string;
-  customer_enterprise_name: string;
+  customer_enterprise_name?: string;
   testimony?: string;
   previewUrl?: string;
   links?: any;
@@ -40,7 +40,7 @@ export function toFeedItem(source: FeedSource): FeedItem {
     pinned: source.pinned,
     tags: source.tags,
     image: source.image,
-    customer_name: source.customer_name,
+    customer_name: source.customer_name ?? "",
     customer_job: source.customer_job,
     customer_city: source.customer_city,
     customer_enterprise_name: source.customer_enterprise_name,

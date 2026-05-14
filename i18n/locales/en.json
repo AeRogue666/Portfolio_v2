@@ -35,6 +35,7 @@
     "navigation": {
       "homepage": "Home page",
       "feed": "Feed",
+      "about": "About",
       "accessibility_statement": "Accessibility statement",
       "problem_report": "Report a problem",
       "accessibility_report": "Accessibility report",
@@ -237,6 +238,7 @@
       "job": "Job",
       "talk": "Talk"
     },
+    "created_on":"Published on",
     "updated_on": "Updated on"
   },
   "project": {

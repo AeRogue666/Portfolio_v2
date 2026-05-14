@@ -3,10 +3,11 @@ import SidebarLeft from './SidebarLeft.vue';
 import SidebarRight from './SidebarRight.vue';
 
 const { t } = useI18n();
-// useSidebarFocusState();
 const colorMode = useColorMode();
-
-const src = computed(() => colorMode.value == 'system' ? `/images/logo/logo_favicon_dark.png` : `/images/logo/logo_favicon_${colorMode.value}.png`);
+const src = computed(() => colorMode.value == 'system'
+    ? `/images/logo/logo_favicon_dark.png`
+    : `/images/logo/logo_favicon_${colorMode.value}.png`
+);
 </script>
 
 <template>

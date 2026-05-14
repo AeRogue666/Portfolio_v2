@@ -35,6 +35,7 @@
     "navigation": {
       "homepage": "Accueil",
       "feed": "Fil",
+      "about": "A propos",
       "accessibility_statement": "Declaration d'accessibilite",
       "problem_report": "Signaler un incident",
       "accessibility_report": "Rapport d'accessibilité",
@@ -46,7 +47,7 @@
     "open": "Ouvrir les paramètres utilisateurs",
     "close": "Fermer les paramètres utilisateurs",
     "title": "Paramètres utilisateurs",
-    "description": "Réglez le site à vos preferences",
+    "description": "Réglez le site à vos préférences",
     "theme": "Theme",
     "language": "Langue",
     "contrast": "Contraste",
@@ -237,6 +238,7 @@
       "job": "Métier",
       "talk": "Intervention"
     },
+    "created_on": "Publié le",
     "updated_on": "Mis à jour le"
   },
   "project": {

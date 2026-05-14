@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     "nuxt-studio",
   ],
   css: ["~/assets/styles/main.css"],
-  plugins: [],
+  plugins: ["~/dayjs_client.ts"],
   i18n: {
     restructureDir: "i18n",
     langDir: "locales",

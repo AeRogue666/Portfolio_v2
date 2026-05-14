@@ -26,7 +26,7 @@
     "dayjs": "^1.11.20",
     "focus-trap": "^8.0.1",
     "markdown-it": "^14.1.0",
-    "nuxt": "^4.4.2",
+    "nuxt": "^4.4.4",
     "nuxt-studio": "^1.7.0",
     "resend": "^6.10.0",
     "tailwindcss": "^4.2.4"
