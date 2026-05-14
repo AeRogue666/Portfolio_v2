@@ -12,7 +12,7 @@ const isOpen = ref<boolean>(false);
 </script>
 
 <template>
-    <USlideover v-model:open="isOpen" title="Parameters" description="Set the design the way you want" :ui="{
+    <USlideover v-model:open="isOpen" :title="t('sidebar-right.title')" :description="t('sidebar-right.description')" :ui="{
         content: 'bg-(--bg)',
         description: grayscale && colorMode.value == 'dark' ? 'text-inverted text-(length:--step--1)' : 'text-(length:--step--1)',
         body: 'flex flex-col items-center w-full my-4 gap-4',

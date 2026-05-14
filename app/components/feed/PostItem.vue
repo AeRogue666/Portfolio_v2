@@ -42,18 +42,19 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
         <template #meta>
             <section class="flex justify-between items-center w-full mb-3">
                 <PostBadge :label="badgeLabel" :icon="badgeIcon" :color="post.pinned ? 'success' : 'neutral'"
-                    :variant="'soft'" :size="'md'"
-                    :class-name="grayscale ? 'fs-body bg-(--bg-3) text-(--text-2)' : 'fs-body'"/>
+                    :variant="'soft'" :size="'md'" class="fs-body"
+                    :class-name="grayscale ? 'bg-(--bg-3) text-(--text-2)' : post.pinned ? 'text-(--text-2)' : 'bg-(--bg-3) text-(--text-2)'" />
                 <div class="flex flex-col items-end gap-1">
                     <time v-if="post.created_at" :datetime="post.created_at" class="fs-small text-(--text-2)">
-                        {{ created_atDate }}
+                        {{ t('post.created_on') }} {{ created_atDate }}
                     </time>
                     <time v-if="post.updated_at" :datetime="post.updated_at" class="fs-small text-(--text-2)">
-                       {{ t('post_updated_on') }} {{ updated_atDate }}
+                        {{ t('post.updated_on') }} {{ updated_atDate }}
                     </time>
                 </div>
             </section>
-            <ResponsiveImage v-if="post.image" :image="post.image" class="rounded-xl overflow-hidden" />
+            <ResponsiveImage v-if="post.image" :image="post.image" class="rounded-xl overflow-hidden"
+                :class="grayscale ? 'grayscale-100' : ''" />
             <div v-else class="w-full h-49.5 lg:h-47 bg-(--bg-3) my-2 rounded-xl overflow-hidden"></div>
         </template>
 
@@ -66,7 +67,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
 
         <div v-if="post.tags && post.tags.length > 0" class="flex flex-wrap gap-2 mt-2">
             <PostBadge v-for="tag in post.tags" :label="tag" :key="tag" :variant="'soft'" :color="'neutral'"
-                :size="'sm'" :class-name="'bg-white/60 text-(--text-2) fs-body border border-(--border-subtle)'" />
+                :size="'sm'" :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
         </div>
 
         <template #actions>

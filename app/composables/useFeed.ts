@@ -61,15 +61,16 @@ export function useFeed(options?: UseFeedOptions) {
   });
 
   const feedKey = computed(
-    () =>
-      `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
+    () => `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
   );
+
+  const allItems = ref<any[]>([]);
 
   /* ======
     Requête au serveur (et filtrage)
     ====== */
   const { data, status, error, refresh } = useAsyncData(
-    feedKey,
+    () => `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
     () =>
       $fetch<FeedResponse>("/api/posts", {
         query: {
@@ -82,14 +83,37 @@ export function useFeed(options?: UseFeedOptions) {
         },
       }),
     {
-      watch: [locale, offset, selectedTags, selectedKinds, sortBy],
+      watch: [locale, selectedTags, selectedKinds, sortBy],
     },
   );
 
   /* ======
+    Gestion de la pagination (fusion des anciens et des nouveaux items)
+  ====== */
+  watch(() => data.value, (newData) => {
+    if(!newData?.items) return;
+    
+    if(offset.value === 0) {
+      // Reset : nouveaux filtres ou tri
+      allItems.value = newData.items;
+    } else {
+      // Load more : ajouter les nouveaux items
+      allItems.value = [...allItems.value, ...newData.items];
+    }
+  })
+
+  /* ======
+    Watch pour reset les items lors d'un changement de filtre
+  ======= */
+  watch([selectedTags, selectedKinds, sortBy], () => {
+    offset.value = 0;
+    allItems.value = [];
+  });
+
+  /* ======
     Données du serveur
     ====== */
-  const items = computed(() => data.value?.items ?? []);
+  const items = computed(() => allItems.value);
   const total = computed(() => data.value?.total ?? 0);
   const availableTags = computed(() => data.value?.availableTags ?? []);
   const hasMore = computed(() => data.value?.hasMore ?? false);

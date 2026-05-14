@@ -20,6 +20,11 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         to: '/feed',
     },
     {
+        label: t('sidebar-left.navigation.about'),
+        icon: 'fa7-solid:user-circle',
+        to: '/about',
+    },
+    {
         label: t('sidebar-left.navigation.accessibility_statement'),
         icon: "fa7-brands:accessible-icon",
         to: "/accessibility",
@@ -66,7 +71,7 @@ onMounted(() => {
     <aside id="sidebar-left"
         class="block w-full lg:w-auto min-w-60 h-full bg-(--bg) basis-0.5 relative">
 
-        <UContainer class="flex flex-col items-center w-full h-full mt-4 gap-4 overflow-y-scroll">
+        <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4 overflow-y-scroll">
             <div class="flex flex-col justify-center items-center">
                 <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
                     :description="t('sidebar-left.user_description')" key="user-avatar" :avatar="{
@@ -122,7 +127,7 @@ onMounted(() => {
                     link: 'data-active:before:bg-(--bg-3) hover:bg-(--bg-2)', // a
                     linkLeadingIcon: 'text-(--text-muted)',
                     linkLabel: 'text-base leading-relaxed truncate max-w-[65ch]',
-                }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
+                }" class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
 
                 <template #right>
                     <p class="fs-small text-(--text-3)">

@@ -9,8 +9,8 @@ const props = defineProps<{
 
 const cardStyles = computed(() => {
     const baseClasses = 'flex flex-col w-full py-10 rounded-2xl transition-all duration-300 hover:shadow-lg';
-
-    switch (props.cardType) {
+    return `${baseClasses} bg-(--bg-2) border border-(--border-subtle)`;
+    /* switch (props.cardType) {
         case 'project':
             return `${baseClasses} bg-(--card-project-bg) border-l-4 border-l-(--card-project-accent)`;
         case 'experiment':
@@ -29,7 +29,7 @@ const cardStyles = computed(() => {
             return `${baseClasses} bg-(--card-job-bg) border-l-4 border-l-(--card-job-accent)`;
         default:
             return `${baseClasses} bg-(--bg-2) border border-(--border-subtle)`;
-    }
+    } */
 });
 </script>
 

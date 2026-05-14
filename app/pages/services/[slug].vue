@@ -8,6 +8,7 @@ import SendMessageModal from '@/components/layout/organisms/SendMessageModal.vue
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
+
 useSidebarFocusState();
 
 const asyncKey = computed(() => `services-${route.params.slug}-${locale.value}`);

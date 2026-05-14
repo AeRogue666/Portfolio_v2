@@ -13,13 +13,17 @@ interface Element {
 const props = defineProps<{
     elements: Element[];
 }>();
+
+const accessibilityStore = useAccessibilityStore();
+const grayscale = computed(() => accessibilityStore.grayscale);
 </script>
 
 <template>
-    <UContainer ref="container" class="py-24 relative">
+    <UContainer ref="container" class="py-24 relative" :class="grayscale ? 'grayscale-100' : ''">
         <!-- Cards grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-2 gap-x-16 gap-y-20 relative z-10">
-            <ProcessCard v-for="el in props.elements" :key="el.title" v-bind="el" :position="props.elements.indexOf(el) + 1" />
+            <ProcessCard v-for="el in props.elements" :key="el.title" v-bind="el"
+                :position="props.elements.indexOf(el) + 1" :grayscale="grayscale" />
         </div>
     </UContainer>
 </template>

@@ -4,7 +4,11 @@ import SidebarLeft from './SidebarLeft.vue';
 import SidebarRight from './SidebarRight.vue';
 
 const { t } = useI18n();
-// useSidebarFocusState();
+const colorMode = useColorMode();
+const src = computed(() => colorMode.value == 'system'
+    ? `/images/logo/logo_favicon_dark.png`
+    : `/images/logo/logo_favicon_${colorMode.value}.png`
+);
 </script>
 
 <template>
@@ -19,9 +23,11 @@ const { t } = useI18n();
         <template #left>
             <UContainer class="hidden lg:flex">
                 <NuxtLink to="/" aria-describedby="header-title">
-                    <span id="header-title" class="fs-title font-bold lg:text-center text-(--text) mb-3">
+                    <span id="header-title" class="fs-title font-bold lg:text-center text-(--text) mb-3 sr-only">
                         {{ t('header.span_title') }}
                     </span>
+                    <NuxtImg id="header-title" :src="src" alt="" width="165" height="24"
+                        sizes="xs:100vw sm:100vw md:80vw lg:16rem" loading="lazy" />
                 </NuxtLink>
             </UContainer>
         </template>

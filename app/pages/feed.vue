@@ -8,6 +8,7 @@ const feedStore = useFeedStore(),
 const {
     items,
     availableTags,
+    hasMore,
     selectedTags,
     selectedKinds,
     sortBy,
@@ -19,7 +20,7 @@ const {
     resetFilters,
     loadMore,
     total
-} = useFeed({ limit: 5 });
+} = useFeed({ limit: 10 });
 
 const { polite, assertive } = useAnnouncer();
 
@@ -97,7 +98,7 @@ useSeoMeta(({
         </div>
 
         <!-- Bouton Load More -->
-        <UContainer v-if="items.length < total" class="mt-6">
+        <UContainer v-if="(items.length < total) && hasMore === false" class="mt-6">
             <button id="button-load-articles" :aria-label="t('feed.load_more')" role="button" aria-controls="feed"
                 @click="loadMore()" :aria-busy="status === 'pending'" :disabled="status === 'pending'"
                 class="w-full px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text) rounded border border-(--border-subtle) disabled:opacity-50 disabled:cursor-not-allowed transition-colors fs-body">
