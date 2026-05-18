@@ -21,14 +21,14 @@
     "@nuxtjs/robots": "^6.0.8",
     "@nuxtjs/sitemap": "^8.0.15",
     "@pinia/nuxt": "^0.11.3",
-    "@upstash/redis": "^1.37.0",
+    "@upstash/redis": "^1.38.0",
     "better-sqlite3": "^12.9.0",
     "dayjs": "^1.11.20",
-    "focus-trap": "^8.0.1",
+    "focus-trap": "^8.2.0",
     "markdown-it": "^14.1.0",
     "nuxt": "^4.4.4",
     "nuxt-studio": "^1.7.0",
-    "resend": "^6.10.0",
+    "resend": "^6.12.3",
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
@@ -37,7 +37,7 @@
     "@iconify-json/material-symbols": "^1.2.70",
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/vite": "^4.2.4",
-    "@types/node": "^25.6.0"
+    "@types/node": "^25.7.0"
   },
   "engines": {
     "node": ">=20"

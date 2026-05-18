@@ -14,11 +14,17 @@ tags:
   - parcours
 ---
 
-Bonjour, Aurélien, 26 ans.
+## Qui suis-je
 
-Je suis développeur full-stack basé en France, spécialisé dans l'accessibilité et l'architecture web évolutive.
+Bonjour, je suis Aurélien, développeur full-stack basé en France, spécialisé dans l'accessibilité et l'architecture web évolutive.
 
-J'aide les équipes à concevoir et à développer des applications web inclusives, faciles à maintenir et axées sur la performance, sans sacrifier l'expérience utilisateur ou le design, en utilisant Vue (Vue 3 de préférence), Nuxt (3 et 4+), Typescript et des outils backend modernes tel que Node.js, Prisma, Express ou PostgreSQL.
+J'aide les équipes à concevoir et à développer des applications web inclusives, faciles à maintenir et axées sur la performance, sans sacrifier l'expérience utilisateur ou le design, en utilisant [Vue](https://vuejs.org/), [Nuxt](https://nuxt.com/), [Typescript](https://www.typescriptlang.org/) et des outils backend modernes tel que [Node.js](https://nodejs.org/en), [Prisma](https://www.prisma.io/), [Express](https://expressjs.com/) et [PostgreSQL](https://www.postgresql.org/).
+
+Mais je conçois aussi des sites internet avec [WordPress](https://wordpress.com/fr/) et son module e-commerce [WooCommerce](https://woocommerce.com/fr/) ainsi que [WordPress Studio](https://developer.wordpress.com/fr/studio/), le studio développement créé par les équipes de WordPress, en respectant les normes web en vigueur et les besoins des clients.
+
+---
+
+## Mon approche
 
 Mon approche combine :
 
@@ -34,11 +40,19 @@ Un produit numérique doit être **perceptible**, **utilisable**, **compréhensi
 
 Je privilégie les normes web plutôt que les tendances passagères, et la fiabilité à long terme plutôt que la commodité à court terme.
 
-Ce portfolio reflète cette philosophie.
+---
+
+## Pourquoi ce site
+
+Ce site internet reflète cette philosophie.
 Il sert à la fois de vitrine digital et d'espace d'expérimentation - une plateforme vivante où j'explore l'architecture, l'accessibilité et la conception axée sur le contenu.
 Il évolue constamment, au rythme de mes compétences et de mon expérience.
 
 Si votre équipe valorise la clarté, la performance et les expériences numériques inclusives, n'hésitez pas à me contacter.
+
+---
+
+## Contact
 
 Vous pouvez :
 
