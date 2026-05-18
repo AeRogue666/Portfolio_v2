@@ -24,6 +24,7 @@
   --focus-ring: 3px solid var(--focus);
   --border-subtle: #d4c4a8;
   --border-medium: #b8a58a;
+  --brand-color: #d62628; /** Focus branding, petits détails, hover rares, favicon, point sur le logo, soulignements **/
 
   /* Feedback */
   --success: #5a7c3e; /** Green olive **/

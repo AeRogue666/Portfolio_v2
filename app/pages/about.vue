@@ -4,15 +4,22 @@ import dayjs from 'dayjs';
 
 const { t, locale, locales } = useI18n(),
     route = useRoute();
-const contentPath = computed(() => `/about/${locale.value}`);
 
-const { data: page } = await useAsyncData(
-    () => `about-${locale.value}`,
-    () =>
-        queryCollection('content')
-            .path(contentPath.value) // .where('path', '=', `/about/${locale.value}`)
-            .first()
+const contentPath = computed(() => `/about/${locale.value}`)
+const asyncKey = computed(() => `about-${locale.value}`);
+
+const { data: page, error } = await useAsyncData(
+    () => asyncKey.value,
+    () => queryCollection('about')
+        .path(contentPath.value)
+        .first(),
+    {
+        watch: [locale]
+    }
 );
+if (error.value) {
+    throw createError({ statusCode: 404, message: 'about data is not found', statusMessage: 'about data is not found', cause: error.value, fatal: true });
+}
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -59,7 +66,8 @@ useHeadSafe(() => ({
 
 <template>
     <template v-if="page">
-        <article class="prose prose-neutral w-full max-w-7xl mx-auto px-4 py-10 prose-headings:scroll-mt-24 fs-body" aria-labelledby="article-title">
+        <article class="prose prose-neutral w-full max-w-7xl mx-auto px-4 py-10 prose-headings:scroll-mt-24 fs-body"
+            aria-labelledby="article-title">
             <header class="flex flex-col mb-10">
                 <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                     <template #separator>
@@ -69,8 +77,8 @@ useHeadSafe(() => ({
 
                 <p class="fs-small text-(--text-2)">
                     {{ t('page.created_on') }}
-                    <time v-if="created_atDate" :datetime="created_atDate">{{ created_atDate }}</time>
-                    <template v-if="updated_atDate">
+                    <time v-if="page.created_at" :datetime="created_atDate">{{ created_atDate }}</time>
+                    <template v-if="page.updated_at">
                         {{ t('page.updated_on') }}
                         <time :datetime="updated_atDate">{{ updated_atDate }}</time>
                     </template>

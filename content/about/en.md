@@ -14,11 +14,17 @@ tags:
   - parcours
 ---
 
-Good morning, Aurélien, 26 years old.
+## Who am I
 
-I am a France-based full-stack developer specialized in accessibility and scalable web architecture.
+Hello, I am Aurélien, a France-based full-stack developer specialized in accessibility and scalable web architecture.
 
-I help teams design and build inclusive, maintainable and performance-oriented web applications without sacrificing user-experience or design, using Vue (Vue 3 preferably), Nuxt (3 and 4+), Typescript and modern backend tooling such as Node.js, Prisma, Express and PostgreSQL.
+I help teams design and build inclusive, maintainable and performance-oriented web applications without sacrificing user-experience or design, using [Vue](https://vuejs.org/), [Nuxt](https://nuxt.com/), [Typescript](https://www.typescriptlang.org/) and modern backend tooling such as [Node.js](https://nodejs.org/en), [Prisma](https://www.prisma.io/), [Express](https://expressjs.com/) and [PostgreSQL](https://www.postgresql.org/).
+
+I also design websites using [WordPress](https://wordpress.com/fr/) and its e-commerce plugin [WooCommerce](https://woocommerce.com/fr/), as well as [WordPress Studio](https://developer.wordpress.com/fr/studio/), the development studio created by the WordPress team, in accordance with current web standards and client requirements.
+
+---
+
+## My approach
 
 My approach combines:
 
@@ -36,11 +42,17 @@ I prioritize web standards over passing trends, and long-term reliability over s
 
 ---
 
-This portfolio itself reflects that philosophy.
+## Why this site
+
+This site itself reflects that philosophy.
 It is both a showcase and an experimental space - a living platform where I explore architecture, accessibility and content-driven design.
 It evolves continuously, alongside my skills and experience.
 
 If your team values clarity, performance and inclusive digital experiences, we should talk.
+
+---
+
+## Contact
 
 You can :
 

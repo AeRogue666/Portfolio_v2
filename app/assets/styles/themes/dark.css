@@ -13,13 +13,14 @@
   --text-muted: #c4b698; /** Soft beige **/
 
   /* Accent */
-  --accent: #f5ab68; /** Luminous Orange Chai **/
+  --accent: #f2a65a; /** Luminous Orange Chai **/ /* #f5ab68 */
   --accent-hover: #e89850; /* #f5ab68; */
 
   /* States */
   --focus: #e89850; /* #f5ab68; */
   --border-subtle: #3a3936;
   --border-medium: #7a6450;
+  --brand-color: #d62628;
 
   /* Feedback */
   --success: #7fa060; /** Light Green Olive **/
