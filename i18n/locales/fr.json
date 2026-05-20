@@ -12,13 +12,13 @@
     "user_title": "Aureldev",
     "user_description": "Développeur Full-stack orienté Accessibilité",
     "user_tagline": "J'accompagne les équipes dans la conception et le développement d'applications web accessibles, évolutives et maintenables.",
-    "user_alternative_text": "Sur cette image est représenté Aureldev, un développeur full-stack orienté accessibilité français. Cocorico !",
+    "user_alternative_text": "Sur cette image est représenté Aureldev, un développeur full-stack orienté accessibilité français.",
     "contact_me": "Contactez ou envoyez votre avis",
     "open_github": "Ouvrir sur Github",
     "open_linkedin": "Ouvrir sur Linkedin",
     "modal-message": {
       "title": "Envoyer un message",
-      "description": "Envoyer un message à Aureldev",
+      "description": "Envoyer un message à l'équipe de CodeKorico",
       "send-message_button_label": "Envoyer un message",
       "selectType_label": "Sélectionner le type",
       "email_label": "Email",
@@ -58,15 +58,15 @@
   },
   "seo": {
     "home": {
-      "title": "Création de sites internet - Développement Web - Accessibilité",
-      "description": "Création de sites internet accessibles, évolutifs et centré sur l'utilisateur avec Wordpress, WooCommerce, Shopify, Nuxt ou Vue."
+      "title": "CodeKorico - Création de sites internet, Développement Web & Accessibilité",
+      "description": "Création de sites internet accessibles, évolutifs et centré sur l'utilisateur avec Wordpress, WooCommerce, Shopify, Nuxt ou Vue en Ardèche, Drôme et Auvergne Rhône-Alpes."
     },
     "feed": {
-      "title": "Fil d'actualité - Portfolio d'Aureldev",
+      "title": "Fil d'actualité - CodeKorico",
       "description": "Decouvrez le contenu du fil d'actualité"
     },
     "page": {
-      "title": "{pagetitle} - Portfolio d'Aureldev",
+      "title": "{pagetitle} - CodeKorico",
       "description": "Découvrez le contenu de la page {pagetitle}"
     }
   },
@@ -121,7 +121,7 @@
       "learn_more_button": "En savoir plus",
       "want_more": {
         "question": "Vous souhaitez créer votre site par vous-même mais ne savez pas par où commencer ?",
-        "answer": "N'hésitez pas à le contacter, je serais ravis d'en discuter avec vous !"
+        "answer": "N'hésitez pas à me contacter, je serais ravis d'en discuter avec vous !"
       }
     },
     "expertise_section": {
@@ -152,7 +152,7 @@
       }
     },
     "differenciation_section": {
-      "tag": "Differenciation",
+      "tag": "Différenciation",
       "title": "Pourquoi travailler avec moi ?",
       "description": "Voici quelques bonnes raisons.",
       "process": {
@@ -211,7 +211,7 @@
     "active_count": "{count} filtre(s) actif(s)"
   },
   "feed": {
-    "title": "Portfolio - projets et contenu",
+    "title": "CodeKorico - Projets et contenus",
     "load_more": "Charger d'autres articles",
     "loaded_new_articles": "Nouveux articles disponibles",
     "no_results": "Aucun post ne correspond à vos filtres. Essayez d'ajuster votre sélection.",
@@ -258,6 +258,10 @@
     "published_on": "Publié le",
     "tags": "Tags",
     "content": "Contenu"
+  },
+  "about": {
+    "team_list": "Notre petite mais performante équipe",
+    "user_tagline": "Développeur full-stack passionné par l'accessibilité et la qualité produit. Je crée des interfaces claires, robustes et utiles."
   },
   "footer": {},
   "error": {

@@ -46,10 +46,10 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: "Portfolio - Aureldev",
+      title: "CodeKorico",
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
-    },
+    }
   },
   runtimeConfig: {
     resendApiKey: "",
@@ -80,8 +80,8 @@ export default defineNuxtConfig({
     },
   },
   site: {
-    url: "https://aureldev.com",
-    name: "Aureldev",
+    url: "https://codekorico.com",
+    name: "CodeKorico",
   },
   build: {
     transpile: [],
