@@ -2,11 +2,15 @@
 import SidebarLeft from './SidebarLeft.vue';
 import SidebarRight from './SidebarRight.vue';
 
-const { t } = useI18n();
-const colorMode = useColorMode();
+const { t } = useI18n(),
+    accessibilityStore = useAccessibilityStore(),
+    colorMode = useColorMode();
+
+const grayscale = computed(() => accessibilityStore.grayscale);
+
 const src = computed(() => colorMode.value == 'system'
-    ? `/images/logo/logo_favicon_dark.png`
-    : `/images/logo/logo_favicon_${colorMode.value}.png`
+    ? `/images/logo/logo_dark_no_bg_1500x500.png`
+    : `/images/logo/logo_${colorMode.value}_no_bg_1500x500.png`
 );
 </script>
 
@@ -25,8 +29,9 @@ const src = computed(() => colorMode.value == 'system'
                     <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
                         {{ t('header.span_title') }}
                     </span>
-                    <NuxtImg id="header-title-img" :src="src" alt="" width="165" height="24"
-                        sizes="xs:100vw sm:100vw md:80vw lg:16rem" loading="lazy" />
+                    <NuxtImg id="header-title-img" :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : src"
+                        alt="" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" loading="lazy" />
                 </NuxtLink>
             </UContainer>
         </template>

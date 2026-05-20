@@ -1,9 +1,20 @@
 ---
 title: About
 created_at: 2026-04-13
-description: Full-stack developer focused on accessibility and produt quality. I enjoy building robust, and useful interfaces.
-feed_summary: A page about Aureldev
+description: What is CodeKorico?
+feed_summary: A page about CodeKorico and me
 feed_title: About
+image:
+  alt: ''
+  sources:
+    feed:
+      mobile: /images/logo/mobile/dark.png
+      desktop: /images/logo/desktop/dark.png
+      tablet: /images/logo/mobile/dark.png
+    detail:
+      mobile: /images/logo/mobile/dark.png
+      desktop: /images/logo/desktop/dark.png
+      tablet: /images/logo/mobile/dark.png
 kind: about
 locale: en
 pinned: false
@@ -16,7 +27,7 @@ tags:
 
 ## Who am I
 
-Hello, I am Aurélien, a France-based full-stack developer specialized in accessibility and scalable web architecture.
+Hello, I am Aurélien, a France-based (Ardèche) full-stack developer specialized in accessibility and scalable web architecture.
 
 I help teams design and build inclusive, maintainable and performance-oriented web applications without sacrificing user-experience or design, using [Vue](https://vuejs.org/), [Nuxt](https://nuxt.com/), [Typescript](https://www.typescriptlang.org/) and modern backend tooling such as [Node.js](https://nodejs.org/en), [Prisma](https://www.prisma.io/), [Express](https://expressjs.com/) and [PostgreSQL](https://www.postgresql.org/).
 
@@ -48,7 +59,7 @@ This site itself reflects that philosophy.
 It is both a showcase and an experimental space - a living platform where I explore architecture, accessibility and content-driven design.
 It evolves continuously, alongside my skills and experience.
 
-If your team values clarity, performance and inclusive digital experiences, we should talk.
+If your team values clarity, performance, durability and inclusive digital experiences, we should talk.
 
 ---
 
@@ -57,4 +68,4 @@ If your team values clarity, performance and inclusive digital experiences, we s
 You can :
 
 - Contact me via the "Send a message" button in the left menu.
-- Send me an email on <contact@aureldev.com>
+- Send me an email on <contact@aureldev.com> or on <contact@codekorico.com>

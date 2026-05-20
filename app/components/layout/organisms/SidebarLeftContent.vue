@@ -57,10 +57,7 @@ onMounted(() => {
     watch(
         () => colorMode.value,
         (mode) => {
-            avatarSrc.value =
-                mode === 'dark'
-                    ? '/images/logo/logo_dark_theme.png'
-                    : '/images/logo/logo_light_theme.png'
+            avatarSrc.value = `/images/logo/logo_k_${mode}.png`
         },
         { immediate: true }
     );
@@ -131,7 +128,7 @@ onMounted(() => {
 
                 <template #right>
                     <p class="fs-small text-(--text-3)">
-                        Copyright Aureldev © {{ new Date().getUTCFullYear() }}
+                        Copyright Aureldev - CodeKorico © {{ new Date().getUTCFullYear() }}
                     </p>
                 </template>
             </UFooter>

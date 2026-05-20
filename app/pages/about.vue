@@ -3,12 +3,14 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
 
 const { t, locale, locales } = useI18n(),
-    route = useRoute();
+    route = useRoute(),
+    colorMode = useColorMode(),
+    avatarSrc = ref<string>('/images/logo/logo_dark_theme.png');
 
 const contentPath = computed(() => `/about/${locale.value}`)
 const asyncKey = computed(() => `about-${locale.value}`);
 
-const { data: page, error } = await useAsyncData(
+const { data: about, error } = await useAsyncData(
     () => asyncKey.value,
     () => queryCollection('about')
         .path(contentPath.value)
@@ -32,10 +34,20 @@ const breadcrumbItems: BreadcrumbItem[] = [
     },
 ];
 
-const articlePublishedTime = computed(() => dayjs(page.value?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format());
-const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+onMounted(() => {
+    watch(
+        () => colorMode.value,
+        (mode) => {
+            avatarSrc.value = `/images/logo/logo_k_${mode}.png`
+        },
+        { immediate: true }
+    );
+});
+
+const articlePublishedTime = computed(() => dayjs(about.value?.created_at).locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(about.value?.updated_at).locale(locale.value).format());
+const created_atDate = computed(() => dayjs(about.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(about.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 
 useHeadSafe(() => ({
     title: t('seo.page.title', { pagetitle: t('breadcrumb.about') }),
@@ -65,7 +77,7 @@ useHeadSafe(() => ({
 </script>
 
 <template>
-    <template v-if="page">
+    <template v-if="about">
         <article class="prose prose-neutral w-full max-w-7xl mx-auto px-4 py-10 prose-headings:scroll-mt-24 fs-body"
             aria-labelledby="article-title">
             <header class="flex flex-col mb-10">
@@ -77,18 +89,35 @@ useHeadSafe(() => ({
 
                 <p class="fs-small text-(--text-2)">
                     {{ t('page.created_on') }}
-                    <time v-if="page.created_at" :datetime="created_atDate">{{ created_atDate }}</time>
-                    <template v-if="page.updated_at">
-                        {{ t('page.updated_on') }}
+                    <time v-if="about.created_at" :datetime="created_atDate">{{ created_atDate }}</time>
+                    <template v-if="about.updated_at">
+                        & {{ t('page.updated_on') }}
                         <time :datetime="updated_atDate">{{ updated_atDate }}</time>
                     </template>
                 </p>
 
-                <h1 id="article-title" class="fs-heading font-bold">{{ page.title }}</h1>
-                <p class="text-(--text-2) fs-subtitle leading-snug">{{ page.description }}</p>
+                <h1 id="article-title" class="fs-heading font-bold">{{ about.title }}</h1>
+                <p class="text-(--text-2) fs-subtitle leading-snug">{{ about.description }}</p>
             </header>
 
-            <ContentRenderer :value="page" />
+            <div class="flex flex-col justify-center items-center">
+                <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
+                    :description="t('sidebar-left.user_description')" key="user-avatar" :avatar="{
+                        src: avatarSrc,
+                        icon: 'fa7-solid:user',
+                        alt: t('sidebar-left.user_alternative_text')
+                    }" :ui="{
+                        root: 'items-center',
+                        name: 'fs-subtitle text-2xl text-(--text) text-center font-semibold tracking-tight leading-snug',
+                        description: 'fs-body leading-relaxed text-(--text-2)',
+                        avatar: `size-40 bg-(--bg-2) border-2 ${colorMode.value == 'dark' ? 'border-white' : 'border-black'}`
+                    }" />
+                <span class="fs-small text-(--text-muted) leading-relaxed">
+                    {{ t('about.user_tagline') }}
+                </span>
+            </div>
+
+            <ContentRenderer :value="about" />
         </article>
     </template>
     <p v-else class="fs-body">

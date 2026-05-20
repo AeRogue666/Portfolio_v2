@@ -12,13 +12,13 @@
     "user_title": "Aureldev",
     "user_description": "Accessibility-first Full-stack Developer",
     "user_tagline": "Helping teams design and ship accessible, scalable and maintainable web applications.",
-    "user_alternative_text": "On this image is represented Aureldev, a French Accessibility-first Full-stack Developer. Cocorico!",
+    "user_alternative_text": "On this image is represented Aureldev, a French Accessibility-first Full-stack Developer.",
     "contact_me": "Contact me or send feedback",
     "open_github": "Open on Github",
     "open_linkedin": "Open on Linkedin",
     "modal-message": {
       "title": "Send a message",
-      "description": "Send a message to Aureldev",
+      "description": "Send a message to CodeKorico team",
       "send-message_button_label": "Send a message",
       "selectType_label": "Select a type",
       "email_label": "Email",
@@ -58,15 +58,15 @@
   },
   "seo": {
     "home": {
-      "title": "Website creation - Web Development - Accessibility",
-      "description": "Creation of accessible, scalable, user-centered websites with Wordpress, WooCommerce, Shopify, Nuxt or Vue."
+      "title": "CodeKorico - Website creation, Web Development, Accessibility",
+      "description": "Creation of accessible, scalable, user-centered websites with Wordpress, WooCommerce, Shopify, Nuxt or Vue in Ardèche, Drôme and Auvergne Rhône-Alpes."
     },
     "feed": {
-      "title": "Feed - Portfolio of Aureldev",
+      "title": "Feed - CodeKorico",
       "description": "Discover the content of the feed"
     },
     "page": {
-      "title": "{pagetitle} - Portfolio of Aureldev",
+      "title": "{pagetitle} - CodeKorico",
       "description": "Discover the content of the {pagetitle} page"
     }
   },
@@ -258,6 +258,10 @@
     "published_on": "Published on",
     "tags": "Tags",
     "content": "Content"
+  },
+  "about": {
+    "team_list": "Our little but effective team",
+    "user_tagline": "Full-stack developer focused on accessibility and produt quality. I enjoy building robust, and useful interfaces."
   },
   "footer": {},
   "error": {
