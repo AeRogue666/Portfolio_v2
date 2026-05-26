@@ -46,7 +46,7 @@ export function toFeedItem(source: FeedSource): FeedItem {
     feed_summary: source.feed_summary ?? undefined,
     slug: source.slug,
     date: effectiveDate,
-    created_at: source.created_at,
+    created_at: normalizedDate(source.created_at),
     updated_at: source.updated_at ? normalizedDate(source.updated_at) : undefined,
     pinned: source.pinned,
     tags: source.tags,
