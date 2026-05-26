@@ -1,6 +1,6 @@
 ---
 title: Boutique asiatique en ligne - Nuxt 4 + Directus
-created_at: 2025-06-20
+created_at: "2025-06-20"
 description: Une boutique ligne multilingue qui propose une sélection de produits asiatiques, réalisée avec Nuxt et Directus.
 feed_summary: Une boutique asiatique headless multilingue développée avec les technologies Nuxt et Directus
 feed_title: Boutique asiatique headless

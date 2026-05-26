@@ -1,6 +1,6 @@
 ---
 title: Améliorer votre site pour générer plus de clients
-created_at: 2026-02-11
+created_at: "2026-02-11"
 description: Optimisez votre site existant pour gagner en visibilité et en conversions.
 feed_title: Optimisation & SEO
 feed_summary: Amélioration de votre site existant

@@ -1,7 +1,7 @@
 import type { Locale } from "@/types/i18n";
 import { toFeedItem } from "#server/lib/toFeedItem";
 
-export default cachedEventHandler(
+export default defineEventHandler(
   async (event) => {
     const query = getQuery(event),
       limit = Math.min(Number(query.limit ?? 10), 30), // A conserver, pour le jour où le portfolio contiendra 1000+ posts
@@ -103,13 +103,13 @@ export default cachedEventHandler(
       availableTags,
     };
   },
-  {
+  /* {
     maxAge: 600, // 10 minutes
     getKey: (event) => {
       const q = getQuery(event);
       return `posts-${q.locale ?? "en"}-${q.offset ?? 0}-${q.limit ?? 10}-${q.tags ?? "all"}-${q.kinds ?? "all"}-${q.sort ?? "recent"}`;
     },
-  },
+  }, */
 );
 
 // deviendra prisma.post.findMany({ where: { kind: { in: ['about','project','experiment'] } } })

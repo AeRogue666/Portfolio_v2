@@ -54,10 +54,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-const articlePublishedTime = computed(() => dayjs(project.value?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format());
-const created_atDate = computed(() => dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+const articlePublishedTime = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format(): null),
+    articleModifiedTime = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format(): null);
+const created_atDate = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
+    updated_atDate = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
 
 const src = computed(() => project.value?.image?.sources.detail?.mobile || project.value?.image?.sources.feed?.mobile || ''),
     tabletSrc = computed(() => project.value?.image?.sources.detail?.tablet || project.value?.image?.sources.feed?.tablet || src),
@@ -83,12 +83,12 @@ useHeadSafe(() => ({
     link: [
         {
             rel: 'canonical',
-            href: `https://aureldev.com${route.path}`
+            href: `https://codekoricoà.com${route.path}`
         },
         ...locales.value.map(l => ({
             rel: 'alternate',
             hreflang: l.code,
-            href: `https://aureldev.com${route.path}`
+            href: `https://codekorico.com${route.path}`
         }))
     ]
 }));
@@ -123,8 +123,8 @@ useSeoMeta(({
                 </UBreadcrumb>
                 <p class="fs-small text-(--text-2)">
                     {{ t('project.published_on') }}
-                    <time v-if="created_atDate" :datetime="project.created_at">{{ created_atDate }}</time>
-                    <template v-if="created_atDate">
+                    <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
+                    <template v-if="project.updated_at">
                         {{ t('post.updated_on') }}
                         <time :datetime="project.updated_at">{{ updated_atDate }}</time>
                     </template>

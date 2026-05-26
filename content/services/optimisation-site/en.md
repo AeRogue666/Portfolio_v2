@@ -1,6 +1,6 @@
 ---
 title: Optimization offer
-created_at: 2026-02-11
+created_at: "2026-02-11"
 description: Improve your website to attract more customers.
 locale: en
 previewUrl: /services/optimisation-site

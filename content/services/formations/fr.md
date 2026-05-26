@@ -1,6 +1,6 @@
 ---
 title: Devenez autonome avec le numérique
-created_at: 2026-02-11
+created_at: "2026-02-11"
 description: Apprenez à utiliser les outils numériques simplement et efficacement
 feed_title: Formation numérique
 feed_summary: Gagnez en autonomie avec le digital.
