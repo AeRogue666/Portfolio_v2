@@ -1,6 +1,6 @@
 ---
 title: Site web qui génère des clients
-created_at: 2026-02-11
+created_at: "2026-02-11"
 description: Un site clair, rapide et conçu pour transformer vos visiteurs en clients.
 feed_summary: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro ou souhaitez une refonte
 feed_title: Création de site

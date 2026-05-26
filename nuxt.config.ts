@@ -17,6 +17,9 @@ export default defineNuxtConfig({
     "@tailwindcss/vite",
     "nuxt-studio",
   ],
+  nitro: {
+    preset: "vercel",
+  },
   css: ["~/assets/styles/main.css"],
   plugins: ["~/dayjs_client.ts"],
   i18n: {
@@ -56,14 +59,11 @@ export default defineNuxtConfig({
     upstashRedisUrl: "",
     upstashRedisToken: "",
   },
+  $production: {
+    studio: false
+  },
   studio: {
     route: "/_studio",
-    /* repository: {
-      provider: 'github',
-      owner: 'AeRogue666',
-      repo: 'Portfolio_v2',
-      branch: 'main',
-    } */
   },
   routeRules: {
     "/": {

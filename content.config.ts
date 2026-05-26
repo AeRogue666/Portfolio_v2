@@ -49,8 +49,14 @@ export default defineContentConfig({
         kind: z.literal("project"),
         pinned: z.boolean().optional().default(false),
         previewUrl: z.string().optional(),
-        created_at: z.string(),
-        updated_at: z.string().optional(),
+        created_at: z.union([
+          z.string(),
+          z.date()
+        ]),
+        updated_at: z.union([
+          z.string(),
+          z.date()
+        ]).optional(),
         title: z.string().default(""),
         description: z.string().default(""),
         feed_title: z.string().default(""),
@@ -77,8 +83,14 @@ export default defineContentConfig({
         kind: z.literal("experiment"),
         pinned: z.boolean().optional().default(false),
         previewUrl: z.string().optional(),
-        created_at: z.string(),
-        updated_at: z.string().optional(),
+        created_at: z.union([
+          z.string(),
+          z.date()
+        ]),
+        updated_at: z.union([
+          z.string(),
+          z.date()
+        ]).optional(),
         title: z.string().default(""),
         description: z.string().default(""),
         feed_title: z.string().default(""),
@@ -97,8 +109,14 @@ export default defineContentConfig({
         kind: z.literal("about"),
         pinned: z.boolean().optional().default(false),
         previewUrl: z.string().optional(),
-        created_at: z.string(),
-        updated_at: z.string().optional(),
+        created_at: z.union([
+          z.string(),
+          z.date()
+        ]),
+        updated_at: z.union([
+          z.string(),
+          z.date()
+        ]).optional(),
         title: z.string().default(""),
         description: z.string().default(""),
         feed_title: z.string().default(""),
@@ -117,8 +135,14 @@ export default defineContentConfig({
         kind: z.literal("client"),
         pinned: z.boolean().optional().default(false),
         previewUrl: z.string().optional(),
-        created_at: z.string(),
-        updated_at: z.string().optional(),
+        created_at: z.union([
+          z.string(),
+          z.date()
+        ]),
+        updated_at: z.union([
+          z.string(),
+          z.date()
+        ]).optional(),
         title: z.string().default(""),
         description: z.string().default(""),
         feed_title: z.string().default(""),
@@ -144,8 +168,14 @@ export default defineContentConfig({
         slug: z.string(),
         locale: z.enum(["fr", "en"]),
         previewUrl: z.string().optional(),
-        created_at: z.string(),
-        updated_at: z.string().optional(),
+        created_at: z.union([
+          z.string(),
+          z.date()
+        ]),
+        updated_at: z.union([
+          z.string(),
+          z.date()
+        ]).optional(),
         date: z.string().optional(),
         title: z.string().default(""),
         description: z.string().default(""),

@@ -1,6 +1,6 @@
 ---
 title: Content-driven & User-centered portfolio
-created_at: 2026-02-11
+created_at: "2026-02-11"
 description: An accessible, scalable, user-centered portfolio as a social feed developed with Nuxt and Markdown
 feed_summary: Version 2 of my portfolio - Accessibility-first & user-centered portfolio developed with Nuxt and Nuxt content
 feed_title: Portfolio v2

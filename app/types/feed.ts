@@ -27,13 +27,13 @@ export interface FeedItem {
   feed_summary?: string;
   slug?: string;
   date: string;
-  created_at: string;
-  updated_at?: string;
+  created_at: string | Date;
+  updated_at?: string | Date;
   tags?: string[];
   pinned?: boolean;
   image?: ResponsiveImage;
   previewUrl?: string;
-  links: FeedLinks;
+  links?: FeedLinks;
   customer_name: string;
   customer_job?: string;
   customer_city?: string;

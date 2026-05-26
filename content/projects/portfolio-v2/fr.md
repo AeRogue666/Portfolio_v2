@@ -1,6 +1,6 @@
 ---
 title: Portfolio axé sur le contenu et centré sur l'utilisateur
-created_at: 2026-02-11
+created_at: "2026-02-11"
 description: Un portfolio centré sur l'utilisateur, l'accessibilité et le contenu réalisé avec Nuxt + Nuxt Content et Nuxt Studio
 feed_summary: Version 2 de mon portfolio - Réalisé avec Nuxt et Nuxt Content dans une optique d'accessibilité et centré sur l'utilisateur avant tout
 feed_title: Portfolio v2

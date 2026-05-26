@@ -1,6 +1,6 @@
 ---
 title: Support offer
-created_at: 2026-02-11
+created_at: "2026-02-11"
 description: A reliable website with ongoing support.
 locale: en
 previewUrl: /services/accompagnement
