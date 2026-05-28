@@ -1,4 +1,5 @@
-import type { FeedKind, FeedResponse } from "@/types/feed";
+import type { FeedResponse } from "@/types/feed";
+import type { FeedKind } from "@prisma/client";
 import type { FeedSortValue } from "../types/feedFilters";
 
 interface UseFeedOptions {
@@ -34,7 +35,17 @@ export function useFeed(options?: UseFeedOptions) {
   });
 
   // Kinds sélectionnés depuis l'URL (?kinds=project,experiment)
-  const VALID_KINDS: FeedKind[] = ["project", "experiment", "about", "pinned", "client", "note", "read", "talk", "job"];
+  const VALID_KINDS: FeedKind[] = [
+    "project",
+    "experiment",
+    "about",
+    "pinned",
+    "client",
+    "note",
+    "read",
+    "talk",
+    "job",
+  ];
   const selectedKinds = computed<FeedKind[]>(() => {
     const kinds = route.query.kinds;
     const raw =
@@ -61,7 +72,8 @@ export function useFeed(options?: UseFeedOptions) {
   });
 
   const feedKey = computed(
-    () => `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
+    () =>
+      `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
   );
 
   const allItems = ref<any[]>([]);
@@ -70,37 +82,40 @@ export function useFeed(options?: UseFeedOptions) {
     Requête au serveur (et filtrage)
     ====== */
   const { data, status, error, refresh } = useAsyncData(
-    () => `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
-    () =>
-      $fetch<FeedResponse>("/api/posts", {
-        query: {
-          limit,
-          offset: offset.value,
-          locale: locale.value,
-          tags: selectedTags.value.join(","),
-          kinds: selectedKinds.value.join(","),
-          sort: sortBy.value,
-        },
-      }),
+    feedKey,
+    () => $fetch<FeedResponse>("/api/posts", {
+      query: {
+        limit,
+        offset: offset.value,
+        locale: locale.value,
+        tags: selectedTags.value.join(","),
+        kinds: selectedKinds.value.join(","),
+        sort: sortBy.value,
+      },
+    }),
     {
-      watch: [locale, selectedTags, selectedKinds, sortBy],
+      watch: [feedKey],
     },
   );
 
   /* ======
     Gestion de la pagination (fusion des anciens et des nouveaux items)
   ====== */
-  watch(() => data.value, (newData) => {
-    if(!newData?.items) return;
-    
-    if(offset.value === 0) {
+  watch(
+    () => data.value,
+    (newData) => {
+      if (!newData?.items) return;
+
+      allItems.value = newData.items;
+      /* if(offset.value === 0) {
       // Reset : nouveaux filtres ou tri
       allItems.value = newData.items;
     } else {
       // Load more : ajouter les nouveaux items
       allItems.value = [...allItems.value, ...newData.items];
-    }
-  })
+    } */
+    },
+  );
 
   /* ======
     Watch pour reset les items lors d'un changement de filtre
@@ -145,7 +160,7 @@ export function useFeed(options?: UseFeedOptions) {
     router.push({
       query: {
         ...route.query,
-        tags: newKinds.length > 0 ? newKinds.join(",") : undefined,
+        kinds: newKinds.length > 0 ? newKinds.join(",") : undefined,
       },
     });
   };

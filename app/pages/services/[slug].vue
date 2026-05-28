@@ -42,10 +42,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     }
 ];
 
-const articlePublishedTime = computed(() => dayjs(page.value?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format());
-const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+const articlePublishedTime = computed(() => page.value?.created_at ? dayjs(page.value?.created_at).locale(locale.value).format(): null),
+    articleModifiedTime = computed(() => page.value?.updated_at ? dayjs(page.value?.updated_at).locale(locale.value).format(): null);
+const created_atDate = computed(() => page.value?.created_at ? dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
+    updated_atDate = computed(() => page.value?.updated_at ? dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
 
 const src = computed(() => page.value?.image?.sources.detail?.mobile || page.value?.image?.sources.feed?.mobile || ''),
     tabletSrc = computed(() => page.value?.image?.sources.detail?.tablet || page.value?.image?.sources.feed?.tablet || src),

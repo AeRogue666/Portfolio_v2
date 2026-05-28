@@ -5,8 +5,8 @@ description: Apprenez à utiliser les outils numériques simplement et efficacem
 feed_title: Formation numérique
 feed_summary: Gagnez en autonomie avec le digital.
 locale: fr
-previewUrl: /services/formation
-slug: formation
+previewUrl: /services/formations
+slug: formations
 tag: Formations
 highlighted: false
 ---

@@ -1,6 +1,7 @@
 import type { ResponsiveImage } from "./media";
+import type { FeedKind } from "@prisma/client";
 
-export type FeedKind = "project" | "experiment" | "about" | "pinned" | "note" | "read" | "client" | "talk" | "job";
+// export type FeedKind = "project" | "experiment" | "about" | "pinned" | "note" | "read" | "client" | "talk" | "job";
 // Kinds :
 // Project - Projet personnel
 // Experiment - side project, proof of concept, exploration technique sans objectif de production
@@ -21,19 +22,29 @@ export interface FeedItem {
   id: string;
   kind: FeedKind;
   kindFallback?: FeedKind; // if kind is pinned, show the real post type
+
+  slug?: string;
+
   title: string;
   description?: string;
+
   feed_title?: string;
   feed_summary?: string;
-  slug?: string;
+  
   date: string;
   created_at: string | Date;
   updated_at?: string | Date;
+
   tags?: string[];
+
   pinned?: boolean;
+
   image?: ResponsiveImage;
+
   previewUrl?: string;
+
   links?: FeedLinks;
+  
   customer_name: string;
   customer_job?: string;
   customer_city?: string;
