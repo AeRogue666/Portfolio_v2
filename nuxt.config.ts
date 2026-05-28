@@ -58,6 +58,7 @@ export default defineNuxtConfig({
     resendApiKey: "",
     upstashRedisUrl: "",
     upstashRedisToken: "",
+    databaseUrl: process.env.DATABASE_URL,
   },
   $production: {
     studio: false

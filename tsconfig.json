@@ -7,5 +7,11 @@
       "#server/*": ["./server/*"]
     },
     "typeRoots": ["./app/types", "./node_modules/@types"],
-  }
+    "lib": ["ES2022"],
+    "types": ["node"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2022",
+  },
+  "include": ["nuxt.config.ts","app/**/*.ts","server/**/*.ts","scripts/**/*.ts"],
 }

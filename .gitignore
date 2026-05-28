@@ -25,3 +25,4 @@ documentation
 !.env.example
 
 pnpm-lock.yaml
+/app/generated/prisma

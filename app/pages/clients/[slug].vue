@@ -49,10 +49,10 @@ useHeadSafe(() => ({
     title: page.value?.title,
     meta: [
         // Meta names
-        { name: 'description', content: page.value?.description },
+        { name: 'description', content: t('seo.page.description', { pagetitle: page.value?.description }) },
         // Meta properties
-        { property: 'og:title', content: page.value?.title },
-        { property: 'og:description', content: page.value?.description },
+        { property: 'og:title', content: t('seo.page.title', { pagetitle: page.value?.title }) },
+        { property: 'og:description', content: t('seo.page.description', { pagetitle: page.value?.description }) },
         { property: 'og:type', content: 'article' },
         { property: 'article:author', content: 'Aureldev' },
         { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
