@@ -1,55 +1,33 @@
-import type { FeedKind } from "./feed";
-import type { Locale } from "./i18n";
+import type { FeedKind } from "@prisma/client";
 import type { ResponsiveImage } from "./media";
-
-interface ClientLinks {
-  website?: string;
-}
 
 export interface Client {
   id: string;
-  kind: FeedKind;
-  pinned: boolean;
-  slug: string;
-  date: string;
-  customer_name: string;
-  customer_job?: string;
-  customer_city?: string;
-  customer_enterprise_name?: string;
-  created_at: string;
-  updated_at?: string;
-  previewUrl?: string;
-  image?: ResponsiveImage;
-  links?: ClientLinks;
-  translations: Record<Locale, ClientTranslation>;
-}
 
-export interface ClientTranslation {
+  slug: string;
+  kind: FeedKind;
+
   title: string;
-  description: string;
-  feed_title: string;
-  feed_summary: string;
-  testimony: string;
-}
+  description?: string;
+  content: string;
 
-export interface ClientResolved extends ClientTranslation {
-  id: string;
-  kind: FeedKind;
-  pinned: boolean;
-  slug: string;
+  feedTitle?: string;
+  feedSummary?: string;
+
   date: string;
-  customer_name: string;
-  customer_job?: string;
-  customer_city?: string;
-  customer_enterprise_name?: string;
-  created_at: string;
-  updated_at?: string;
-  previewUrl?: string;
-  image?: ResponsiveImage;
-  links?: ClientLinks;
-}
+  createdAt: string | Date;
+  updatedAt?: string | Date;
 
-export interface ClientResponse {
-  total: number;
-  items: ClientResolved[];
+  pinned: boolean;
+
+  image?: ResponsiveImage;
+  previewUrl?: string;
+
+  website?: string;
+
+  customerName?: string;
+  customerJob?: string;
+  customerCity?: string;
+  customerEnterpriseName?: string;
+  testimony?: string;
 }

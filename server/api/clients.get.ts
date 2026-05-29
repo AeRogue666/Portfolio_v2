@@ -1,14 +1,14 @@
 import type { Locale } from "@/types/i18n";
 import { prisma } from "../db/prisma";
-import { ServiceListSchema } from "../schemas/service.schema";
+import { ClientListSchema } from "../schemas/client.schema";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event),
     locale = (query.locale as string) === "en" ? "en" : ("fr" as Locale);
 
-  const services = await prisma.post.findMany({
+  const clients = await prisma.post.findMany({
     where: {
-      kind: "service",
+      kind: "client",
       
       translations: {
         some: {
@@ -30,32 +30,38 @@ export default defineEventHandler(async (event) => {
     },
   });
 
-  const normalizedServices = services.map((service) => {
-    const t = service.translations?.[0];
+  const normalizedClient = clients.map((client) => {
+    const t = client.translations?.[0];
 
     return {
-      ...service,
+      ...client,
       locale,
       title: t?.title ?? "",
-      description: t?.title ?? "",
+      description: t?.description ?? "",
       content: t?.content ?? "",
 
       feedTitle: t?.feedTitle ?? "",
       feedSummary : t?.feedSummary ?? "",
 
-      highlighted: service.tags?.includes("highlighted") ?? false,
+      customerName: t?.customerName ?? "",
+      customerJob: t?.customerJob ?? "",
+      customerCity: t?.customerCity ?? "",
+      customerEnterpriseName: t?.customerEnterpriseName ?? "",
+      testimony: t?.testimony ?? "",
 
-      tag: service.tags?.[0],
+      highlighted: client.tags?.includes("highlighted") ?? false,
+
+      tag: client.tags?.[0],
     };
   });
 
-  const parsed = ServiceListSchema.safeParse(normalizedServices);
+  const parsed = ClientListSchema.safeParse(normalizedClient);
 
   if (!parsed.success) {
     console.error(parsed.error);
     throw createError({
       statusCode: 500,
-      statusMessage: "Invalid services data shape",
+      statusMessage: "Invalid clients data shape",
     });
   }
 

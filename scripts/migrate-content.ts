@@ -194,6 +194,11 @@ async function migrateFile(fileInfo: ContentFile) {
       translationData.testimony = frontmatter.testimony;
     }
 
+    if(fileInfo.kind === "service") {
+      translationData.packages = frontmatter.packages || [];
+      date.highlighted = frontmatter.highlighted || false;
+    }
+
     if (frontmatter.image) {
       data.image = frontmatter.image;
     }

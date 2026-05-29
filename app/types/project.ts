@@ -1,54 +1,44 @@
-import type { FeedKind } from "./feed";
-import type { Locale } from "./i18n";
+import type { FeedKind } from "@prisma/client";
 import type { ResponsiveImage } from "./media";
 
-interface ProjectLinks {
-  github?: string;
-  demo?: string;
-}
-
-interface ProjectTechnicalChoices {
+interface technicalChoices {
   title: string;
   description: string;
-};
+}
 
 export interface Project {
+  id: string;
+
   slug: string;
   kind: FeedKind;
-  created_at: string;
-  updated_at?: string;
-  pinned?: boolean;
-  previewUrl?: string;
-  image?: ResponsiveImage;
-  tags?: string[];
-  stack?: string[];
-  links: ProjectLinks;
-  translations: Record<Locale, ProjectTranslation>;
-}
 
-export interface ProjectTranslation {
   title: string;
   description: string;
-  feed_title: string;
-  feed_summary: string;
-  role: string;
-  context: string;
-  problem: string;
-  solution: string;
-  technicalChoices: ProjectTechnicalChoices[];
-  accessibility: string;
-  learnings: string[];
-}
+  content: string;
+  
+  date: string;
+  createdAt: string | Date;
+  updatedAt?: string | Date;
 
-export interface ProjectResolved extends ProjectTranslation {
-  slug: string;
-  kind: FeedKind;
-  created_at: string;
-  updated_at?: string;
-  pinned?: boolean;
-  previewUrl?: string;
+  pinned: boolean;
+
+  tags: string[];
+
   image?: ResponsiveImage;
-  tags?: string[];
+  previewUrl?: string;
+
   stack?: string[];
-  links?: ProjectLinks;
+
+  github?: string;
+  demo?: string;
+
+  role?: string;
+  problem?: string;
+  solution?: string;
+
+  technicalChoices?: technicalChoices;
+
+  accessibility?: string;
+
+  learnings?: string[];
 }
