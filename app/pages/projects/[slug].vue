@@ -3,15 +3,15 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
 import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
-import type { ProjectResolved } from '@/types/project';
+import type { Project } from '@/types/project';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
 
 const asyncKey = computed(() => `project-${route.params.slug}-${locale.value}`);
-const { data: project, error } = await useAsyncData<ProjectResolved>(
+const { data: project, error } = await useAsyncData<Project>(
     () => asyncKey.value,
-    () => $fetch(`/api/projects/${route.params.slug}`, {
+    () => $fetch(`/api/posts/${route.params.slug}`, {
         query: { locale: locale.value }
     }),
     {
@@ -54,10 +54,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-const articlePublishedTime = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format(): null),
-    articleModifiedTime = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format(): null);
-const created_atDate = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
-    updated_atDate = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
+const articlePublishedTime = computed(() => project.value?.date ? dayjs(project.value?.date).locale(locale.value).format(): null),
+    articleModifiedTime = computed(() => project.value?.updatedAt ? dayjs(project.value?.updatedAt).locale(locale.value).format(): null);
+const created_atDate = computed(() => project.value?.date ? dayjs(project.value?.date).locale(locale.value).format("DD MMMM YYYY") : null),
+    updated_atDate = computed(() => project.value?.updatedAt ? dayjs(project.value?.updatedAt).locale(locale.value).format("DD MMMM YYYY") : null);
 
 const src = computed(() => project.value?.image?.sources.detail?.mobile || project.value?.image?.sources.feed?.mobile || ''),
     tabletSrc = computed(() => project.value?.image?.sources.detail?.tablet || project.value?.image?.sources.feed?.tablet || src),
@@ -83,7 +83,7 @@ useHeadSafe(() => ({
     link: [
         {
             rel: 'canonical',
-            href: `https://codekoricoà.com${route.path}`
+            href: `https://codekorico.com${route.path}`
         },
         ...locales.value.map(l => ({
             rel: 'alternate',
@@ -123,10 +123,11 @@ useSeoMeta(({
                 </UBreadcrumb>
                 <p class="fs-small text-(--text-2)">
                     {{ t('project.published_on') }}
-                    <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
-                    <template v-if="project.updated_at">
+                    <time v-if="project.date" :datetime="project.date">{{ created_atDate }}</time>
+                    <br>
+                    <template v-if="project.updatedAt">
                         {{ t('post.updated_on') }}
-                        <time :datetime="project.updated_at">{{ updated_atDate }}</time>
+                        <time :datetime="project.updatedAt">{{ updated_atDate }}</time>
                     </template>
                 </p>
 
@@ -164,7 +165,7 @@ useSeoMeta(({
                 </dl>
             </template>
 
-            <ContentRenderer :value="project" class="prose prose-neutral dark:prose-invert max-w-none" />
+            <MDC :value="project.content" class="prose prose-neutral dark:prose-invert max-w-none" />
 
             <template #footer>
                 <a v-if="project.links?.github" :href="project.links.github"

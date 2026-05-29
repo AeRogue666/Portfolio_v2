@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import type { ServiceResolved } from '@/types/service';
+import type { Service } from '@/types/service';
 import dayjs from 'dayjs';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 import PackagesContainer from '@/components/index/organisms/PackagesContainer.vue'
@@ -13,9 +13,9 @@ useSidebarFocusState();
 
 const asyncKey = computed(() => `services-${route.params.slug}-${locale.value}`);
 
-const { data: page, error } = await useAsyncData<ServiceResolved>(
+const { data: page, error } = await useAsyncData<Service>(
     () => asyncKey.value,
-    () => $fetch(`/api/services/${route.params.slug}`, {
+    () => $fetch(`/api/posts/${route.params.slug}`, {
         query: { locale: locale.value }
     }),
     {
@@ -42,10 +42,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     }
 ];
 
-const articlePublishedTime = computed(() => page.value?.created_at ? dayjs(page.value?.created_at).locale(locale.value).format(): null),
-    articleModifiedTime = computed(() => page.value?.updated_at ? dayjs(page.value?.updated_at).locale(locale.value).format(): null);
-const created_atDate = computed(() => page.value?.created_at ? dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
-    updated_atDate = computed(() => page.value?.updated_at ? dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
+const articlePublishedTime = computed(() => page.value?.date ? dayjs(page.value?.date).locale(locale.value).format() : null),
+    articleModifiedTime = computed(() => page.value?.updatedAt ? dayjs(page.value?.updatedAt).locale(locale.value).format() : null);
+const created_atDate = computed(() => page.value?.date ? dayjs(page.value?.date).locale(locale.value).format("DD MMMM YYYY") : null),
+    updated_atDate = computed(() => page.value?.updatedAt ? dayjs(page.value?.updatedAt).locale(locale.value).format("DD MMMM YYYY") : null);
 
 const src = computed(() => page.value?.image?.sources.detail?.mobile || page.value?.image?.sources.feed?.mobile || ''),
     tabletSrc = computed(() => page.value?.image?.sources.detail?.tablet || page.value?.image?.sources.feed?.tablet || src),
@@ -71,12 +71,12 @@ useHeadSafe(() => ({
     link: [
         {
             rel: 'canonical',
-            href: `https://aureldev.com${route.path}`
+            href: `https://codekorico.com${route.path}`
         },
         ...locales.value.map(l => ({
             rel: 'alternate',
             hreflang: l.code,
-            href: `https://aureldev.com${route.path}`
+            href: `https://codekorico.com${route.path}`
         }))
     ]
 }));
@@ -89,6 +89,8 @@ useSeoMeta(({
 watchEffect(() => {
     if (!page.value) return;
 });
+
+onMounted(() => console.log(page.value))
 </script>
 
 <template>
@@ -101,10 +103,11 @@ watchEffect(() => {
             </UBreadcrumb>
             <p class="fs-small text-(--text-2)">
                 {{ t('project.published_on') }}
-                <time v-if="page.created_at" :datetime="page.created_at">{{ created_atDate }}</time>
-                <template v-if="page.updated_at">
+                <time v-if="page.date" :datetime="page.date">{{ created_atDate }}</time>
+                <br>
+                <template v-if="page.updatedAt">
                     {{ t('post.updated_on') }}
-                    <time v-if="page.updated_at" :datetime="page.updated_at">{{ updated_atDate }}</time>
+                    <time :datetime="page.updatedAt">{{ updated_atDate }}</time>
                 </template>
             </p>
 
@@ -120,7 +123,7 @@ watchEffect(() => {
                 <p class="fs-body text-(--text-2) leading-snug">{{ t('plans.warning.description') }}</p>
             </div>
 
-            <ContentRenderer :value="page" />
+            <MDC :value="page.content" class="prose prose-neutral dark:prose-invert max-w-none" />
 
             <ul>
                 <li v-for="(content, i) in page.packages" :key="i" class="flex flex-col mb-6 gap-6">

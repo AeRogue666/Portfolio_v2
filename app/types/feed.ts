@@ -20,24 +20,23 @@ interface FeedLinks {
 
 export interface FeedItem {
   id: string;
-  kind: FeedKind;
-  kindFallback?: FeedKind; // if kind is pinned, show the real post type
 
-  slug?: string;
+  slug: string;
+  kind: FeedKind;
 
   title: string;
   description?: string;
 
-  feed_title?: string;
-  feed_summary?: string;
+  feedTitle?: string;
+  feedSummary?: string;
   
   date: string;
-  created_at: string | Date;
-  updated_at?: string | Date;
+  createdAt: string | Date;
+  updatedAt?: string | Date;
 
   tags?: string[];
 
-  pinned?: boolean;
+  pinned: boolean;
 
   image?: ResponsiveImage;
 
@@ -45,10 +44,10 @@ export interface FeedItem {
 
   links?: FeedLinks;
   
-  customer_name: string;
-  customer_job?: string;
-  customer_city?: string;
-  customer_enterprise_name?: string;
+  customerName: string;
+  customerJob?: string;
+  customerCity?: string;
+  customerEnterpriseName?: string;
   testimony?: string;
 }
 

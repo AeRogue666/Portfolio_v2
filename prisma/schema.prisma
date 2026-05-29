@@ -56,6 +56,8 @@ model Post {
     stack String[] @default([])
 
     translations PostTranslation[]
+
+    highlighted Boolean @default(false)
 }
 
 model PostTranslation {
@@ -84,6 +86,8 @@ model PostTranslation {
   customerCity String?
   customerEnterpriseName String?
   testimony String?
+
+  packages Json?
 
   postId String
   post Post @relation(fields: [postId], references: [id], onDelete: Cascade)

@@ -231,6 +231,7 @@
       "project": "Project",
       "experiment": "Experiment",
       "about": "About",
+      "service": "Service",
       "pinned": "Pinned",
       "client": "Client",
       "note": "Note",

@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import type { ServiceResolved } from '~/app/types/service';
+import type { Service } from '~/app/types/service';
 
 const props = defineProps<{
-    services: ServiceResolved[];
+    services: Service[];
 }>();
 
 const { t } = useI18n();
 </script>
 
 <template>
-    <UPricingPlans>
-        <UPricingPlan v-for="(service, i) in services" :key="i" v-bind="service" orientation="vertical"
-            :tagline="service.tag" :title="service.feed_title ?? service.title"
-            :description="service.feed_summary ?? service.description" :highlight="service.highlighted"
+    <UPricingPlans class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <UPricingPlan v-for="service in services" :key="service.slug" orientation="vertical"
+            :tagline="service.tag" :title="service.feedTitle ?? service.title"
+            :description="service.feedSummary ?? service.description" :highlight="service.highlighted"
             class="flex flex-col justify-between p-6 rounded-xl border transition-all duration-300 bg-(--card-note-bg)"
             :class="[
                 service.highlighted === true
@@ -22,7 +22,7 @@ const { t } = useI18n();
                 label: t('index.services_section.learn_more_button')
             }" :ui="{
                 title: 'text-(--text)',
-                description: 'text-(--text-2)',
+                description: 'text-(--text-2) truncate',
                 featureTitle: 'text-(--text-2)'
             }">
 
