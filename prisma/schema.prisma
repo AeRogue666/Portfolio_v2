@@ -22,6 +22,12 @@ enum FeedKind {
     talk
     job
     pinned
+    page_index
+    page_legal
+    page_terms
+    page_accessibility
+    page_accessibility_report
+    page_report
 }
 
 enum Locale {
@@ -62,13 +68,12 @@ model Post {
 
 model PostTranslation {
   id String @id @default(cuid())
-
+  
   locale Locale
 
   title String
 
   description String?
-  content String?
 
   feedTitle   String?
   feedSummary String?
@@ -88,6 +93,8 @@ model PostTranslation {
   testimony String?
 
   packages Json?
+
+  blocks Json?
 
   postId String
   post Post @relation(fields: [postId], references: [id], onDelete: Cascade)

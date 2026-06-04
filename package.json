@@ -29,6 +29,7 @@
     "@prisma/adapter-neon": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "@upstash/redis": "^1.38.0",
+    "@vueuse/integrations": "^14.3.0",
     "better-sqlite3": "^12.10.0",
     "dayjs": "^1.11.20",
     "focus-trap": "^8.2.1",
@@ -37,6 +38,7 @@
     "nuxt": "^4.4.4",
     "nuxt-studio": "^1.7.0",
     "resend": "^6.12.3",
+    "sortablejs": "^1.15.7",
     "tailwindcss": "^4.2.4"
   },
   "devDependencies": {
@@ -46,6 +48,7 @@
     "@iconify/vue": "^5.0.0",
     "@tailwindcss/vite": "^4.2.4",
     "@types/node": "^25.9.1",
+    "@types/sortablejs": "^1.15.9",
     "dotenv": "^17.4.2",
     "prisma": "^7.8.0",
     "tsx": "^4.22.3"

@@ -228,6 +228,7 @@
     "pinned_post": "Pinned post",
     "default_post": "Post",
     "type": {
+      "all": "all",
       "project": "Project",
       "experiment": "Experiment",
       "about": "About",
@@ -237,7 +238,12 @@
       "note": "Note",
       "read": "Read",
       "job": "Job",
-      "talk": "Talk"
+      "talk": "Talk",
+      "page_index": "Index pagez",
+      "page_legal": "Legal page",
+      "page_terms": "Terms page",
+      "page_accessibility": "Accessibility page",
+      "page_accessibility_report": "Accessibility Report page"
     },
     "created_on":"Published on",
     "updated_on": "Updated on"
@@ -352,5 +358,20 @@
     "created_on": "Published on",
     "updated_on": "Updated on",
     "effective_as": "Effective as"
+  },
+  "admin": {
+    "dashboard": {
+      "title_accent": "Administrator",
+      "title_rest": "Dashboard",
+      "description": "What we gonna publish today?",
+      "content": {
+        "title": "Content Manager",
+        "description": "All website content (articles, pages, etc.)"
+      },
+      "accessibility_report": {
+        "title": "Accessibility Report",
+        "description": "RGAA report (only)"
+      }
+    }
   }
 }

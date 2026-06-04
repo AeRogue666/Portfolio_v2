@@ -37,7 +37,7 @@ export default defineEventHandler(async (event) => {
       ...service,
       locale,
       title: t?.title ?? "",
-      description: t?.title ?? "",
+      description: t?.description ?? "",
       content: t?.content ?? "",
 
       feedTitle: t?.feedTitle ?? "",

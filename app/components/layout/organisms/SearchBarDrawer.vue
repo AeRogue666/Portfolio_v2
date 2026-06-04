@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { FeedResponse } from '~/app/types/feed';
 
-const { t, locale } = useI18n(),
-    colorMode = useColorMode();
+const { t, locale } = useI18n();
 
 const searchTerm = ref("");
 const isOpen = ref(false);
@@ -13,14 +12,12 @@ const { data: postsData, status, execute } = await useLazyFetch('/api/posts', {
     transform: (data: FeedResponse) => {
         return data?.items?.map(post => ({
             id: post.id,
-            label: post.feed_title ?? post.title,
+            label: post.feedTitle ?? post.title,
             suffix: post.slug,
             to: post.slug
-                ? (post.kind === 'project' || post.kindFallback === 'project'
-                    ? `/projects/${post.slug}`
-                    : post.kind === 'update' || post.kindFallback === 'update'
-                        ? `/updates/${post.slug}`
-                        : `/${post.slug}`
+                ? (post.kind === 'project' || 'experiment' || 'client' || 'service' || 'talk' || 'note' || 'job' || 'read'
+                    ? `${post.kind}s/${post.slug}`
+                    : `${post.slug}`
                 )
                 : undefined,
         })) ?? [];

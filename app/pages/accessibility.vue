@@ -5,7 +5,16 @@ import dayjs from 'dayjs';
 const { t, locale, locales } = useI18n(),
     route = useRoute();
 
-const contentPath = computed(() => `/accessibility/${locale.value}`);
+const { data: page, error } = await useFetch(`/api/pages/page_accessibility`, {
+    query: {
+        locale: locale.value,
+    }
+});
+if (error.value) {
+    throw createError({ status: 404, statusMessage: 'Accessibility data not found', cause: error.value, fatal: true })
+}
+
+/* const contentPath = computed(() => `/accessibility/${locale.value}`);
 
 const { data: page, error } = await useAsyncData(
     () => `accessibility-${locale.value}`,
@@ -13,10 +22,7 @@ const { data: page, error } = await useAsyncData(
         queryCollection('content')
             .path(contentPath.value) // .where('path', '=', `/accessibility/${locale.value}`)
             .first()
-);
-if (error.value) {
-    throw createError({ status: 404, statusMessage: 'Accessibility data not found', cause: error.value, fatal: true })
-}
+); */
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -29,10 +35,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     },
 ];
 
-const articlePublishedTime = computed(() => dayjs(page.value?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format());
-const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+const articlePublishedTime = computed(() => dayjs(page.value?.createdAt).locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(page.value?.updatedAt).locale(locale.value).format());
+const created_atDate = computed(() => dayjs(page.value?.createdAt).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(page.value?.updatedAt).locale(locale.value).format("DD MMMM YYYY"));
 
 useHeadSafe(() => ({
     title: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility') }),
@@ -85,7 +91,7 @@ useHeadSafe(() => ({
                 <p class="text-(--text-2) fs-subtitle leading-snug">{{ page.description }}</p>
             </header>
 
-            <ContentRenderer :value="page" />
+            <MDC :value="page.content" />
         </article>
     </template>
     <p v-else class="fs-body">

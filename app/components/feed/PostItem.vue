@@ -15,12 +15,11 @@ const accessibilityStore = useAccessibilityStore();
 const badgeLabel = computed(() => {
     if (props.post.pinned) return t('post.pinned_post');
 
-    const kindLabel = t(`post.type.${props.post.kind}`),
-        fallbackLabel = props.post.kindFallback ? t(`post.type.${props.post.kindFallback}`) : '';
+    const kindLabel = t(`post.type.${props.post.kind}`);
 
     return locale.value === 'en'
-        ? `${kindLabel} ${fallbackLabel}`.trim()
-        : `${fallbackLabel} ${kindLabel}`.trim();
+        ? `${kindLabel}`.trim()
+        : `${kindLabel}`.trim();
     /* if (props.post.pinned) {
         return locale.value === 'en'
             ? `${t(`post.type.${props.post.kind}`)} ${t(`post.type.${props.post.kindFallback}`)}`
@@ -31,10 +30,10 @@ const badgeLabel = computed(() => {
 
 const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : undefined)),
     postUrl = computed(() => getPostUrl(props.post)),
-    cardType = computed(() => props.post.kindFallback || props.post.kind),
+    cardType = computed(() => props.post.kind),
     grayscale = computed(() => accessibilityStore.grayscale),
-    created_atDate = computed(() => dayjs(props.post.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(props.post.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+    created_atDate = computed(() => dayjs(props.post.createdAt).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(props.post.updatedAt).locale(locale.value).format("DD MMMM YYYY"));
 </script>
 
 <template>
@@ -45,10 +44,10 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
                     :variant="'soft'" :size="'md'" class="fs-body"
                     :class-name="grayscale ? 'bg-(--bg-3) text-(--text-2)' : post.pinned ? 'text-(--text-2)' : 'bg-(--bg-3) text-(--text-2)'" />
                 <div class="flex flex-col items-end gap-1">
-                    <time v-if="post.created_at" :datetime="post.created_at" class="fs-small text-(--text-2)">
+                    <time v-if="post.createdAt" :datetime="created_atDate" class="fs-small text-(--text-2)">
                         {{ t('post.created_on') }} {{ created_atDate }}
                     </time>
-                    <time v-if="post.updated_at" :datetime="post.updated_at" class="fs-small text-(--text-2)">
+                    <time v-if="post.updatedAt" :datetime="updated_atDate" class="fs-small text-(--text-2)">
                         {{ t('post.updated_on') }} {{ updated_atDate }}
                     </time>
                 </div>
@@ -59,10 +58,10 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
         </template>
 
         <h2 class="fs-title font-semibold leading-snug text-(--text)">
-            {{ post.feed_title ? post.feed_title : post.title }}
+            {{ post.feedTitle ? post.feedTitle : post.title }}
         </h2>
         <p class="fs-body leading-relaxed text-(--text-2) max-w-prose">
-            {{ post.feed_summary ? post.feed_summary : post.description }}
+            {{ post.feedSummary ? post.feedSummary : post.description }}
         </p>
 
         <div v-if="post.tags && post.tags.length > 0" class="flex flex-wrap gap-2 mt-2">

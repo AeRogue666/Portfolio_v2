@@ -4,6 +4,7 @@ import { prisma } from "#server/db/prisma";
 import { readFileSync, readdirSync } from "fs";
 import { join, basename, dirname } from "path";
 import matter from "gray-matter";
+import MarkdownIt from "markdown-it";
 
 /* const adapter = new PrismaNeon({
   connectionString: process.env.DATABASE_URL,
@@ -20,10 +21,110 @@ interface ContentFile {
     | "note"
     | "read"
     | "talk"
-    | "job";
+    | "job"
+    | "pinned"
+    | "page_index"
+    | "page_legal"
+    | "page_terms"
+    | "page_accessibility"
+    | "page_accessibility_report"
+    | "page_report";
   locale: "fr" | "en";
   filePath: string;
   slug: string;
+}
+
+const md = new MarkdownIt();
+
+function markdownToBlocks(input: string) {
+  if (!input?.trim()) return [];
+  const tokens = md.parse(input, {});
+  const blocks: any[] = [];
+
+  let listBuffer: any[] = null;
+  let listOrdered = false;
+  
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+
+    switch (token.type) {
+      case "heading_open": {
+        const level = Number(token.tag.replace("h", ""));
+
+        const inline = tokens[i + 1];
+        const content = inline?.type === "line" ? inline.content : "";
+
+        blocks.push({
+          id: crypto.randomUUID(),
+          type: "heading",
+          level,
+          content,
+        });
+
+        break;
+      }
+
+      case "paragraph_open": {
+        const inline = tokens[i + 1];
+        const content = inline?.type === "line" ? inline.content : "";
+
+        blocks.push({
+          id: crypto.randomUUID(),
+          type: "paragraph",
+          content,
+        });
+
+        break;
+      }
+
+      case "bullet_list_open": {
+        listBuffer = [];
+        listOrdered = false;
+        break;
+      }
+
+      case "ordered_list_open": {
+        listBuffer = [];
+        listOrdered = true;
+        break;
+      }
+
+      case "list_item_open": {
+        const inline = tokens[i + 2];
+        if(listBuffer && inline?.type === "inline") {
+          listBuffer.push(inline.content);
+        }
+        break;
+      }
+
+      case "bullet_list_close":
+        case "ordered_list_close": {
+          if(listBuffer) {
+            blocks.push({
+              id: crypto.randomUUID(),
+              type: "list",
+              style: listOrdered ? "ordered" : "unordered",
+              items: listBuffer,
+            });
+
+            listBuffer = null;
+          }
+          break;
+        }
+
+        case "fence": {
+          blocks.push({
+            id: crypto.randomUUID(),
+            type: "code",
+            lang: token.info || null,
+            content: token.content,
+          });
+          break;
+        }
+    }
+  }
+
+  return blocks;
 }
 
 /***
@@ -166,10 +267,11 @@ async function migrateFile(fileInfo: ContentFile) {
 
       title: frontmatter.title || "",
       description: frontmatter.description || "",
-      content: content || "",
 
       feedTitle: frontmatter.feed_title,
       feedSummary: frontmatter.feed_summary,
+
+      blocks: markdownToBlocks(content),
     };
 
     if (fileInfo.kind === "project") {
@@ -194,9 +296,9 @@ async function migrateFile(fileInfo: ContentFile) {
       translationData.testimony = frontmatter.testimony;
     }
 
-    if(fileInfo.kind === "service") {
+    if (fileInfo.kind === "service") {
       translationData.packages = frontmatter.packages || [];
-      date.highlighted = frontmatter.highlighted || false;
+      data.highlighted = frontmatter.highlighted || false;
     }
 
     if (frontmatter.image) {

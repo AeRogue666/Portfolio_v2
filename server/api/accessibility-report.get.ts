@@ -1,15 +1,19 @@
 import type { Locale } from "@/types/i18n";
 import { resolveWithLocale } from "#server/lib/resolve";
 import { accessibilityReport } from "#server/data/accessibility";
+import { AccessibilityReport } from "~/types/accessibility";
+
+export type AccessibilityReportResponse = AccessibilityReport["translations"][Locale];
 
 export default cachedEventHandler(
-  (event) => {
+  (event): AccessibilityReportResponse => {
     const query = getQuery(event);
     const locale: Locale = query.locale === "fr" ? "fr" : "en";
 
-    const resolved = resolveWithLocale(accessibilityReport, locale);
+    // const resolved = resolveWithLocale(accessibilityReport, locale);
 
-    return {
+    return resolveWithLocale(accessibilityReport, locale);
+    /* {
       ...resolved,
       // Statistiques calculées
       stats: {
@@ -19,7 +23,7 @@ export default cachedEventHandler(
         nonApplicables: resolved.criteria.filter((c) => c.status === "NA")
           .length,
       },
-    };
+    }; */
   },
   {
     maxAge: 60 * 10, // 10 minutes
