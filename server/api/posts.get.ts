@@ -1,5 +1,5 @@
 import { prisma } from "../db/prisma";
-import type { Locale, FeedKind, Prisma } from "@prisma/client";
+import type { Locale, FeedKind } from "@prisma/client";
 import type { FeedResponse } from "~/types/feed";
 import { ResponsiveImage } from "~/types/media";
 
@@ -18,8 +18,8 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
     (query.kinds as string)?.split(",").filter(Boolean) ?? [];
 
   try {
-    // Build Prisma WHERE clause with filters
-    const where: Prisma.PostWhereInput = {
+    // Basic clause filter
+    const where: any = {
       translations: {
         some: {
           locale,
@@ -42,54 +42,14 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
     }
 
     // Get total count BEFORE pagination
-    const total = await prisma.post.count({ where });
+    const tagsRaw = await prisma.$queryRaw<{ tag: string }[]>`
+    SELECT DISTINCT unnest(tags) as tag FROM "Post" WHERE tags IS NOT NULL`;
 
-    // Build ORDER BY clause
-    const orderBy: Prisma.PostOrderByWithRelationInput[] = [];
-
-    // Always pin pinned items first
-    orderBy.push({ pinned: "desc" });
-
-    // Then apply requested sort
-    switch (sortBy) {
-      case "oldest":
-        orderBy.push({ date: "asc" });
-        break;
-      case "alpha":
-        orderBy.push({
-          translations: {
-            _count: "desc",
-          },
-        });
-        break;
-      case "alpha-desc":
-        orderBy.push({
-          translations: {
-            _count: "desc",
-          },
-        });
-        break;
-      case "recent":
-      default:
-        orderBy.push({ date: "desc" });
-        break;
-    }
-
-    const shouldSortInMemory = sortBy === "alpha" || sortBy === "alpha-desc";
+    const availableTags = tagsRaw.map((t) => t.tag).sort();
 
     // Fetch paginated results
     const items = await prisma.post.findMany({
       where,
-      orderBy: [
-        { pinned: "desc" },
-        { date: sortBy === "oldest" ? "asc" : "desc" },
-      ],
-      ...(shouldSortInMemory
-        ? {}
-        : {
-            take: limit,
-            skip: offset,
-          }),
       include: {
         translations: {
           where: { locale },
@@ -98,18 +58,9 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
       },
     });
 
-    // Extract all unique tags for filter UI
-    const allTagsResult = await prisma.post.findMany({
-      select: { tags: true },
-    });
-
-    const availableTags = Array.from(
-      new Set(allTagsResult.flatMap((item: { tags: any }) => item.tags)),
-    ).sort();
-
     // Transform to FeedItem format (map Prisma model to frontend type)
     const transformedItems = items.map((item) => {
-      const t = item.translations[0]; // item.translations.find(tr => tr.locale === locale);
+      const t = item.translations.find((tr) => tr.locale === locale);
 
       return {
         id: item.id,
@@ -142,7 +93,6 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
     const collator = new Intl.Collator(locale, {
       sensitivity: "base",
       numeric: true,
-      ignorePunctuation: false,
     });
 
     const normalize = (s: string) =>
@@ -151,38 +101,32 @@ export default defineEventHandler(async (event): Promise<FeedResponse> => {
         .replace(/[\u0300-\u036f]/g, "")
         .trim();
 
-    if (sortBy === "alpha") {
-      transformedItems.sort((a, b) => {
-        if (a.pinned && !b.pinned) return -1;
-        if (!a.pinned && b.pinned) return 1;
+    transformedItems.sort((a, b) => {
+      // Absolute priority on pinned elements (pinned)
+      if (a.pinned && !b.pinned) return -1;
+      if (!a.pinned && b.pinned) return 1;
 
-        return collator.compare(
-          normalize(a.title),
-          normalize(b.title),
-        );
-      });
-    }
-
-    if (sortBy === "alpha-desc") {
-      transformedItems.sort((a, b) => {
-        if (a.pinned && !b.pinned) return -1;
-        if (!a.pinned && b.pinned) return 1;
-
-        return collator.compare(
-          normalize(b.title),
-          normalize(a.title),
-        );
-      });
-    }
+      // Secondary sort by user choice
+      if (sortBy === "alpha") {
+        return collator.compare(normalize(a.title), normalize(b.title));
+      } else if (sortBy === "alpha-desc") {
+        return collator.compare(normalize(b.title), normalize(a.title));
+      } else if (sortBy === "oldest") {
+        return new Date(a.date).getTime() - new Date(b.date).getTime();
+      } else {
+        // "recent" by default
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      }
+    });
 
     // Calculate pagination info
-    const sortedItems = shouldSortInMemory ? transformedItems : transformedItems;
-    const paginatedItems = sortedItems.slice(offset, offset + limit);
+    const total = transformedItems.length;
+    const paginatedItems = transformedItems.slice(offset, offset + limit);
 
     return {
       items: paginatedItems,
-      total: sortedItems.length,
-      hasMore: offset + limit < sortedItems.length,
+      total,
+      hasMore: offset + limit < total,
       availableTags,
     };
   } catch (e) {
