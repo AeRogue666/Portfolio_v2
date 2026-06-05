@@ -1,36 +1,25 @@
-import type { FeedKind } from "@prisma/client";
+import type { Locale } from "./i18n";
 import type { ResponsiveImage } from "./media";
 
 export interface Service {
-  id: string;
-
   slug: string;
-  kind: FeedKind;
+  created_at: string;
+  updated_at?: string;
+  date?: string;
+  previewUrl?: string;
+  image?: ResponsiveImage;
+  tags?: string[];
+  tag?: string;
+  highlighted: boolean;
+  translations: Record<Locale, ServiceTranslation>;
+}
 
-  locale: "fr" | "en";
-
+export interface ServiceTranslation {
   title: string;
   description?: string;
-  content: string;
-
-  feedTitle?: string;
-  feedSummary?: string;
-
-  date: string;
-  createdAt: string | Date;
-  updatedAt?: string | Date;
-
-  pinned: boolean;
-
-  image?: ResponsiveImage;
-  previewUrl?: string;
-  
-  tags: string[];
-  tag?: string;
-
-  highlighted: boolean;
-
-  packages: Array<{
+  feed_title?: string;
+  feed_summary?: string;
+  packages?: Array<{
     title: string;
     children: Array<{
       title: string;
@@ -39,4 +28,21 @@ export interface Service {
       features: string[];
     }>;
   }>;
+}
+
+export interface ServiceResolved extends ServiceTranslation {
+  slug: string;
+  created_at: string;
+  updated_at?: string;
+  date?: string;
+  previewUrl?: string;
+  image?: ResponsiveImage;
+  tag?: string;
+  tags?: string[];
+  highlighted: boolean;
+}
+
+export interface ServiceResponse {
+  total: number;
+  items: ServiceResolved[];
 }

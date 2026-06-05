@@ -3,15 +3,15 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
 import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
-import type { Experiment } from '~/app/types/experiment';
+import type { ExperimentResolved } from '~/app/types/experiment';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
 
 const asyncKey = computed(() => `experiment-${route.params.slug}-${locale.value}`);
-const { data: experiment, error } = await useAsyncData<Experiment>(
+const { data: experiment, error } = await useAsyncData<ExperimentResolved>(
     () => asyncKey.value,
-    () => $fetch(`/api/posts/${route.params.slug}`, {
+    () => $fetch(`/api/experiments/${route.params.slug}`, {
         query: { locale: locale.value }
     }),
     {
@@ -50,10 +50,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-const articlePublishedTime = computed(() => experiment.value?.date ? dayjs(experiment.value?.date).locale(locale.value).format(): null),
-    articleModifiedTime = computed(() => experiment.value?.updatedAt ? dayjs(experiment.value?.updatedAt).locale(locale.value).format(): null);
-const created_atDate = computed(() => experiment.value?.date ? dayjs(experiment.value?.date).locale(locale.value).format("DD MMMM YYYY") : null),
-    updated_atDate = computed(() => experiment.value?.updatedAt ? dayjs(experiment.value?.updatedAt).locale(locale.value).format("DD MMMM YYYY") : null);
+const articlePublishedTime = computed(() => experiment.value?.created_at ? dayjs(experiment.value?.created_at).locale(locale.value).format(): null),
+    articleModifiedTime = computed(() => experiment.value?.updated_at ? dayjs(experiment.value?.updated_at).locale(locale.value).format(): null);
+const created_atDate = computed(() => experiment.value?.created_at ? dayjs(experiment.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
+    updated_atDate = computed(() => experiment.value?.updated_at ? dayjs(experiment.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
 
 const src = computed(() => experiment.value?.image?.sources.detail?.mobile || experiment.value?.image?.sources.feed?.mobile || ''),
     tabletSrc = computed(() => experiment.value?.image?.sources.detail?.tablet || experiment.value?.image?.sources.feed?.tablet || src),
@@ -79,12 +79,12 @@ useHeadSafe(() => ({
     link: [
         {
             rel: 'canonical',
-            href: `https://codekorico.com${route.path}`
+            href: `https://aureldev.com${route.path}`
         },
         ...locales.value.map(l => ({
             rel: 'alternate',
             hreflang: l.code,
-            href: `https://codekorico.com${route.path}`
+            href: `https://aureldev.com${route.path}`
         }))
     ]
 }));
@@ -97,6 +97,20 @@ useSeoMeta(({
 watchEffect(() => {
     if (!experiment.value) return;
 });
+
+/* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
+                alt: experiment.image?.alt,
+                srcset: `${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`,
+                sizes: 'sm:100vw md:80vw lg:64rem',
+                class: 'my-2 rounded-lg border-2 border-solid border-(--border-subtle)'
+            }" :widths="[320, 640, 960, 1280, 1536, 1920]" format="png" placeholder="blur" /> */
+
+/* <picture>
+                <source :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" type="image/png"
+                    :widths="[320, 640, 960, 1280, 1536, 1920]" />
+                <img :src="src" :alt="experiment.image?.alt" sizes="sm:100vw md:80vw lg:64rem"
+                    class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" />
+            </picture> */
 </script>
 
 <template>
@@ -110,11 +124,10 @@ watchEffect(() => {
                 </UBreadcrumb>
                 <p class="fs-small text-(--text-2) leading-snug">
                     {{ t('experiment.published_on') }}
-                    <time :datetime="experiment.date">{{ created_atDate }}</time>
-                    <br>
-                    <template v-if="experiment.updatedAt">
+                    <time :datetime="experiment.created_at">{{ created_atDate }}</time>
+                    <template v-if="experiment.updated_at">
                         {{ t('post.updated_on') }}
-                        <time :datetime="experiment.updatedAt">{{ updated_atDate }}</time>
+                        <time :datetime="experiment.updated_at">{{ updated_atDate }}</time>
                     </template>
                 </p>
 
@@ -142,7 +155,7 @@ watchEffect(() => {
                 </dl>
             </template>
 
-            <MDC :value="experiment.content" class="prose prose-neutral dark:prose-invert max-w-none" />
+            <ContentRenderer :value="experiment" class="prose prose-neutral dark:prose-invert max-w-none" />
 
             <!-- <section aria-labelledby="content">
             <h2 id="content" class="fs-title font-semibold leading-snug">

@@ -1,8 +1,8 @@
 {
   "name": "portfolio-v2",
   "author": "AurelDev",
-  "description": "Version 2 of my Portfolio - Became a Business site - Made with Nuxt 4.2+ and Accessibility-First in mind",
-  "version": "2.1.0",
+  "description": "Version 2 of my Portfolio - Made with Nuxt 4+ and Accessibility-First in mind",
+  "version": "2.0.0",
   "api": "none",
   "readme": "README.md",
   "private": true,
@@ -11,12 +11,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "db:migrate": "prisma migrate dev",
-    "db:studio": "prisma studio",
-    "db:push": "prisma db push",
-    "migrate:content": "tsx scripts/migrate-content.ts",
-    "migrate:reset": "prisma migrate reset --force"
+    "preview": "nuxt preview"
   },
   "dependencies": {
     "@nuxt/content": "^3.14.0",
@@ -26,32 +21,23 @@
     "@nuxtjs/robots": "^6.0.8",
     "@nuxtjs/sitemap": "^8.0.15",
     "@pinia/nuxt": "^0.11.3",
-    "@prisma/adapter-neon": "^7.8.0",
-    "@prisma/client": "^7.8.0",
     "@upstash/redis": "^1.38.0",
-    "@vueuse/integrations": "^14.3.0",
     "better-sqlite3": "^12.10.0",
     "dayjs": "^1.11.20",
     "focus-trap": "^8.2.1",
-    "gray-matter": "^4.0.3",
     "markdown-it": "^14.1.0",
-    "nuxt": "^4.4.4",
+    "nuxt": "^4.4.6",
     "nuxt-studio": "^1.7.0",
     "resend": "^6.12.3",
-    "sortablejs": "^1.15.7",
-    "tailwindcss": "^4.2.4"
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "@iconify-json/fa7-brands": "^1.2.2",
     "@iconify-json/fa7-solid": "^1.2.4",
     "@iconify-json/material-symbols": "^1.2.73",
     "@iconify/vue": "^5.0.0",
-    "@tailwindcss/vite": "^4.2.4",
-    "@types/node": "^25.9.1",
-    "@types/sortablejs": "^1.15.9",
-    "dotenv": "^17.4.2",
-    "prisma": "^7.8.0",
-    "tsx": "^4.22.3"
+    "@tailwindcss/vite": "^4.3.0",
+    "@types/node": "^25.9.1"
   },
   "engines": {
     "node": ">=20"

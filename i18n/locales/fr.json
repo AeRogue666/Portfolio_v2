@@ -228,22 +228,15 @@
     "pinned_post": "Post épinglé",
     "default_post": "Post",
     "type": {
-      "all": "Tous",
       "project": "Projet",
       "experiment": "Expérience",
       "about": "A propos",
-      "service": "Service",
       "pinned": "Epinglé",
       "client": "Client",
       "note": "Note",
       "read": "Lecture",
       "job": "Métier",
-      "talk": "Intervention",
-      "page_index": "Page index",
-      "page_legal": "Page légale",
-      "page_terms": "Page CGU",
-      "page_accessibility": "Page Accessibilité",
-      "page_accessibility_report": "Page Rapport d'Accessibilité"
+      "talk": "Intervention"
     },
     "created_on": "Publié le",
     "updated_on": "Mis à jour le"
@@ -358,20 +351,5 @@
     "created_on": "Publié le",
     "updated_on": "Mis à jour le",
     "effective_as": "En vigueur au"
-  },
-  "admin": {
-    "dashboard": {
-      "title_accent": "Dashboard",
-      "title_rest": "Administrateur",
-      "description": "Qu'allons nous publier aujourd'hui ?",
-      "content": {
-        "title": "Gestionnaire de contenus",
-        "description": "Tous les contenus du site (articles, pages, etc.)"
-      },
-      "accessibility_report": {
-        "title": "Rapport d'Accessibilité",
-        "description": "Rapport RGAA (uniquement)"
-      }
-    }
   }
 }

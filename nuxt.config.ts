@@ -15,12 +15,10 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
     "@tailwindcss/vite",
+    "nuxt-studio",
   ],
   nitro: {
     preset: "vercel",
-    imports: {
-      dirs: ['./server/utils'],
-    }
   },
   css: ["~/assets/styles/main.css"],
   plugins: ["~/dayjs_client.ts"],
@@ -60,7 +58,6 @@ export default defineNuxtConfig({
     resendApiKey: "",
     upstashRedisUrl: "",
     upstashRedisToken: "",
-    databaseUrl: process.env.DATABASE_URL,
   },
   hooks: {
     'pages:extend'(pages) {
@@ -71,6 +68,11 @@ export default defineNuxtConfig({
         }
       }
     }
+  $production: {
+    studio: false
+  },
+  studio: {
+    route: "/_studio",
   },
   routeRules: {
     "/": {
@@ -80,10 +82,6 @@ export default defineNuxtConfig({
     "/feed": {
       headers: securityHeaders,
       appLayout: "feed-header",
-    },
-    "/admin/**": {
-      headers: securityHeaders,
-      appLayout: "index-header",
     },
     "/**": {
       headers: securityHeaders,
@@ -101,14 +99,11 @@ export default defineNuxtConfig({
     logLevel: "warn",
     optimizeDeps: {
       include: [
-        "@tiptap/extension-link",
-        "@tiptap/starter-kit",
-        "@tiptap/vue-3",
-        "@vueuse/integrations/useFocusTrap",
-        "dayjs", // CJS
-        "dayjs/locale/fr", // CJS
-        "dayjs/locale/en", // CJS
         "zod",
+        "@vueuse/integrations/useFocusTrap",
+        "dayjs",
+        "dayjs/locale/fr",
+        "dayjs/locale/en",
       ],
     },
   },
