@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import type { Service } from '../types/service';
-import type { Client } from '../types/client';
-import type { ClientCarouselItem } from '../types/ui/client-carousel';
+import type { FeedResponse } from '../types/feed';
+import type { ServiceResponse } from '~/app/types/service';
 import IndexSection from '../components/index/IndexSection.vue';
 import LandingSection from '../components/index/LandingSection.vue';
 import ClientCarousel from '../components/index/organisms/ClientCarousel.vue';
@@ -26,48 +25,59 @@ const { t, locale, locales } = useI18n(),
 useSidebarFocusState();
 
 // Clients sections
-const { data: clientsData } = await useAsyncData<Client[]>(
-    () => $fetch('/api/clients', {
-        query: { 
-            locale: locale.value,
-        }
+const clientsAsyncKey = computed(() => `index-clients-${locale.value}`);
+const { data: clientsData, error: clientsError } = await useAsyncData(
+    () => clientsAsyncKey.value,
+    () => $fetch<FeedResponse>('/api/posts', {
+        query: { locale: locale.value }
     }),
     { watch: [locale] }
 );
+if (clientsError.value) {
+    throw createError({ status: 404, statusMessage: 'Posts data not found', cause: clientsError.value, fatal: true })
+}
 
-const clientsCarouselItems = computed<ClientCarouselItem[]>(() => {
-    if (!clientsData.value) return [];
+const clientsCarouselItems = computed(() => {
+    if (!clientsData.value?.items) return [];
 
-    return clientsData.value.map(item => ({
-        title: item.feedTitle ?? item.title,
-        description: item.feedSummary ?? item.description,
-
-        customerName: item.customerName,
-        customerJob: item.customerJob,
-        customerCity: item.customerCity,
-        customerEnterpriseName: item.customerEnterpriseName,
+    return clientsData.value.items.filter(item =>
+        (item.kind === "client" || item.kindFallback === "client") && item.image
+    ).map(item => ({
+        title: item.feed_title ?? item.title,
+        description: item.feed_summary ?? item.description,
         testimony: item.testimony,
-
-        image: item.image?.sources.feed?.mobile || item.image?.sources.detail?.mobile || '',
-        alt: item.image?.alt,
-        
+        customer_name: item.customer_name,
+        customer_job: item.customer_job,
+        customer_city: item.customer_city,
+        customer_enterprise_name: item.customer_enterprise_name,
+        image: item.image!.sources.feed?.mobile
+            || item.image!.sources.detail?.mobile
+            || '',
+        alt: item.image!.alt,
         link: `/clients/${item.slug}`,
-    }));
+    }))
 });
 
 // Services section
-const { data: servicesData } = await useAsyncData<Service[]>(
+const servicesAsyncKey = computed(() => `index-services-${locale.value}`);
+const { data: servicesData, error: servicesError } = await useAsyncData<ServiceResponse>(
+    () => servicesAsyncKey.value,
     () => $fetch('/api/services', {
-        query: { 
-            locale: locale.value
-        }
+        query: { locale: locale.value }
     }),
     { watch: [locale] }
 );
-
+if (servicesError.value) {
+    throw createError({ status: 404, statusMessage: 'Pricing services data not found', cause: servicesError.value, fatal: true })
+}
 const servicesContainerItems = computed(() => {
-    if (!servicesData.value) return [];
-    return servicesData.value;
+    if (!servicesData.value?.items) return [];
+
+    const servicesItems = servicesData.value.items;
+    const filteredElements = servicesItems.filter(item => item.slug == 'formation');
+    const nonFilteredElements = servicesItems.filter(item => item.slug !== 'formation');
+
+    return [...nonFilteredElements, ...filteredElements];
 });
 
 // Expertise section

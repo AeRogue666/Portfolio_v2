@@ -1,26 +1,47 @@
 <script setup lang="ts">
 import type { AvatarProps } from '@nuxt/ui';
-import type { ClientCarouselItem } from '~/app/types/ui/client-carousel';
 
 const props = defineProps<{
-    client: ClientCarouselItem[];
+    client: {
+        title: string;
+        description?: string;
+        testimony?: string;
+        customer_name: string;
+        customer_job?: string;
+        customer_city?: string;
+        customer_enterprise_name?: string;
+        image: string;
+        alt: string;
+        link: string;
+    }[];
 }>();
 
-const testimonial = computed(() => {
-    return props.client.map((item) => ({
+const testimonial = reactive<{
+    user: {
+        name: string;
+        job: string;
+        enterprise: string;
+        avatar: AvatarProps;
+    },
+    quote?: string;
+    link: string;
+}[]>([]);
+
+props.client.map((item) => {
+    return testimonial.push({
         user: {
-            name: item.customerName ?? "",
-            job: item.customerJob ?? "",
-            enterprise: item.customerEnterpriseName ?? "",
+            name: item.customer_name,
+            job: item.customer_job ?? "",
+            enterprise: item.customer_enterprise_name ?? "",
             avatar: {
                 src: item.image,
                 alt: item.alt,
                 loading: 'lazy' as const,
-            } satisfies AvatarProps
+            }
         },
-        quote: item.testimony ?? "",
+        quote: item.testimony,
         link: item.link
-    }));
+    });
 });
 </script>
 

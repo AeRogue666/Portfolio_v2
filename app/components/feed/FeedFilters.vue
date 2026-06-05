@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SelectItem } from '@nuxt/ui';
-import type { FeedKind } from '@prisma/client';
+import type { FeedKind } from '~/app/types/feed';
 import type { FeedSortValue } from '~/app/types/feedFilters';
 import { useFocusTrap } from '@vueuse/integrations/useFocusTrap';
 

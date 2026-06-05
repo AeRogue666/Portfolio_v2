@@ -1,139 +1,115 @@
-import { prisma } from "../db/prisma";
-import type { Locale, FeedKind } from "@prisma/client";
-import type { FeedResponse } from "~/types/feed";
-import { ResponsiveImage } from "~/types/media";
+import type { Locale } from "@/types/i18n";
+import { toFeedItem } from "#server/lib/toFeedItem";
 
-export default defineEventHandler(async (event): Promise<FeedResponse> => {
-  const query = getQuery(event);
+export default defineEventHandler(
+  async (event) => {
+    const query = getQuery(event),
+      limit = Math.min(Number(query.limit ?? 10), 30), // A conserver, pour le jour où le portfolio contiendra 1000+ posts
+      offset = Math.max(Number(query.offset ?? 0), 0),
+      locale: Locale = query.locale === "fr" ? "fr" : "en";
+    const selectedTags =
+      (query.tags as string)?.split(",").filter(Boolean) ?? [];
+    const selectedKinds =
+      (query.kinds as string)?.split(",").filter(Boolean) ?? [];
 
-  // Parse query parameters with validation
-  const locale = (query.locale as string) === "en" ? "en" : ("fr" as Locale);
-  const limit = Math.min(Number(query.limit ?? 10), 30);
-  const offset = Math.max(Number(query.offset ?? 0), 0);
-  const sortBy = (query.sort as string) ?? "recent";
+    const sortBy = (query.sort as string) ?? "recent";
 
-  // Parse comma-separated filters
-  const selectedTags = (query.tags as string)?.split(",").filter(Boolean) ?? [];
-  const selectedKinds =
-    (query.kinds as string)?.split(",").filter(Boolean) ?? [];
+    const [projects, experiments, about, clients] = await Promise.all([
+      queryCollection(event, "projects").where("locale", "=", locale).all(),
+      queryCollection(event, "experiments").where("locale", "=", locale).all(),
+      queryCollection(event, 'about').where("locale", "=", locale).all(),
+      queryCollection(event, 'clients').where("locale", "=", locale).all(),
+    ]);
 
-  try {
-    // Basic clause filter
-    const where: any = {
-      translations: {
-        some: {
-          locale,
-        },
-      },
-    };
+    /* ======
+      Feed complet
+      ====== */
+    let feed = [
+      ...projects.map((p) => toFeedItem({ ...p, kind: "project" as const })),
+      ...experiments.map((u) => toFeedItem({ ...u, kind: "experiment" as const })),
+      ...about.map((a) => toFeedItem({ ...a, kind: "about" as const })),
+      ...clients.map((c) => toFeedItem({ ...c, kind: "client" as const })),
+    ];
 
-    // Filters by kinds if provided
-    if (selectedKinds.length > 0) {
-      where.kind = {
-        in: selectedKinds as FeedKind[],
-      };
-    }
+    /* ======
+      Extraire availableTags avant filtrage
+      ====== */
+    const allTags = new Set<string>();
+    feed.forEach((item) => {
+      item.tags?.forEach((tag) => allTags.add(tag));
+    });
+    const availableTags = Array.from(allTags).sort();
 
-    // Filter by tags (case-insensitive contains)
+    /* ======
+      Filtrage par tags
+      (posts épinglés jamais filtrés)
+      ====== */
     if (selectedTags.length > 0) {
-      where.tags = {
-        hasSome: selectedTags, // PostgreSQL array contains ANY
-      };
+      const nonPinnedFeed = feed.filter((item) => !item.pinned);
+      const pinnedFeed = feed.filter((item) => item.pinned);
+
+      const filteredNonPinned = nonPinnedFeed.filter((item) =>
+        item.tags?.some((tag) => selectedTags.includes(tag)),
+      );
+
+      feed = [...pinnedFeed, ...filteredNonPinned];
     }
 
-    // Get total count BEFORE pagination
-    const tagsRaw = await prisma.$queryRaw<{ tag: string }[]>`
-    SELECT DISTINCT unnest(tags) as tag FROM "Post" WHERE tags IS NOT NULL`;
+    /* ======
+      Filtrage par kinds
+      ====== */
+    if (selectedKinds.length > 0) {
+      const nonPinnedFeed = feed.filter((item) => !item.pinned);
+      const pinnedFeed = feed.filter((item) => item.pinned);
 
-    const availableTags = tagsRaw.map((t) => t.tag).sort();
+      const filteredNonPinned = nonPinnedFeed.filter((item) =>
+        selectedKinds.includes(item.kindFallback ?? item.kind),
+      );
 
-    // Fetch paginated results
-    const items = await prisma.post.findMany({
-      where,
-      include: {
-        translations: {
-          where: { locale },
-          take: 1,
-        },
-      },
-    });
+      feed = [...pinnedFeed, ...filteredNonPinned];
+    }
 
-    // Transform to FeedItem format (map Prisma model to frontend type)
-    const transformedItems = items.map((item) => {
-      const t = item.translations.find((tr) => tr.locale === locale);
+    /* ======
+      Tri (avant pagination)
+      ====== */
+    feed.sort((a, b) => {
+      if (a.kind === "pinned" && b.kind !== "pinned") return -1;
+      if (a.kind !== "pinned" && b.kind === "pinned") return 1;
 
-      return {
-        id: item.id,
-        kind: item.kind,
-        slug: item.slug,
-
-        title: t?.title ?? "",
-        description: t?.description ?? undefined,
-        feed_title: t?.feedTitle ?? undefined,
-        feed_summary: t?.feedSummary ?? undefined,
-
-        date: item.date.toISOString(),
-        created_at: item.createdAt.toISOString(),
-        updated_at: item.updatedAt?.toISOString(),
-
-        tags: item.tags,
-        pinned: item.pinned,
-
-        image: item.image as unknown as ResponsiveImage,
-        previewUrl: item.previewUrl ?? undefined,
-
-        customer_name: t?.customerName || "",
-        customer_job: t?.customerJob ?? undefined,
-        customer_city: t?.customerCity ?? undefined,
-        customer_enterprise_name: t?.customerEnterpriseName ?? undefined,
-        testimony: t?.testimony ?? "",
-      };
-    });
-
-    const collator = new Intl.Collator(locale, {
-      sensitivity: "base",
-      numeric: true,
-    });
-
-    const normalize = (s: string) =>
-      s
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .trim();
-
-    transformedItems.sort((a, b) => {
-      // Absolute priority on pinned elements (pinned)
-      if (a.pinned && !b.pinned) return -1;
-      if (!a.pinned && b.pinned) return 1;
-
-      // Secondary sort by user choice
-      if (sortBy === "alpha") {
-        return collator.compare(normalize(a.title), normalize(b.title));
-      } else if (sortBy === "alpha-desc") {
-        return collator.compare(normalize(b.title), normalize(a.title));
-      } else if (sortBy === "oldest") {
-        return new Date(a.date).getTime() - new Date(b.date).getTime();
-      } else {
-        // "recent" by default
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      switch (sortBy) {
+        case "oldest":
+          return new Date(a.date).getTime() - new Date(b.date).getTime();
+        case "alpha":
+          return a.title.localeCompare(b.title, locale);
+        case "alpha-desc":
+          return b.title.localeCompare(a.title, locale);
+        case "recent":
+        default:
+          return new Date(b.date).getTime() - new Date(a.date).getTime();
       }
     });
 
-    // Calculate pagination info
-    const total = transformedItems.length;
-    const paginatedItems = transformedItems.slice(offset, offset + limit);
+    /* ======
+      Pagination
+      ====== */
+    const totalFilteredItems = feed.length;
+    const paginatedFeed = feed.slice(offset, offset + limit);
+    const hasMore = offset + limit < totalFilteredItems;
 
     return {
-      items: paginatedItems,
-      total,
-      hasMore: offset + limit < total,
+      total: totalFilteredItems,
+      items: paginatedFeed,
+      hasMore,
       availableTags,
     };
-  } catch (e) {
-    console.error("Error fetching posts:", e);
-    throw createError({
-      statusCode: 500,
-      statusMessage: "Failed to fetch posts",
-    });
-  }
-});
+  },
+  /* {
+    maxAge: 600, // 10 minutes
+    getKey: (event) => {
+      const q = getQuery(event);
+      return `posts-${q.locale ?? "en"}-${q.offset ?? 0}-${q.limit ?? 10}-${q.tags ?? "all"}-${q.kinds ?? "all"}-${q.sort ?? "recent"}`;
+    },
+  }, */
+);
+
+// deviendra prisma.post.findMany({ where: { kind: { in: ['about','project','experiment'] } } })
