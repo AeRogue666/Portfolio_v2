@@ -1,20 +1,5 @@
-import { defineContentConfig, defineCollection, z } from "@nuxt/content";
-
-const responsiveSourceSchema = z.object({
-  mobile: z.string().optional().default(""),
-  desktop: z.string().optional().default(""),
-  tablet: z.string().optional(),
-});
-
-const responsiveImageSchema = z.object({
-  alt: z.string(),
-  sources: z
-    .object({
-      feed: responsiveSourceSchema,
-      detail: responsiveSourceSchema,
-    })
-    .optional(),
-});
+import { defineContentConfig, defineCollection } from "@nuxt/content";
+import { contentRegistry } from "./lib/schemas/registry"
 
 export default defineContentConfig({
   collections: {
@@ -30,178 +15,36 @@ export default defineContentConfig({
           "services/**",
         ],
       },
-      schema: z.object({
-        slug: z.string(),
-        locale: z.enum(["fr", "en"]),
-        previewUrl: z.string().optional(),
-        created_at: z.string(),
-        updated_at: z.string().optional(),
-        title: z.string().default(""),
-        description: z.string().optional().default(""),
-      }),
+      schema: contentRegistry.content.schema
     }),
     projects: defineCollection({
       type: "page",
       source: "projects/**/*.md",
-      schema: z.object({
-        slug: z.string(),
-        locale: z.enum(["fr", "en"]),
-        kind: z.literal("project"),
-        pinned: z.boolean().optional().default(false),
-        previewUrl: z.string().optional(),
-        created_at: z.union([
-          z.string(),
-          z.date()
-        ]),
-        updated_at: z.union([
-          z.string(),
-          z.date()
-        ]).optional(),
-        title: z.string().default(""),
-        description: z.string().default(""),
-        feed_title: z.string().default(""),
-        feed_summary: z.string().default(""),
-        role: z.string().optional(),
-        tags: z.array(z.string()).optional().default([]),
-        stack: z.array(z.string()).optional().default([]),
-        links: z
-          .object({
-            github: z.string().optional(),
-            demo: z.string().optional(),
-          })
-          .optional(),
-        image: responsiveImageSchema.optional(),
-      }),
+      schema: contentRegistry.projects.schema,
     }),
 
     experiments: defineCollection({
       type: "page",
       source: "experiments/**/*.md",
-      schema: z.object({
-        slug: z.string(),
-        locale: z.enum(["fr", "en"]),
-        kind: z.literal("experiment"),
-        pinned: z.boolean().optional().default(false),
-        previewUrl: z.string().optional(),
-        created_at: z.union([
-          z.string(),
-          z.date()
-        ]),
-        updated_at: z.union([
-          z.string(),
-          z.date()
-        ]).optional(),
-        title: z.string().default(""),
-        description: z.string().default(""),
-        feed_title: z.string().default(""),
-        feed_summary: z.string().default(""),
-        tags: z.array(z.string()).optional().default([]),
-        image: responsiveImageSchema.optional(),
-      }),
+      schema: contentRegistry.experiments.schema,
     }),
 
     about: defineCollection({
       type: "page",
       source: "about/**/*.md",
-      schema: z.object({
-        slug: z.string(),
-        locale: z.enum(["fr", "en"]),
-        kind: z.literal("about"),
-        pinned: z.boolean().optional().default(false),
-        previewUrl: z.string().optional(),
-        created_at: z.union([
-          z.string(),
-          z.date()
-        ]),
-        updated_at: z.union([
-          z.string(),
-          z.date()
-        ]).optional(),
-        title: z.string().default(""),
-        description: z.string().default(""),
-        feed_title: z.string().default(""),
-        feed_summary: z.string().default(""),
-        tags: z.array(z.string()).optional().default([]),
-        image: responsiveImageSchema.optional(),
-      }),
+      schema: contentRegistry.about.schema,
     }),
 
     clients: defineCollection({
       type: "page",
       source: "clients/**/*.md",
-      schema: z.object({
-        slug: z.string(),
-        locale: z.enum(["fr", "en"]),
-        kind: z.literal("client"),
-        pinned: z.boolean().optional().default(false),
-        previewUrl: z.string().optional(),
-        created_at: z.union([
-          z.string(),
-          z.date()
-        ]),
-        updated_at: z.union([
-          z.string(),
-          z.date()
-        ]).optional(),
-        title: z.string().default(""),
-        description: z.string().default(""),
-        feed_title: z.string().default(""),
-        feed_summary: z.string().default(""),
-        testimony: z.string().optional().default(""),
-        customer_name: z.string().default(""),
-        customer_job: z.string().optional().default(""),
-        customer_city: z.string().optional().default(""),
-        customer_enterprise_name: z.string().optional().default(""),
-        links: z
-          .object({
-            website: z.string().optional(),
-          })
-          .optional(),
-        image: responsiveImageSchema.optional(),
-      }),
+      schema: contentRegistry.clients.schema,
     }),
 
     services: defineCollection({
       type: "page",
       source: "services/**/*.md",
-      schema: z.object({
-        slug: z.string(),
-        locale: z.enum(["fr", "en"]),
-        previewUrl: z.string().optional(),
-        created_at: z.union([
-          z.string(),
-          z.date()
-        ]),
-        updated_at: z.union([
-          z.string(),
-          z.date()
-        ]).optional(),
-        date: z.string().optional(),
-        title: z.string().default(""),
-        description: z.string().default(""),
-        feed_title: z.string().default(""),
-        feed_summary: z.string().default(""),
-        features: z.array(z.string()).optional(),
-        tag: z.string().default(""),
-        packages: z
-          .array(
-            z.object({
-              title: z.string().default(""),
-              children: z.array(
-                z
-                  .object({
-                    title: z.string().default(""),
-                    price: z.string().default(""),
-                    ttc: z.boolean().default(false),
-                    features: z.array(z.string()),
-                  })
-                  .optional(),
-              ),
-            }),
-          )
-          .optional(),
-        image: responsiveImageSchema.optional(),
-      }),
+      schema: contentRegistry.services.schema,
     }),
   },
 });

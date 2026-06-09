@@ -1,5 +1,4 @@
 import { Resend } from "resend";
-import { checkRateLimit } from "../lib/rateLimit";
 import { logEvent } from "../lib/logger";
 
 type Issues = "accessibility" | "issue" | "bug" | "other";
@@ -17,19 +16,6 @@ export default defineEventHandler(async (event) => {
     getHeader(event, "x-forwarded-for")?.split(",")[0] ??
     event.node.req.socket.remoteAddress ??
     "unknown";
-
-  const { limited, remaining } = await checkRateLimit(ip, {
-    windowSeconds: 600,
-    maxRequests: 3,
-  });
-
-  if (limited) {
-    logEvent("contact_rate_limited", { ip });
-    throw createError({
-      statusCode: 429,
-      statusMessage: "Too many reports. Please try again later.",
-    });
-  }
 
   const body = await readBody<ReportBody>(event);
 
