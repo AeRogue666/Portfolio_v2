@@ -15,7 +15,6 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
     "@tailwindcss/vite",
-    "nuxt-studio",
   ],
   nitro: {
     preset: "vercel",
@@ -52,27 +51,12 @@ export default defineNuxtConfig({
       title: "CodeKorico",
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
-    }
+    },
   },
   runtimeConfig: {
     resendApiKey: "",
     upstashRedisUrl: "",
     upstashRedisToken: "",
-  },
-  hooks: {
-    'pages:extend'(pages) {
-      if(process.env.NODE_ENV === "production" && !process.env.DEV_ADMIN) {
-        const adminPagesIndex = pages.findIndex(page => page.path.startsWidth('/admin'));
-        if(adminPagesIndex !== -1) {
-          pages.spice(adminPagesIndex, 1);
-        }
-      }
-    }
-  $production: {
-    studio: false
-  },
-  studio: {
-    route: "/_studio",
   },
   routeRules: {
     "/": {
@@ -99,11 +83,13 @@ export default defineNuxtConfig({
     logLevel: "warn",
     optimizeDeps: {
       include: [
-        "zod",
+        "@vueuse/core",
         "@vueuse/integrations/useFocusTrap",
         "dayjs",
         "dayjs/locale/fr",
         "dayjs/locale/en",
+        "markdown-it",
+        "zod",
       ],
     },
   },

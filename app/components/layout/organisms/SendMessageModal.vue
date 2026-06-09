@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ContactFormSchema, type ContactFormState } from "@/utils/schemas/contact";
+import { ContactFormSchema, type ContactFormState } from "../../../../lib/schemas/contact";
 import type { FormSubmitEvent, SelectMenuItem } from "@nuxt/ui";
 
 const props = defineProps<{
@@ -12,7 +12,7 @@ const state = reactive<ContactFormState>({
     type: "simple_contact",
     email: "",
     message: "",
-    website: "",
+    website: ""
 });
 
 const { t } = useI18n(),
@@ -89,7 +89,6 @@ watch(isOpen, (value) => {
                     input.removeAttribute("aria-hidden");
                     input.scrollIntoView({ behavior: "smooth" });
                     input.focus({ preventScroll: false });
-
                     // console.log('after focus: ', document.activeElement?.tagName, document.activeElement?.id)
                     // console.log('focused: ', document.activeElement === input)
                 }
@@ -107,6 +106,49 @@ const typeError = computed(() => {
     if (!state.type) return t("report.state.required");
     return null;
 });
+
+/** 
+ * Sur SendMessageModal, ajouter :
+ * Un outil de qualification client automatique (déterminer le besoin du client avant d'entamer une conversation)
+ * Si curieux -> message simple
+ * Si client sérieux -> projet structuré
+ * 
+ * Comment faire ? Pré-qualifier avant le call
+ * Type de projet + complexité + budget implicite
+ * 
+ * Avec UTabs :
+ * 
+ * tab 1 - Nature du besoin
+ * Site vitrine, refonte, réservation, 
+ * e-commerce, projet métier, message simple
+ * 
+ * tab 2 - complexité (ne comprends pas message simple qui est renvoyé directement au formulaire final)
+ * simple (1-3 pages)
+ * moyen (CMS + contenu)
+ * complexe (logique métier)
+ * 
+ * tab 3 - budget et délai (optionnel)
+ * budget range
+ * deadline
+ * urgence
+ * 
+ * tab 4 - formulaire de contact
+ * Un récapitulatif de ce que le client a choisit est disponible avec le formulaire de contact.
+ * Si la personne a choisit "Message simple", cela n'affiche que le formulaire de contact.
+ * 
+ * Scénarios possibles :
+ * 
+ * simple contact
+ * redirige vers message simple
+ * 
+ * website_cration
+ * affiche les questions :
+ * type de site, nombre de pages, besoin CMS
+ * 
+ * website_redesign
+ * affiche les questions :
+ * audit rapide, objectif business, problème actuel
+*/
 </script>
 
 <template>

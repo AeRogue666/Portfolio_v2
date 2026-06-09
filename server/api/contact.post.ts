@@ -1,7 +1,6 @@
 import { Resend } from "resend";
-import { ContactFormSchema } from '@/utils/schemas/contact';
+import { ContactFormSchema } from '~~/lib/schemas/contact';
 import { contactTemplate } from "#server/templates/contactEmail";
-import { checkRateLimit } from "#server/lib/rateLimit";
 import { logEvent } from "#server/lib/logger";
 import { containsSpam } from "#server/lib/spamFilter";
 
@@ -11,19 +10,6 @@ export default defineEventHandler(async (event) => {
     getHeader(event, "x-forwarded-for")?.split(",")[0] ??
     event.node.req.socket.remoteAddress ??
     "unknown";
-
-  const { limited } = await checkRateLimit(ip, {
-    windowSeconds: 600,
-    maxRequests: 5,
-  });
-
-  if (limited) {
-    logEvent("contact_rate_limited", { ip });
-    throw createError({
-      statusCode: 429,
-      statusMessage: "Too many reports. Please try again later.",
-    });
-  }
 
   const body = await readBody(event),
     parsed = ContactFormSchema.safeParse(body);
@@ -38,9 +24,10 @@ export default defineEventHandler(async (event) => {
   }
 
   const { email, message, website } = parsed.data;
+  const submittedAt = Date.now();
 
   // Honeypot triggered (bot filled hidden field)
-  if (website) {
+  if (website || Date.now() - submittedAt < 5000) {
     return { success: true }; // pretend success silently
   }
 
