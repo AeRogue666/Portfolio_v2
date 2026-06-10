@@ -54,9 +54,7 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    resendApiKey: "",
-    upstashRedisUrl: "",
-    upstashRedisToken: "",
+    resendApiKey: ""
   },
   routeRules: {
     "/": {

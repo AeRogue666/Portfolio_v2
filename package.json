@@ -8,7 +8,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build --output public",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview"
@@ -21,6 +21,7 @@
     "@nuxtjs/robots": "^6.0.8",
     "@nuxtjs/sitemap": "^8.0.15",
     "@pinia/nuxt": "^0.11.3",
+    "better-sqlite3": "^12.10.0",
     "dayjs": "^1.11.20",
     "focus-trap": "^8.2.1",
     "nuxt": "^4.4.6",
