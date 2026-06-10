@@ -25,7 +25,7 @@ const {
 const { polite, assertive } = useAnnouncer();
 
 // Mettre à jour le store avec les posts
-watch(items, (newItems) => {
+watch(items, (newItems: any) => {
     try {
         feedStore.setPosts(newItems)
         polite('Feed reloaded successfully');
@@ -61,7 +61,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://aureldev.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: string }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://aureldev.com${route.path}`

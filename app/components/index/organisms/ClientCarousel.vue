@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { AvatarProps } from '@nuxt/ui';
-
 const props = defineProps<{
     client: {
         title: string;
@@ -16,19 +14,8 @@ const props = defineProps<{
     }[];
 }>();
 
-const testimonial = reactive<{
-    user: {
-        name: string;
-        job: string;
-        enterprise: string;
-        avatar: AvatarProps;
-    },
-    quote?: string;
-    link: string;
-}[]>([]);
-
-props.client.map((item) => {
-    return testimonial.push({
+const testimonial = computed(() =>
+    props.client.map(item => ({
         user: {
             name: item.customer_name,
             job: item.customer_job ?? "",
@@ -41,8 +28,8 @@ props.client.map((item) => {
         },
         quote: item.testimony,
         link: item.link
-    });
-});
+    })
+));
 </script>
 
 <template>

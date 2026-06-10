@@ -1,5 +1,6 @@
-import type { FeedKind, FeedResponse } from "@/types/feed";
+import type { FeedKind } from "@/types/feed";
 import type { FeedSortValue } from "../types/feedFilters";
+import { toFeedItem } from "../../server/lib/toFeedItem";
 
 interface UseFeedOptions {
   limit?: number;
@@ -34,7 +35,17 @@ export function useFeed(options?: UseFeedOptions) {
   });
 
   // Kinds sélectionnés depuis l'URL (?kinds=project,experiment)
-  const VALID_KINDS: FeedKind[] = ["project", "experiment", "about", "pinned", "client", "note", "read", "talk", "job"];
+  const VALID_KINDS: FeedKind[] = [
+    "project",
+    "experiment",
+    "about",
+    "pinned",
+    "client",
+    "note",
+    "read",
+    "talk",
+    "job",
+  ];
   const selectedKinds = computed<FeedKind[]>(() => {
     const kinds = route.query.kinds;
     const raw =
@@ -60,63 +71,122 @@ export function useFeed(options?: UseFeedOptions) {
     return "recent";
   });
 
+  /**
+   * Récupération des contenus
+   */
+
   const feedKey = computed(
-    () => `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
+    () =>
+      `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
   );
 
-  const allItems = ref<any[]>([]);
-
-  /* ======
-    Requête au serveur (et filtrage)
-    ====== */
   const { data, status, error, refresh } = useAsyncData(
-    () => `feed-${locale.value}-${offset.value}:${limit}-${selectedTags.value.join(",")}-${selectedKinds.value.join(",")}-${sortBy.value}`,
-    () =>
-      $fetch<FeedResponse>("/api/posts", {
-        query: {
-          limit,
-          offset: offset.value,
-          locale: locale.value,
-          tags: selectedTags.value.join(","),
-          kinds: selectedKinds.value.join(","),
-          sort: sortBy.value,
-        },
-      }),
+    feedKey,
+    async () => {
+      const [projects, experiments, about, clients] = await Promise.all([
+        queryCollection("projects").where("locale", "=", locale.value).all(),
+        queryCollection("experiments").where("locale", "=", locale.value).all(),
+        queryCollection("about").where("locale", "=", locale.value).all(),
+        queryCollection("clients").where("locale", "=", locale.value).all(),
+      ]);
+
+      let feed = [
+        ...projects.map((p: any) =>
+          toFeedItem({ ...p, kind: "project" as const }),
+        ),
+        ...experiments.map((u: any) =>
+          toFeedItem({ ...u, kind: "experiment" as const }),
+        ),
+        ...about.map((a: any) => toFeedItem({ ...a, kind: "about" as const })),
+        ...clients.map((c: any) =>
+          toFeedItem({ ...c, kind: "client" as const }),
+        ),
+      ];
+
+      console.log({
+        projects: projects.length,
+        experiments: experiments.length,
+        about: about.length,
+        clients: clients.length,
+      });
+
+      return feed;
+    },
     {
-      watch: [locale, selectedTags, selectedKinds, sortBy],
+      watch: [locale],
     },
   );
 
-  /* ======
-    Gestion de la pagination (fusion des anciens et des nouveaux items)
-  ====== */
-  watch(() => data.value, (newData) => {
-    if(!newData?.items) return;
-    
-    if(offset.value === 0) {
-      // Reset : nouveaux filtres ou tri
-      allItems.value = newData.items;
-    } else {
-      // Load more : ajouter les nouveaux items
-      allItems.value = [...allItems.value, ...newData.items];
-    }
-  })
+  /**
+   * Filtrage des contenus
+   */
+  const filteredItems = computed(() => {
+    let items = [...(data.value ?? [])];
 
-  /* ======
-    Watch pour reset les items lors d'un changement de filtre
-  ======= */
-  watch([selectedTags, selectedKinds, sortBy], () => {
-    offset.value = 0;
-    allItems.value = [];
+    if (selectedKinds.value.length) {
+      items = items.filter((item) => selectedKinds.value.includes(item.kind));
+    }
+
+    if (selectedTags.value.length) {
+      items = items.filter((item) =>
+        selectedTags.value.every((tag) => item.tags?.includes(tag)),
+      );
+    }
+
+    items.sort((a, b) => {
+      if (a.kind === "pinned" && b.kind !== "pinned") return -1;
+      if (a.kind !== "pinned" && b.kind === "pinned") return 1;
+
+      // Tri
+      switch (sortBy.value) {
+        case "oldest":
+          items.sort(
+            (a, b) =>
+              new Date(a.created_at).getTime() -
+              new Date(b.created_at).getTime(),
+          );
+          break;
+        case "alpha":
+          items.sort((a, b) => (a.title ?? "").localeCompare(b.title ?? ""));
+          break;
+        case "alpha-desc":
+          items.sort((a, b) => (b.title ?? "").localeCompare(a.title ?? ""));
+          break;
+        default:
+          items.sort(
+            (a, b) =>
+              new Date(b.created_at).getTime() -
+              new Date(a.created_at).getTime(),
+          );
+          break;
+      }
+    });
+
+    return items;
   });
 
-  /* ======
-    Données du serveur
-    ====== */
-  const items = computed(() => allItems.value);
-  const total = computed(() => data.value?.total ?? 0);
-  const availableTags = computed(() => data.value?.availableTags ?? []);
-  const hasMore = computed(() => data.value?.hasMore ?? false);
+  /**
+   * Pagination
+   */
+  const paginatedItems = computed(() =>
+    filteredItems.value.slice(offset.value, offset.value + limit),
+  );
+
+  const total = computed(() => filteredItems.value.length);
+
+  const hasMore = computed(
+    () => paginatedItems.value.length < filteredItems.value.length,
+  );
+
+  const availableTags = computed(() => {
+    const tags = new Set<string>();
+
+    data.value?.forEach((item) => {
+      item.tags?.forEach((tag) => tags.add(tag));
+    });
+
+    return [...tags].sort();
+  });
 
   /* ======
     Actions pour modifier les filtres (persiste en URL)
@@ -124,7 +194,7 @@ export function useFeed(options?: UseFeedOptions) {
     ====== */
   const toggleTag = (tag: string) => {
     const newTags = selectedTags.value.includes(tag)
-      ? selectedTags.value.filter((t) => t !== tag)
+      ? selectedTags.value.filter((t: string) => t !== tag)
       : [...selectedTags.value, tag];
 
     offset.value = 0;
@@ -138,14 +208,14 @@ export function useFeed(options?: UseFeedOptions) {
 
   const toggleKind = (kind: FeedKind) => {
     const newKinds = selectedKinds.value.includes(kind)
-      ? selectedKinds.value.filter((k) => k !== kind)
+      ? selectedKinds.value.filter((k: FeedKind) => k !== kind)
       : [...selectedKinds.value, kind];
 
     offset.value = 0;
     router.push({
       query: {
         ...route.query,
-        tags: newKinds.length > 0 ? newKinds.join(",") : undefined,
+        kinds: newKinds.length > 0 ? newKinds.join(",") : undefined,
       },
     });
   };
@@ -173,16 +243,16 @@ export function useFeed(options?: UseFeedOptions) {
   };
 
   return {
-    items: computed(() => items.value),
-    total: computed(() => total.value),
-    availableTags: computed(() => availableTags.value),
+    items: paginatedItems,
+    total,
+    availableTags,
     hasMore,
     status,
     error,
 
-    selectedTags: computed(() => selectedTags.value),
-    selectedKinds: computed(() => selectedKinds.value),
-    sortBy: computed(() => sortBy.value),
+    selectedKinds,
+    selectedTags,
+    sortBy,
 
     toggleTag,
     toggleKind,

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import type { ServiceResolved } from '@/types/service';
 import dayjs from 'dayjs';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 import PackagesContainer from '@/components/index/organisms/PackagesContainer.vue'
@@ -11,21 +10,22 @@ const route = useRoute(),
 
 useSidebarFocusState();
 
-const asyncKey = computed(() => `services-${route.params.slug}-${locale.value}`);
+const slug = computed(() => String(route.params.slug));
+const asyncKey = computed(() => `services-${slug.value}-${locale.value}`);
 
-const { data: page, error } = await useAsyncData<ServiceResolved>(
+const { data: service, error } = await useAsyncData(
     () => asyncKey.value,
-    () => $fetch(`/api/services/${route.params.slug}`, {
+    () => queryCollection("services")
+        .where("slug", "=", slug.value)
+        .where("locale", "=", locale.value)
+        .first(),
+    /* $fetch(`/api/services/${route.params.slug}`, {
         query: { locale: locale.value }
-    }),
-    {
-        watch: [locale]
-    }
+    }), */
 );
 
-if (error.value) {
-    throw createError({ status: 404, statusMessage: 'Services data not found', cause: error.value, fatal: true })
-}
+if (error.value) throw createError({ statusCode: 500, message: 'Failed to load service', statusMessage: 'Failed to load service', cause: error.value, fatal: true });
+if (!service.value) throw createError({ statusCode: 404, message: 'Service not found', statusMessage: 'Service not found', cause: error.value, fatal: true });
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -37,28 +37,28 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: ''
     },
     {
-        label: page.value?.title,
+        label: service.value?.title,
         to: route.path
     }
 ];
 
-const articlePublishedTime = computed(() => dayjs(page.value?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format());
-const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+const articlePublishedTime = computed(() => dayjs(service.value?.created_at).locale(locale.value).format()),
+    articleModifiedTime = computed(() => dayjs(service.value?.updated_at).locale(locale.value).format());
+const created_atDate = computed(() => dayjs(service.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
+    updated_atDate = computed(() => dayjs(service.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
 
-const src = computed(() => page.value?.image?.sources.detail?.mobile || page.value?.image?.sources.feed?.mobile || ''),
-    tabletSrc = computed(() => page.value?.image?.sources.detail?.tablet || page.value?.image?.sources.feed?.tablet || src),
-    desktopSrc = computed(() => page.value?.image?.sources.detail?.desktop || page.value?.image?.sources.feed?.desktop || tabletSrc);
+const src = computed(() => service.value?.image?.sources?.detail?.mobile || service.value?.image?.sources?.feed?.mobile || ''),
+    tabletSrc = computed(() => service.value?.image?.sources?.detail?.tablet || service.value?.image?.sources?.feed?.tablet || src),
+    desktopSrc = computed(() => service.value?.image?.sources?.detail?.desktop || service.value?.image?.sources?.feed?.desktop || tabletSrc);
 
 useHeadSafe(() => ({
-    title: t('seo.page.title', { pagetitle: page.value?.title }),
+    title: t('seo.page.title', { pagetitle: service.value?.title }),
     meta: [
         // Meta names
-        { name: 'description', content: t('seo.page.description', { pagetitle: page.value?.description }) },
+        { name: 'description', content: t('seo.page.description', { pagetitle: service.value?.description }) },
         // Meta properties
-        { property: 'og:title', content: t('seo.page.title', { pagetitle: page.value?.title }) },
-        { property: 'og:description', content: t('seo.page.description', { pagetitle: page.value?.description }) },
+        { property: 'og:title', content: t('seo.page.title', { pagetitle: service.value?.title }) },
+        { property: 'og:description', content: t('seo.page.description', { pagetitle: service.value?.description }) },
         { property: 'og:type', content: 'article' },
         { property: 'article:author', content: 'Aureldev' },
         { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
@@ -73,7 +73,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://aureldev.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: string }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://aureldev.com${route.path}`
@@ -82,17 +82,17 @@ useHeadSafe(() => ({
 }));
 
 useSeoMeta(({
-    ogImageAlt: page.value?.image?.alt,
+    ogImageAlt: service.value?.image?.alt,
     twitterCard: 'summary_large_image',
 }));
 
 watchEffect(() => {
-    if (!page.value) return;
+    if (!service.value) return;
 });
 </script>
 
 <template>
-    <template v-if="page">
+    <template v-if="service">
         <ArticleLayout class="fs-body">
             <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                 <template #separator>
@@ -101,17 +101,17 @@ watchEffect(() => {
             </UBreadcrumb>
             <p class="fs-small text-(--text-2)">
                 {{ t('project.published_on') }}
-                <time v-if="page.created_at" :datetime="page.created_at">{{ created_atDate }}</time>
-                <template v-if="page.updated_at">
+                <time v-if="service.created_at" :datetime="service.created_at">{{ created_atDate }}</time>
+                <template v-if="service.updated_at">
                     {{ t('post.updated_on') }}
-                    <time v-if="page.updated_at" :datetime="page.updated_at">{{ updated_atDate }}</time>
+                    <time v-if="service.updated_at" :datetime="service.updated_at">{{ updated_atDate }}</time>
                 </template>
             </p>
 
-            <h1 id="client-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ page.title }} -
+            <h1 id="service-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                {{ service.title }} -
                 <span class="fs-subtitle text-(--text-2) leading-snug">
-                    {{ page.description }}
+                    {{ service.description }}
                 </span>
             </h1>
 
@@ -120,10 +120,10 @@ watchEffect(() => {
                 <p class="fs-body text-(--text-2) leading-snug">{{ t('plans.warning.description') }}</p>
             </div>
 
-            <ContentRenderer :value="page" />
+            <ContentRenderer :value="service" />
 
             <ul>
-                <li v-for="(content, i) in page.packages" :key="i" class="flex flex-col mb-6 gap-6">
+                <li v-for="(content, i) in service.packages" :key="i" class="flex flex-col mb-6 gap-6">
                     <h3 class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ content.title }}</h3>
                     <PackagesContainer :services="content.children" />
                 </li>
