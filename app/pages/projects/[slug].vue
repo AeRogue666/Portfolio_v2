@@ -3,24 +3,26 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
 import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
-import type { ProjectResolved } from '@/types/project';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
+useSidebarFocusState();
 
-const asyncKey = computed(() => `project-${route.params.slug}-${locale.value}`);
-const { data: project, error } = await useAsyncData<ProjectResolved>(
+const slug = computed(() => String(route.params.slug));
+const asyncKey = computed(() => `project-${slug.value}-${locale.value}`);
+
+const { data: project, error } = await useAsyncData(
     () => asyncKey.value,
-    () => $fetch(`/api/projects/${route.params.slug}`, {
+    () => queryCollection("projects")
+        .where("slug", "=", slug.value)
+        .where("locale", "=", locale.value)
+        .first(),
+    /* $fetch(`/api/projects/${route.params.slug}`, {
         query: { locale: locale.value }
-    }),
-    {
-        watch: [locale]
-    }
+    }), */
 );
-if (error.value) {
-    throw createError({ statusCode: 404, message: 'project data is not found', statusMessage: 'project data is not found', cause: error.value, fatal: true });
-}
+if (error.value) throw createError({ statusCode: 500, message: 'Failed to load project', statusMessage: 'Failed to load project', cause: error.value, fatal: true });
+if (!project.value) throw createError({ statusCode: 404, message: 'Project not found', statusMessage: 'Project not found', cause: error.value, fatal: true });
 
 watchEffect(() => {
     if (!project.value) return;
@@ -54,14 +56,14 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-const articlePublishedTime = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format(): null),
-    articleModifiedTime = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format(): null);
+const articlePublishedTime = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format() : null),
+    articleModifiedTime = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format() : null);
 const created_atDate = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
     updated_atDate = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
 
-const src = computed(() => project.value?.image?.sources.detail?.mobile || project.value?.image?.sources.feed?.mobile || ''),
-    tabletSrc = computed(() => project.value?.image?.sources.detail?.tablet || project.value?.image?.sources.feed?.tablet || src),
-    desktopSrc = computed(() => project.value?.image?.sources.detail?.desktop || project.value?.image?.sources.feed?.desktop || tabletSrc);
+const src = computed(() => project.value?.image?.sources?.detail?.mobile || project.value?.image?.sources?.feed?.mobile || ''),
+    tabletSrc = computed(() => project.value?.image?.sources?.detail?.tablet || project.value?.image?.sources?.feed?.tablet || src),
+    desktopSrc = computed(() => project.value?.image?.sources?.detail?.desktop || project.value?.image?.sources?.feed?.desktop || tabletSrc);
 
 useHeadSafe(() => ({
     title: project.value?.title,
@@ -85,7 +87,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://codekoricoà.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: string }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://codekorico.com${route.path}`

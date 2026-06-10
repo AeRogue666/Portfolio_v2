@@ -1,25 +1,31 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import type { ClientResolved } from '@/types/client';
 import dayjs from 'dayjs';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
 
-const asyncKey = computed(() => `clients-${route.params.slug}-${locale.value}`);
-const { data: page, error } = await useAsyncData<ClientResolved>(
+useSidebarFocusState();
+
+const slug = computed(() => String(route.params.slug));
+const asyncKey = computed(() => `clients-${slug.value}-${locale.value}`);
+
+const { data: client, error } = await useAsyncData(
     () => asyncKey.value,
-    () => $fetch(`/api/clients/${route.params.slug}`, {
+    () => queryCollection("clients")
+        .where("slug", "=", slug.value)
+        .where("locale", "=", locale.value)
+        .first(),
+
+    /* $fetch(`/api/clients/${route.params.slug}`, {
         query: { locale: locale.value }
-    }),
-    {
-        watch: [locale]
-    }
+    }), */
 );
-if (error.value) {
-    throw createError({ status: 404, statusMessage: 'Clients data not found', cause: error.value, fatal: true })
-}
+
+if (error.value) throw createError({ statusCode: 500, message: 'Failed to load client', statusMessage: 'Failed to load client', cause: error.value, fatal: true });
+if (!client.value) throw createError({ statusCode: 404, message: 'Client not found', statusMessage: 'Client not found', cause: error.value, fatal: true });
+
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -31,28 +37,28 @@ const breadcrumbItems: BreadcrumbItem[] = [
         to: ''
     },
     {
-        label: page.value?.customer_name,
+        label: client.value?.customer_name,
         to: route.path
     },
 ];
 
-const articlePublishedTime = computed(() => page.value?.created_at ? dayjs(page.value?.created_at).locale(locale.value).format(): null),
-    articleModifiedTime = computed(() => page.value?.updated_at ? dayjs(page.value?.updated_at).locale(locale.value).format(): null);
-const created_atDate = computed(() => page.value?.created_at ? dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
-    updated_atDate = computed(() => page.value?.updated_at ? dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
+const articlePublishedTime = computed(() => client.value?.created_at ? dayjs(client.value?.created_at).locale(locale.value).format() : null),
+    articleModifiedTime = computed(() => client.value?.updated_at ? dayjs(client.value?.updated_at).locale(locale.value).format() : null);
+const created_atDate = computed(() => client.value?.created_at ? dayjs(client.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
+    updated_atDate = computed(() => client.value?.updated_at ? dayjs(client.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
 
-const src = computed(() => page.value?.image?.sources?.detail?.mobile || page.value?.image?.sources?.feed?.mobile || ''),
-    tabletSrc = computed(() => page.value?.image?.sources?.detail?.tablet || page.value?.image?.sources?.feed?.tablet || src),
-    desktopSrc = computed(() => page.value?.image?.sources?.detail?.desktop || page.value?.image?.sources?.feed?.desktop || tabletSrc);
+const src = computed(() => client.value?.image?.sources?.detail?.mobile || client.value?.image?.sources?.feed?.mobile || ''),
+    tabletSrc = computed(() => client.value?.image?.sources?.detail?.tablet || client.value?.image?.sources?.feed?.tablet || src),
+    desktopSrc = computed(() => client.value?.image?.sources?.detail?.desktop || client.value?.image?.sources?.feed?.desktop || tabletSrc);
 
 useHeadSafe(() => ({
-    title: page.value?.title,
+    title: client.value?.title,
     meta: [
         // Meta names
-        { name: 'description', content: page.value?.description },
+        { name: 'description', content: client.value?.description },
         // Meta properties
-        { property: 'og:title', content: page.value?.title },
-        { property: 'og:description', content: page.value?.description },
+        { property: 'og:title', content: client.value?.title },
+        { property: 'og:description', content: client.value?.description },
         { property: 'og:type', content: 'article' },
         { property: 'article:author', content: 'Aureldev' },
         { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
@@ -67,7 +73,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://codekorico.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: string }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://codekorico.com${route.path}`
@@ -76,13 +82,13 @@ useHeadSafe(() => ({
 }));
 
 useSeoMeta(({
-    ogImageAlt: page.value?.image?.alt,
+    ogImageAlt: client.value?.image?.alt,
     twitterCard: 'summary_large_image',
 }));
 </script>
 
 <template>
-    <template v-if="page">
+    <template v-if="client">
         <ArticleLayout class="fs-body">
             <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
                 <template #separator>
@@ -91,21 +97,21 @@ useSeoMeta(({
             </UBreadcrumb>
             <p class="fs-small text-(--text-2)">
                 {{ t('project.published_on') }}
-                <time v-if="page.created_at" :datetime="page.created_at">{{ created_atDate }}</time>
-                <template v-if="page.updated_at">
+                <time v-if="client.created_at" :datetime="client.created_at">{{ created_atDate }}</time>
+                <template v-if="client.updated_at">
                     {{ t('post.updated_on') }}
-                    <time v-if="page.updated_at" :datetime="page.updated_at">{{ updated_atDate }}</time>
+                    <time v-if="client.updated_at" :datetime="client.updated_at">{{ updated_atDate }}</time>
                 </template>
             </p>
 
             <h1 id="client-title" class="flex flex-col fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ page.title }}
+                {{ client.title }}
                 <span class="fs-subtitle font-normal text-(--text-2) leading-snug">
-                    {{ page.description }}
+                    {{ client.description }}
                 </span>
             </h1>
 
-            <NuxtImg :src="src" :alt="page.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
+            <NuxtImg :src="src" :alt="client.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
                 :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
                 class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
                 placeholder="blur" />
@@ -115,11 +121,11 @@ useSeoMeta(({
                     {{ t('client.enterprise_name') }}
                 </h2>
                 <span class="fs-subtitle text-(--text-2) leading-snug">
-                    {{ page.customer_enterprise_name }}
+                    {{ client.customer_enterprise_name }}
                 </span>
             </div>
 
-            <ContentRenderer :value="page" />
+            <ContentRenderer :value="client" />
 
             <h2 id="testimony-title"
                 class="font-semibold leading-snug tracking-tight lg:font-extrabold lg:leading-none mb-4 fs-title">
@@ -131,19 +137,19 @@ useSeoMeta(({
                     description: 'font-semibold text-(--text) mb-3 fs-lead'
                 }">
                 <template #description>
-                    <p class="line-clamp-3 md:line-clamp-5">“{{ page.testimony }}”</p>
+                    <p class="line-clamp-3 md:line-clamp-5">“{{ client.testimony }}”</p>
                 </template>
                 <template #footer>
-                    <UUser :avatar="page.image" :name="page.customer_name" size="xl" orientation="horizontal"
-                        :key="`client-avatar-${page.customer_name}`" :ui="{
+                    <UUser :avatar="client.image" :name="client.customer_name" size="xl" orientation="horizontal"
+                        :key="`client-avatar-${client.customer_name}`" :ui="{
                             root: 'items-center',
                             name: 'fs-small text-2xl text-(--text) font-semibold tracking-tight leading-snug',
                             description: 'flex flex-col fs-small leading-relaxed text-(--text-2)',
                             avatar: 'size-16 bg-(--bg)'
                         }">
                         <template #description>
-                            <span>{{ page.customer_job }} {{ t('client.employed_at') }}
-                                {{ page.customer_enterprise_name }}
+                            <span>{{ client.customer_job }} {{ t('client.employed_at') }}
+                                {{ client.customer_enterprise_name }}
                             </span>
                         </template>
                     </UUser>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { FeedResponse } from '../types/feed';
-import type { ServiceResponse } from '~/app/types/service';
+import type { ServicesCollectionItem } from '@nuxt/content';
+import type { ServiceResolved } from '../types/service.js';
 import IndexSection from '../components/index/IndexSection.vue';
 import LandingSection from '../components/index/LandingSection.vue';
 import ClientCarousel from '../components/index/organisms/ClientCarousel.vue';
@@ -28,9 +28,13 @@ useSidebarFocusState();
 const clientsAsyncKey = computed(() => `index-clients-${locale.value}`);
 const { data: clientsData, error: clientsError } = await useAsyncData(
     () => clientsAsyncKey.value,
-    () => $fetch<FeedResponse>('/api/posts', {
+    () => queryCollection("clients")
+    .where("locale", "=", locale.value)
+    .where("kind", "=", "client")
+    .all(),
+    /* $fetch<FeedResponse>('/api/posts', {
         query: { locale: locale.value }
-    }),
+    }), */
     { watch: [locale] }
 );
 if (clientsError.value) {
@@ -38,20 +42,20 @@ if (clientsError.value) {
 }
 
 const clientsCarouselItems = computed(() => {
-    if (!clientsData.value?.items) return [];
+    if (!clientsData.value) return [];
 
-    return clientsData.value.items.filter(item =>
-        (item.kind === "client" || item.kindFallback === "client") && item.image
+    return clientsData.value.filter((item) =>
+        item.kind === "client" && item.image && item.title && item.customer_name
     ).map(item => ({
-        title: item.feed_title ?? item.title,
+        title: item.feed_title ?? item.title ?? "",
         description: item.feed_summary ?? item.description,
         testimony: item.testimony,
-        customer_name: item.customer_name,
+        customer_name: item.customer_name ?? "",
         customer_job: item.customer_job,
         customer_city: item.customer_city,
         customer_enterprise_name: item.customer_enterprise_name,
-        image: item.image!.sources.feed?.mobile
-            || item.image!.sources.detail?.mobile
+        image: item.image?.sources?.feed?.mobile
+            || item.image?.sources?.detail?.mobile
             || '',
         alt: item.image!.alt,
         link: `/clients/${item.slug}`,
@@ -60,22 +64,57 @@ const clientsCarouselItems = computed(() => {
 
 // Services section
 const servicesAsyncKey = computed(() => `index-services-${locale.value}`);
-const { data: servicesData, error: servicesError } = await useAsyncData<ServiceResponse>(
+const { data: servicesData, error: servicesError } = await useAsyncData(
     () => servicesAsyncKey.value,
-    () => $fetch('/api/services', {
+    () => queryCollection("services")
+    .where("locale", "=", locale.value)
+    .all(),
+    /* $fetch('/api/services', {
         query: { locale: locale.value }
-    }),
+    }), */
     { watch: [locale] }
 );
 if (servicesError.value) {
     throw createError({ status: 404, statusMessage: 'Pricing services data not found', cause: servicesError.value, fatal: true })
 }
-const servicesContainerItems = computed(() => {
-    if (!servicesData.value?.items) return [];
+const servicesContainerItems = computed<ServiceResolved[]>(() => {
+    if (!servicesData.value) return [];
 
-    const servicesItems = servicesData.value.items;
-    const filteredElements = servicesItems.filter(item => item.slug == 'formation');
-    const nonFilteredElements = servicesItems.filter(item => item.slug !== 'formation');
+    const servicesItems: ServiceResolved[] = servicesData.value.map((item) => ({
+        slug: item.slug,
+        created_at: item.created_at,
+        updated_at: item.updated_at,
+        previewUrl: item.previewUrl,
+        image: item.image ? {
+            alt: item.image.alt,
+            sources: {
+                feed: {
+                    mobile: item.image.sources?.feed?.mobile ?? "",
+                    tablet: item.image.sources?.feed?.tablet ?? "",
+                    desktop: item.image.sources?.feed?.desktop ?? "",
+                },
+                detail: {
+                    mobile: item.image.sources?.detail?.mobile ?? "",
+                    tablet: item.image.sources?.detail?.tablet ?? "",
+                    desktop: item.image.sources?.detail?.desktop ?? "",
+                }
+            }
+        } : undefined,
+
+        tags: item.tags,
+        tag: item.tag,
+        highlighted: item.highlighted ?? false,
+
+        title: item.title ?? "",
+        description: item.description,
+        feed_title: item.feed_title,
+        feed_summary: item.feed_summary,
+
+        packages: item.packages,
+    }));
+
+    const filteredElements = servicesItems.filter((item: { slug: string }) => item.slug == 'formation');
+    const nonFilteredElements = servicesItems.filter((item: { slug: string }) => item.slug !== 'formation');
 
     return [...nonFilteredElements, ...filteredElements];
 });
@@ -199,7 +238,7 @@ const fillColors = ref<string[]>(['--bg-3', '--card-experiment-bg', '--card-abou
     bgColors = ref<string[]>(['bg-(--bg-3)', 'bg-(--card-job-bg)', 'bg-(--card-project-bg)', 'bg-(--card-job-bg)', 'bg-(--card-about-bg)', 'bg-(--bg-2)']);
 
 watch(() => colorMode.value,
-    (mode) => {
+    (mode: string) => {
         fillColors.value =
             mode === 'dark'
                 ? ['--bg-3', '--card-experiment-bg', '--card-about-bg', '--card-job-bg', '--card-about-bg', '--bg-2', '--bg-3']
@@ -237,7 +276,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://codekorico.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: string }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://codekorico.com${route.path}`

@@ -3,24 +3,27 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
 import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
-import type { ExperimentResolved } from '~/app/types/experiment';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
 
-const asyncKey = computed(() => `experiment-${route.params.slug}-${locale.value}`);
-const { data: experiment, error } = await useAsyncData<ExperimentResolved>(
+const slug = computed(() => String(route.params.slug));
+const asyncKey = computed(() => `experiment-${slug.value}-${locale.value}`);
+
+const { data: experiment, error } = await useAsyncData(
     () => asyncKey.value,
-    () => $fetch(`/api/experiments/${route.params.slug}`, {
+    () => queryCollection("experiments")
+        .where("slug", "=", slug.value)
+        .where("locale", "=", locale.value)
+        .first(),
+
+    /* $fetch(`/api/experiments/${route.params.slug}`, {
         query: { locale: locale.value }
-    }),
-    {
-        watch: [locale]
-    }
+    }), */
 );
-if (error.value) {
-    throw createError({ statusCode: 404, message: 'experiment data is not found', statusMessage: 'experiment data is not found', cause: error.value, fatal: true });
-}
+
+if (error.value) throw createError({ statusCode: 500, message: 'Failed to load experiment', statusMessage: 'Failed to load experiment', cause: error.value, fatal: true });
+if (!experiment.value) throw createError({ statusCode: 404, message: 'Experiment not found', statusMessage: 'Experiment not found', cause: error.value, fatal: true });
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
@@ -50,14 +53,14 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-const articlePublishedTime = computed(() => experiment.value?.created_at ? dayjs(experiment.value?.created_at).locale(locale.value).format(): null),
-    articleModifiedTime = computed(() => experiment.value?.updated_at ? dayjs(experiment.value?.updated_at).locale(locale.value).format(): null);
+const articlePublishedTime = computed(() => experiment.value?.created_at ? dayjs(experiment.value?.created_at).locale(locale.value).format() : null),
+    articleModifiedTime = computed(() => experiment.value?.updated_at ? dayjs(experiment.value?.updated_at).locale(locale.value).format() : null);
 const created_atDate = computed(() => experiment.value?.created_at ? dayjs(experiment.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
     updated_atDate = computed(() => experiment.value?.updated_at ? dayjs(experiment.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
 
-const src = computed(() => experiment.value?.image?.sources.detail?.mobile || experiment.value?.image?.sources.feed?.mobile || ''),
-    tabletSrc = computed(() => experiment.value?.image?.sources.detail?.tablet || experiment.value?.image?.sources.feed?.tablet || src),
-    desktopSrc = computed(() => experiment.value?.image?.sources.detail?.desktop || experiment.value?.image?.sources.feed?.desktop || tabletSrc);
+const src = computed(() => experiment.value?.image?.sources?.detail?.mobile || experiment.value?.image?.sources?.feed?.mobile || ''),
+    tabletSrc = computed(() => experiment.value?.image?.sources?.detail?.tablet || experiment.value?.image?.sources?.feed?.tablet || src),
+    desktopSrc = computed(() => experiment.value?.image?.sources?.detail?.desktop || experiment.value?.image?.sources?.feed?.desktop || tabletSrc);
 
 useHeadSafe(() => ({
     title: experiment.value?.title,
@@ -81,7 +84,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://aureldev.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: string }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://aureldev.com${route.path}`

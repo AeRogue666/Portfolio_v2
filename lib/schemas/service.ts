@@ -12,6 +12,7 @@ export const serviceSchema = z.object({
 
   features: z.array(z.string()).optional(),
   tag: z.string().default(""),
+  tags: z.array(z.string()).optional().default([]),
   packages: z
     .array(
       z.object({
@@ -30,4 +31,5 @@ export const serviceSchema = z.object({
     )
     .optional(),
   image: responsiveImageSchema.optional(),
+  highlighted: z.boolean().default(false),
 });
