@@ -311,7 +311,7 @@ useSeoMeta(({
                     <tbody>
                         <tr v-for="criteria in filteredCriteria" :key="criteria.id"
                             class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors">
-                            <td class="px-4 py-3 font-mono fs-body font-semibold text-blue-500" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ criteria.id }}</td>
+                            <td class="px-4 py-3 font-mono fs-body font-semibold" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ criteria.id }}</td>
                             <td class="text-center px-4 py-3 font-medium fs-body">
                                 <span class="inline-block px-2 py-1 rounded"
                                     :class="`bg-${getThematicColor(criteria.thematic)}-500/20`">
@@ -349,7 +349,7 @@ useSeoMeta(({
                     <p class="fs-small text-(--text-2) mb-3">
                         {{ usecase.description }}
                     </p>
-                    <p class="fs-body text-blue-500 font-mono">
+                    <p class="fs-body font-mono">
                         <strong>{{ reportData.implementationLabel }}</strong>
                         {{ usecase.implementation }}
                     </p>

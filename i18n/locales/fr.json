@@ -1,7 +1,7 @@
 {
   "header": {
     "skip_content": "Passer au contenu principal",
-    "span_title": "Aureldev"
+    "span_title": "Logo de CodeKorico"
   },
   "sidebar-left": {
     "open": "Ouvrir le menu du profil",
@@ -58,7 +58,7 @@
   },
   "seo": {
     "home": {
-      "title": "CodeKorico - Création de sites internet, Développement Web & Accessibilité",
+      "title": "CodeKorico - Création de sites internet Accessibles",
       "description": "Création de sites internet accessibles, évolutifs et centré sur l'utilisateur avec Wordpress, WooCommerce, Shopify, Nuxt ou Vue en Ardèche, Drôme et Auvergne Rhône-Alpes."
     },
     "feed": {
@@ -190,7 +190,8 @@
     "button_label": "Rechercher",
     "recent_label": "Recherches récentes",
     "results_label": "Résultats",
-    "aria_label": "Ouvrir le menu de la barre de recherche",
+    "aria_label": "Rechercher un post",
+    "aria_description": "Ouvrir le menu de la barre de recherche",
     "placeholder": "Chercher un post ou une page"
   },
   "filters": {
@@ -208,12 +209,13 @@
     "filter_options": "Options de filtrage",
     "close_filters": "Fermer le menu des filtres",
     "reset": "Réinitialiser les filtres",
+    "filter_description": "Filtrer les articles et posts",
     "active_count": "{count} filtre(s) actif(s)"
   },
   "feed": {
     "title": "CodeKorico - Projets et contenus",
     "load_more": "Charger d'autres articles",
-    "loaded_new_articles": "Nouveux articles disponibles",
+    "loaded_new_articles": "Aucun nouvel article disponible | Un nouvel article est disponible | {article} nouveaux articles disponibles",
     "no_results": "Aucun post ne correspond à vos filtres. Essayez d'ajuster votre sélection.",
     "showing_filtered": "Affichage de {count} sur {total} posts",
     "showing_all": "Affichage de {total} posts"

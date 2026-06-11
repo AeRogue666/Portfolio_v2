@@ -71,7 +71,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
         </div>
 
         <template #actions>
-            <NuxtLink :to="postUrl"
+            <NuxtLink :to="postUrl" tabindex="0"
                 :aria-label="`${t(post.kind !== 'about' ? 'post.read_post' : `post.read_about`)} ${post.title}`"
                 class="inline-flex items-center gap-2 text-(--accent) hover:text-(--accent-hover) font-medium fs-body transition-colors">
                 {{ t(post.kind !== 'about' ? 'post.read_post' : `post.read_about`) }}

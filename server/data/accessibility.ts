@@ -4,7 +4,7 @@ export const accessibilityReport: AccessibilityReport = {
   translations: {
     fr: {
       title: "Rapport d'accessibilité",
-      description: "Audit complet RGAA 4 et WCAG 2.1 Level AAA du portfolio",
+      description: "Audit complet RGAA 4 et WCAG 2.1 Level AAA du site internet",
       summaryTitle: "Résumé Exécutif",
       conformanceLabel: "Conformité globale",
       conformableCriteriaLabel: "Critères conformes",

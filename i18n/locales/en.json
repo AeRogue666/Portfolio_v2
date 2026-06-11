@@ -1,7 +1,7 @@
 {
   "header": {
     "skip_content": "Skip to main content",
-    "span_title": "Aureldev"
+    "span_title": "CodeKorico logo"
   },
   "sidebar-left": {
     "open": "Open profile menu",
@@ -58,7 +58,7 @@
   },
   "seo": {
     "home": {
-      "title": "CodeKorico - Website creation, Web Development, Accessibility",
+      "title": "CodeKorico - Accessible Website creation",
       "description": "Creation of accessible, scalable, user-centered websites with Wordpress, WooCommerce, Shopify, Nuxt or Vue in Ardèche, Drôme and Auvergne Rhône-Alpes."
     },
     "feed": {
@@ -190,7 +190,8 @@
     "button_label": "Search",
     "recent_label": "Recent search",
     "results_label": "Results",
-    "aria_label": "Open search bar menu",
+    "aria_label": "Search a post",
+    "aria_description": "Open search bar menu",
     "placeholder": "Search a post or a page here"
   },
   "filters": {
@@ -208,12 +209,13 @@
     "filter_options": "Filter options",
     "close_filters": "Close filters menu",
     "reset": "Clear filters",
+    "filter_description": "Filter article and posts",
     "active_count": "{count} filter(s) active"
   },
   "feed": {
     "title": "Portfolio - projects and contents",
     "load_more": "Load more articles",
-    "loaded_new_articles": "New articles available",
+    "loaded_new_articles": "No more article available | A new article is available | {article} new articles available",
     "no_results": "No posts match your filters. Try adjusting your selection.",
     "showing_filtered": "Showing {count} of {total} posts",
     "showing_all": "Showing {total} posts"

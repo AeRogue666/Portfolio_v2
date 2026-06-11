@@ -108,7 +108,9 @@ useSeoMeta(({
 
         <!-- Annonce accessibilité pour lecteurs d'écran -->
         <div v-if="status === 'success' && items.length > 0" aria-live="polite" class="sr-only">
-            <span class="fs-small">{{ items.length }} {{ t('feed.loaded_new_articles') }}</span>
+            <span v-if="hasMore && (total - items.length) > 1" class="fs-small">{{ total - items.length }} {{ t('feed.loaded_new_articles', total - items.length) }}</span>
+            <span v-else-if="hasMore && (total - items.length) === 1" class="fs-small">{{ t('feed.loaded_new_articles', 1) }}</span>
+            <span v-else class="fs-small">{{ t('feed.loaded_new_articles', 0) }}</span>
         </div>
     </UContainer>
 </template>
