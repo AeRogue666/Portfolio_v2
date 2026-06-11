@@ -19,7 +19,9 @@ Vous avez du mal avec :
 - Internet
 - Les emails
 - Les outils numériques
+- Les périphériques (imprimantes, scanners, fax, clavier, souris)
 
+Que ce soit pour les utiliser, les maîtriser ou comprendre leur utilisation.
 Vous n'êtes pas seul(e).
 
 ---
@@ -34,11 +36,12 @@ Sans jargon. A votre rythme.
 
 ## Ce que vous apprendrez
 
-- Utiliser un ordinateur ou un smartphone
-- Naviguer sur internet
-- Gérer vos emails
+- Utiliser un ordinateur, un smartphone, une tablette
+- Naviguer sur internet (Utiliser un navigateur, effectuer des recherches, ajouter des favoris, etc.)
+- Gérer vos emails (Utiliser une messagerie mail, la configurer, envoyer des mails, ajouter des contacts, etc.)
 - Comprendre les bases de la sécurité
 - Utiliser les outils du quotidien
+- Maîtriser un agent IA (Claude, Gemini, ChatGPT, ...) et ne plus le subir
 
 ---
 
