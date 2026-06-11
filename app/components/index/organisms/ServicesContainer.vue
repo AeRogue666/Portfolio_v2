@@ -11,7 +11,7 @@ const { t } = useI18n();
 <template>
     <UPricingPlans>
         <UPricingPlan v-for="(service, i) in services" :key="i" v-bind="service" orientation="vertical"
-            :tagline="service.tag" :title="service.feed_title ?? service.title"
+            :title="service.feed_title ?? service.title"
             :description="service.feed_summary ?? service.description" :highlight="service.highlighted"
             class="flex flex-col justify-between p-6 rounded-xl border transition-all duration-300 bg-(--card-note-bg)"
             :class="[
