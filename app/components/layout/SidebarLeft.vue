@@ -13,7 +13,7 @@ useSidebarFocusState();
     }">
         <IconButton ref="sidebarLeftButtonMobileRef" id="button-sidebarleft-mobile" :variant="'ghost'"
             :color="'neutral'" :icon="'fa7-solid:bars'" :size="'size-10'" :label="t('sidebar-left.open')"
-            :class="'size-10'" />
+            :class="'size-10'" tabindex="0" />
 
         <template #body>
             <SidebarLeftContent />

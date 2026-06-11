@@ -25,7 +25,7 @@ const src = computed(() => colorMode.value == 'system'
 
         <template #left>
             <UContainer class="hidden md:flex">
-                <NuxtLink to="/" aria-describedby="header-title">
+                <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
                     <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
                         {{ t('header.span_title') }}
                     </span>

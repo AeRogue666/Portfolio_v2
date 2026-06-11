@@ -114,8 +114,8 @@ async function changeLanguage(newLocale: string) {
         </template>
 
         <template #body>
-            <USwitch v-model="grayscale" @click="accessibilityStore.toggleGrayscale" checked-icon="fa7-solid:check"
-                unchecked-icon="fa7-solid:xmark" size="xl" color="neutral" :ui="{
+            <USwitch v-model="grayscale" hecked-icon="fa7-solid:check" unchecked-icon="fa7-solid:xmark" size="xl"
+                color="neutral" :ui="{
                     root: 'flex flex-col-reverse items-center',
                     base: grayscale && colorMode.value === 'dark' ? 'text-inverted fs-body data-[state=unchecked]:bg-(--bg-3)' : 'fs-body text-(--text) data-[state=unchecked]:bg-(--bg-3)',
                     label: grayscale && colorMode.value === 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
@@ -130,8 +130,8 @@ async function changeLanguage(newLocale: string) {
         </template>
 
         <template #body>
-            <USwitch v-model="underlineLinks" @click="accessibilityStore.toggleUnderlineLinks"
-                checked-icon="fa7-solid:check" unchecked-icon="fa7-solid:xmark" size="xl" color="neutral" :ui="{
+            <USwitch v-model="underlineLinks" checked-icon="fa7-solid:check" unchecked-icon="fa7-solid:xmark" size="xl"
+                color="neutral" :ui="{
                     root: 'flex flex-col-reverse items-center',
                     base: grayscale && colorMode.value === 'dark' ? 'text-inverted fs-body data-[state=unchecked]:bg-(--bg-3)' : 'fs-body text-(--text) data-[state=unchecked]:bg-(--bg-3)',
                     label: grayscale && colorMode.value === 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
