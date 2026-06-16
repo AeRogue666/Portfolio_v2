@@ -20,12 +20,12 @@ export interface ServiceTranslation {
   feed_title?: string;
   feed_summary?: string;
   packages?: Array<{
-    title: string;
-    children: Array<{
-      title: string;
-      price: string;
-      ttc: boolean;
-      features: string[];
+    title?: string;
+    children?: Array<{
+      title?: string;
+      price?: string;
+      ttc?: boolean;
+      features?: string[];
     }>;
   }>;
 }

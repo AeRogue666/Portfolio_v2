@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ServicesCollectionItem } from '@nuxt/content';
 import type { ServiceResolved } from '../types/service.js';
 import IndexSection from '../components/index/IndexSection.vue';
 import LandingSection from '../components/index/LandingSection.vue';
@@ -110,7 +109,7 @@ const servicesContainerItems = computed<ServiceResolved[]>(() => {
         feed_title: item.feed_title,
         feed_summary: item.feed_summary,
 
-        packages: item.packages,
+        packages: item.packages ?? []
     }));
 
     const filteredElements = servicesItems.filter((item: { slug: string }) => item.slug == 'formation');

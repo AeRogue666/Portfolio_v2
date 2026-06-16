@@ -1,4 +1,4 @@
-export function logEvent(event: string, data: Record<string, any>) {
+export function logEvent(event: string, data: any) {
   console.log(
     JSON.stringify({
       event,

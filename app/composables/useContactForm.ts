@@ -1,3 +1,5 @@
+import type { ContactPayload } from "../types/contact";
+
 export function useContactForm() {
   const submitState = ref<"idle" | "loading" | "success" | "error">("idle"),
     loading = computed(() => submitState.value === "loading");
@@ -6,11 +8,7 @@ export function useContactForm() {
     overlay = useOverlay();
 
   async function submit(
-    data: {
-      email: string;
-      message: string;
-      website?: string;
-    },
+    data: ContactPayload,
     onSuccess?: () => void,
   ) {
     submitState.value = "loading";
