@@ -25,6 +25,18 @@
       "textarea_label": "Message",
       "textarea_placeholder": "Decrivez votre besoin, votre message ou votre question. Je vous repondrez directement par mail",
       "submit_button": "Envoyer",
+      "step-complexity": {
+        "business-goals-label": "Quels sont les objectifs principaux du projet ?",
+        "business-goals-placeholder": "Décrivez en {maxlength} caractères maximum les objectifs principaux du projet.",
+        "problems-label": "Rencontrez-vous des problèmes actuellement ?",
+        "problems-placeholder": "Décrivez en {maxlength} caractères maximum les problèmes rencontrés."
+      },
+      "step-summary": {
+        "email_label": "Email",
+        "email_placeholder": "Votre email",
+        "textarea_label": "Informations complémentaires (optionnel)",
+        "textarea_placeholder": "Decrivez vos besoins et toutes informations complémentaires."
+      },
       "state": {
         "loading": "Envoi en cours...",
         "success": "Message envoyé",
@@ -331,13 +343,13 @@
   },
   "sendmessagemodal": {
     "types": {
-      "accessibility_audit": "Audit Accessibilité / Mise en conformité WCAG",
-      "performance-seo_audit": "Audit Performance & SEO",
-      "professionnal_contact": "Prise de contact professionnelle",
-      "simple_message": "Simple message",
-      "website_creation": "Création d'un site (internet ou interne)",
-      "website_redesign": "Redesign d'un site (internet ou interne)",
-      "digital_training": "Formation au numérique"
+      "message": "Demande rapide",
+      "creation": "Création d'un site",
+      "refonte": "Redesign d'un site (Optimisation + Refonte)",
+      "optimisation": "Optimisation d'un site (SEO, Performance, Accessibilité)",
+      "audit_a11y": "Audit Accessibilité / Mise en conformité WCAG",
+      "audit_seo": "Audit Performance & SEO",
+      "formation": "Formation au numérique"
     }
   },
   "plans": {

@@ -331,13 +331,13 @@
   },
   "sendmessagemodal": {
     "types": {
-      "accessibility_audit": "Accessibility Audit / Compliance WCAG",
-      "performance-seo_audit": "Performance & SEO Audit",
-      "professionnal_contact": "Professionnal contact",
-      "simple_message": "Simple message",
-      "website_creation": "Website creation (internet or internal)",
-      "website_redesign": "Website redesign (internet or internal)",
-      "digital_training": "Digital training"
+      "message": "Quick request",
+      "creation": "Website creation",
+      "refonte": "Website redesign (Optimization + Redesign)",
+      "optimisation": "Website optimization (SEO, Performance, Accessibility)",
+      "audit_a11y": "Accessibility Audit / Compliance WCAG",
+      "audit_seo": "Performance & SEO Audit",
+      "formation": "Digital training"
     }
   },
   "plans": {

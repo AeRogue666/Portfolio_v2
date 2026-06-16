@@ -2,6 +2,7 @@
 import type { NavigationMenuItem } from '@nuxt/ui';
 import SendMessageModal from './SendMessageModal.vue';
 import IconButton from '../../ui/IconButton.vue';
+import CustomerScreeningModal from './CustomerScreeningModal.vue';
 
 const { t } = useI18n(),
     colorMode = useColorMode(),
@@ -90,7 +91,9 @@ onMounted(() => {
                 {{ t('sidebar-left.contact_me') }}
             </span>
 
-            <SendMessageModal />
+            <!-- <SendMessageModal /> -->
+
+            <CustomerScreeningModal />
 
             <div class="inline-flex items-baseline">
                 <UTooltip :text="t('sidebar-left.open_github')">

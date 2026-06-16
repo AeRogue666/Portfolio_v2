@@ -160,12 +160,13 @@ const typeError = computed(() => {
             class:
                 'rounded-full bg-transparent fs-body text-(--text) hover:bg-(--bg-3) rounded focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors',
         }" :ui="{
-        content: 'w-auto bg-(--bg)',
-        body: 'flex flex-col justify-center',
-    }">
+            content: 'w-auto bg-(--bg)',
+            body: 'flex flex-col justify-center',
+        }">
         <template #default>
             <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" color="neutral"
-                variant="solid" size="xl" :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'" :icon="props.ctaIcon || 'fa7-solid:message'"
+                variant="solid" size="xl" :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'"
+                :icon="props.ctaIcon || 'fa7-solid:message'"
                 :label="props.ctaLabel || t('sidebar-left.modal-message.send-message_button_label')" />
         </template>
 
@@ -223,8 +224,8 @@ const typeError = computed(() => {
                             <UTextarea v-model="state.message" type="text" :rows="10" :maxrows="20" minlength="20"
                                 maxlength="3000" :placeholder="t('sidebar-left.modal-message.textarea_placeholder')
                                     " :ui="{
-                    base: 'w-3xs md:w-xs bg-(--bg-2) fs-body',
-                }" />
+                                        base: 'w-3xs md:w-xs bg-(--bg-2) fs-body',
+                                    }" />
                         </UFormField>
 
                         <UButton :loading="loading" :disabled="loading" type="submit" name="submit-contact-drawer"
