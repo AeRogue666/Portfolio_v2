@@ -1,56 +1,90 @@
 ---
-title: Devenez autonome avec le numérique
+title: Formation numérique simple pour professionnels et particuliers
 created_at: "2026-02-11"
 description: Apprenez à utiliser les outils numériques simplement et efficacement
 feed_title: Formation numérique
 feed_summary: Gagnez en autonomie avec le digital.
 locale: fr
+packages:
+  - title: Forfaits de formation
+    children:
+      - title: Formation
+        price: 50€/h
 previewUrl: /services/formation
 slug: formation
 tag: Formations
 highlighted: false
 ---
 
-## Le numérique, sans stress
+## Pour qui ?
 
-Vous avez du mal avec :
+- Débutants
+- Seniors
+- Personnes peu à l'aise avec le numérique
 
-- L'ordinateur
-- Internet
-- Les emails
-- Les outils numériques
-- Les périphériques (imprimantes, scanners, fax, clavier, souris)
-
-Que ce soit pour les utiliser, les maîtriser ou comprendre leur utilisation.
-Vous n'êtes pas seul(e).
+Que cela soit des professionnels, des particuliers, des associations, etc.
 
 ---
 
-## Mon objectif
+## Problème
 
-Vous rendrez autonome, simplement.
-
-Sans jargon. A votre rythme.
+Beaucoup de personnes utilisent des outils numériques tous les jours sans vraiment les maîtriser, ce qui crée du stress, des erreurs et une perte de temps.
 
 ---
 
-## Ce que vous apprendrez
+## Solution
 
-- Utiliser un ordinateur, un smartphone, une tablette
-- Naviguer sur internet (Utiliser un navigateur, effectuer des recherches, ajouter des favoris, etc.)
-- Gérer vos emails (Utiliser une messagerie mail, la configurer, envoyer des mails, ajouter des contacts, etc.)
-- Comprendre les bases de la sécurité
-- Utiliser les outils du quotidien
-- Maîtriser un agent IA (Claude, Gemini, ChatGPT, ...) et ne plus le subir
+Je vous accompagne pas à pas pour vous rendre autonome avec les outils numériques essentiels, sans jargon et à votre rythme.
 
 ---
 
 ## Résultat
 
-Plus d'autonomie, plus de confiance.. moins de stress.
+Vous utilisez vos outils numériques avec confiance, sans stress et sans dépendance technique.
+
+---
+
+## Formation proposées
+
+Choisissez la formation qui vous correspond.
+
+### Formation numérique de base
+
+- Utiliser un ordinateur, un smartphone, une tablette
+- Naviguer sur internet
+- Gérer ses emails
+- Comprendre les bases de la sécurité
+
+Idéal pour : débutants, seniors, personnes peu à l'aise avec le numérique.
+
+### Formation outil du quotidien
+
+- Utiliser les outils bureautiques
+- Organiser ses fichiers
+- Améliorer sa productivité numérique
+- Communiquer efficacement en ligne
+
+Idéal pour : professionnels, indépendants, associations
+
+### Formation intelligence artificielle
+
+- Comprendre et utiliser ChatGPT, Claude, Gemini
+- Rédaction assistée
+- Gain de temps dans les tâches répétitives
+- Bonnes pratiques d'utilisation
+
+Idéal pour : entrepreneurs, indépendants, curieux du numérique.
+
+### Formation personnalisée
+
+- Adaptée à votre niveau
+- Adaptée à votre activité
+- Contenu sur mesure
+
+Idéal pour : besoins spécifiques
 
 ---
 
 ## Tarif
 
-A partir de 50€/heure H.T
+\*Coût des déplacements non compris (si besoin)

@@ -1,9 +1,9 @@
 ---
-title: Un site fiable, sans stress
+title: Tranquilité pour votre site web
 created_at: "2026-02-11"
-description: Maintenance, sécurité et accompagnement pour un site toujours performant.
-feed_summary: Support, maintenance et conseils -> Pour un site sécurisé, à jour et fiable sur le long terme.
-feed_title: Maintenance & accompagnement
+description: Un accompagnement complet pour garantir un site sécurisé, performant et toujours opérationnel, sans que vous ayez à vous en occuper.
+feed_summary: Votre site reste sécurisé, rapide et fonctionnel en continu, sans intervention de votre part.
+feed_title: Site web sans souci
 locale: fr
 packages:
   - title: Forfaits mensuels de maintenance préventive
@@ -35,7 +35,7 @@ packages:
           - Rapport technique mpensuel détaillé
   - title: Forfaits horaires d'interventions ponctuelles
     children:
-      - title: Maintenance heure
+      - title: Intervention ponctuelle
         price: 50€/heure
         features:
           - Idéal pour corriger un bug ou faire évoluer votre site rapidement
@@ -49,44 +49,42 @@ tag: Maintenance
 highlighted: false
 ---
 
-## Votre site, sans prise de tête
+## Pour qui ?
 
-Un site web demande du suivi :
-
-- Mises à jour
-- Sécurité
-- Maintenance
-- Corrections
-- Suivi en temps réel
-- Sauvegardes
-
-Sans ça, il devient vite obsolète ou vulnérable.
+- Tous les clients souhaitant un suivi régulier
+- Entreprises ne souhaitant pas gérer la technique
 
 ---
 
-## Ce que je prends en charge
+## Problème
 
-- Maintenance technique
-- Mises à jour régulières
-- Sécurité du site
-- Support en cas de problèmes
-- Conseils et accompagnement
+Un site non maintenu peut tomber en panne, être piraté ou perdre en performance..
+ce qui entraîne directement une perte de clients et de crédibilité.
+
+---
+
+## Solution
+
+Prise en charge du suivi technique et accompagnement sur le long terme.
 
 ---
 
 ## Résultat
 
-Un site fiable, sécurisé et toujours à jour.
-
+Un site qui fonctionne en continu, sans interruption, sans stress technique et sans perte de visibilité.
 Vous pouvez vous concentrer sur votre activité, sereinement.
 
 ---
 
-## Idéal pour
+## Inclus
 
-- Tous les clients
-- Ceux qui veulent un suivi long terme
-- Ceux qui ne veulent pas gérer la technique
+- Mises à jour
+- Sauvegardes
+- Surveillance
+- Sécurité
+- Support
+
+et préventions des problèmes avant qu'ils n'impactent votre activité.
 
 ---
 

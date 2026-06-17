@@ -144,15 +144,26 @@ const grayscale = computed({
 
         <template #body>
             <UCard :title="'Démarrons votre projet'" :description="`Etape ${leadStore.step} sur ${totalSteps}`" :ui="{
+                root: 'overflow-y-auto bg-(--bg-2) ring-(--border-subtle)',
                 title: 'fs-title text-(--text)',
                 description: 'fs-small text-(--text-muted)',
                 header: 'bg-(--bg-2) text-(--text-2) border-(--border-medium)',
                 body: 'flex flex-col bg-(--bg-2) text-(--text-2) fs-body gap-6'
             }">
-                <UTabs v-model="leadStore.step" :items="tabs.slice(0, totalSteps)" :ui="{
-                    list: 'bg-(--bg)',
+                <UTabs v-model="leadStore.step" :items="tabs" :ui="{
+                    list: 'flex flex-col md:flex-row bg-(--bg) gap-4',
                     trigger: 'text-(--text-2) data-[state=inactive]:text-(--text-muted) pointer-events-none opacity-50'
-                }" />
+                }" /> <!-- tabs.slice(0, totalSteps) -->
+
+                <div class="flex flex-col md:flex-row justify-between">
+                    <UButton label="Réinitialiser le formulaire" variant="outline" @click="leadStore.reset()"
+                        :disabled="leadStore.data ? false : true"
+                        class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--accent) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
+
+                    <UButton :label="`Réinitialiser l'étape ${leadStore.step}`" variant="outline"
+                        @click="leadStore.resetStep()" :disabled="leadStore.data ? false : true"
+                        class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--accent) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
+                </div>
 
                 <!-- Etapes du formulaire -->
                 <Transition>
@@ -168,7 +179,7 @@ const grayscale = computed({
                     <StepSummary v-else-if="leadStore.step === totalSteps" />
                 </Transition>
 
-                <div class="flex justify-between mt-6">
+                <div class="flex flex-col md:flex-row items-center md:justify-between mt-6">
                     <UButton label="Retour" variant="ghost" @click="goback"
                         :disabled="leadStore.step > 1 ? false : true"
                         class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--focus) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />

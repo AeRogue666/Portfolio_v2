@@ -41,7 +41,7 @@ function toggleDeadline(deadline: string) {
     <div class="space-y-6">
         <div>
             <h3 class="fs-subtitle mb-3">Niveau d'investissement envisagé</h3>
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 <UButton v-for="b in budgets" :key="b" variant="soft"
                     :color="leadScore.data.budgetRange === b ? 'primary' : 'neutral'"
                     @click="toggleBudget(b)" :label="b"
@@ -56,7 +56,7 @@ function toggleDeadline(deadline: string) {
 
         <div>
             <h3 class="fs-subtitle mb-3">Contrainte de délai</h3>
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 <UButton v-for="d in deadlines" :key="d" variant="soft"
                     :color="leadScore.data.deadline === d ? 'primary' : 'neutral'" @click="toggleDeadline(d)"
                     :label="d"

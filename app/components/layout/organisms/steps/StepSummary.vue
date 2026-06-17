@@ -45,8 +45,8 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
         <UCard v-if="leadScore.data.projectType !== 'message'" :ui="{
             root: 'bg-(--bg) text-(--text) fs-body',
             body: grayscale && colorMode.value == 'dark'
-                ? 'text-inverted'
-                : 'grid grid-cols-3 gap-6'
+                ? 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 text-inverted'
+                : 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6'
         }">
             <div class="flex flex-col items-baseline gap-4">
                 <p class="font-semibold tracking-widest uppercase fs-small my-4">
@@ -63,7 +63,7 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
             <div class="flex flex-col items-baseline gap-4">
                 <p class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Budget :</strong>
-                    {{ leadScore.data.budgetRange }}
+                    {{ leadScore.data.budgetRange }}€
                 </p>
 
                 <p class="font-semibold tracking-widest uppercase fs-small my-4">
@@ -88,12 +88,12 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
             </div>
 
             <div class="flex flex-col items-baseline gap-4">
-                <p v-if="leadScore.data.businessGoals" class="font-semibold tracking-widest uppercase fs-small my-4">
+                <p v-if="leadScore.data.businessGoals" class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Objectifs :</strong>
                     {{ leadScore.data.businessGoals }}
                 </p>
 
-                <p v-if="leadScore.data.problems" class="font-semibold tracking-widest uppercase fs-small my-4">
+                <p v-if="leadScore.data.problems" class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Problèmes :</strong>
                     {{ leadScore.data.problems }}
                 </p>
