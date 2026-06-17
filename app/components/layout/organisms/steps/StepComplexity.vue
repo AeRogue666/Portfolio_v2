@@ -47,7 +47,7 @@ function togglePage(page: string) {
                 Structure du projet
             </h3>
 
-            <div class="grid grid-cols-3 w-full gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full gap-6">
                 <UButton v-for="p in pageOptions" :key="p" variant="soft"
                     :color="leadScore.data.complexity.pages === p ? 'primary' : 'neutral'" @click="togglePage(p)"
                     :label="`${p} pages`"
@@ -69,7 +69,7 @@ function togglePage(page: string) {
                 Fonctionnalités envisagées
             </h3>
 
-            <div class="grid grid-cols-3 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 <UButton v-for="f in featureOptions" :key="f" variant="soft"
                     :color="leadScore.data.complexity.features?.includes(f) ? 'primary' : 'neutral'"
                     @click="toggleFeature(f)" :label="f"

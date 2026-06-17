@@ -30,9 +30,11 @@ export const useLeadStore = defineStore("lead", {
   actions: {
     next() {
       console.log(this.step, this.data.projectType, this.data.subType);
+      this.persist();
       this.step++;
     },
     back() {
+      this.persist();
       this.step--;
     },
     validateNextStep() {
@@ -67,7 +69,8 @@ export const useLeadStore = defineStore("lead", {
           if (
             this.data.projectType === "audit_a11y" ||
             this.data.projectType === "audit_seo"
-          ) this.step = 2; // Ce qui envoie sur l'étape 1 (step: 2 + step-- = 1)
+          )
+            this.step = 2; // Ce qui envoie sur l'étape 1 (step: 2 + step-- = 1)
           return true;
         default:
           return true;
@@ -79,6 +82,31 @@ export const useLeadStore = defineStore("lead", {
     restore() {
       const saved = localStorage.getItem("leadDraft");
       if (saved) this.data = JSON.parse(saved);
+    },
+    resetStep() {
+      switch (this.step) {
+        case 1:
+          this.data.projectType = "";
+          this.persist();
+        case 2:
+          this.data.subType = "";
+          this.persist();
+        case 3:
+          this.data.businessGoals = "";
+          this.data.problems = "";
+          this.data.complexity = { pages: "", features: [], cms: "" };
+          this.persist();
+        case 4:
+          this.data.budgetRange = "";
+          this.data.deadline = "";
+          this.persist();
+        case 5:
+          this.data.contact.email = "";
+          this.data.contact.message = "";
+          this.persist();
+        default:
+          this.persist();
+      }
     },
     reset() {
       localStorage.removeItem("leadDraft");

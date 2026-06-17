@@ -1,10 +1,9 @@
 ---
-title: Améliorer votre site pour générer plus de clients
+title: Optimisation de site web pour plus de clients
 created_at: "2026-02-11"
-description: Optimisez votre site existant pour gagner en visibilité et en conversions.
-feed_title: Optimisation & SEO
-feed_summary: Amélioration de votre site existant
-            -> Plus rapide, mieux référencé, plus efficace
+description: Améliorez votre site pour gagner en rapidité, en visibilité et plus efficace pour générer des clients.
+feed_title: Optimisation de site web
+feed_summary: Votre site existe déjà mais ne donne pas les résultats attendus ? Je l'améliore pour augmenter sa visibilité, sa rapidité et son efficacité
 locale: fr
 packages:
   - title: Forfaits uniques d'optimisation de site
@@ -21,46 +20,49 @@ tag: Optimisation
 highlighted: false
 ---
 
-## Votre site peut faire mieux
+## Pour qui ?
 
-Vous avez déjà un site.. mais :
-
-- Il n'apporte pas ou peu de clients
-- Il est lent ou vieillissant
-- Il n'est pas bien référencé
-
-Résultat : Vous perdez des opportunités.
-
-## Ce que je fais
-
-J'analyse votre site et j'identifie ce qui bloque.
-
-Puis je corrige les points les plus importants.
+- Professionnels satisfaits de leur site actuel
+- Sites qui manquent de visibilité
+- Sites lents ou peu performants
 
 ---
 
-## Ce que vous obtenez
+## Problème
 
-- Un audit complet (SEO, performance, accessibilité, UX)
-- Une analyse claire des problèmes
-- Des optimisations prioritaires
-- Une amélioration de la vitesse
-- Une meilleure expérience utilisateur
-- Des recommandations concrètes
+Le site est globalement satisfaisant mais certains aspects limitent son efficacité.
+
+---
+
+## Solution
+
+L'optimisation existe et elle ne nécessite pas de refonte complète du site.
+J'améliore votre site en corrigeant les éléments qui limitent sa performance :
+visibilité, rapidité et capacité à convertir vos visiteurs en clients.
 
 ---
 
 ## Résultat
 
-Un site plus rapide, plus visible.. et qui convertit davantage.
+Un site plus rapide, plus visible et qui convertit davantage.
 
----
+## Optimisations proposées
 
-## Idéal pour
+### SEO
 
-- Site existants
-- Entreprises avec peu de résultats en ligne
-- Sites vieillissants
+Amélioration du référencement naturel.
+
+### Performance
+
+Amélioration de la vitesse de chargement et de la fluidité.
+
+### Accessibilité
+
+Amélioration de l'accès au contenu pour tous les utilisateurs.
+
+### Sécurité
+
+Renforcement de la sécurité du site.
 
 ---
 
