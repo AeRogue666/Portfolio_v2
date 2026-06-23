@@ -1,17 +1,25 @@
 import dayjs from "dayjs";
+import { calculatePrice } from "@/utils/pricingEngine";
 
 export const useLeadStore = defineStore("lead", {
   state: () => ({
     step: 1,
     startedAt: dayjs().toISOString(),
-
+    
     data: {
       projectType: "" as string,
       subType: "" as string,
       complexity: {
-        pages: "",
+        pages: "" as string,
         features: [] as string[],
-        cms: "",
+        cms: "gitbased_cms" as string,
+      },
+      formation: {
+        hours: 0,
+        attendees: 0,
+      },
+      maintenance: {
+        estimatedInterventions: 0,
       },
       businessGoals: "",
       problems: "",
@@ -26,6 +34,12 @@ export const useLeadStore = defineStore("lead", {
       createdAt: null as string | null,
     },
   }),
+
+  getters: {
+    estimatedPrice(state: { data: any }) {
+      return calculatePrice(state.data);
+    }
+  },
 
   actions: {
     next() {

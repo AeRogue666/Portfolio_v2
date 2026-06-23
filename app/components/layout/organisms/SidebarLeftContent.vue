@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui';
-import SendMessageModal from './SendMessageModal.vue';
 import IconButton from '../../ui/IconButton.vue';
 import CustomerScreeningModal from './CustomerScreeningModal.vue';
 

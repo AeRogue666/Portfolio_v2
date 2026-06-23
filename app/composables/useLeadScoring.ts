@@ -18,7 +18,7 @@ export function useLeadScoring() {
     };
 
     if (data.projectType && typeWeight[data.projectType])
-      score += typeWeight[data.projectType];
+      score += typeWeight[data.projectType] ?? 0;
 
     // Complexity
     if (data.complexity?.pages === "10+") score += 15;
