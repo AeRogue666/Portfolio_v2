@@ -9,8 +9,11 @@ const grayscale = computed({
     set: () => accessibilityStore.toggleGrayscale(),
 });
 
-const budgets = ['<1k', '1-3k', '3-8k', '8k+'],
-    deadlines = ["flexible", "1-3m", "<1m", "urgent"];
+const budgetOptions = ['<1k', '1-3k', '3-8k', '8k+'],
+    deadlineOptions = ["flexible", "1-3m", "<1m", "urgent"];
+
+const budgetModel = ref(''),
+    deadlineModel = ref('');
 
 function toggleBudget(budget: string) {
     if (!leadScore.data.budgetRange) {
@@ -23,9 +26,8 @@ function toggleBudget(budget: string) {
         leadScore.data.budgetRange = "";
     }
 }
-
 function toggleDeadline(deadline: string) {
-    if(!leadScore.data.deadline) {
+    if (!leadScore.data.deadline) {
         leadScore.data.deadline = "";
     }
     const indexDeadline = leadScore.data.deadline.indexOf(deadline);
@@ -35,6 +37,14 @@ function toggleDeadline(deadline: string) {
         leadScore.data.deadline = "";
     }
 }
+
+watch(budgetModel, (newBudget) => {
+    toggleBudget(newBudget);
+});
+
+watch(deadlineModel, (newDeadline) => {
+    toggleDeadline(newDeadline);
+});
 </script>
 
 <template>
@@ -42,30 +52,36 @@ function toggleDeadline(deadline: string) {
         <div>
             <h3 class="fs-subtitle mb-3">Niveau d'investissement envisagé</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                <UButton v-for="b in budgets" :key="b" variant="soft"
-                    :color="leadScore.data.budgetRange === b ? 'primary' : 'neutral'"
-                    @click="toggleBudget(b)" :label="b"
-                    class="block w-3xs xl:w-xs mt-3 mx-4 disabled:bg-(--bg-3) disabled:text-(--text-muted) fs-body ring-(--border-medium)"
+                <URadioGroup v-model="budgetModel" :items="budgetOptions" :ui="{
+                    base: grayscale && colorMode.value == 'dark'
+                        ? 'text-inverted'
+                        : ''
+                }" />
+                <UButton v-for="b in budgetOptions" :key="b" variant="ghost" @click="toggleBudget(b)" :label="`${b} euros`"
+                    class="block w-3xs xl:w-xs mt-3 mx-4 text-(--text) hover:bg-(--focus) disabled:bg-(--bg-3) disabled:text-(--text-muted) fs-body ring-1 ring-(--border-medium)"
                     :ui="{
                         base: grayscale && colorMode.value == 'dark'
                             ? 'text-inverted'
                             : ''
-                    }" :active-class="'bg-primary/10 text-primary'" :active-color="'primary'" />
+                    }" :active="leadStore.data.budgetRange === b" active-class="bg-(--bg-3) text-(--text)" />
             </div>
         </div>
 
         <div>
             <h3 class="fs-subtitle mb-3">Contrainte de délai</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
-                <UButton v-for="d in deadlines" :key="d" variant="soft"
-                    :color="leadScore.data.deadline === d ? 'primary' : 'neutral'" @click="toggleDeadline(d)"
-                    :label="d"
-                    class="block w-3xs xl:w-xs mt-3 mx-4 disabled:bg-(--bg-3) disabled:text-(--text-muted) fs-body ring-(--border-medium)"
+                <URadioGroup v-model="deadlineModel" :items="deadlineOptions" :ui="{
+                    base: grayscale && colorMode.value == 'dark'
+                        ? 'text-inverted'
+                        : ''
+                }" />
+                <UButton v-for="d in deadlineOptions" :key="d" variant="ghost" @click="toggleDeadline(d)" :label="d"
+                    class="block w-3xs xl:w-xs mt-3 mx-4 text-(--text) hover:bg-(--focus) disabled:bg-(--bg-3) disabled:text-(--text-muted) fs-body ring-1 ring-(--border-medium)"
                     :ui="{
                         base: grayscale && colorMode.value == 'dark'
                             ? 'text-inverted'
                             : ''
-                    }" :active-class="'bg-primary/10 text-primary'" :active-color="'primary'" />
+                    }" :active="leadStore.data.deadline === d" active-class="bg-(--bg-3) text-(--text)" />
             </div>
         </div>
     </div>

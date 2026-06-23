@@ -19,11 +19,11 @@ const accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode();
 
 const tabs = [
-    { label: "Nature" },
-    { label: "Spécification" },
-    { label: "Complexité" },
-    { label: "Budget" },
-    { label: "Récapitulatif" }
+    { title: "Nature" },
+    { title: "Spécification" },
+    { title: "Complexité" },
+    { title: "Budget" },
+    { title: "Récapitulatif" }
 ];
 
 const totalSteps = computed(() => leadStore.data.projectType === "message" ? 2 : 5);
@@ -74,10 +74,18 @@ async function handleSubmit() {
     leadStore.reset();
 };
 
+watch(leadStore, (newLead) => {
+    console.log(newLead.data)
+});
+
+onMounted(() => console.log(leadStore.data));
+
 const grayscale = computed({
     get: () => accessibilityStore.grayscale,
     set: () => accessibilityStore.toggleGrayscale(),
 });
+
+const progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step / totalSteps.value) */);
 
 /** 
  * Sur SendMessageModal, ajouter :
@@ -150,20 +158,12 @@ const grayscale = computed({
                 header: 'bg-(--bg-2) text-(--text-2) border-(--border-medium)',
                 body: 'flex flex-col bg-(--bg-2) text-(--text-2) fs-body gap-6'
             }">
-                <UTabs v-model="leadStore.step" :items="tabs" :ui="{
+                <UStepper v-model="progressBar" :items="tabs" disabled :ui="{
                     list: 'flex flex-col md:flex-row bg-(--bg) gap-4',
-                    trigger: 'text-(--text-2) data-[state=inactive]:text-(--text-muted) pointer-events-none opacity-50'
+                    trigger: 'data-[state=active]:bg-(--focus) data-[state=active]:text-(--text-2) data-[state=inactive]:bg-(--bg) data-[state=inactive]:text-(--text-muted) data-[state=completed]:bg-(--bg-3) data-[state=completed]:text-(--text-muted) pointer-events-none opacity-50',
+                    separator: 'data-[state=active]:bg-(--focus) data-[state=inactive]:bg-(--bg) data-[state=completed]:bg-(--bg-3)'
+                
                 }" /> <!-- tabs.slice(0, totalSteps) -->
-
-                <div class="flex flex-col md:flex-row justify-between">
-                    <UButton label="Réinitialiser le formulaire" variant="outline" @click="leadStore.reset()"
-                        :disabled="leadStore.data ? false : true"
-                        class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--accent) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
-
-                    <UButton :label="`Réinitialiser l'étape ${leadStore.step}`" variant="outline"
-                        @click="leadStore.resetStep()" :disabled="leadStore.data ? false : true"
-                        class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--accent) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
-                </div>
 
                 <!-- Etapes du formulaire -->
                 <Transition>
@@ -183,6 +183,15 @@ const grayscale = computed({
                     <UButton label="Retour" variant="ghost" @click="goback"
                         :disabled="leadStore.step > 1 ? false : true"
                         class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--focus) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
+
+                    <UButton label="Réinitialiser le formulaire" variant="outline" @click="leadStore.reset()"
+                        :disabled="leadStore.data ? false : true"
+                        class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--accent) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
+
+                    <UButton :label="`Réinitialiser l'étape ${leadStore.step}`" variant="outline"
+                        @click="leadStore.resetStep()" :disabled="leadStore.data ? false : true"
+                        class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--accent) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
+
                     <UButton v-if="leadStore.step < totalSteps" label="Continuer" variant="outline" @click="goNext"
                         :disabled="leadStore.data.projectType ? false : true"
                         class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--accent) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
