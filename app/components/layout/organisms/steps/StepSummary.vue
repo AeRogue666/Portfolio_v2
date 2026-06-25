@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n();
-const leadScore = useLeadStore(),
+const leadStore = useLeadStore(),
     accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode();
 
@@ -36,13 +36,13 @@ const colorSubType = [
     { value: "formation", color: "info" }
 ];
 
-const colorProjectTypeFilter = computed(() => colorProjectType.filter(c => c.value === leadScore.data.projectType).map(r => r.color)[0]);
-const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === leadScore.data.subType).map(r => r.color)[0]);
+const colorProjectTypeFilter = computed(() => colorProjectType.filter(c => c.value === leadStore.data.projectType).map(r => r.color)[0]);
+const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === leadStore.data.subType).map(r => r.color)[0]);
 </script>
 
 <template>
     <div class="flex flex-col space-y-4">
-        <UCard v-if="leadScore.data.projectType !== 'message'" :ui="{
+        <UCard v-if="leadStore.data.projectType !== 'message'" :ui="{
             root: 'bg-(--bg) text-(--text) fs-body',
             body: grayscale && colorMode.value == 'dark'
                 ? 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 text-inverted'
@@ -51,51 +51,51 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
             <div class="flex flex-col items-baseline gap-4">
                 <p class="font-semibold tracking-widest uppercase fs-small my-4">
                     <strong class="uppercase mr-6">Type :</strong>
-                    <UBadge :label="leadScore.data.projectType" :color="colorProjectTypeFilter" />
+                    <UBadge :label="leadStore.data.projectType" :color="colorProjectTypeFilter" />
                 </p>
 
                 <p class="font-semibold tracking-widest uppercase fs-small my-4">
                     <strong class="uppercase mr-6">Nature :</strong>
-                    <UBadge :label="leadScore.data.subType" :color="colorSubTypeFilter" />
+                    <UBadge :label="leadStore.data.subType" :color="colorSubTypeFilter" />
                 </p>
             </div>
 
             <div class="flex flex-col items-baseline gap-4">
                 <p class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Budget :</strong>
-                    {{ leadScore.data.budgetRange }}€
+                    {{ leadStore.data.budgetRange }}€
                 </p>
 
                 <p class="font-semibold tracking-widest uppercase fs-small my-4">
                     <strong class="uppercase mr-6">Délai :</strong>
-                    {{ leadScore.data.deadline }}
+                    {{ leadStore.data.deadline }}
                 </p>
             </div>
 
-            <div v-if="leadScore.data.complexity" class="flex flex-col items-baseline gap-4">
-                <p v-if="leadScore.data.complexity.pages" class="font-semibold tracking-widest uppercase fs-small">
+            <div v-if="leadStore.data.complexity" class="flex flex-col items-baseline gap-4">
+                <p v-if="leadStore.data.complexity.pages" class="font-semibold tracking-widest uppercase fs-small">
                     <strong class="uppercase mr-6">Pages :</strong>
-                    {{ leadScore.data.complexity.pages }}
+                    {{ leadStore.data.complexity.pages }}
                 </p>
                 <p class="font-semibold tracking-widest uppercase fs-small">
                     <strong class="uppercase mr-6">Fonctionnalités :</strong>
-                    {{ leadScore.data.complexity.features }}
+                    {{ leadStore.data.complexity.features }}
                 </p>
                 <p class="font-semibold tracking-widest uppercase fs-small">
                     <strong class="uppercase mr-6">CMS :</strong>
-                    {{ leadScore.data.complexity.cms.toString() === "true" ? 'OUI' : 'NON' }}
+                    {{ leadStore.data.complexity.cms.toString() === "true" ? 'OUI' : 'NON' }}
                 </p>
             </div>
 
             <div class="flex flex-col items-baseline gap-4">
-                <p v-if="leadScore.data.businessGoals" class="font-semibold tracking-widest fs-small my-4">
+                <p v-if="leadStore.data.businessGoals" class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Objectifs :</strong>
-                    {{ leadScore.data.businessGoals }}
+                    {{ leadStore.data.businessGoals }}
                 </p>
 
-                <p v-if="leadScore.data.problems" class="font-semibold tracking-widest fs-small my-4">
+                <p v-if="leadStore.data.problems" class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Problèmes :</strong>
-                    {{ leadScore.data.problems }}
+                    {{ leadStore.data.problems }}
                 </p>
             </div>
         </UCard>
@@ -104,7 +104,7 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
         <UFormField :label="t('sidebar-left.modal-message.step-summary.email_label')" name="email" :ui="{
             label: 'text-(--text-2) fs-body',
         }" required>
-            <UInput v-model="leadScore.data.contact.email"
+            <UInput v-model="leadStore.data.contact.email"
                 :placeholder="t('sidebar-left.modal-message.step-summary.email_placeholder')" size="xl" tabindex="0"
                 class="block w-3xs md:w-full mt-3 mx-4" :ui="{
                     base: grayscale && colorMode.value == 'dark'
@@ -116,7 +116,7 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
         <UFormField :label="t('sidebar-left.modal-message.step-summary.textarea_label')" name="message" :ui="{
             label: 'text-(--text-2) fs-body',
         }">
-            <UTextarea v-model="leadScore.data.contact.message" type="text" :rows="10" :maxrows="20" minlength="20"
+            <UTextarea v-model="leadStore.data.contact.message" type="text" :rows="10" :maxrows="20" minlength="20"
                 maxlength="3000" autocomplete="off"
                 :placeholder="t('sidebar-left.modal-message.step-summary.textarea_placeholder')"
                 class="block w-3xs md:w-full mt-3 mx-4" :ui="{

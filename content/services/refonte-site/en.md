@@ -1,87 +1,65 @@
 ---
-title: Site web qui génère des clients
+title: Refonte de site web pour attirer plus de clients
 created_at: "2026-02-11"
-description: Un site clair, rapide et conçu pour transformer vos visiteurs en clients.
-feed_summary: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro ou souhaitez une refonte
-feed_title: Refonte de site
-locale: fr
+description: Modernisez votre site internet pour améliorer votre image, votre visibilité et convertir plus de visiteurs
+feed_summary: Votre site est vieillissant ou inefficace ? Transformez-le en outil moderne, rapide et conçu pour générer des clients
+feed_title: Refonte & modernisation web
+locale: en
 packages:
   - title: Forfaits uniques de refonte de site
     children:
-      - title: Site vitrine de petite taille
-        price: 500€
-      - title: Site vitrine complet
-        price: 1000€
-      - title: Site E-commerce complet
-        price: 1600€
+      - title: Refonte légère
+        price: 300€
+      - title: Refonte complète
+        price: Sur devis
+      - title: Refonte e-commerce
+        price: Sur devis
 previewUrl: /services/refonte-site
 slug: refonte-site
 tag: Website
-highlighted: true
+highlighted: false
 ---
 
-## Un site qui travaille pour vous
+## Pour qui ?
 
-Vous avez besoin d'un site, mais pas juste d'un "beau" site.
-
-Vous avez besoin d'un site qui :
-
-- Inspire confiance et soit efficace
-- Donne envie de vous contacter
-- Transforme vos visiteurs en clients
-
-En somme, un site qui vous rapporte sur le long terme.
-
-C'est exactement ce que je crée.
+- Entreprises possédant déjà un site internet
+- Sites veillissants
+- Sites qui ne réflètent plus l'image de l'entreprise
 
 ---
 
-## Ce que vous obtenez
+## Signes qu'une refonte est nécessaire
 
-- Un site web professionnel (vitrine, e-commerce / marchand, plaquette / présentation, petites annonces, etc.)
-- Un design clair et moderne
-- Une structure pensée pour convertir
-- Un site rapide et fluide
-- Une base SEO solide pour être visible
-- Une version mobile optimisée
-- Une formation pour être autonome
-- Une assistance hébergement (Choix de l'hébergement, nom de domaine, configuration)
+- Votre site paraît daté
+- Il est difficile à utiliser sur mobile (impossible de lire le contenu correctement sans zoomer)
+- Vous recevez peu ou pas de demandes
+- Il est lient ou difficile à mettre à jour
 
 ---
 
-## Résultat
+## Solution
 
-Un site simple, efficace, qui vous apporte des contacts.
-
----
-
-## Idéal pour
-
-- Indépendants
-- Artisans
-- Petites entreprises
-- Toute personne qui veut un site utile (pas juste un "pot de fleur" décoratif)
+N'attendez plus, une modernisation du site est nécessaire afin d'améliorer son image, son efficacité et son expérience utilisateur.
 
 ---
 
-## Pourquoi c'est différent
+## Inclus
 
-Contrairement à beaucoup de sites, le vôtre sera rapide, accessibles à tous.. et compréhensible pour vous.
+- Audit initial
+- Analyse des points bloquants
+- Refonte graphique
+- Amélioration de l'expérience utilisateur
+- Optimisation SEO
+- Optimisation des performances
+- Optimisation de l'accessibilité
 
-Selon vos besoins, j'utilise :
+---
 
-- Des CMS éprouvés
-- Des solutions e-commerce reconnues
-- ou du développement sur mesure
+## Types de refonte
 
-L'objectifs reste toujours le même :
-
-- Rapidité
-- Sécurité
-- Simplicité d'utilisation
-- Evolutivité
-
-Notamment grâce à des technologies comme WordPress, WooCommerce, Drupal, Shopify, Sveltia CMS, Directus, Strapi, Nuxt, Vue.
+- Refonte graphique
+- Refonte technique
+- Refonte complète
 
 ---
 

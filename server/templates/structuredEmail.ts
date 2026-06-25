@@ -1,13 +1,24 @@
 export function qualifiedContactTemplate(data: {
   qualification: {
-    projectType: string | null;
-    subType: string | null;
-    complexity: Record<string, any>;
-    budgetRange: string | null;
-    deadline: string | null;
+    projectType:
+      | "message"
+      | "creation"
+      | "refonte"
+      | "optimisation"
+      | "audit_a11y"
+      | "audit_seo"
+      | "formation"
+      | null;
+    subType?: string | null;
+    complexity?: {
+      pages: string;
+      features: string[];
+      cms: string;
+    };
+    budgetRange?: string | null;
+    deadline?: string | null;
     leadScore: number;
     leadTier: "low" | "medium" | "high";
-    createdAt: string | null;
     businessGoals?: string | undefined;
     problems?: string | undefined;
   };

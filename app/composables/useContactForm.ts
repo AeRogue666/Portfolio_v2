@@ -3,7 +3,6 @@ import type { ContactPayload } from "../types/contact";
 export function useContactForm() {
   const submitState = ref<"idle" | "loading" | "success" | "error">("idle"),
     loading = computed(() => submitState.value === "loading");
-
   const toast = useToast(),
     overlay = useOverlay();
 
@@ -14,7 +13,7 @@ export function useContactForm() {
     submitState.value = "loading";
 
     try {
-      await $fetch("/api/contact", {
+      await $fetch("/api/contact/", {
         method: "POST",
         body: data,
       });
@@ -36,14 +35,15 @@ export function useContactForm() {
         description: error.data.statusMessage || "Something went wrong.",
         color: "error",
       });
+
+      return console.error('data: ', data, ' error: ', error, ' error data: ', error.data);
     }
 
-    setTimeout(() => {
+    /* setTimeout(() => {
       overlay.close("contact-modal");
       submitState.value = "idle";
-    }, 1800);
+    }, 1800); */
   }
-
   return {
     submitState,
     loading,

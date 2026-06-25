@@ -3,36 +3,35 @@ title: Tranquilité pour votre site web
 created_at: "2026-02-11"
 description: Un accompagnement complet pour garantir un site sécurisé, performant et toujours opérationnel, sans que vous ayez à vous en occuper.
 feed_summary: Votre site reste sécurisé, rapide et fonctionnel en continu, sans intervention de votre part.
-feed_title: Site web sans souci
+feed_title: Maintenance - Site web sans souci
 locale: fr
 packages:
   - title: Forfaits mensuels de maintenance préventive
     children:
-      - title: Site One-Page
+      - title: Site Page Unique / Portfolio basique
         price: 30€/mois
         features:
-          - Mises à jours du site
-          - Plugins sécurisés
+          - Mises à jours de sécurité
           - Sauvegardes automatiques
-          - Monitoring 24/7
+          - Surveillance du site
           - Suivi des performances de base
           - Rapport mensuel simplifié
       - title: Site Vitrine
         price: 50€/mois
         features:
           - Mises à jours avec vérification après déploiement
-          - Sauvegardes automatiques externalisées
-          - Monitoring 24/7 + sécurité renforcée
+          - Sauvegardes automatiques
+          - Surveillance du site 24/7 + sécurité renforcée
           - Optimisation des performances
           - Rapport technique mensuel détaillé
       - title: Site E-commerce
         price: 70€/mois
         features:
           - Mises à jours testées
-          - Sauvegardes automatiques externalisées quotidiennes (priorisation des données critiques)
-          - Monitoring avancé
+          - Sauvegardes automatiques quotidiennes (priorisation des données critiques)
+          - Surveillance avancée
           - Optimisation des performances
-          - Rapport technique mpensuel détaillé
+          - Rapport technique mensuel détaillé
   - title: Forfaits horaires d'interventions ponctuelles
     children:
       - title: Intervention ponctuelle

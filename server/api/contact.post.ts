@@ -4,7 +4,6 @@ import { contactTemplate } from "#server/templates/contactEmail";
 import { qualifiedContactTemplate } from "../templates/structuredEmail";
 import { logEvent } from "#server/lib/logger";
 import { containsSpam } from "#server/lib/spamFilter";
-import dayjs from "dayjs";
 
 /* HANDLER */
 export default defineEventHandler(async (event) => {
@@ -14,24 +13,52 @@ export default defineEventHandler(async (event) => {
     "unknown";
 
   const body = await readBody(event),
-    parsed = ContactFormSchema.safeParse(body);
+    parsed = ContactFormSchema.safeParse(body),
+    started = getCookie(event, "contact_started");
+
+  if (!started) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: "Missing form session",
+    });
+  }
 
   if (!parsed.success) {
+    console.error(parsed.error);
     logEvent("contact_invalid_payload", { ip });
 
     throw createError({
       statusCode: 400,
-      statusMessage: "Invalid form data",
+      statusMessage: `Invalid form data: ${JSON.stringify(parsed.error)}`,
     });
   }
 
   const data = parsed.data;
   const logMessage = `${ip} - ${data.email}`;
   const isQualified = "qualification" in data;
-  const diff = dayjs().diff(dayjs(data.startedAt), "second");
+  const diff = (Date.now() - Number(started)) / 1000;
+  const storage = useStorage();
+  const rateLimitKey = `contact-rate-limit:${ip}`;
+  const emailKey = `contact-email:${data.email}`;
+  const lastSubmissionRateLimit = await storage.getItem<number>(rateLimitKey);
+  const lastSubmissionEmail = await storage.getItem<string>(emailKey);
+
+  if (
+    (lastSubmissionRateLimit &&
+      Date.now() - lastSubmissionRateLimit < 600000) ||
+    lastSubmissionEmail
+  ) {
+    logEvent("contact_rate_limited", { ip });
+
+    return { success: true };
+  }
+
+  await storage.setItem(rateLimitKey, Date.now());
 
   // Honeypot triggered (bot filled hidden field)
   if (data.website || diff < 5) {
+    logEvent("contact_too_fast", { ip });
+
     return { success: true }; // pretend success silently
   }
 
@@ -60,8 +87,10 @@ export default defineEventHandler(async (event) => {
       if (q.projectType === "refonte") tags.push("Redesign");
       if (q.projectType === "optimisation") tags.push("Optimisation");
       if (q.projectType === "audit_a11y") tags.push("Audit Accessibilité");
-      if (q.projectType === "audit_seo") tags.push("Audit SEO")
+      if (q.projectType === "audit_seo") tags.push("Audit SEO");
       if (q.projectType === "formation") tags.push("Formation");
+      if (q.subType === "optimisation-complete")
+        tags.push("Optimisation complète");
       if (q.budgetRange === "8k+") tags.push("Premium budget");
       if (q.deadline === "urgent") tags.push("Urgent");
     }
@@ -89,6 +118,7 @@ export default defineEventHandler(async (event) => {
     });
 
     logEvent("contact_success", { logMessage });
+    deleteCookie(event, "contact_started");
     return { success: true };
   } else {
     await resend.emails.send({
@@ -100,6 +130,7 @@ export default defineEventHandler(async (event) => {
     });
 
     logEvent("contact_success", { logMessage });
+    deleteCookie(event, "contact_started");
     return { success: true };
   }
 });

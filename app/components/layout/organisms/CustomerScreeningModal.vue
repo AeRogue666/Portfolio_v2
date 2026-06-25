@@ -1,4 +1,4 @@
-<script setup lang="ts">
+c<script setup lang="ts">
 import StepBudget from './steps/StepBudget.vue';
 import StepComplexity from './steps/StepComplexity.vue';
 import StepNature from './steps/StepNature.vue';
@@ -15,6 +15,7 @@ const { t } = useI18n(),
     { scoreLead } = useLeadScoring(),
     leadStore = useLeadStore(),
     { submitState, loading, submit } = useContactForm();
+
 const accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode();
 
@@ -31,6 +32,8 @@ const isOpen = ref(false);
 
 leadStore.restore();
 
+/* Form functions */
+
 function goNext() {
     if (leadStore.validateNextStep()) {
         leadStore.next()
@@ -38,18 +41,20 @@ function goNext() {
     console.log(leadStore.validateNextStep(), leadStore.step)
 }
 
-function goback() {
+function goBack() {
     if (leadStore.validateBackStep()) {
         leadStore.back()
     }
     console.log(leadStore.validateBackStep(), leadStore.data.projectType, leadStore.step)
 }
 
+/*Submitting form */
+
 async function handleSubmit() {
     const result = scoreLead(leadStore.data);
+
     leadStore.data.leadScore = result.score;
     leadStore.data.leadTier = result.tier;
-    leadStore.setTimestamp();
 
     await submit({
         type: leadStore.data.projectType === "message"
@@ -57,7 +62,8 @@ async function handleSubmit() {
             : "qualified",
         email: leadStore.data.contact.email,
         message: leadStore.data.contact.message,
-        qualification: leadStore.data.projectType === "qualified" ? {
+        website: "",
+        qualification: leadStore.data.projectType !== "message" ? {
             projectType: leadStore.data.projectType,
             subType: leadStore.data.subType,
             complexity: leadStore.data.complexity,
@@ -66,19 +72,12 @@ async function handleSubmit() {
             budgetRange: leadStore.data.budgetRange,
             deadline: leadStore.data.deadline,
             leadScore: leadStore.data.leadScore,
-            leadTier: leadStore.data.leadTier,
-            createdAt: leadStore.data.createdAt
+            leadTier: leadStore.data.leadTier
         } : undefined
     });
 
     leadStore.reset();
 };
-
-watch(leadStore, (newLead) => {
-    console.log(newLead.data)
-});
-
-onMounted(() => console.log(leadStore.data));
 
 const grayscale = computed({
     get: () => accessibilityStore.grayscale,
@@ -86,6 +85,20 @@ const grayscale = computed({
 });
 
 const progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step / totalSteps.value) */);
+
+/* Watchers */
+
+watch(leadStore, (newLead) => {
+    console.log(newLead.data)
+});
+watch(isOpen, async (opened) => {
+    if (opened) await $fetch('/api/contact/init');
+});
+watch(leadStore, (newData) => {
+    console.log(leadStore.data, leadStore.step, totalSteps.value, newData);
+});
+
+onMounted(() => console.log(leadStore.data, leadStore.step, totalSteps.value));
 
 /** 
  * Sur SendMessageModal, ajouter :
@@ -162,7 +175,7 @@ const progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step /
                     list: 'flex flex-col md:flex-row bg-(--bg) gap-4',
                     trigger: 'data-[state=active]:bg-(--focus) data-[state=active]:text-(--text-2) data-[state=inactive]:bg-(--bg) data-[state=inactive]:text-(--text-muted) data-[state=completed]:bg-(--bg-3) data-[state=completed]:text-(--text-muted) pointer-events-none opacity-50',
                     separator: 'data-[state=active]:bg-(--focus) data-[state=inactive]:bg-(--bg) data-[state=completed]:bg-(--bg-3)'
-                
+
                 }" /> <!-- tabs.slice(0, totalSteps) -->
 
                 <!-- Etapes du formulaire -->
@@ -180,7 +193,7 @@ const progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step /
                 </Transition>
 
                 <div class="flex flex-col md:flex-row items-center md:justify-between mt-6">
-                    <UButton label="Retour" variant="ghost" @click="goback"
+                    <UButton label="Retour" variant="ghost" @click="goBack"
                         :disabled="leadStore.step > 1 ? false : true"
                         class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--focus) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
 
@@ -196,8 +209,8 @@ const progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step /
                         :disabled="leadStore.data.projectType ? false : true"
                         class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--accent) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
 
-                    <UButton v-if="leadStore.step === totalSteps" label="Envoyer ma demande" :loading="loading"
-                        @click="handleSubmit"
+                    <UButton v-if="leadStore.step === totalSteps" label="Envoyer ma demande" variant="outline"
+                        :loading="loading" @click="handleSubmit" :disabled="leadStore.data.contact.email ? false : true"
                         class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />
                 </div>
             </UCard>

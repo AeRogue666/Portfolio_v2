@@ -8,12 +8,10 @@ locale: fr
 packages:
   - title: Forfaits uniques d'optimisation de site
     children:
-      - title: Site vitrine de petite taille
-        price: 250€
-      - title: Site vitrine complet
-        price: 500€
-      - title: Site E-commerce complet
-        price: 800€
+      - title: Optimisation ciblée (SEO + Performance ou Accessibilité ou Sécurité)
+        price: 200€
+      - title: Optimisation complète
+        price: 600€
 previewUrl: /services/optimisation-site
 slug: optimisation-site
 tag: Optimisation
