@@ -84,6 +84,7 @@ export default defineNuxtConfig({
         "dayjs",
         "dayjs/locale/fr",
         "dayjs/locale/en",
+        "zod",
       ],
     },
   },

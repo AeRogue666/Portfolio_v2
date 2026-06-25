@@ -12,7 +12,7 @@ const grayscale = computed({
 const pageOptions = ['1-3', '4-10', '10+'],
     featureOptions = ['Paiement en ligne', 'Espace client', 'Blog', 'Multilingue', 'Automatisation', 'API externe'],
     structuralTypes = ["creation", "refonte", "audit"],
-    featuresTypes = ["creation", "refonte", "optimisation"];
+    featuresTypes = ["creation", "refonte"];
 
 function toggleFeature(feature: any) {
     console.log(feature, typeof feature);

@@ -8,12 +8,24 @@ locale: fr
 packages:
   - title: Forfaits uniques de création de site
     children:
-      - title: Site vitrine de petite taille
-        price: 500€
-      - title: Site vitrine complet
-        price: 1000€
-      - title: Site E-commerce complet
-        price: 1600€
+      - title: One-page
+        price: 300€
+        features:
+         - Présentation + Services + Contact + Mentions Légales
+         - Ou Portfolio personnel très simple + CV + Contact
+         - Design sobre, contenu court
+      - title: Site vitrine
+        price: 900€
+        features:
+          - Pages classiques (Accueil, A propos, Services, Réalisations, Contact, Mentions légales)
+          - SEO basique
+          - Accessibilité basique
+          - Site Responsive
+          - Optimisation des performances
+      - title: Site professionnel
+        price: Sur devis
+      - title: Site E-commerce
+        price: Sur devis
 previewUrl: /services/creation-site
 slug: creation-site
 tag: Website
@@ -50,7 +62,7 @@ Un site qui ne sert pas uniquement à être vu, mais à vous amener des clients 
 - Lisibilité sur mobile et ordinateur
 - Visibilité sur Google
 - Optimisation des performances (site rapide et agréable à utiliser)
-- Accessibile à tous les utilisateurs
+- Site utilisable sur ordinateur, mobile et par tous les publics
 - Formation à l'utilisation du site
 - Assistance pour l'hébergement (Choix de l'hébergement, nom de domaine, configuration, panne)
 
@@ -75,11 +87,11 @@ Un site qui ne sert pas uniquement à être vu, mais à vous amener des clients 
 
 Contrairement à beaucoup de sites qui ne sont que des supports de présentation, le vôtre sera conçu pour vous apporter des contacts et des demandes concrètes.
 
-Selon vos besoins, j'utilise :
+Jutilise la solution la plus adaptée à votre activité et vos besoins :
 
-- Des CMS éprouvés
-- Des solutions e-commerce reconnues
-- ou du développement sur mesure
+- CMS simple à administrer
+- Boutique en ligne
+- Ou Développement spécifique si nécessaire
 
 L'objectifs reste toujours le même :
 

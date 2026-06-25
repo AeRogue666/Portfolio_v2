@@ -8,8 +8,12 @@ locale: fr
 packages:
   - title: Forfaits de formation
     children:
-      - title: Formation
+      - title: De l'heure
         price: 50€/h
+      - title: Demi-journée
+        price: Sur devis
+      - title: Journée
+        price: Sur devis
 previewUrl: /services/formation
 slug: formation
 tag: Formations
@@ -48,12 +52,16 @@ Vous utilisez vos outils numériques avec confiance, sans stress et sans dépend
 
 Choisissez la formation qui vous correspond.
 
-### Formation numérique de base
+### Formations numérique de base
 
 - Utiliser un ordinateur, un smartphone, une tablette
-- Naviguer sur internet
-- Gérer ses emails
+-> Découverte et prise en main
+- Internet
+-> Navigation, recherches, démarches en ligne
+- Messagerie email
+-> Envoi, réception, organisation des mails
 - Comprendre les bases de la sécurité
+-> Mots de passe, phishing, bonnes pratiques
 
 Idéal pour : débutants, seniors, personnes peu à l'aise avec le numérique.
 

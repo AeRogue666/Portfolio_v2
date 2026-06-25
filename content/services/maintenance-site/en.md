@@ -1,12 +1,10 @@
 ---
-title: Support offer
+title: Tranquilité pour votre site web
 created_at: "2026-02-11"
-description: A reliable website with ongoing support.
+description: Un accompagnement complet pour garantir un site sécurisé, performant et toujours opérationnel, sans que vous ayez à vous en occuper.
+feed_summary: Votre site reste sécurisé, rapide et fonctionnel en continu, sans intervention de votre part.
+feed_title: Maintenance - Site web sans souci
 locale: en
-previewUrl: /services/accompagnement
-slug: accompagnement
-feed_title: Support
-feed_summary: A reliable website with ongoing support.
 packages:
   - title: Forfaits mensuels de maintenance préventive
     children:
@@ -37,7 +35,7 @@ packages:
           - Rapport technique mpensuel détaillé
   - title: Forfaits horaires d'interventions ponctuelles
     children:
-      - title: Maintenance heure
+      - title: Intervention ponctuelle
         price: 50€/heure
         features:
           - Idéal pour corriger un bug ou faire évoluer votre site rapidement
@@ -45,49 +43,51 @@ packages:
           - Intervention rapide en fonction de l'urgence
           - Facturation transparente (temps réel ou forfaitaire)
           - Rapport détaillé après chaque action
-tag: Support
+previewUrl: /services/maintenance-site
+slug: maintenance-site
+tag: Maintenance
 highlighted: false
 ---
 
-## Votre site, sans prise de tête
+## Pour qui ?
 
-Un site web demande du suivi :
-
-- Mises à jour
-- Sécurité
-- Maintenance
-- Corrections
-
-Sans ça, il devient vite obsolète ou vulnérable.
+- Tous les clients souhaitant un suivi régulier
+- Entreprises ne souhaitant pas gérer la technique
 
 ---
 
-## Ce que je prends en charge
+## Problème
 
-- Maintenance technique
-- Mises à jour régulières
-- Sécurité du site
-- Support en cas de problèmes
-- Conseils et accompagnement
+Un site non maintenu peut tomber en panne, être piraté ou perdre en performance..
+ce qui entraîne directement une perte de clients et de crédibilité.
+
+---
+
+## Solution
+
+Prise en charge du suivi technique et accompagnement sur le long terme.
 
 ---
 
 ## Résultat
 
-Un site fiable, sécurisé et toujours à jour.
-
+Un site qui fonctionne en continu, sans interruption, sans stress technique et sans perte de visibilité.
 Vous pouvez vous concentrer sur votre activité, sereinement.
 
 ---
 
-## Idéal pour
+## Inclus
 
-- Tous les clients
-- Ceux qui veulent un suivi long terme
-- Ceux qui ne veulent pas gérer la technique
+- Mises à jour
+- Sauvegardes
+- Surveillance
+- Sécurité
+- Support
+
+et préventions des problèmes avant qu'ils n'impactent votre activité.
 
 ---
 
 ## Tarif
 
-A partir de prix/mois
+\*Coût des déplacements non compris (si besoin)

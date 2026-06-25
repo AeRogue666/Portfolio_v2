@@ -1,141 +1,107 @@
 ---
-title: Website creation
+title: Site web qui génère des clients
 created_at: "2026-02-11"
-description: A clear, fast website designed to generate leads.
+description: Un site clair, rapide et conçu pour transformer vos visiteurs en clients.
+feed_summary: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro ou souhaitez une refonte
+feed_title: Création de site
 locale: en
-previewUrl: /services/creation-site
-slug: creation-site
-feed_title: Website creation
-feed_summary: Un site clair, professionnel et efficace
-            -> Idéal si vous partez de zéro ou souhaitez une refonte
 packages:
   - title: Forfaits uniques de création de site
     children:
-      - title: Site vitrine de petite taille
-        price: 500€
-      - title: Site vitrine complet
-        price: 1000€
-      - title: Site E-commerce complet
-        price: 1600€
-tag: Website 
+      - title: One-page
+        price: 300€
+        features:
+         - Présentation + Services + Contact + Mentions Légales
+         - Ou Portfolio personnel très simple + CV + Contact
+         - Design sobre, contenu court
+      - title: Site vitrine
+        price: 900€
+        features:
+          - Pages classiques (Accueil, A propos, Services, Réalisations, Contact, Mentions légales)
+          - SEO basique
+          - Accessibilité basique
+          - Site Responsive
+          - Optimisation des performances
+      - title: Site professionnel
+        price: Sur devis
+      - title: Site E-commerce
+        price: Sur devis
+previewUrl: /services/creation-site
+slug: creation-site
+tag: Website
 highlighted: true
 ---
 
-## Un site qui travaille pour vous
+## Pour qui ?
 
-Vous avez besoin d'un site, mais pas juste d'un "beau" site.
+- Professionnels sans site internet
+- Créateurs d'entreprise
+- Activités en lancement
+- Entreprises souhaitant créer un nouveau projet
 
-Vous avez besoin d'un site qui :
+---
 
-- Inspire confiance et soit efficace
-- Donne envie de vous contacter
-- Transforme vos visiteurs en clients
+## Problème
 
-En somme, un site qui vous rapporte sur le long terme.
-
+Vous n'avez pas de présence en ligne ou celle-ci est insufissante pour présenter votre activité.
+Vous avez besoin d'un site, mais pas juste d'un "beau" site, un site qui vous rapporte sur le long terme.
 C'est exactement ce que je crée.
 
 ---
 
-## Ce que vous obtenez
+## Solution
 
-- Un site web professionnel (vitrine, e-commerce / marchand, plaquette / présentation, petites annonces, etc.)
-- Un design clair et moderne
-- Une structure pensée pour convertir
-- Un site rapide et fluide
-- Une base SEO solide pour être visible
-- Une version mobile optimisée
-- Une formation pour être autonome
-- Une assistance hébergement (Choix de l'hébergement, nom de domaine, configuration)
+Un site qui ne sert pas uniquement à être vu, mais à vous amener des clients (appels, devis, prises de rendez-vous).
 
 ---
 
-## Résultat
+## Inclus
 
-Un site simple, efficace, qui vous apporte des contacts.
+- Analyse des besoins
+- Conception du site
+- Lisibilité sur mobile et ordinateur
+- Visibilité sur Google
+- Optimisation des performances (site rapide et agréable à utiliser)
+- Site utilisable sur ordinateur, mobile et par tous les publics
+- Formation à l'utilisation du site
+- Assistance pour l'hébergement (Choix de l'hébergement, nom de domaine, configuration, panne)
 
 ---
 
-## Idéal pour
+## Types de projets
 
-- Indépendants
-- Artisans
-- Petites entreprises
-- Toute personne qui veut un site utile (pas juste un "pot de fleur" décoratif)
+- Site vitrine
+- E-commerce
+- Réservation en ligne
+- Projet métier spécifique
+
+## Taille de projets
+
+- Petite taille = simple présence en ligne
+- Complet = site strucutré pour générer des clients
+- E-commerce = vente en ligne
 
 ---
 
 ## Pourquoi c'est différent
 
-Contrairement à beaucoup de sites, le vôtre sera rapide, accessibles à tous.. et compréhensible pour vous.
+Contrairement à beaucoup de sites qui ne sont que des supports de présentation, le vôtre sera conçu pour vous apporter des contacts et des demandes concrètes.
 
-Mais surtout, pas d'abonnement permettant de maintenir votre site en ligne !
-Nous ne vendons pas à crédit ou en services mensualisés éternels nos sites.
+Jutilise la solution la plus adaptée à votre activité et vos besoins :
 
-**Votre site vous appartient et vous êtes libre d'en faire ce que vous voulez** comme par exemple changer de prestataire internet, changer l'administrateur principal, modifier la base de données, faire intervenir un autre prestataire que nous ou une personne interne à chez vous, etc.
+- CMS simple à administrer
+- Boutique en ligne
+- Ou Développement spécifique si nécessaire
 
-De plus, nos tarifications étant à la carte, nous vous proposerons un devis adapté à votre demande.
-Ajouter ou enlever une fonctionnalité ? Pas de problème, votre site est évolutif, comme votre activité !
+L'objectifs reste toujours le même :
 
-Toujours pas convaincu(e) ?
-
-Voici un petit exemple :
-
-Vous souhaitez créer un site internet pour votre entreprise et vous tapez "nom de votre département création de site internet".
-Et là, c'est la douche froide.. 500, 600, 1000, 2000€ pour créer un site internet !
-"Si c'est comme cela, je vais le créer moi-même !" vous dites-vous.
-
-Vous recherchez ensuite "créer son site internet gratuitement" et vous tombez sur un service tel que Wix ou E-monsite.
-La création est souvent gratuite et vous avez juste un abonnement à prendre pour héberger le site.
-Vous êtes heureux(se), vous prenez un abonnement chez eux et vous dites que tout ces créateurs de site sont définitivement trop cher.
-
-Sauf qu'un jour, vous souhaitez transférer votre site internet si hardemment créé sur l'une de ses plateformes vers un autre hébergeur car vous n'avez plus les même besoins.
-Et là, c'est la douche froide !
-Comment ? Impossible de récupérer votre site internet !
-
-Et oui, le site que vous avez créé ne vous a jamais véritablement appartenu.
-
-Car ces plateformes sont des services qui proposent la création de sites internet contre un abonnement mensuel ou annuel mais conservent les données des clients et en signant le contrat numérique (par la création de votre compte et l'acceptation de résiliation de vos droits), vous leur avait offert votre site.
-
-Et vous avez payé pour !
+- Rapidité
+- Sécurité
+- Simplicité d'utilisation
+- Evolutivité
 
 ---
 
 ## Tarif
 
 \*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
-
----
-
-## Technologies
-
-Ici, nous utilisons WordPress, le leader mondial du CMS (Gestionnaire de contenus).
-Mais si vous savez, celui qui permet de faire des sites esthétiques et rapides, utilisés par :
-
-- Bouygues
-- Dassault Aviation
-- The Walt Disney Company
-- Club Med Corporate
-- Sony Music
-- M6
-Et bien d'autres !
-
-Mais si vous souhaitez un site internet conçu avec autre chose qu'un CMS, nous pouvons réaliser votre projet avec Nuxt/Vue et Vuetify, les frameworks qui font fonctionner :
-
-- Netflix
-- TikTok
-- Xiaomi
-- Alibaba
-- Adobe
-- Trivago
-- Hostinger
-- UpWork
-- Malt
-Et bien d'autres !
-
----
-
-## Autre demande
-
-Vous souhaitez créer votre site par vous-même mais ne savez pas par où commencer ?
-N'hésitez pas à nous contacter, nous serons ravis d'en discuter avec vous !

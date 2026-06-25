@@ -21,7 +21,6 @@ export interface QualifiedLeadPayload {
     deadline?: string | null;
     leadScore: number;
     leadTier: "low" | "medium" | "high";
-    createdAt: string | null;
   };
 }
 

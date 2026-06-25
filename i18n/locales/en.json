@@ -347,7 +347,9 @@
     "warning": {
       "title": "Important",
       "description": "The prices listed on this page are for reference only and do not reflect actual costs. A quote for website creation, optimization, or maintenance is determined on a case-by-case basis depending on your needs and requirements. You can choose to remove certain features to reduce the cost or, conversely, add new features to enhance your project."
-    }
+    },
+    "price_starting_at": "Starting at",
+    "on_estimate": "On estimate"
   },
   "page": {
     "created_on": "Published on",

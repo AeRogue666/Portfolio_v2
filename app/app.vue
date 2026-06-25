@@ -27,7 +27,7 @@ useHeadSafe(() => ({
       rel: 'canonical',
       href: `https://codekorico.com/`
     },
-    ...locales.value.map(l => ({
+    ...locales.value.map((l: { code: any; }) => ({
       rel: 'alternate',
       hreflang: l.code,
       href: `https://codekorico.com/`

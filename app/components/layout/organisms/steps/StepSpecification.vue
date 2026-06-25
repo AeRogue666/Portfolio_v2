@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n();
-const leadScore = useLeadStore(),
+const leadStore = useLeadStore(),
     accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode();
 
@@ -10,7 +10,7 @@ const grayscale = computed({
 });
 
 const options = computed(() => {
-    switch (leadScore.data.projectType) {
+    switch (leadStore.data.projectType) {
         case "creation":
         case "refonte":
             return [
@@ -21,15 +21,16 @@ const options = computed(() => {
             ];
         case "optimisation":
             return [
-                { value: "accessibilite", label: "Accessibilité" },
-                { value: "seo", label: "SEO & Performance" },
-                { value: "securite", label: "Sécurité" }
+                { value: "accessibilite", label: "Optimiser l'accessibilité" },
+                { value: "seo", label: "Optimiser SEO & Performance" },
+                { value: "securite", label: "Optimiser la sécurité" },
+                { value: "optimisation-complete", label: "Optimisation complète"}
             ];
         case "audit":
             return [
-                { value: "audit-accessibilite", label: "Audit accessibilité" },
+                { value: "audit-accessibilite", label: "Audit Accessibilité" },
                 { value: "audit-seo", label: "Audit SEO & Performance" },
-                { value: "audit-securite", label: "Audit Sécurité" }
+                { value: "audit-securite", label: "Audit Sécurité" },
             ]
         case "formation":
             return [
@@ -43,7 +44,7 @@ const options = computed(() => {
         default:
             return []
     }
-})
+});
 </script>
 
 <template>
@@ -55,10 +56,10 @@ const options = computed(() => {
         <UContainer class="grid sm:grid-cols-2 gap-3">
             <UCard v-for="opt in options" :key="opt.value" :class="[
                 'cursor-pointer transition',
-                leadScore.data.subType === opt.value
+                leadStore.data.subType === opt.value
                     ? 'ring-2 ring-(--focus) border-(--border-subtle)'
                     : 'hover:border-(--accent-hover)'
-            ]" @click="leadScore.data.subType = opt.value" :ui="{
+            ]" @click="leadStore.data.subType = opt.value" :ui="{
                 body: grayscale && colorMode.value == 'dark'
                     ? 'bg-(--bg-3) text-inverted fs-body'
                     : 'bg-(--bg-3) text-(--text) fs-body'

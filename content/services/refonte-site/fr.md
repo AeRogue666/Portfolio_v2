@@ -8,16 +8,16 @@ locale: fr
 packages:
   - title: Forfaits uniques de refonte de site
     children:
-      - title: Site vitrine de petite taille
-        price: 800€
-      - title: Site vitrine complet
-        price: 1100€
-      - title: Site E-commerce complet
-        price: 1400€
+      - title: Refonte légère
+        price: 300€
+      - title: Refonte complète
+        price: Sur devis
+      - title: Refonte e-commerce
+        price: Sur devis
 previewUrl: /services/refonte-site
 slug: refonte-site
 tag: Website
-highlighted: true
+highlighted: false
 ---
 
 ## Pour qui ?
@@ -28,15 +28,18 @@ highlighted: true
 
 ---
 
-## Problème
+## Signes qu'une refonte est nécessaire
 
-Le site existe mais ne donne plus confiance, ne génère pas suffisamment de résultats ou ne correspond plus aux besoins de l'activité.
+- Votre site paraît daté
+- Il est difficile à utiliser sur mobile (impossible de lire le contenu correctement sans zoomer)
+- Vous recevez peu ou pas de demandes
+- Il est lient ou difficile à mettre à jour
 
 ---
 
 ## Solution
 
-Modernisation du site afin d'améliorer son image, son efficacité et son expérience utilisateur.
+N'attendez plus, une modernisation du site est nécessaire afin d'améliorer son image, son efficacité et son expérience utilisateur.
 
 ---
 
