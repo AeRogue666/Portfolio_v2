@@ -89,8 +89,8 @@ export default defineEventHandler(async (event) => {
       if (q.projectType === "audit_a11y") tags.push("Audit Accessibilité");
       if (q.projectType === "audit_seo") tags.push("Audit SEO");
       if (q.projectType === "formation") tags.push("Formation");
-      if (q.subType === "optimisation-complete")
-        tags.push("Optimisation complète");
+      if (q.subType === "optimisation-multi")
+        tags.push("Optimisation plusieurs aspects");
       if (q.budgetRange === "8k+") tags.push("Premium budget");
       if (q.deadline === "urgent") tags.push("Urgent");
     }

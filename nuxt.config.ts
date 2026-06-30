@@ -16,8 +16,16 @@ export default defineNuxtConfig({
     "@nuxtjs/robots",
     "@tailwindcss/vite",
   ],
+  content: {
+    experimental: {
+      nativeSqlite: true
+    },
+  },
   nitro: {
     preset: "vercel",
+    prerender: {
+      routes: ['/']
+    }
   },
   css: ["~/assets/styles/main.css"],
   plugins: ["~/dayjs_client.ts"],
@@ -54,7 +62,7 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    resendApiKey: ""
+    resendApiKey: "",
   },
   routeRules: {
     "/": {
@@ -80,12 +88,8 @@ export default defineNuxtConfig({
   vite: {
     logLevel: "warn",
     optimizeDeps: {
-      include: [
-        "dayjs",
-        "dayjs/locale/fr",
-        "dayjs/locale/en",
-        "zod",
-      ],
+      include: ["dayjs", "dayjs/locale/fr", "dayjs/locale/en", "zod"],
+      exclude: ["better-sqlite3"],
     },
   },
   devtools: { enabled: false },

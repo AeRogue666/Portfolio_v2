@@ -8,7 +8,7 @@ locale: fr
 packages:
   - title: Forfaits de formation
     children:
-      - title: De l'heure
+      - title: A l'heure
         price: 50€/h
       - title: Demi-journée
         price: Sur devis

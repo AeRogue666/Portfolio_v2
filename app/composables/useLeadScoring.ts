@@ -1,3 +1,5 @@
+import { SCORING } from "../../config/scoring";
+
 export function useLeadScoring() {
   function scoreLead(data: {
     projectType: string | null;
@@ -8,17 +10,9 @@ export function useLeadScoring() {
     problems: string;
   }) {
     let score = 0;
-    const typeWeight: Record<string, number> = {
-      creation: 25,
-      refonte: 30,
-      optimisation: 15,
-      audit_a11y: 18,
-      audit_seo: 18,
-      formation: 10,
-    };
 
-    if (data.projectType && typeWeight[data.projectType])
-      score += typeWeight[data.projectType] ?? 0;
+    if (data.projectType && SCORING[data.projectType])
+      score += SCORING[data.projectType] ?? 0;
 
     // Complexity
     if (data.complexity?.pages === "10+") score += 15;

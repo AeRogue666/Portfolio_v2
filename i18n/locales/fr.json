@@ -344,12 +344,85 @@
   "sendmessagemodal": {
     "types": {
       "message": "Demande rapide",
-      "creation": "Création d'un site",
-      "refonte": "Redesign d'un site (Optimisation + Refonte)",
-      "optimisation": "Optimisation d'un site (SEO, Performance, Accessibilité)",
-      "audit_a11y": "Audit Accessibilité / Mise en conformité WCAG",
-      "audit_seo": "Audit Performance & SEO",
-      "formation": "Formation au numérique"
+      "creation": "Créer un nouveau site",
+      "refonte": "Redesigner un site (Optimisation + Refonte)",
+      "optimisation": "Améliorer un site existant (Optimisation)",
+      "maintenance": "Demander une maintenance",
+      "audit": "Faire analyser mon site",
+      "formation": "Me former"
+    },
+    "subtypes": {
+      "creation": {
+        "onepage": "Page unique",
+        "vitrine": "Site vitrine",
+        "professionnel": "Site professionnel",
+        "ecommerce": "Site e-commerce",
+        "reservation": "Réservation en ligne",
+        "custom": "Projet métier spécifique"
+      },
+      "refonte": {
+        "design": "Moderniser le design",
+        "performance": "Améliorer les performances",
+        "accessibilite": "Corriger des problèmes d'accessibilité",
+        "securite": "Renforcer la sécurité",
+        "fonctionnalite": "Ajouter des fonctionnalités"
+      },
+      "optimisation": {
+        "accessibilite": "Optimiser l'accessibilité",
+        "seo": "Optimiser SEO & Performance",
+        "securite": "Optimiser la sécurité",
+        "optimisation-multi": "Optimiser plusieurs de ses aspects"
+      },
+      "maintenance": {
+        "onepage": "Page unique / Portfolio basique",
+        "vitrine":"Site vitrine",
+        "professionnel": "Site professionnel",
+        "ecommerce":"Site e-commerce",
+        "custom":"Projet métier spécifique",
+        "ponctuelle": "Intervention ponctuelle"
+      },
+      "audit": {
+        "accessibilite": "Audit Accessibilité / Mise en conformité WCAG",
+        "seo": "Audit Performance & SEO",
+        "securite": "Audit Sécurité",
+        "all": "Audit complet"
+      },
+      "formation": {
+        "ordinateur": "Utilisation ordinateur",
+        "internet": "Naviguer sur internet",
+        "email": "Apprendre à utiliser une messagerie mail",
+        "securite-numerique": "Apprendre les bases de la sécurité numérique",
+        "ia": "Maîtriser l'usage de l'Intelligence Artificielle",
+        "custom": "Formation personnalisée"
+      }
+    },
+    "budget": {
+      "inferieur_a": "Inférieur à {value}€ {suite}",
+      "superieur_a": "Supérieur à {value}€ {suite}",
+      "compris_entre": "Entre {value1}€ et {value2}€ {suite}",
+      "urgent": "C'est urgent",
+      "flexible": "Flexible",
+      "intervention_ponctuelle": "Intervention ponctuelle ({value}{suite})"
+    },
+    "deadline": {
+      "inferieur_a": "Moins de {value} {suite}",
+      "superieur_a": "Plus de {value} {suite}",
+      "compris_entre": "Entre {value1} et {value2} {suite}",
+      "urgent": "C'est urgent",
+      "flexible": "Flexible"
+    },
+    "format": {
+      "une_seance": "Une séance d'1 heure",
+      "demi_journee": "Une demi-journée",
+      "journee": "Une journée",
+      "plusieurs_journees": "Plusieurs journées",
+      "ne_sais_pas": "Je ne sais pas encore"
+    },
+    "person": {
+      "une_personne": "Pour une personne",
+      "inferieur_a": "Moins de {value} {suite}",
+      "superieur_a": "Plus de {value} {suite}",
+      "compris_entre": "Entre {value1} et {value2} {suite}"
     }
   },
   "plans": {

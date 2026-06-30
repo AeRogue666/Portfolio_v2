@@ -11,7 +11,7 @@ export interface LeadState {
   startedAt: string;
   data: {
     projectType: ProjectType | "";
-    suType: string;
+    subType: string;
     complexity: {
       pages: "1-5" | "6-10" | "11-30" | "31+" | "";
       features: string[];
@@ -26,7 +26,9 @@ export interface LeadState {
     };
     businessGoals: string;
     problems: string;
+    personNumber: string;
     budgetRange: string;
+    trainingFormat: string;
     deadline: string;
     contact: {
       email: string;

@@ -5,7 +5,7 @@ export const useLeadStore = defineStore("lead", {
   state: () => ({
     step: 1,
     startedAt: dayjs().toISOString(),
-    
+
     data: {
       projectType: "" as string,
       subType: "" as string,
@@ -23,7 +23,9 @@ export const useLeadStore = defineStore("lead", {
       },
       businessGoals: "",
       problems: "",
+      personNumber: "" as string,
       budgetRange: "" as string,
+      trainingFormat: "" as string,
       deadline: "" as string,
       contact: {
         email: "",
@@ -38,7 +40,7 @@ export const useLeadStore = defineStore("lead", {
   getters: {
     estimatedPrice(state: { data: any }) {
       return calculatePrice(state.data);
-    }
+    },
   },
 
   actions: {
@@ -68,7 +70,7 @@ export const useLeadStore = defineStore("lead", {
           if (this.data.businessGoals.length && this.data.problems.length)
             return true;
         case 4:
-          return !!this.data.budgetRange && !!this.data.deadline;
+          return (!!this.data.budgetRange || !!this.data.personNumber && !!this.data.trainingFormat) && !!this.data.deadline;
         case 5:
           return !!this.data.contact.email;
         default:
@@ -102,24 +104,32 @@ export const useLeadStore = defineStore("lead", {
         case 1:
           this.data.projectType = "";
           this.persist();
+          break;
         case 2:
           this.data.subType = "";
           this.persist();
+          break;
         case 3:
           this.data.businessGoals = "";
           this.data.problems = "";
           this.data.complexity = { pages: "", features: [], cms: "" };
           this.persist();
+          break;
         case 4:
+          this.data.personNumber = "";
           this.data.budgetRange = "";
+          this.data.trainingFormat = "";
           this.data.deadline = "";
           this.persist();
+          break;
         case 5:
           this.data.contact.email = "";
           this.data.contact.message = "";
           this.persist();
+          break;
         default:
           this.persist();
+          break;
       }
     },
     reset() {
