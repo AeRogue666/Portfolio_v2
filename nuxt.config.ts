@@ -87,6 +87,9 @@ export default defineNuxtConfig({
   },
   vite: {
     logLevel: "warn",
+    build: {
+      chunkSizeWarningLimit: 1000 /// 1000 Ko / 1 Mo
+    },
     optimizeDeps: {
       include: ["dayjs", "dayjs/locale/fr", "dayjs/locale/en", "zod"],
       exclude: ["better-sqlite3"],
