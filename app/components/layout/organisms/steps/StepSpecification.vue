@@ -12,34 +12,53 @@ const grayscale = computed({
 const options = computed(() => {
     switch (leadStore.data.projectType) {
         case "creation":
+            return [
+                { value: "onepage", label: t('sendmessagemodal.subtypes.creation.onepage') },
+                { value: "vitrine", label: t('sendmessagemodal.subtypes.creation.vitrine') },
+                { value: "professionnel", label: t('sendmessagemodal.subtypes.creation.professionnel') },
+                { value: "ecommerce", label: t('sendmessagemodal.subtypes.creation.ecommerce') },
+                { value: "reservation", label: t('sendmessagemodal.subtypes.creation.reservation') },
+                { value: "custom", label: t('sendmessagemodal.subtypes.creation.custom') }
+            ];
         case "refonte":
             return [
-                { value: "vitrine", label: "Site vitrine" },
-                { value: "ecommerce", label: "E-commerce" },
-                { value: "reservation", label: "Réservation en ligne" },
-                { value: "custom", label: "Projet métier spécifique" }
-            ];
+                { value: "refonte-design", label: t('sendmessagemodal.subtypes.refonte.design') },
+                { value: "refonte-performance", label: t('sendmessagemodal.subtypes.refonte.performance') },
+                { value: "refonte-accessibilite", label: t('sendmessagemodal.subtypes.refonte.accessibilite') },
+                { value: "refonte-securite", label: t('sendmessagemodal.subtypes.refonte.securite') },
+                { value: "refonte-fonctionnalite", label: t('sendmessagemodal.subtypes.refonte.fonctionnalite') },
+            ]
         case "optimisation":
             return [
-                { value: "accessibilite", label: "Optimiser l'accessibilité" },
-                { value: "seo", label: "Optimiser SEO & Performance" },
-                { value: "securite", label: "Optimiser la sécurité" },
-                { value: "optimisation-complete", label: "Optimisation complète"}
+                { value: "optimisation-accessibilite", label: t('sendmessagemodal.subtypes.optimisation.accessibilite') },
+                { value: "optimisation-seo", label: t('sendmessagemodal.subtypes.optimisation.seo') },
+                { value: "optimisation-securite", label: t('sendmessagemodal.subtypes.optimisation.securite') },
+                { value: "optimisation-multi", label: t('sendmessagemodal.subtypes.optimisation.optimisation-multi') }
             ];
         case "audit":
             return [
-                { value: "audit-accessibilite", label: "Audit Accessibilité" },
-                { value: "audit-seo", label: "Audit SEO & Performance" },
-                { value: "audit-securite", label: "Audit Sécurité" },
+                { value: "audit-accessibilite", label: t('sendmessagemodal.subtypes.audit.accessibilite') },
+                { value: "audit-seo", label: t('sendmessagemodal.subtypes.audit.seo') },
+                { value: "audit-securite", label: t('sendmessagemodal.subtypes.audit.securite') },
+                { value: "audit-all", label: t('sendmessagemodal.subtypes.audit.all') },
+            ]
+        case "maintenance":
+            return [
+                { value: "maintenance-onepage", label: t('sendmessagemodal.subtypes.maintenance.onepage') },
+                { value: "maintenance-vitrine", label: t('sendmessagemodal.subtypes.maintenance.vitrine') },
+                 { value: "maintenance-professionnel", label: t('sendmessagemodal.subtypes.maintenance.professionnel') },
+                { value: "maintenance-ecommerce", label: t('sendmessagemodal.subtypes.maintenance.ecommerce') },
+                 { value: "maintenance-custom", label: t('sendmessagemodal.subtypes.maintenance.custom') },
+                { value: "maintenance-ponctuelle", label: t('sendmessagemodal.subtypes.maintenance.ponctuelle') },
             ]
         case "formation":
             return [
-                { value: "ordinateur", label: "Utilisation ordinateur" },
-                { value: "internet", label: "Internet" },
-                { value: "email", label: "Messagerie email" },
-                { value: "securite-numerique", label: "Sécurité numérique" },
-                { value: "ia", label: "Intelligence artificielle" },
-                { value: "formation-custom", label: "Formation personnalisée" }
+                { value: "ordinateur", label: t('sendmessagemodal.subtypes.formation.ordinateur') },
+                { value: "internet", label: t('sendmessagemodal.subtypes.formation.internet') },
+                { value: "email", label: t('sendmessagemodal.subtypes.formation.email') },
+                { value: "securite-numerique", label: t('sendmessagemodal.subtypes.formation.securite-numerique') },
+                { value: "ia", label: t('sendmessagemodal.subtypes.formation.ia') },
+                { value: "custom", label: t('sendmessagemodal.subtypes.formation.custom') }
             ]
         default:
             return []

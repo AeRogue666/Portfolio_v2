@@ -1,4 +1,4 @@
-c<script setup lang="ts">
+<script setup lang="ts">
 import StepBudget from './steps/StepBudget.vue';
 import StepComplexity from './steps/StepComplexity.vue';
 import StepNature from './steps/StepNature.vue';
@@ -88,9 +88,11 @@ const progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step /
 
 /* Watchers */
 
-watch(leadStore, (newLead) => {
-    console.log(newLead.data)
-});
+watch(() => leadStore.data.projectType,
+    value => {
+        console.log(value)
+    }
+);
 watch(isOpen, async (opened) => {
     if (opened) await $fetch('/api/contact/init');
 });
@@ -172,10 +174,11 @@ onMounted(() => console.log(leadStore.data, leadStore.step, totalSteps.value));
                 body: 'flex flex-col bg-(--bg-2) text-(--text-2) fs-body gap-6'
             }">
                 <UStepper v-model="progressBar" :items="tabs" disabled :ui="{
-                    list: 'flex flex-col md:flex-row bg-(--bg) gap-4',
-                    trigger: 'data-[state=active]:bg-(--focus) data-[state=active]:text-(--text-2) data-[state=inactive]:bg-(--bg) data-[state=inactive]:text-(--text-muted) data-[state=completed]:bg-(--bg-3) data-[state=completed]:text-(--text-muted) pointer-events-none opacity-50',
+                    header: 'flex flex-col md:flex-row gap-4',
+                    trigger: grayscale
+                        ? 'data-[state=active]:bg-(--bg) data-[state=active]:text-(--text-2) data-[state=inactive]:bg-(--bg-2) data-[state=inactive]:text-(--text-muted) data-[state=completed]:bg-(--bg-3) data-[state=completed]:text-(--text-muted) pointer-events-none opacity-50'
+                        : 'data-[state=active]:bg-(--focus) data-[state=active]:text-(--text) data-[state=inactive]:bg-(--bg) data-[state=inactive]:text-(--text-muted) data-[state=completed]:bg-(--bg-3) data-[state=completed]:text-(--text-muted) pointer-events-none opacity-50',
                     separator: 'data-[state=active]:bg-(--focus) data-[state=inactive]:bg-(--bg) data-[state=completed]:bg-(--bg-3)'
-
                 }" /> <!-- tabs.slice(0, totalSteps) -->
 
                 <!-- Etapes du formulaire -->
@@ -192,7 +195,7 @@ onMounted(() => console.log(leadStore.data, leadStore.step, totalSteps.value));
                     <StepSummary v-else-if="leadStore.step === totalSteps" />
                 </Transition>
 
-                <div class="flex flex-col md:flex-row items-center md:justify-between mt-6">
+                <div class="flex flex-col md:flex-row items-center md:justify-between mt-6 gap-4">
                     <UButton label="Retour" variant="ghost" @click="goBack"
                         :disabled="leadStore.step > 1 ? false : true"
                         class="block w-3xs md:w-xs mt-3 bg-(--bg-2) text-(--text-2) fs-body ring ring-(--focus) border-(--border-subtle) hover:bg-(--bg) hover:ring-2 hover:ring-(--focus) hover:border-(--border-subtle)" />

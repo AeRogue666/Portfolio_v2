@@ -4,23 +4,42 @@ export const PRICING_CONFIG = {
     creation: 500,
     refonte: 800,
     optimisation: 250, // (ex: audit_a11y, audit_seo)
-    audit_a11y: 250,
-    audit_seo: 250,
+    audit: 250,
     maintenance: 30, // Par intervention / mensuel
     formation: 50, // Par heure et par personne
     message: 0,
   },
   subTypeModifiers: {
+    // creation
+    onepage: 0,
     vitrine: 0,
+    professionnel: 250,
     ecommerce: 500,
     reservation: 300,
     custom: 600,
-    accessibilite: 150,
-    seo: 100,
-    securite: 100,
+    // refonte
+    "refonte-design": 0,
+    "refonte-performance": 0,
+    "refonte-accessibilite": 0,
+    "refonte-securite": 0,
+    "refonte-fonctionnalite": 0,
+    // optimisation
+    "optimisation-accessibilite": 150,
+    "optimisation-seo": 100,
+    "optimisation-securite": 100,
+    "optimisation-multi": 200,
+    // audit
     "audit-accessibilite": 200,
     "audit-seo": 150,
     "audit-securite": 150,
+    "audit-all": 250,
+    // maintenance
+    "maintenance-onepage": 0,
+    "maintenance-vitrine": 0,
+    "maintenance-professionnel": 0,
+    "maintenance-ecommerce": 0,
+    "maintenance-custom": 0,
+    "maintenance-ponctuelle": 0,
     ordinateur: 0,
     internet: 0,
     email: 0,

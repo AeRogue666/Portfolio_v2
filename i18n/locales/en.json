@@ -240,7 +240,7 @@
       "job": "Job",
       "talk": "Talk"
     },
-    "created_on":"Published on",
+    "created_on": "Published on",
     "updated_on": "Updated on"
   },
   "project": {
@@ -335,9 +335,47 @@
       "creation": "Website creation",
       "refonte": "Website redesign (Optimization + Redesign)",
       "optimisation": "Website optimization (SEO, Performance, Accessibility)",
-      "audit_a11y": "Accessibility Audit / Compliance WCAG",
-      "audit_seo": "Performance & SEO Audit",
+      "audit": "",
+      "maintenance": "",
       "formation": "Digital training"
+    },
+    "subtypes": {
+      "creation": {
+        "onepage": "Page unique",
+        "vitrine": "Site vitrine",
+        "professionnel": "Site professionnel",
+        "ecommerce": "Site e-commerce",
+        "reservation": "Réservation en ligne",
+        "custom": "Projet métier spécifique"
+      },
+      "refonte": {
+        "design": "Moderniser le design",
+        "performance": "Améliorer les performances",
+        "accessibilite": "Corriger des problèmes d'accessibilité",
+        "securite": "Renforcer la sécurité",
+        "fonctionnalite": "Ajouter des fonctionnalités"
+      },
+      "optimisation": {
+        "accessibilite": "Optimiser l'accessibilité",
+        "seo": "Optimiser SEO & Performance",
+        "securite": "Optimiser la sécurité",
+        "optimisation-multi": "Optimiser plusieurs de ses aspects"
+      },
+      "maintenance": {},
+      "audit": {
+        "accessibilite": "Accessibility Audit / Compliance WCAG",
+        "seo": "Performance & SEO Audit",
+        "securite": "Audit Sécurité",
+        "all": "Audit complet"
+      },
+      "formation": {
+        "ordinateur": "Utilisation ordinateur",
+        "internet": "Naviguer sur internet",
+        "email": "Apprendre à utiliser une messagerie mail",
+        "securite-numerique": "Apprendre les bases de la sécurité numérique",
+        "ia": "Maîtriser l'usage de l'Intelligence Artificielle",
+        "custom": "Formation personnalisée"
+      }
     }
   },
   "plans": {

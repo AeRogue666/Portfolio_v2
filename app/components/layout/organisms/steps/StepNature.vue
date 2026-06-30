@@ -27,12 +27,12 @@ const options = [
         value: "optimisation",
     },
     {
-        label: t('sendmessagemodal.types.audit_a11y'),
-        value: "audit_a11y",
+        label: t('sendmessagemodal.types.maintenance'),
+        value: "maintenance",
     },
     {
-        label: t('sendmessagemodal.types.audit_seo'),
-        value: "audit_seo",
+        label: t('sendmessagemodal.types.audit'),
+        value: "audit",
     },
     {
         label: t('sendmessagemodal.types.formation'),
