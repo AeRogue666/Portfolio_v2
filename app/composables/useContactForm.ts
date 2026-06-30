@@ -36,7 +36,7 @@ export function useContactForm() {
         color: "error",
       });
 
-      return console.error('data: ', data, ' error: ', error, ' error data: ', error.data);
+      // return console.error('data: ', data, ' error: ', error, ' error data: ', error.data);
     }
 
     /* setTimeout(() => {

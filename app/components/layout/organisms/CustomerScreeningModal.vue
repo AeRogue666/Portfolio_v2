@@ -88,63 +88,18 @@ const progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step /
 
 /* Watchers */
 
-watch(() => leadStore.data.projectType,
+/* watch(() => leadStore.data.projectType,
     value => {
         console.log(value)
     }
-);
+); */
 watch(isOpen, async (opened) => {
     if (opened) await $fetch('/api/contact/init');
 });
-watch(leadStore, (newData) => {
+/* watch(leadStore, (newData) => {
     console.log(leadStore.data, leadStore.step, totalSteps.value, newData);
-});
-
-onMounted(() => console.log(leadStore.data, leadStore.step, totalSteps.value));
-
-/** 
- * Sur SendMessageModal, ajouter :
- * Un outil de qualification client automatique (déterminer le besoin du client avant d'entamer une conversation)
- * Si curieux -> message simple / Si client sérieux -> projet structuré
- * Comment faire ? Pré-qualifier avant le call
- * Type de projet + complexité + budget implicite
- * 
- * Avec UTabs :
- * 
- * Tab 1 - Nature du besoin
- * Plusieurs boutons disponibles :
- * 
- * 1. Envoyer un message / Poser une question / Faire une demande
- * 2. Création d'un site
- * 3. Refonte d'un site
- * 4. Optimisations Accessibilité, SEO & Performance
- * 5. Audits Accessibilité, SEO, Performance, Sécurité
- * 6. Formation au numérique
- * 
- * En fonction du choix de l'utilisateur, il sera envoyé vers une destination :
- * 
- * 1. Message -> Directement au formulaire récapitulatif de fin (récapitulatif des actions, input email, textarea message)
- * 2. Creation -> Tab 2.1 --> Tab 3 --> Tab 4 --> Tab 5
- * 3. Refonte -> Tab 2.2 --> Tab 3 --> Tab 4 --> Tab 5
- * 4. Optimisation -> Tab 2.3 -> Tab 4 --> Tab 5
- * 5. Audit -> Tab 2.3 --> Tab 4 --> Tab 5
- * 6. Formation -> Tab 2.4 --> Tab 4 --> Tab 5
- * 
- * Tab 2.1 CREATION REFONTE : Spécification de la nature du site (site vitrine, site e-commerce, réservation, projet métier, etc.)
- * Tab 2.2 OPTIMISATION : Spécification de la nature de l'optimisation (optimisation accessibilité, optimisation SEO & performance, optimisation sécurité)
- * Tab 2.3 AUDIT : Spécification de la nature de l'audit (audit accessibilité, audit SEO & performance, audit sécurité)
- * Tab 2.4 FORMATION : Spécification de la nature de la formation (formation utilisation ordinateur, formation internet, formation messagerie mail, formation sécurité, formation outils quotidiens, formation IA, formation unique)
- * 
- * Tab 3.1 CREATION : Complexité (simple = 1-3 pages, moyenne = CMS + contenu, complexe = logique métier, mais aussi besoins cms, nombre de pages, logo, choix de couleurs, typographies, objectifs/attentes business, problèmes rencontrés, fonctionnalités envisagées, etc.)
- * Tab 3.2 REFONTE : Complexité (audit rapide + Tab 3.1)
- * Tab 3.3 OPTIMISATION : Complexité (audit rapide, objectifs/attentes business, problèmes rencontrés, fonctionnalités envisagées)
- * Tab 3.4 AUDIT : Complexité (nombre de pages, technos utilisées si connues par l'utilisateur, objectifs/attentes business, problèmes rencontrés)
- * Tab 3.5 FORMATION : Complexité (nombre de personnes, type de public, présentiel ou distanciel)
- * 
- * Tab 4 : Budget et délai (limite budgétaire, deadline, urgence)
- * Tab 5 : Récapitulatif & Formulaire de contact
- * Un récapitulatif de ce que le client a choisit est disponible avec le formulaire de contact.
-*/
+}); */
+// onMounted(() => console.log(leadStore.data, leadStore.step, totalSteps.value));
 </script>
 
 <template>
