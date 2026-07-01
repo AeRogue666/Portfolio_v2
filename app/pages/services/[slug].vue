@@ -3,7 +3,7 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 import dayjs from 'dayjs';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 import PackagesContainer from '@/components/index/organisms/PackagesContainer.vue'
-import SendMessageModal from '@/components/layout/organisms/SendMessageModal.vue';
+import CustomerScreeningModal from '~/app/components/layout/organisms/CustomerScreeningModal.vue';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n();
@@ -130,11 +130,11 @@ watchEffect(() => {
             </ul>
 
             <div class="flex flex-col md:flex-row justify-evenly">
-                <SendMessageModal :cta-label="t('index.landing_section.cta_project')"
+                <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')"
                     :cta-icon="'fa7-solid:comment-dots'"
                     :cta-class="'w-min px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
 
-                <SendMessageModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
+                <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
                     :cta-class="'w-min px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
             </div>
         </ArticleLayout>

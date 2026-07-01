@@ -6,7 +6,7 @@ import ClientCarousel from '../components/index/organisms/ClientCarousel.vue';
 import ProcessContainer from '../components/index/organisms/ProcessContainer.vue';
 import ServicesContainer from '../components/index/organisms/ServicesContainer.vue';
 import QuestionContainer from '../components/index/organisms/QuestionContainer.vue';
-import SendMessageModal from '../components/layout/organisms/SendMessageModal.vue';
+import CustomerScreeningModal from '../components/layout/organisms/CustomerScreeningModal.vue';
 import dayjs from 'dayjs';
 
 interface Element {
@@ -313,10 +313,10 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <SendMessageModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
 
-            <SendMessageModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </LandingSection>
 
@@ -375,7 +375,7 @@ useSeoMeta(({
                 <span>{{ t('index.services_section.want_more.question') }}</span>
                 <span>{{ t('index.services_section.want_more.answer') }}</span>
             </p>
-            <SendMessageModal :cta-label="t('index.landing_section.cta_contact_me')" :cta-icon="'fa7-solid:message'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')" :cta-icon="'fa7-solid:message'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </IndexSection>
 
@@ -477,10 +477,10 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <SendMessageModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
 
-            <SendMessageModal :cta-label="t('index.landing_section.cta_contact_me')" :cta-icon="'fa7-solid:message'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')" :cta-icon="'fa7-solid:message'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </IndexSection>
     </UContainer>
