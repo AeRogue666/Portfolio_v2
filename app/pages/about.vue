@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import dayjs from 'dayjs';
 
 const { t, locale, locales } = useI18n(),
     route = useRoute(),
     colorMode = useColorMode(),
-    avatarSrc = ref<string>('/images/logo/logo_dark_theme.png');
+    { formatDate, formatISO } = useDate();
+
+const avatarSrc = ref<string>('/images/logo/logo_k_dark.png');
 
 const contentPath = computed(() => `/about/${locale.value}`)
 const asyncKey = computed(() => `about-${locale.value}`);
@@ -23,7 +24,7 @@ if (error.value) {
     throw createError({ statusCode: 404, message: 'about data is not found', statusMessage: 'about data is not found', cause: error.value, fatal: true });
 }
 
-const breadcrumbItems: BreadcrumbItem[] = [
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     {
         label: t('breadcrumb.feed'),
         to: '/feed'
@@ -32,7 +33,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
         label: t('breadcrumb.about'),
         to: '/about'
     },
-];
+]);
 
 onMounted(() => {
     watch(
@@ -42,12 +43,13 @@ onMounted(() => {
         },
         { immediate: true }
     );
+    console.log(about.value)
 });
 
-const articlePublishedTime = computed(() => dayjs(about.value?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(about.value?.updated_at).locale(locale.value).format());
-const created_atDate = computed(() => dayjs(about.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(about.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+const articlePublishedTime = computed(() => formatISO(about.value?.created_at)), // dayjs(about.value?.created_at).locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(about.value?.updated_at)); // dayjs(about.value?.updated_at).locale(locale.value).format()
+const created_atDate = computed(() => formatDate(about.value?.created_at)), // dayjs(about.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
+    updated_atDate = computed(() => formatDate(about.value?.updated_at)); // dayjs(about.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 useHeadSafe(() => ({
     title: t('seo.page.title', { pagetitle: t('breadcrumb.about') }),
@@ -67,7 +69,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://aureldev.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: any; }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://aureldev.com${route.path}`

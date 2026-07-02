@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import dayjs from 'dayjs';
 
 const { t, locale, locales } = useI18n(),
-    route = useRoute();
+    route = useRoute(),
+    { formatDate, formatISO } = useDate();
 
 const contentPath = computed(() => `/legal_notices/${locale.value}`);
 
@@ -18,7 +18,7 @@ if (error.value) {
     throw createError({ status: 404, statusMessage: 'Legal notices data not found', cause: error.value, fatal: true })
 }
 
-const breadcrumbItems: BreadcrumbItem[] = [
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     {
         label: t('breadcrumb.feed'),
         to: '/feed'
@@ -27,12 +27,12 @@ const breadcrumbItems: BreadcrumbItem[] = [
         label: t('breadcrumb.legal_notices'),
         to: '/legal-notices'
     },
-];
+]);
 
-const articlePublishedTime = computed(() => dayjs(page.value?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format());
-const created_atDate = computed(() => dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+const articlePublishedTime = computed(() => formatISO(page.value?.created_at)), // dayjs(page.value?.created_at).locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(page.value?.updated_at)); // dayjs(page.value?.updated_at).locale(locale.value).format()
+const created_atDate = computed(() => formatDate(page.value?.created_at)), // dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
+    updated_atDate = computed(() => formatDate(page.value?.updated_at)); // dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 useHeadSafe(() => ({
     title: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }),
@@ -52,7 +52,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://aureldev.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: string; }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://aureldev.com${route.path}`

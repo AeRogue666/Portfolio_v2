@@ -3,7 +3,7 @@ import type { Locale } from "@/types/i18n";
 // Take a source (object), remove `translations` and fuse this source with the translations object.
 
 export function resolveWithLocale<
-  TSource extends { translations: Record<Locale, any> },
+  TSource extends { translations: Record<Locale, object> },
 >(
   source: TSource,
   locale: Locale,

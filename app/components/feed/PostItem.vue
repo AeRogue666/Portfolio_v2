@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import dayjs from 'dayjs';
 import PostBadge from './molecules/PostBadge.vue';
 import PostBase from './molecules/PostBase.vue';
 import ResponsiveImage from './organisms/ResponsiveImage.vue';
@@ -9,8 +8,9 @@ const props = defineProps<{
     post: FeedItem,
 }>();
 
-const { t, locale } = useI18n();
-const accessibilityStore = useAccessibilityStore();
+const { t, locale } = useI18n(),
+    accessibilityStore = useAccessibilityStore(),
+    { formatDate } = useDate();
 
 const badgeLabel = computed(() => {
     if (props.post.pinned) return t('post.pinned_post');
@@ -33,8 +33,8 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
     postUrl = computed(() => getPostUrl(props.post)),
     cardType = computed(() => props.post.kindFallback || props.post.kind),
     grayscale = computed(() => accessibilityStore.grayscale),
-    created_atDate = computed(() => dayjs(props.post.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(props.post.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+    created_atDate = computed(() => formatDate(props.post.created_at)), // dayjs(props.post.created_at).locale(locale.value).format("DD MMMM YYYY")
+    updated_atDate = computed(() => formatDate(props.post.updated_at)); // dayjs(props.post.updated_at).locale(locale.value).format("DD MMMM YYYY")
 </script>
 
 <template>

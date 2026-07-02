@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
 import ArticleLayout from '../components/layout/molecules/ArticleLayout.vue';
+import type { AccessibilityReportResponse } from '../types/accessibility.js';
 
 const { t, locale } = useI18n(),
     accessibilityStore = useAccessibilityStore(),
@@ -19,18 +20,17 @@ const selectedStatus = ref<string | null>(null);
 const searchQuery = ref('');
 
 // Données du serveur
-const { data: reportData, pending } = await useFetch("/api/accessibility-report", {
-    query: {
+const { data: reportData, pending } = await useFetch<AccessibilityReportResponse>("/api/accessibility-report", {
+    query: computed(() => ({
         locale: locale.value
-    },
-    watch: [locale]
+    }))
 });
 
 // Filtrer les données
 const filteredCriteria = computed(() => {
     if (!reportData.value) return [];
 
-    return reportData.value.criteria.filter(item => {
+    return reportData.value.criteria.filter((item: { thematic: string; status: string; criterion: string; id: string; }) => {
         const matchThematic = !selectedThematic.value || item.thematic === selectedThematic.value;
         const matchStatus = !selectedStatus.value || item.status === selectedStatus.value;
         const matchSearch = !searchQuery.value || item.criterion.toLowerCase().includes(searchQuery.value.toLowerCase()) || item.id.toLowerCase().includes(searchQuery.value.toLowerCase());
@@ -85,12 +85,12 @@ const statusOptions = computed(() => {
     ];
 });
 
-const testEnvironmentMap = [
+const testEnvironmentMap = computed(() => [
     { value: 'Windows 11 + Chrome + NVDA 2024.1', icon: 'check' },
     { value: 'Windows 11 + Firefox + NVDA 2024.1', icon: 'xmark' },
     { value: 'Android 12 + Chrome + Talkback', icon: 'xmark' },
     { value: t('accessibility-report.test_environment.keyboard_navigation'), icon: 'check' },
-];
+]);
 
 const colorMap: Record<string, string> = {
     'images': 'blue',
@@ -114,20 +114,21 @@ const getThematicColor = (thematicId: string): string => {
 
 const getThematicLabel = (thematicId: string): string => {
     if (!reportData.value) return '';
-    return reportData.value.thematics.find(t => t.id === thematicId)?.label || '';
+    return reportData.value.thematics.find((t: { id: string; }) => t.id === thematicId)?.label || '';
 };
 
 const getAccessibilityColor = (accessibility: string) => {
     const score = parseInt(accessibility);
     if (score === 100) return 'bg-emerald-500/20';
+    if (score >= 90 && score < 100) return 'bg-green-900/20';
     if (score >= 80 && score < 90) return 'bg-green-500/20';
-    if (score >= 60 && score > 80) return 'bg-lime-500/20';
-    if (score >= 40 && score > 60) return 'bg-yellow-500/20';
-    if (score >= 20 && score > 40) return 'bg-orange-500/20';
+    if (score >= 60 && score < 80) return 'bg-lime-500/20';
+    if (score >= 40 && score < 60) return 'bg-yellow-500/20';
+    if (score >= 20 && score < 40) return 'bg-orange-500/20';
     if (score < 20) return 'bg-red-500/20';
 };
 
-const breadcrumbItems: BreadcrumbItem[] = [
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     {
         label: t('breadcrumb.feed'),
         to: '/feed'
@@ -136,7 +137,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
         label: t('breadcrumb.accessibility_report'),
         to: '/accessibility-report'
     },
-];
+]);
 
 useSeoMeta(({
     title: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
@@ -251,8 +252,8 @@ useSeoMeta(({
                     <label id="rgaa-label" for="rgaa-search" class="fs-body mb-2">
                         {{ reportData.rgaaTitle.split(' ')[0] }}
                     </label>
-                    <UInput v-model="searchQuery" id="rgaa-search"
-                        icon="fa7-solid:magnifying-glass" autocomplete="off" :ui="{
+                    <UInput v-model="searchQuery" id="rgaa-search" icon="fa7-solid:magnifying-glass" autocomplete="off"
+                        :ui="{
                             base: 'min-w-[16rem] md:min-w-[14rem] bg-(--bg-2) text-(--text) fs-body'
                         }" />
                 </div>
@@ -275,9 +276,9 @@ useSeoMeta(({
                     <label id="status-label" for="status-select" class="fs-body mb-2">
                         {{ reportData.statusFilterLabel }}
                     </label>
-                    <USelect v-model="selectedStatus" :items="statusOptions" id="status-select" :aria-label="reportData.statusFilterLabel"
-                        value-key="value" label-key="label" variant="ghost" color="neutral" class="transition-colors fs-body"
-                        :ui="{
+                    <USelect v-model="selectedStatus" :items="statusOptions" id="status-select"
+                        :aria-label="reportData.statusFilterLabel" value-key="value" label-key="label" variant="ghost"
+                        color="neutral" class="transition-colors fs-body" :ui="{
                             base: 'bg-(--bg-2) min-w-[12rem]',
                             content: 'bg-(--bg-2) min-w-[12rem]',
                             value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
@@ -311,7 +312,8 @@ useSeoMeta(({
                     <tbody>
                         <tr v-for="criteria in filteredCriteria" :key="criteria.id"
                             class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors">
-                            <td class="px-4 py-3 font-mono fs-body font-semibold" style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ criteria.id }}</td>
+                            <td class="px-4 py-3 font-mono fs-body font-semibold"
+                                style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ criteria.id }}</td>
                             <td class="text-center px-4 py-3 font-medium fs-body">
                                 <span class="inline-block px-2 py-1 rounded"
                                     :class="`bg-${getThematicColor(criteria.thematic)}-500/20`">

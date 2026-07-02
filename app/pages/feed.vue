@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import dayjs from 'dayjs';
-
 const feedStore = useFeedStore(),
-    { t, locale, locales } = useI18n(),
-    route = useRoute();
+    { t, locales } = useI18n(),
+    route = useRoute(),
+    { formatDate } = useDate();
 
 const {
     items,
@@ -36,8 +35,8 @@ watch(items, (newItems: any) => {
 
 const hasActiveFilters = computed(() => selectedTags.value.length > 0 || selectedKinds.value.length > 0);
 
-const articlePublishedTime = computed(() => dayjs(items.value[0]?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(items.value[0]?.updated_at).locale(locale.value).format());
+const articlePublishedTime = computed(() => formatDate(items.value[0]?.created_at)), // dayjs(items.value[0]?.created_at).locale(locale.value).format()
+    articleModifiedTime = computed(() => formatDate(items.value[0]?.updated_at)); // dayjs(items.value[0]?.updated_at).locale(locale.value).format()
 
 useHeadSafe(() => ({
     title: t('seo.feed.title'),
@@ -49,8 +48,8 @@ useHeadSafe(() => ({
         { property: 'og:description', content: t('seo.feed.description') },
         { property: 'og:type', content: 'website' },
         { property: 'article:author', content: 'Aureldev' },
-        { property: 'article:published_time', content: articlePublishedTime.value },
-        { property: 'article:modified_time', content: articleModifiedTime.value },
+        { property: 'article:published_time', content: articlePublishedTime.value ?? '' },
+        { property: 'article:modified_time', content: articleModifiedTime.value ?? '' },
         { property: 'og:image', content: '/images/project/portfolio-v2/desktop.png' },
         { property: 'og:image:type', content: 'image/png' },
         { property: 'og:image:width', content: '1920' },
@@ -108,8 +107,10 @@ useSeoMeta(({
 
         <!-- Annonce accessibilité pour lecteurs d'écran -->
         <div v-if="status === 'success' && items.length > 0" aria-live="polite" class="sr-only">
-            <span v-if="hasMore && (total - items.length) > 1" class="fs-small">{{ total - items.length }} {{ t('feed.loaded_new_articles', total - items.length) }}</span>
-            <span v-else-if="hasMore && (total - items.length) === 1" class="fs-small">{{ t('feed.loaded_new_articles', 1) }}</span>
+            <span v-if="hasMore && (total - items.length) > 1" class="fs-small">{{ total - items.length }} {{
+                t('feed.loaded_new_articles', total - items.length) }}</span>
+            <span v-else-if="hasMore && (total - items.length) === 1" class="fs-small">{{ t('feed.loaded_new_articles',
+                1) }}</span>
             <span v-else class="fs-small">{{ t('feed.loaded_new_articles', 0) }}</span>
         </div>
     </UContainer>

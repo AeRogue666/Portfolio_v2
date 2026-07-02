@@ -7,7 +7,6 @@ import ProcessContainer from '../components/index/organisms/ProcessContainer.vue
 import ServicesContainer from '../components/index/organisms/ServicesContainer.vue';
 import QuestionContainer from '../components/index/organisms/QuestionContainer.vue';
 import CustomerScreeningModal from '../components/layout/organisms/CustomerScreeningModal.vue';
-import dayjs from 'dayjs';
 
 interface Element {
     title: string,
@@ -20,7 +19,9 @@ interface Element {
 
 const { t, locale, locales } = useI18n(),
     colorMode = useColorMode(),
-    route = useRoute();
+    route = useRoute(),
+    { formatISO } = useDate();
+
 useSidebarFocusState();
 
 // Clients sections
@@ -28,9 +29,9 @@ const clientsAsyncKey = computed(() => `index-clients-${locale.value}`);
 const { data: clientsData, error: clientsError } = await useAsyncData(
     () => clientsAsyncKey.value,
     () => queryCollection("clients")
-    .where("locale", "=", locale.value)
-    .where("kind", "=", "client")
-    .all(),
+        .where("locale", "=", locale.value)
+        .where("kind", "=", "client")
+        .all(),
     /* $fetch<FeedResponse>('/api/posts', {
         query: { locale: locale.value }
     }), */
@@ -66,8 +67,8 @@ const servicesAsyncKey = computed(() => `index-services-${locale.value}`);
 const { data: servicesData, error: servicesError } = await useAsyncData(
     () => servicesAsyncKey.value,
     () => queryCollection("services")
-    .where("locale", "=", locale.value)
-    .all(),
+        .where("locale", "=", locale.value)
+        .all(),
     /* $fetch('/api/services', {
         query: { locale: locale.value }
     }), */
@@ -249,8 +250,8 @@ watch(() => colorMode.value,
     },
     { immediate: false });
 
-const articlePublishedTime = computed(() => dayjs('01-01-2026').locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(new Date()).locale(locale.value).format());
+const articlePublishedTime = computed(() => formatISO('01-01-2026')), // dayjs('01-01-2026').locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(new Date())); // dayjs(new Date()).locale(locale.value).format()
 
 useHeadSafe(() => ({
     title: t('seo.home.title'),
@@ -267,8 +268,8 @@ useHeadSafe(() => ({
         { property: 'og:url', content: 'https://codekorico.com' },
         { property: 'og:site:name', content: 'CodeKorico' },
         { property: 'article:author', content: 'Aureldev' },
-        { property: 'article:published_time', content: articlePublishedTime.value },
-        { property: 'article:modified_time', content: articleModifiedTime.value },
+        { property: 'article:published_time', content: articlePublishedTime.value ?? '' },
+        { property: 'article:modified_time', content: articleModifiedTime.value ?? '' },
     ],
     link: [
         {
@@ -313,10 +314,12 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')"
+                :cta-icon="'fa7-solid:comment-dots'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
 
-            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')"
+                :cta-icon="'fa7-solid:chart-simple'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </LandingSection>
 
@@ -375,7 +378,8 @@ useSeoMeta(({
                 <span>{{ t('index.services_section.want_more.question') }}</span>
                 <span>{{ t('index.services_section.want_more.answer') }}</span>
             </p>
-            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')" :cta-icon="'fa7-solid:message'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
+                :cta-icon="'fa7-solid:message'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </IndexSection>
 
@@ -477,10 +481,12 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:comment-dots'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')"
+                :cta-icon="'fa7-solid:comment-dots'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
 
-            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')" :cta-icon="'fa7-solid:message'"
+            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
+                :cta-icon="'fa7-solid:message'"
                 :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </IndexSection>
     </UContainer>

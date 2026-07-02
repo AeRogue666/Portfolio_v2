@@ -31,7 +31,7 @@ Hello, I am Aurélien, a France-based (Ardèche) full-stack developer specialize
 
 I help teams design and build inclusive, maintainable and performance-oriented web applications without sacrificing user-experience or design, using [Vue](https://vuejs.org/), [Nuxt](https://nuxt.com/), [Typescript](https://www.typescriptlang.org/) and modern backend tooling such as [Node.js](https://nodejs.org/en), [Prisma](https://www.prisma.io/), [Express](https://expressjs.com/) and [PostgreSQL](https://www.postgresql.org/).
 
-I also design websites using [WordPress](https://wordpress.com/fr/) and its e-commerce plugin [WooCommerce](https://woocommerce.com/fr/), as well as [WordPress Studio](https://developer.wordpress.com/fr/studio/), the development studio created by the WordPress team, in accordance with current web standards and client requirements.
+I also design websites using [WordPress](https://wordpress.com/fr/) and its e-commerce plugin [WooCommerce](https://woocommerce.com/fr/), as well as [WordPress Studio](https://developer.wordpress.com/fr/studio/), the development studio created by the WordPress team, or [Shopify](https://shopify.com) in accordance with current web standards and client requirements.
 
 ---
 

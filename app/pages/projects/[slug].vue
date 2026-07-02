@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import dayjs from 'dayjs';
 import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
 const route = useRoute(),
-    { t, locale, locales } = useI18n();
+    { t, locale, locales } = useI18n(),
+    { formatDate, formatISO } = useDate();
+
 useSidebarFocusState();
 
 const slug = computed(() => String(route.params.slug));
@@ -28,7 +29,7 @@ watchEffect(() => {
     if (!project.value) return;
 });
 
-const breadcrumbItems: BreadcrumbItem[] = [
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     {
         label: t('breadcrumb.feed'),
         to: '/feed'
@@ -41,7 +42,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
         label: project.value?.title,
         to: `/projects/${project.value?.slug}`
     }
-];
+]);
 
 /* useSchemaOrg([
     defineProject({
@@ -56,10 +57,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-const articlePublishedTime = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format() : null),
-    articleModifiedTime = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format() : null);
-const created_atDate = computed(() => project.value?.created_at ? dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
-    updated_atDate = computed(() => project.value?.updated_at ? dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
+const articlePublishedTime = computed(() => formatISO(project.value?.created_at)), // dayjs(project.value?.created_at).locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(project.value?.updated_at)); // dayjs(project.value?.updated_at).locale(locale.value).format()
+const created_atDate = computed(() => formatDate(project.value?.created_at)), // dayjs(project.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
+    updated_atDate = computed(() => formatDate(project.value?.updated_at)); // dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => project.value?.image?.sources?.detail?.mobile || project.value?.image?.sources?.feed?.mobile || ''),
     tabletSrc = computed(() => project.value?.image?.sources?.detail?.tablet || project.value?.image?.sources?.feed?.tablet || src),

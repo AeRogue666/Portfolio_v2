@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import dayjs from 'dayjs';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
 const route = useRoute(),
-    { t, locale, locales } = useI18n();
+    { t, locale, locales } = useI18n(),
+    { formatDate, formatISO } = useDate();
 
 useSidebarFocusState();
 
@@ -27,7 +27,7 @@ if (error.value) throw createError({ statusCode: 500, message: 'Failed to load c
 if (!client.value) throw createError({ statusCode: 404, message: 'Client not found', statusMessage: 'Client not found', cause: error.value, fatal: true });
 
 
-const breadcrumbItems: BreadcrumbItem[] = [
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     {
         label: t('breadcrumb.feed'),
         to: '/feed'
@@ -40,12 +40,12 @@ const breadcrumbItems: BreadcrumbItem[] = [
         label: client.value?.customer_name,
         to: route.path
     },
-];
+]);
 
-const articlePublishedTime = computed(() => client.value?.created_at ? dayjs(client.value?.created_at).locale(locale.value).format() : null),
-    articleModifiedTime = computed(() => client.value?.updated_at ? dayjs(client.value?.updated_at).locale(locale.value).format() : null);
-const created_atDate = computed(() => client.value?.created_at ? dayjs(client.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
-    updated_atDate = computed(() => client.value?.updated_at ? dayjs(client.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
+const articlePublishedTime = computed(() => formatISO(client.value?.created_at)), // dayjs(client.value?.created_at).locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(client.value?.updated_at)); // dayjs(client.value?.updated_at).locale(locale.value).format()
+const created_atDate = computed(() => formatDate(client.value?.created_at)), // dayjs(client.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
+    updated_atDate = computed(() => formatDate(client.value?.updated_at)); // dayjs(client.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => client.value?.image?.sources?.detail?.mobile || client.value?.image?.sources?.feed?.mobile || ''),
     tabletSrc = computed(() => client.value?.image?.sources?.detail?.tablet || client.value?.image?.sources?.feed?.tablet || src),

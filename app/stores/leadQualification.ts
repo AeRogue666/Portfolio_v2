@@ -1,11 +1,8 @@
-import dayjs from "dayjs";
 import { calculatePrice } from "@/utils/pricingEngine";
 
 export const useLeadStore = defineStore("lead", {
   state: () => ({
     step: 1,
-    startedAt: dayjs().toISOString(),
-
     data: {
       projectType: "" as string,
       subType: "" as string,
@@ -33,7 +30,6 @@ export const useLeadStore = defineStore("lead", {
       },
       leadScore: 0,
       leadTier: "low" as "low" | "medium" | "high",
-      createdAt: null as string | null,
     },
   }),
 
@@ -70,7 +66,11 @@ export const useLeadStore = defineStore("lead", {
           if (this.data.businessGoals.length && this.data.problems.length)
             return true;
         case 4:
-          return (!!this.data.budgetRange || !!this.data.personNumber && !!this.data.trainingFormat) && !!this.data.deadline;
+          return (
+            (!!this.data.budgetRange ||
+              (!!this.data.personNumber && !!this.data.trainingFormat)) &&
+            !!this.data.deadline
+          );
         case 5:
           return !!this.data.contact.email;
         default:
@@ -93,9 +93,17 @@ export const useLeadStore = defineStore("lead", {
       }
     },
     persist() {
+      if (!import.meta.client) return;
+
       localStorage.setItem("leadDraft", JSON.stringify(this.data));
     },
+    hasDraft() {
+      if (!import.meta.client) return false;
+
+      return !!localStorage.getItem("leadDraft"); // localStorage.getItem("leadDraft") !== null;
+    },
     restore() {
+      if (!import.meta.client) return; 
       const saved = localStorage.getItem("leadDraft");
       if (saved) this.data = JSON.parse(saved);
     },
@@ -133,11 +141,11 @@ export const useLeadStore = defineStore("lead", {
       }
     },
     reset() {
-      localStorage.removeItem("leadDraft");
+      if (!import.meta.client ) {
+        localStorage.removeItem("leadDraft");
+      }
+
       this.$reset();
-    },
-    setTimestamp() {
-      this.data.createdAt = dayjs().toISOString();
     },
   },
 });

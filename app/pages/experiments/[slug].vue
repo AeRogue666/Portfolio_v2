@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import dayjs from 'dayjs';
 import PostBadge from '@/components/feed/molecules/PostBadge.vue';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
 const route = useRoute(),
-    { t, locale, locales } = useI18n();
+    { t, locale, locales } = useI18n(),
+    { formatDate, formatISO } = useDate();
 
 const slug = computed(() => String(route.params.slug));
 const asyncKey = computed(() => `experiment-${slug.value}-${locale.value}`);
@@ -25,7 +25,7 @@ const { data: experiment, error } = await useAsyncData(
 if (error.value) throw createError({ statusCode: 500, message: 'Failed to load experiment', statusMessage: 'Failed to load experiment', cause: error.value, fatal: true });
 if (!experiment.value) throw createError({ statusCode: 404, message: 'Experiment not found', statusMessage: 'Experiment not found', cause: error.value, fatal: true });
 
-const breadcrumbItems: BreadcrumbItem[] = [
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     {
         label: t('breadcrumb.feed'),
         to: '/feed'
@@ -38,7 +38,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
         label: experiment.value?.title,
         to: `/experiments/${experiment.value?.slug}`
     }
-];
+]);
 
 /* useSchemaOrg([
     defineupdate({
@@ -53,10 +53,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     })
 ]) */
 
-const articlePublishedTime = computed(() => experiment.value?.created_at ? dayjs(experiment.value?.created_at).locale(locale.value).format() : null),
-    articleModifiedTime = computed(() => experiment.value?.updated_at ? dayjs(experiment.value?.updated_at).locale(locale.value).format() : null);
-const created_atDate = computed(() => experiment.value?.created_at ? dayjs(experiment.value?.created_at).locale(locale.value).format("DD MMMM YYYY") : null),
-    updated_atDate = computed(() => experiment.value?.updated_at ? dayjs(experiment.value?.updated_at).locale(locale.value).format("DD MMMM YYYY") : null);
+const articlePublishedTime = computed(() => formatISO(experiment.value?.created_at)), // dayjs(experiment.value?.created_at).locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(experiment.value?.updated_at)); // dayjs(experiment.value?.updated_at).locale(locale.value).format()
+const created_atDate = computed(() => formatDate(experiment.value?.created_at)), // dayjs(experiment.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
+    updated_atDate = computed(() => formatDate(experiment.value?.updated_at)); // dayjs(experiment.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => experiment.value?.image?.sources?.detail?.mobile || experiment.value?.image?.sources?.feed?.mobile || ''),
     tabletSrc = computed(() => experiment.value?.image?.sources?.detail?.tablet || experiment.value?.image?.sources?.feed?.tablet || src),

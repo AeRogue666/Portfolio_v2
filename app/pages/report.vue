@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import type { BreadcrumbItem, FormError, FormSubmitEvent, SelectMenuItem } from '@nuxt/ui';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
-import dayjs from 'dayjs';
 
-const { t, locale, locales } = useI18n(),
+const { t, locales } = useI18n(),
     toast = useToast(),
     accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode(),
-    route = useRoute();
+    route = useRoute(),
+    { formatISO } = useDate();
 
 type Issues = 'accessibility' | 'issue' | 'bug' | 'feedback' | 'other';
 
@@ -18,7 +18,7 @@ type ReportForm = {
     honeypot?: any
 }
 
-const breadcrumbItems: BreadcrumbItem[] = [
+const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     {
         label: t('breadcrumb.feed'),
         to: '/feed'
@@ -27,7 +27,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
         label: t('breadcrumb.report'),
         to: '/report'
     },
-];
+]);
 
 const issueItems = computed<SelectMenuItem[]>(() => [
     {
@@ -112,8 +112,8 @@ const grayscale = computed({
     set: () => accessibilityStore.toggleGrayscale(),
 });
 
-const articlePublishedTime = computed(() => dayjs('01-01-2026').locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(new Date()).locale(locale.value).format());
+const articlePublishedTime = computed(() => formatISO('01-01-2026')), // dayjs('01-01-2026').locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(new Date())); // dayjs(new Date()).locale(locale.value).format()
 
 useHeadSafe(() => ({
     title: t('seo.page.title', { pagetitle: t('breadcrumb.report') }),
@@ -133,7 +133,7 @@ useHeadSafe(() => ({
             rel: 'canonical',
             href: `https://aureldev.com${route.path}`
         },
-        ...locales.value.map(l => ({
+        ...locales.value.map((l: { code: string; }) => ({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://aureldev.com${route.path}`

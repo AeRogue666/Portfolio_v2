@@ -8,7 +8,6 @@ export type ProjectType =
 
 export interface LeadState {
   step: number;
-  startedAt: string;
   data: {
     projectType: ProjectType | "";
     subType: string;

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import type { BreadcrumbItem } from '@nuxt/ui';
-import dayjs from 'dayjs';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 import PackagesContainer from '@/components/index/organisms/PackagesContainer.vue'
 import CustomerScreeningModal from '~/app/components/layout/organisms/CustomerScreeningModal.vue';
 
 const route = useRoute(),
-    { t, locale, locales } = useI18n();
+    { t, locale, locales } = useI18n(),
+    { formatDate, formatISO } = useDate();
 
 useSidebarFocusState();
 
@@ -42,10 +42,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
     }
 ];
 
-const articlePublishedTime = computed(() => dayjs(service.value?.created_at).locale(locale.value).format()),
-    articleModifiedTime = computed(() => dayjs(service.value?.updated_at).locale(locale.value).format());
-const created_atDate = computed(() => dayjs(service.value?.created_at).locale(locale.value).format("DD MMMM YYYY")),
-    updated_atDate = computed(() => dayjs(service.value?.updated_at).locale(locale.value).format("DD MMMM YYYY"));
+const articlePublishedTime = computed(() => formatISO(service.value?.created_at)), // dayjs(service.value?.created_at).locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(service.value?.updated_at)); // dayjs(service.value?.updated_at).locale(locale.value).format()
+const created_atDate = computed(() => formatDate(service.value?.created_at)), // dayjs(service.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
+    updated_atDate = computed(() => formatDate(service.value?.updated_at)); // dayjs(service.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => service.value?.image?.sources?.detail?.mobile || service.value?.image?.sources?.feed?.mobile || ''),
     tabletSrc = computed(() => service.value?.image?.sources?.detail?.tablet || service.value?.image?.sources?.feed?.tablet || src),
@@ -134,7 +134,8 @@ watchEffect(() => {
                     :cta-icon="'fa7-solid:comment-dots'"
                     :cta-class="'w-min px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
 
-                <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')" :cta-icon="'fa7-solid:chart-simple'"
+                <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')"
+                    :cta-icon="'fa7-solid:chart-simple'"
                     :cta-class="'w-min px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
             </div>
         </ArticleLayout>

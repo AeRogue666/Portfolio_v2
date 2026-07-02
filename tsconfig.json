@@ -6,6 +6,5 @@
       "@/*": ["./app/*"],
       "#server/*": ["./server/*"]
     },
-    "typeRoots": ["./app/types", "./node_modules/@types"],
   }
 }

@@ -30,8 +30,6 @@ const tabs = [
 const totalSteps = computed(() => leadStore.data.projectType === "message" ? 2 : 5);
 const isOpen = ref(false);
 
-leadStore.restore();
-
 /* Form functions */
 
 function goNext() {
@@ -82,24 +80,27 @@ async function handleSubmit() {
 const grayscale = computed({
     get: () => accessibilityStore.grayscale,
     set: () => accessibilityStore.toggleGrayscale(),
-});
-
-const progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step / totalSteps.value) */);
+}),
+    progressBar = computed(() => leadStore.step - 1 /* (100 * leadStore.step / totalSteps.value) */);
 
 /* Watchers */
+watch(() => leadStore.data,
+    () => {
+        leadStore.persist();
+    },
+    { deep: true }
+);
 
-/* watch(() => leadStore.data.projectType,
-    value => {
-        console.log(value)
-    }
-); */
 watch(isOpen, async (opened) => {
     if (opened) await $fetch('/api/contact/init');
 });
-/* watch(leadStore, (newData) => {
-    console.log(leadStore.data, leadStore.step, totalSteps.value, newData);
-}); */
-// onMounted(() => console.log(leadStore.data, leadStore.step, totalSteps.value));
+
+onMounted(() => {
+    if (leadStore.hasDraft()) {
+        // Afficher une modale ou restaurer automatiquement
+        leadStore.restore();
+    }
+});
 </script>
 
 <template>
