@@ -2,7 +2,7 @@
 import type { BreadcrumbItem } from '@nuxt/ui';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 import PackagesContainer from '@/components/index/organisms/PackagesContainer.vue'
-import CustomerScreeningModal from '~/app/components/layout/organisms/CustomerScreeningModal.vue';
+import CustomerScreeningModal from '@/components/layout/organisms/CustomerScreeningModal.vue';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n(),
