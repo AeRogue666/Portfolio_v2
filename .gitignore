@@ -23,5 +23,3 @@ documentation
 # Local env files
 .env
 !.env.example
-
-pnpm-lock.yaml
