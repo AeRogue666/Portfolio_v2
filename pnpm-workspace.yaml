@@ -6,4 +6,6 @@ allowBuilds:
   vue-demi: false
 minimumReleaseAgeExclude:
   - esbuild@0.28.1
+overrides:
+  brace-expansion: 2.1.2
 nodeVersion: "24.11.0"

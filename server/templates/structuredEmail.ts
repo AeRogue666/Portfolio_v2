@@ -28,6 +28,7 @@ export function qualifiedContactTemplate(data: {
   message?: string | undefined;
 }) {
   const q = data.qualification;
+  const payload = btoa(JSON.stringify(data));
   const priorityColor =
     q.leadTier === "high"
       ? "#dc2626"
@@ -98,6 +99,14 @@ export function qualifiedContactTemplate(data: {
             ? `<h3>Message additionnel:</h3><p>${data.message}</p>`
             : ""
         }
+      </section>
+
+      <section style="display:flex; flex-direction:columns; align-items:center;">
+        <h3>En résumé (JSON)</h3>
+
+        <textarea readonly>
+          ${payload}
+        </textarea>
       </section>
       </div>
     </div>`;
