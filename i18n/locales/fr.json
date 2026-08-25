@@ -29,7 +29,8 @@
         "business-goals-label": "Quels sont les objectifs principaux du projet ?",
         "business-goals-placeholder": "Décrivez en {maxlength} caractères maximum les objectifs principaux du projet.",
         "problems-label": "Rencontrez-vous des problèmes actuellement ?",
-        "problems-placeholder": "Décrivez en {maxlength} caractères maximum les problèmes rencontrés."
+        "problems-placeholder": "Décrivez en {maxlength} caractères maximum les problèmes rencontrés.",
+        "client_website": "Adresse de votre site internet"
       },
       "step-summary": {
         "email_label": "Email",
@@ -385,7 +386,8 @@
         "accessibilite": "Audit Accessibilité / Mise en conformité WCAG",
         "seo": "Audit Performance & SEO",
         "securite": "Audit Sécurité",
-        "all": "Audit complet"
+        "all": "Audit complet",
+        "flash_audit": "Flash Audit"
       },
       "formation": {
         "ordinateur": "Utilisation ordinateur",

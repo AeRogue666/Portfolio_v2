@@ -27,6 +27,7 @@ export const useLeadStore = defineStore("lead", {
       contact: {
         email: "",
         message: "",
+        website: "",
       },
       leadScore: 0,
       leadTier: "low" as "low" | "medium" | "high",
@@ -63,8 +64,10 @@ export const useLeadStore = defineStore("lead", {
         case 2:
           return !!this.data.subType;
         case 3:
-          if (this.data.businessGoals.length && this.data.problems.length)
+          if((this.data.subType == 'audit-flash' && this.data.contact.website)) {
+            this.step = 4;
             return true;
+          } else if (this.data.businessGoals.length && this.data.problems.length) return true
         case 4:
           return (
             (!!this.data.budgetRange ||
@@ -103,7 +106,7 @@ export const useLeadStore = defineStore("lead", {
       return !!localStorage.getItem("leadDraft"); // localStorage.getItem("leadDraft") !== null;
     },
     restore() {
-      if (!import.meta.client) return; 
+      if (!import.meta.client) return;
       const saved = localStorage.getItem("leadDraft");
       if (saved) this.data = JSON.parse(saved);
     },
@@ -141,11 +144,16 @@ export const useLeadStore = defineStore("lead", {
       }
     },
     reset() {
-      if (!import.meta.client ) {
+      if (!import.meta.client) {
         localStorage.removeItem("leadDraft");
       }
 
       this.$reset();
+    },
+    setInitialProject(projectType: string, subType: string) {
+      this.data.projectType = projectType;
+      this.data.subType = subType;
+      this.persist();
     },
   },
 });

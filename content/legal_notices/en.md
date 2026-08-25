@@ -2,10 +2,10 @@
 title: Legal Mentions
 description: Legal mentions on confidence in the digital economy
 created_at: 2026-03-07
-updated_at: 2026-03-07
+updated_at: 2026-25-08
 ---
 
-In accordance with the provisions of Law No. 2004-575 of June 21, 2004 on confidence in the digital economy, users and visitors, hereinafter referred to as the "User," of the aureldev.com website, hereinafter referred to as the "Site," are hereby informed of the following legal notices.
+In accordance with the provisions of Law No. 2004-575 of June 21, 2004 on confidence in the digital economy, users and visitors, hereinafter referred to as the "User," of the codekorico.com website, hereinafter referred to as the "Site," are hereby informed of the following legal notices.
 
 By connecting to and browsing the Site, the User fully and unreservedly accepts these legal notices.
 
@@ -13,9 +13,11 @@ These are available on the Site under the heading "**Legal notices**".
 
 ## Website publisher
 
-The Site is published and managed by Aureldev, based in France, whose email address is <contact@aureldev.com>
+The Site is published and managed by Aureldev, based in France, whose email address is <contact@codekorico.com>
 
 hereinafter referred to as the "**Publisher**".
+The Site is a subsidiary of the cooperative production corporation POLLEN SCOP, whose address is 555 CHEMIN DES TRAVERSES, 07200 LACHAPELLE-SOUS-AUBENAS, with a SIRET number of 439 076 563 00147.
+More informations on [French Business Directory](https://annuaire-entreprises.data.gouv.fr/entreprise/pollen-scop-439076563).
 
 ## Hoster
 
@@ -34,7 +36,7 @@ The Site ensures that the User's personal data is collected and processed in acc
 
 Under the applicable regulations on the protection of personal data, Users have the right to access, rectify, delete and object to the use of their personal data. Users may exercise this right:
 
-- by emailing <contact@aureldev.com>
+- by emailing <contact@codekorico.com>
 - using the contact form available in the left-hand menu (aside), by clicking on the "Send a message" button.
 
 Any use, reproduction, distribution, commercialisation or modification of all or part of the Site without the express written authorisation of the Publisher is prohibited and may result in legal action and prosecution as provided for by the regulations in force.

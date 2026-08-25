@@ -8,10 +8,7 @@ const { t } = useI18n(),
 
 const grayscale = computed(() => accessibilityStore.grayscale);
 
-const src = computed(() => colorMode.value == 'system'
-    ? `/images/logo/logo_dark_no_bg_1500x500.png`
-    : `/images/logo/logo_${colorMode.value}_no_bg_1500x500.png`
-);
+// const src = computed(() => `/images/logo/logo_${colorMode.value == 'system' ? 'light' : colorMode.value}_no_bg_1500x500.png`);
 </script>
 
 <template>
@@ -25,14 +22,21 @@ const src = computed(() => colorMode.value == 'system'
 
         <template #left>
             <UContainer class="hidden md:flex">
-                <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
-                    <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
-                        {{ t('header.span_title') }}
-                    </span>
-                    <NuxtImg id="header-title-img" :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : src"
-                        alt="" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" loading="lazy" />
-                </NuxtLink>
+                <ClientOnly>
+                    <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
+                        <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
+                            {{ t('header.span_title') }}
+                        </span>
+                        <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
+                            alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                            :class="grayscale ? 'grayscale-100' : ''"
+                            class="dark:hidden" loading="lazy" />
+                        <NuxtImg id="header-title-img-dark" :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
+                            alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                            :class="grayscale ? 'grayscale-100' : ''"
+                            class="hidden dark:block" loading="lazy" />
+                    </NuxtLink>
+                </ClientOnly>
             </UContainer>
         </template>
 

@@ -2,10 +2,10 @@
 title: Mentions légales
 description: Mentions légales obligatoires pour la confiance en l'économie numérique
 created_at: 2026-03-07
-updated_at: 2026-03-07
+updated_at: 2026-25-08
 ---
 
-Conformément aux dispositions de la loi n°2004-575 du 21 juin 2004 pour la Confiance en l'économie numérique, il est porté à la connaissance des utilisateurs et visiteurs, ci-après l'"**Utilisateur**", du site aureldev.com, ci-après le "**Site**", les présentes mentions légales.
+Conformément aux dispositions de la loi n°2004-575 du 21 juin 2004 pour la Confiance en l'économie numérique, il est porté à la connaissance des utilisateurs et visiteurs, ci-après l'"**Utilisateur**", du site codekorico.com, ci-après le "**Site**", les présentes mentions légales.
 
 La connexion et la navigation sur le Site par l'Utilisateur implique acceptation intégrale et sans réserve des présentes mentions légales.
 
@@ -13,9 +13,12 @@ Ces dernières sont accessibles sur le Site à la rubrique "**Mentions légales*
 
 ## Edition du Site
 
-L'édition et la direction de la publication du Site sont assurées par Aureldev, domicilié en France, dont l'adresse e-mail est <contact@aureldev.com>.
+L'édition et la direction de la publication du Site sont assurées par Aureldev, domicilié en France, dont l'adresse e-mail est <contact@codekorico.com>.
 
 ci-après l'"**Editeur**".
+
+Le Site est une entreprise dépendante de la SA coopérative de production POLLEN SCOP, dont l'adresse postale est 555 CHEMIN DES TRAVERSES 07200 LACHAPELLE-SOUS-AUBENAS, dont le SIRET est le 439 076 563 00147.
+Plus d'informations sur [l'Annuaire des Entreprises](https://annuaire-entreprises.data.gouv.fr/entreprise/pollen-scop-439076563).
 
 ## Hébergeur
 
@@ -34,7 +37,7 @@ Le Site assure à l'Utilisateur une collecte et un traitement des données perso
 
 En vertu de la Règlementation applicable en matière de protection des Données à caractère personnel, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur peut exercer ce droit :
 
-- par mail à l'adresse email <contact@aureldev.com>
+- par mail à l'adresse email <contact@codekorico.com>
 - depuis le formulaire de contact disponible dans le menu de gauche (aside), en cliquant sur le bouton "Envoyer un message"
 
 Toute utilisation, reproduction, diffusion, commercialisation, modification de toute ou partie du Site, sans autorisation expresse et écrite de l'Editeur est prohibée et pourra entraîner des actions et poursuites judiciaires telles que prévues par la règlementation en vigueur.

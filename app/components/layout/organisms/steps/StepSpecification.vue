@@ -41,6 +41,7 @@ const options = computed(() => {
                 { value: "audit-seo", label: t('sendmessagemodal.subtypes.audit.seo') },
                 { value: "audit-securite", label: t('sendmessagemodal.subtypes.audit.securite') },
                 { value: "audit-all", label: t('sendmessagemodal.subtypes.audit.all') },
+                { value: "audit-flash", label: t('sendmessagemodal.subtypes.audit.flash_audit') },
             ]
         case "maintenance":
             return [

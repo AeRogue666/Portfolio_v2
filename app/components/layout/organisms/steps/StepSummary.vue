@@ -28,6 +28,7 @@ const colorSubType = [
     { value: "audit-accessibilite", color: "info" },
     { value: "audit-seo", color: "info" },
     { value: "audit-securite", color: "info" },
+    { value: "audit-flash", color: "info" },
     { value: "ordinateur", color: "info" },
     { value: "internet", color: "info" },
     { value: "email", color: "info" },
@@ -87,7 +88,7 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
                 </p>
             </div>
 
-            <div class="flex flex-col items-baseline gap-4">
+            <div v-if="leadStore.data.businessGoals || leadStore.data.problems" class="flex flex-col items-baseline gap-4">
                 <p v-if="leadStore.data.businessGoals" class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Objectifs :</strong>
                     {{ leadStore.data.businessGoals }}
@@ -96,6 +97,13 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
                 <p v-if="leadStore.data.problems" class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Problèmes :</strong>
                     {{ leadStore.data.problems }}
+                </p>
+            </div>
+
+            <div v-if="leadStore.data.contact.website" class="flex flex-col items-baseline gap-4">
+                <p class="font-semibold tracking-widest uppercase fs-small">
+                    <strong class="uppercase mr-6">SITE INTERNET :</strong>
+                    {{ leadStore.data.contact.website }}
                 </p>
             </div>
         </UCard>

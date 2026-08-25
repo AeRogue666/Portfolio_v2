@@ -105,8 +105,8 @@ export default defineEventHandler(async (event) => {
       : `New message - Website Contact`;
 
   const emailFrom = "Resend <onboarding@resend.dev>"; // verified domain
-  const emailTo = ["contact@aureldev.com"];
-  const emailBCC = ["contact@codekorico.com"]; // CCI / Copie conforme invisible / Blind carbon copy
+  const emailTo = ["contact@codekorico.com"];
+  const emailBCC = ["contact@aureldev.com"]; // CCI / Copie conforme invisible / Blind carbon copy
 
   if (isQualified && data.type === "qualified") {
     await resend.emails.send({

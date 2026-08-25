@@ -25,6 +25,19 @@
       "textarea_label": "Message",
       "textarea_placeholder": "Describe your need, your context or your question. I will directly answer by mail.",
       "submit_button": "Submit",
+      "step-complexity": {
+        "business-goals-label": "Quels sont les objectifs principaux du projet ?",
+        "business-goals-placeholder": "Décrivez en {maxlength} caractères maximum les objectifs principaux du projet.",
+        "problems-label": "Rencontrez-vous des problèmes actuellement ?",
+        "problems-placeholder": "Décrivez en {maxlength} caractères maximum les problèmes rencontrés.",
+        "client_website": "Adresse de votre site internet"
+      },
+      "step-summary": {
+        "email_label": "Email",
+        "email_placeholder": "Votre email",
+        "textarea_label": "Informations complémentaires (optionnel)",
+        "textarea_placeholder": "Decrivez vos besoins et toutes informations complémentaires."
+      },
       "state": {
         "loading": "Sending...",
         "success": "Message sent",
@@ -365,8 +378,9 @@
       "audit": {
         "accessibilite": "Accessibility Audit / Compliance WCAG",
         "seo": "Performance & SEO Audit",
-        "securite": "Audit Sécurité",
-        "all": "Audit complet"
+        "securite": "Security Audit",
+        "all": "Full Audit",
+        "flash_audit": "Flash Audit"
       },
       "formation": {
         "ordinateur": "Utilisation ordinateur",

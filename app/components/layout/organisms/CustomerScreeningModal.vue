@@ -9,6 +9,8 @@ const props = defineProps<{
     ctaLabel?: string;
     ctaClass?: string;
     ctaIcon?: string;
+    projectType?: string;
+    subType?: string;
 }>();
 
 const { t } = useI18n(),
@@ -77,6 +79,15 @@ async function handleSubmit() {
     leadStore.reset();
 };
 
+function handleCtaClick() {
+    if (props.projectType && props.subType) {
+        leadStore.setInitialProject(props.projectType, props.subType)
+        leadStore.step = 3
+    }
+
+    isOpen.value = true
+}
+
 const grayscale = computed({
     get: () => accessibilityStore.grayscale,
     set: () => accessibilityStore.toggleGrayscale(),
@@ -118,7 +129,7 @@ onMounted(() => {
         <template #default>
             <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" color="neutral"
                 variant="solid" size="xl" :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'"
-                :icon="props.ctaIcon || 'fa7-solid:message'" :label="props.ctaLabel || 'Démarrer votre projet'" />
+                :icon="props.ctaIcon || 'fa7-solid:message'" :label="props.ctaLabel || 'Démarrer votre projet'" @click="handleCtaClick" />
         </template>
 
         <template #body>

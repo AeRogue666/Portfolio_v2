@@ -295,9 +295,24 @@ useSeoMeta(({
         <!-- Landing section -->
         <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="fillColors?.[0]">
             <template #tag>
-                <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
+                <ClientOnly>
+                    <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
+                        <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
+                            {{ t('header.span_title') }}
+                        </span>
+                        <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_k_light.png'"
+                            alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                            :class="grayscale ? 'grayscale-100' : ''"
+                            class="dark:hidden" loading="lazy" />
+                        <NuxtImg id="header-title-img-dark" :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
+                            alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                            :class="grayscale ? 'grayscale-100' : ''"
+                            class="hidden dark:block" loading="lazy" />
+                    </NuxtLink>
+                </ClientOnly>
+                <!-- <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
                     {{ t('index.user_title') }}
-                </span>
+                </span> -->
             </template>
 
             <template #title>
@@ -320,7 +335,7 @@ useSeoMeta(({
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')"
                 :cta-icon="'fa7-solid:chart-simple'"
-                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" :project-type="'audit'" :sub-type="'flash_audit'" />
         </LandingSection>
 
         <!-- CTA section -->

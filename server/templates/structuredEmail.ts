@@ -94,6 +94,11 @@ export function qualifiedContactTemplate(data: {
         ${data.email}
         </p>
 
+        <p>
+        <strong>Site internet:</strong>
+        ${data.website}
+        </p>
+
         ${
           data.message
             ? `<h3>Message additionnel:</h3><p>${data.message}</p>`

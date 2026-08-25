@@ -12,7 +12,8 @@ const grayscale = computed({
 const pageOptions = ['1-3', '4-10', '10+'],
     featureOptions = ['Paiement en ligne', 'Espace client', 'Blog', 'Multilingue', 'Automatisation', 'API externe'],
     structuralTypes = ["creation", "refonte", "audit"],
-    featuresTypes = ["creation", "refonte"];
+    featuresTypes = ["creation", "refonte"],
+    flashAuditType = ["audit-flash"];
 
 function toggleFeature(feature: any) {
     console.log(feature, typeof feature);
@@ -45,7 +46,7 @@ function togglePage(page: string) {
 
 <template>
     <div class="space-y-6">
-        <UContainer v-if="structuralTypes.includes(leadStore.data.projectType)">
+        <UContainer v-if="structuralTypes.includes(leadStore.data.projectType) && !flashAuditType.includes(leadStore.data.subType)">
             <h3 class="fs-subtitle mb-3">
                 Structure du projet
             </h3>
@@ -69,6 +70,29 @@ function togglePage(page: string) {
             </div>
         </UContainer>
 
+        <UContainer v-else>
+            <h3 class="fs-subtitle mb-3">
+                Informations
+            </h3>
+
+            <div class="flex flex-col gap-4">
+                <UFormField :label="t('sidebar-left.modal-message.step-complexity.client_website')" name="website"
+                orientation="vertical"
+                    :ui="{
+                        labelWrapper: 'justify-start',
+                        label: 'text-(--text-2) fs-body',
+                        hint: 'fs-small'
+                    }" required>
+                    <UInput v-model="leadStore.data.contact.website" type="website" autocomplete="off" :ui="{
+                        base: 'bg-(--bg-2) fs-body',
+                        content: 'bg-(--bg-2)',
+                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body',
+                    }" />
+                </UFormField>
+            </div>
+        </UContainer>
+
         <UContainer v-if="featuresTypes.includes(leadStore.data.projectType)">
             <h3 class="fs-subtitle mb-3">
                 Fonctionnalités envisagées
@@ -85,7 +109,7 @@ function togglePage(page: string) {
             </div>
         </UContainer>
 
-        <UContainer>
+        <UContainer v-if="!flashAuditType.includes(leadStore.data.subType)">
             <h3 class="fs-subtitle mb-3">
                 Objectifs & contexte
             </h3>

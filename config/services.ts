@@ -34,7 +34,7 @@ export const SERVICES = {
 
   audit: {
     label: "types.audit",
-    subTypes: ["subtypes.accessibilite", "subtypes.seo", "subtypes.securite", "subtypes.all"],
+    subTypes: ["subtypes.accessibilite", "subtypes.seo", "subtypes.securite", "subtypes.all", "subtypes.audit-flash"],
   },
 
   formation: {
