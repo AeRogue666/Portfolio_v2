@@ -18,11 +18,17 @@ interface Element {
 }
 
 const { t, locale, locales } = useI18n(),
+    accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode(),
     route = useRoute(),
     { formatISO } = useDate();
 
 useSidebarFocusState();
+
+const grayscale = computed({
+    get: () => accessibilityStore.grayscale,
+    set: () => accessibilityStore.toggleGrayscale(),
+});
 
 // Clients sections
 const clientsAsyncKey = computed(() => `index-clients-${locale.value}`);

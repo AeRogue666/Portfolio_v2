@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CarouselDepartements from './organisms/CarouselDepartements.vue';
+
 defineProps<{
     fill?: string;
 }>();
@@ -18,6 +20,8 @@ defineProps<{
             <slot name="description"></slot>
             <slot></slot>
         </div>
+
+        <carousel-departements />
 
         <!-- B - Vague SVG de séparation avec la section suivante -->
         <svg class="block w-full h-18 absolute -bottom-px left-0 right-0 z-2" view-box="0 0 1846 320"
