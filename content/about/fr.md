@@ -70,4 +70,4 @@ Si votre équipe valorise la clarté, la performance, la durabilité et les exp�
 Vous pouvez :
 
 - Me contacter via le bouton "Envoyer un message" dans le menu de gauche.
-- M'envoyer un mail à <contact@aureldev.com> ou à <contact@codekorico.com>
+- M'envoyer un mail à <contact@codekorico.com>

@@ -8,35 +8,34 @@ locale: en
 packages:
   - title: Forfaits mensuels de maintenance préventive
     children:
-      - title: Site One-Page
-        price: 30€/mois
+      - title: Site Page Unique / Portfolio basique
+        price: 35€/mois
         features:
-          - Mises à jours du site
-          - Plugins sécurisés
+          - Mises à jours de sécurité
           - Sauvegardes automatiques
-          - Monitoring 24/7
+          - Surveillance du site
           - Suivi des performances de base
           - Rapport mensuel simplifié
       - title: Site Vitrine
         price: 50€/mois
         features:
           - Mises à jours avec vérification après déploiement
-          - Sauvegardes automatiques externalisées
-          - Monitoring 24/7 + sécurité renforcée
+          - Sauvegardes automatiques
+          - Surveillance du site 24/7 + sécurité renforcée
           - Optimisation des performances
           - Rapport technique mensuel détaillé
       - title: Site E-commerce
-        price: 70€/mois
+        price: 80€/mois
         features:
           - Mises à jours testées
-          - Sauvegardes automatiques externalisées quotidiennes (priorisation des données critiques)
-          - Monitoring avancé
+          - Sauvegardes automatiques quotidiennes (priorisation des données critiques)
+          - Surveillance avancée
           - Optimisation des performances
-          - Rapport technique mpensuel détaillé
+          - Rapport technique mensuel détaillé
   - title: Forfaits horaires d'interventions ponctuelles
     children:
       - title: Intervention ponctuelle
-        price: 50€/heure
+        price: 65€/heure
         features:
           - Idéal pour corriger un bug ou faire évoluer votre site rapidement
           - Devis clair et validé en amont

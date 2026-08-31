@@ -138,7 +138,7 @@ h5 {
 Links - styles accessibles
 ============ */
 
-a {
+/* a {
   color: var(--accent);
   text-decoration: none;
   transition: color 0.2s ease, text-decoration 0.2s ease;
@@ -161,13 +161,13 @@ a:not(:has(#carousel-)) {
 
 a:not(:has(#carousel-)):hover {
   color: var(--focus);
-}
+} */
 
 /* ============
 Buttons - bordures subtiles
 ============ */
 
-button {
+/* button {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   transition: all 0.2s ease;
@@ -180,7 +180,7 @@ button:hover:not(:disabled) {
 
 button:active:not(:disabled) {
   transform: translateY(1px);
-}
+} */
 
 /* Strong/Bold */
 b,

@@ -7,6 +7,8 @@ import ProcessContainer from '../components/index/organisms/ProcessContainer.vue
 import ServicesContainer from '../components/index/organisms/ServicesContainer.vue';
 import QuestionContainer from '../components/index/organisms/QuestionContainer.vue';
 import CustomerScreeningModal from '../components/layout/organisms/CustomerScreeningModal.vue';
+import SelfieDoodle from '../components/doodles/SelfieDoodle.vue';
+import SprintingDoodle from '../components/doodles/SprintingDoodle.vue';
 
 interface Element {
     title: string,
@@ -301,24 +303,15 @@ useSeoMeta(({
         <!-- Landing section -->
         <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="fillColors?.[0]">
             <template #tag>
-                <ClientOnly>
-                    <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
-                        <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
-                            {{ t('header.span_title') }}
-                        </span>
-                        <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_k_light.png'"
-                            alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                            :class="grayscale ? 'grayscale-100' : ''"
-                            class="dark:hidden" loading="lazy" />
-                        <NuxtImg id="header-title-img-dark" :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
-                            alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                            :class="grayscale ? 'grayscale-100' : ''"
-                            class="hidden dark:block" loading="lazy" />
-                    </NuxtLink>
-                </ClientOnly>
-                <!-- <span class="font-semibold lg:text-center text-(--text-2) fs-small tracking-widest uppercase">
-                    {{ t('index.user_title') }}
-                </span> -->
+                <div>
+                    <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="CodeKorico Logo"
+                        width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" loading="lazy" />
+                    <NuxtImg id="header-title-img-dark"
+                        :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
+                        alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" loading="lazy" />
+                </div>
             </template>
 
             <template #title>
@@ -337,11 +330,12 @@ useSeoMeta(({
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')"
                 :cta-icon="'fa7-solid:comment-dots'"
-                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md'" />
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')"
                 :cta-icon="'fa7-solid:chart-simple'"
-                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" :project-type="'audit'" :sub-type="'flash_audit'" />
+                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'"
+                :project-type="'audit'" :sub-type="'flash_audit'" />
         </LandingSection>
 
         <!-- CTA section -->
@@ -370,9 +364,12 @@ useSeoMeta(({
             <p class="font-normal lg:text-center w-full text-(--text-2) my-6 sm:px-16 xl:px-48 fs-lead">
                 {{ t('index.problem_section.solution') }}
             </p>
+
+            <SelfieDoodle class="w-1/2" :bg-color="'var(--bg-3)'" :fill-color="'var(--accent)'"
+                :stroke-color="'var(--text)'" />
         </IndexSection>
 
-        <!-- Plan section (Offres) -->
+        <!-- Plan section (Prestations) -->
         <IndexSection id="services-section" :class="bgColors?.[1]" :fill="fillColors?.[2]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
@@ -401,7 +398,7 @@ useSeoMeta(({
             </p>
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
                 :cta-icon="'fa7-solid:message'"
-                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--bg)/10 hover:text-(--text) hover:border-(--border-subtle) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
         </IndexSection>
 
         <!-- Expertise section (Process) -->
@@ -474,10 +471,13 @@ useSeoMeta(({
             </template>
 
             <ClientCarousel v-if="clientsCarouselItems.length !== 0" :client="clientsCarouselItems" />
-            <div v-else class="flex justify-center items-center w-full my-10">
-                <span class="text-base font-semibold lg:text-center text-(--text) mb-3 fs-body">
-                    {{ t('index.client_section.be_the_first') }}
-                </span>
+            <div v-else class="flex flex-col justify-center items-center w-full gap-6">
+                <CustomerScreeningModal :cta-label="t('index.client_section.be_the_first')"
+                    :cta-icon="'fa7-solid:heart'"
+                    :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--text) border border-(--accent)/40 text-(--bg) font-medium transition-colors hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-subtitle'" />
+
+                <SprintingDoodle class="w-1/2" :bg-color="`var(--card-about-bg)`" :fill-color="'var(--brand-color)'"
+                    :stroke-color="'var(--text-2)'" />
             </div>
         </IndexSection>
 
@@ -504,11 +504,11 @@ useSeoMeta(({
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')"
                 :cta-icon="'fa7-solid:comment-dots'"
-                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md'" />
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
                 :cta-icon="'fa7-solid:message'"
-                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'" />
         </IndexSection>
     </UContainer>
 </template>

@@ -8,10 +8,18 @@ locale: en
 packages:
   - title: Forfaits uniques d'optimisation de site
     children:
-      - title: Optimisation ciblée (SEO + Performance ou Accessibilité ou Sécurité)
-        price: 200€
+      - title: Optimisation ciblée
+        description: Au choix -> SEO ou Performance ou Accessibilité ou Sécurité
+        price: 400€
+        features:
+          - Passage au vert sur PageSpeed Insights OU 
+          - Résolution des erreurs d'accessibilité majeures (WAVE & Lighthouse) OU
+          - Durcissement de la sécurité et paramétrage des en-têtes serveurs
       - title: Optimisation complète
-        price: 600€
+        description: SEO + Performance + Accessibilité + Sécurité
+        price: 700€
+        features:
+          - Check-up de santé complet du site pour remettre aux normes du web moderne
 previewUrl: /services/optimisation-site
 slug: optimisation-site
 tag: Optimisation

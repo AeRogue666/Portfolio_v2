@@ -9,11 +9,27 @@ packages:
   - title: Forfaits uniques de refonte de site
     children:
       - title: Refonte légère
-        price: 300€
+        description: Ajustements UX/UI & Performance
+        price: 400€
+        features:
+          - Optimisation globale du code existant
+          - Correction de bugs bloquants
+          - Amélioration des contrastes
+          - Amélioration de l'accessibilité de premier niveau (A)
       - title: Refonte complète
-        price: Sur devis
+        description: Changement de stack & Design
+        price: 1200€
+        features:
+          - Transition complète vers une architecture moderne
+          - Nettoyage du code obsolète
+          - Refonte visuelle et structurelle accessible
+          - Amélioration de l'accessibilité de second niveau (AA)
       - title: Refonte e-commerce
         price: Sur devis
+        features:
+          - Audit obligatoire des structures de données
+          - Plan de redirection SEO
+          - Processus lourd de migration sécurisée du catalogue/clients
 previewUrl: /services/refonte-site
 slug: refonte-site
 tag: Website

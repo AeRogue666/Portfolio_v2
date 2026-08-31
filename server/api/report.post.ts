@@ -35,7 +35,7 @@ export default defineEventHandler(async (event) => {
 
   await resend.emails.send({
     from: "Report <onboarding@resend.dev>",
-    to: ["contact@aureldev.com"],
+    to: ["contact@codekorico.com"],
     subject: `[Report] ${body.issue.toUpperCase()}`,
     text: `
         Issue: ${body.issue}

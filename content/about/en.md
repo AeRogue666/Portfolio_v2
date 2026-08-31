@@ -68,4 +68,4 @@ If your team values clarity, performance, durability and inclusive digital exper
 You can :
 
 - Contact me via the "Send a message" button in the left menu.
-- Send me an email on <contact@aureldev.com> or on <contact@codekorico.com>
+- Send me an email on <contact@codekorico.com>

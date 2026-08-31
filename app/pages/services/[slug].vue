@@ -71,12 +71,12 @@ useHeadSafe(() => ({
     link: [
         {
             rel: 'canonical',
-            href: `https://aureldev.com${route.path}`
+            href: `https://codekorico.com${route.path}`
         },
         ...locales.value.map((l: { code: string }) => ({
             rel: 'alternate',
             hreflang: l.code,
-            href: `https://aureldev.com${route.path}`
+            href: `https://codekorico.com${route.path}`
         }))
     ]
 }));

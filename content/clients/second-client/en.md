@@ -23,7 +23,7 @@ image:
       desktop: /images/client/first-client/desktop.png
       tablet: /images/client/first-client/mobile.png
 links:
-    website: https://aureldev.com
+    website: https://codekorico.com
 locale: en
 previewUrl: /clients/second-client
 slug: second-client

@@ -127,8 +127,7 @@ onMounted(() => {
             description: 'text-(--text-muted)'
         }">
         <template #default>
-            <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" color="neutral"
-                variant="solid" size="xl" :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'"
+            <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" size="xl" :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'"
                 :icon="props.ctaIcon || 'fa7-solid:message'" :label="props.ctaLabel || 'Démarrer votre projet'" @click="handleCtaClick" />
         </template>
 

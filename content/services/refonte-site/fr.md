@@ -9,11 +9,27 @@ packages:
   - title: Forfaits uniques de refonte de site
     children:
       - title: Refonte légère
-        price: 300€
+        description: Ajustements UX/UI & Performance
+        price: 400€
+        features:
+          - Optimisation globale du code existant
+          - Correction de bugs bloquants
+          - Amélioration des contrastes
+          - Amélioration de l'accessibilité de premier niveau (A)
       - title: Refonte complète
-        price: Sur devis
+        description: Changement de stack & Design
+        price: 1200€
+        features:
+          - Transition complète vers une architecture moderne
+          - Nettoyage du code obsolète
+          - Refonte visuelle et structurelle accessible
+          - Amélioration de l'accessibilité de second niveau (AA)
       - title: Refonte e-commerce
         price: Sur devis
+        features:
+          - Audit obligatoire des structures de données
+          - Plan de redirection SEO
+          - Processus lourd de migration sécurisée du catalogue/clients
 previewUrl: /services/refonte-site
 slug: refonte-site
 tag: Website
@@ -40,6 +56,9 @@ highlighted: false
 ## Solution
 
 N'attendez plus, une modernisation du site est nécessaire afin d'améliorer son image, son efficacité et son expérience utilisateur.
+
+::image-slider{imageBefore="/images/project/plateforme-gestion-recettes/desktop.png" altBefore="Capture de l'ancienne version obsolète du site, texte illisible et non-responsive." imageAfter="/images/project/portfolio-v2/desktop.png" altAfter="Capture de la refonte optimisée par CodeKorico, contrastes validés et design moderne."}
+::
 
 ---
 

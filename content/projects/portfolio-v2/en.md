@@ -18,7 +18,7 @@ image:
 kind: project
 links:
   github: https://github.com/AeRogue666/Portfolio_v2
-  demo: https://www.aureldev.com
+  demo: https://www.codekorico.com
 locale: en
 pinned: false
 previewUrl: /projects/portfolio-v2/
