@@ -335,7 +335,7 @@ useSeoMeta(({
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')"
                 :cta-icon="'fa7-solid:chart-simple'"
                 :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'"
-                :project-type="'audit'" :sub-type="'flash_audit'" />
+                :project-type="'audit'" :sub-type="'audit-flash'" />
         </LandingSection>
 
         <!-- CTA section -->

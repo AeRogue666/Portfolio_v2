@@ -75,7 +75,7 @@ function togglePage(page: string) {
                 Informations
             </h3>
 
-            <div class="flex flex-col gap-4">
+            <div v-if="leadStore.data.projectType !== 'formation'" class="flex flex-col gap-4">
                 <UFormField :label="t('sidebar-left.modal-message.step-complexity.client_website')" name="website"
                 orientation="vertical"
                     :ui="{

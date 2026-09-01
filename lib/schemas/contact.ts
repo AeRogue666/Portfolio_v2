@@ -5,7 +5,8 @@ const BaseContactSchema = z.object({
     .email("Invalid email")
     .min(1, "Email is required")
     .max(200, "Email too long"),
-  website: z.string().optional(), // honeypot
+  website_bot: z.string().optional(), // honeypot
+  website: z.string().optional(), // needed for refonte/optimisation/maintenance/audit
 });
 
 const SimpleContactSchema = BaseContactSchema.extend({
@@ -23,8 +24,8 @@ const QualificationSchema = z.object({
       "creation",
       "refonte",
       "optimisation",
-      "audit_a11y",
-      "audit_seo",
+      "maintenance",
+      "audit",
       "formation",
     ])
     .nullable(),
@@ -32,7 +33,7 @@ const QualificationSchema = z.object({
   complexity: z.object({
     pages: z.string().default(""),
     features: z.array(z.string()).optional().default([]),
-    cms: z.string().default(""),
+    cms: z.boolean().default(false),
   }).optional(),
 
   businessGoals: z.string().optional(),

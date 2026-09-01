@@ -1,8 +1,8 @@
 <script setup lang="ts">
 defineProps<{
-    strokeColor: { type: String, default: 'var(--bg-3)'},
-    fillColor: { type: String, default: 'var(--accent)'},
-    bgColor: { type: String, default: 'var(--text)'}
+    strokeColor: String,
+    fillColor: String,
+    bgColor: String
 }>();
 </script>
 

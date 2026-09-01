@@ -1,5 +1,3 @@
-import { calculatePrice } from "@/utils/pricingEngine";
-
 export const useLeadStore = defineStore("lead", {
   state: () => ({
     step: 1,
@@ -9,7 +7,7 @@ export const useLeadStore = defineStore("lead", {
       complexity: {
         pages: "" as string,
         features: [] as string[],
-        cms: "gitbased_cms" as string,
+        cms: false as boolean,
       },
       formation: {
         hours: 0,
@@ -24,6 +22,7 @@ export const useLeadStore = defineStore("lead", {
       budgetRange: "" as string,
       trainingFormat: "" as string,
       deadline: "" as string,
+      publicType: "" as string,
       contact: {
         email: "",
         message: "",
@@ -35,9 +34,9 @@ export const useLeadStore = defineStore("lead", {
   }),
 
   getters: {
-    estimatedPrice(state: { data: any }) {
+    /* estimatedPrice(state: { data: any }) {
       return calculatePrice(state.data);
-    },
+    }, */
   },
 
   actions: {
@@ -55,8 +54,7 @@ export const useLeadStore = defineStore("lead", {
         case 1:
           if (this.data.projectType === "message") return true;
           else if (
-            this.data.projectType === "audit_a11y" ||
-            this.data.projectType === "audit_seo"
+            this.data.projectType === "audit" && this.data.subType !== ""
           ) {
             this.step = 2; // Ce qui envoie sur l'étape 3 (step: 2 + step++ = 3)
             return true;
@@ -71,7 +69,7 @@ export const useLeadStore = defineStore("lead", {
         case 4:
           return (
             (!!this.data.budgetRange ||
-              (!!this.data.personNumber && !!this.data.trainingFormat)) &&
+              (!!this.data.personNumber && !!this.data.trainingFormat && !!this.data.budgetRange && !!this.data.publicType)) &&
             !!this.data.deadline
           );
         case 5:
@@ -86,9 +84,7 @@ export const useLeadStore = defineStore("lead", {
           return false;
         case 3:
           if (
-            this.data.projectType === "audit_a11y" ||
-            this.data.projectType === "audit_seo"
-          )
+            this.data.projectType === "audit")
             this.step = 2; // Ce qui envoie sur l'étape 1 (step: 2 + step-- = 1)
           return true;
         default:
@@ -123,7 +119,7 @@ export const useLeadStore = defineStore("lead", {
         case 3:
           this.data.businessGoals = "";
           this.data.problems = "";
-          this.data.complexity = { pages: "", features: [], cms: "" };
+          this.data.complexity = { pages: "", features: [], cms: false };
           this.persist();
           break;
         case 4:

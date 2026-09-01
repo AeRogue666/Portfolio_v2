@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { QUALIFICATION } from "../../../../../config/qualification";
-
 const { t } = useI18n();
 const leadStore = useLeadStore(),
     accessibilityStore = useAccessibilityStore(),
@@ -48,6 +46,16 @@ const fields = computed(() => {
                         { value: "<1k", label: t('sendmessagemodal.budget.inferieur_a', { value: '1000', suite: 'H.T' }) },
                         { value: "1k+", label: t('sendmessagemodal.budget.superieur_a', { value: '1000', suite: 'H.T' }) }
                     ]
+                },
+                {
+                    key: "deadline",
+                    title: "Pour quand ?",
+                    options: [
+                        { value: "flexible", label: t('sendmessagemodal.deadline.flexible') },
+                        { value: "1-3m", label: t('sendmessagemodal.deadline.compris_entre', { value1: '1', value2: '3', suite: 'mois' }) },
+                        { value: "<1m", label: t('sendmessagemodal.deadline.inferieur_a', { value: '1', suite: 'mois' }) },
+                        { value: "urgent", label: t('sendmessagemodal.deadline.urgent') }
+                    ]
                 }
             ]
         case "maintenance":
@@ -60,6 +68,16 @@ const fields = computed(() => {
                         { value: "<50", label: t('sendmessagemodal.budget.inferieur_a', { value: '50', suite: 'H.T par mois' }) },
                         { value: "<70", label: t('sendmessagemodal.budget.inferieur_a', { value: '70', suite: 'H.T par mois' }) },
                         { value: "50", label: t('sendmessagemodal.budget.intervention_ponctuelle', { value: '50', suite: '€/h H.T' }) },
+                    ]
+                },
+                {
+                    key: "deadline",
+                    title: "Pour quand ?",
+                    options: [
+                        { value: "flexible", label: t('sendmessagemodal.deadline.flexible') },
+                        { value: "1-3m", label: t('sendmessagemodal.deadline.compris_entre', { value1: '1', value2: '3', suite: 'mois' }) },
+                        { value: "<1m", label: t('sendmessagemodal.deadline.inferieur_a', { value: '1', suite: 'mois' }) },
+                        { value: "urgent", label: t('sendmessagemodal.deadline.urgent') }
                     ]
                 }
             ]
@@ -87,7 +105,7 @@ const fields = computed(() => {
                 }
             ]
         case "formation":
-            return [
+            const formationFields = [
                 {
                     key: "personNumber",
                     title: "Nombre de personnes",
@@ -99,14 +117,22 @@ const fields = computed(() => {
                     ]
                 },
                 {
+                    key: "publicType",
+                    title: "Quel type de public ?",
+                    options: [
+                        { value: "business", label: t('sendmessagemodal.publicType.business') },
+                        { value: "individual", label: t('sendmessagemodal.publicType.individual') },
+                    ]
+                },
+                {
                     key: "trainingFormat",
                     title: "Durée souhaitée",
                     options: [
-                        { value: "1h", label: t('sendmessagemodal.format.une_seance') },
-                        { value: "demijournee", label: t('sendmessagemodal.format.demi_journee') },
-                        { value: "1D", label: t('sendmessagemodal.format.journee') },
-                        { value: "mD", label: t('sendmessagemodal.format.plusieurs_journees') },
-                        { value: "idk", label: t('sendmessagemodal.format.ne_sais_pas') }
+                        { value: "1h", label: t('sendmessagemodal.format.1h') },
+                        { value: "demijournee", label: t('sendmessagemodal.format.demijournee') },
+                        { value: "1D", label: t('sendmessagemodal.format.1D') },
+                        { value: "mD", label: t('sendmessagemodal.format.mD') },
+                        { value: "idk", label: t('sendmessagemodal.format.idk') }
                     ]
                 },
                 {
@@ -118,21 +144,53 @@ const fields = computed(() => {
                         { value: "<1m", label: t('sendmessagemodal.deadline.inferieur_a', { value: '1', suite: 'mois' }) },
                         { value: "urgent", label: t('sendmessagemodal.deadline.urgent') }
                     ]
-                }
-            ]
+                },
+            ];
+
+            const currentPublicType = leadStore.data.publicType;
+
+            if (currentPublicType === "business") {
+                formationFields.push({
+                    key: "budgetRange",
+                    title: "Pour quel budget (par personne) ?",
+                    options: [
+                        { value: "<100", label: t('sendmessagemodal.budget.inferieur_a', { value: '100', suite: 'H.T par personne' }) },
+                        { value: "<150", label: t('sendmessagemodal.budget.inferieur_a', { value: '150', suite: 'H.T par personne' }) },
+                        { value: "<200", label: t('sendmessagemodal.budget.inferieur_a', { value: '200', suite: 'H.T par personne' }) },
+                        { value: ">200", label: t('sendmessagemodal.budget.superieur_a', { value: '200', suite: 'H.T par personne' }) },
+                    ]
+                });
+            } else if (currentPublicType === "individual") {
+                formationFields.push({
+                    key: "budgetRange",
+                    title: "Pour quel budget (par personne) ?",
+                    options: [
+                        { value: "<30", label: t('sendmessagemodal.budget.inferieur_a', { value: '30', suite: 'TTC par personne' }) },
+                        { value: "<50", label: t('sendmessagemodal.budget.inferieur_a', { value: '50', suite: 'TTC par personne' }) },
+                        { value: "<100", label: t('sendmessagemodal.budget.inferieur_a', { value: '100', suite: 'TTC par personne' }) },
+                        { value: ">100", label: t('sendmessagemodal.budget.superieur_a', { value: '100', suite: 'TTC par personne' }) },
+                    ]
+                });
+            }
+
+            return formationFields;
         default:
             return [];
     }
 });
 
-function toggleField<K extends 'personNumber' | 'budgetRange' | 'trainingFormat' | 'deadline'>(field: K, value: string) {
+function toggleField<K extends 'personNumber' | 'budgetRange' | 'trainingFormat' | 'deadline' | 'publicType'>(field: K, value: string) {
+    if (field === 'publicType' && leadStore.data.publicType !== value) {
+        leadStore.data.budgetRange = "";
+    }
+
     leadStore.data[field] = leadStore.data[field] === value ? "" : value;
 }
 </script>
 
 <template>
     <div class="space-y-6">
-        <div v-for="field in fields"> <!-- QUALIFICATION[projectType] -->
+        <div v-for="field in fields">
             <h3 class="fs-subtitle mb-3">{{ field.title }}</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 <UButton v-for="option in field.options" :key="option.value" variant="ghost"

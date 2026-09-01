@@ -14,7 +14,7 @@ export interface LeadState {
     complexity: {
       pages: "1-5" | "6-10" | "11-30" | "31+" | "";
       features: string[];
-      cms: string;
+      cms: boolean;
     };
     formation: {
       hours: number;
@@ -29,6 +29,7 @@ export interface LeadState {
     budgetRange: string;
     trainingFormat: string;
     deadline: string;
+    publicType: string;
     contact: {
       email: string;
       message: string;

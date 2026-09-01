@@ -411,20 +411,29 @@
       "superieur_a": "Plus de {value} {suite}",
       "compris_entre": "Entre {value1} et {value2} {suite}",
       "urgent": "C'est urgent",
-      "flexible": "Flexible"
+      "flexible": "Flexible",
+      "1-3m": "1 à 3 mois"
     },
     "format": {
-      "une_seance": "Une séance d'1 heure",
-      "demi_journee": "Une demi-journée",
-      "journee": "Une journée",
-      "plusieurs_journees": "Plusieurs journées",
-      "ne_sais_pas": "Je ne sais pas encore"
+      "1h": "Une séance d'1 heure",
+      "demijournee": "Une demi-journée",
+      "1D": "Une journée",
+      "mD": "Plusieurs journées",
+      "idk": "Je ne sais pas encore"
     },
     "person": {
       "une_personne": "Pour une personne",
       "inferieur_a": "Moins de {value} {suite}",
       "superieur_a": "Plus de {value} {suite}",
-      "compris_entre": "Entre {value1} et {value2} {suite}"
+      "compris_entre": "Entre {value1} et {value2} {suite}",
+      "1p": "1 personne",
+      "2-5p": "Entre 2 et 5 personnes",
+      "6-10p": "Entre 6 et 10 personnes",
+      "10p+": "Plus de 10 personnes"
+    },
+    "publicType": {
+      "business": "Professionnel",
+      "individual": "Particulier"
     }
   },
   "plans": {

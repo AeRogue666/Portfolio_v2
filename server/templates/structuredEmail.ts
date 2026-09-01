@@ -5,15 +5,15 @@ export function qualifiedContactTemplate(data: {
       | "creation"
       | "refonte"
       | "optimisation"
-      | "audit_a11y"
-      | "audit_seo"
+      | "maintenance"
+      | "audit"
       | "formation"
       | null;
     subType?: string | null;
     complexity?: {
       pages: string;
       features: string[];
-      cms: string;
+      cms: boolean;
     };
     budgetRange?: string | null;
     deadline?: string | null;
@@ -24,6 +24,7 @@ export function qualifiedContactTemplate(data: {
   };
   type: "qualified";
   email: string;
+  website_bot?: string | undefined;
   website?: string | undefined;
   message?: string | undefined;
 }) {

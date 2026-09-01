@@ -344,20 +344,20 @@
   },
   "sendmessagemodal": {
     "types": {
-      "message": "Quick request",
-      "creation": "Website creation",
-      "refonte": "Website redesign (Optimization + Redesign)",
-      "optimisation": "Website optimization (SEO, Performance, Accessibility)",
-      "audit": "",
-      "maintenance": "",
-      "formation": "Digital training"
+      "message": "Demande rapide",
+      "creation": "Créer un nouveau site",
+      "refonte": "Redesigner un site (Optimisation + Refonte)",
+      "optimisation": "Améliorer un site existant (Optimisation)",
+      "maintenance": "Demander une maintenance",
+      "audit": "Faire analyser mon site",
+      "formation": "Me former"
     },
     "subtypes": {
       "creation": {
-        "onepage": "Page unique",
+        "onepage": "One page",
         "vitrine": "Site vitrine",
-        "professionnel": "Site professionnel",
-        "ecommerce": "Site e-commerce",
+        "professionnel": "Business site",
+        "ecommerce": "E-commerce",
         "reservation": "Réservation en ligne",
         "custom": "Projet métier spécifique"
       },
@@ -374,12 +374,19 @@
         "securite": "Optimiser la sécurité",
         "optimisation-multi": "Optimiser plusieurs de ses aspects"
       },
-      "maintenance": {},
+      "maintenance": {
+        "onepage": "Page unique / Portfolio basique",
+        "vitrine":"Site vitrine",
+        "professionnel": "Site professionnel",
+        "ecommerce":"Site e-commerce",
+        "custom":"Projet métier spécifique",
+        "ponctuelle": "Intervention ponctuelle"
+      },
       "audit": {
-        "accessibilite": "Accessibility Audit / Compliance WCAG",
-        "seo": "Performance & SEO Audit",
-        "securite": "Security Audit",
-        "all": "Full Audit",
+        "accessibilite": "Audit Accessibilité / Mise en conformité WCAG",
+        "seo": "Audit Performance & SEO",
+        "securite": "Audit Sécurité",
+        "all": "Audit complet",
         "flash_audit": "Flash Audit"
       },
       "formation": {
@@ -390,6 +397,43 @@
         "ia": "Maîtriser l'usage de l'Intelligence Artificielle",
         "custom": "Formation personnalisée"
       }
+    },
+    "budget": {
+      "inferieur_a": "Inférieur à {value}€ {suite}",
+      "superieur_a": "Supérieur à {value}€ {suite}",
+      "compris_entre": "Entre {value1}€ et {value2}€ {suite}",
+      "urgent": "C'est urgent",
+      "flexible": "Flexible",
+      "intervention_ponctuelle": "Intervention ponctuelle ({value}{suite})"
+    },
+    "deadline": {
+      "inferieur_a": "Moins de {value} {suite}",
+      "superieur_a": "Plus de {value} {suite}",
+      "compris_entre": "Entre {value1} et {value2} {suite}",
+      "urgent": "C'est urgent",
+      "flexible": "Flexible",
+      "1-3m": "1 à 3 mois"
+    },
+    "format": {
+      "1h": "Une séance d'1 heure",
+      "demijournee": "Une demi-journée",
+      "1D": "Une journée",
+      "mD": "Plusieurs journées",
+      "idk": "Je ne sais pas encore"
+    },
+    "person": {
+      "une_personne": "Pour une personne",
+      "inferieur_a": "Moins de {value} {suite}",
+      "superieur_a": "Plus de {value} {suite}",
+      "compris_entre": "Entre {value1} et {value2} {suite}",
+      "1p": "1 personne",
+      "2-5p": "Entre 2 et 5 personnes",
+      "6-10p": "Entre 6 et 10 personnes",
+      "10p+": "Plus de 10 personnes"
+    },
+    "publicType": {
+      "business": "Professionnel",
+      "individual": "Particulier"
     }
   },
   "plans": {

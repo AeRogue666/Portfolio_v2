@@ -14,7 +14,11 @@ export interface QualifiedLeadPayload {
   qualification?: {
     projectType: string | null;
     subType: string | null;
-    complexity: Record<string, any>;
+    complexity: {
+      pages: string;
+      features: Array<string>;
+      cms: boolean;
+    };
     businessGoals?: string;
     problems?: string;
     budgetRange?: string | null;

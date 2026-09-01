@@ -13,8 +13,8 @@ const colorProjectType = [
     { value: "creation", color: "primary" },
     { value: "refonte", color: "warning" },
     { value: "optimisation", color: "error" },
-    { value: "audit_a11y", color: "info" },
-    { value: "audit_seo", color: "info" },
+    { value: "maintenance", color: "info" },
+    { value: "audit", color: "info" },
     { value: "formation", color: "info" }
 ];
 const colorSubType = [
@@ -25,9 +25,12 @@ const colorSubType = [
     { value: "accessibilite", color: "info" },
     { value: "seo", color: "info" },
     { value: "securite", color: "info" },
+    { value: "performance", color: "info" },
+    { value: "all", color: "info" },
     { value: "audit-accessibilite", color: "info" },
     { value: "audit-seo", color: "info" },
     { value: "audit-securite", color: "info" },
+    { value: "audit-all", color: "info" },
     { value: "audit-flash", color: "info" },
     { value: "ordinateur", color: "info" },
     { value: "internet", color: "info" },
@@ -37,8 +40,10 @@ const colorSubType = [
     { value: "formation", color: "info" }
 ];
 
-const colorProjectTypeFilter = computed(() => colorProjectType.filter(c => c.value === leadStore.data.projectType).map(r => r.color)[0]);
-const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === leadStore.data.subType).map(r => r.color)[0]);
+const colorProjectTypeFilter = computed(() => colorProjectType.find(c => c.value === leadStore.data.projectType)?.color || 'primary');
+const colorSubTypeFilter = computed(() => colorSubType.find(c => c.value === leadStore.data.subType)?.color || 'info');
+
+const rejectedProjectTypes = ['formation', 'audit'];
 </script>
 
 <template>
@@ -61,7 +66,8 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
                 </p>
             </div>
 
-            <div class="flex flex-col items-baseline gap-4">
+            <div v-if="leadStore.data.budgetRange || leadStore.data.deadline"
+                class="flex flex-col items-baseline gap-4">
                 <p class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Budget :</strong>
                     {{ leadStore.data.budgetRange }}€
@@ -69,26 +75,43 @@ const colorSubTypeFilter = computed(() => colorSubType.filter(c => c.value === l
 
                 <p class="font-semibold tracking-widest uppercase fs-small my-4">
                     <strong class="uppercase mr-6">Délai :</strong>
-                    {{ leadStore.data.deadline }}
+                    {{ t(`sendmessagemodal.deadline.${leadStore.data.deadline}`) }}
                 </p>
             </div>
 
-            <div v-if="leadStore.data.complexity" class="flex flex-col items-baseline gap-4">
+            <div v-if="leadStore.data.complexity && !rejectedProjectTypes.includes(leadStore.data.projectType)"
+                class="flex flex-col items-baseline gap-4">
                 <p v-if="leadStore.data.complexity.pages" class="font-semibold tracking-widest uppercase fs-small">
                     <strong class="uppercase mr-6">Pages :</strong>
                     {{ leadStore.data.complexity.pages }}
                 </p>
-                <p class="font-semibold tracking-widest uppercase fs-small">
+                <p v-if="!leadStore.data.complexity.features" class="font-semibold tracking-widest uppercase fs-small">
                     <strong class="uppercase mr-6">Fonctionnalités :</strong>
                     {{ leadStore.data.complexity.features }}
                 </p>
                 <p class="font-semibold tracking-widest uppercase fs-small">
                     <strong class="uppercase mr-6">CMS :</strong>
-                    {{ leadStore.data.complexity.cms.toString() === "true" ? 'OUI' : 'NON' }}
+                    {{ leadStore.data.complexity.cms === true ? 'OUI' : 'NON' }}
                 </p>
             </div>
 
-            <div v-if="leadStore.data.businessGoals || leadStore.data.problems" class="flex flex-col items-baseline gap-4">
+            <div v-if="leadStore.data.projectType === 'formation'" class="flex flex-col items-baseline gap-4">
+                <p v-if="leadStore.data.personNumber" class="font-semibold tracking-widest uppercase fs-small">
+                    <strong class="uppercase mr-6">Nombre de personnes :</strong>
+                    {{ t(`sendmessagemodal.person.${leadStore.data.personNumber}`) }}
+                </p>
+                <p v-if="leadStore.data.publicType" class="font-semibold tracking-widest uppercase fs-small">
+                    <strong class="uppercase mr-6">Type de public :</strong>
+                    {{ t(`sendmessagemodal.publicType.${leadStore.data.publicType}`) }}
+                </p>
+                <p v-if="leadStore.data.trainingFormat" class="font-semibold tracking-widest uppercase fs-small">
+                    <strong class="uppercase mr-6">Format de formation :</strong>
+                    {{ t(`sendmessagemodal.format.${leadStore.data.trainingFormat}`) }}
+                </p>
+            </div>
+
+            <div v-if="leadStore.data.businessGoals || leadStore.data.problems"
+                class="flex flex-col items-baseline gap-4">
                 <p v-if="leadStore.data.businessGoals" class="font-semibold tracking-widest fs-small my-4">
                     <strong class="uppercase mr-6">Objectifs :</strong>
                     {{ leadStore.data.businessGoals }}

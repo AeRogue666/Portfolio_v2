@@ -24,7 +24,7 @@ export default defineEventHandler(async (event) => {
   }
 
   if (!parsed.success) {
-    console.error(parsed.error);
+    console.error(parsed.error, body);
     logEvent("contact_invalid_payload", { ip });
 
     throw createError({
@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
   await storage.setItem(rateLimitKey, Date.now());
 
   // Honeypot triggered (bot filled hidden field)
-  if (data.website || diff < 5) {
+  if (data.website_bot || diff < 5) {
     logEvent("contact_too_fast", { ip });
 
     return { success: true }; // pretend success silently
@@ -80,19 +80,41 @@ export default defineEventHandler(async (event) => {
     if (data.type === "qualified") {
       const q = data.qualification;
 
+      // Tiers de valeur
       if (q.leadTier === "high") tags.push("Valeur forte");
       if (q.leadTier === "medium") tags.push("Valeur moyenne");
       if (q.leadTier === "low") tags.push("Valeur faible");
+
+      // Types de projets
       if (q.projectType === "creation") tags.push("Nouveau build");
       if (q.projectType === "refonte") tags.push("Redesign");
-      if (q.projectType === "optimisation") tags.push("Optimisation");
-      if (q.projectType === "audit_a11y") tags.push("Audit Accessibilité");
-      if (q.projectType === "audit_seo") tags.push("Audit SEO");
       if (q.projectType === "formation") tags.push("Formation");
-      if (q.subType === "optimisation-multi")
-        tags.push("Optimisation plusieurs aspects");
+
+      // Audits basés sur le subType
+      if (q.projectType === "audit") {
+        if (q.subType?.includes("audit-accessibilite")) tags.push("Audit Accessibilité");
+        if (q.subType?.includes("audit-seo")) tags.push("Audit SEO & Performance");
+        if (q.subType?.includes("audit-securite")) tags.push("Audit Sécurité");
+        if (q.subType?.includes("audit-all")) tags.push("Audit Global");
+        if (q.subType?.includes("audit-flash")) tags.push("Flash Audit");
+      }
+
+      if (q.projectType === "optimisation") {
+        if (q.subType?.includes("accessibilite")) tags.push("Optimisation Accessibilité");
+        if (q.subType?.includes("seo")) tags.push("Optimisation SEO & Performance");
+        if (q.subType?.includes("securite")) tags.push("Optimisation Sécurité");
+        if (q.subType?.includes("all")) tags.push("Optimisation Global");
+      }
+      
+      // Cas spécifiques d'alertes
       if (q.budgetRange === "8k+") tags.push("Premium budget");
-      if (q.deadline === "urgent") tags.push("Urgent");
+
+      // Tag Alerte : petit budget et pressé
+      if ((q.deadline === "urgent" || q.deadline === "1m") && (q.budgetRange === "<1k" || q.budgetRange === "1-3k")) {
+        tags.push("Risque : Urgent & Petit Budget");
+      } else if (q.deadline === "urgent") {
+        tags.push("Urgent");
+      }
     }
     return tags;
   }
