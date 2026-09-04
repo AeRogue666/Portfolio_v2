@@ -7,8 +7,8 @@ useSidebarFocusState();
 </script>
 
 <template>
-    <USlideover side="left" :title="t('sidebar-left.title')" :description="t('sidebar-left.description')" :ui="{
-        content: 'w-screen bg-(--bg)',
+    <USlideover side="left" id="sidebar-left-mobile" :title="t('sidebar-left.title')" :description="t('sidebar-left.description')" class="lg:hidden" :ui="{
+        content: 'w-screen sm:max-w-md h-screen bg-(--bg)',
         body: 'p-0',
     }">
         <IconButton ref="sidebarLeftButtonMobileRef" id="button-sidebarleft-mobile" :variant="'ghost'"
@@ -16,7 +16,9 @@ useSidebarFocusState();
             :class="'size-10'" tabindex="0" />
 
         <template #body>
-            <SidebarLeftContent />
+            <div class="w-full h-full overflow-y-auto">
+                <SidebarLeftContent />
+            </div>
         </template>
     </USlideover>
 </template>

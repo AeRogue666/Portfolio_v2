@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import SearchBarDrawer from './organisms/SearchBarDrawer.vue';
-import SidebarLeft from './SidebarLeft.vue';
+import SidebarLeftMobile from './SidebarLeftMobile.vue';
 import SidebarRight from './SidebarRight.vue';
 
 const { t } = useI18n(),
@@ -18,7 +18,7 @@ const grayscale = computed(() => accessibilityStore.grayscale);
             container: 'max-w-none'
         }">
         <template #toggle>
-            <SidebarLeft />
+            <SidebarLeftMobile />
         </template>
 
         <template #left>

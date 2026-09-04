@@ -3,6 +3,10 @@ import type { NavigationMenuItem } from '@nuxt/ui';
 import IconButton from '../../ui/IconButton.vue';
 import CustomerScreeningModal from './CustomerScreeningModal.vue';
 
+defineProps<{
+    isCollapsed?: boolean
+}>();
+
 const { t } = useI18n(),
     colorMode = useColorMode(),
     avatarSrc = ref('/images/logo/logo_dark_theme.png');
@@ -65,8 +69,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <aside id="sidebar-left" class="block w-full lg:w-auto min-w-60 h-full bg-(--bg) basis-0.5 relative">
-
+    <div id="sidebar-left-content" class="flex flex-col items-center w-full h-full pt-4 gap-4">
         <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4">
             <div class="flex flex-col justify-center items-center">
                 <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
@@ -123,8 +126,7 @@ onMounted(() => {
             }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
 
             <UFooter :ui="{
-                container: 'flex-col p-0 lg:p-0',
-                center: ''
+                container: 'flex-col p-0'
             }">
                 <UNavigationMenu highlight-color="neutral" orientation="horizontal" :items="itemsFooterNavigation" :ui="{
                     list: 'gap-3', // ul
@@ -142,5 +144,7 @@ onMounted(() => {
                 </template>
             </UFooter>
         </UContainer>
-    </aside>
+    </div>
+    <!-- <aside id="sidebar-left" class="block w-full lg:w-auto min-w-60 h-full bg-(--bg) basis-0.5 relative">
+    </aside> -->
 </template>

@@ -235,17 +235,17 @@ Scrollbar personnalisée
   background: var(--accent);
 }
 
-#sidebar-left {
+/* #sidebar-left {
   scrollbar-width: none;
   scrollbar-color: unset;
-  overflow-y: hidden;
-}
+  overflow-y: auto;
+} */
 
-@media (min-width: 64rem) {
+/* @media (min-width: 64rem) {
   aside {
     position: sticky;
     top: 0;
     height: 100vh;
     overflow-y: auto;
   }
-}
+} */
