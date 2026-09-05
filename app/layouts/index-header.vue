@@ -30,19 +30,19 @@ useHead(() => ({
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col bg-(--bg) lg:max-h-screen lg:overflow-hidden">
+    <div class="min-h-screen flex flex-col bg-(--bg)">
         <AppIndexHeader />
 
         <div
-            class="flex flex-col flex-1 lg:flex-row lg:h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto">
-            <SidebarLeftDesktop />
+            class="flex flex-1 lg:overflow-hidden">
+            <SidebarLeftDesktop class="shrink-0" />
             <!-- INDEX CONTAINER -->
-            <div class="flex flex-col flex-1 lg:h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto">
-                <main id="main-content" tabindex="-1" class="flex-1 w-full h-full max-w-auto mx-auto fs-body">
+            <div class="flex flex-col flex-1 w-full overflow-y-auto min-h-0">
+                <main id="main-content" tabindex="-1" class="flex-1 w-full max-w-auto mx-auto fs-body">
                     <NuxtPage />
                 </main>
 
-                <footer class="flex flex-col justify-center items-center w-full h-full">
+                <footer class="flex flex-col justify-center items-center w-full mt-auto py-6 shrink-0">
                     <UNavigationMenu highlight-color="neutral" orientation="horizontal" :items="itemsFooterNavigation"
                         :ui="{
                             list: 'gap-3', // ul

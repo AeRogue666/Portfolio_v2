@@ -72,7 +72,19 @@ onMounted(() => {
     <div id="sidebar-left-content" class="flex flex-col items-center w-full h-full pt-4 gap-4">
         <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4">
             <div class="flex flex-col justify-center items-center">
-                <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
+                <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
+                    <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
+                        {{ t('header.span_title') }}
+                    </span>
+                    <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
+                        alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" loading="lazy" />
+                    <NuxtImg id="header-title-img-dark"
+                        :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
+                        alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" loading="lazy" />
+                </NuxtLink>
+                <!-- <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
                     :description="t('sidebar-left.user_description')" key="user-avatar" :avatar="{
                         src: avatarSrc,
                         icon: 'fa7-solid:user',
@@ -85,7 +97,7 @@ onMounted(() => {
                     }" />
                 <span class="fs-small text-(--text-muted) leading-relaxed max-w-[65ch]">
                     {{ t('sidebar-left.user_tagline') }}
-                </span>
+                </span> -->
             </div>
 
             <span class="fs-body text-(--text-2) leading-relaxed">
@@ -111,9 +123,10 @@ onMounted(() => {
                 </UTooltip>
 
                 <UTooltip :text="t('sidebar-left.open_pollen-scop')">
-                    <IconButton :variant="'ghost'" :color="'neutral'" :to="'https://pollen.coop/entrepreneur/codekorico'"
-                        :target="'_blank'" :size="'size-16'" :icon="'fa7-solid:handshake'" label="Pollen SCOP"
-                        id="button-sidebarleft-pollen-scop" :class="'size-16'" />
+                    <IconButton :variant="'ghost'" :color="'neutral'"
+                        :to="'https://pollen.coop/entrepreneur/codekorico'" :target="'_blank'" :size="'size-16'"
+                        :icon="'fa7-solid:handshake'" label="Pollen SCOP" id="button-sidebarleft-pollen-scop"
+                        :class="'size-16'" />
                 </UTooltip>
             </div>
 

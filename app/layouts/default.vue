@@ -31,14 +31,13 @@ useHead(() => ({
 </script>
 
 <template>
-    <div class="min-h-screen flex flex-col bg-(--bg) lg:max-h-screen lg:overflow-hidden">
+    <div class="min-h-screen flex flex-col bg-(--bg)">
         <AppHeader />
 
-        <div class="min-h-screen">
-            <div
-                class="flex flex-col flex-1 lg:flex-row lg:h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-4rem)] lg:overflow-y-auto">
-                <SidebarLeftDesktop />
-                <!-- FEED CONTAINER -->
+        <div class="flex flex-1 lg:overflow-hidden">
+            <SidebarLeftDesktop class="shrink-0" />
+            <!-- FEED CONTAINER -->
+            <div class="flex flex-col w-full overflow-y-auto min-h-0">
                 <main id="main-content" tabindex="-1" aria-labelledby="feed-title"
                     class="flex-1 w-full h-full max-w-auto mx-auto fs-body">
                     <NuxtPage />
@@ -52,7 +51,8 @@ useHead(() => ({
                             link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
                             linkLeadingIcon: 'text-(--text-muted)',
                             linkLabel: 'text-sm leading-relaxed truncate max-w-[65ch]',
-                        }" class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
+                        }"
+                        class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
 
                     <p class="fs-small text-(--text-3)">
                         Copyright Aureldev - CodeKorico © {{ new Date().getUTCFullYear() }}

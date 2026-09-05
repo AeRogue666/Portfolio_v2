@@ -6,7 +6,7 @@ const isCollapsed = useState('sidebar-collapsed', () => false);
 
 <template>
     <aside v-show="isCollapsed" id="sidebar-left-desktop"
-        class="hidden lg:block w-87 h-auto bg-(--bg) border-r border-(--border-medium) sticky top-0 overflow-x-hidden overflow-y-auto shrink-0 fade-in">
+        class="hidden lg:block w-87 h-auto bg-(--bg) sticky top-0 overflow-x-hidden overflow-y-auto shrink-0 fade-in">
         <SidebarLeftContent :is-collapsed="isCollapsed" class="w-64 shrink-0" />
     </aside>
 </template>

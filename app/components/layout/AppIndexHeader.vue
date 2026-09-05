@@ -14,7 +14,7 @@ const isCollapsed = useState('sidebar-collapsed');
 
 <template>
     <UHeader toggle-side="left"
-        class="flex items-center w-full h-16 bg-(--bg) gap-2 p-4 border-b border-(--border-medium) relative z-50" :ui="{
+        class="flex items-center w-full h-24 bg-(--bg) gap-2 p-4 border-b border-(--border-medium) relative z-50" :ui="{
             container: 'max-w-none mx-6'
         }">
         <template #toggle> 
@@ -28,7 +28,7 @@ const isCollapsed = useState('sidebar-collapsed');
                 :size="'size-10'" :label="t('sidebar-left.open')" class="hidden lg:flex size-10" tabindex="0"
                 @click="isCollapsed = !isCollapsed" />
 
-            <UContainer class="hidden lg:flex">
+            <UContainer class="hidden md:flex">
                 <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
                     <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
                         {{ t('header.span_title') }}
