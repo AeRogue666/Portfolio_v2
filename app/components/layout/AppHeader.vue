@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import IconButton from '../ui/IconButton.vue';
 import SearchBarDrawer from './organisms/SearchBarDrawer.vue';
 import SidebarLeftMobile from './SidebarLeftMobile.vue';
 import SidebarRight from './SidebarRight.vue';
@@ -8,21 +9,25 @@ const { t } = useI18n(),
     colorMode = useColorMode();
 
 const grayscale = computed(() => accessibilityStore.grayscale);
-
+const isCollapsed = useState('sidebar-collapsed');
 // const src = computed(() => `/images/logo/logo_${colorMode.value == 'system' ? 'light' : colorMode.value}_no_bg_1500x500.png`);
 </script>
 
 <template>
     <UHeader toggle-side="left"
-        class="flex items-center w-full h-full bg-(--bg) gap-2 p-4 border-b border-(--border-medium) relative z-50" :ui="{
-            container: 'max-w-none'
+        class="flex items-center w-full h-24 bg-(--bg) gap-2 p-4 border-b border-(--border-medium) relative z-50" :ui="{
+            container: 'max-w-none mx-6'
         }">
         <template #toggle>
             <SidebarLeftMobile />
         </template>
 
         <template #left>
-            <UContainer class="hidden lg:flex">
+            <IconButton id="button-sidebarleft-desktop" :variant="'ghost'" :color="'neutral'" :icon="'fa7-solid:bars'"
+                :size="'size-10'" :label="t('sidebar-left.open')" class="hidden lg:flex size-10" tabindex="0"
+                @click="isCollapsed = !isCollapsed" />
+                
+            <UContainer :class="isCollapsed ? 'hidden' : 'hidden md:flex'">
                 <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
                     <span id="header-title" class="fs-title font-bold lg:text-center text-(--text) mb-3 sr-only">
                         {{ t('header.span_title') }}

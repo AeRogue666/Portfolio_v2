@@ -192,6 +192,11 @@
         }
       }
     },
+    "partner_section": {
+      "tag": "Nos partenaires",
+      "title": "Un écosystème engagé & local",
+      "description": "CodeKorico ne développe pas des sites hors-sol. Je m'inscris activement dans mon territoire et l'économie collaborative."
+    },
     "contact_section": {
       "tag": "Contact",
       "title": "Prêt à en discuter ?",

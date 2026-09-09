@@ -5,11 +5,18 @@ import CustomerScreeningModal from './CustomerScreeningModal.vue';
 
 defineProps<{
     isCollapsed?: boolean
+    isPageFeed?: boolean
 }>();
 
 const { t } = useI18n(),
     colorMode = useColorMode(),
+    accessibilityStore = useAccessibilityStore(),
     avatarSrc = ref('/images/logo/logo_dark_theme.png');
+
+const grayscale = computed({
+    get: () => accessibilityStore.grayscale,
+    set: () => accessibilityStore.toggleGrayscale(),
+});
 
 const itemsNavigation = computed<NavigationMenuItem[]>(() => [
     {
@@ -55,6 +62,11 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
             icon: "fa7-solid:file-contract",
             to: "/terms",
         },
+        {
+            label: t('sidebar-left.navigation.accessibility_statement'),
+            icon: "fa7-brands:accessible-icon",
+            to: "/accessibility",
+        },
     ]);
 
 onMounted(() => {
@@ -66,25 +78,8 @@ onMounted(() => {
         { immediate: true }
     );
 });
-</script>
 
-<template>
-    <div id="sidebar-left-content" class="flex flex-col items-center w-full h-full pt-4 gap-4">
-        <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4">
-            <div class="flex flex-col justify-center items-center">
-                <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
-                    <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
-                        {{ t('header.span_title') }}
-                    </span>
-                    <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
-                        alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" loading="lazy" />
-                    <NuxtImg id="header-title-img-dark"
-                        :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
-                        alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" loading="lazy" />
-                </NuxtLink>
-                <!-- <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
+/* <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
                     :description="t('sidebar-left.user_description')" key="user-avatar" :avatar="{
                         src: avatarSrc,
                         icon: 'fa7-solid:user',
@@ -97,7 +92,25 @@ onMounted(() => {
                     }" />
                 <span class="fs-small text-(--text-muted) leading-relaxed max-w-[65ch]">
                     {{ t('sidebar-left.user_tagline') }}
-                </span> -->
+                </span> */
+</script>
+
+<template>
+    <div id="sidebar-left-content" class="flex flex-col items-center w-full h-full pt-4 gap-4">
+        <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4">
+            <div class="flex flex-col justify-center items-center">
+                <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
+                    <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
+                        {{ t('header.span_title') }}
+                    </span>
+                    <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
+                        alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" loading="lazy" />
+                    <NuxtImg id="header-title-img-dark"
+                        :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
+                        alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" loading="lazy" />
+                </NuxtLink>
             </div>
 
             <span class="fs-body text-(--text-2) leading-relaxed">
@@ -138,26 +151,20 @@ onMounted(() => {
                 linkLabel: 'text-base leading-relaxed truncate max-w-[65ch] fs-body',
             }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
 
-            <UFooter :ui="{
-                container: 'flex-col p-0'
-            }">
-                <UNavigationMenu highlight-color="neutral" orientation="horizontal" :items="itemsFooterNavigation" :ui="{
-                    list: 'gap-3', // ul
-                    item: '', // li
-                    link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
-                    linkLeadingIcon: 'text-(--text-muted)',
-                    linkLabel: 'text-sm leading-relaxed truncate max-w-[65ch]',
-                }"
-                    class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
+            <footer class="flex flex-col justify-center items-center w-full mt-auto py-6 shrink-0">
+                    <UNavigationMenu highlight-color="neutral" orientation="horizontal" :items="itemsFooterNavigation"
+                        :ui="{
+                            list: 'gap-3 flex-col xl:flex-row', // ul
+                            item: '', // li
+                            link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
+                            linkLeadingIcon: 'text-(--text-muted)',
+                            linkLabel: 'text-sm leading-relaxed truncate max-w-[65ch]',
+                        }" class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
 
-                <template #right>
                     <p class="fs-small text-(--text-3)">
                         Copyright Aureldev - CodeKorico © {{ new Date().getUTCFullYear() }}
                     </p>
-                </template>
-            </UFooter>
+                </footer>
         </UContainer>
     </div>
-    <!-- <aside id="sidebar-left" class="block w-full lg:w-auto min-w-60 h-full bg-(--bg) basis-0.5 relative">
-    </aside> -->
 </template>

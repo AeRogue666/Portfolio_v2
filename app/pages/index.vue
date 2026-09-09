@@ -9,6 +9,7 @@ import QuestionContainer from '../components/index/organisms/QuestionContainer.v
 import CustomerScreeningModal from '../components/layout/organisms/CustomerScreeningModal.vue';
 import SelfieDoodle from '../components/doodles/SelfieDoodle.vue';
 import SprintingDoodle from '../components/doodles/SprintingDoodle.vue';
+import PartnerBentoGrid from '../components/index/organisms/PartnerBentoGrid.vue';
 
 interface Element {
     title: string,
@@ -449,16 +450,40 @@ useSeoMeta(({
             <ProcessContainer :elements="differenciationElements" />
         </IndexSection>
 
-        <!-- Clients section -->
-        <IndexSection id="client-section" :class="bgColors?.[4]" :fill="fillColors?.[5]">
+        <!-- Partenaires section -->
+        <IndexSection id="partner-section" :class="bgColors?.[4]" :fill="fillColors?.[5]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
-                    {{ t('index.client_section.tag') }}
+                    {{ t('index.partner_section.tag') }}
                 </span>
             </template>
 
             <template #title>
-                <h2 id="clients-title"
+                <h2 id="partner-title"
+                    class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
+                    {{ t('index.partner_section.title') }}
+                </h2>
+            </template>
+
+            <template #description>
+                <p class="font-normal lg:text-center max-w-[60vw] text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                    {{ t('index.partner_section.description') }}
+                </p>
+            </template>
+
+            <PartnerBentoGrid />
+        </IndexSection>
+
+        <!-- Clients section -->
+        <IndexSection id="client-section" :class="bgColors?.[4]" :fill="fillColors?.[5]">
+            <template #tag>
+                <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
+                    {{ t('index.client_section.tag') }} 
+                </span>
+            </template>
+
+            <template #title>
+                <h2 id="client-title"
                     class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
                     {{ t('index.client_section.title') }}
                 </h2>

@@ -43,20 +43,37 @@ useHead(() => ({
                     <NuxtPage />
                 </main>
 
-                <footer class="flex flex-col justify-center items-center">
-                    <UNavigationMenu highlight-color="neutral" orientation="horizontal" :items="itemsFooterNavigation"
-                        :ui="{
-                            list: 'gap-3', // ul
-                            item: '', // li
-                            link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
-                            linkLeadingIcon: 'text-(--text-muted)',
-                            linkLabel: 'text-sm leading-relaxed truncate max-w-[65ch]',
-                        }"
-                        class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
+                <footer class="flex flex-col lg:flex-row justify-center items-center w-full mt-auto py-6 shrink-0">
+                    <div class="flex flex-col justify-center items-center lg:mr-6 gap-6">
+                        <div class="flex flex-col justify-center items-center gap-4">
+                            <img src="/images/logo/partenaires/pollen_scop.png" alt="Logo de la CAE Pollen SCOP"
+                                width="57" height="57"
+                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75" />
+                            <span class="fs-small">Membre de la Coopérative d'Entreprise Pollen SCOP</span>
+                        </div>
+                        <div class="flex flex-col justify-center items-center gap-4">
+                            <img src="/images/logo/partenaires/emerveilles_par_ardeche.png"
+                                alt="Logo de Emerveillés par l'Ardèche" width="50" height="52"
+                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75" />
+                            <span class="fs-small">CodeKorico est émerveillé par l'Ardèche</span>
+                        </div>
+                    </div>
 
-                    <p class="fs-small text-(--text-3)">
-                        Copyright Aureldev - CodeKorico © {{ new Date().getUTCFullYear() }}
-                    </p>
+                    <div class="flex flex-col justify-center items-center lg:mr-6 lg:gap-6">
+                        <UNavigationMenu highlight-color="neutral" orientation="horizontal"
+                            :items="itemsFooterNavigation" :ui="{
+                                list: 'gap-3 flex-col xl:flex-row', // ul
+                                item: '', // li
+                                link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
+                                linkLeadingIcon: 'text-(--text-muted)',
+                                linkLabel: 'text-sm leading-relaxed truncate max-w-[65ch]',
+                            }"
+                            class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
+
+                        <p class="fs-small text-(--text-3)">
+                            Copyright Aureldev - CodeKorico © {{ new Date().getUTCFullYear() }}
+                        </p>
+                    </div>
                 </footer>
             </div>
         </div>

@@ -28,7 +28,7 @@ const isCollapsed = useState('sidebar-collapsed');
                 :size="'size-10'" :label="t('sidebar-left.open')" class="hidden lg:flex size-10" tabindex="0"
                 @click="isCollapsed = !isCollapsed" />
 
-            <UContainer class="hidden md:flex">
+            <UContainer :class="isCollapsed ? 'hidden' : 'hidden md:flex'">
                 <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
                     <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
                         {{ t('header.span_title') }}
