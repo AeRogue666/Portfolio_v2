@@ -18,9 +18,9 @@ const itemsFooterNavigation = computed<NavigationMenuItem[]>(() => [
     },
     {
         label: t('sidebar-left.navigation.accessibility_statement'),
-        icon: "fa7-brands:a11y-project",
+        icon: "fa7-brands:accessible-icon",
         to: "/accessibility",
-    },
+    }
 ]);
 
 useHead(() => ({

@@ -51,40 +51,63 @@ const src = computed(() => client.value?.image?.sources?.detail?.mobile || clien
     tabletSrc = computed(() => client.value?.image?.sources?.detail?.tablet || client.value?.image?.sources?.feed?.tablet || src),
     desktopSrc = computed(() => client.value?.image?.sources?.detail?.desktop || client.value?.image?.sources?.feed?.desktop || tabletSrc);
 
-useHeadSafe(() => ({
-    title: client.value?.title,
-    meta: [
-        // Meta names
-        { name: 'description', content: client.value?.description },
-        // Meta properties
-        { property: 'og:title', content: client.value?.title },
-        { property: 'og:description', content: client.value?.description },
-        { property: 'og:type', content: 'article' },
-        { property: 'article:author', content: 'Aureldev' },
-        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-        { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
-        { property: 'og:image:type', content: 'image/png' },
-        { property: 'og:image:width', content: '1920' },
-        { property: 'og:image:height', content: '1080' },
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: `https://codekorico.com${route.path}`
-        },
-        ...locales.value.map((l: { code: string }) => ({
-            rel: 'alternate',
-            hreflang: l.code,
-            href: `https://codekorico.com${route.path}`
-        }))
-    ]
-}));
+if (client.value) {
+    useHeadSafe(({
+        title: client.value.title,
+        meta: [
+            // Meta names
+            { name: 'description', content: client.value.description },
+            // Meta properties
+            { property: 'og:title', content: client.value.title },
+            { property: 'og:description', content: client.value.description },
+            { property: 'og:type', content: 'article' },
+            { property: 'article:author', content: 'Aureldev' },
+            { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
+            { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
+            { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
+            { property: 'og:image:type', content: 'image/png' },
+            { property: 'og:image:width', content: '1920' },
+            { property: 'og:image:height', content: '1080' },
+        ],
+        link: [
+            {
+                rel: 'canonical',
+                href: `https://codekorico.com${route.path}`
+            },
+            ...locales.value.map((l: { code: string }) => ({
+                rel: 'alternate',
+                hreflang: l.code,
+                href: `https://codekorico.com${route.path}`
+            }))
+        ]
+    }));
 
-useSeoMeta(({
-    ogImageAlt: client.value?.image?.alt,
-    twitterCard: 'summary_large_image',
-}));
+    useSeoMeta(({
+        ogImageAlt: client.value.image?.alt,
+        twitterCard: 'summary_large_image',
+    }));
+
+    useSchemaOrg([
+        defineOrganization({
+            name: 'CodeKorico',
+            url: 'https://codekorico.com',
+            logo: '',
+            sameAs: [
+                'https://github.com'
+            ]
+        }),
+        defineService({
+            name: client.value.title,
+            description: client.value.description,
+            provider: {
+                type: 'Organization',
+                name: 'CodeKorico',
+                url: 'https://codekorico.com'
+            },
+            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US'
+        })
+    ])
+}
 </script>
 
 <template>

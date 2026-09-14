@@ -40,19 +40,6 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     }
 ]);
 
-/* useSchemaOrg([
-    defineupdate({
-        name: experiment.value?.title,
-        description: experiment.value?.summary,
-        datePublished: experiment.value?.date,
-        image: experiment.value?.image?.sources.desktop,
-        author: {
-            type: 'Person',
-            name: 'Aureldev'
-        }
-    })
-]) */
-
 const articlePublishedTime = computed(() => formatISO(experiment.value?.created_at)), // dayjs(experiment.value?.created_at).locale(locale.value).format()
     articleModifiedTime = computed(() => formatISO(experiment.value?.updated_at)); // dayjs(experiment.value?.updated_at).locale(locale.value).format()
 const created_atDate = computed(() => formatDate(experiment.value?.created_at)), // dayjs(experiment.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
@@ -62,44 +49,67 @@ const src = computed(() => experiment.value?.image?.sources?.detail?.mobile || e
     tabletSrc = computed(() => experiment.value?.image?.sources?.detail?.tablet || experiment.value?.image?.sources?.feed?.tablet || src),
     desktopSrc = computed(() => experiment.value?.image?.sources?.detail?.desktop || experiment.value?.image?.sources?.feed?.desktop || tabletSrc);
 
-useHeadSafe(() => ({
-    title: experiment.value?.title,
-    meta: [
-        // Meta names
-        { name: 'description', content: experiment.value?.description },
-        // Meta properties
-        { property: 'og:title', content: experiment.value?.title },
-        { property: 'og:description', content: experiment.value?.description },
-        { property: 'og:type', content: 'article' },
-        { property: 'article:author', content: 'Aureldev' },
-        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-        { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
-        { property: 'og:image:type', content: 'image/png' },
-        { property: 'og:image:width', content: '1920' },
-        { property: 'og:image:height', content: '1080' },
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: `https://codekorico.com${route.path}`
-        },
-        ...locales.value.map((l: { code: string }) => ({
-            rel: 'alternate',
-            hreflang: l.code,
-            href: `https://codekorico.com${route.path}`
-        }))
-    ]
-}));
-
-useSeoMeta(({
-    ogImageAlt: experiment.value?.image?.alt,
-    twitterCard: 'summary_large_image',
-}));
-
 watchEffect(() => {
     if (!experiment.value) return;
 });
+
+if (experiment.value) {
+    useHeadSafe(({
+        title: experiment.value.title,
+        meta: [
+            // Meta names
+            { name: 'description', content: experiment.value.description },
+            // Meta properties
+            { property: 'og:title', content: experiment.value.title },
+            { property: 'og:description', content: experiment.value.description },
+            { property: 'og:type', content: 'article' },
+            { property: 'article:author', content: 'Aureldev' },
+            { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
+            { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
+            { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
+            { property: 'og:image:type', content: 'image/png' },
+            { property: 'og:image:width', content: '1920' },
+            { property: 'og:image:height', content: '1080' },
+        ],
+        link: [
+            {
+                rel: 'canonical',
+                href: `https://codekorico.com${route.path}`
+            },
+            ...locales.value.map((l: { code: string }) => ({
+                rel: 'alternate',
+                hreflang: l.code,
+                href: `https://codekorico.com${route.path}`
+            }))
+        ]
+    }));
+
+    useSeoMeta(({
+        ogImageAlt: experiment.value.image?.alt,
+        twitterCard: 'summary_large_image',
+    }));
+
+    useSchemaOrg([
+        defineOrganization({
+            name: 'CodeKorico',
+            url: 'https://codekorico.com',
+            logo: '',
+            sameAs: [
+                'https://github.com'
+            ]
+        }),
+        defineService({
+            name: experiment.value.title,
+            description: experiment.value.description,
+            provider: {
+                type: 'Organization',
+                name: 'CodeKorico',
+                url: 'https://codekorico.com'
+            },
+            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US'
+        })
+    ])
+}
 
 /* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
                 alt: experiment.image?.alt,

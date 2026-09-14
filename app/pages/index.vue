@@ -399,7 +399,7 @@ useSeoMeta(({
             </p>
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
                 :cta-icon="'fa7-solid:message'"
-                :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--bg)/10 hover:text-(--text) hover:border-(--border-subtle) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'" />
         </IndexSection>
 
         <!-- Expertise section (Process) -->

@@ -154,7 +154,7 @@ onMounted(() => {
             <footer class="flex flex-col justify-center items-center w-full mt-auto py-6 shrink-0">
                     <UNavigationMenu highlight-color="neutral" orientation="horizontal" :items="itemsFooterNavigation"
                         :ui="{
-                            list: 'gap-3 flex-col xl:flex-row', // ul
+                            list: 'gap-3 flex-col', // ul
                             item: '', // li
                             link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
                             linkLeadingIcon: 'text-(--text-muted)',

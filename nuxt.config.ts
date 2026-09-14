@@ -1,11 +1,8 @@
-const securityHeaders = {
-  "X-Frame-Options": "DENY",
-  "X-Content-Type-Options": "nosniff",
-  "Referrer-Policy": "strict-origin-when-cross-origin",
-};
-
 export default defineNuxtConfig({
   ssr: true,
+  future: {
+    compatibilityVersion: 4,
+  },
   modules: [
     "@nuxt/content",
     "@nuxt/ui",
@@ -15,6 +12,8 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "@nuxtjs/robots",
     "@tailwindcss/vite",
+    "nuxt-security",
+    "nuxt-schema-org",
   ],
   content: {
     experimental: {
@@ -23,9 +22,9 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "vercel",
-    prerender: {
+    /* prerender: {
       routes: ['/']
-    }
+    } */
   },
   css: ["~/assets/styles/main.css"],
   plugins: ["~/dayjs_client.ts"],
@@ -66,21 +65,66 @@ export default defineNuxtConfig({
   },
   routeRules: {
     "/": {
-      headers: securityHeaders,
       appLayout: "index-header",
     },
     "/feed": {
-      headers: securityHeaders,
       appLayout: "feed-header",
     },
     "/**": {
-      headers: securityHeaders,
       appLayout: "default",
     },
   },
   site: {
     url: "https://codekorico.com",
     name: "CodeKorico",
+  },
+  security: {
+    headers: {
+      crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
+      crossOriginOpenerPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'same-origin',
+      strictTransportSecurity: {
+        maxAge: 31536000, // 1 an (Standard)
+        includeSubdomains: true,
+        preload: true,
+      },
+      contentSecurityPolicy: {
+        "default-src": ["'self'"],
+        "script-src": ["'self'", "'strict-dynamic'", "'nonce-{{nonce}}'", "'wasm-unsafe-eval'"],
+        "style-src": ["'self'", "'unsafe-inline'"],
+        "img-src": ["'self'","data:", "https://github.com", "https://avatars.githubusercontent.com"],
+        "connect-src": ["'self'"],
+        "upgrade-insecure-requests": true,
+      },
+    },
+  },
+  robots: {
+    disallow: [],
+  },
+  sitemap: {
+    autoLastmod: true,
+    exclude: [
+      '/**/fr',
+      '/**/en'
+    ],
+    urls: [
+      '/about',
+      '/accessibility',
+      '/clients',
+      '/experiments',
+      '/legal_notices',
+      '/projects',
+      '/projects/front-ecommerce-headless',
+      '/projects/front-pomodor-timer',
+      '/projects/front-weather-aggregator',
+      '/projects/plateforme-gestion-recettes',
+      '/projects/portfolio-v2',
+      '/services/creation-site',
+      '/services/refonte-site',
+      '/services/optimisation-site',
+      '/services/maintenance-site',
+      '/services/formations',
+      '/terms',
+    ]
   },
   build: {
     transpile: [],

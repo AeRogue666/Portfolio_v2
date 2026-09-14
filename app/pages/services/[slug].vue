@@ -51,44 +51,74 @@ const src = computed(() => service.value?.image?.sources?.detail?.mobile || serv
     tabletSrc = computed(() => service.value?.image?.sources?.detail?.tablet || service.value?.image?.sources?.feed?.tablet || src),
     desktopSrc = computed(() => service.value?.image?.sources?.detail?.desktop || service.value?.image?.sources?.feed?.desktop || tabletSrc);
 
-useHeadSafe(() => ({
-    title: t('seo.page.title', { pagetitle: service.value?.title }),
-    meta: [
-        // Meta names
-        { name: 'description', content: t('seo.page.description', { pagetitle: service.value?.description }) },
-        // Meta properties
-        { property: 'og:title', content: t('seo.page.title', { pagetitle: service.value?.title }) },
-        { property: 'og:description', content: t('seo.page.description', { pagetitle: service.value?.description }) },
-        { property: 'og:type', content: 'article' },
-        { property: 'article:author', content: 'Aureldev' },
-        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-        { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
-        { property: 'og:image:type', content: 'image/png' },
-        { property: 'og:image:width', content: '1920' },
-        { property: 'og:image:height', content: '1080' },
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: `https://codekorico.com${route.path}`
-        },
-        ...locales.value.map((l: { code: string }) => ({
-            rel: 'alternate',
-            hreflang: l.code,
-            href: `https://codekorico.com${route.path}`
-        }))
-    ]
-}));
-
-useSeoMeta(({
-    ogImageAlt: service.value?.image?.alt,
-    twitterCard: 'summary_large_image',
-}));
-
 watchEffect(() => {
     if (!service.value) return;
 });
+
+if (service.value) {
+    useHeadSafe(({
+        title: t('seo.page.title', { pagetitle: service.value.title }),
+        meta: [
+            // Meta names
+            { name: 'description', content: t('seo.page.description', { pagetitle: service.value.description }) },
+            // Meta properties
+            { property: 'og:title', content: t('seo.page.title', { pagetitle: service.value.title }) },
+            { property: 'og:description', content: t('seo.page.description', { pagetitle: service.value.description }) },
+            { property: 'og:type', content: 'article' },
+            { property: 'article:author', content: 'Aureldev' },
+            { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
+            { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
+            { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
+            { property: 'og:image:type', content: 'image/png' },
+            { property: 'og:image:width', content: '1920' },
+            { property: 'og:image:height', content: '1080' },
+        ],
+        link: [
+            {
+                rel: 'canonical',
+                href: `https://codekorico.com${route.path}`
+            },
+            ...locales.value.map((l: { code: string }) => ({
+                rel: 'alternate',
+                hreflang: l.code,
+                href: `https://codekorico.com${route.path}`
+            }))
+        ]
+    }));
+
+    useSeoMeta(({
+        ogImageAlt: service.value.image?.alt,
+        twitterCard: 'summary_large_image',
+    }));
+
+    useSchemaOrg([
+        defineOrganization({
+            name: 'CodeKorico',
+            url: 'https://codekorico.com',
+            logo: '',
+            sameAs: [
+                'https://github.com'
+            ]
+        }),
+        defineService({
+            name: service.value.title,
+            description: service.value.description,
+            provider: {
+                type: 'Organization',
+                name: 'CodeKorico',
+                url: 'https://codekorico.com'
+            },
+            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US',
+            offers: service.value.packages?.map((pkg: any) => ({
+                type: 'Offer',
+                itemOffered: {
+                    type: 'Service',
+                    name: pkg.title
+                }
+            }))
+        })
+    ]);
+}
 </script>
 
 <template>
