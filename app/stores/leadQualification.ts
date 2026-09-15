@@ -53,12 +53,15 @@ export const useLeadStore = defineStore("lead", {
       switch (this.step) {
         case 1:
           if (this.data.projectType === "message") return true;
-          else if (
-            this.data.projectType === "audit" && this.data.subType !== ""
+          else if (this.data.projectType !== "message" && !this.data.subType) {
+            this.step = 1; // Ce qui envoie sur l'étape 2 (step: 1 + step++ = 2)
+            return true;
+          } else if (
+            this.data.projectType && this.data.subType
           ) {
             this.step = 2; // Ce qui envoie sur l'étape 3 (step: 2 + step++ = 3)
             return true;
-          } else return !!this.data.projectType;
+          }
         case 2:
           return !!this.data.subType;
         case 3:

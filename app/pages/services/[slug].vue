@@ -38,7 +38,7 @@ const breadcrumbItems: BreadcrumbItem[] = [
     },
     {
         label: service.value?.title,
-        to: route.path
+        to: ''
     }
 ];
 
@@ -50,6 +50,8 @@ const created_atDate = computed(() => formatDate(service.value?.created_at)), //
 const src = computed(() => service.value?.image?.sources?.detail?.mobile || service.value?.image?.sources?.feed?.mobile || ''),
     tabletSrc = computed(() => service.value?.image?.sources?.detail?.tablet || service.value?.image?.sources?.feed?.tablet || src),
     desktopSrc = computed(() => service.value?.image?.sources?.detail?.desktop || service.value?.image?.sources?.feed?.desktop || tabletSrc);
+
+const serviceType = computed(() => slug.value.split('-')[0]);
 
 watchEffect(() => {
     if (!service.value) return;
@@ -124,37 +126,46 @@ if (service.value) {
 <template>
     <template v-if="service">
         <ArticleLayout class="fs-body">
-            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                <template #separator>
-                    <span class="mx-2 text-(--text-muted)">/</span>
-                </template>
-            </UBreadcrumb>
-            <p class="fs-small text-(--text-2)">
-                {{ t('project.published_on') }}
-                <time v-if="service.created_at" :datetime="service.created_at">{{ created_atDate }}</time>
-                <template v-if="service.updated_at">
-                    {{ t('post.updated_on') }}
-                    <time v-if="service.updated_at" :datetime="service.updated_at">{{ updated_atDate }}</time>
-                </template>
-            </p>
+            <template #header>
+                <nav aria-label="Fil d'Ariane" class="my-2">
+                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors',
+                        linkActive: 'text-(--text-2) fs-body no-underline'
+                    }">
+                        <template #item-label="{ item }">
+                            <span :class="[item.to ? 'underline' : 'no-underline']">
+                                {{ item.label }}
+                            </span>
+                        </template>
 
-            <h1 id="service-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ service.title }} -
-                <span class="fs-subtitle text-(--text-2) leading-snug">
-                    {{ service.description }}
-                </span>
-            </h1>
+                        <template #separator>
+                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                        </template>
+                    </UBreadcrumb>
+                </nav>
 
-            <div>
-                <p class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ t('plans.warning.title') }}</p>
-                <p class="fs-body text-(--text-2) leading-snug">{{ t('plans.warning.description') }}</p>
-            </div>
+                <p class="fs-small text-(--text-2)">
+                    {{ t('project.published_on') }}
+                    <time v-if="service.created_at" :datetime="service.created_at">{{ created_atDate }}</time>
+                    <template v-if="service.updated_at">
+                        & {{ t('post.updated_on') }}
+                        <time :datetime="service.updated_at">{{ updated_atDate }}</time>
+                    </template>
+                </p>
+
+                <h1 id="service-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                    {{ service.title }} -
+                    <span class="fs-subtitle text-(--text-2) leading-snug">
+                        {{ service.description }}
+                    </span>
+                </h1>
+            </template>
 
             <ContentRenderer :value="service" />
 
             <ul>
                 <li v-for="(content, i) in service.packages" :key="i" class="flex flex-col mb-6 gap-6">
-                    <h3 class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ content.title }}</h3>
+                    <h2 class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ content.title }}</h2>
                     <PackagesContainer :services="content.children" />
                 </li>
             </ul>
@@ -162,11 +173,13 @@ if (service.value) {
             <div class="flex flex-col md:flex-row justify-evenly">
                 <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')"
                     :cta-icon="'fa7-solid:comment-dots'"
-                    :cta-class="'w-min px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+                    :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md'"
+                    :project-type="serviceType" />
+            </div>
 
-                <CustomerScreeningModal :cta-label="t('index.landing_section.cta_audit')"
-                    :cta-icon="'fa7-solid:chart-simple'"
-                    :cta-class="'w-min px-5 py-2.5 gap-2 rounded-lg bg-(--bg-3) border border-(--accent)/40 text-(--text) font-medium transition-colors hover:bg-(--accent)/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-body'" />
+            <div>
+                <p class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ t('plans.warning.title') }}</p>
+                <p class="fs-body text-(--text-2) leading-snug">{{ t('plans.warning.description') }}</p>
             </div>
         </ArticleLayout>
     </template>

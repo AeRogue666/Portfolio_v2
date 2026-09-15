@@ -40,7 +40,7 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     },
     {
         label: project.value?.title,
-        to: `/projects/${project.value?.slug}`
+        to: ''
     }
 ]);
 
@@ -128,16 +128,28 @@ if (project.value) {
     <template v-if="project">
         <ArticleLayout class="fs-body">
             <template #header>
-                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                    <template #separator>
-                        <span class="mx-2 text-(--text-muted)">/</span>
-                    </template>
-                </UBreadcrumb>
+                <nav aria-label="Fil d'Ariane" class="my-2">
+                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors',
+                        linkActive: 'text-(--text-2) fs-body no-underline'
+                    }">
+                        <template #item-label="{ item }">
+                            <span :class="[item.to ? 'underline' : 'no-underline']">
+                                {{ item.label }}
+                            </span>
+                        </template>
+
+                        <template #separator>
+                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                        </template>
+                    </UBreadcrumb>
+                </nav>
+
                 <p class="fs-small text-(--text-2)">
                     {{ t('project.published_on') }}
                     <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
                     <template v-if="project.updated_at">
-                        {{ t('post.updated_on') }}
+                        & {{ t('post.updated_on') }}
                         <time :datetime="project.updated_at">{{ updated_atDate }}</time>
                     </template>
                 </p>
@@ -148,33 +160,35 @@ if (project.value) {
                 <p class="fs-subtitle text-(--text-2) leading-snug">
                     {{ project.description }}
                 </p>
+            </template>
 
+            <figure>
                 <NuxtImg :src="src" :alt="project.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
                     :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
-                    class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
+                    class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" fetchpriority="high"
                     placeholder="blur" />
+            </figure>
 
-                <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
-                    <div>
-                        <dt class="fs-lead font-semibold leading-snug">
-                            {{ t('project.role') }}
-                        </dt>
-                        <dd class="fs-body text-(--text-2) leading-snug">
-                            {{ project.role }}
-                        </dd>
-                    </div>
-                    <div>
-                        <dt class="fs-lead font-semibold leading-snug">
-                            {{ t('project.stack') }}
-                        </dt>
-                        <dd class="flex flex-wrap gap-2">
-                            <PostBadge v-for="tech in project.stack" :label="tech" :key="tech" :variant="'soft'"
-                                :color="'neutral'" :size="'md'"
-                                :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
-                        </dd>
-                    </div>
-                </dl>
-            </template>
+            <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
+                <div>
+                    <dt class="fs-lead font-semibold leading-snug">
+                        {{ t('project.role') }}
+                    </dt>
+                    <dd class="fs-body text-(--text-2) leading-snug">
+                        {{ project.role }}
+                    </dd>
+                </div>
+                <div>
+                    <dt class="fs-lead font-semibold leading-snug">
+                        {{ t('project.stack') }}
+                    </dt>
+                    <dd class="flex flex-wrap gap-2">
+                        <PostBadge v-for="tech in project.stack" :label="tech" :key="tech" :variant="'soft'"
+                            :color="'neutral'" :size="'md'"
+                            :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
+                    </dd>
+                </div>
+            </dl>
 
             <ContentRenderer :value="project" class="prose prose-neutral dark:prose-invert max-w-none" />
 

@@ -14,7 +14,7 @@ const props = defineProps<{
 </script>
 
 <template>
-    <UPricingPlans class="grid grid-cols-1 lg:grid-cols-3 gap-6 w-full max-w-4xl mx-auto">
+    <UPricingPlans class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-4xl mx-auto">
         <UPricingPlan v-for="(service, i) in services" :key="i" v-bind="service" orientation="vertical"
             :title="service.title" :description="service.description"
             :price="service.price !== t('plans.on_estimate') ? `${t('plans.price_starting_at')} ${service.price} ${service.ttc === true ? 'TTC' : 'H.T'}*` : `${service.price}*`"

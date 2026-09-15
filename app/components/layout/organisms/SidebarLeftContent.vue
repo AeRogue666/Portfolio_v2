@@ -105,11 +105,11 @@ onMounted(() => {
                     </span>
                     <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
                         alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" loading="lazy" />
+                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" />
                     <NuxtImg id="header-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
                         alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" loading="lazy" />
+                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" />
                 </NuxtLink>
             </div>
 

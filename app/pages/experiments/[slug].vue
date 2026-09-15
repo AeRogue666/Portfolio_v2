@@ -36,7 +36,7 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     },
     {
         label: experiment.value?.title,
-        to: `/experiments/${experiment.value?.slug}`
+        to: ''
     }
 ]);
 
@@ -130,16 +130,27 @@ if (experiment.value) {
     <template v-if="experiment">
         <ArticleLayout class="fs-body">
             <template #header>
-                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                    <template #separator>
-                        <span class="mx-2 text-(--text-muted)">/</span>
-                    </template>
-                </UBreadcrumb>
+                <nav aria-label="Fil d'Ariane" class="my-2">
+                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors',
+                        linkActive: 'text-(--text-2) fs-body no-underline'
+                    }">
+                        <template #item-label="{ item }">
+                            <span :class="[item.to ? 'underline' : 'no-underline']">
+                                {{ item.label }}
+                            </span>
+                        </template>
+
+                        <template #separator>
+                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                        </template>
+                    </UBreadcrumb>
+                </nav>
                 <p class="fs-small text-(--text-2) leading-snug">
                     {{ t('experiment.published_on') }}
                     <time :datetime="experiment.created_at">{{ created_atDate }}</time>
                     <template v-if="experiment.updated_at">
-                        {{ t('post.updated_on') }}
+                        & {{ t('post.updated_on') }}
                         <time :datetime="experiment.updated_at">{{ updated_atDate }}</time>
                     </template>
                 </p>
@@ -150,23 +161,23 @@ if (experiment.value) {
                 <p class="fs-subtitle text-(--text-2) leading-snug max-w-[65ch]">
                     {{ experiment.description }}
                 </p>
-
-                <NuxtImg :src="src" :alt="experiment.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
-                    :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
-                    class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
-                    placeholder="blur" />
-
-                <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
-                    <dt class="fs-lead font-semibold leading-snug">
-                        {{ t('experiment.tags') }}
-                    </dt>
-                    <dd class="flex flex-wrap gap-2">
-                        <PostBadge v-for="tech in experiment.tags" :label="tech" :key="tech" :variant="'soft'"
-                            :color="'neutral'" :size="'md'"
-                            :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
-                    </dd>
-                </dl>
             </template>
+
+            <NuxtImg :src="src" :alt="experiment.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
+                :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
+                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" fetchpriority="high"
+                placeholder="blur" />
+
+            <dl class="grid grid-cols-1 sm:grid-cols-2 mt-6 text-sm gap-4">
+                <dt class="fs-lead font-semibold leading-snug">
+                    {{ t('experiment.tags') }}
+                </dt>
+                <dd class="flex flex-wrap gap-2">
+                    <PostBadge v-for="tech in experiment.tags" :label="tech" :key="tech" :variant="'soft'"
+                        :color="'neutral'" :size="'md'"
+                        :class-name="'bg-(--bg-3) text-(--text-2) fs-body border border-(--border-subtle)'" />
+                </dd>
+            </dl>
 
             <ContentRenderer :value="experiment" class="prose prose-neutral dark:prose-invert max-w-none" />
 
@@ -178,10 +189,6 @@ if (experiment.value) {
                 {{ experiment.content }}
             </p>
         </section> -->
-
-            <template #footer>
-
-            </template>
         </ArticleLayout>
     </template>
     <template v-else>

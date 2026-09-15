@@ -38,7 +38,7 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     },
     {
         label: client.value?.customer_name,
-        to: route.path
+        to: ''
     },
 ]);
 
@@ -113,30 +113,43 @@ if (client.value) {
 <template>
     <template v-if="client">
         <ArticleLayout class="fs-body">
-            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                <template #separator>
-                    <span class="mx-2 text-(--text-muted)">/</span>
-                </template>
-            </UBreadcrumb>
-            <p class="fs-small text-(--text-2)">
-                {{ t('project.published_on') }}
-                <time v-if="client.created_at" :datetime="client.created_at">{{ created_atDate }}</time>
-                <template v-if="client.updated_at">
-                    {{ t('post.updated_on') }}
-                    <time v-if="client.updated_at" :datetime="client.updated_at">{{ updated_atDate }}</time>
-                </template>
-            </p>
+            <template #header>
+                <nav aria-label="Fil d'Ariane" class="my-2">
+                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors',
+                        linkActive: 'text-(--text-2) fs-body no-underline'
+                    }">
+                        <template #item-label="{ item }">
+                            <span :class="[item.to ? 'underline' : 'no-underline']">
+                                {{ item.label }}
+                            </span>
+                        </template>
 
-            <h1 id="client-title" class="flex flex-col fs-heading font-semibold tracking-tight leading-snug mt-2">
-                {{ client.title }}
-                <span class="fs-subtitle font-normal text-(--text-2) leading-snug">
-                    {{ client.description }}
-                </span>
-            </h1>
+                        <template #separator>
+                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                        </template>
+                    </UBreadcrumb>
+                </nav>
+                <p class="fs-small text-(--text-2)">
+                    {{ t('project.published_on') }}
+                    <time v-if="client.created_at" :datetime="client.created_at">{{ created_atDate }}</time>
+                    <template v-if="client.updated_at">
+                        & {{ t('post.updated_on') }}
+                        <time v-if="client.updated_at" :datetime="client.updated_at">{{ updated_atDate }}</time>
+                    </template>
+                </p>
+
+                <h1 id="client-title" class="flex flex-col fs-heading font-semibold tracking-tight leading-snug mt-2">
+                    {{ client.title }}
+                    <span class="fs-subtitle font-normal text-(--text-2) leading-snug">
+                        {{ client.description }}
+                    </span>
+                </h1>
+            </template>
 
             <NuxtImg :src="src" :alt="client.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"
                 :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`"
-                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" loading="lazy"
+                class="my-2 rounded-lg border-2 border-solid border-(--border-subtle)" fetchpriority="high"
                 placeholder="blur" />
 
             <div class="flex flex-col">

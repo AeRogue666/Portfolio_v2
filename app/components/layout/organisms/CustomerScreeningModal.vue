@@ -81,8 +81,12 @@ async function handleSubmit() {
 
 function handleCtaClick() {
     if (props.projectType && props.subType) {
+        console.log(props.projectType, props.subType)
         leadStore.setInitialProject(props.projectType, props.subType)
         leadStore.step = 3
+    } else if (props.projectType && !props.subType) {
+        leadStore.setInitialProject(props.projectType, "")
+        leadStore.step = 2
     }
 
     isOpen.value = true
@@ -103,14 +107,25 @@ watch(() => leadStore.data,
 );
 
 watch(isOpen, async (opened) => {
-    if (opened) await $fetch('/api/contact/init');
+    if (opened) {
+        await $fetch('/api/contact/init'); console.log(leadStore.data);
+        if (leadStore.hasDraft() && leadStore.data.projectType || leadStore.data.subType) {
+            // Afficher une modale ou restaurer automatiquement
+            leadStore.restore();
+        } else {
+            leadStore.reset();
+        }
+    }
 });
 
 onMounted(() => {
-    if (leadStore.hasDraft()) {
+    /* if (leadStore.hasDraft()) {
         // Afficher une modale ou restaurer automatiquement
         leadStore.restore();
+    } else {
+        leadStore.reset();
     }
+    console.log('Draft: ', leadStore.hasDraft()) */
 });
 </script>
 
@@ -127,8 +142,10 @@ onMounted(() => {
             description: 'text-(--text-muted)'
         }">
         <template #default>
-            <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" size="xl" :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'"
-                :icon="props.ctaIcon || 'fa7-solid:message'" :label="props.ctaLabel || 'Démarrer votre projet'" @click="handleCtaClick" />
+            <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" size="xl"
+                :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'"
+                :icon="props.ctaIcon || 'fa7-solid:message'" :label="props.ctaLabel || 'Démarrer votre projet'"
+                @click="handleCtaClick" />
         </template>
 
         <template #body>

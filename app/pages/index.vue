@@ -307,11 +307,11 @@ useSeoMeta(({
                 <div>
                     <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="CodeKorico Logo"
                         width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" loading="lazy" />
+                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" />
                     <NuxtImg id="header-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
                         alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" loading="lazy" />
+                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high" />
                 </div>
             </template>
 
@@ -355,18 +355,18 @@ useSeoMeta(({
             </template>
 
             <template #description>
-                <p class="font-normal lg:text-center w-full text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
+                <p class="lg:text-center w-full text-(--text-2) mb-6 sm:px-16 xl:px-48 fs-lead">
                     {{ t('index.problem_section.description') }}
                 </p>
             </template>
 
             <QuestionContainer :elements="questionElements" />
 
-            <p class="font-normal lg:text-center w-full text-(--text-2) my-6 sm:px-16 xl:px-48 fs-lead">
+            <p class="text-center w-full text-(--text-2) my-6 sm:px-16 xl:px-48 fs-lead">
                 {{ t('index.problem_section.solution') }}
             </p>
 
-            <SelfieDoodle class="w-1/2" :bg-color="'var(--bg-3)'" :fill-color="'var(--accent)'"
+            <SelfieDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="'var(--bg-3)'" :fill-color="'var(--accent)'"
                 :stroke-color="'var(--text)'" />
         </IndexSection>
 
@@ -399,7 +399,8 @@ useSeoMeta(({
             </p>
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
                 :cta-icon="'fa7-solid:message'"
-                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'" />
+                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'"
+                :project-type="'message'" />
         </IndexSection>
 
         <!-- Expertise section (Process) -->
@@ -501,7 +502,7 @@ useSeoMeta(({
                     :cta-icon="'fa7-solid:heart'"
                     :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--text) border border-(--accent)/40 text-(--bg) font-medium transition-colors hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-subtitle'" />
 
-                <SprintingDoodle class="w-1/2" :bg-color="`var(--card-about-bg)`" :fill-color="'var(--brand-color)'"
+                <SprintingDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="`var(--card-about-bg)`" :fill-color="'var(--brand-color)'"
                     :stroke-color="'var(--text-2)'" />
             </div>
         </IndexSection>
@@ -533,7 +534,7 @@ useSeoMeta(({
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
                 :cta-icon="'fa7-solid:message'"
-                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'" />
+                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'" :project-type="'message'" />
         </IndexSection>
     </UContainer>
 </template>

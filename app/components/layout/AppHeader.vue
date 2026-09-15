@@ -35,11 +35,11 @@ const isCollapsed = useState('sidebar-collapsed');
                     <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
                             alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                             :class="grayscale ? 'grayscale-100' : ''"
-                            class="dark:hidden" loading="lazy" />
+                            class="dark:hidden" fetchpriority="high" />
                         <NuxtImg id="header-title-img-dark" :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
                             alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                             :class="grayscale ? 'grayscale-100' : ''"
-                            class="hidden dark:block" loading="lazy" />
+                            class="hidden dark:block" fetchpriority="high" />
                 </NuxtLink>
             </UContainer>
         </template>
