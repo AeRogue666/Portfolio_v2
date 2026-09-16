@@ -3,9 +3,11 @@ import type { BreadcrumbItem } from '@nuxt/ui';
 import ArticleLayout from '../components/layout/molecules/ArticleLayout.vue';
 import type { AccessibilityReportResponse } from '../types/accessibility.js';
 
-const { t, locale } = useI18n(),
+const { t, locale, locales } = useI18n(),
     accessibilityStore = useAccessibilityStore(),
-    colorMode = useColorMode();
+    colorMode = useColorMode(),
+    route = useRoute(),
+    { formatISO } = useDate();
 
 // Grayscale
 const grayscale = computed({
@@ -135,30 +137,109 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     },
     {
         label: t('breadcrumb.accessibility_report'),
-        to: '/accessibility-report'
+        to: ''
     },
 ]);
 
-useSeoMeta(({
-    title: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
-    description: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
-    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
-    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
-    ogImage: '/images/project/portfolio-v2/desktop.png',
-    twitterCard: 'summary_large_image',
-}));
+const articlePublishedTime = computed(() => formatISO('01-01-2026')), // dayjs('01-01-2026').locale(locale.value).format()
+    articleModifiedTime = computed(() => formatISO(new Date())); // dayjs(new Date()).locale(locale.value).format()
+
+watchEffect(() => {
+    if (!reportData.value) return;
+});
+
+if (reportData.value) {
+    useHeadSafe(({
+        title: t('seo.page.title', { pagetitle: reportData.value.title }),
+        meta: [
+            // Meta names
+            { name: 'description', content: t('seo.page.description', { pagetitle: reportData.value.description }) },
+            // Meta properties
+            { property: 'og:title', content: t('seo.page.title', { pagetitle: reportData.value.title }) },
+            { property: 'og:description', content: t('seo.page.description', { pagetitle: reportData.value.description }) },
+            { property: 'og:type', content: 'article' },
+            { property: 'article:author', content: 'Aureldev' },
+            { property: 'article:published_time', content: articlePublishedTime.value ?? '' },
+            { property: 'article:modified_time', content: articleModifiedTime.value ?? '' },
+            { property: 'og:image:type', content: 'image/png' },
+            { property: 'og:image:width', content: '1920' },
+            { property: 'og:image:height', content: '1080' },
+        ],
+        link: [
+            {
+                rel: 'canonical',
+                href: `https://codekorico.com${route.path}`
+            },
+            ...locales.value.map((l: { code: string }) => ({
+                rel: 'alternate',
+                hreflang: l.code,
+                href: `https://codekorico.com${route.path}`
+            }))
+        ]
+    }));
+    useSeoMeta(({
+        ogImage: '/images/project/portfolio-v2/desktop.png',
+        twitterCard: 'summary_large_image',
+    }));
+
+    /* useSeoMeta(({
+        title: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
+        description: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
+        ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
+        ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
+        ogImage: '/images/project/portfolio-v2/desktop.png',
+        twitterCard: 'summary_large_image',
+    })); */
+
+    useSchemaOrg([
+        defineOrganization({
+            name: 'CodeKorico',
+            url: 'https://codekorico.com',
+            logo: '',
+            sameAs: [
+                'https://github.com'
+            ]
+        }),
+        defineService({
+            name: reportData.value.title,
+            description: reportData.value.description,
+            provider: {
+                type: 'Organization',
+                name: 'CodeKorico',
+                url: 'https://codekorico.com'
+            },
+            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US',
+        })
+    ]);
+}
 </script>
 
 <template>
     <ArticleLayout v-if="reportData && !pending">
         <template #header>
-            <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                <template #separator>
-                    <span class="mx-2 text-(--text-muted)">/</span>
-                </template>
-            </UBreadcrumb>
-            <h1 id="article-title" class="font-bold fs-heading">{{ reportData.title }}</h1>
-            <p class="text-base text-(--text-2) fs-subtitle">{{ reportData.description }}</p>
+            <nav aria-label="Fil d'Ariane" class="my-2">
+                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+                    link: 'text-(--text-2) hover:text-(--text) transition-colors',
+                    linkActive: 'text-(--text-2) fs-body no-underline'
+                }">
+                    <template #item-label="{ item }">
+                        <span :class="[item.to ? 'underline' : 'no-underline']">
+                            {{ item.label }}
+                        </span>
+                    </template>
+
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                    </template>
+                </UBreadcrumb>
+            </nav>
+
+            <h1 id="service-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                {{ reportData.title }} -
+                <span class="fs-subtitle text-(--text-2) leading-snug">
+                    {{ reportData.description }}
+                </span>
+            </h1>
         </template>
 
         <!-- Résumé Exécutif -->

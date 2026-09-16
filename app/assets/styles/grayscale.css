@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* ============
+    THEME LIGHT GRAYSCALE
+============ */
+
+[data-theme="light"][data-grayscale="true"],
+.light[data-grayscale="true"],
+html[data-grayscale="true"] {
+  /* Backgrounds */
+  --bg-gray-primary: #f5f5f5;
+  --bg-gray-secondary: #ededed;
+  --bg-gray-tertiary: #e0e0e0;
+
+  /* Text */
+  --text-gray-primary: #2b2b2b;
+  --text-gray-secondary: #5a5a5a;
+  --text-gray-tertiary: #8a8a8a;
+
+  /* Accent & Interaction */
+  --accent-gray: #555;
+  --accent-hover-gray: #3a3a3a;
+
+  /* States & Feedback */
+  --focus-gray: #2b2b2b;
+  --border-subtle-gray: #dadada;
+  --border-medium-gray: #8a8a8a;
+  --brand-color-gray: #000;
+  --success-gray: #5a5a5a;
+  --warning-gray: #555555;
+  --danger-gray: #2b2b2b;
+
+  /* Cards - les teintes colorées sont remplacées par des gris légèrement distincts pour conserver la différenciation visuelle sans couleur (WCAG 1.4.1). */
+  --card-project-bg-grayscale: #f6f6f6;
+  --card-project-accent-grayscale: #4a4a4a;
+
+  --card-experiment-bg-grayscale: #f0f0f0;
+  --card-experiment-accent-grayscale: #3a3a3a;
+
+  --card-about-bg-grayscale: #f9f9f9;
+  --card-about-accent-grayscale: #555555;
+
+  --card-note-bg-grayscale: #f8f8f8;
+  --card-note-accent-grayscale: #505050;
+
+  --card-read-bg-grayscale: #f5f5f5;
+  --card-read-accent-grayscale: #464646;
+
+  --card-job-bg-grayscale: #dadada;
+  --card-job-accent-grayscale: #353535;
+
+  --card-client-bg-grayscale: #f3f3f3;
+  --card-client-accent-grayscale: #424242;
+
+  --card-talk-bg-grayscale: #e5e5e5;
+  --card-talk-accent-grayscale: #383838;
+}
+
+/* ============
+  THEME DARK GRAYSCALE
+============ */
+
+[data-theme="dark"][data-grayscale="true"],
+.dark[data-grayscale="true"],
+html[data-grayscale="true"] {
+  /* Backgrounds */
+  --bg-gray-primary: #1c1c1e;
+  --bg-gray-secondary: #262629;
+  --bg-gray-tertiary: #2C2C30;
+
+  /* Text */
+  --text-gray-primary: #e5e5e5;
+  --text-gray-secondary: #a5a5a5;
+  --text-gray-tertiary: #757575;
+
+  /* Accent & Interaction */
+  --accent-gray: #aaa;
+  --accent-hover-gray: #c5c5c5;
+
+  /* States & Feedback */
+  --focus-gray: #fff;
+  --border-subtle-gray: #2c2c30;
+  --border-medium-gray: #757575;
+  --brand-color-gray: #fff;
+  --success-gray: #a5a5a5;
+  --warning-gray: #aaa;
+  --danger-gray: #e5e5e5;
+
+  /* Cards - les teintes colorées sont remplacées par des gris légèrement distincts pour conserver la différenciation visuelle sans couleur (WCAG 1.4.1). */
+  --card-project-bg-grayscale: #242424;
+  --card-project-accent-grayscale: #b5b5b5;
+
+  --card-experiment-bg-grayscale: #2a2a2a;
+  --card-experiment-accent-grayscale: #c5c5c5;
+
+  --card-about-bg-grayscale: #212121;
+  --card-about-accent-grayscale: #aaa;
+
+  --card-note-bg-grayscale: #222;
+  --card-note-accent-grayscale: #afafaf;
+
+  --card-read-bg-grayscale: #252525;
+  --card-read-accent-grayscale: #b9b9b9;
+
+  --card-job-bg-grayscale: #414141;
+  --card-job-accent-grayscale: #cacaca;
+
+  --card-client-bg-grayscale: #272727;
+  --card-client-accent-grayscale: #bdbdbd;
+
+  --card-talk-bg-grayscale: #303030;
+  --card-talk-accent-grayscale: #c7c7c7;
+}

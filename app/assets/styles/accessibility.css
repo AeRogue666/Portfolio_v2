@@ -2,6 +2,7 @@
 @import "./tokens.css";
 @import "./themes/light.css";
 @import "./themes/dark.css";
+@import "./grayscale.css";
 
 html {
   --font-scale: 1;
@@ -55,32 +56,32 @@ html[data-grayscale="true"] {
   --text-2: var(--text-gray-secondary);
   --text-3: var(--text-gray-tertiary);
   --accent: var(--accent-gray);
+  --accent-hover: var(--accent-hover-gray);
 
-  /* Cards - les teintes colorées sont remplacées par des gris légèrement distincts 
-    pour conserver la différenciation visuelle sans couleur (WCAG 1.4.1). */
-  --card-project-bg: #f6f6f6;
-  --card-project-accent: #4a4a4a;
+  --focus: var(--focus-gray);
+  --border-subtle: var(--border-subtle-gray);
+  --border-medium: var(--border-medium-gray);
+  --brand-color: var(--brand-color-gray);
+  --success: var(--success-gray);
+  --warning: var(--warning-gray);
+  --danger: var(--danger-gray);
 
-  --card-experiment-bg: #f0f0f0;
-  --card-experiment-accent: #3a3a3a;
-
-  --card-about-bg: #f9f9f9;
-  --card-about-accent: #555555;
-
-  --card-note-bg: #f8f8f8; /** Old Lace **/
-  --card-note-accent: #505050; /** Bronze **/
-
-  --card-read-bg: #f5f5f5; /** Ivory mist **/
-  --card-read-accent: #464646; /** Copper **/
-
-  --card-job-bg: #dadada; /** Bone **/
-  --card-job-accent: #353535; /** Brown **/
-
-  --card-client-bg: #f3f3f3; /** Eggshell **/
-  --card-client-accent: #424242; /** Copper **/
-
-  --card-talk-bg: #e5e5e5; /** Eggshell **/
-  --card-talk-accent: #383838; /** Saddle brown **/
+  --card-project-bg: var(--card-project-bg-grayscale);
+  --card-project-accent: var(--card-project-accent-grayscale);
+  --card-experiment-bg: var(--card-experiment-bg-grayscale);
+  --card-experiment-accent: var(--card-experiment-accent-grayscale);
+  --card-about-bg: var(--card-about-bg-grayscale);
+  --card-about-accent: var(--card-about-accent-grayscale);
+  --card-note-bg: var(--card-note-bg-grayscale);
+  --card-note-accent: var(--card-note-accent-grayscale);
+  --card-read-bg: var(--card-read-bg-grayscale);
+  --card-read-accent: var(--card-read-accent-grayscale);
+  --card-job-bg: var(--card-job-bg-grayscale);
+  --card-job-accent: var(--card-job-accent-grayscale);
+  --card-client-bg: var(--card-client-bg-grayscale);
+  --card-client-accent: var(--card-client-accent-grayscale);
+  --card-talk-bg: var(--card-talk-bg-grayscale);
+  --card-talk-accent: var(--card-talk-accent-grayscale);
 }
 
 html[data-grayscale="true"] image {

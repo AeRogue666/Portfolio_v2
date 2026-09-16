@@ -2,7 +2,7 @@
 import type { BreadcrumbItem, FormError, FormSubmitEvent, SelectMenuItem } from '@nuxt/ui';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
-const { t, locales } = useI18n(),
+const { t, locale, locales } = useI18n(),
     toast = useToast(),
     accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode(),
@@ -25,7 +25,7 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     },
     {
         label: t('breadcrumb.report'),
-        to: '/report'
+        to: ''
     },
 ]);
 
@@ -140,25 +140,61 @@ useHeadSafe(() => ({
         }))
     ]
 }));
+
+useSeoMeta(({
+    ogImage: '/images/project/portfolio-v2/desktop.png',
+    twitterCard: 'summary_large_image',
+}));
+
+useSchemaOrg([
+    defineOrganization({
+        name: 'CodeKorico',
+        url: 'https://codekorico.com',
+        logo: '',
+        sameAs: [
+            'https://github.com'
+        ]
+    }),
+    defineService({
+        name: t('report.title'),
+        description: t('report.description'),
+        provider: {
+            type: 'Organization',
+            name: 'CodeKorico',
+            url: 'https://codekorico.com'
+        },
+        inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US',
+    })
+]);
 </script>
 
 <template>
     <template v-if="form">
         <ArticleLayout>
             <template #header>
-                <header>
-                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
+                <nav aria-label="Fil d'Ariane" class="my-2">
+                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors',
+                        linkActive: 'text-(--text-2) fs-body no-underline'
+                    }">
+                        <template #item-label="{ item }">
+                            <span :class="[item.to ? 'underline' : 'no-underline']">
+                                {{ item.label }}
+                            </span>
+                        </template>
+
                         <template #separator>
-                            <span class="mx-2 text-(--text-muted)">/</span>
+                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
                         </template>
                     </UBreadcrumb>
-                </header>
-                <h1 id="article-title"
-                    class="text-2xl font-semibold leading-snug text-scalable text-(--text) fs-heading">{{
-                        t('report.title') }}</h1>
-                <p class="text-base leading-relaxed text-(--text-2) text-scalable max-w-prose fs-subtitle">
-                    {{ t('report.description') }}
-                </p>
+                </nav>
+
+                <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                    {{ t('report.title') }} -
+                    <span class="fs-subtitle text-(--text-2) leading-snug">
+                        {{ t('report.description') }}
+                    </span>
+                </h1>
             </template>
 
             <UForm :state="form" :validate="validateForm" class="space-y-4" @submit.prevent="onSubmit">
