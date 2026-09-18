@@ -49,6 +49,21 @@ slug: creation-site
 tag: Website
 highlighted: true
 ---
+::services-carousel
+---
+service:
+
+- title: "Plateforme de gestion de recettes de cuisine"
+    desktop: "/images/project/plateforme-gestion-recettes/desktop.png"
+    tablet: "/images/project/plateforme-gestion-recettes/tablet.png"
+    mobile: "/images/project/plateforme-gestion-recettes/mobile.png"
+- title: "Site vitrine professionnel"
+    desktop: "/images/project/portfolio-v2/desktop.png"
+    tablet: "/images/project/portfolio-v2/tablet.png"
+    mobile: "/images/project/portfolio-v2/mobile.png"
+
+---
+::
 
 ## Pour qui ?
 
@@ -134,4 +149,4 @@ Je vous invite à cliquer sur le bouton **Discuter de votre projet** en bas de l
 
 \*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
 
-\**Les pages classiques sont : Accueil, A propos, Services/Réalisations, Contact, Mentions légales
+\*\*Les pages classiques sont : Accueil, A propos, Services/Réalisations, Contact, Mentions légales

@@ -30,9 +30,9 @@ updated_at: 2026-05-20
 
 Bonjour, je suis Aurélien, développeur full-stack basé en Ardèche, spécialisé dans l'accessibilité et l'architecture web évolutive.
 
-J'aide les équipes à concevoir et à développer des applications web inclusives, faciles à maintenir et axées sur la performance, sans sacrifier l'expérience utilisateur ou le design, en utilisant [Vue](https://vuejs.org/), [Nuxt](https://nuxt.com/), [Typescript](https://www.typescriptlang.org/) et des outils backend modernes tel que [Node.js](https://nodejs.org/en), [Prisma](https://www.prisma.io/), [Express](https://expressjs.com/) et [PostgreSQL](https://www.postgresql.org/).
+J'aide les équipes à concevoir et à développer des applications web inclusives, faciles à maintenir et axées sur la performance, sans sacrifier l'expérience utilisateur ou le design, en utilisant Vue, Nuxt, TypeScript[[1]](#outils-front) et des outils backend modernes tel que Node.js, Prisma, Express, PostgreSQL[[2]](#outils-back-et-base-de-données).
 
-Mais je conçois aussi des sites internet avec [WordPress](https://wordpress.com/fr/) et son module e-commerce [WooCommerce](https://woocommerce.com/fr/) ainsi que [WordPress Studio](https://developer.wordpress.com/fr/studio/), le studio développement créé par les équipes de WordPress, ou [Shopify](https://shopify.com), en respectant les normes web en vigueur et les besoins des clients.
+Mais je conçois aussi des sites internet avec WordPress et son module e-commerce WooCommerce ainsi que WordPress Studio, le studio développement créé par les équipes de WordPress, ou Shopify [[3]](#cms), en respectant les normes web en vigueur et les besoins des clients.
 
 ---
 
@@ -71,3 +71,28 @@ Vous pouvez :
 
 - Me contacter via le bouton "Envoyer un message" dans le menu de gauche.
 - M'envoyer un mail à <contact@codekorico.com>
+
+## Liens
+
+Liens vers les sites officiels des différents outils.
+
+### Outils front
+
+[Framework Vue](https://vuejs.org/),
+[Framework Nuxt](https://nuxt.com/),
+[Typescript](https://www.typescriptlang.org/)
+
+### Outils back et base de données
+
+[Node.js](https://nodejs.org/en),
+[Express](https://expressjs.com/),
+[Prisma ORM](https://www.prisma.io/),
+[PostgreSQL](https://www.postgresql.org/),
+
+### CMS
+
+[WordPress](https://wordpress.com/fr/),
+[WooCommerce](https://woocommerce.com/fr/),
+[WordPress Studio](https://developer.wordpress.com/fr/studio/)
+
+[Shopify](https://shopify.com)

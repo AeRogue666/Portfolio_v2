@@ -36,6 +36,21 @@ slug: formation
 tag: Formations
 highlighted: false
 ---
+::services-carousel
+---
+service:
+
+- title: "Plateforme de gestion de recettes de cuisine"
+    desktop: "/images/project/plateforme-gestion-recettes/desktop.png"
+    tablet: "/images/project/plateforme-gestion-recettes/tablet.png"
+    mobile: "/images/project/plateforme-gestion-recettes/mobile.png"
+- title: "Site vitrine professionnel"
+    desktop: "/images/project/portfolio-v2/desktop.png"
+    tablet: "/images/project/portfolio-v2/tablet.png"
+    mobile: "/images/project/portfolio-v2/mobile.png"
+
+---
+::
 
 ## Pour qui ?
 

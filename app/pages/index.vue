@@ -307,11 +307,11 @@ useSeoMeta(({
                 <div>
                     <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="CodeKorico Logo"
                         width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" />
+                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" loading="eager" />
                     <NuxtImg id="header-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
                         alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high" />
+                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high" loading="eager" />
                 </div>
             </template>
 

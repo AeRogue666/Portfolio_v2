@@ -15,7 +15,7 @@ const props = defineProps<{
 }>();
 
 const testimonial = computed(() =>
-    props.client.map(item => ({
+    props.client.map((item: { customer_name: string; customer_job: string; customer_enterprise_name: string; image: string; alt: string; testimony: string; link: string; }) => ({
         user: {
             name: item.customer_name,
             job: item.customer_job ?? "",

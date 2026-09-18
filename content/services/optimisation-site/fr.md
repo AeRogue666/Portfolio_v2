@@ -12,7 +12,7 @@ packages:
         description: Au choix -> SEO ou Performance ou Accessibilité ou Sécurité
         price: 400€
         features:
-          - Passage au vert sur PageSpeed Insights OU 
+          - Passage au vert sur PageSpeed Insights OU
           - Résolution des erreurs d'accessibilité majeures (WAVE & Lighthouse) OU
           - Durcissement de la sécurité et paramétrage des en-têtes serveurs
       - title: Optimisation complète
@@ -25,6 +25,16 @@ slug: optimisation-site
 tag: Optimisation
 highlighted: false
 ---
+
+::responsive-image
+---
+title: "Site vitrine professionnel"
+desktop: "/images/project/portfolio-v2/desktop.png"
+tablet: "/images/project/portfolio-v2/tablet.png"
+mobile: "/images/project/portfolio-v2/mobile.png"
+
+---
+::
 
 ## Pour qui ?
 

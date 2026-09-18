@@ -48,6 +48,16 @@ tag: Maintenance
 highlighted: false
 ---
 
+::responsive-image
+---
+title: "Site vitrine professionnel"
+desktop: "/images/project/portfolio-v2/desktop.png"
+tablet: "/images/project/portfolio-v2/tablet.png"
+mobile: "/images/project/portfolio-v2/mobile.png"
+
+---
+::
+
 ## Pour qui ?
 
 - Tous les clients souhaitant un suivi régulier

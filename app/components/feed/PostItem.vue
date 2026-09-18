@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import PostBadge from './molecules/PostBadge.vue';
 import PostBase from './molecules/PostBase.vue';
-import ResponsiveImage from './organisms/ResponsiveImage.vue';
+import ResponsiveImage from '../ResponsiveImage.vue';
 import type { FeedItem } from '@/types/feed';
 
 const props = defineProps<{
