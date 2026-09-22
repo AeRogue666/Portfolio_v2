@@ -4,6 +4,7 @@ import { contentSchema } from "./content";
 import { experimentSchema } from "./experiment";
 import { projectSchema } from "./project";
 import { serviceSchema } from "./service";
+import { landingSchema } from './landing';
 
 export const contentRegistry = {
   content: {
@@ -29,6 +30,11 @@ export const contentRegistry = {
   services: {
     label: "Services",
     schema: serviceSchema,
+  },
+
+  landing: {
+    label: "Landing",
+    schema: landingSchema,
   },
 
   about: {

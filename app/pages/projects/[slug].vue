@@ -54,61 +54,33 @@ const src = computed(() => project.value?.image?.sources?.detail?.mobile || proj
     desktopSrc = computed(() => project.value?.image?.sources?.detail?.desktop || project.value?.image?.sources?.feed?.desktop || tabletSrc);
 
 if (project.value) {
-    useHeadSafe(({
-        title: project.value.title,
-        meta: [
-            // Meta names
-            { name: 'description', content: project.value.description },
-            // Meta properties
-            { property: 'og:title', content: project.value.title },
-            { property: 'og:description', content: project.value.description },
-            { property: 'og:type', content: 'article' },
-            { property: 'article:author', content: 'Aureldev' },
-            { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-            { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-            { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
-            { property: 'og:image:type', content: 'image/png' },
-            { property: 'og:image:width', content: '1920' },
-            { property: 'og:image:height', content: '1080' },
-        ],
-        link: [
-            {
-                rel: 'canonical',
-                href: `https://codekoricoà.com${route.path}`
-            },
-            ...locales.value.map((l: { code: string }) => ({
-                rel: 'alternate',
-                hreflang: l.code,
-                href: `https://codekorico.com${route.path}`
-            }))
-        ]
-    }));
-
-    useSeoMeta(({
+    useSeoMeta({
+        title: `${project.value.title} | CodeKorico`,
+        ogTitle: `${project.value.title} | CodeKorico`,
+        description: project.value.description,
+        ogDescription: project.value.description,
+        ogUrl: () => `https://codekorico.com${route.path}`,
+        ogImage: 'https://codekorico.com',
         ogImageAlt: project.value.image?.alt,
-        twitterCard: 'summary_large_image',
-    }));
-
-    useSchemaOrg([
-        defineOrganization({
-            name: 'CodeKorico',
-            url: 'https://codekorico.com',
-            logo: '',
-            sameAs: [
-                'https://github.com'
+        ogImageType: 'image/png',
+        ogImageWidth: 1920,
+        ogImageHeight: 1080,
+        articlePublishedTime: articlePublishedTime.value ?? created_atDate.value ?? "",
+        articleModifiedTime: articleModifiedTime.value ?? updated_atDate.value ?? "",
+    }),
+        useHead({
+            link: [
+                {
+                    rel: 'canonical',
+                    href: `https://codekorico.com${route.path}`
+                },
+                ...locales.value.map((l: { code: string }) => ({
+                    rel: 'alternate',
+                    hreflang: l.code,
+                    href: `https://codekorico.com${route.path}`
+                }))
             ]
-        }),
-        defineService({
-            name: project.value.title,
-            description: project.value.description,
-            provider: {
-                type: 'Organization',
-                name: 'CodeKorico',
-                url: 'https://codekorico.com'
-            },
-            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US'
-        })
-    ])
+        });
 }
 /* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
                 alt: project.image?.alt,
@@ -154,7 +126,7 @@ if (project.value) {
                     </template>
                 </p>
 
-                <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug my-2">
                     {{ project.title }}
                 </h1>
                 <p class="fs-subtitle text-(--text-2) leading-snug">

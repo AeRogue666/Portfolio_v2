@@ -58,40 +58,34 @@ watchEffect(() => {
 });
 
 if (service.value) {
-    useHeadSafe(({
-        title: t('seo.page.title', { pagetitle: service.value.title }),
-        meta: [
-            // Meta names
-            { name: 'description', content: t('seo.page.description', { pagetitle: service.value.description }) },
-            // Meta properties
-            { property: 'og:title', content: t('seo.page.title', { pagetitle: service.value.title }) },
-            { property: 'og:description', content: t('seo.page.description', { pagetitle: service.value.description }) },
-            { property: 'og:type', content: 'article' },
-            { property: 'article:author', content: 'Aureldev' },
-            { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-            { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-            { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
-            { property: 'og:image:type', content: 'image/png' },
-            { property: 'og:image:width', content: '1920' },
-            { property: 'og:image:height', content: '1080' },
-        ],
-        link: [
-            {
-                rel: 'canonical',
-                href: `https://codekorico.com${route.path}`
-            },
-            ...locales.value.map((l: { code: string }) => ({
-                rel: 'alternate',
-                hreflang: l.code,
-                href: `https://codekorico.com${route.path}`
-            }))
-        ]
-    }));
-
-    useSeoMeta(({
-        ogImageAlt: service.value.image?.alt,
-        twitterCard: 'summary_large_image',
-    }));
+    useSeoMeta({
+        title: `${service.value.title} | CodeKorico`,
+        ogTitle: `${service.value.title} | CodeKorico`,
+        description: service.value.description,
+        ogDescription: service.value.description,
+        ogImage: `https://codekorico.com${route.path}`,
+        ogImageAlt: t('seo.page.description', { pagetitle: service.value?.title }),
+        ogImageType: 'image/png',
+        ogImageWidth: 1920,
+        ogImageHeight: 1080,
+        ogType: 'article',
+        articleAuthor: ['CodeKorico'],
+        articlePublishedTime: articlePublishedTime.value ?? created_atDate.value ?? '',
+        articleModifiedTime: articleModifiedTime.value ?? updated_atDate.value ?? '',
+    }),
+        useHead({
+            link: [
+                {
+                    rel: 'canonical',
+                    href: `https://codekorico.com${route.path}`
+                },
+                ...locales.value.map((l: { code: string }) => ({
+                    rel: 'alternate',
+                    hreflang: l.code,
+                    href: `https://codekorico.com${route.path}`
+                }))
+            ]
+        });
 
     useSchemaOrg([
         defineOrganization({
@@ -153,12 +147,12 @@ if (service.value) {
                     </template>
                 </p>
 
-                <h1 id="service-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
-                    {{ service.title }} -
-                    <span class="fs-subtitle text-(--text-2) leading-snug">
-                        {{ service.description }}
-                    </span>
+                <h1 id="service-title" class="fs-heading font-semibold tracking-tight leading-snug my-2">
+                    {{ service.title }}
                 </h1>
+                <p class="fs-subtitle text-(--text-2) leading-snug">
+                    {{ service.description }}
+                </p>
             </template>
 
             <ContentRenderer :value="service" />

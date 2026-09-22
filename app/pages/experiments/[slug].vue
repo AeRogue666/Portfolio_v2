@@ -54,61 +54,33 @@ watchEffect(() => {
 });
 
 if (experiment.value) {
-    useHeadSafe(({
-        title: experiment.value.title,
-        meta: [
-            // Meta names
-            { name: 'description', content: experiment.value.description },
-            // Meta properties
-            { property: 'og:title', content: experiment.value.title },
-            { property: 'og:description', content: experiment.value.description },
-            { property: 'og:type', content: 'article' },
-            { property: 'article:author', content: 'Aureldev' },
-            { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-            { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-            { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
-            { property: 'og:image:type', content: 'image/png' },
-            { property: 'og:image:width', content: '1920' },
-            { property: 'og:image:height', content: '1080' },
-        ],
-        link: [
-            {
-                rel: 'canonical',
-                href: `https://codekorico.com${route.path}`
-            },
-            ...locales.value.map((l: { code: string }) => ({
-                rel: 'alternate',
-                hreflang: l.code,
-                href: `https://codekorico.com${route.path}`
-            }))
-        ]
-    }));
-
-    useSeoMeta(({
+    useSeoMeta({
+        title: `${experiment.value.title} | CodeKorico`,
+        ogTitle: `${experiment.value.title} | CodeKorico`,
+        description: experiment.value.description,
+        ogDescription: experiment.value.description,
+        ogUrl: () => `https://codekorico.com${route.path}`,
+        ogImage: 'https://codekorico.com',
         ogImageAlt: experiment.value.image?.alt,
-        twitterCard: 'summary_large_image',
-    }));
-
-    useSchemaOrg([
-        defineOrganization({
-            name: 'CodeKorico',
-            url: 'https://codekorico.com',
-            logo: '',
-            sameAs: [
-                'https://github.com'
+        ogImageType: 'image/png',
+        ogImageWidth: 1920,
+        ogImageHeight: 1080,
+        articlePublishedTime: articlePublishedTime.value ?? created_atDate.value ?? "",
+        articleModifiedTime: articleModifiedTime.value ?? updated_atDate.value ?? "",
+    }),
+        useHead({
+            link: [
+                {
+                    rel: 'canonical',
+                    href: `https://codekorico.com${route.path}`
+                },
+                ...locales.value.map((l: { code: string }) => ({
+                    rel: 'alternate',
+                    hreflang: l.code,
+                    href: `https://codekorico.com${route.path}`
+                }))
             ]
-        }),
-        defineService({
-            name: experiment.value.title,
-            description: experiment.value.description,
-            provider: {
-                type: 'Organization',
-                name: 'CodeKorico',
-                url: 'https://codekorico.com'
-            },
-            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US'
-        })
-    ])
+        });
 }
 
 /* <NuxtPicture :src="src" :srcset="`${src} 640w, ${tabletSrc} 768w, ${desktopSrc} 1024w`" :img-attrs="{
@@ -155,7 +127,7 @@ if (experiment.value) {
                     </template>
                 </p>
 
-                <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
+                <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug my-2">
                     {{ experiment.title }}
                 </h1>
                 <p class="fs-subtitle text-(--text-2) leading-snug max-w-[65ch]">

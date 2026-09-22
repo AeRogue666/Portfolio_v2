@@ -38,7 +38,37 @@ const hasActiveFilters = computed(() => selectedTags.value.length > 0 || selecte
 const articlePublishedTime = computed(() => formatDate(items.value[0]?.created_at)), // dayjs(items.value[0]?.created_at).locale(locale.value).format()
     articleModifiedTime = computed(() => formatDate(items.value[0]?.updated_at)); // dayjs(items.value[0]?.updated_at).locale(locale.value).format()
 
-useHeadSafe(() => ({
+useSeoMeta({
+    title: t('seo.feed.title'),
+    ogTitle: t('seo.feed.title'),
+    description: t('seo.feed.description'),
+    ogDescription: t('seo.feed.description'),
+    ogUrl: () => `https://codekorico.com${route.path}`,
+    ogType: 'website',
+    ogImage: 'https://codekorico.com',
+    ogImageAlt: t('seo.home.description'),
+    ogImageType: 'image/png',
+    ogImageWidth: 1920,
+    ogImageHeight: 1080,
+    articleAuthor: ['CodeKorico', 'Aureldev'],
+    articlePublishedTime: articlePublishedTime.value ?? "",
+    articleModifiedTime: articleModifiedTime.value ?? "",
+}),
+    useHead({
+        link: [
+            {
+                rel: 'canonical',
+                href: `https://codekorico.com${route.path}`
+            },
+            ...locales.value.map((l: { code: string }) => ({
+                rel: 'alternate',
+                hreflang: l.code,
+                href: `https://codekorico.com${route.path}`
+            }))
+        ]
+    });
+
+/* useHeadSafe(() => ({
     title: t('seo.feed.title'),
     meta: [
         // Meta names
@@ -71,7 +101,7 @@ useHeadSafe(() => ({
 useSeoMeta(({
     ogImageAlt: t('seo.feed.description'),
     twitterCard: 'summary_large_image',
-}));
+})); */
 </script>
 
 <template>

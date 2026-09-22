@@ -1,6 +1,7 @@
 ---
 title: Refonte de site web pour attirer plus de clients
 created_at: "2026-02-11"
+updated_at: "2026-09-15"
 description: Modernisez votre site internet pour améliorer votre image, votre visibilité et convertir plus de visiteurs
 feed_summary: Votre site est vieillissant ou inefficace ? Transformez-le en outil moderne, rapide et conçu pour générer des clients
 feed_title: Refonte & modernisation web
@@ -35,6 +36,15 @@ slug: refonte-site
 tag: Website
 highlighted: false
 ---
+
+::image-slider
+---
+    imageBefore: "/images/project/plateforme-gestion-recettes/desktop.png"
+    altBefore: "Capture de l'ancienne version obsolète du site, texte illisible et non-responsive."
+    imageAfter: "/images/project/portfolio-v2/desktop.png"
+    altAfter: "Capture de la refonte optimisée par CodeKorico, contrastes validés et design moderne."
+---
+::
 
 ## Pour qui ?
 

@@ -87,6 +87,11 @@ const statusOptions = computed(() => {
     ];
 });
 
+const technologiesMap = computed(() => [
+    { value: 'HTML5 / CSS3 / JavaScript / TypeScript', icon: 'check' },
+    { value: 'Framework: Nuxt 4.5, Pinia, i18n', icon: 'check' },
+]);
+
 const testEnvironmentMap = computed(() => [
     { value: 'Windows 11 + Chrome + NVDA 2024.1', icon: 'check' },
     { value: 'Windows 11 + Firefox + NVDA 2024.1', icon: 'xmark' },
@@ -149,22 +154,22 @@ watchEffect(() => {
 });
 
 if (reportData.value) {
-    useHeadSafe(({
-        title: t('seo.page.title', { pagetitle: reportData.value.title }),
-        meta: [
-            // Meta names
-            { name: 'description', content: t('seo.page.description', { pagetitle: reportData.value.description }) },
-            // Meta properties
-            { property: 'og:title', content: t('seo.page.title', { pagetitle: reportData.value.title }) },
-            { property: 'og:description', content: t('seo.page.description', { pagetitle: reportData.value.description }) },
-            { property: 'og:type', content: 'article' },
-            { property: 'article:author', content: 'Aureldev' },
-            { property: 'article:published_time', content: articlePublishedTime.value ?? '' },
-            { property: 'article:modified_time', content: articleModifiedTime.value ?? '' },
-            { property: 'og:image:type', content: 'image/png' },
-            { property: 'og:image:width', content: '1920' },
-            { property: 'og:image:height', content: '1080' },
-        ],
+    useSeoMeta({
+    title: reportData.value?.title, // t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
+    ogTitle: reportData.value?.title, // t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
+    description: reportData.value?.description, // t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
+    ogDescription: reportData.value?.description, // t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
+    ogImage: 'https://codekorico.com/accessibility-report',
+    ogImageAlt: t('seo.page.description', { pagetitle: reportData.value?.title }),
+    ogImageType: 'image/png',
+    ogImageWidth: 1920,
+    ogImageHeight: 1080,
+    ogType: 'article',
+    articleAuthor: ['CodeKorico'],
+    articlePublishedTime: articlePublishedTime.value ?? '',
+    articleModifiedTime: articleModifiedTime.value ?? '',
+}),
+    useHead({
         link: [
             {
                 rel: 'canonical',
@@ -176,41 +181,7 @@ if (reportData.value) {
                 href: `https://codekorico.com${route.path}`
             }))
         ]
-    }));
-    useSeoMeta(({
-        ogImage: '/images/project/portfolio-v2/desktop.png',
-        twitterCard: 'summary_large_image',
-    }));
-
-    /* useSeoMeta(({
-        title: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
-        description: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
-        ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
-        ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
-        ogImage: '/images/project/portfolio-v2/desktop.png',
-        twitterCard: 'summary_large_image',
-    })); */
-
-    useSchemaOrg([
-        defineOrganization({
-            name: 'CodeKorico',
-            url: 'https://codekorico.com',
-            logo: '',
-            sameAs: [
-                'https://github.com'
-            ]
-        }),
-        defineService({
-            name: reportData.value.title,
-            description: reportData.value.description,
-            provider: {
-                type: 'Organization',
-                name: 'CodeKorico',
-                url: 'https://codekorico.com'
-            },
-            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US',
-        })
-    ]);
+    });
 }
 </script>
 
@@ -271,6 +242,15 @@ if (reportData.value) {
                             : reportData.conformityTotal.partial
                         }}</p>
                 </div>
+            </div>
+
+            <div class="mb-6 p-4 bg-(--bg-2) rounded-lg border-l-4 border-blue-500">
+                <h3 class="font-semibold mb-2 fs-subtitle">{{ reportData.technologiesTitle }}</h3>
+                <ul class="fs-small text-(--text-2) space-y-1">
+                    <li v-for="tech in technologiesMap" :key="tech.value">
+                        <UIcon :name="`fa7-solid:${tech.icon}`" size="xl" /> {{ tech.value }}
+                    </li>
+                </ul>
             </div>
 
             <div class="mb-6 p-4 bg-(--bg-2) rounded-lg border-l-4 border-blue-500">

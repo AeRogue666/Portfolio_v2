@@ -27,17 +27,17 @@
       "textarea_placeholder": "Describe your need, your context or your question. I will directly answer by mail.",
       "submit_button": "Submit",
       "step-complexity": {
-        "business-goals-label": "Quels sont les objectifs principaux du projet ?",
-        "business-goals-placeholder": "Décrivez en {maxlength} caractères maximum les objectifs principaux du projet.",
-        "problems-label": "Rencontrez-vous des problèmes actuellement ?",
-        "problems-placeholder": "Décrivez en {maxlength} caractères maximum les problèmes rencontrés.",
-        "client_website": "Adresse de votre site internet"
+        "business-goals-label": "What are the main objectives of the project",
+        "business-goals-placeholder": "Describe the main objectives of the project in up to {maxlength} characters.",
+        "problems-label": "Are you currently experiencing any problems?",
+        "problems-placeholder": "Describe the problems you're experiencing in {maxlength} characters or fewer.",
+        "client_website": "Your website address"
       },
       "step-summary": {
         "email_label": "Email",
-        "email_placeholder": "Votre email",
-        "textarea_label": "Informations complémentaires (optionnel)",
-        "textarea_placeholder": "Decrivez vos besoins et toutes informations complémentaires."
+        "email_placeholder": "Your email",
+        "textarea_label": "Additional information (optional)",
+        "textarea_placeholder": "Describe your needs and provide any additional information."
       },
       "state": {
         "loading": "Sending...",
@@ -50,11 +50,12 @@
       "homepage": "Home page",
       "feed": "Feed",
       "about": "About",
-      "accessibility_statement": "Accessibility: Compliant",
+      "accessibility_statement": "Accessibility: Partly compliant",
       "problem_report": "Report a problem",
       "accessibility_report": "Accessibility report",
       "legal_notices": "Legal notices",
-      "terms_of_use": "Terms of Use"
+      "terms_of_use": "Terms of Use",
+      "landing_page": "Accessibility in Ardèche"
     }
   },
   "sidebar-right": {
@@ -114,7 +115,7 @@
       "description": "Are you ready to finally take the right steps to boost your visibility and sell your services or products?",
       "problem": {
         "1": {
-          "title": "HAve a website that helps you gain visibility, credibility, and recognition."
+          "title": "Have a website that helps you gain visibility, credibility, and recognition."
         },
         "2": {
           "title": "Once you understand your website, you'll finally be able to take control of it and grow it alongside your business."
@@ -194,8 +195,22 @@
     },
     "partner_section": {
       "tag": "Our partners",
-      "title": "Un écosystème engagé & local",
-      "description": "CodeKorico ne développe pas des sites hors-sol. Je m'inscris activement dans mon territoire et l'économie collaborative."
+      "title": "A Commited & Local Ecosystem",
+      "description": "CodeKorico doesn't develop out-of-touch, cookie-cutter websites. I am actively involved in my local area and the sharing economy.",
+      "partners": {
+        "1": {
+          "tag": "Region",
+          "title": "A web developer right in your neighborhood.",
+          "description": "Because we work better when we understand each other. By partnering with Emerveillés par l'Ardèche through Pollen SCOP, CodeKorico chooses to prioritize proximity, common sense, and a job well done - right here in our valleys, in Ardèche, Drôme, and Haute-Loire.",
+          "image_alt": "Emerveillés par l'Ardèche logo"
+        },
+        "2": {
+          "tag": "Cooperative Model",
+          "title": "Pollen SCOP",
+          "description": "Behind CodeKorico is not just an entrepreneur, but also a collective. I chose to join Pollen to ensure you receive honest, transparent support based on mutual aid.",
+          "image_alt": "CAE Pollen SCOP logo"
+        }
+      }
     },
     "contact_section": {
       "tag": "Contact",
@@ -284,6 +299,9 @@
     "team_list": "Our little but effective team",
     "user_tagline": "Full-stack developer focused on accessibility and produt quality. I enjoy building robust, and useful interfaces."
   },
+  "landing": {
+    "talk_about_your_project": "Let's discuss the compliance of your current website"
+  },
   "footer": {},
   "error": {
     "feed_loading_error": "Unable to load the feed",
@@ -313,7 +331,8 @@
     "legal_notices": "Legal notices",
     "terms_of_use": "Terms of Use",
     "clients": "Clients",
-    "services": "Plans"
+    "services": "Plans",
+    "landing": "Landing"
   },
   "report": {
     "title": "Report a problem",
@@ -336,6 +355,12 @@
       "email": "Email",
       "optional": "Optional",
       "submit": "Submit"
+    },
+    "text": {
+      "1": "Are you having trouble accessing content, filing out a form, or navigating the site?",
+      "2": "As a web developer, your browsing experience is my priority. Please use this form to report the issue to me.",
+      "3": "I promise to respond within 48 to 72 business hours to provide you with the content or alternative you need.",
+      "4": "If you prefer, you can also contact me directly by email at {email}."
     }
   },
   "accessibility-report": {
@@ -350,96 +375,96 @@
   },
   "sendmessagemodal": {
     "types": {
-      "message": "Demande rapide",
-      "creation": "Créer un nouveau site",
-      "refonte": "Redesigner un site (Optimisation + Refonte)",
-      "optimisation": "Améliorer un site existant (Optimisation)",
-      "maintenance": "Demander une maintenance",
-      "audit": "Faire analyser mon site",
-      "formation": "Me former"
+      "message": "Quick request",
+      "creation": "Create a new website",
+      "refonte": "Redesign a website (Optimization + Redesign)",
+      "optimisation": "Improve an existing website (Optimization)",
+      "maintenance": "Request maintenance",
+      "audit": "Have my website analyzed",
+      "formation": "Get training"
     },
     "subtypes": {
       "creation": {
-        "onepage": "One page",
-        "vitrine": "Site vitrine",
+        "onepage": "Single-page site",
+        "vitrine": "Showcase site",
         "professionnel": "Business site",
         "ecommerce": "E-commerce",
-        "reservation": "Réservation en ligne",
-        "custom": "Projet métier spécifique"
+        "reservation": "Online booking",
+        "custom": "Industry-specific project"
       },
       "refonte": {
-        "design": "Moderniser le design",
-        "performance": "Améliorer les performances",
-        "accessibilite": "Corriger des problèmes d'accessibilité",
-        "securite": "Renforcer la sécurité",
-        "fonctionnalite": "Ajouter des fonctionnalités"
+        "design": "Modernize the design",
+        "performance": "Improve performance",
+        "accessibilite": "Fix accessibility issues",
+        "securite": "Enhance security",
+        "fonctionnalite": "Add features"
       },
       "optimisation": {
-        "accessibilite": "Optimiser l'accessibilité",
-        "seo": "Optimiser SEO & Performance",
-        "securite": "Optimiser la sécurité",
-        "optimisation-multi": "Optimiser plusieurs de ses aspects"
+        "accessibilite": "Optimize accessibility",
+        "seo": "Optimize SEO & Performance",
+        "securite": "Optimize security",
+        "optimisation-multi": "Optimize multiple aspects"
       },
       "maintenance": {
-        "onepage": "Page unique / Portfolio basique",
-        "vitrine":"Site vitrine",
-        "professionnel": "Site professionnel",
-        "ecommerce":"Site e-commerce",
-        "custom":"Projet métier spécifique",
-        "ponctuelle": "Intervention ponctuelle"
+        "onepage": "Single-page site / Basic portfolio",
+        "vitrine":"Showcase site",
+        "professionnel": "Professionnal site",
+        "ecommerce":"E-commerce site",
+        "custom":"Industry-specific project",
+        "ponctuelle": "One-time service"
       },
       "audit": {
-        "accessibilite": "Audit Accessibilité / Mise en conformité WCAG",
-        "seo": "Audit Performance & SEO",
-        "securite": "Audit Sécurité",
-        "all": "Audit complet",
-        "flash_audit": "Flash Audit"
+        "accessibilite": "Accessibility Audit / WCAG Compliance",
+        "seo": "Performance & SEO Audit",
+        "securite": "Security Audit",
+        "all": "Comprehensive Audit",
+        "flash_audit": "Quick Audit"
       },
       "formation": {
-        "ordinateur": "Utilisation ordinateur",
-        "internet": "Naviguer sur internet",
-        "email": "Apprendre à utiliser une messagerie mail",
-        "securite-numerique": "Apprendre les bases de la sécurité numérique",
-        "ia": "Maîtriser l'usage de l'Intelligence Artificielle",
-        "custom": "Formation personnalisée"
+        "ordinateur": "Using a computer",
+        "internet": "Browsing the internet",
+        "email": "Learn how to use email",
+        "securite-numerique": "Learn the basics of digital security",
+        "ia": "Master the use of Artificial Intelligence",
+        "custom": "Customized training"
       }
     },
     "budget": {
-      "inferieur_a": "Inférieur à {value}€ {suite}",
-      "superieur_a": "Supérieur à {value}€ {suite}",
-      "compris_entre": "Entre {value1}€ et {value2}€ {suite}",
-      "urgent": "C'est urgent",
+      "inferieur_a": "Less than {value}€ {suite}",
+      "superieur_a": "Greater than {value}€ {suite}",
+      "compris_entre": "Between {value1}€ and {value2}€ {suite}",
+      "urgent": "This is urgent",
       "flexible": "Flexible",
-      "intervention_ponctuelle": "Intervention ponctuelle ({value}{suite})"
+      "intervention_ponctuelle": "One-time service ({value}{suite})"
     },
     "deadline": {
-      "inferieur_a": "Moins de {value} {suite}",
-      "superieur_a": "Plus de {value} {suite}",
-      "compris_entre": "Entre {value1} et {value2} {suite}",
-      "urgent": "C'est urgent",
+      "inferieur_a": "Less than {value} {suite}",
+      "superieur_a": "Greater than {value} {suite}",
+      "compris_entre": "Between {value1} and {value2} {suite}",
+      "urgent": "This is urgent",
       "flexible": "Flexible",
-      "1-3m": "1 à 3 mois"
+      "1-3m": "1 to 3 months"
     },
     "format": {
-      "1h": "Une séance d'1 heure",
-      "demijournee": "Une demi-journée",
-      "1D": "Une journée",
-      "mD": "Plusieurs journées",
-      "idk": "Je ne sais pas encore"
+      "1h": "A 1-hour session",
+      "demijournee": "A half-day",
+      "1D": "a day",
+      "mD": "Several days",
+      "idk": "I don't know yet"
     },
     "person": {
-      "une_personne": "Pour une personne",
-      "inferieur_a": "Moins de {value} {suite}",
-      "superieur_a": "Plus de {value} {suite}",
-      "compris_entre": "Entre {value1} et {value2} {suite}",
-      "1p": "1 personne",
-      "2-5p": "Entre 2 et 5 personnes",
-      "6-10p": "Entre 6 et 10 personnes",
-      "10p+": "Plus de 10 personnes"
+      "une_personne": "For one person",
+      "inferieur_a": "Less than {value} {suite}",
+      "superieur_a": "Greater than {value} {suite}",
+      "compris_entre": "Between {value1} and {value2} {suite}",
+      "1p": "1 person",
+      "2-5p": "Between 2 and 5 persons",
+      "6-10p": "Between 6 and 10 persons",
+      "10p+": "More than 10 persons"
     },
     "publicType": {
-      "business": "Professionnel",
-      "individual": "Particulier"
+      "business": "Professionnal",
+      "individual": "Individual"
     }
   },
   "plans": {

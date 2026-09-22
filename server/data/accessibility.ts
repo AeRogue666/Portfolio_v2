@@ -16,6 +16,7 @@ export const accessibilityReport: AccessibilityReport = {
         total: "Totale",
         partial: "Partielle",
       },
+      technologiesTitle: "Technologies utilisées pour le site",
       testEnvironmentTitle: "Environnement de test",
       scoresTitle: "Scores par Page",
       pageLabelCol: "Page",
@@ -365,6 +366,10 @@ export const accessibilityReport: AccessibilityReport = {
             "Lighthouse Accessibility (scores affichés par page)",
             "WAVE WebAIM Evaluation Tool (10/10 pour la plupart)",
             "Axe DevTools pour détection d'anomalies courantes",
+            "Micosoft Accessibility Insights for Web",
+            "IBM Equal Access Accessibility Checker",
+            "Tanagaru Contrast Checker",
+            "W3C Contrast Checker",
           ],
         },
         {
@@ -374,7 +379,7 @@ export const accessibilityReport: AccessibilityReport = {
             "Utilisation de variables CSS custom pour garantir la cohérence",
             "Mode Grayscale activable pour vérifier l'indépendance à la couleur",
           ],
-        },
+        }
       ],
       glossary: [
         {
@@ -434,6 +439,7 @@ export const accessibilityReport: AccessibilityReport = {
         total: "Total",
         partial: "Partial",
       },
+      technologiesTitle: "Used technologies for the site",
       testEnvironmentTitle: "Test environment",
       scoresTitle: "Scores by Page",
       pageLabelCol: "Page",

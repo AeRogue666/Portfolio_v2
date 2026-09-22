@@ -34,31 +34,36 @@ const articlePublishedTime = computed(() => formatDate(page.value?.created_at)),
 const created_atDate = computed(() => formatISO(page.value?.created_at)), // dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
     updated_atDate = computed(() => formatISO(page.value?.updated_at)); // dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
-useHeadSafe(() => ({
-    title: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility') }),
-    meta: [
-        // Meta names
-        { name: 'description', content: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility') }) },
-        // Meta properties
-        { property: 'og:title', content: t('seo.page.title', { pagetitle: t('breadcrumb.accessibility') }) },
-        { property: 'og:description', content: t('seo.page.description', { pagetitle: t('breadcrumb.accessibility') }) },
-        { property: 'og:type', content: 'article' },
-        { property: 'article:author', content: 'Aureldev' },
-        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: `https://codekorico.com${route.path}`
-        },
-        ...locales.value.map(l => ({
-            rel: 'alternate',
-            hreflang: l.code,
-            href: `https://codekorico.com${route.path}`
-        }))
-    ]
-}));
+if (page.value) {
+    useSeoMeta({
+        title: page.value.title, // t('seo.page.title', { pagetitle: t('breadcrumb.accessibility') }),
+        ogTitle: page.value.title, // t('seo.page.title', { pagetitle: t('breadcrumb.accessibility') }),
+        description: page.value.description, // t('seo.page.description', { pagetitle: t('breadcrumb.accessibility') }),
+        ogDescription: page.value.description, // t('seo.page.description', { pagetitle: t('breadcrumb.accessibility') }),
+        ogImage: 'https://codekorico.com/accessibility',
+        ogImageAlt: t('seo.page.description', { pagetitle: page.value.title }),
+        ogImageType: 'image/png',
+        ogImageWidth: 1920,
+        ogImageHeight: 1080,
+        ogType: 'article',
+        articleAuthor: ['CodeKorico'],
+        articlePublishedTime: articlePublishedTime.value ?? created_atDate.value ?? '',
+        articleModifiedTime: articleModifiedTime.value ?? updated_atDate.value ?? '',
+    }),
+        useHead({
+            link: [
+                {
+                    rel: 'canonical',
+                    href: `https://codekorico.com${route.path}`
+                },
+                ...locales.value.map((l: { code: string }) => ({
+                    rel: 'alternate',
+                    hreflang: l.code,
+                    href: `https://codekorico.com${route.path}`
+                }))
+            ]
+        });
+}
 </script>
 
 <template>

@@ -26,15 +26,15 @@ const props = defineProps<{
 }>();
 
 const src = computed(() => {
-    if (props.image) return props.image.sources.feed?.mobile || props.image.source.detail?.mobile || ''
+    if (props.image) return props.image.sources.feed?.mobile || props.image.sources.detail?.mobile || ''
     return props.mobile || props.desktop || '';
 }),
     tabletSrc = computed(() => {
-        if (props.image) return props.image.sources.feed?.tablet || props.image.source.detail?.tablet || ''
+        if (props.image) return props.image.sources.feed?.tablet || props.image.sources.detail?.tablet || ''
         return props.tablet || props.desktop || src.value;
     }),
     desktopSrc = computed(() => {
-        if (props.image) return props.image.sources.feed?.desktop || props.image.source.detail?.desktop || ''
+        if (props.image) return props.image.sources.feed?.desktop || props.image.sources.detail?.desktop || ''
         return props.desktop || tabletSrc.value;
     }),
     altText = computed(() => {
@@ -65,7 +65,7 @@ const isStaticServiceImage = computed(() => !props.image && !props.isCarouselIte
 <template>
     <!-- MODE STATIC -->
     <figure v-if="isStaticServiceImage"
-        class="[flex flex-col justify-between items-center text-center w-full h-auto">
+        class="flex flex-col justify-between items-center text-center w-full h-auto">
         <div class="flex flex-1 justify-center items-center w-full overflow-hidden">
             <NuxtImg :src="src" :alt="altText" :aria-describedby="title ? imageId : undefined" width="1080"
                 height="1350" sizes="xs:100vw sm:100vw md:80vw lg:64rem"

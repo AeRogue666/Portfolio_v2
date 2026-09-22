@@ -13,17 +13,29 @@ Ces dernières sont accessibles sur le Site à la rubrique "**Mentions légales*
 
 ## Edition du Site
 
-L'édition et la direction de la publication du Site sont assurées par Aureldev, domicilié en France, dont l'adresse e-mail est <contact@codekorico.com>.
+L'édition et la direction de la publication du Site sont assurées par Aureldev agissant sous le nom commercial CodeKorico, domicilié en France, dont l'adresse e-mail est <contact@codekorico.com>.
 
 ci-après l'"**Editeur**".
 
-Le Site est une entreprise dépendante de la SA coopérative de production POLLEN SCOP, dont l'adresse postale est 555 CHEMIN DES TRAVERSES 07200 LACHAPELLE-SOUS-AUBENAS, dont le SIRET est le 439 076 563 00147.
+L'activité commerciale de CodeKorico est juridiquement portée par la SA coopérative de production POLLEN SCOP (Société coopérative ouvrière de production à forme anonyme et capital variable).
+
+- Adresse postale : Pépinière d'entreprises l'Espélidou, 555 CHEMIN DES TRAVERSES 07200 LACHAPELLE-SOUS-AUBENAS, 
+- SIRET : 439 076 563 00147 (Greffe du Tribunal de Commerce d'Aubenas)
+- Numéro de TVA Intracommunautaire : FR 44 439 076 563
+
 Plus d'informations sur [l'Annuaire des Entreprises](https://annuaire-entreprises.data.gouv.fr/entreprise/pollen-scop-439076563).
+
+Le directeur de la publication agit en qualité d'entrepreneur membre de la coopérative POLLEN SCOP.
 
 ## Hébergeur
 
-L'hébergeur du Site est la société Vercel Inc. dont le siège social est situé au 340 S Lemon Ave #4133, 91789 Walnut dans le comté de Californie aux Etats-Unis d'Amérique.
-Le site internet de l'hébergeur du Site est vercel.com, dont l'adresse e-mail est <support@vercel.com> et le numéro de téléphone est le +1 951-383-6898.
+L'hébergeur du Site est la société Vercel Inc. (SA).
+
+- Adresse postale : 340 S Lemon Ave #4133, 91789 Walnut dans le comté de Californie aux Etats-Unis d'Amérique.
+- SIRET : SIRET
+- Adresse e-mail : <support@vercel.com>
+- Site internet : vercel.com
+- Numéro de téléphone : +1 951-383-6898
 
 ## Accès au Site
 
@@ -33,7 +45,9 @@ L'Editeur ne pourra en aucun cas être tenu pour responsable des conséquences �
 
 ## Collecte des données
 
-Le Site assure à l'Utilisateur une collecte et un traitement des données personnelles dans le respect de privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers aux libertés et dans le respect de la réglementation applicable en matière de traitement des données à caractère personnel conformément au règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 (ci-après, ensemble, la "Règlementation applicable en matière de protection des Données à caractère personnel").
+Le Site assure à l'Utilisateur une collecte et un traitement des données personnelles dans le respect de la vie privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers aux libertés et dans le respect de la réglementation applicable en matière de traitement des données à caractère personnel conformément au règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 (ci-après, ensemble, la "Règlementation applicable en matière de protection des Données à caractère personnel").
+
+La durée de conservation des données collectées via le formulaire de contact du Site ou le [formulaire de rapport du Site](/report) ou par mail n'excedera pas une durée maximale de 3 ans.
 
 En vertu de la Règlementation applicable en matière de protection des Données à caractère personnel, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur peut exercer ce droit :
 

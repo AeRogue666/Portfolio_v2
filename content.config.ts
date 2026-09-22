@@ -13,6 +13,7 @@ export default defineContentConfig({
           "clients/**",
           "about/**",
           "services/**",
+          "landing/**"
         ],
       },
       schema: contentRegistry.content.schema
@@ -45,6 +46,12 @@ export default defineContentConfig({
       type: "page",
       source: "services/**/*.md",
       schema: contentRegistry.services.schema,
+    }),
+
+    landing: defineCollection({
+      type: "page",
+      source: "landing/**/*.md",
+      schema: contentRegistry.landing.schema,
     }),
   },
 });

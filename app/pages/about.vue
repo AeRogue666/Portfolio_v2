@@ -52,57 +52,34 @@ const created_atDate = computed(() => formatDate(about.value?.created_at)), // d
     updated_atDate = computed(() => formatDate(about.value?.updated_at)); // dayjs(about.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 if (about.value) {
-    useHeadSafe(() => ({
-        title: t('seo.page.title', { pagetitle: t('breadcrumb.about') }),
-        meta: [
-            // Meta names
-            { name: 'description', content: t('seo.page.description', { pagetitle: t('breadcrumb.about') }) },
-            // Meta properties
-            { property: 'og:title', content: t('seo.page.title', { pagetitle: t('breadcrumb.about') }) },
-            { property: 'og:description', content: t('seo.page.description', { pagetitle: t('breadcrumb.about') }) },
-            { property: 'og:type', content: 'article' },
-            { property: 'article:author', content: 'Aureldev' },
-            { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-            { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-        ],
-        link: [
-            {
-                rel: 'canonical',
-                href: `https://codekorico.com${route.path}`
-            },
-            ...locales.value.map((l: { code: any; }) => ({
-                rel: 'alternate',
-                hreflang: l.code,
-                href: `https://codekorico.com${route.path}`
-            }))
-        ]
-    }));
-
-    useSeoMeta(({
-        ogImageAlt: about.value.image?.alt,
-        twitterCard: 'summary_large_image',
-    }));
-
-    useSchemaOrg([
-        defineOrganization({
-            name: 'CodeKorico',
-            url: 'https://codekorico.com',
-            logo: '',
-            sameAs: [
-                'https://github.com'
+    useSeoMeta({
+        title: about.value?.title, // t('seo.page.title', { pagetitle: t('breadcrumb.about') }),
+        ogTitle: about.value?.title, // t('seo.page.title', { pagetitle: t('breadcrumb.about') }),
+        description: about.value?.description, // t('seo.page.description', { pagetitle: t('breadcrumb.about') }),
+        ogDescription: about.value?.description, // t('seo.page.description', { pagetitle: t('breadcrumb.about') }),
+        ogImage: `https://codekorico.com${route.path}`,
+        ogImageAlt: t('seo.page.description', { pagetitle: about.value?.title }),
+        ogImageType: 'image/png',
+        ogImageWidth: 1920,
+        ogImageHeight: 1080,
+        ogType: 'article',
+        articleAuthor: ['CodeKorico'],
+        articlePublishedTime: articlePublishedTime.value ?? created_atDate.value ?? '',
+        articleModifiedTime: articleModifiedTime.value ?? updated_atDate.value ?? '',
+    }),
+        useHead({
+            link: [
+                {
+                    rel: 'canonical',
+                    href: `https://codekorico.com${route.path}`
+                },
+                ...locales.value.map((l: { code: string }) => ({
+                    rel: 'alternate',
+                    hreflang: l.code,
+                    href: `https://codekorico.com${route.path}`
+                }))
             ]
-        }),
-        defineService({
-            name: about.value.title,
-            description: about.value.description,
-            provider: {
-                type: 'Organization',
-                name: 'CodeKorico',
-                url: 'https://codekorico.com'
-            },
-            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US',
-        })
-    ]);
+        });
 }
 </script>
 

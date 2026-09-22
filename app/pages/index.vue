@@ -20,6 +20,16 @@ interface Element {
     iconClass?: string,
 }
 
+interface Partner {
+    tag: string,
+    title: string,
+    description?: string,
+    image: string;
+    imageAlt?: string,
+    class?: string,
+    imageClass?: string,
+}
+
 const { t, locale, locales } = useI18n(),
     accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode(),
@@ -243,6 +253,27 @@ const questionElements = reactive<Element[]>([
     },
 ]);
 
+const partnerElements = reactive<Partner[]>([
+    {
+         tag: t('index.partner_section.partners.1.tag'),
+         title: t('index.partner_section.partners.1.title'),
+         description: t('index.partner_section.partners.1.description'),
+         image: '/images/logo/partenaires/emerveilles_par_ardeche.png',
+         imageAlt: t('index.partner_section.partners.1.image_alt'),
+         class: 'md:col-span-2',
+         imageClass: 'h-14'
+    },
+    {
+         tag: t('index.partner_section.partners.2.tag'),
+         title: t('index.partner_section.partners.2.title'),
+         description: t('index.partner_section.partners.2.description'),
+         image: '/images/logo/partenaires/pollen_scop.png',
+         imageAlt: t('index.partner_section.partners.2.image_alt'),
+         class: '',
+         imageClass: 'h-12'
+    },
+]);
+
 const fillColors = ref<string[]>(['--bg-3', '--card-experiment-bg', '--card-about-bg', '--card-job-bg', '--card-about-bg', '--bg-2', '--bg-3']),
     bgColors = ref<string[]>(['bg-(--bg-3)', 'bg-(--card-job-bg)', 'bg-(--card-project-bg)', 'bg-(--card-job-bg)', 'bg-(--card-about-bg)', 'bg-(--bg-2)']);
 
@@ -262,7 +293,35 @@ watch(() => colorMode.value,
 const articlePublishedTime = computed(() => formatISO('01-01-2026')), // dayjs('01-01-2026').locale(locale.value).format()
     articleModifiedTime = computed(() => formatISO(new Date())); // dayjs(new Date()).locale(locale.value).format()
 
-useHeadSafe(() => ({
+useSeoMeta({
+    title: t('seo.home.title'),
+    ogTitle: t('seo.home.title'),
+    description: t('seo.home.description'),
+    ogDescription: t('seo.home.description'),
+    ogUrl: () => `https://codekorico.com${route.path}`,
+    ogImage: 'https://codekorico.com', // `/images/logo/logo_${colorMode.value}_1920x1080.png`
+    ogImageAlt: t('seo.home.description'),
+    ogImageType: 'image/png',
+    ogImageWidth: 1920,
+    ogImageHeight: 1080,
+    articlePublishedTime: articlePublishedTime.value ?? "",
+    articleModifiedTime: articleModifiedTime.value ?? "",
+}),
+    useHead({
+        link: [
+            {
+                rel: 'canonical',
+                href: `https://codekorico.com${route.path}`
+            },
+            ...locales.value.map((l: { code: string }) => ({
+                rel: 'alternate',
+                hreflang: l.code,
+                href: `https://codekorico.com${route.path}`
+            }))
+        ]
+    });
+
+/* useHead(() => ({
     title: t('seo.home.title'),
     meta: [
         // Meta names
@@ -296,7 +355,7 @@ useHeadSafe(() => ({
 useSeoMeta(({
     ogImageAlt: t('seo.home.description'),
     twitterCard: 'summary_large_image',
-}));
+})); */
 </script>
 
 <template>
@@ -307,11 +366,13 @@ useSeoMeta(({
                 <div>
                     <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="CodeKorico Logo"
                         width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" loading="eager" />
+                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high"
+                        loading="eager" />
                     <NuxtImg id="header-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
                         alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high" loading="eager" />
+                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high"
+                        loading="eager" />
                 </div>
             </template>
 
@@ -366,8 +427,8 @@ useSeoMeta(({
                 {{ t('index.problem_section.solution') }}
             </p>
 
-            <SelfieDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="'var(--bg-3)'" :fill-color="'var(--accent)'"
-                :stroke-color="'var(--text)'" />
+            <SelfieDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="'var(--bg-3)'"
+                :fill-color="'var(--accent)'" :stroke-color="'var(--text)'" />
         </IndexSection>
 
         <!-- Plan section (Prestations) -->
@@ -472,14 +533,14 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <PartnerBentoGrid />
+            <PartnerBentoGrid :partners="partnerElements" />
         </IndexSection>
 
         <!-- Clients section -->
         <IndexSection id="client-section" :class="bgColors?.[4]" :fill="fillColors?.[5]">
             <template #tag>
                 <span class="font-semibold lg:text-center text-(--text-2) tracking-widest uppercase fs-small">
-                    {{ t('index.client_section.tag') }} 
+                    {{ t('index.client_section.tag') }}
                 </span>
             </template>
 
@@ -502,8 +563,8 @@ useSeoMeta(({
                     :cta-icon="'fa7-solid:heart'"
                     :cta-class="'px-5 py-2.5 gap-2 rounded-lg bg-(--text) border border-(--accent)/40 text-(--bg) font-medium transition-colors hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(---focus) fs-subtitle'" />
 
-                <SprintingDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="`var(--card-about-bg)`" :fill-color="'var(--brand-color)'"
-                    :stroke-color="'var(--text-2)'" />
+                <SprintingDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="`var(--card-about-bg)`"
+                    :fill-color="'var(--brand-color)'" :stroke-color="'var(--text-2)'" />
             </div>
         </IndexSection>
 
@@ -534,7 +595,8 @@ useSeoMeta(({
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
                 :cta-icon="'fa7-solid:message'"
-                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'" :project-type="'message'" />
+                :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'"
+                :project-type="'message'" />
         </IndexSection>
     </UContainer>
 </template>

@@ -52,61 +52,33 @@ const src = computed(() => client.value?.image?.sources?.detail?.mobile || clien
     desktopSrc = computed(() => client.value?.image?.sources?.detail?.desktop || client.value?.image?.sources?.feed?.desktop || tabletSrc);
 
 if (client.value) {
-    useHeadSafe(({
-        title: client.value.title,
-        meta: [
-            // Meta names
-            { name: 'description', content: client.value.description },
-            // Meta properties
-            { property: 'og:title', content: client.value.title },
-            { property: 'og:description', content: client.value.description },
-            { property: 'og:type', content: 'article' },
-            { property: 'article:author', content: 'Aureldev' },
-            { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-            { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-            { property: 'og:image', content: src.value ?? tabletSrc.value ?? desktopSrc.value },
-            { property: 'og:image:type', content: 'image/png' },
-            { property: 'og:image:width', content: '1920' },
-            { property: 'og:image:height', content: '1080' },
-        ],
-        link: [
-            {
-                rel: 'canonical',
-                href: `https://codekorico.com${route.path}`
-            },
-            ...locales.value.map((l: { code: string }) => ({
-                rel: 'alternate',
-                hreflang: l.code,
-                href: `https://codekorico.com${route.path}`
-            }))
-        ]
-    }));
-
-    useSeoMeta(({
+    useSeoMeta({
+        title: `${client.value.title} | CodeKorico`,
+        ogTitle: `${client.value.title} | CodeKorico`,
+        description: client.value.description,
+        ogDescription: client.value.description,
+        ogUrl: () => `https://codekorico.com${route.path}`,
+        ogImage: 'https://codekorico.com',
         ogImageAlt: client.value.image?.alt,
-        twitterCard: 'summary_large_image',
-    }));
-
-    useSchemaOrg([
-        defineOrganization({
-            name: 'CodeKorico',
-            url: 'https://codekorico.com',
-            logo: '',
-            sameAs: [
-                'https://github.com'
+        ogImageType: 'image/png',
+        ogImageWidth: 1920,
+        ogImageHeight: 1080,
+        articlePublishedTime: articlePublishedTime.value ?? created_atDate.value ?? "",
+        articleModifiedTime: articleModifiedTime.value ?? updated_atDate.value ?? "",
+    }),
+        useHead({
+            link: [
+                {
+                    rel: 'canonical',
+                    href: `https://codekorico.com${route.path}`
+                },
+                ...locales.value.map((l: { code: string }) => ({
+                    rel: 'alternate',
+                    hreflang: l.code,
+                    href: `https://codekorico.com${route.path}`
+                }))
             ]
-        }),
-        defineService({
-            name: client.value.title,
-            description: client.value.description,
-            provider: {
-                type: 'Organization',
-                name: 'CodeKorico',
-                url: 'https://codekorico.com'
-            },
-            inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US'
-        })
-    ])
+        });
 }
 </script>
 
@@ -139,12 +111,12 @@ if (client.value) {
                     </template>
                 </p>
 
-                <h1 id="client-title" class="flex flex-col fs-heading font-semibold tracking-tight leading-snug mt-2">
+                <h1 id="client-title" class="flex flex-col fs-heading font-semibold tracking-tight leading-snug my-2">
                     {{ client.title }}
-                    <span class="fs-subtitle font-normal text-(--text-2) leading-snug">
-                        {{ client.description }}
-                    </span>
                 </h1>
+                <p class="fs-subtitle font-normal text-(--text-2) leading-snug">
+                    {{ client.description }}
+                </p>
             </template>
 
             <NuxtImg :src="src" :alt="client.image?.alt" sizes="xs:100vw sm:100vw md:80vw lg:64rem"

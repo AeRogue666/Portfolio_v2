@@ -50,11 +50,12 @@
       "homepage": "Accueil",
       "feed": "Fil",
       "about": "A propos",
-      "accessibility_statement": "Accessibilité : Conforme",
+      "accessibility_statement": "Accessibilité : Partiellement conforme",
       "problem_report": "Signaler un incident",
       "accessibility_report": "Rapport d'accessibilité",
       "legal_notices": "Mentions légales",
-      "terms_of_use": "CGU"
+      "terms_of_use": "CGU",
+      "landing_page": "Accessibilité en Ardèche"
     }
   },
   "sidebar-right": {
@@ -195,7 +196,21 @@
     "partner_section": {
       "tag": "Nos partenaires",
       "title": "Un écosystème engagé & local",
-      "description": "CodeKorico ne développe pas des sites hors-sol. Je m'inscris activement dans mon territoire et l'économie collaborative."
+      "description": "CodeKorico ne développe pas des sites hors-sol. Je m'inscris activement dans mon territoire et l'économie collaborative.",
+      "partners": {
+        "1": {
+          "tag": "Territoire",
+          "title": "Un artisan du web juste à coté de chez vous.",
+          "description": "Parce qu'on travaille mieux quand on se comprend. En étant partenaire d'Emerveillé par l'Ardèche via Pollen SCOP, CodeKorico fait le choix de la proximité, du bon sens et du travail bien fait, ici, dans nos vallées, en Ardèche, en Drôme et en Haute-Loire.",
+          "image_alt": "Logo de Emerveillés par l'Ardèche"
+        },
+        "2": {
+          "tag": "Modèle Coopératif",
+          "title": "Pollen SCOP",
+          "description": "Derrière CodeKorico, il y a un entrepreneur, mais aussi un collectif. C'est pour vous garantir un accompagnement honnête, transparent et basé sur l'entraide que j'ai fais le choix de rejoindre Pollen.",
+          "image_alt": "Logo de la CAE Pollen SCOP"
+        }
+      }
     },
     "contact_section": {
       "tag": "Contact",
@@ -284,6 +299,9 @@
     "team_list": "Notre petite mais performante équipe",
     "user_tagline": "Développeur full-stack passionné par l'accessibilité et la qualité produit. Je crée des interfaces claires, robustes et utiles."
   },
+  "landing": {
+    "talk_about_your_project": "Discutons de la conformité de votre site actuel"
+  },
   "footer": {},
   "error": {
     "feed_loading_error": "Nous sommes dans l'incapacité de charger le feed",
@@ -313,7 +331,8 @@
     "legal_notices": "Mentions légales",
     "terms_of_use": "Conditions Générales d'Utilisation",
     "clients": "Clients",
-    "services": "Services"
+    "services": "Services",
+    "landing": "Landing"
   },
   "report": {
     "title": "Signaler un incident",
@@ -336,6 +355,12 @@
       "email": "Email",
       "optional": "Optionnel",
       "submit": "Envoyer"
+    },
+    "text": {
+      "1": "Vous rencontrez une difficulté pour accéder à un contenu, remplir un formulaire ou naviguer sur le site ?",
+      "2": "En tant qu'artisan du web, votre confort de navigation est ma priorité. Utilisez ce formulaire pour  me signaler le problème.",
+      "3": "Je m'engage à vous répondre sous 48 à 72 heures ouvrées pour vous fournir le contenu ou l'alternative dont vous avez besoin.",
+      "4": "Si vous préferez, vous pouvez également me contacter directement par e-mail à {email}."
     }
   },
   "accessibility-report": {

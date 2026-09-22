@@ -124,7 +124,14 @@ export default defineNuxtConfig({
       '/services/maintenance-site',
       '/services/formations',
       '/terms',
-    ]
+      '/landing/accessibilite-web-ardeche',
+    ],
+    routingExtensions: {
+      '/landing/accessibilite-web-ardeche': {
+        changefreq: 'monthly',
+        priority: 0.9
+      }
+    }
   },
   build: {
     transpile: [],

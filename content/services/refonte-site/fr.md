@@ -37,7 +37,13 @@ tag: Website
 highlighted: false
 ---
 
-::image-slider{imageBefore="/images/project/plateforme-gestion-recettes/desktop.png" altBefore="Capture de l'ancienne version obsolète du site, texte illisible et non-responsive." imageAfter="/images/project/portfolio-v2/desktop.png" altAfter="Capture de la refonte optimisée par CodeKorico, contrastes validés et design moderne."}
+::image-slider
+---
+    imageBefore: "/images/project/plateforme-gestion-recettes/desktop.png"
+    altBefore: "Capture de l'ancienne version obsolète du site, texte illisible et non-responsive."
+    imageAfter: "/images/project/portfolio-v2/desktop.png"
+    altAfter: "Capture de la refonte optimisée par CodeKorico, contrastes validés et design moderne."
+---
 ::
 
 ## Pour qui ?

@@ -17,6 +17,7 @@ interface AccessibilityReportTranslation {
     total: string;
     partial: string;
   };
+  technologiesTitle: string;
   testEnvironmentTitle: string;
 
   // Scores

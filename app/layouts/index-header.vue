@@ -20,6 +20,11 @@ const itemsFooterNavigation = computed<NavigationMenuItem[]>(() => [
         icon: "fa7-brands:accessible-icon",
         to: "/accessibility",
     },
+    {
+        label: t('sidebar-left.navigation.landing_page'),
+        icon: "fa7-brands:accessible-icon",
+        to: "/landing/accessibilite-web-ardeche",
+    },
 ]);
 
 useHead(() => ({

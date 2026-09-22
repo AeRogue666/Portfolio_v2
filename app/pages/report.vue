@@ -115,57 +115,33 @@ const grayscale = computed({
 const articlePublishedTime = computed(() => formatISO('01-01-2026')), // dayjs('01-01-2026').locale(locale.value).format()
     articleModifiedTime = computed(() => formatISO(new Date())); // dayjs(new Date()).locale(locale.value).format()
 
-useHeadSafe(() => ({
-    title: t('seo.page.title', { pagetitle: t('breadcrumb.report') }),
-    meta: [
-        // Meta names
-        { name: 'description', content: t('seo.page.description', { pagetitle: t('breadcrumb.report') }) },
-        // Meta properties
-        { property: 'og:title', content: t('seo.page.title', { pagetitle: t('breadcrumb.report') }) },
-        { property: 'og:description', content: t('seo.page.description', { pagetitle: t('breadcrumb.report') }) },
-        { property: 'og:type', content: 'article' },
-        { property: 'article:author', content: 'Aureldev' },
-        { property: 'article:published_time', content: articlePublishedTime.value ?? '' },
-        { property: 'article:modified_time', content: articleModifiedTime.value ?? '' },
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: `https://codekorico.com${route.path}`
-        },
-        ...locales.value.map((l: { code: string; }) => ({
-            rel: 'alternate',
-            hreflang: l.code,
-            href: `https://codekorico.com${route.path}`
-        }))
-    ]
-}));
-
-useSeoMeta(({
-    ogImage: '/images/project/portfolio-v2/desktop.png',
-    twitterCard: 'summary_large_image',
-}));
-
-useSchemaOrg([
-    defineOrganization({
-        name: 'CodeKorico',
-        url: 'https://codekorico.com',
-        logo: '',
-        sameAs: [
-            'https://github.com'
+useSeoMeta({
+    title: `${t('seo.page.title', { pagetitle: t('breadcrumb.report') })} | CodeKorico`,
+    ogTitle: `${t('seo.page.title', { pagetitle: t('breadcrumb.report') })} | CodeKorico`,
+    description: t('seo.page.description', { pagetitle: t('breadcrumb.report') }),
+    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.report') }),
+    ogUrl: () => `https://codekorico.com${route.path}`,
+    ogImage: `https://codekorico.com${route.path}`,
+    ogImageAlt: t('seo.page.description', { pagetitle: t('breadcrumb.report') }),
+    ogImageType: 'image/png',
+    ogImageWidth: 1920,
+    ogImageHeight: 1080,
+    articlePublishedTime: articlePublishedTime.value ?? "",
+    articleModifiedTime: articleModifiedTime.value ?? "",
+}),
+    useHead({
+        link: [
+            {
+                rel: 'canonical',
+                href: `https://codekorico.com${route.path}`
+            },
+            ...locales.value.map((l: { code: string }) => ({
+                rel: 'alternate',
+                hreflang: l.code,
+                href: `https://codekorico.com${route.path}`
+            }))
         ]
-    }),
-    defineService({
-        name: t('report.title'),
-        description: t('report.description'),
-        provider: {
-            type: 'Organization',
-            name: 'CodeKorico',
-            url: 'https://codekorico.com'
-        },
-        inLanguage: locale.value === 'fr' ? 'fr-FR' : 'en-US',
-    })
-]);
+    });
 </script>
 
 <template>
@@ -197,7 +173,14 @@ useSchemaOrg([
                 </h1>
             </template>
 
-            <UForm :state="form" :validate="validateForm" class="space-y-4" @submit.prevent="onSubmit">
+            <p class="fs-body text-(--text)">
+                <span>{{ t('report.text.1') }}</span><br>
+                <span>{{ t('report.text.2') }}</span><br>
+                <span>{{ t('report.text.3') }}</span><br>
+                <span>{{ t('report.text.4', { email: 'contact@codekorico.com' }) }}</span>
+            </p>
+
+            <UForm :state="form" :validate="validateForm" class="mx-4 space-y-4" @submit.prevent="onSubmit">
                 <div class="text-sm">
                     <label id="issue-label" for="issue-field"
                         class="block font-medium text-(--text) after:content-['*'] after:ms-0.5 after:text-error fs-body">
@@ -206,44 +189,55 @@ useSchemaOrg([
 
                     <USelect v-model="form.issue" :items="issueItems" id="issue-field" value-key="value"
                         label-key="label" :aria-describedby="issueError ? 'issue-error' : undefined"
-                        :aria-invalid="!!issueError" name="issue" color="neutral" size="xl" :ui="{
-                            base: 'bg-(--bg-2) fs-body',
+                        :aria-invalid="!!issueError" name="issue" color="neutral" size="xl"
+                        class="block w-48 md:w-1/2 mt-3 ring-transparent transitions-color" :ui="{
+                            base: grayscale && colorMode.value == 'dark'
+                                ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
+                                : 'bg-(--bg-2) text-(--text-2) fs-body ring-(--border-medium) placeholder:text-(--text-muted)',
                             content: 'bg-(--bg-2)',
                             value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
                             item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body'
-                        }" class="ring-transparent transitions-color w-48" />
+                        }" />
 
                     <p v-if="issueError" id="issue-error" class="text-sm text-(--danger) mt-2">{{ issueError }}</p>
                 </div>
 
-                <UFormField :label="t('report.form.email')" name="email" :hint="t('report.form.optional')"
-                    orientation="vertical" :ui="{
-                        labelWrapper: 'justify-start',
-                        label: 'text-(--text) fs-body',
-                        hint: 'fs-small'
-                    }">
-                    <UInput v-model="form.email" type="email" autocomplete="off" :ui="{
-                        base: 'bg-(--bg-2) fs-body',
-                        content: 'bg-(--bg-2)',
-                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body',
-                    }" />
+                <UFormField :label="t('report.form.email')" name="email" orientation="vertical" :ui="{
+                    labelWrapper: 'justify-start',
+                    label: 'text-(--text-2) fs-body',
+                    hint: 'fs-small'
+                }" required>
+                    <UInput v-model="form.email" type="email" autocomplete="off"
+                        :placeholder="t('sidebar-left.modal-message.step-summary.email_placeholder')" size="xl"
+                        tabindex="0" class="block w-3xs md:w-1/2 mt-3" :ui="{
+                            base: grayscale && colorMode.value == 'dark'
+                                ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
+                                : 'bg-(--bg-2) text-(--text-2) fs-body ring-(--border-medium) placeholder:text-(--text-muted)',
+                            content: 'bg-(--bg-2)',
+                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body',
+                        }" required />
                 </UFormField>
 
                 <UFormField :label="t('report.form.description')" name="description" orientation="vertical" :ui="{
-                    label: 'text-(--text) fs-body',
+                    label: 'text-(--text-2) fs-body',
                     hint: 'fs-body'
                 }" required>
-                    <UTextarea v-model="form.description" :ui="{
-                        base: 'bg-(--bg-2) fs-body',
-                        content: 'bg-(--bg-2)',
-                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body'
-                    }" required />
+                    <UTextarea v-model="form.description" type="text" :rows="10" :maxrows="20" minlength="20"
+                        maxlength="3000"
+                        :placeholder="t('sidebar-left.modal-message.step-complexity.business-goals-placeholder', { maxlength: 3000 })"
+                        class="block w-3xs md:w-1/2 mt-3" :ui="{
+                            base: grayscale && colorMode.value == 'dark'
+                                ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
+                                : 'bg-(--bg-2) text-(--text-2) fs-body ring-(--border-medium) placeholder:text-(--text-muted)',
+                            content: 'bg-(--bg-2)',
+                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
+                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body'
+                        }" required />
                 </UFormField>
 
-                <UButton name="button-submit-report" color="neutral" variant="solid" size="xl"
-                    class="bg-(--bg-3) text-(--text) hover:bg(--bg-elevated) hover:text-inverted fs-body"
+                <UButton name="button-submit-report" color="neutral" variant="solid" size="xl" icon="fa7-solid:message"
+                    class="inline-flex items-center justify-center w-1/2 px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md"
                     :label="t('report.form.submit')" type="submit" :loading="isSubmitting" />
             </UForm>
         </ArticleLayout>
