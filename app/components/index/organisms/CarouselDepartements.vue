@@ -4,6 +4,8 @@ import DepartementSVG from '../molecules/DepartementSVG.vue';
 import DromeSVG from '../molecules/DromeSVG.vue';
 import HauteLoireSVG from '../molecules/HauteLoireSVG.vue';
 
+const { t } = useI18n();
+
 const departements = ref([
     { id: '07', nom: 'Ardèche', slug: 'ardeche', component: shallowRef(ArdecheSVG) },
     { id: '26', nom: 'Drôme', slug: 'drome', component: shallowRef(DromeSVG) },
@@ -22,7 +24,7 @@ const prevSlide = () => {
 </script>
 
 <template>
-    <section class="flex items-center justify-between relative w-full min-h-100">
+    <div class="flex items-center justify-between relative w-full min-h-100">
         <!-- Version Desktop & Tablette -->
         <div class="hidden md:block absolute inset-0 pointer-events-none">
             <div class="w-4/5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -43,7 +45,7 @@ const prevSlide = () => {
             <div class="flex md:hidden items-center mt-auto px-4 py-2 gap-6 pointer-events-auto backdrop-blur-md rounded-full border border-white/10">
                 <UButton icon="fa7-solid-chevron-left" variant="ghost"
                     class="p-2 rounded-full active:scale-95 transition-all text-white"
-                    aria-label="Département précédent" @click="prevSlide" />
+                    :aria-label="t('index.landing_section.department_prev')" @click="prevSlide" />
 
                 <div class="flex gap-2">
                     <span v-for="(_, i) in departements" :key="i"
@@ -53,10 +55,10 @@ const prevSlide = () => {
 
                 <UButton icon="fa7-solid-chevron-right" variant="ghost"
                     class="p-2 rounded-full active:scale-95 transition-all text-white"
-                    aria-label="Département suivant" @click="nextSlide" />
+                    :aria-label="t('index.landing_section.department_next')" @click="nextSlide" />
             </div>
         </div>
-    </section>
+    </div>
 </template>
 
 <style lang="css">

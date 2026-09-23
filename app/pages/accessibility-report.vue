@@ -155,54 +155,53 @@ watchEffect(() => {
 
 if (reportData.value) {
     useSeoMeta({
-    title: reportData.value?.title, // t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
-    ogTitle: reportData.value?.title, // t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
-    description: reportData.value?.description, // t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
-    ogDescription: reportData.value?.description, // t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
-    ogImage: 'https://codekorico.com/accessibility-report',
-    ogImageAlt: t('seo.page.description', { pagetitle: reportData.value?.title }),
-    ogImageType: 'image/png',
-    ogImageWidth: 1920,
-    ogImageHeight: 1080,
-    ogType: 'article',
-    articleAuthor: ['CodeKorico'],
-    articlePublishedTime: articlePublishedTime.value ?? '',
-    articleModifiedTime: articleModifiedTime.value ?? '',
-}),
-    useHead({
-        link: [
-            {
-                rel: 'canonical',
-                href: `https://codekorico.com${route.path}`
-            },
-            ...locales.value.map((l: { code: string }) => ({
-                rel: 'alternate',
-                hreflang: l.code,
-                href: `https://codekorico.com${route.path}`
-            } as const))
-        ]
-    });
+        title: reportData.value?.title, // t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
+        ogTitle: reportData.value?.title, // t('seo.page.title', { pagetitle: t('breadcrumb.accessibility_report') }),
+        description: reportData.value?.description, // t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
+        ogDescription: reportData.value?.description, // t('seo.page.description', { pagetitle: t('breadcrumb.accessibility_report') }),
+        ogImage: 'https://codekorico.com/accessibility-report',
+        ogImageAlt: t('seo.page.description', { pagetitle: reportData.value?.title }),
+        ogImageType: 'image/png',
+        ogImageWidth: 1920,
+        ogImageHeight: 1080,
+        ogType: 'article',
+        articleAuthor: ['CodeKorico'],
+        articlePublishedTime: articlePublishedTime.value ?? '',
+        articleModifiedTime: articleModifiedTime.value ?? '',
+    }),
+        useHead({
+            link: [
+                {
+                    rel: 'canonical',
+                    href: `https://codekorico.com${route.path}`
+                },
+                ...locales.value.map((l: { code: string }) => ({
+                    rel: 'alternate',
+                    hreflang: l.code,
+                    href: `https://codekorico.com${route.path}`
+                } as const))
+            ]
+        });
 }
 </script>
 
 <template>
     <ArticleLayout v-if="reportData && !pending">
         <template #header>
-            <nav :aria-label="t('breadcrumb.title')" class="my-2">
-                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+            <UBreadcrumb :items="breadcrumbItems" :aria-label="t('breadcrumb.title')" class="my-2 fs-body"
+                color="neutral" :ui="{
                     link: 'text-(--text-2) hover:text-(--text) transition-colors'
                 }">
-                    <template #item-label="{ item }">
-                        <span :class="[item.to ? 'underline' : 'no-underline']">
-                            {{ item.label }}
-                        </span>
-                    </template>
+                <template #item-label="{ item }">
+                    <span :class="[item.to ? 'underline' : 'no-underline']">
+                        {{ item.label }}
+                    </span>
+                </template>
 
-                    <template #separator>
-                        <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
-                    </template>
-                </UBreadcrumb>
-            </nav>
+                <template #separator>
+                    <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                </template>
+            </UBreadcrumb>
 
             <h1 id="service-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
                 {{ reportData.title }} -

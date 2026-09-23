@@ -25,7 +25,7 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     },
     {
         label: t('breadcrumb.accessibility'),
-        to: '/accessibility'
+        to: ''
     },
 ]);
 
@@ -71,28 +71,27 @@ if (page.value) {
         <article class="prose prose-neutral w-full max-w-7xl mx-auto px-4 py-10 prose-headings:scroll-mt-24 fs-body"
             aria-labelledby="article-title">
             <header class="flex flex-col mb-10">
-                <nav :aria-label="t('breadcrumb.title')" class="my-2">
-                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
-                        link: 'text-(--text-2) hover:text-(--text) transition-colors fs-body',
+                <UBreadcrumb :items="breadcrumbItems" :aria-label="t('breadcrumb.title')" class="my-2 fs-body"
+                    color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors'
                     }">
-                        <template #item-label="{ item }">
-                            <span :class="[item.to ? 'underline' : 'no-underline']">
-                                {{ item.label }}
-                            </span>
-                        </template>
+                    <template #item-label="{ item }">
+                        <span :class="[item.to ? 'underline' : 'no-underline']">
+                            {{ item.label }}
+                        </span>
+                    </template>
 
-                        <template #separator>
-                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
-                        </template>
-                    </UBreadcrumb>
-                </nav>
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                    </template>
+                </UBreadcrumb>
 
                 <p class="fs-small text-(--text-2)">
                     {{ t('page.created_on') }}
-                    <time v-if="created_atDate" :datetime="created_atDate">{{ created_atDate }}</time>
+                    <time v-if="created_atDate" :datetime="articlePublishedTime">{{ created_atDate }}</time>
                     <template v-if="created_atDate">
                         {{ t('page.updated_on') }}
-                        <time :datetime="updated_atDate">{{ updated_atDate }}</time>
+                        <time :datetime="articleModifiedTime">{{ updated_atDate }}</time>
                     </template>
                 </p>
 

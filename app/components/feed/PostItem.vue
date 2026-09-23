@@ -38,9 +38,9 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
 </script>
 
 <template>
-    <PostBase :aria-role-description="badgeLabel" :card-type="cardType" :pinned="post.pinned">
+    <PostBase :card-type="cardType" :pinned="post.pinned">
         <template #meta>
-            <section class="flex justify-between items-center w-full mb-3">
+            <div class="flex justify-between items-center w-full mb-3">
                 <PostBadge :label="badgeLabel" :icon="badgeIcon" :color="post.pinned ? 'success' : 'neutral'"
                     :variant="'soft'" :size="'md'" class="fs-body"
                     :class-name="grayscale ? 'bg-(--bg-3) text-(--text-2)' : post.pinned ? 'text-(--text-2)' : 'bg-(--bg-3) text-(--text-2)'" />
@@ -52,17 +52,17 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
                         {{ t('post.updated_on') }} {{ updated_atDate }}
                     </time>
                 </div>
-            </section>
+            </div>
             <ResponsiveImage v-if="post.image" :image="post.image" class="rounded-xl overflow-hidden"
                 :class="grayscale ? 'grayscale-100' : ''" />
             <div v-else class="w-full h-49.5 lg:h-47 bg-(--bg-3) my-2 rounded-xl overflow-hidden"></div>
         </template>
 
-        <h2 class="fs-title font-semibold leading-snug text-(--text)">
-            {{ post.feed_title ? post.feed_title : post.title }}
-        </h2>
+        <h3 class="fs-title font-semibold leading-snug text-(--text)">
+            {{ post.feed_title ?? post.title }}
+        </h3>
         <p class="fs-body leading-relaxed text-(--text-2) max-w-prose">
-            {{ post.feed_summary ? post.feed_summary : post.description }}
+            {{ post.feed_summary ?? post.description }}
         </p>
 
         <div v-if="post.tags && post.tags.length > 0" class="flex flex-wrap gap-2 mt-2">
@@ -72,7 +72,7 @@ const badgeIcon = computed(() => (props.post.pinned ? 'fa7-solid:thumbtack' : un
 
         <template #actions>
             <NuxtLink :to="postUrl" tabindex="0"
-                :aria-label="`${t(post.kind !== 'about' ? 'post.read_post' : `post.read_about`)} ${post.title}`"
+                :aria-label="`${t(post.kind !== 'about' ? 'post.read_post' : `post.read_about`)} : ${post.title}`"
                 class="inline-flex items-center gap-2 text-(--accent) hover:text-(--accent-hover) font-medium fs-body transition-colors">
                 {{ t(post.kind !== 'about' ? 'post.read_post' : `post.read_about`) }}
                 <UIcon name="fa7-solid:arrow-right" class="fs-small" />

@@ -8,6 +8,7 @@ const { t, locale, locales } = useI18n(),
     { formatDate, formatISO } = useDate();
 
 const avatarSrc = ref<string>('/images/logo/logo_k_dark.png');
+const colorModeRendering = ref('border-white');
 
 const contentPath = computed(() => `/about/${locale.value}`)
 const asyncKey = computed(() => `about-${locale.value}`);
@@ -32,7 +33,7 @@ const breadcrumbItems = computed<BreadcrumbItem[]>(() => [
     },
     {
         label: t('breadcrumb.about'),
-        to: '/about'
+        to: ''
     },
 ]);
 
@@ -41,9 +42,15 @@ onMounted(() => {
         () => colorMode.value,
         (mode) => {
             avatarSrc.value = `/images/logo/logo_k_${mode}.png`
+            mode == "dark" ? colorModeRendering.value = 'border-white' : colorModeRendering.value = 'border-black'
         },
         { immediate: true }
     );
+    /* const separators = document.querySelectorAll(`nav[aria-label="${t('breadcrumb.title')}"] li[role="presentation"]`);
+
+    separators.forEach(el => {
+        el.removeAttribute('role')
+    }); */
 });
 
 const articlePublishedTime = computed(() => formatISO(about.value?.created_at)), // dayjs(about.value?.created_at).locale(locale.value).format()
@@ -87,29 +94,27 @@ if (about.value) {
     <template v-if="about">
         <ArticleLayout class="fs-body">
             <template #header>
-                <!-- class="flex flex-col mb-10" -->
-                <nav :aria-label="t('breadcrumb.title')" class="my-2">
-                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+                <UBreadcrumb :items="breadcrumbItems" :aria-label="t('breadcrumb.title')" class="my-2 fs-body"
+                    color="neutral" :ui="{
                         link: 'text-(--text-2) hover:text-(--text) transition-colors'
                     }">
-                        <template #item-label="{ item }">
-                            <span :class="[item.to ? 'underline' : 'no-underline']">
-                                {{ item.label }}
-                            </span>
-                        </template>
+                    <template #item-label="{ item }">
+                        <span :class="[item.to ? 'underline' : 'no-underline']">
+                            {{ item.label }}
+                        </span>
+                    </template>
 
-                        <template #separator>
-                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
-                        </template>
-                    </UBreadcrumb>
-                </nav>
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                    </template>
+                </UBreadcrumb>
 
                 <p class="fs-small text-(--text-2)">
                     {{ t('page.created_on') }}
-                    <time v-if="about.created_at" :datetime="created_atDate">{{ created_atDate }}</time>
+                    <time v-if="about.created_at" :datetime="articlePublishedTime">{{ created_atDate }}</time>
                     <template v-if="about.updated_at">
                         & {{ t('page.updated_on') }}
-                        <time :datetime="updated_atDate">{{ updated_atDate }}</time>
+                        <time :datetime="articleModifiedTime">{{ updated_atDate }}</time>
                     </template>
                 </p>
 
@@ -127,8 +132,8 @@ if (about.value) {
                         root: 'items-center',
                         name: 'fs-subtitle text-2xl text-(--text) text-center font-semibold tracking-tight leading-snug',
                         description: 'fs-body leading-relaxed text-(--text-2)',
-                        avatar: `size-40 bg-(--bg-2) border-2 ${colorMode.value == 'dark' ? 'border-white' : 'border-black'}`
-                    }" fetchpriority="high" />
+                        avatar: `size-40 bg-(--bg-2) border-2 ${colorModeRendering}`
+                    }" />
                 <span class="fs-small text-(--text-muted) leading-relaxed">
                     {{ t('about.user_tagline') }}
                 </span>

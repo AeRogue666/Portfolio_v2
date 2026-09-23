@@ -95,7 +95,9 @@
       "cta_project": "Discuter de votre projet",
       "cta_feed": "Découvrez le fil d'actualité",
       "cta_audit": "Obtenir un audit gratuit",
-      "cta_contact_me": "Me contacter"
+      "cta_contact_me": "Me contacter",
+      "department_prev": "Département précédent",
+      "department_next": "Département suivant"
     },
     "client_section": {
       "tag": "Témoignages clients",

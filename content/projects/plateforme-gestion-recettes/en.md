@@ -3,9 +3,9 @@ title: Multi-role recipe management platform
 created_at: "2024-03-12"
 description: Culinary recipe management platform with users roles, recipe creation and modification, and comprehensive permissions management developed with Express and Directus.
 feed_summary: Multi-role recipe management platform developed with Express and Directus
-feed_title: Multi-role recipe platform
+feed_title: Multi-role recipe management platform
 image:
-  alt: Screenshot of the recipe management platform
+  alt: Preview of the interface of the recipe management platform
   sources:
     feed:
       mobile: /images/project/plateforme-gestion-recettes/mobile.PNG

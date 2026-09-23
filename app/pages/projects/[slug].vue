@@ -100,28 +100,27 @@ if (project.value) {
     <template v-if="project">
         <ArticleLayout class="fs-body">
             <template #header>
-                <nav :aria-label="t('breadcrumb.title')" class="my-2">
-                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
-                        link: 'text-(--text-2) hover:text-(--text) transition-colors fs-body',
+                <UBreadcrumb :items="breadcrumbItems" :aria-label="t('breadcrumb.title')" class="my-2 fs-body"
+                    color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors'
                     }">
-                        <template #item-label="{ item }">
-                            <span :class="[item.to ? 'underline' : 'no-underline']">
-                                {{ item.label }}
-                            </span>
-                        </template>
+                    <template #item-label="{ item }">
+                        <span :class="[item.to ? 'underline' : 'no-underline']">
+                            {{ item.label }}
+                        </span>
+                    </template>
 
-                        <template #separator>
-                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
-                        </template>
-                    </UBreadcrumb>
-                </nav>
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                    </template>
+                </UBreadcrumb>
 
                 <p class="fs-small text-(--text-2)">
                     {{ t('project.published_on') }}
-                    <time v-if="project.created_at" :datetime="project.created_at">{{ created_atDate }}</time>
+                    <time v-if="project.created_at" :datetime="articlePublishedTime">{{ created_atDate }}</time>
                     <template v-if="project.updated_at">
                         & {{ t('post.updated_on') }}
-                        <time :datetime="project.updated_at">{{ updated_atDate }}</time>
+                        <time :datetime="articleModifiedTime">{{ updated_atDate }}</time>
                     </template>
                 </p>
 

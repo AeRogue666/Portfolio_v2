@@ -12,7 +12,8 @@ const { t } = useI18n();
 </script>
 
 <template>
-    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite" id="feed">
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" aria-live="polite" id="feed" aria-labelledby="feed-main-title">
+        <h2 id="feed-main-title" class="sr-only">Flux de publications</h2>
         <div v-if="loading" class="flex justify-center items-center py-12">
             <UIcon name="fa7-solid:spinner" class="animate-spin text-4xl text-(--accent)" />
             <span class="ml-3 text-(--text-2)">{{ t('loading.loading_feed') }}...</span>

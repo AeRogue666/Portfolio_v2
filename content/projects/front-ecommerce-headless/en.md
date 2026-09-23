@@ -3,9 +3,9 @@ title: Asian online store - Nuxt 4 + Directus
 created_at: "2025-06-20"
 description: A multilanguage online shop offering a selection of Asian products, made with Nuxt and Directus.
 feed_summary: A multilingual headless Asian online shop developed with Nuxt and Directus technologies
-feed_title: Headless Asian store
+feed_title: Asian online store
 image:
-  alt: Screenshot of the asian online store
+  alt: Preview of the homepage of the asian online store
   sources:
     feed:
       mobile: /images/project/front-ecommerce-headless/mobile.PNG

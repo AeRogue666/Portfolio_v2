@@ -1,11 +1,11 @@
 ---
-title: Plateforme de gestions de recettes multi-rôles
+title: Plateforme de gestion de recettes multi-rôles
 created_at: "2024-03-12"
 description: Une plateforme de gestion de recettes culinaires avec rôles utilisateurs, création et modification de recettes et gestion complète des autorisations développée avec Express et Directus.
 feed_summary: Plateforme de gestion de recettes multi-rôles développé avec Express et Directus
-feed_title: Plateforme de recettes multi-rôles
+feed_title: Plateforme de gestion de recettes multi-rôles
 image:
-  alt: Capture d'écran de la plateforme de gestion de recettes
+  alt: Aperçu de l'interface de la plateforme de gestion de recettes
   sources:
     feed:
       mobile: /images/project/plateforme-gestion-recettes/mobile.PNG

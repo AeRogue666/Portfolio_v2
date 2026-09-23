@@ -74,7 +74,8 @@ const handleResetFilters = () => {
 </script>
 
 <template>
-    <section aria-label="Feed filters">
+    <section aria-labelledby="feed-filter-title">
+        <h2 id="feed-filter-title" class="sr-only">Feed filters</h2>
         <!-- Tri + Bouton filtres -->
         <div class="flex items-center gap-2 mt-4 mb-4">
             <!-- Tri -->
@@ -134,7 +135,7 @@ const handleResetFilters = () => {
                         </div>
 
                         <!-- Séparateur -->
-                        <hr class="w-full h-px border-0 bg(--border-subtle) my-4" aria-hidden="true">
+                        <hr class="w-full h-px border-0 bg(--border-subtle) my-4" aria-hidden="true" />
 
                         <!-- Tags -->
                         <div class="mb-4">

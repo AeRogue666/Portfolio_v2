@@ -95,7 +95,9 @@
       "cta_project": "Discuss your project",
       "cta_feed": "Discover the feed",
       "cta_audit": "Get a Free audit",
-      "cta_contact_me": "Contact me"
+      "cta_contact_me": "Contact me",
+      "department_prev": "Previous department",
+      "department_next": "Next department"
     },
     "client_section": {
       "tag": "They trust me",

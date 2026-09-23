@@ -148,21 +148,20 @@ useSeoMeta({
     <template v-if="form">
         <ArticleLayout>
             <template #header>
-                <nav :aria-label="t('breadcrumb.title')" class="my-2">
-                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
-                        link: 'text-(--text-2) hover:text-(--text) transition-colors fs-body',
+                <UBreadcrumb :items="breadcrumbItems" :aria-label="t('breadcrumb.title')" class="my-2 fs-body"
+                    color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors'
                     }">
-                        <template #item-label="{ item }">
-                            <span :class="[item.to ? 'underline' : 'no-underline']">
-                                {{ item.label }}
-                            </span>
-                        </template>
+                    <template #item-label="{ item }">
+                        <span :class="[item.to ? 'underline' : 'no-underline']">
+                            {{ item.label }}
+                        </span>
+                    </template>
 
-                        <template #separator>
-                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
-                        </template>
-                    </UBreadcrumb>
-                </nav>
+                    <template #separator>
+                        <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                    </template>
+                </UBreadcrumb>
 
                 <h1 id="article-title" class="fs-heading font-semibold tracking-tight leading-snug mt-2">
                     {{ t('report.title') }} -
@@ -219,7 +218,7 @@ useSeoMeta({
                     label: 'text-(--text-2) fs-body',
                     hint: 'fs-body'
                 }" required>
-                    <UTextarea v-model="form.description" type="text" :rows="10" :maxrows="20" minlength="20"
+                    <UTextarea v-model="form.description" :rows="10" :maxrows="20" minlength="20"
                         maxlength="3000"
                         :placeholder="t('sidebar-left.modal-message.step-complexity.business-goals-placeholder', { maxlength: 3000 })"
                         class="block w-3xs md:w-1/2 mt-3" :ui="{

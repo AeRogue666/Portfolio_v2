@@ -105,7 +105,7 @@ useSeoMeta(({
 </script>
 
 <template>
-    <UContainer tabindex="-1" aria-labelledby="feed-title">
+    <UContainer>
         <!-- Filtres -->
         <FeedFilters :available-tags="availableTags" :selected-tags="selectedTags" :selected-kinds="selectedKinds"
             :sort-by="sortBy" :has-active-filters="hasActiveFilters"
@@ -113,7 +113,7 @@ useSeoMeta(({
             @toggle-kind="toggleKind" @set-sort="setSortBy" @reset-filters="resetFilters" />
 
         <!-- Feed -->
-        <Feed id="feed" :items="items" :loading="status === 'pending'" :error="error?.message ?? null" />
+        <Feed :items="items" :loading="status === 'pending'" :error="error?.message ?? null" />
 
         <!-- Message si aucun résultat après filtrage -->
         <div v-if="status === 'success' && items.length === 0 && hasActiveFilters" aria-live="polite"

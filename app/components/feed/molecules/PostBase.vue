@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { FeedKind } from '~/app/types/feed';
+import type { FeedKind } from '@/types/feed';
 
 const props = defineProps<{
     ariaRoleDescription?: string,
@@ -35,14 +35,13 @@ const cardStyles = computed(() => {
 
 <template>
     <article :class="[cardStyles, { 'is-pinned': pinned }]">
-        <span class="sr-only fs-body">{{ ariaRoleDescription }}</span>
         <div class="flex flex-col w-full gap-6">
             <header v-if="$slots.meta" class="flex flex-col mx-6 gap-4">
                 <slot name="meta"></slot>
             </header>
-            <section class="flex flex-col mx-6 gap-5">
+            <div class="flex flex-col mx-6 gap-5">
                 <slot></slot>
-            </section>
+            </div>
             <footer v-if="$slots.actions" class="mx-6 pt-4 border-t border-(--border-subtle)">
                 <slot name="actions"></slot>
             </footer>
@@ -76,7 +75,7 @@ article.is-pinned {
         0 0 28px 6px color-mix(in srgb, var(--success) 45%, transparent),
         0 10px 15px oklch(29.797% 0.0421 59.168 / 0.12),
         0 4px 6px oklch(29.797% 0.0421 59.168 / 0.08);
-    transition: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 @keyframes slideUp {
