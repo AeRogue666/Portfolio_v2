@@ -1,6 +1,17 @@
 {
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": "explicit"
-    },
-    "eslint.validate": ["javascript", "typescript", "vue"]
+  "eslint.enable": true,
+  "eslint.validate": ["javascript", "typescript", "vue"],
+
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+
+  "[typescript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+  },
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "never"
+  },
+  "editor.formatOnSave": false
 }

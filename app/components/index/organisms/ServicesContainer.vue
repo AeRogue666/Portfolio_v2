@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { ServiceResolved } from '~/app/types/service';
+import type { ServiceResolved } from '~/types/service';
 
 const props = defineProps<{
     services: ServiceResolved[];
@@ -10,7 +10,7 @@ const { t } = useI18n();
 
 <template>
     <UPricingPlans class="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl mx-auto px-4">
-        <UPricingPlan v-for="(service, i) in services" :key="i" v-bind="service" orientation="vertical"
+        <UPricingPlan v-for="(service, i) in services" :key="i" orientation="vertical"
             :title="service.feed_title ?? service.title" :description="service.feed_summary ?? service.description"
             :highlight="service.highlighted"
             class="p-8 rounded-xl border border-(--bg-2) bg-(--bg) shadow-md transition-all duration-300 hover:border-(--accent)/40 group"
@@ -20,12 +20,11 @@ const { t } = useI18n();
                     : 'border-(--bg-3) bg-(--card-note-bg) hover:border-(--accent)/40 shadow-sm'
             ]" :ui="{
                 root: 'flex flex-col justify-between h-full space-y-4',
-                title: service.highlighted === true 
-                ? '!fs-subtitle text-(--text) font-bold tracking-tight transition-colors whitespace-normal break-words' 
-                : '!fs-subtitle text-(--text) font-bold tracking-tight group-hover:text-(--accent) transition-colors whitespace-normal break-words',
+                title: service.highlighted === true
+                    ? '!fs-subtitle text-(--text) font-bold tracking-tight transition-colors whitespace-normal break-words'
+                    : '!fs-subtitle text-(--text) font-bold tracking-tight group-hover:text-(--accent) transition-colors whitespace-normal break-words',
                 description: '!fs-small text-(--text-2) mt-2 whitespace-normal leading-relaxed',
             }">
-
             <template #button>
                 <div class="flex justify-center mt-auto pt-4">
                     <NuxtLink :to="`/services/${service.slug}`"
@@ -36,7 +35,8 @@ const { t } = useI18n();
                                 : 'px-5 py-2.5 gap-2 rounded-lg border border-(--text)/30 text-(--text-2) hover:bg-(--text) hover:text-(--bg) hover:border-transparent transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'
                         ]">
                         {{ t('index.services_section.learn_more_button') }}
-                        <UIcon name="fa7-solid:arrow-right" class="text-sm transition-transform duration-200 group-hover:translate-x-1" />
+                        <UIcon name="fa7-solid:arrow-right"
+                            class="text-sm transition-transform duration-200 group-hover:translate-x-1" />
                     </NuxtLink>
                 </div>
             </template>

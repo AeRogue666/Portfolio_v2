@@ -21,6 +21,7 @@ export const serviceSchema = z.object({
           z
             .object({
               title: z.string().default(""),
+              description: z.string().default(""),
               price: z.string().default(""),
               ttc: z.boolean().default(false),
               features: z.array(z.string()),

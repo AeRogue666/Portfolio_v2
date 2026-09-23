@@ -99,14 +99,14 @@ onMounted(() => {
     <div id="sidebar-left-content" class="flex flex-col items-center w-full h-full pt-4 gap-4">
         <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4">
             <div class="flex flex-col justify-center items-center">
-                <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
-                    <span id="header-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
+                <NuxtLink to="/" aria-describedby="sidebar-left-title" tabindex="0">
+                    <span id="sidebar-left-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
                         {{ t('header.span_title') }}
                     </span>
-                    <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
+                    <NuxtImg id="sidebar-left-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
                         alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" />
-                    <NuxtImg id="header-title-img-dark"
+                    <NuxtImg id="sidebar-left-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
                         alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" />

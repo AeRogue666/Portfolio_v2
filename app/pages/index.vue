@@ -15,7 +15,6 @@ interface Element {
     title: string,
     description?: string,
     icon: string,
-    size?: string | number | undefined,
     class?: string,
     iconClass?: string,
 }
@@ -144,7 +143,6 @@ const expertiseElements = reactive<Element[]>([
         title: t('index.expertise_section.process.1.title'),
         description: t('index.expertise_section.process.1.description'),
         icon: 'fa7-solid:magnifying-glass',
-        size: 'xl',
         class: 'bg-cyan-500',
         iconClass: 'bg-blue-500',
     },
@@ -152,7 +150,6 @@ const expertiseElements = reactive<Element[]>([
         title: t('index.expertise_section.process.2.title'),
         description: t('index.expertise_section.process.2.description'),
         icon: 'fa7-solid:pen-ruler',
-        size: 'xl',
         class: 'bg-pink-500',
         iconClass: 'size-24 bg-white',
     },
@@ -160,7 +157,6 @@ const expertiseElements = reactive<Element[]>([
         title: t('index.expertise_section.process.3.title'),
         description: t('index.expertise_section.process.3.description'),
         icon: 'fa7-solid:shapes',
-        size: 'xl',
         class: 'bg-green-500',
         iconClass: 'size-24 bg-white',
     },
@@ -168,7 +164,6 @@ const expertiseElements = reactive<Element[]>([
         title: t('index.expertise_section.process.4.title'),
         description: t('index.expertise_section.process.4.description'),
         icon: 'fa7-solid:warning',
-        size: 'xl',
         class: 'bg-orange-500',
         iconClass: 'size-24 bg-white',
     },
@@ -176,7 +171,6 @@ const expertiseElements = reactive<Element[]>([
         title: t('index.expertise_section.process.5.title'),
         description: t('index.expertise_section.process.5.description'),
         icon: 'fa7-solid:comments',
-        size: 'xl',
         class: 'bg-yellow-500',
         iconClass: 'size-24 bg-white',
     },
@@ -188,7 +182,6 @@ const differenciationElements = reactive<Element[]>([
         title: t('index.differenciation_section.process.1.title'),
         description: t('index.differenciation_section.process.1.description'),
         icon: 'fa7-solid:user-check',
-        size: 'xl',
         class: 'bg-yellow-500',
         iconClass: 'size-24 bg-white',
     },
@@ -196,7 +189,6 @@ const differenciationElements = reactive<Element[]>([
         title: t('index.differenciation_section.process.2.title'),
         description: t('index.differenciation_section.process.2.description'),
         icon: 'fa7-brands:accessible-icon',
-        size: 'xl',
         class: 'bg-purple-500',
         iconClass: 'size-24 bg-white',
     },
@@ -204,7 +196,6 @@ const differenciationElements = reactive<Element[]>([
         title: t('index.differenciation_section.process.3.title'),
         description: t('index.differenciation_section.process.3.description'),
         icon: 'fa7-solid:arrow-trend-up',
-        size: 'xl',
         class: 'bg-green-500',
         iconClass: 'size-24 bg-white',
     },
@@ -212,7 +203,6 @@ const differenciationElements = reactive<Element[]>([
         title: t('index.differenciation_section.process.4.title'),
         description: t('index.differenciation_section.process.4.description'),
         icon: 'fa7-brands:kakao-talk',
-        size: 'xl',
         class: 'bg-lime-500',
         iconClass: 'size-24 bg-white',
     },
@@ -220,7 +210,6 @@ const differenciationElements = reactive<Element[]>([
         title: t('index.differenciation_section.process.5.title'),
         description: t('index.differenciation_section.process.5.description'),
         icon: 'material-symbols:language-french',
-        size: 'xl',
         class: 'bg-blue-500',
         iconClass: 'size-24 bg-white',
     },
@@ -230,25 +219,21 @@ const questionElements = reactive<Element[]>([
     {
         title: t('index.problem_section.problem.1.title'),
         icon: 'fa7-solid:eye',
-        size: 'xl',
         iconClass: 'size-16 md:size-8',
     },
     {
         title: t('index.problem_section.problem.2.title'),
         icon: 'fa7-solid:arrow-trend-up',
-        size: 'xl',
         iconClass: 'size-16 md:size-8',
     },
     {
         title: t('index.problem_section.problem.3.title'),
         icon: 'fa7-solid:gear',
-        size: 'xl',
         iconClass: 'size-16 md:size-8',
     },
     {
         title: t('index.problem_section.problem.4.title'),
         icon: 'fa7-solid:tachometer-fast',
-        size: 'xl',
         iconClass: 'size-16 md:size-8',
     },
 ]);
@@ -313,11 +298,11 @@ useSeoMeta({
                 rel: 'canonical',
                 href: `https://codekorico.com${route.path}`
             },
-            ...locales.value.map((l: { code: string }) => ({
-                rel: 'alternate',
+            ...locales.value.map((l: { code: string; }) => ({
+                rel: "alternate",
                 hreflang: l.code,
                 href: `https://codekorico.com${route.path}`
-            }))
+            } as const))
         ]
     });
 
@@ -364,11 +349,11 @@ useSeoMeta(({
         <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="fillColors?.[0]">
             <template #tag>
                 <div>
-                    <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="CodeKorico Logo"
+                    <NuxtImg id="index-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="CodeKorico Logo"
                         width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high"
                         loading="eager" />
-                    <NuxtImg id="header-title-img-dark"
+                    <NuxtImg id="index-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
                         alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high"
@@ -440,7 +425,7 @@ useSeoMeta(({
             </template>
 
             <template #title>
-                <h2 id="expertise-title"
+                <h2 id="services-title"
                     class="font-semibold leading-snug text-scalable tracking-tight lg:font-extrabold lg:leading-none lg:text-center mb-4 lg:mb-7 xl:px-36 fs-title">
                     {{ t('index.services_section.title') }}
                 </h2>

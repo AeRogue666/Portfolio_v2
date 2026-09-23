@@ -74,7 +74,7 @@ if (landing.value) {
                     rel: 'alternate',
                     hreflang: l.code,
                     href: `https://codekorico.com${route.path}`
-                }))
+                } as const))
             ]
         });
 }
@@ -84,10 +84,9 @@ if (landing.value) {
     <template v-if="landing">
         <ArticleLayout class="fs-body">
             <template #header>
-                <nav aria-label="Fil d'Ariane" class="my-2">
+                <nav :aria-label="t('breadcrumb.title')" class="my-2">
                     <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
-                        link: 'text-(--text-2) hover:text-(--text) transition-colors',
-                        linkActive: 'text-(--text-2) fs-body no-underline'
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors fs-body',
                     }">
                         <template #item-label="{ item }">
                             <span :class="[item.to ? 'underline' : 'no-underline']">

@@ -179,7 +179,7 @@ if (reportData.value) {
                 rel: 'alternate',
                 hreflang: l.code,
                 href: `https://codekorico.com${route.path}`
-            }))
+            } as const))
         ]
     });
 }
@@ -188,10 +188,9 @@ if (reportData.value) {
 <template>
     <ArticleLayout v-if="reportData && !pending">
         <template #header>
-            <nav aria-label="Fil d'Ariane" class="my-2">
+            <nav :aria-label="t('breadcrumb.title')" class="my-2">
                 <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
-                    link: 'text-(--text-2) hover:text-(--text) transition-colors',
-                    linkActive: 'text-(--text-2) fs-body no-underline'
+                    link: 'text-(--text-2) hover:text-(--text) transition-colors'
                 }">
                     <template #item-label="{ item }">
                         <span :class="[item.to ? 'underline' : 'no-underline']">
@@ -240,7 +239,8 @@ if (reportData.value) {
                         {{ reportData.conformityTotal.label }} {{ stats.conformePercent == 100
                             ? reportData.conformityTotal.total
                             : reportData.conformityTotal.partial
-                        }}</p>
+                        }}
+                    </p>
                 </div>
             </div>
 
@@ -374,7 +374,9 @@ if (reportData.value) {
                         <tr v-for="criteria in filteredCriteria" :key="criteria.id"
                             class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors">
                             <td class="px-4 py-3 font-mono fs-body font-semibold"
-                                style="font-size: clamp(0.5rem, var(--step--1), 1rem);">{{ criteria.id }}</td>
+                                style="font-size: clamp(0.5rem, var(--step--1), 1rem);">
+                                {{ criteria.id }}
+                            </td>
                             <td class="text-center px-4 py-3 font-medium fs-body">
                                 <span class="inline-block px-2 py-1 rounded"
                                     :class="`bg-${getThematicColor(criteria.thematic)}-500/20`">

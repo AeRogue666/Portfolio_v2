@@ -190,8 +190,10 @@ function toggleField<K extends 'personNumber' | 'budgetRange' | 'trainingFormat'
 
 <template>
     <div class="space-y-6">
-        <div v-for="field in fields">
-            <h3 class="fs-subtitle mb-3">{{ field.title }}</h3>
+        <div v-for="(field, index) in fields" :key="index">
+            <h3 class="fs-subtitle mb-3">
+                {{ field.title }}
+            </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3">
                 <UButton v-for="option in field.options" :key="option.value" variant="ghost"
                     @click="toggleField(field.key, option.value)" :label="option.label"

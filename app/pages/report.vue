@@ -2,7 +2,7 @@
 import type { BreadcrumbItem, FormError, FormSubmitEvent, SelectMenuItem } from '@nuxt/ui';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 
-const { t, locale, locales } = useI18n(),
+const { t, locales } = useI18n(),
     toast = useToast(),
     accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode(),
@@ -59,9 +59,9 @@ type Schema = typeof form
 function validateForm(state: Partial<Schema>): FormError[] {
     const errors = [];
 
-    /* if (state.email) {
+    if (!state.email) {
         errors.push({ name: 'email', message: t('report.state.required') })
-    } */
+    }
     if (!state.description) {
         errors.push({ name: 'description', message: t('report.state.required') })
     }
@@ -139,7 +139,7 @@ useSeoMeta({
                 rel: 'alternate',
                 hreflang: l.code,
                 href: `https://codekorico.com${route.path}`
-            }))
+            } as const))
         ]
     });
 </script>
@@ -148,10 +148,9 @@ useSeoMeta({
     <template v-if="form">
         <ArticleLayout>
             <template #header>
-                <nav aria-label="Fil d'Ariane" class="my-2">
+                <nav :aria-label="t('breadcrumb.title')" class="my-2">
                     <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
-                        link: 'text-(--text-2) hover:text-(--text) transition-colors',
-                        linkActive: 'text-(--text-2) fs-body no-underline'
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors fs-body',
                     }">
                         <template #item-label="{ item }">
                             <span :class="[item.to ? 'underline' : 'no-underline']">
@@ -174,9 +173,9 @@ useSeoMeta({
             </template>
 
             <p class="fs-body text-(--text)">
-                <span>{{ t('report.text.1') }}</span><br>
-                <span>{{ t('report.text.2') }}</span><br>
-                <span>{{ t('report.text.3') }}</span><br>
+                <span>{{ t('report.text.1') }}</span><br />
+                <span>{{ t('report.text.2') }}</span><br />
+                <span>{{ t('report.text.3') }}</span><br />
                 <span>{{ t('report.text.4', { email: 'contact@codekorico.com' }) }}</span>
             </p>
 
@@ -212,10 +211,7 @@ useSeoMeta({
                         tabindex="0" class="block w-3xs md:w-1/2 mt-3" :ui="{
                             base: grayscale && colorMode.value == 'dark'
                                 ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
-                                : 'bg-(--bg-2) text-(--text-2) fs-body ring-(--border-medium) placeholder:text-(--text-muted)',
-                            content: 'bg-(--bg-2)',
-                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body',
+                                : 'bg-(--bg-2) text-(--text-2) fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
                         }" required />
                 </UFormField>
 
@@ -229,10 +225,7 @@ useSeoMeta({
                         class="block w-3xs md:w-1/2 mt-3" :ui="{
                             base: grayscale && colorMode.value == 'dark'
                                 ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
-                                : 'bg-(--bg-2) text-(--text-2) fs-body ring-(--border-medium) placeholder:text-(--text-muted)',
-                            content: 'bg-(--bg-2)',
-                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body'
+                                : 'bg-(--bg-2) text-(--text-2) fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
                         }" required />
                 </UFormField>
 

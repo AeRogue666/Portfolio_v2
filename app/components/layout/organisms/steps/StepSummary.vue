@@ -130,7 +130,9 @@ const rejectedProjectTypes = ['formation', 'audit'];
                 </p>
             </div>
         </UCard>
-        <div v-else></div>
+        <div v-else>
+            <span>Pas de contenu disponible</span>
+        </div>
 
         <UFormField :label="t('sidebar-left.modal-message.step-summary.email_label')" name="email" :ui="{
             label: 'text-(--text-2) fs-body',

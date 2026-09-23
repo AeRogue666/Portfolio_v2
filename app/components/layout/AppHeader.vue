@@ -26,20 +26,19 @@ const isCollapsed = useState('sidebar-collapsed');
             <IconButton id="button-sidebarleft-desktop" :variant="'ghost'" :color="'neutral'" :icon="'fa7-solid:bars'"
                 :size="'size-10'" :label="t('sidebar-left.open')" class="hidden lg:flex size-10" tabindex="0"
                 @click="isCollapsed = !isCollapsed" />
-                
+
             <UContainer :class="isCollapsed ? 'hidden' : 'hidden md:flex'">
                 <NuxtLink to="/" aria-describedby="header-title" tabindex="0">
                     <span id="header-title" class="fs-title font-bold lg:text-center text-(--text) mb-3 sr-only">
                         {{ t('header.span_title') }}
                     </span>
                     <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
-                            alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                            :class="grayscale ? 'grayscale-100' : ''"
-                            class="dark:hidden" fetchpriority="high" />
-                        <NuxtImg id="header-title-img-dark" :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
-                            alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                            :class="grayscale ? 'grayscale-100' : ''"
-                            class="hidden dark:block" fetchpriority="high" />
+                        alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" />
+                    <NuxtImg id="header-title-img-dark"
+                        :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
+                        alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high" />
                 </NuxtLink>
             </UContainer>
         </template>

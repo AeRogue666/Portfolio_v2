@@ -26,8 +26,7 @@ const prevSlide = () => {
         <!-- Version Desktop & Tablette -->
         <div class="hidden md:block absolute inset-0 pointer-events-none">
             <div class="w-4/5 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                <DepartementSVG class="w-full opacity-25 department-card-bg"
-                    alt="" />
+                <DepartementSVG class="w-full opacity-25 department-card-bg" />
             </div>
         </div>
 

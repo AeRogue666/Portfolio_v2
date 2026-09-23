@@ -5,7 +5,6 @@ interface Element {
     title: string,
     description?: string,
     icon: string,
-    size?: string | number | undefined,
     class?: string,
     iconClass?: string,
 }

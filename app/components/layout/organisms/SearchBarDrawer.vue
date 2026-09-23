@@ -102,7 +102,7 @@ function onSelect() {
 
         <template #body>
             <UCommandPalette v-model:search-term="searchTerm" :loading="status === 'pending'" :groups="groups"
-                :placeholder="t('search.placeholder')" autofocus size="xl" class="bg-(--bg) text-(--text)"
+                :placeholder="t('search.placeholder')" size="xl" class="bg-(--bg) text-(--text)"
                 style="font-size: var(--step-0);" @update:model-value="onSelect" />
         </template>
     </UDrawer>

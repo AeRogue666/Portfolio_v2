@@ -157,7 +157,7 @@ useSeoMeta({
         rel: 'alternate',
         hreflang: l.code,
         href: `https://codekorico.com/`
-      })),
+      } as const)),
       {
         rel: 'icon',
         type: 'image/png',

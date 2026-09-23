@@ -321,6 +321,7 @@
     }
   },
   "breadcrumb": {
+    "title": "Breadcrumb",
     "feed": "Feed",
     "projects": "Projects",
     "experiments": "Experiments",

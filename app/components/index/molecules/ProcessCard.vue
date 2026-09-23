@@ -24,10 +24,10 @@ const colorChange = computed(() => props.grayscale
 
 <template>
     <div ref="root" class="flex flex-col items-center text-center gap-7 relative z-10">
-        <UChip :text="position" color="neutral" class="text-6xl" inset :ui="{
+        <UChip :text="props.position" color="neutral" class="text-6xl" inset :ui="{
             base: colorChange
         }">
-            <IconBox :icon="icon" :size="size" :class="class" :icon-class="iconClass" />
+            <IconBox :icon="props.icon" :size="props.size" :class="props.class" :icon-class="props.iconClass" />
         </UChip>
 
         <div class="flex flex-col items-center w-60 gap-3">

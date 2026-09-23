@@ -23,6 +23,7 @@ export interface ServiceTranslation {
     title?: string;
     children?: Array<{
       title?: string;
+      description?: string;
       price?: string;
       ttc?: boolean;
       features?: string[];

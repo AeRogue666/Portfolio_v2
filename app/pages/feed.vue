@@ -64,7 +64,7 @@ useSeoMeta({
                 rel: 'alternate',
                 hreflang: l.code,
                 href: `https://codekorico.com${route.path}`
-            }))
+            } as const))
         ]
     });
 
@@ -94,7 +94,7 @@ useSeoMeta({
             rel: 'alternate',
             hreflang: l.code,
             href: `https://codekorico.com${route.path}`
-        }))
+        } as const))
     ]
 }));
 
@@ -106,7 +106,6 @@ useSeoMeta(({
 
 <template>
     <UContainer tabindex="-1" aria-labelledby="feed-title">
-
         <!-- Filtres -->
         <FeedFilters :available-tags="availableTags" :selected-tags="selectedTags" :selected-kinds="selectedKinds"
             :sort-by="sortBy" :has-active-filters="hasActiveFilters"
@@ -128,7 +127,7 @@ useSeoMeta(({
 
         <!-- Bouton Load More -->
         <UContainer v-if="(items.length < total) && hasMore === false" class="mt-6">
-            <button id="button-load-articles" :aria-label="t('feed.load_more')" role="button" aria-controls="feed"
+            <button id="button-load-articles" :aria-label="t('feed.load_more')" aria-controls="feed"
                 @click="loadMore()" :aria-busy="status === 'pending'" :disabled="status === 'pending'"
                 class="w-full px-4 py-2 bg-(--bg-2) hover:bg-(--bg-3) text-(--text) rounded border border-(--border-subtle) disabled:opacity-50 disabled:cursor-not-allowed transition-colors fs-body">
                 {{ t('feed.load_more') }}
@@ -137,11 +136,15 @@ useSeoMeta(({
 
         <!-- Annonce accessibilité pour lecteurs d'écran -->
         <div v-if="status === 'success' && items.length > 0" aria-live="polite" class="sr-only">
-            <span v-if="hasMore && (total - items.length) > 1" class="fs-small">{{ total - items.length }} {{
-                t('feed.loaded_new_articles', total - items.length) }}</span>
-            <span v-else-if="hasMore && (total - items.length) === 1" class="fs-small">{{ t('feed.loaded_new_articles',
-                1) }}</span>
-            <span v-else class="fs-small">{{ t('feed.loaded_new_articles', 0) }}</span>
+            <span v-if="hasMore && (total - items.length) > 1" class="fs-small">
+                {{ total - items.length }} {{ t('feed.loaded_new_articles', total - items.length) }}
+            </span>
+            <span v-else-if="hasMore && (total - items.length) === 1" class="fs-small">
+                {{ t('feed.loaded_new_articles', 1) }}
+            </span>
+            <span v-else class="fs-small">
+                {{ t('feed.loaded_new_articles', 0) }}
+            </span>
         </div>
     </UContainer>
 </template>

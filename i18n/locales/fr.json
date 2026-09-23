@@ -321,6 +321,7 @@
     }
   },
   "breadcrumb": {
+    "title": "Fil d'Ariane",
     "feed": "Fil",
     "projects": "Projets",
     "experiments": "Expériences",

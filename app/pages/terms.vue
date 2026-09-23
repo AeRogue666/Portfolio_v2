@@ -59,7 +59,7 @@ if(page.value) {
                     rel: 'alternate',
                     hreflang: l.code,
                     href: `https://codekorico.com${route.path}`
-                }))
+                } as const))
             ]
         });
 }
@@ -69,11 +69,21 @@ if(page.value) {
     <template v-if="page">
         <article class="prose prose-neutral w-full max-w-7xl mx-auto px-4 py-10 prose-headings:scroll-mt-24 fs-body" aria-labelledby="article-title">
             <header class="flex flex-col mb-10">
-                <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body">
-                    <template #separator>
-                        <span class="mx-2 text-(--text-muted)">/</span>
-                    </template>
-                </UBreadcrumb>
+                <nav :aria-label="t('breadcrumb.title')" class="my-2">
+                    <UBreadcrumb :items="breadcrumbItems" class="my-2 fs-body" variant="link" color="neutral" :ui="{
+                        link: 'text-(--text-2) hover:text-(--text) transition-colors fs-body',
+                    }">
+                        <template #item-label="{ item }">
+                            <span :class="[item.to ? 'underline' : 'no-underline']">
+                                {{ item.label }}
+                            </span>
+                        </template>
+
+                        <template #separator>
+                            <span class="mx-2 text-(--text-muted)" aria-hidden="true">/</span>
+                        </template>
+                    </UBreadcrumb>
+                </nav>
 
                 <div class="inline-flex gap-6">
                     <p class="fs-small text-(--text-2)">

@@ -47,9 +47,9 @@ const options = computed(() => {
             return [
                 { value: "maintenance-onepage", label: t('sendmessagemodal.subtypes.maintenance.onepage') },
                 { value: "maintenance-vitrine", label: t('sendmessagemodal.subtypes.maintenance.vitrine') },
-                 { value: "maintenance-professionnel", label: t('sendmessagemodal.subtypes.maintenance.professionnel') },
+                { value: "maintenance-professionnel", label: t('sendmessagemodal.subtypes.maintenance.professionnel') },
                 { value: "maintenance-ecommerce", label: t('sendmessagemodal.subtypes.maintenance.ecommerce') },
-                 { value: "maintenance-custom", label: t('sendmessagemodal.subtypes.maintenance.custom') },
+                { value: "maintenance-custom", label: t('sendmessagemodal.subtypes.maintenance.custom') },
                 { value: "maintenance-ponctuelle", label: t('sendmessagemodal.subtypes.maintenance.ponctuelle') },
             ]
         case "formation":
@@ -84,7 +84,8 @@ const options = computed(() => {
                     ? 'bg-(--bg-3) text-inverted fs-body'
                     : 'bg-(--bg-3) text-(--text) fs-body'
             }">
-                {{ opt.label }}</UCard>
+                {{ opt.label }}
+            </UCard>
         </UContainer>
     </div>
 </template>
