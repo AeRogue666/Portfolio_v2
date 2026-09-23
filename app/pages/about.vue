@@ -4,11 +4,14 @@ import ArticleLayout from '../components/layout/molecules/ArticleLayout.vue';
 
 const { t, locale, locales } = useI18n(),
     route = useRoute(),
+    accessibilityStore = useAccessibilityStore(),
     colorMode = useColorMode(),
     { formatDate, formatISO } = useDate();
 
 const avatarSrc = ref<string>('/images/logo/logo_k_dark.png');
 const colorModeRendering = ref('border-white');
+
+const grayscale = computed(() => accessibilityStore.grayscale);
 
 const contentPath = computed(() => `/about/${locale.value}`)
 const asyncKey = computed(() => `about-${locale.value}`);
@@ -124,10 +127,11 @@ if (about.value) {
 
             <div class="flex flex-col justify-center items-center">
                 <UUser size="3xl" orientation="vertical" :name="t('sidebar-left.user_title')"
-                    :description="t('sidebar-left.user_description')" key="user-avatar" :avatar="{
-                        src: avatarSrc,
+                    :description="t('sidebar-left.user_description')" key="user-avatar"
+                    :class="grayscale ? 'grayscale-100' : ''" :avatar="{
+                        src: grayscale ? `/images/logo/logo_k_light.png` : avatarSrc,
                         icon: 'fa7-solid:user',
-                        alt: t('sidebar-left.user_alternative_text')
+                        alt: t('index.lettered_logo')
                     }" :ui="{
                         root: 'items-center',
                         name: 'fs-subtitle text-2xl text-(--text) text-center font-semibold tracking-tight leading-snug',
@@ -139,7 +143,9 @@ if (about.value) {
                 </span>
             </div>
 
-            <ContentRenderer :value="about" />
+            <div class="prose max-w-none text-(--text-2)">
+                <ContentRenderer :value="about" />
+            </div>
         </ArticleLayout>
     </template>
     <p v-else class="fs-body">

@@ -3,7 +3,11 @@ import type { NavigationMenuItem } from "@nuxt/ui";
 import AppIndexHeader from "../components/layout/AppIndexHeader.vue";
 import SidebarLeftDesktop from "../components/layout/SidebarLeftDesktop.vue";
 
-const { t, locale } = useI18n();
+const { t, locale } = useI18n(),
+    accessibilityStore = useAccessibilityStore();
+
+const grayscale = computed(() => accessibilityStore.grayscale);
+
 const itemsFooterNavigation = computed<NavigationMenuItem[]>(() => [
     {
         label: t('sidebar-left.navigation.legal_notices'),
@@ -51,13 +55,13 @@ useHead(() => ({
                         <div class="flex flex-col justify-center items-center gap-4">
                             <img src="/images/logo/partenaires/pollen_scop.png" alt="Logo de la CAE Pollen SCOP"
                                 width="57" height="57"
-                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75" />
+                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75" :class="grayscale ? 'grayscale-100' : ''" />
                             <span class="fs-small">Membre de la Coopérative d'Entreprise Pollen SCOP</span>
                         </div>
                         <div class="flex flex-col justify-center items-center gap-4">
                             <img src="/images/logo/partenaires/emerveilles_par_ardeche.png"
                                 alt="Logo de Emerveillés par l'Ardèche" width="50" height="52"
-                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75" />
+                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75" :class="grayscale ? 'grayscale-100' : ''" />
                             <span class="fs-small">CodeKorico est émerveillé par l'Ardèche</span>
                         </div>
                     </div>

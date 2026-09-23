@@ -38,6 +38,7 @@ interface AccessibilityReportTranslation {
   criterionCol: string;
   statusCol: string;
   pagesCol: string;
+  justificationCol: string;
 
   // Use cases
   useCasesTitle: string;
@@ -78,6 +79,7 @@ interface AccessibilityReportTranslation {
     criterion: string;
     status: "C" | "NC" | "NA";
     pages: string[];
+    justification?: string;
   }>;
 
   pageScores: Array<{

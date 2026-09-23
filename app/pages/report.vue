@@ -193,8 +193,8 @@ useSeoMeta({
                                 ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
                                 : 'bg-(--bg-2) text-(--text-2) fs-body ring-(--border-medium) placeholder:text-(--text-muted)',
                             content: 'bg-(--bg-2)',
-                            value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                            item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body'
+                            value: 'fs-body text-(--text)',
+                            item: 'fs-body text-(--text)'
                         }" />
 
                     <p v-if="issueError" id="issue-error" class="text-sm text-(--danger) mt-2">{{ issueError }}</p>

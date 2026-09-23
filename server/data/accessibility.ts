@@ -33,6 +33,7 @@ export const accessibilityReport: AccessibilityReport = {
       criterionCol: "Critère",
       statusCol: "Statut",
       pagesCol: "Pages",
+      justificationCol: "Justification (si N/A)",
       useCasesTitle: "Points Complexes -Cas d'Usage",
       implementationLabel: "Implémentation:",
       correctionsTitle: "Journal des Anomalies et Corrections",
@@ -58,18 +59,18 @@ export const accessibilityReport: AccessibilityReport = {
         "Si vous souhaitez échanger sur les méthodes de test ou les choix techniques effectués pour garantir ce niveau de conformité, je reste à votre entière disposition.",
       thematics: [
         { id: "images", label: "Images" },
+        { id: "multimedia", label: "Cadres & Multimédia" },
         { id: "colors", label: "Couleurs" },
+        { id: "temporal", label: "Contenus temporels" },
+        { id: "elements", label: "Éléments" },
+        { id: "links", label: "Liens et navigation" },
+        { id: "scripts", label: "Scripts" },
+        { id: "mandatory", label: "Éléments obligatoires" },
         { id: "forms", label: "Formulaires" },
         { id: "navigation", label: "Navigation" },
-        { id: "consultation", label: "Consultation" },
-        { id: "elements", label: "Éléments" },
-        { id: "scripts", label: "Scripts" },
-        { id: "mandatory", label: "Structuration" },
         { id: "presentation", label: "Présentation" },
-        { id: "multimedia", label: "Multimédia" },
-        { id: "temporal", label: "Contenus temporels" },
-        { id: "language", label: "Langue" },
-        { id: "links", label: "Liens et navigation" },
+        { id: "language", label: "Navigation & Langue" },
+        { id: "consultation", label: "Consultation" },
       ],
       criteria: [
         {
@@ -79,12 +80,17 @@ export const accessibilityReport: AccessibilityReport = {
           status: "C",
           pages: [
             "Index",
+            "Feed",
             "Projects",
             "Updates",
+            "Clients",
+            "Landing",
             "About",
             "Accessibility",
+            "Accessibility-report",
             "Report",
-            "404",
+            "Terms",
+            "Legal Notices"
           ],
         },
         {
@@ -93,7 +99,19 @@ export const accessibilityReport: AccessibilityReport = {
           criterion:
             "Pour chaque image porteuse d'information, l'alternative textuelle est-elle pertinente?",
           status: "C",
-          pages: ["Index", "Projects", "Updates", "About"],
+          pages: ["Index",
+            "Feed",
+            "Projects",
+            "Updates",
+            "Clients",
+            "Landing",
+            "About",
+            "Accessibility",
+            "Accessibility-report",
+            "Report",
+            "Terms",
+            "Legal Notices"
+          ],
         },
         {
           id: "1.3",
@@ -101,7 +119,30 @@ export const accessibilityReport: AccessibilityReport = {
           criterion:
             "Pour chaque bouton porteur d'information, l'alternative textuelle est-elle pertinente?",
           status: "C",
-          pages: ["Index", "About", "Accessibility", "Report", "404"],
+          pages: ["All"],
+        },
+        {
+          id: "1.4",
+          thematic: "images",
+          criterion:
+            "Chaque image texte porteuse d'informations a t-elle une alternative ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "2.1",
+          thematic: "multimedia",
+          criterion: "Chaque cadre a-t-il un titre de cadre ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun élément iframe ou cadre n'est utilisé sur le site."
+        },
+        {
+          id: "2.2",
+          thematic: "multimedia",
+          criterion: "Les liens sont-ils distinguables des autres contenus ?",
+          status: "C",
+          pages: ["All"],
         },
         {
           id: "3.1",
@@ -119,143 +160,175 @@ export const accessibilityReport: AccessibilityReport = {
           pages: ["All"],
         },
         {
-          id: "11.1",
-          thematic: "forms",
-          criterion: "Chaque champ de formulaire a-t-il une étiquette (label)?",
-          status: "C",
-          pages: ["Report"],
-        },
-        {
-          id: "11.2",
-          thematic: "forms",
+          id: "4.1",
+          thematic: "temporal",
           criterion:
-            "Chaque étiquette est-elle correctement associée à son champ?",
-          status: "C",
-          pages: ["Report"],
+            "Chaque média temporel a t-il une transcription ou audiodescription ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
         },
         {
-          id: "11.3",
-          thematic: "forms",
+          id: "5.1",
+          thematic: "elements",
           criterion:
-            "Les messages d'erreur sont-ils explicites et accessibles?",
+            "Chaque tableau de données a-t-il un titre sémantique (caption) ?",
           status: "C",
-          pages: ["Report"],
+          pages: ["Accessibility-report"]
         },
         {
-          id: "12.1",
-          thematic: "navigation",
-          criterion: "Existe-t-il un lien d'évitement (skip-link) fonctionnel?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "12.2",
-          thematic: "navigation",
-          criterion: "La prise de focus est-elle visible?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "12.3",
-          thematic: "navigation",
-          criterion: "La navigation au clavier est-elle possible?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "12.4",
-          thematic: "navigation",
+          id: "5.2",
+          thematic: "elements",
           criterion:
-            "Le focus est-il piégé dans les modales et panneaux ? (Focus Trap)",
+            "Chaque en-tête de tableau est-il correctement identifié via scope ?",
           status: "C",
-          pages: ["Index", "Accessibility", "Report"],
+          pages: ["Accessibility-report"]
         },
         {
-          id: "12.5",
-          thematic: "navigation",
-          criterion: "L'ordre de tabulation est-il logique?",
+          id: "6.1",
+          thematic: "links",
+          criterion:
+            "Chaque lien est-il explicite et structuré ?",
           status: "C",
-          pages: ["All"],
+          pages: ["All"]
         },
         {
           id: "7.1",
-          thematic: "consultation",
-          criterion: "La sémantique HTML5 est-elle correctement utilisée?",
+          thematic: "scripts",
+          criterion: "La sémantique HTML5 est-elle correctement utilisée pour les scripts ?",
           status: "C",
-          pages: ["All"],
+          pages: ["All"]
         },
         {
           id: "7.2",
-          thematic: "consultation",
-          criterion: "Les rôles ARIA sont-ils appropriés?",
+          thematic: "scripts",
+          criterion: "Les rôles ARIA appliqués aux scripts sont-ils appropriés ?",
           status: "C",
-          pages: ["All"],
+          pages: ["All"]
         },
         {
           id: "7.3",
-          thematic: "consultation",
+          thematic: "scripts",
           criterion: "Les annonces live (aria-live) fonctionnent-elles ?",
           status: "C",
-          pages: ["Index"],
-        },
-        {
-          id: "2.1",
-          thematic: "elements",
-          criterion: "Les boutons ont-ils un texte accessible?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "2.2",
-          thematic: "elements",
-          criterion: "Les liens sont-ils distinguables des autres contenus?",
-          status: "C",
-          pages: ["All"],
+          pages: ["Feed"]
         },
         {
           id: "8.1",
           thematic: "mandatory",
-          criterion: "La page a-t-elle un titre (title) pertinent?",
+          criterion: "La page a-t-elle un titre (title) pertinent ?",
           status: "C",
-          pages: ["All"],
+          pages: ["All"]
         },
         {
           id: "8.2",
           thematic: "mandatory",
           criterion: "La hiérarchie des titres (h1-h6) est-elle respectée ?",
           status: "C",
-          pages: ["All"],
+          pages: ["All"]
         },
         {
           id: "8.3",
           thematic: "mandatory",
-          criterion: "L'attribut lang est-il déclaré sur l'élément <html>?",
+          criterion: "L'attribut lang est-il déclaré sur l'élément <html> ?",
           status: "C",
-          pages: ["All"],
+          pages: ["All"]
+        },
+        {
+          id: "9.1",
+          thematic: "navigation",
+          criterion: "Les balises de structure HTML5 son-elles bien exploitées ?",
+          status: "C",
+          pages: ["All"]
         },
         {
           id: "10.1",
           thematic: "presentation",
-          criterion: "L'information reste-t-elle compréhensible sans CSS?",
+          criterion: "L'information reste-t-elle compréhensible sans CSS ?",
           status: "C",
-          pages: ["All"],
+          pages: ["All"]
         },
         {
           id: "10.2",
           thematic: "presentation",
-          criterion:
-            "Le zoom 200% ne casse-t-il pas la mise en page (Responsive)?",
-          status: "C",
-          pages: ["All"],
+          criterion: "Le zoom 200% ne casse-t-il pas la mise en page (Responsive) ?",
+          status: "NC",
+          pages: ["All"]
         },
         {
           id: "10.3",
           thematic: "presentation",
+          criterion: "Les éléments de texte sont-ils lisibles et conformes WCAG AAA ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "11.1",
+          thematic: "forms",
+          criterion: "Chaque champ de formulaire a-t-il une étiquette (label)?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.2",
+          thematic: "forms",
           criterion:
-            "Les éléments de texte sont-ils lisibles et conformes WCAG AAA ?",
+            "Chaque étiquette est-elle correctement associée à son champ ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.3",
+          thematic: "forms",
+          criterion:
+            "Les messages d'erreur sont-ils explicites et accessibles ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "12.1",
+          thematic: "language",
+          criterion: "Existe-t-il un lien d'évitement (skip-link) fonctionnel ?",
           status: "C",
           pages: ["All"],
         },
+        {
+          id: "12.2",
+          thematic: "language",
+          criterion: "La prise de focus est-elle visible ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "12.3",
+          thematic: "language",
+          criterion: "La navigation au clavier est-elle possible ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "12.4",
+          thematic: "language",
+          criterion:
+            "Le focus est-il piégé dans les modales et panneaux (Focus Trap) ?",
+          status: "C",
+          pages: ["Index", "Accessibility", "Report"],
+        },
+        {
+          id: "12.5",
+          thematic: "language",
+          criterion: "L'ordre de tabulation est-il logique ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "13.1",
+          thematic: "consultation",
+          criterion: "Chaque document en téléchargement (PDF) est-il accessible ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a pas de fichier lourd ou document complexe en téléchargement sur le site."
+        }
       ],
       pageScores: [
         { page: "Index", lighthouse: 96, wave: 10, accessibility: "100%" },
@@ -280,7 +353,7 @@ export const accessibilityReport: AccessibilityReport = {
         },
         { page: "Report", lighthouse: 97, wave: 10, accessibility: "100%" },
         { page: "404", lighthouse: 94, wave: 10, accessibility: "96%" },
-        { page: "Rapport d'accessibilité", lighthouse: 100, wave: 10, accessibility: '100' },
+        { page: "Rapport d'accessibilité", lighthouse: 100, wave: 10, accessibility: '100%' },
       ],
       useCases: [
         {
@@ -320,9 +393,9 @@ export const accessibilityReport: AccessibilityReport = {
       ],
       corrections: [
         {
-          issue: "Sidebar Left Accessible name manquant",
+          issue: "SidebarLeft mobile inutilisable sur desktop",
           solution:
-            'Ajout de aria-label="Navigation principale" au <aside role="dialog">',
+            'Ajout d\'une nouvelle sidebar nommé SidebarLeftDesktop utilisant un aside pour desktop et utilisant SidebarLeftMobile uniquement pour téléphone',
           status: "Corrigé",
         },
         {
@@ -456,6 +529,7 @@ export const accessibilityReport: AccessibilityReport = {
       criterionCol: "Criterion",
       statusCol: "Status",
       pagesCol: "Pages",
+      justificationCol: "Justification (if N/A)",
       useCasesTitle: "Complex Points - Use Cases",
       implementationLabel: "Implementation",
       correctionsTitle: "Anomalies and Corrections Log",
@@ -498,38 +572,78 @@ export const accessibilityReport: AccessibilityReport = {
         {
           id: "1.1",
           thematic: "images",
-          criterion: "Does each image have text alternative?",
+          criterion: "Chaque image a-t-elle une alternative textuelle?",
           status: "C",
           pages: [
             "Index",
+            "Feed",
             "Projects",
             "Updates",
+            "Clients",
+            "Landing",
             "About",
             "Accessibility",
+            "Accessibility-report",
             "Report",
-            "404",
+            "Terms",
+            "Legal Notices"
           ],
         },
         {
           id: "1.2",
           thematic: "images",
           criterion:
-            "For each meaningful image, is the text alternative appropriate?",
+            "Pour chaque image porteuse d'information, l'alternative textuelle est-elle pertinente?",
           status: "C",
-          pages: ["Index", "Projects", "Updates", "About"],
+          pages: ["Index",
+            "Feed",
+            "Projects",
+            "Updates",
+            "Clients",
+            "Landing",
+            "About",
+            "Accessibility",
+            "Accessibility-report",
+            "Report",
+            "Terms",
+            "Legal Notices"
+          ],
         },
         {
           id: "1.3",
           thematic: "images",
           criterion:
-            "For each meaningful button, is the text alternative appropriate?",
+            "Pour chaque bouton porteur d'information, l'alternative textuelle est-elle pertinente?",
           status: "C",
-          pages: ["Index", "About", "Accessibility", "Report", "404"],
+          pages: ["All"],
+        },
+        {
+          id: "1.4",
+          thematic: "images",
+          criterion:
+            "Chaque image texte porteuse d'informations a t-elle une alternative ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "2.1",
+          thematic: "multimedia",
+          criterion: "Chaque cadre a-t-il un titre de cadre ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun élément iframe ou cadre n'est utilisé sur le site."
+        },
+        {
+          id: "2.2",
+          thematic: "multimedia",
+          criterion: "Les liens sont-ils distinguables des autres contenus ?",
+          status: "C",
+          pages: ["All"],
         },
         {
           id: "3.1",
           thematic: "colors",
-          criterion: "Is information conveyed by color alone?",
+          criterion: "L'information est-elle donnée par la couleur seule?",
           status: "C",
           pages: ["All"],
         },
@@ -537,143 +651,180 @@ export const accessibilityReport: AccessibilityReport = {
           id: "3.2",
           thematic: "colors",
           criterion:
-            "Is contrast (text/background) sufficient? (7:1 ratio AAA)",
+            "Le contraste (texte/fond) est-il suffisant? (Ratio 7:1 AAA)",
           status: "C",
           pages: ["All"],
         },
         {
+          id: "4.1",
+          thematic: "temporal",
+          criterion:
+            "Chaque média temporel a t-il une transcription ou audiodescription ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "5.1",
+          thematic: "elements",
+          criterion:
+            "Chaque tableau de données a-t-il un titre sémantique (caption) ?",
+          status: "C",
+          pages: ["Accessibility-report"]
+        },
+        {
+          id: "5.2",
+          thematic: "elements",
+          criterion:
+            "Chaque en-tête de tableau est-il correctement identifié via scope ?",
+          status: "C",
+          pages: ["Accessibility-report"]
+        },
+        {
+          id: "6.1",
+          thematic: "links",
+          criterion:
+            "Chaque lien est-il explicite et structuré ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "7.1",
+          thematic: "scripts",
+          criterion: "La sémantique HTML5 est-elle correctement utilisée pour les scripts ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "7.2",
+          thematic: "scripts",
+          criterion: "Les rôles ARIA appliqués aux scripts sont-ils appropriés ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "7.3",
+          thematic: "scripts",
+          criterion: "Les annonces live (aria-live) fonctionnent-elles ?",
+          status: "C",
+          pages: ["Feed"]
+        },
+        {
+          id: "8.1",
+          thematic: "mandatory",
+          criterion: "La page a-t-elle un titre (title) pertinent ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.2",
+          thematic: "mandatory",
+          criterion: "La hiérarchie des titres (h1-h6) est-elle respectée ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.3",
+          thematic: "mandatory",
+          criterion: "L'attribut lang est-il déclaré sur l'élément <html> ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "9.1",
+          thematic: "navigation",
+          criterion: "Les balises de structure HTML5 son-elles bien exploitées ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "10.1",
+          thematic: "presentation",
+          criterion: "L'information reste-t-elle compréhensible sans CSS ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "10.2",
+          thematic: "presentation",
+          criterion: "Le zoom 200% ne casse-t-il pas la mise en page (Responsive) ?",
+          status: "NC",
+          pages: ["All"]
+        },
+        {
+          id: "10.3",
+          thematic: "presentation",
+          criterion: "Les éléments de texte sont-ils lisibles et conformes WCAG AAA ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
           id: "11.1",
           thematic: "forms",
-          criterion: "Does each form field have a label?",
+          criterion: "Chaque champ de formulaire a-t-il une étiquette (label)?",
           status: "C",
-          pages: ["Report"],
+          pages: ["Contact Modal","Report"],
         },
         {
           id: "11.2",
           thematic: "forms",
-          criterion: "Is each label correctly associated with its field?",
+          criterion:
+            "Chaque étiquette est-elle correctement associée à son champ ?",
           status: "C",
-          pages: ["Report"],
+          pages: ["Contact Modal","Report"],
         },
         {
           id: "11.3",
           thematic: "forms",
-          criterion: "Are error messages explicit and accessible?",
+          criterion:
+            "Les messages d'erreur sont-ils explicites et accessibles ?",
           status: "C",
-          pages: ["Report"],
+          pages: ["Contact Modal","Report"],
         },
         {
           id: "12.1",
-          thematic: "navigation",
-          criterion: "Is there a functional skip link?",
+          thematic: "language",
+          criterion: "Existe-t-il un lien d'évitement (skip-link) fonctionnel ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.2",
-          thematic: "navigation",
-          criterion: "Is focus focus visible?",
+          thematic: "language",
+          criterion: "La prise de focus est-elle visible ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.3",
-          thematic: "navigation",
-          criterion: "Is keyboard navigation possible?",
+          thematic: "language",
+          criterion: "La navigation au clavier est-elle possible ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.4",
-          thematic: "navigation",
-          criterion: "Is focus trapped in modals and panels? (Focus Trap)",
+          thematic: "language",
+          criterion:
+            "Le focus est-il piégé dans les modales et panneaux (Focus Trap) ?",
           status: "C",
           pages: ["Index", "Accessibility", "Report"],
         },
         {
           id: "12.5",
-          thematic: "navigation",
-          criterion: "Is the tab order logical?",
+          thematic: "language",
+          criterion: "L'ordre de tabulation est-il logique ?",
           status: "C",
           pages: ["All"],
         },
         {
-          id: "7.1",
+          id: "13.1",
           thematic: "consultation",
-          criterion: "Is HTML5 semantics correctly used?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "7.2",
-          thematic: "consultation",
-          criterion: "Are ARIA roles appropriate?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "7.3",
-          thematic: "consultation",
-          criterion: "Do live announcements (aria-live) work?",
-          status: "C",
-          pages: ["Index"],
-        },
-        {
-          id: "2.1",
-          thematic: "elements",
-          criterion: "Do buttons have accessible text?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "2.2",
-          thematic: "elements",
-          criterion: "Are links distinguishable from other content?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "8.1",
-          thematic: "mandatory",
-          criterion: "Does the page have a relevant title?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "8.2",
-          thematic: "mandatory",
-          criterion: "Is the heading hierarchy (h1-h6) respected?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "8.3",
-          thematic: "mandatory",
-          criterion: "Is the lang attribute declared on <html>?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "10.1",
-          thematic: "presentation",
-          criterion: "Does content remain understandable without CSS?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "10.2",
-          thematic: "presentation",
-          criterion: "Does 200% zoom break the layout (Responsive)?",
-          status: "C",
-          pages: ["All"],
-        },
-        {
-          id: "10.3",
-          thematic: "presentation",
-          criterion: "Is text readable and WCAG AAA compliant?",
-          status: "C",
-          pages: ["All"],
-        },
+          criterion: "Chaque document en téléchargement (PDF) est-il accessible ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a pas de fichier lourd ou document complexe en téléchargement sur le site."
+        }
       ],
       pageScores: [
         { page: "Index", lighthouse: 96, wave: 10, accessibility: "100%" },
@@ -698,7 +849,7 @@ export const accessibilityReport: AccessibilityReport = {
         },
         { page: "Report", lighthouse: 97, wave: 10, accessibility: "100%" },
         { page: "404", lighthouse: 94, wave: 10, accessibility: "96%" },
-        { page: "Accessibility report", lighthouse: 100, wave: 10, accessibility: '100' },
+        { page: "Accessibility report", lighthouse: 100, wave: 10, accessibility: '100%' },
       ],
       useCases: [
         {

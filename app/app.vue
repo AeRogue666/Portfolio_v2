@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const { t, locale, locales } = useI18n();
-const colorMode = useColorMode();
 
 useSeoMeta({
   ogSiteName: "CodeKorico",

@@ -30,9 +30,9 @@ updated_at: 2026-05-20
 
 Bonjour, je suis Aurélien, développeur full-stack basé en Ardèche, spécialisé dans l'accessibilité et l'architecture web évolutive.
 
-J'aide les équipes à concevoir et à développer des applications web inclusives, faciles à maintenir et axées sur la performance, sans sacrifier l'expérience utilisateur ou le design, en utilisant Vue, Nuxt, TypeScript[[1]](#outils-front) et des outils backend modernes tel que Node.js, Prisma, Express, PostgreSQL[[2]](#outils-back-et-base-de-données).
+J'aide les équipes à concevoir et à développer des applications web inclusives, faciles à maintenir et axées sur la performance, sans sacrifier l'expérience utilisateur ou le design, en utilisant Vue, Nuxt, TypeScript <a href="#outils-front" class="text-(--text) fs-small hover:underline ml-0.5" aria-label="Note 1 : Voir les liens pour les outils frontend">[1]</a> et des outils backend modernes tel que Node.js, Prisma, Express, PostgreSQL <a href="#outils-back-et-base-de-données" class="text-(--text) fs-small hover:underline ml-0.5" aria-label="Note 2 : Voir les liens pour les outils backend et base de données">[2]</a>.
 
-Mais je conçois aussi des sites internet avec WordPress et son module e-commerce WooCommerce ainsi que WordPress Studio, le studio développement créé par les équipes de WordPress, ou Shopify [[3]](#cms), en respectant les normes web en vigueur et les besoins des clients.
+Mais je conçois aussi des sites internet avec WordPress et son module e-commerce WooCommerce ainsi que WordPress Studio, le studio développement créé par les équipes de WordPress, ou Shopify <a href="#cms" class="text-(--text) fs-small hover:underline ml-0.5" aria-label="Note 3 : Voir les liens pour les CMS">[3]</a>, en respectant les normes web en vigueur et les besoins des clients.
 
 ---
 
@@ -96,3 +96,5 @@ Liens vers les sites officiels des différents outils.
 [WordPress Studio](https://developer.wordpress.com/fr/studio/)
 
 [Shopify](https://shopify.com)
+
+<a href="#qui-suis-je" class="text-(--text) hover:underline ml-0.5" aria-label="Retour au paragraphe Qui suis-je">Retour au texte</a>

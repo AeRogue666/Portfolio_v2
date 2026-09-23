@@ -10,10 +10,7 @@ const { t, locale, locales } = useI18n(),
     { formatISO } = useDate();
 
 // Grayscale
-const grayscale = computed({
-    get: () => accessibilityStore.grayscale,
-    set: () => accessibilityStore.toggleGrayscale(),
-});
+const grayscale = computed(() => accessibilityStore.grayscale);
 
 
 // Etat des filtres
@@ -247,7 +244,8 @@ if (reportData.value) {
                 <h3 class="font-semibold mb-2 fs-subtitle">{{ reportData.technologiesTitle }}</h3>
                 <ul class="fs-small text-(--text-2) space-y-1">
                     <li v-for="tech in technologiesMap" :key="tech.value">
-                        <UIcon :name="`fa7-solid:${tech.icon}`" size="xl" /> {{ tech.value }}
+                        <UIcon :name="`fa7-solid:${tech.icon}`" size="xl" aria-hidden="true" />
+                        <span>{{ tech.value }}</span>
                     </li>
                 </ul>
             </div>
@@ -256,7 +254,8 @@ if (reportData.value) {
                 <h3 class="font-semibold mb-2 fs-subtitle">{{ reportData.testEnvironmentTitle }}</h3>
                 <ul class="fs-small text-(--text-2) space-y-1">
                     <li v-for="test in testEnvironmentMap" :key="test.value">
-                        <UIcon :name="`fa7-solid:${test.icon}`" size="xl" /> {{ test.value }}
+                        <UIcon :name="`fa7-solid:${test.icon}`" size="xl" aria-hidden="true" />
+                        <span>{{ test.value }}</span>
                     </li>
                 </ul>
             </div>
@@ -268,18 +267,19 @@ if (reportData.value) {
 
             <div class="overflow-x-auto">
                 <table class="w-full text-sm">
+                    <caption class="sr-only">{{ reportData.scoresTitle }}</caption>
                     <thead>
                         <tr class="border-b border-(--border-subtle) bg-(--bg-2)">
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.pageLabelCol }}
                             </th>
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.lighthouseCol }}
                             </th>
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.waveCol }}
                             </th>
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.accessibilityCol }}
                             </th>
                         </tr>
@@ -287,13 +287,13 @@ if (reportData.value) {
                     <tbody>
                         <tr v-for="score in reportData.pageScores" :key="score.page"
                             class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors">
-                            <td class="px-4 py-3 fs-body">{{ score.page }}</td>
+                            <th scope="row" class="px-4 py-3 fs-body">{{ score.page }}</th>
                             <td class="text-center px-4 py-3 font-medium fs-body">{{ score.lighthouse }}/100</td>
                             <td class="text-center px-4 py-3 font-medium fs-body">{{ score.wave }}/10</td>
                             <td class="text-center px-4 py-3 fs-body">
                                 <span class="inline-block px-2 py-1 rounded font-semibold"
                                     :class="getAccessibilityColor(score.accessibility)">
-                                    {{ score.accessibility }}
+                                    {{ score.accessibility }}{{ score.accessibility.includes("%") ? "" : "%" }}
                                 </span>
                             </td>
                         </tr>
@@ -350,21 +350,22 @@ if (reportData.value) {
             <!-- Tableau filtré -->
             <div class="overflow-x-auto">
                 <table class="w-full fs-body">
+                    <caption class="sr-only">Un titre</caption>
                     <thead>
                         <tr class="border-b border-(--border-subtle) bg-(--bg-2)">
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.idCol }}
                             </th>
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.thematicCol }}
                             </th>
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.criterionCol }}
                             </th>
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.statusCol }}
                             </th>
-                            <th class="text-left px-4 py-3 font-semibold fs-small">
+                            <th scope="col" class="text-left px-4 py-3 font-semibold fs-small">
                                 {{ reportData.pagesCol }}
                             </th>
                         </tr>
@@ -372,10 +373,10 @@ if (reportData.value) {
                     <tbody>
                         <tr v-for="criteria in filteredCriteria" :key="criteria.id"
                             class="border-b border-(--border-subtle) hover:bg-(--bg-2) transition-colors">
-                            <td class="px-4 py-3 font-mono fs-body font-semibold"
+                            <th scope="row" class="px-4 py-3 font-mono fs-body font-semibold"
                                 style="font-size: clamp(0.5rem, var(--step--1), 1rem);">
                                 {{ criteria.id }}
-                            </td>
+                            </th>
                             <td class="text-center px-4 py-3 font-medium fs-body">
                                 <span class="inline-block px-2 py-1 rounded"
                                     :class="`bg-${getThematicColor(criteria.thematic)}-500/20`">
@@ -457,7 +458,7 @@ if (reportData.value) {
                     <h3 class="font-bold mb-3 fs-subtitle">{{ env.category }}</h3>
                     <ul class="text-(--text-2) space-y-2">
                         <li v-for="detail in env.details" :key="detail" class="flex items-start gap-2 fs-body">
-                            <UIcon name="fa7-solid:check" class="mt-0.5 text-green-500 font-bold" />
+                            <UIcon name="fa7-solid:check" class="mt-0.5 text-green-500 font-bold" aria-hidden="true" />
                             <span>{{ detail }}</span>
                         </li>
                     </ul>

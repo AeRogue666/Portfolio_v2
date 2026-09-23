@@ -1,5 +1,4 @@
 export default defineAppConfig({
-  title: "Portfolio v2",
   theme: {
     dark: true,
   },
@@ -9,5 +8,10 @@ export default defineAppConfig({
       light: "fa7-solid:sun",
       dark: "fa7-solid:moon",
     },
+    prose: {
+      a: {
+        base: 'border-b border-transparent hover:border-(--border-subtle) text-(--text) fs-body underline decoration-current decoration-1 underline-offset-4 transition-all duration-200 hover:text-(--focus) hover:decoration-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-(--text-2) focus-visible:ring-offset-2 focus-visible:ring-offset-(--bg)rounded-sm'
+      }
+    }
   },
 });

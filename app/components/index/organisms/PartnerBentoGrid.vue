@@ -31,9 +31,9 @@ const props = defineProps<{
         </p>
       </div>
       <div class="flex justify-start items-center">
-        <img :src="pt.image" :alt="pt.alt ?? ''" width="57" height="57"
+        <img :src="pt.image" :alt="pt.imageAlt ?? ''" width="57" height="57"
           class="w-auto object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-          :class="pt.imageClass">
+          :class="pt.imageClass" />
       </div>
     </div>
   </div>

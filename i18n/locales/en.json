@@ -1,7 +1,7 @@
 {
   "header": {
     "skip_content": "Skip to main content",
-    "span_title": "CodeKorico logo"
+    "span_title": "CodeKorico - Homepage"
   },
   "sidebar-left": {
     "open": "Open profile menu",
@@ -12,11 +12,12 @@
     "user_title": "Aureldev",
     "user_description": "Accessibility-first Full-stack Developer",
     "user_tagline": "Helping teams design and ship accessible, scalable and maintainable web applications.",
-    "user_alternative_text": "On this image is represented Aureldev, a French Accessibility-first Full-stack Developer.",
+    "user_alternative_text": "On this image is represented the CodeKorico lettered logo (letter K).",
     "contact_me": "Contact me or send feedback",
     "open_github": "Open on Github",
     "open_linkedin": "Open on Linkedin",
     "open_pollen-scop": "Open on Pollen SCOP",
+    "main_nav": "Main navigation",
     "modal-message": {
       "title": "Send a message",
       "description": "Send a message to CodeKorico team",
@@ -87,6 +88,7 @@
   },
   "index": {
     "user_title": "Aureldev",
+    "lettered_logo": "CodeKorico lettered logo (letter K).",
     "landing_section": {
       "title": "A website that attracts customers, not just a well-designed site.",
       "description": "Fast websites that are accessible to everyone.. and that you can really understand.",

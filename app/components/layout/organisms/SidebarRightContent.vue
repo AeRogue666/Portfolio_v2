@@ -63,8 +63,8 @@ async function changeLanguage(newLocale: string) {
             <UColorModeSelect :ui="{
                 base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
                 content: 'bg-(--bg-2)',
-                value: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
-                item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
+                value: 'fs-body text-(--text)',
+                item: 'fs-body text-(--text)',
             }" class="ring-transparent transitions-color w-48" />
         </template>
     </SidebarSelectorBase>
@@ -78,8 +78,8 @@ async function changeLanguage(newLocale: string) {
                 :disabled="switching" color="neutral" size="xl" :ui="{
                     base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
                     content: 'bg-(--bg-2)',
-                    value: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)',
-                    item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body text-(--text)'
+                    value: 'fs-body text-(--text)',
+                    item: 'fs-body text-(--text)'
                 }" class="ring-transparent transitions-color w-48" />
         </template>
     </SidebarSelectorBase>
@@ -102,8 +102,8 @@ async function changeLanguage(newLocale: string) {
             <USelect v-model="fontFamily" :items="fontFamilyItems" color="neutral" size="xl" :ui="{
                 base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
                 content: 'bg-(--bg-2)',
-                value: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body',
-                item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body text-(--text)' : 'fs-body text-(--text)'
+                value: 'fs-body text-(--text)',
+                item: 'fs-body text-(--text)'
             }" class="ring-transparent transitions-color w-48" />
         </template>
     </SidebarSelectorBase>

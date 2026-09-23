@@ -99,10 +99,7 @@ onMounted(() => {
     <div id="sidebar-left-content" class="flex flex-col items-center w-full h-full pt-4 gap-4">
         <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4">
             <div class="flex flex-col justify-center items-center">
-                <NuxtLink to="/" aria-describedby="sidebar-left-title" tabindex="0">
-                    <span id="sidebar-left-title" class="fs-hero font-bold lg:text-center text-(--text) mb-3 sr-only">
-                        {{ t('header.span_title') }}
-                    </span>
+                <NuxtLink to="/" :arial-label="t('header.span_title')" tabindex="0">
                     <NuxtImg id="sidebar-left-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
                         alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" />
@@ -143,7 +140,7 @@ onMounted(() => {
                 </UTooltip>
             </div>
 
-            <UNavigationMenu highlight-color="neutral" orientation="vertical" :items="itemsNavigation" :ui="{
+            <UNavigationMenu highlight-color="neutral" :aria-label="t('sidebar-left.main_nav')" orientation="vertical" :items="itemsNavigation" :ui="{
                 list: 'flex flex-col gap-3', // ul
                 item: '', // li
                 link: 'text-(--text-2) data-active:bg-(--bg-3) data-active:text-(--text) hover:bg-(--bg-2) hover:text-(--text) transition-colors rounded-lg px-3 py-2', // a

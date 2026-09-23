@@ -37,10 +37,7 @@ const { t, locale, locales } = useI18n(),
 
 useSidebarFocusState();
 
-const grayscale = computed({
-    get: () => accessibilityStore.grayscale,
-    set: () => accessibilityStore.toggleGrayscale(),
-});
+const grayscale = computed(() => accessibilityStore.grayscale);
 
 // Clients sections
 const clientsAsyncKey = computed(() => `index-clients-${locale.value}`);
@@ -349,13 +346,13 @@ useSeoMeta(({
         <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="fillColors?.[0]">
             <template #tag>
                 <div>
-                    <NuxtImg id="index-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="CodeKorico Logo"
+                    <NuxtImg id="index-title-img-light" :src="'/images/logo/logo_k_light.png'" :alt="t('index.lettered_logo')"
                         width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high"
                         loading="eager" />
                     <NuxtImg id="index-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
-                        alt="CodeKorico Logo" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :alt="t('index.lettered_logo')" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high"
                         loading="eager" />
                 </div>
@@ -518,7 +515,7 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <PartnerBentoGrid :partners="partnerElements" />
+            <PartnerBentoGrid :partners="partnerElements" :class="grayscale ? 'grayscale-100' : ''" />
         </IndexSection>
 
         <!-- Clients section -->
