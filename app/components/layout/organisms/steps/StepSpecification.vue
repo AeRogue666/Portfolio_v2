@@ -42,7 +42,7 @@ const options = computed(() => {
                 { value: "audit-securite", label: t('sendmessagemodal.subtypes.audit.securite') },
                 { value: "audit-all", label: t('sendmessagemodal.subtypes.audit.all') },
                 { value: "audit-flash", label: t('sendmessagemodal.subtypes.audit.flash_audit') },
-            ]
+            ];
         case "maintenance":
             return [
                 { value: "maintenance-onepage", label: t('sendmessagemodal.subtypes.maintenance.onepage') },
@@ -51,7 +51,7 @@ const options = computed(() => {
                 { value: "maintenance-ecommerce", label: t('sendmessagemodal.subtypes.maintenance.ecommerce') },
                 { value: "maintenance-custom", label: t('sendmessagemodal.subtypes.maintenance.custom') },
                 { value: "maintenance-ponctuelle", label: t('sendmessagemodal.subtypes.maintenance.ponctuelle') },
-            ]
+            ];
         case "formation":
             return [
                 { value: "ordinateur", label: t('sendmessagemodal.subtypes.formation.ordinateur') },
@@ -60,7 +60,7 @@ const options = computed(() => {
                 { value: "securite-numerique", label: t('sendmessagemodal.subtypes.formation.securite-numerique') },
                 { value: "ia", label: t('sendmessagemodal.subtypes.formation.ia') },
                 { value: "custom", label: t('sendmessagemodal.subtypes.formation.custom') }
-            ]
+            ];
         default:
             return []
     }

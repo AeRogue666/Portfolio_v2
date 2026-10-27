@@ -229,7 +229,7 @@ useSeoMeta({
                 </UFormField>
 
                 <UButton name="button-submit-report" color="neutral" variant="solid" size="xl" icon="fa7-solid:message"
-                    class="inline-flex items-center justify-center w-1/2 px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md"
+                    class="inline-flex items-center justify-center w-1/2 px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md whitespace-normal wrap-break-word"
                     :label="t('report.form.submit')" type="submit" :loading="isSubmitting" />
             </UForm>
         </ArticleLayout>

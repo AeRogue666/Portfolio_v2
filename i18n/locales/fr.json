@@ -40,6 +40,12 @@
         "textarea_label": "Informations complémentaires (optionnel)",
         "textarea_placeholder": "Decrivez vos besoins et toutes informations complémentaires."
       },
+      "step-ending": {
+        "title": "Formulaire envoyé !",
+        "thank_you_message_part1": "Merci d'avoir pris le temps de remplir ce formulaire.",
+        "thank_you_message_part2": "Je vous répondrais sous 48 à 72 heures professionnelles ouvrées.",
+        "download_my_card": "N'oubliez pas d'enregistrer ma carte de visite dans vos contacts en cliquant sur le bouton ci-dessous"
+      },
       "state": {
         "loading": "Envoi en cours...",
         "success": "Message envoyé",
@@ -98,6 +104,7 @@
       "cta_feed": "Découvrez le fil d'actualité",
       "cta_audit": "Obtenir un audit gratuit",
       "cta_contact_me": "Me contacter",
+      "cta_download_card": "Enregistrer ma carte de visite (vCard)",
       "department_prev": "Département précédent",
       "department_next": "Département suivant"
     },
@@ -137,7 +144,8 @@
       "tag": "Services",
       "title": "Mes prestations",
       "description": "Choisissez l'offre adaptée à votre besoin. Je vous accompagne ensuite pour aller plus loin.",
-      "learn_more_button": "En savoir plus",
+      "learn_more": "En savoir plus",
+      "learn_more_about": "En savoir plus sur {service}",
       "want_more": {
         "question": "Vous souhaitez créer votre site par vous-même mais ne savez pas par où commencer ?",
         "answer": "N'hésitez pas à me contacter, je serais ravis d'en discuter avec vous !"
@@ -206,13 +214,15 @@
           "tag": "Territoire",
           "title": "Un artisan du web juste à coté de chez vous.",
           "description": "Parce qu'on travaille mieux quand on se comprend. En étant partenaire d'Emerveillé par l'Ardèche via Pollen SCOP, CodeKorico fait le choix de la proximité, du bon sens et du travail bien fait, ici, dans nos vallées, en Ardèche, en Drôme et en Haute-Loire.",
-          "image_alt": "Logo de Emerveillés par l'Ardèche"
+          "image_alt": "Logo de Emerveillés par l'Ardèche",
+          "header_title": "CodeKorico est Emerveillé par l'Ardèche"
         },
         "2": {
           "tag": "Modèle Coopératif",
           "title": "Pollen SCOP",
           "description": "Derrière CodeKorico, il y a un entrepreneur, mais aussi un collectif. C'est pour vous garantir un accompagnement honnête, transparent et basé sur l'entraide que j'ai fais le choix de rejoindre Pollen.",
-          "image_alt": "Logo de la CAE Pollen SCOP"
+          "image_alt": "Logo de la CAE Pollen SCOP",
+          "header_title": "CodeKorico est sous contrat CAPE et membre de Pollen SCOP"
         }
       }
     },

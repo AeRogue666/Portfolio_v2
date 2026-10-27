@@ -29,13 +29,13 @@ const isCollapsed = useState('sidebar-collapsed');
         @click="isCollapsed = !isCollapsed" />
 
       <UContainer :class="isCollapsed ? 'hidden' : 'hidden md:flex'">
-        <NuxtLink to="/" :arial-label="t('header.span_title')" tabindex="0">
+        <NuxtLink to="/" tabindex="0">
           <NuxtImg id="index-header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
-            alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+            :alt="t('header.span_title')" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
             :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" />
           <NuxtImg id="index-header-title-img-dark"
             :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
-            alt="CodeKorico Logo" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+            :alt="t('header.span_title')" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
             :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high" />
         </NuxtLink>
       </UContainer>

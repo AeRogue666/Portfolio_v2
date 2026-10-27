@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   ],
   content: {
     experimental: {
-      nativeSqlite: true
+      sqliteConnector: 'native'
     },
   },
   nitro: {
@@ -126,12 +126,6 @@ export default defineNuxtConfig({
       '/terms',
       '/landing/accessibilite-web-ardeche',
     ],
-    routingExtensions: {
-      '/landing/accessibilite-web-ardeche': {
-        changefreq: 'monthly',
-        priority: 0.9
-      }
-    }
   },
   build: {
     transpile: [],

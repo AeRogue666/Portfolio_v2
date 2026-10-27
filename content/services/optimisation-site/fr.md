@@ -4,6 +4,7 @@ created_at: "2026-02-11"
 description: Améliorez votre site pour gagner en rapidité, en visibilité et plus efficace pour générer des clients.
 feed_title: Optimisation de site web
 feed_summary: Votre site existe déjà mais ne donne pas les résultats attendus ? Je l'améliore pour augmenter sa visibilité, sa rapidité et son efficacité
+accessible_name: l'optimisation de site web
 locale: fr
 packages:
   - title: Forfaits uniques d'optimisation de site

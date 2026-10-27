@@ -3,6 +3,15 @@ import type { NavigationMenuItem } from "@nuxt/ui";
 import AppIndexHeader from "../components/layout/AppIndexHeader.vue";
 import SidebarLeftDesktop from "../components/layout/SidebarLeftDesktop.vue";
 
+interface Partner {
+    tag: string,
+    title: string,
+    image: string;
+    imageAlt?: string,
+    class?: string,
+    imageClass?: string,
+}
+
 const { t, locale } = useI18n(),
     accessibilityStore = useAccessibilityStore();
 
@@ -31,6 +40,25 @@ const itemsFooterNavigation = computed<NavigationMenuItem[]>(() => [
     },
 ]);
 
+const partnerIndexElements = reactive<Partner[]>([
+    {
+        tag: t('index.partner_section.partners.1.tag'),
+        title: t('index.partner_section.partners.1.header_title'),
+        image: '/images/logo/partenaires/emerveilles_par_ardeche.png',
+        imageAlt: t('index.partner_section.partners.1.image_alt'),
+        class: 'md:col-span-2',
+        imageClass: 'h-14'
+    },
+    {
+        tag: t('index.partner_section.partners.2.tag'),
+        title: t('index.partner_section.partners.2.header_title'),
+        image: '/images/logo/partenaires/pollen_scop.png',
+        imageAlt: t('index.partner_section.partners.2.image_alt'),
+        class: '',
+        imageClass: 'h-12'
+    },
+]);
+
 useHead(() => ({
     htmlAttrs: {
         lang: locale.value
@@ -51,18 +79,20 @@ useHead(() => ({
                 </main>
 
                 <footer class="flex flex-col lg:flex-row justify-center items-center w-full mt-auto py-6 shrink-0">
+                    <div class="flex flex-col justify-center items-start lg:mr-6 gap-6">
+                        <p><strong>Adresse e-mail de contact :</strong> contact@codekorico.com</p>
+                        <p><strong>Numéro de téléphone :</strong> 07 43 34 78 03 (+33743347803)</p>
+                        <p><strong>Adresse postale :</strong> Pépinière d'entreprises l'Espélidou, 555 CHEMIN DES TRAVERSES 07200 LACHAPELLE-SOUS-AUBENAS</p>
+                        <p><strong>SIRET :</strong> 439 076 563 00147 (Greffe du tribunal de Commerce d'Aubenas)</p>
+                    </div>
+
                     <div class="flex flex-col justify-center items-center lg:mr-6 gap-6">
-                        <div class="flex flex-col justify-center items-center gap-4">
-                            <img src="/images/logo/partenaires/pollen_scop.png" alt="Logo de la CAE Pollen SCOP"
-                                width="57" height="57"
-                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75" :class="grayscale ? 'grayscale-100' : ''" />
-                            <span class="fs-small">Membre de la Coopérative d'Entreprise Pollen SCOP</span>
-                        </div>
-                        <div class="flex flex-col justify-center items-center gap-4">
-                            <img src="/images/logo/partenaires/emerveilles_par_ardeche.png"
-                                alt="Logo de Emerveillés par l'Ardèche" width="50" height="52"
-                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75" :class="grayscale ? 'grayscale-100' : ''" />
-                            <span class="fs-small">CodeKorico est émerveillé par l'Ardèche</span>
+                        <div v-for="(partner, index) of partnerIndexElements" :key="index"
+                            class="flex flex-col justify-center items-center gap-4">
+                            <img :src="partner.image" :alt="partner.imageAlt ?? ''" width="52" height="52"
+                                class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75"
+                                :class="[partner.imageClass, grayscale ? 'grayscale-100' : '']" />
+                            <span class="fs-small">{{ partner.title }}</span>
                         </div>
                     </div>
 
@@ -73,7 +103,7 @@ useHead(() => ({
                                 item: '', // li
                                 link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
                                 linkLeadingIcon: 'text-(--text-muted)',
-                                linkLabel: 'text-sm leading-relaxed truncate max-w-[65ch]',
+                                linkLabel: 'text-sm leading-relaxed whitespace-normal break-words max-w-[65ch]',
                             }"
                             class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
 

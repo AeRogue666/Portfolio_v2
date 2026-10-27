@@ -19,6 +19,7 @@ export interface ServiceTranslation {
   description?: string;
   feed_title?: string;
   feed_summary?: string;
+  accessible_name: string;
   packages?: Array<{
     title?: string;
     children?: Array<{

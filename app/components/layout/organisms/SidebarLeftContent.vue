@@ -99,13 +99,13 @@ onMounted(() => {
     <div id="sidebar-left-content" class="flex flex-col items-center w-full h-full pt-4 gap-4">
         <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4">
             <div class="flex flex-col justify-center items-center">
-                <NuxtLink to="/" :arial-label="t('header.span_title')" tabindex="0">
+                <NuxtLink to="/" tabindex="0">
                     <NuxtImg id="sidebar-left-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
-                        alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :alt="t('header.span_title')" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" />
                     <NuxtImg id="sidebar-left-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
-                        alt="CodeKorico Logo" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        :alt="t('header.span_title')" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" />
                 </NuxtLink>
             </div>
@@ -120,22 +120,22 @@ onMounted(() => {
                 :cta-class="'inline-flex items-center justify-center w-full px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md'" />
 
             <div class="inline-flex items-baseline gap-4">
-                <UTooltip :text="t('sidebar-left.open_github')">
+                <UTooltip :text="t('sidebar-left.open_github')" aria-hidden="true">
                     <IconButton :variant="'ghost'" :color="'neutral'" :to="'https://github.com/AeRogue666'"
-                        :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:github'" label="Github"
+                        :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:github'" :label="t('sidebar-left.open_github')"
                         id="button-sidebarleft-github" :class="'size-16'" />
                 </UTooltip>
 
-                <UTooltip :text="t('sidebar-left.open_linkedin')">
+                <UTooltip :text="t('sidebar-left.open_linkedin')" aria-hidden="true">
                     <IconButton :variant="'ghost'" :color="'neutral'" :to="'https://linkedin.com/codekorico'"
-                        :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:linkedin'" label="Linkedin"
+                        :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:linkedin'" :label="t('sidebar-left.open_linkedin')"
                         id="button-sidebarleft-linkedin" :class="'size-16'" />
                 </UTooltip>
 
-                <UTooltip :text="t('sidebar-left.open_pollen-scop')">
+                <UTooltip :text="t('sidebar-left.open_pollen-scop')" aria-hidden="true">
                     <IconButton :variant="'ghost'" :color="'neutral'"
-                        :to="'https://pollen.coop/entrepreneur/codekorico'" :target="'_blank'" :size="'size-16'"
-                        :icon="'fa7-solid:handshake'" label="Pollen SCOP" id="button-sidebarleft-pollen-scop"
+                        :to="'https://pollen.coop/entrepreneur/codekorico-developpement-web-accessibilite-formation/'" :target="'_blank'" :size="'size-16'"
+                        :icon="'fa7-solid:handshake'" :label="t('sidebar-left.open_pollen-scop')" id="button-sidebarleft-pollen-scop"
                         :class="'size-16'" />
                 </UTooltip>
             </div>
@@ -155,7 +155,7 @@ onMounted(() => {
                             item: '', // li
                             link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
                             linkLeadingIcon: 'text-(--text-muted)',
-                            linkLabel: 'text-sm leading-relaxed truncate max-w-[65ch]',
+                            linkLabel: 'text-sm leading-relaxed whitespace-normal break-words max-w-[65ch]',
                         }" class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
 
                     <p class="fs-small text-(--text-3)">

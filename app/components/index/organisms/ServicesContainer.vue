@@ -33,8 +33,8 @@ const { t } = useI18n();
                             service.highlighted === true
                                 ? 'px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md'
                                 : 'px-5 py-2.5 gap-2 rounded-lg border border-(--text)/30 text-(--text-2) hover:bg-(--text) hover:text-(--bg) hover:border-transparent transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm'
-                        ]">
-                        {{ t('index.services_section.learn_more_button') }}
+                        ]" :aria-label="t('index.services_section.learn_more_about', { service: service.accessible_name || (service.title.toLowerCase() ?? service.feed_title?.toLowerCase()) })">
+                        {{ t('index.services_section.learn_more') }}
                         <UIcon name="fa7-solid:arrow-right"
                             class="text-sm transition-transform duration-200 group-hover:translate-x-1" />
                     </NuxtLink>

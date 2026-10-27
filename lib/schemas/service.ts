@@ -9,6 +9,7 @@ export const serviceSchema = z.object({
 
   feed_title: z.string().default(""),
   feed_summary: z.string().default(""),
+  accessible_name: z.string().default(""),
 
   features: z.array(z.string()).optional(),
   tag: z.string().default(""),

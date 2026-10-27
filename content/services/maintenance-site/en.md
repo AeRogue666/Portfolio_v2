@@ -4,6 +4,7 @@ created_at: "2026-02-11"
 description: Un accompagnement complet pour garantir un site sécurisé, performant et toujours opérationnel, sans que vous ayez à vous en occuper.
 feed_summary: Votre site reste sécurisé, rapide et fonctionnel en continu, sans intervention de votre part.
 feed_title: Maintenance - Site web sans souci
+accessible_name: la maintenance de site web
 locale: en
 packages:
   - title: Forfaits mensuels de maintenance préventive

@@ -13,16 +13,29 @@ These are available on the Site under the heading "**Legal notices**".
 
 ## Website publisher
 
-The Site is published and managed by Aureldev, based in France, whose email address is <contact@codekorico.com>
+The Site is published and managed by Aureldev, based in France at CAE POLLEN SCOP address, whose email address is <contact@codekorico.com> and the phone number is 07 43 34 78 03 (FR Number +33743347803).
 
 hereinafter referred to as the "**Publisher**".
-The Site is a subsidiary of the cooperative production corporation POLLEN SCOP, whose address is 555 CHEMIN DES TRAVERSES, 07200 LACHAPELLE-SOUS-AUBENAS, with a SIRET number of 439 076 563 00147.
+
+CodeKorico's commercial activites are legally carried out by the production cooperative limited company POLLEN SCOP (a workers' production cooperative organised as a limited company with variable capital).
+
+- Address : Pépinière d'entreprises l'Espélidou, 555 CHEMIN DES TRAVERSES 07200 LACHAPELLE-SOUS-AUBENAS
+- SIRET : 439 076 563 00147 (Aubenas Commercial Court Registry)
+- Intra-Community VAT number : FR 44 439 076 563
+
 More informations on [French Business Directory](https://annuaire-entreprises.data.gouv.fr/entreprise/pollen-scop-439076563).
+
+The editor-in-chief acts as a contractor under a CAPE contract and as a member of the POLLEN SCOP cooperative.
 
 ## Hoster
 
-The Site is hosted by Vercel Inc., whose registered office is located at 340 S Lemon Ave #4133, 91789 Walnut, California, United States of America.
-The website of the Site host is vercel.com, whose email address is <support@vercel.com> and telephone number is +1 951-383-6898.
+The Site is hosted by Vercel Inc. (SA).
+
+- Postal address: 340 S Lemon Ave #4133, 91789 Walnut, California, United States of America.
+- SIRET: SIRET
+- Email address: <support@vercel.com>
+- Website: vercel.com
+- Telephone number: +1 951-383-6898
 
 ## Access to the Site
 

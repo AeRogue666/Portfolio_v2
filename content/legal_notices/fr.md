@@ -13,19 +13,19 @@ Ces dernières sont accessibles sur le Site à la rubrique "**Mentions légales*
 
 ## Edition du Site
 
-L'édition et la direction de la publication du Site sont assurées par Aureldev agissant sous le nom commercial CodeKorico, domicilié en France, dont l'adresse e-mail est <contact@codekorico.com>.
+L'édition et la direction de la publication du Site sont assurées par Aureldev agissant sous le nom commercial CodeKorico, domicilié en France à l'adresse postale de la CAE POLLEN SCOP, dont l'adresse e-mail est <contact@codekorico.com> et le numéro de téléphone 07 43 34 78 03 (+33743347803).
 
 ci-après l'"**Editeur**".
 
 L'activité commerciale de CodeKorico est juridiquement portée par la SA coopérative de production POLLEN SCOP (Société coopérative ouvrière de production à forme anonyme et capital variable).
 
-- Adresse postale : Pépinière d'entreprises l'Espélidou, 555 CHEMIN DES TRAVERSES 07200 LACHAPELLE-SOUS-AUBENAS, 
+- Adresse postale : Pépinière d'entreprises l'Espélidou, 555 CHEMIN DES TRAVERSES 07200 LACHAPELLE-SOUS-AUBENAS
 - SIRET : 439 076 563 00147 (Greffe du Tribunal de Commerce d'Aubenas)
 - Numéro de TVA Intracommunautaire : FR 44 439 076 563
 
 Plus d'informations sur [l'Annuaire des Entreprises](https://annuaire-entreprises.data.gouv.fr/entreprise/pollen-scop-439076563).
 
-Le directeur de la publication agit en qualité d'entrepreneur membre de la coopérative POLLEN SCOP.
+Le directeur de la publication agit en qualité d'entrepreneur sous contrat CAPE et membre de la coopérative POLLEN SCOP.
 
 ## Hébergeur
 

@@ -59,65 +59,40 @@ export const accessibilityReport: AccessibilityReport = {
         "Si vous souhaitez échanger sur les méthodes de test ou les choix techniques effectués pour garantir ce niveau de conformité, je reste à votre entière disposition.",
       thematics: [
         { id: "images", label: "Images" },
-        { id: "multimedia", label: "Cadres & Multimédia" },
+        { id: "cadre", label: "Cadres" },
         { id: "colors", label: "Couleurs" },
-        { id: "temporal", label: "Contenus temporels" },
+        { id: "multimedia", label: "Multimédia" },
         { id: "elements", label: "Éléments" },
         { id: "links", label: "Liens et navigation" },
         { id: "scripts", label: "Scripts" },
         { id: "mandatory", label: "Éléments obligatoires" },
+        { id: "relationship", label: "Infos & Relations" },
+        { id: "presentation", label: "Présentation" },
         { id: "forms", label: "Formulaires" },
         { id: "navigation", label: "Navigation" },
-        { id: "presentation", label: "Présentation" },
-        { id: "language", label: "Navigation & Langue" },
         { id: "consultation", label: "Consultation" },
       ],
       criteria: [
         {
           id: "1.1",
           thematic: "images",
-          criterion: "Chaque image a-t-elle une alternative textuelle?",
+          criterion: "Chaque image a-t-elle une alternative textuelle ?",
           status: "C",
-          pages: [
-            "Index",
-            "Feed",
-            "Projects",
-            "Updates",
-            "Clients",
-            "Landing",
-            "About",
-            "Accessibility",
-            "Accessibility-report",
-            "Report",
-            "Terms",
-            "Legal Notices"
-          ],
+          pages: ["All"],
         },
         {
           id: "1.2",
           thematic: "images",
           criterion:
-            "Pour chaque image porteuse d'information, l'alternative textuelle est-elle pertinente?",
+            "Chaque image de décoration est-elle correctement ignorée par les technologies d’assistance  ?",
           status: "C",
-          pages: ["Index",
-            "Feed",
-            "Projects",
-            "Updates",
-            "Clients",
-            "Landing",
-            "About",
-            "Accessibility",
-            "Accessibility-report",
-            "Report",
-            "Terms",
-            "Legal Notices"
-          ],
+          pages: ["All"],
         },
         {
           id: "1.3",
           thematic: "images",
           criterion:
-            "Pour chaque bouton porteur d'information, l'alternative textuelle est-elle pertinente?",
+            "Pour chaque image porteuse d’information ayant une alternative textuelle, cette alternative est-elle pertinente ?",
           status: "C",
           pages: ["All"],
         },
@@ -125,29 +100,53 @@ export const accessibilityReport: AccessibilityReport = {
           id: "1.4",
           thematic: "images",
           criterion:
-            "Chaque image texte porteuse d'informations a t-elle une alternative ?",
+            "Pour chaque image utilisée comme composant d’interface (bouton, lien), son alternative textuelle permet-elle d'en connaître la fonction et la destination ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "1.5",
+          thematic: "images",
+          criterion:
+            "Pour chaque image texte porteuse d’information, existe-t-il une image de remplacement textuelle ou une alternative pertinente ?",
+          status: "NA",
+          pages: ["All"],
+        },
+        {
+          id: "1.6",
+          thematic: "images",
+          criterion:
+            "Chaque image porteuse d’information complexe a-t-elle, si nécessaire, une description détaillée complète ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "1.7",
+          thematic: "images",
+          criterion:
+            "Pour chaque image porteuse d’information complexe pour laquelle une description détaillée est nécessaire, cette description est-elle pertinente ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "2.1",
-          thematic: "multimedia",
-          criterion: "Chaque cadre a-t-il un titre de cadre ?",
+          thematic: "cadre",
+          criterion: "Chaque cadre (iframe) a-t-il un titre de cadre ?",
           status: "NA",
           pages: [],
           justification: "Aucun élément iframe ou cadre n'est utilisé sur le site."
         },
         {
           id: "2.2",
-          thematic: "multimedia",
-          criterion: "Les liens sont-ils distinguables des autres contenus ?",
-          status: "C",
+          thematic: "cadre",
+          criterion: "Chaque titre de cadre (iframe) est-il pertinent ?",
+          status: "NA",
           pages: ["All"],
         },
         {
           id: "3.1",
           thematic: "colors",
-          criterion: "L'information est-elle donnée par la couleur seule?",
+          criterion: "L’information ne doit pas être donnée par la couleur uniquement. Cette règle est-elle respectée ?",
           status: "C",
           pages: ["All"],
         },
@@ -155,15 +154,95 @@ export const accessibilityReport: AccessibilityReport = {
           id: "3.2",
           thematic: "colors",
           criterion:
-            "Le contraste (texte/fond) est-il suffisant? (Ratio 7:1 AAA)",
+            "• Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisant (hors cas particuliers) ?",
           status: "C",
           pages: ["All"],
         },
         {
-          id: "4.1",
-          thematic: "temporal",
+          id: "3.3",
+          thematic: "colors",
           criterion:
-            "Chaque média temporel a t-il une transcription ou audiodescription ?",
+            "Dans chaque page web, les couleurs utilisées dans les composants d’interface ou les éléments graphiques porteurs d’information ont-elles un contraste suffisant ?",
+          status: "NA",
+          pages: ["All"],
+        },
+        {
+          id: "4.1",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel préenregistré (audio ou vidéo) a-t-il, si nécessaire, une transcription textuelle ou une audiodescription ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.2",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel synchronisé préenregistré (vidéo avec audio) a-t-il, si nécessaire, des sous-titres synchronisés ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.3",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel synchronisé préenregistré (vidéo avec audio) a-t-il, si nécessaire, une audiodescription synchronisée ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.4",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel préenregistré (audio ou vidéo) a-t-il une transcription textuelle, des sous-titres ou une audiodescription pertinents ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.5",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel en direct (audio ou vidéo) a-t-il, si nécessaire, des sous-titres synchronisés ou une alternative textuelle ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.6",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel préenregistré (audio ou vidéo) est-il accompagné, si nécessaire, d’une interprétation en langue des signes ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.7",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel (audio ou vidéo) est-il contrôlable par le clavier et la souris ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.8",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel (audio ou vidéo) est-il compatible avec les technologies d’assistance ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.9",
+          thematic: "multimedia",
+          criterion:
+            "Le contenu audio d’un média temporel ne doit pas se lancer automatiquement, ou doit être contrôlable. Cette règle est-elle respectée ?",
           status: "NA",
           pages: [],
           justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
@@ -180,92 +259,336 @@ export const accessibilityReport: AccessibilityReport = {
           id: "5.2",
           thematic: "elements",
           criterion:
-            "Chaque en-tête de tableau est-il correctement identifié via scope ?",
+            "Pour chaque tableau de données ayant un titre, ce titre est-il pertinent ?",
           status: "C",
           pages: ["Accessibility-report"]
+        },
+        {
+          id: "5.3",
+          thematic: "elements",
+          criterion:
+            "Pour chaque tableau de données ayant un titre, ce titre est-il pertinent ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.4",
+          thematic: "elements",
+          criterion:
+            "Chaque en-tête de tableau de données est-il correctement identifié (balise <th>) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.5",
+          thematic: "elements",
+          criterion:
+            "Dans chaque tableau de données, chaque cellule est-elle correctement associée à ses en-têtes ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.6",
+          thematic: "elements",
+          criterion:
+            "Chaque tableau de données complexe a-t-il des en-têtes correctement liés aux cellules via des id et des attributs headers ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.7",
+          thematic: "elements",
+          criterion:
+            "Chaque tableau de mise en forme est-il correctement ignoré par les technologies d’assistance (rôle presentation ou none) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.8",
+          thematic: "elements",
+          criterion:
+            "Chaque tableau de mise en forme n’utilise pas d’éléments sémantiques propres aux tableaux de données. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "6.1",
           thematic: "links",
           criterion:
-            "Chaque lien est-il explicite et structuré ?",
+            "Chaque lien est-il explicite (son intitulé seul ou avec son contexte permet de comprendre sa destination) ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "6.2",
+          thematic: "links",
+          criterion:
+            "Chaque intitulé de lien est-il pertinent (et évite les redondances visuelles inutiles) ?",
           status: "C",
           pages: ["All"]
         },
         {
           id: "7.1",
           thematic: "scripts",
-          criterion: "La sémantique HTML5 est-elle correctement utilisée pour les scripts ?",
-          status: "C",
-          pages: ["All"]
+          criterion: "Chaque script (composant interactif) est-il, si nécessaire, compatible avec les technologies d’assistance ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "7.2",
           thematic: "scripts",
-          criterion: "Les rôles ARIA appliqués aux scripts sont-ils appropriés ?",
-          status: "C",
-          pages: ["All"]
+          criterion: "Chaque script est-il contrôlable par le clavier et par la souris ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "7.3",
           thematic: "scripts",
-          criterion: "Les annonces live (aria-live) fonctionnent-elles ?",
-          status: "C",
-          pages: ["Feed"]
+          criterion: "Chaque script est-il structuré de manière à ce que les changements de statut ou de contenu soient signalés aux technologies d’assistance ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "7.4",
+          thematic: "scripts",
+          criterion: "Les raccourcis clavier d’application ou de script ne doivent pas interférer avec le système, ou doivent pouvoir être désactivés/modifiés. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "7.5",
+          thematic: "scripts",
+          criterion: "Les alertes ou messages de statut temporels (notifications) sont-ils correctement transmis par les technologies d'assistance (via aria-live) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "8.1",
           thematic: "mandatory",
-          criterion: "La page a-t-elle un titre (title) pertinent ?",
+          criterion: "Chaque page web a-t-elle un code source valide selon son type de DOCTYPE (sans erreur critique d'imbrication ou d'attributs dupliqués) ?",
           status: "C",
           pages: ["All"]
         },
         {
           id: "8.2",
           thematic: "mandatory",
-          criterion: "La hiérarchie des titres (h1-h6) est-elle respectée ?",
+          criterion: "Pour chaque page web, les balises ne sont pas utilisées uniquement pour leur rendu visuel. Cette règle est-elle respectée ?",
           status: "C",
           pages: ["All"]
         },
         {
           id: "8.3",
           thematic: "mandatory",
-          criterion: "L'attribut lang est-il déclaré sur l'élément <html> ?",
+          criterion: "La langue principale de chaque page web est-elle définie (via l'attribut lang sur l'élément <html>) ?",
           status: "C",
           pages: ["All"]
         },
         {
-          id: "9.1",
-          thematic: "navigation",
-          criterion: "Les balises de structure HTML5 son-elles bien exploitées ?",
+          id: "8.4",
+          thematic: "mandatory",
+          criterion: "Les changements de langue dans le texte sont-ils indiqués par un attribut lang approprié ?",
           status: "C",
           pages: ["All"]
+        },
+        {
+          id: "8.5",
+          thematic: "mandatory",
+          criterion: "Chaque page web a-t-elle un titre de page (<title>) unique et pertinent ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.6",
+          thematic: "mandatory",
+          criterion: "Pour chaque page web, les changements de direction du texte (gauche à droite ou droite à gauche) sont-ils signalés si nécessaire ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.7",
+          thematic: "mandatory",
+          criterion: "Dans chaque page web, chaque élément de contenu est-il structuré de manière appropriée (paragraphes, citations, listes) ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.8",
+          thematic: "mandatory",
+          criterion: "Les éléments de code informatique ou de citation utilisent-ils les balises sémantiques appropriées (<code>, <kbd>, <samp>, <blockquotes>) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "8.9",
+          thematic: "mandatory",
+          criterion: "Dans chaque page web, les balises de mise en valeur (<strong>, <em>) ne sont pas détournées de leur sens. Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.10",
+          thematic: "mandatory",
+          criterion: "Les textes insérés ou supprimés sont-ils signalés par les balises appropriées (<ins>, <del>) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "9.1",
+          thematic: "relationship",
+          criterion: "Dans chaque page web, la hiérarchie des titres (<h1> à <h6> est-elle logiuqe et respectée ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "9.2",
+          thematic: "relationship",
+          criterion: "La structure générale de chaque page web utilise-t-elle correctement les balises de grandes zones (<header>, <nav>, <main>, <footer>, <aside>) ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "9.3",
+          thematic: "relationship",
+          criterion: "Dans chaque page web, chaque liste d’éléments est-elle correctement structurée (<ul>, <ol>, <dl>) ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "9.4",
+          thematic: "relationship",
+          criterion: "Dans chaque page web, les regroupements de contenus similaires (comme les groupes de liens) sont-ils correctement structurés ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "10.1",
           thematic: "presentation",
-          criterion: "L'information reste-t-elle compréhensible sans CSS ?",
+          criterion: "Dans chaque page web, les feuilles de style (CSS) sont-elles utilisées pour gérer la mise en forme de manière exclusive ?",
           status: "C",
           pages: ["All"]
         },
         {
           id: "10.2",
           thematic: "presentation",
-          criterion: "Le zoom 200% ne casse-t-il pas la mise en page (Responsive) ?",
-          status: "NC",
-          pages: ["All"]
+          criterion: "Le contenu textuel reste-t-il entièrement visible et lisible lorsque les feuilles de style sont désactivées ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "10.3",
           thematic: "presentation",
-          criterion: "Les éléments de texte sont-ils lisibles et conformes WCAG AAA ?",
-          status: "C",
-          pages: ["All"]
+          criterion: "Dans chaque page web, l’information ne doit pas être véhiculée uniquement par la forme, la taille ou la position d’un élément. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.4",
+          thematic: "presentation",
+          criterion: "Le texte reste-t-il lisible et l'interface utilisable lorsque la taille des caractères est augmentée jusqu’à 200% (zoom texte seul) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.5",
+          thematic: "presentation",
+          criterion: "Dans chaque page web, les déclarations de CSS ne bloquent pas le redimensionnement du texte par l'utilisateur. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.6",
+          thematic: "presentation",
+          criterion: "Le contenu reste-t-il entièrement visible et fonctionnel lors d'un zoom d'écran à 400% sans faire apparaître de barre de défilement horizontale (Responsive / Reflow) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.7",
+          thematic: "presentation",
+          criterion: "Dans chaque page web, le contraste des textes reste-t-il suffisant lors de l'utilisation de polices de caractères ou de styles personnalisés ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.8",
+          thematic: "presentation",
+          criterion: "Pour chaque page web, les espacements de texte personnalisés par l'utilisateur (interligne, espace entre les mots/lettres) ne provoquent pas de perte de contenu ou de chevauchement ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.9",
+          thematic: "presentation",
+          criterion: "Dans chaque page web, les contenus cachés par défaut restent-ils invisibles pour les technologies d’assistance tant qu'ils ne sont pas activés ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.10",
+          thematic: "presentation",
+          criterion: "Dans chaque page web, l’utilisateur peut-il contrôler les animations, clignotements ou défilements automatiques de contenus ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.11",
+          thematic: "presentation",
+          criterion: "L’affichage d’un contenu additionnel au survol de la souris ou au focus du clavier (comme une infobulle) est-il contrôlable par l’utilisateur ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.12",
+          thematic: "presentation",
+          criterion: "Le site ne doit pas imposer une orientation d’affichage unique (portrait ou paysage) à moins d'une contrainte technique absolue. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.13",
+          thematic: "presentation",
+          criterion: "Les données de formulaires ou d’interfaces complexes restent-elles compréhensibles indépendamment de la mise en page choisie ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.14",
+          thematic: "presentation",
+          criterion: "Les textes justifiés, difficiles à lire pour les personnes dyslexiques, sont-ils évités ou désactivables ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "11.1",
           thematic: "forms",
-          criterion: "Chaque champ de formulaire a-t-il une étiquette (label)?",
+          criterion: "Chaque champ de formulaire a-t-il une étiquette (label) textuelle ?",
           status: "C",
           pages: ["Contact Modal","Report"],
         },
@@ -273,7 +596,7 @@ export const accessibilityReport: AccessibilityReport = {
           id: "11.2",
           thematic: "forms",
           criterion:
-            "Chaque étiquette est-elle correctement associée à son champ ?",
+            "Chaque étiquette de champ est-elle correctement associée à son champ respectif (via l'attribut for et id) ?",
           status: "C",
           pages: ["Contact Modal","Report"],
         },
@@ -281,54 +604,254 @@ export const accessibilityReport: AccessibilityReport = {
           id: "11.3",
           thematic: "forms",
           criterion:
-            "Les messages d'erreur sont-ils explicites et accessibles ?",
+            "Dans chaque formulaire, les étiquettes de champs ayant la même fonction ou le même nom sont-elles différenciées si nécessaire ?",
           status: "C",
           pages: ["Contact Modal","Report"],
         },
         {
+          id: "11.4",
+          thematic: "forms",
+          criterion:
+            "Dans chaque formulaire, les champs de même nature ou liés entre eux sont-ils regroupés sémantiquement (<fieldset>, <legend>) ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.5",
+          thematic: "forms",
+          criterion:
+            "Dans chaque formulaire, les indications sur le format attendu des saisies ou sur le caractère obligatoire d'un champ sont-elles accessibles ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "11.6",
+          thematic: "forms",
+          criterion:
+            "Les messages d’erreur générés lors de la soumission d'un formulaire sont-ils explicites, faciles à localiser et liés aux champs concernés ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.7",
+          thematic: "forms",
+          criterion:
+            "Pour chaque message d'erreur de formulaire, des suggestions de correction sont-elles proposées à l'utilisateur si elles sont connues ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "11.8",
+          thematic: "forms",
+          criterion:
+            "Les formulaires qui traitent des données juridiques, financières ou de tests permettent-ils à l'utilisateur de vérifier, corriger ou annuler sa saisie avant validation définitive ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "11.9",
+          thematic: "forms",
+          criterion:
+            "Les champs qui attendent des informations personnelles courantes de l'utilisateur permettent-ils le remplissage automatique (attribut autocomplete) ?",
+          status: "NC",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.10",
+          thematic: "forms",
+          criterion:
+            "Chaque bouton de formulaire a-t-il un intitulé textuel explicite qui indique sa fonction ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.11",
+          thematic: "forms",
+          criterion:
+            " Dans chaque formulaire, le contrôle de la saisie n'est pas bloquant et s'exécute de manière accessible. Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.12",
+          thematic: "forms",
+          criterion:
+            "L'utilisateur n'est pas soumis à une limite de temps pour remplir un formulaire ou cette limite est prolongeable. Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.13",
+          thematic: "forms",
+          criterion:
+            "L'utilisation d'un mécanisme de sécurité (comme un CAPTCHA) est-elle accessible ou doublée d'une alternative accessible ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
           id: "12.1",
-          thematic: "language",
-          criterion: "Existe-t-il un lien d'évitement (skip-link) fonctionnel ?",
+          thematic: "navigation",
+          criterion: "Chaque page web contient-elle un lien d'évitement (skip-link) fonctionnel permettant de naviguer directement au contenu principal ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.2",
-          thematic: "language",
-          criterion: "La prise de focus est-elle visible ?",
+          thematic: "navigation",
+          criterion: "Le lien d'évitement est-il visible ou devient-il visible lors de la prise de focus au clavier ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.3",
-          thematic: "language",
-          criterion: "La navigation au clavier est-elle possible ?",
+          thematic: "navigation",
+          criterion: "La prise de focus clavier est-elle parfaitement visible sur tous les éléments interactifs de la page (liens, boutons, champs) ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.4",
-          thematic: "language",
+          thematic: "navigation",
           criterion:
-            "Le focus est-il piégé dans les modales et panneaux (Focus Trap) ?",
-          status: "C",
-          pages: ["Index", "Accessibility", "Report"],
-        },
-        {
-          id: "12.5",
-          thematic: "language",
-          criterion: "L'ordre de tabulation est-il logique ?",
+            "L’ordre de tabulation au clavier (touche Tab) suit-il un ordre logique et prévisible pour l'utilisateur ?",
           status: "C",
           pages: ["All"],
         },
         {
-          id: "13.1",
-          thematic: "consultation",
-          criterion: "Chaque document en téléchargement (PDF) est-il accessible ?",
+          id: "12.5",
+          thematic: "navigation",
+          criterion: "La navigation au clavier ne doit pas bloquer le focus sur un élément de manière définitive (absence de piège à focus hors modales contrôlées) ?",
           status: "NA",
           pages: [],
-          justification: "Il n'y a pas de fichier lourd ou document complexe en téléchargement sur le site."
-        }
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.6",
+          thematic: "navigation",
+          criterion: "Le site propose-t-il au moins deux méthodes de navigation différentes pour accéder aux pages (ex: menu de navigation principal ET plan du site ou moteur de recherche) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.7",
+          thematic: "navigation",
+          criterion: "Dans chaque page web, des indicateurs permettent-ils à l’utilisateur de localiser sa position dans le site (fil d'Ariane, état actif dans le menu) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.8",
+          thematic: "navigation",
+          criterion: "Dans chaque page web, la zone de contenu principal est-elle facilement identifiable sémantiquement ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "12.9",
+          thematic: "navigation",
+          criterion: "La page web propose-t-elle des mécanismes pour faciliter la navigation rapide au sein du contenu textuel (ancres de table des matières par exemple) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.10",
+          thematic: "navigation",
+          criterion: "Les raccourcis clavier intégrés au site web sont-ils documentés et contrôlables ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.11",
+          thematic: "navigation",
+          criterion: "Les gestes complexes requis par l'interface tactile (comme le glisser-déposer) peuvent-ils être exécutés par des gestes simples (simples clics ou boutons fléchés) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.1",
+          thematic: "consultation",
+          criterion: "Pour chaque document en téléchargement (PDF, Word, etc.), existe-t-il une version accessible ou une alternative textuelle équivalente ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.2",
+          thematic: "consultation",
+          criterion: "Chaque document en téléchargement accessible respecte-t-il les règles d'accessibilité propres à son format ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.3",
+          thematic: "consultation",
+          criterion: "Pour chaque page web, les contenus additionnels en mouvement ou mis à jour automatiquement (carrousels, flux de actus) sont-ils contrôlables ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "13.4",
+          thematic: "consultation",
+          criterion: "Les changements brusques de contexte (comme l'ouverture automatique d'une nouvelle fenêtre ou la redirection instantanée) ne doivent pas se produire sans en avertir l'utilisateur. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.5",
+          thematic: "consultation",
+          criterion: "Les expressions inhabituelles, idiotismes, abréviations ou termes techniques font-ils l'objet d'une définition sémantique ou d'une explication accessible ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.6",
+          thematic: "consultation",
+          criterion: "Les textes complexes ou de niveau de lecture élevé proposent-ils une version simplifiée ou un résumé en langage clair (Facile à Lire et à Comprendre - FALC) si nécessaire ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.7",
+          thematic: "consultation",
+          criterion: "Le site ne provoque pas de réactions physiques ou de crises d'épilepsie liées à des flashs ou des variations lumineuses rapides (fréquence supérieure à 3 flashs par seconde). Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "13.8",
+          thematic: "consultation",
+          criterion: "L'accès aux fonctionnalités du site ne dépend pas d’une action matérielle exclusive (comme secouer le téléphone ou utiliser obligatoirement une caméra). Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "13.9",
+          thematic: "consultation",
+          criterion: "Les sessions utilisateur qui expirent automatiquement (déconnexion de sécurité) permettent-elles de sauvegarder les données ou d'étendre le délai avant coupure ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.10",
+          thematic: "consultation",
+          criterion: "Les composants d’interface utilisateur ou les icônes identiques d’une page à l’autre gardent-ils un nom accessible et une fonction cohérents sur l'ensemble du site ?",
+          status: "C",
+          pages: ["All"],
+        },
       ],
       pageScores: [
         { page: "Index", lighthouse: 96, wave: 10, accessibility: "100%" },
@@ -555,65 +1078,40 @@ export const accessibilityReport: AccessibilityReport = {
         "If you would like to discuss the testing methods or technical choices made to ensure this level of compliance, I remain at your entire disposal.",
       thematics: [
         { id: "images", label: "Images" },
+        { id: "cadre", label: "Frames" },
         { id: "colors", label: "Colors" },
+        { id: "multimedia", label: "Multimedia" },
+        { id: "elements", label: "Elements" },
+        { id: "links", label: "Links" },
+        { id: "scripts", label: "Scripts" },
+        { id: "mandatory", label: "Structure" },
+        { id: "relationship", label: "Infos & Relationships" },
+        { id: "presentation", label: "Presentation" },
         { id: "forms", label: "Forms" },
         { id: "navigation", label: "Navigation" },
         { id: "consultation", label: "Consultation" },
-        { id: "elements", label: "Elements" },
-        { id: "scripts", label: "Scripts" },
-        { id: "mandatory", label: "Structure" },
-        { id: "presentation", label: "Presentation" },
-        { id: "multimedia", label: "Multimedia" },
-        { id: "temporal", label: "Temporal content" },
-        { id: "language", label: "Language" },
-        { id: "links", label: "Links and navigation" },
       ],
       criteria: [
         {
           id: "1.1",
           thematic: "images",
-          criterion: "Chaque image a-t-elle une alternative textuelle?",
+          criterion: "Chaque image a-t-elle une alternative textuelle ?",
           status: "C",
-          pages: [
-            "Index",
-            "Feed",
-            "Projects",
-            "Updates",
-            "Clients",
-            "Landing",
-            "About",
-            "Accessibility",
-            "Accessibility-report",
-            "Report",
-            "Terms",
-            "Legal Notices"
-          ],
+          pages: ["All"],
         },
         {
           id: "1.2",
           thematic: "images",
           criterion:
-            "Pour chaque image porteuse d'information, l'alternative textuelle est-elle pertinente?",
+            "Chaque image de décoration est-elle correctement ignorée par les technologies d’assistance  ?",
           status: "C",
-          pages: ["Index",
-            "Feed",
-            "Projects",
-            "Updates",
-            "Clients",
-            "Landing",
-            "About",
-            "Accessibility",
-            "Accessibility-report",
-            "Report",
-            "Terms",
-            "Legal Notices"
-          ],
+          pages: ["All"],
         },
         {
           id: "1.3",
           thematic: "images",
           criterion:
-            "Pour chaque bouton porteur d'information, l'alternative textuelle est-elle pertinente?",
+            "Pour chaque image porteuse d’information ayant une alternative textuelle, cette alternative est-elle pertinente ?",
           status: "C",
           pages: ["All"],
         },
@@ -621,29 +1119,53 @@ export const accessibilityReport: AccessibilityReport = {
           id: "1.4",
           thematic: "images",
           criterion:
-            "Chaque image texte porteuse d'informations a t-elle une alternative ?",
+            "Pour chaque image utilisée comme composant d’interface (bouton, lien), son alternative textuelle permet-elle d'en connaître la fonction et la destination ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "1.5",
+          thematic: "images",
+          criterion:
+            "Pour chaque image texte porteuse d’information, existe-t-il une image de remplacement textuelle ou une alternative pertinente ?",
+          status: "NA",
+          pages: ["All"],
+        },
+        {
+          id: "1.6",
+          thematic: "images",
+          criterion:
+            "Chaque image porteuse d’information complexe a-t-elle, si nécessaire, une description détaillée complète ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "1.7",
+          thematic: "images",
+          criterion:
+            "Pour chaque image porteuse d’information complexe pour laquelle une description détaillée est nécessaire, cette description est-elle pertinente ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "2.1",
-          thematic: "multimedia",
-          criterion: "Chaque cadre a-t-il un titre de cadre ?",
+          thematic: "cadre",
+          criterion: "Chaque cadre (iframe) a-t-il un titre de cadre ?",
           status: "NA",
           pages: [],
           justification: "Aucun élément iframe ou cadre n'est utilisé sur le site."
         },
         {
           id: "2.2",
-          thematic: "multimedia",
-          criterion: "Les liens sont-ils distinguables des autres contenus ?",
-          status: "C",
+          thematic: "cadre",
+          criterion: "Chaque titre de cadre (iframe) est-il pertinent ?",
+          status: "NA",
           pages: ["All"],
         },
         {
           id: "3.1",
           thematic: "colors",
-          criterion: "L'information est-elle donnée par la couleur seule?",
+          criterion: "L’information ne doit pas être donnée par la couleur uniquement. Cette règle est-elle respectée ?",
           status: "C",
           pages: ["All"],
         },
@@ -651,15 +1173,95 @@ export const accessibilityReport: AccessibilityReport = {
           id: "3.2",
           thematic: "colors",
           criterion:
-            "Le contraste (texte/fond) est-il suffisant? (Ratio 7:1 AAA)",
+            "• Dans chaque page web, le contraste entre la couleur du texte et la couleur de son arrière-plan est-il suffisant (hors cas particuliers) ?",
           status: "C",
           pages: ["All"],
         },
         {
-          id: "4.1",
-          thematic: "temporal",
+          id: "3.3",
+          thematic: "colors",
           criterion:
-            "Chaque média temporel a t-il une transcription ou audiodescription ?",
+            "Dans chaque page web, les couleurs utilisées dans les composants d’interface ou les éléments graphiques porteurs d’information ont-elles un contraste suffisant ?",
+          status: "NA",
+          pages: ["All"],
+        },
+        {
+          id: "4.1",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel préenregistré (audio ou vidéo) a-t-il, si nécessaire, une transcription textuelle ou une audiodescription ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.2",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel synchronisé préenregistré (vidéo avec audio) a-t-il, si nécessaire, des sous-titres synchronisés ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.3",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel synchronisé préenregistré (vidéo avec audio) a-t-il, si nécessaire, une audiodescription synchronisée ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.4",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel préenregistré (audio ou vidéo) a-t-il une transcription textuelle, des sous-titres ou une audiodescription pertinents ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.5",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel en direct (audio ou vidéo) a-t-il, si nécessaire, des sous-titres synchronisés ou une alternative textuelle ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.6",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel préenregistré (audio ou vidéo) est-il accompagné, si nécessaire, d’une interprétation en langue des signes ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.7",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel (audio ou vidéo) est-il contrôlable par le clavier et la souris ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.8",
+          thematic: "multimedia",
+          criterion:
+            "Chaque média temporel (audio ou vidéo) est-il compatible avec les technologies d’assistance ?",
+          status: "NA",
+          pages: [],
+          justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
+        },
+        {
+          id: "4.9",
+          thematic: "multimedia",
+          criterion:
+            "Le contenu audio d’un média temporel ne doit pas se lancer automatiquement, ou doit être contrôlable. Cette règle est-elle respectée ?",
           status: "NA",
           pages: [],
           justification: "Il n'y a aucun contenu vidéo ou audio préenregistré sur le site."
@@ -676,92 +1278,336 @@ export const accessibilityReport: AccessibilityReport = {
           id: "5.2",
           thematic: "elements",
           criterion:
-            "Chaque en-tête de tableau est-il correctement identifié via scope ?",
+            "Pour chaque tableau de données ayant un titre, ce titre est-il pertinent ?",
           status: "C",
           pages: ["Accessibility-report"]
+        },
+        {
+          id: "5.3",
+          thematic: "elements",
+          criterion:
+            "Pour chaque tableau de données ayant un titre, ce titre est-il pertinent ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.4",
+          thematic: "elements",
+          criterion:
+            "Chaque en-tête de tableau de données est-il correctement identifié (balise <th>) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.5",
+          thematic: "elements",
+          criterion:
+            "Dans chaque tableau de données, chaque cellule est-elle correctement associée à ses en-têtes ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.6",
+          thematic: "elements",
+          criterion:
+            "Chaque tableau de données complexe a-t-il des en-têtes correctement liés aux cellules via des id et des attributs headers ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.7",
+          thematic: "elements",
+          criterion:
+            "Chaque tableau de mise en forme est-il correctement ignoré par les technologies d’assistance (rôle presentation ou none) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "5.8",
+          thematic: "elements",
+          criterion:
+            "Chaque tableau de mise en forme n’utilise pas d’éléments sémantiques propres aux tableaux de données. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "6.1",
           thematic: "links",
           criterion:
-            "Chaque lien est-il explicite et structuré ?",
+            "Chaque lien est-il explicite (son intitulé seul ou avec son contexte permet de comprendre sa destination) ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "6.2",
+          thematic: "links",
+          criterion:
+            "Chaque intitulé de lien est-il pertinent (et évite les redondances visuelles inutiles) ?",
           status: "C",
           pages: ["All"]
         },
         {
           id: "7.1",
           thematic: "scripts",
-          criterion: "La sémantique HTML5 est-elle correctement utilisée pour les scripts ?",
-          status: "C",
-          pages: ["All"]
+          criterion: "Chaque script (composant interactif) est-il, si nécessaire, compatible avec les technologies d’assistance ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "7.2",
           thematic: "scripts",
-          criterion: "Les rôles ARIA appliqués aux scripts sont-ils appropriés ?",
-          status: "C",
-          pages: ["All"]
+          criterion: "Chaque script est-il contrôlable par le clavier et par la souris ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "7.3",
           thematic: "scripts",
-          criterion: "Les annonces live (aria-live) fonctionnent-elles ?",
-          status: "C",
-          pages: ["Feed"]
+          criterion: "Chaque script est-il structuré de manière à ce que les changements de statut ou de contenu soient signalés aux technologies d’assistance ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "7.4",
+          thematic: "scripts",
+          criterion: "Les raccourcis clavier d’application ou de script ne doivent pas interférer avec le système, ou doivent pouvoir être désactivés/modifiés. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "7.5",
+          thematic: "scripts",
+          criterion: "Les alertes ou messages de statut temporels (notifications) sont-ils correctement transmis par les technologies d'assistance (via aria-live) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "8.1",
           thematic: "mandatory",
-          criterion: "La page a-t-elle un titre (title) pertinent ?",
+          criterion: "Chaque page web a-t-elle un code source valide selon son type de DOCTYPE (sans erreur critique d'imbrication ou d'attributs dupliqués) ?",
           status: "C",
           pages: ["All"]
         },
         {
           id: "8.2",
           thematic: "mandatory",
-          criterion: "La hiérarchie des titres (h1-h6) est-elle respectée ?",
+          criterion: "Pour chaque page web, les balises ne sont pas utilisées uniquement pour leur rendu visuel. Cette règle est-elle respectée ?",
           status: "C",
           pages: ["All"]
         },
         {
           id: "8.3",
           thematic: "mandatory",
-          criterion: "L'attribut lang est-il déclaré sur l'élément <html> ?",
+          criterion: "La langue principale de chaque page web est-elle définie (via l'attribut lang sur l'élément <html>) ?",
           status: "C",
           pages: ["All"]
         },
         {
-          id: "9.1",
-          thematic: "navigation",
-          criterion: "Les balises de structure HTML5 son-elles bien exploitées ?",
+          id: "8.4",
+          thematic: "mandatory",
+          criterion: "Les changements de langue dans le texte sont-ils indiqués par un attribut lang approprié ?",
           status: "C",
           pages: ["All"]
+        },
+        {
+          id: "8.5",
+          thematic: "mandatory",
+          criterion: "Chaque page web a-t-elle un titre de page (<title>) unique et pertinent ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.6",
+          thematic: "mandatory",
+          criterion: "Pour chaque page web, les changements de direction du texte (gauche à droite ou droite à gauche) sont-ils signalés si nécessaire ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.7",
+          thematic: "mandatory",
+          criterion: "Dans chaque page web, chaque élément de contenu est-il structuré de manière appropriée (paragraphes, citations, listes) ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.8",
+          thematic: "mandatory",
+          criterion: "Les éléments de code informatique ou de citation utilisent-ils les balises sémantiques appropriées (<code>, <kbd>, <samp>, <blockquotes>) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "8.9",
+          thematic: "mandatory",
+          criterion: "Dans chaque page web, les balises de mise en valeur (<strong>, <em>) ne sont pas détournées de leur sens. Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "8.10",
+          thematic: "mandatory",
+          criterion: "Les textes insérés ou supprimés sont-ils signalés par les balises appropriées (<ins>, <del>) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "9.1",
+          thematic: "relationship",
+          criterion: "Dans chaque page web, la hiérarchie des titres (<h1> à <h6> est-elle logiuqe et respectée ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "9.2",
+          thematic: "relationship",
+          criterion: "La structure générale de chaque page web utilise-t-elle correctement les balises de grandes zones (<header>, <nav>, <main>, <footer>, <aside>) ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "9.3",
+          thematic: "relationship",
+          criterion: "Dans chaque page web, chaque liste d’éléments est-elle correctement structurée (<ul>, <ol>, <dl>) ?",
+          status: "C",
+          pages: ["All"]
+        },
+        {
+          id: "9.4",
+          thematic: "relationship",
+          criterion: "Dans chaque page web, les regroupements de contenus similaires (comme les groupes de liens) sont-ils correctement structurés ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "10.1",
           thematic: "presentation",
-          criterion: "L'information reste-t-elle compréhensible sans CSS ?",
+          criterion: "Dans chaque page web, les feuilles de style (CSS) sont-elles utilisées pour gérer la mise en forme de manière exclusive ?",
           status: "C",
           pages: ["All"]
         },
         {
           id: "10.2",
           thematic: "presentation",
-          criterion: "Le zoom 200% ne casse-t-il pas la mise en page (Responsive) ?",
-          status: "NC",
-          pages: ["All"]
+          criterion: "Le contenu textuel reste-t-il entièrement visible et lisible lorsque les feuilles de style sont désactivées ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "10.3",
           thematic: "presentation",
-          criterion: "Les éléments de texte sont-ils lisibles et conformes WCAG AAA ?",
-          status: "C",
-          pages: ["All"]
+          criterion: "Dans chaque page web, l’information ne doit pas être véhiculée uniquement par la forme, la taille ou la position d’un élément. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.4",
+          thematic: "presentation",
+          criterion: "Le texte reste-t-il lisible et l'interface utilisable lorsque la taille des caractères est augmentée jusqu’à 200% (zoom texte seul) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.5",
+          thematic: "presentation",
+          criterion: "Dans chaque page web, les déclarations de CSS ne bloquent pas le redimensionnement du texte par l'utilisateur. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.6",
+          thematic: "presentation",
+          criterion: "Le contenu reste-t-il entièrement visible et fonctionnel lors d'un zoom d'écran à 400% sans faire apparaître de barre de défilement horizontale (Responsive / Reflow) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.7",
+          thematic: "presentation",
+          criterion: "Dans chaque page web, le contraste des textes reste-t-il suffisant lors de l'utilisation de polices de caractères ou de styles personnalisés ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.8",
+          thematic: "presentation",
+          criterion: "Pour chaque page web, les espacements de texte personnalisés par l'utilisateur (interligne, espace entre les mots/lettres) ne provoquent pas de perte de contenu ou de chevauchement ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.9",
+          thematic: "presentation",
+          criterion: "Dans chaque page web, les contenus cachés par défaut restent-ils invisibles pour les technologies d’assistance tant qu'ils ne sont pas activés ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.10",
+          thematic: "presentation",
+          criterion: "Dans chaque page web, l’utilisateur peut-il contrôler les animations, clignotements ou défilements automatiques de contenus ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.11",
+          thematic: "presentation",
+          criterion: "L’affichage d’un contenu additionnel au survol de la souris ou au focus du clavier (comme une infobulle) est-il contrôlable par l’utilisateur ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.12",
+          thematic: "presentation",
+          criterion: "Le site ne doit pas imposer une orientation d’affichage unique (portrait ou paysage) à moins d'une contrainte technique absolue. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.13",
+          thematic: "presentation",
+          criterion: "Les données de formulaires ou d’interfaces complexes restent-elles compréhensibles indépendamment de la mise en page choisie ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "10.14",
+          thematic: "presentation",
+          criterion: "Les textes justifiés, difficiles à lire pour les personnes dyslexiques, sont-ils évités ou désactivables ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
         },
         {
           id: "11.1",
           thematic: "forms",
-          criterion: "Chaque champ de formulaire a-t-il une étiquette (label)?",
+          criterion: "Chaque champ de formulaire a-t-il une étiquette (label) textuelle ?",
           status: "C",
           pages: ["Contact Modal","Report"],
         },
@@ -769,7 +1615,7 @@ export const accessibilityReport: AccessibilityReport = {
           id: "11.2",
           thematic: "forms",
           criterion:
-            "Chaque étiquette est-elle correctement associée à son champ ?",
+            "Chaque étiquette de champ est-elle correctement associée à son champ respectif (via l'attribut for et id) ?",
           status: "C",
           pages: ["Contact Modal","Report"],
         },
@@ -777,54 +1623,254 @@ export const accessibilityReport: AccessibilityReport = {
           id: "11.3",
           thematic: "forms",
           criterion:
-            "Les messages d'erreur sont-ils explicites et accessibles ?",
+            "Dans chaque formulaire, les étiquettes de champs ayant la même fonction ou le même nom sont-elles différenciées si nécessaire ?",
           status: "C",
           pages: ["Contact Modal","Report"],
         },
         {
+          id: "11.4",
+          thematic: "forms",
+          criterion:
+            "Dans chaque formulaire, les champs de même nature ou liés entre eux sont-ils regroupés sémantiquement (<fieldset>, <legend>) ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.5",
+          thematic: "forms",
+          criterion:
+            "Dans chaque formulaire, les indications sur le format attendu des saisies ou sur le caractère obligatoire d'un champ sont-elles accessibles ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "11.6",
+          thematic: "forms",
+          criterion:
+            "Les messages d’erreur générés lors de la soumission d'un formulaire sont-ils explicites, faciles à localiser et liés aux champs concernés ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.7",
+          thematic: "forms",
+          criterion:
+            "Pour chaque message d'erreur de formulaire, des suggestions de correction sont-elles proposées à l'utilisateur si elles sont connues ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "11.8",
+          thematic: "forms",
+          criterion:
+            "Les formulaires qui traitent des données juridiques, financières ou de tests permettent-ils à l'utilisateur de vérifier, corriger ou annuler sa saisie avant validation définitive ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "11.9",
+          thematic: "forms",
+          criterion:
+            "Les champs qui attendent des informations personnelles courantes de l'utilisateur permettent-ils le remplissage automatique (attribut autocomplete) ?",
+          status: "NC",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.10",
+          thematic: "forms",
+          criterion:
+            "Chaque bouton de formulaire a-t-il un intitulé textuel explicite qui indique sa fonction ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.11",
+          thematic: "forms",
+          criterion:
+            " Dans chaque formulaire, le contrôle de la saisie n'est pas bloquant et s'exécute de manière accessible. Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.12",
+          thematic: "forms",
+          criterion:
+            "L'utilisateur n'est pas soumis à une limite de temps pour remplir un formulaire ou cette limite est prolongeable. Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["Contact Modal","Report"],
+        },
+        {
+          id: "11.13",
+          thematic: "forms",
+          criterion:
+            "L'utilisation d'un mécanisme de sécurité (comme un CAPTCHA) est-elle accessible ou doublée d'une alternative accessible ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
           id: "12.1",
-          thematic: "language",
-          criterion: "Existe-t-il un lien d'évitement (skip-link) fonctionnel ?",
+          thematic: "navigation",
+          criterion: "Chaque page web contient-elle un lien d'évitement (skip-link) fonctionnel permettant de naviguer directement au contenu principal ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.2",
-          thematic: "language",
-          criterion: "La prise de focus est-elle visible ?",
+          thematic: "navigation",
+          criterion: "Le lien d'évitement est-il visible ou devient-il visible lors de la prise de focus au clavier ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.3",
-          thematic: "language",
-          criterion: "La navigation au clavier est-elle possible ?",
+          thematic: "navigation",
+          criterion: "La prise de focus clavier est-elle parfaitement visible sur tous les éléments interactifs de la page (liens, boutons, champs) ?",
           status: "C",
           pages: ["All"],
         },
         {
           id: "12.4",
-          thematic: "language",
+          thematic: "navigation",
           criterion:
-            "Le focus est-il piégé dans les modales et panneaux (Focus Trap) ?",
-          status: "C",
-          pages: ["Index", "Accessibility", "Report"],
-        },
-        {
-          id: "12.5",
-          thematic: "language",
-          criterion: "L'ordre de tabulation est-il logique ?",
+            "L’ordre de tabulation au clavier (touche Tab) suit-il un ordre logique et prévisible pour l'utilisateur ?",
           status: "C",
           pages: ["All"],
         },
         {
-          id: "13.1",
-          thematic: "consultation",
-          criterion: "Chaque document en téléchargement (PDF) est-il accessible ?",
+          id: "12.5",
+          thematic: "navigation",
+          criterion: "La navigation au clavier ne doit pas bloquer le focus sur un élément de manière définitive (absence de piège à focus hors modales contrôlées) ?",
           status: "NA",
           pages: [],
-          justification: "Il n'y a pas de fichier lourd ou document complexe en téléchargement sur le site."
-        }
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.6",
+          thematic: "navigation",
+          criterion: "Le site propose-t-il au moins deux méthodes de navigation différentes pour accéder aux pages (ex: menu de navigation principal ET plan du site ou moteur de recherche) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.7",
+          thematic: "navigation",
+          criterion: "Dans chaque page web, des indicateurs permettent-ils à l’utilisateur de localiser sa position dans le site (fil d'Ariane, état actif dans le menu) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.8",
+          thematic: "navigation",
+          criterion: "Dans chaque page web, la zone de contenu principal est-elle facilement identifiable sémantiquement ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "12.9",
+          thematic: "navigation",
+          criterion: "La page web propose-t-elle des mécanismes pour faciliter la navigation rapide au sein du contenu textuel (ancres de table des matières par exemple) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.10",
+          thematic: "navigation",
+          criterion: "Les raccourcis clavier intégrés au site web sont-ils documentés et contrôlables ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "12.11",
+          thematic: "navigation",
+          criterion: "Les gestes complexes requis par l'interface tactile (comme le glisser-déposer) peuvent-ils être exécutés par des gestes simples (simples clics ou boutons fléchés) ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.1",
+          thematic: "consultation",
+          criterion: "Pour chaque document en téléchargement (PDF, Word, etc.), existe-t-il une version accessible ou une alternative textuelle équivalente ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.2",
+          thematic: "consultation",
+          criterion: "Chaque document en téléchargement accessible respecte-t-il les règles d'accessibilité propres à son format ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.3",
+          thematic: "consultation",
+          criterion: "Pour chaque page web, les contenus additionnels en mouvement ou mis à jour automatiquement (carrousels, flux de actus) sont-ils contrôlables ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "13.4",
+          thematic: "consultation",
+          criterion: "Les changements brusques de contexte (comme l'ouverture automatique d'une nouvelle fenêtre ou la redirection instantanée) ne doivent pas se produire sans en avertir l'utilisateur. Cette règle est-elle respectée ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.5",
+          thematic: "consultation",
+          criterion: "Les expressions inhabituelles, idiotismes, abréviations ou termes techniques font-ils l'objet d'une définition sémantique ou d'une explication accessible ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.6",
+          thematic: "consultation",
+          criterion: "Les textes complexes ou de niveau de lecture élevé proposent-ils une version simplifiée ou un résumé en langage clair (Facile à Lire et à Comprendre - FALC) si nécessaire ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.7",
+          thematic: "consultation",
+          criterion: "Le site ne provoque pas de réactions physiques ou de crises d'épilepsie liées à des flashs ou des variations lumineuses rapides (fréquence supérieure à 3 flashs par seconde). Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "13.8",
+          thematic: "consultation",
+          criterion: "L'accès aux fonctionnalités du site ne dépend pas d’une action matérielle exclusive (comme secouer le téléphone ou utiliser obligatoirement une caméra). Cette règle est-elle respectée ?",
+          status: "C",
+          pages: ["All"],
+        },
+        {
+          id: "13.9",
+          thematic: "consultation",
+          criterion: "Les sessions utilisateur qui expirent automatiquement (déconnexion de sécurité) permettent-elles de sauvegarder les données ou d'étendre le délai avant coupure ?",
+          status: "NA",
+          pages: [],
+          justification: "Aucun contenu de ce type n'est présent sur l'ensemble du site."
+        },
+        {
+          id: "13.10",
+          thematic: "consultation",
+          criterion: "Les composants d’interface utilisateur ou les icônes identiques d’une page à l’autre gardent-ils un nom accessible et une fonction cohérents sur l'ensemble du site ?",
+          status: "C",
+          pages: ["All"],
+        },
       ],
       pageScores: [
         { page: "Index", lighthouse: 96, wave: 10, accessibility: "100%" },

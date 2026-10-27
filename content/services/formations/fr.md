@@ -4,6 +4,7 @@ created_at: "2026-02-11"
 description: Apprenez à utiliser les outils numériques simplement et efficacement
 feed_title: Formation numérique
 feed_summary: Gagnez en autonomie avec le digital.
+accessible_name: la formation numérique
 locale: fr
 packages:
   - title: Forfaits de Formations Professionnelles (De 1 à 4 personnes)

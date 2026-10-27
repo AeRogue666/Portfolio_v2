@@ -32,6 +32,11 @@ export const SERVICES = {
     subTypes: ["subtypes.accessibilite", "subtypes.seo", "subtypes.securite", "subtypes.multi"],
   },
 
+  maintenance: {
+    label: "types.maintenance",
+    subTypes: ["subtypes.onepage", "subtypes.vitrine", "subtypes.professionnel", "subtypes.ecommerce", "subtypes.custom", "subtypes.ponctuelle"]
+  },
+
   audit: {
     label: "types.audit",
     subTypes: ["subtypes.accessibilite", "subtypes.seo", "subtypes.securite", "subtypes.all", "subtypes.audit-flash"],
@@ -39,6 +44,6 @@ export const SERVICES = {
 
   formation: {
     label: "types.formation",
-    subTypes: ["subtypes.ordinateur", "subtypes.internet", "subtypes.email", "subtypes.ia", "subtypes.custom"],
+    subTypes: ["subtypes.ordinateur", "subtypes.internet", "subtypes.email", "subtypes.securite-numerique", "subtypes.ia", "subtypes.custom"],
   },
 };

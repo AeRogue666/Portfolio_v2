@@ -37,25 +37,25 @@ const fillClass = 'fill-dynamic'
     </svg>
 </template>
 
-<style lang="css" scoped>
+<style scoped>
 .doodle-background rect {
-    fill: v-bind('`var(${props.bgColor})`') !important;
+    fill: v-bind(bgColor) !important;
 }
 
 path.doodle-accent {
-    fill: v-bind('`var(${props.fillColor})`') !important;
+    fill: v-bind(fillColor) !important;
     stroke: none !important;
     opacity: 1;
 }
 
 .doodle-ink > path:first-child {
-    fill: v-bind('`var(${props.strokeColor || props.fillColor})`') !important;
+    fill: v-bind(strokeColor) !important;
     opacity: 1;
 }
 
-.doodle-ink #nuxt-group-23 path,
+.doodle-ink #nuxt-group-102 path,
 .doodle-ink path:not(:first-child) {
-    fill: v-bind('`var(${props.strokeColor})`') !important;
+    fill: v-bind(strokeColor) !important;
     stroke: none !important;
     opacity: 1;
 }

@@ -5,6 +5,7 @@ updated_at: "2026-09-15"
 description: Modernisez votre site internet pour améliorer votre image, votre visibilité et convertir plus de visiteurs
 feed_summary: Votre site est vieillissant ou inefficace ? Transformez-le en outil moderne, rapide et conçu pour générer des clients
 feed_title: Refonte & modernisation web
+accessible_name: la refonte et modernisation web
 locale: fr
 packages:
   - title: Forfaits uniques de refonte de site

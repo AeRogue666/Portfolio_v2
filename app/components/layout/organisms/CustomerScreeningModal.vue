@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import StepBudget from './steps/StepBudget.vue';
 import StepComplexity from './steps/StepComplexity.vue';
+import StepEnding from './steps/StepEnding.vue';
 import StepNature from './steps/StepNature.vue';
 import StepSpecification from './steps/StepSpecification.vue';
 import StepSummary from './steps/StepSummary.vue';
@@ -16,10 +17,10 @@ const props = defineProps<{
 const { t } = useI18n(),
     { scoreLead } = useLeadScoring(),
     leadStore = useLeadStore(),
-    { submitState, loading, submit } = useContactForm();
-
-const accessibilityStore = useAccessibilityStore(),
-    colorMode = useColorMode();
+    { submitState, loading, submit } = useContactForm(),
+    accessibilityStore = useAccessibilityStore(),
+    colorMode = useColorMode(),
+    isSubmitted = ref(false);
 
 const tabs = [
     { title: "Nature" },
@@ -49,34 +50,43 @@ function goBack() {
 }
 
 /*Submitting form */
-
 async function handleSubmit() {
     const result = scoreLead(leadStore.data);
 
     leadStore.data.leadScore = result.score;
     leadStore.data.leadTier = result.tier;
+    isSubmitted.value = false
 
-    await submit({
-        type: leadStore.data.projectType === "message"
-            ? "message"
-            : "qualified",
-        email: leadStore.data.contact.email,
-        message: leadStore.data.contact.message,
-        website: "",
-        qualification: leadStore.data.projectType !== "message" ? {
-            projectType: leadStore.data.projectType,
-            subType: leadStore.data.subType,
-            complexity: leadStore.data.complexity,
-            businessGoals: leadStore.data.businessGoals,
-            problems: leadStore.data.problems,
-            budgetRange: leadStore.data.budgetRange,
-            deadline: leadStore.data.deadline,
-            leadScore: leadStore.data.leadScore,
-            leadTier: leadStore.data.leadTier
-        } : undefined
-    });
-
-    leadStore.reset();
+    try {
+        await submit({
+            type: leadStore.data.projectType === "message"
+                ? "message"
+                : "qualified",
+            email: leadStore.data.contact.email,
+            message: leadStore.data.contact.message,
+            website: "",
+            qualification: leadStore.data.projectType !== "message" ? {
+                projectType: leadStore.data.projectType,
+                subType: leadStore.data.subType,
+                complexity: leadStore.data.complexity,
+                businessGoals: leadStore.data.businessGoals,
+                problems: leadStore.data.problems,
+                budgetRange: leadStore.data.budgetRange,
+                deadline: leadStore.data.deadline,
+                leadScore: leadStore.data.leadScore,
+                leadTier: leadStore.data.leadTier
+            } : undefined
+        });
+        console.log(submitState.value)
+    } catch (error) {
+        console.error("Une erreur est survenue et le formulaire n'a pas pu être soumis : ", error)
+    } finally {
+        if (submitState.value === 'success') {
+            isSubmitted.value = true
+            leadStore.step = 6
+            // leadStore.reset();
+        }
+    }
 };
 
 function handleCtaClick() {
@@ -176,6 +186,8 @@ onMounted(() => {
                     <StepBudget v-else-if="leadStore.step === 4" />
                     <!-- Résumé du projet -->
                     <StepSummary v-else-if="leadStore.step === totalSteps" />
+                    <!-- Confirmation de l'envoi du formulaire -->
+                    <StepEnding v-else-if="isSubmitted === true" />
                 </Transition>
 
                 <div class="flex flex-col md:flex-row items-center md:justify-between mt-6 gap-4">

@@ -5,6 +5,7 @@ type ServiceSource = {
   description?: string;
   feed_title?: string;
   feed_summary?: string;
+  accessible_name?: string;
   slug: string;
   date?: string;
   created_at: string;
@@ -32,6 +33,7 @@ export function toServiceItem(source: ServiceSource): ServiceResolved {
     description: source.description,
     feed_title: source.feed_title,
     feed_summary: source.feed_summary,
+    accessible_name: source.accessible_name,
     slug: source.slug,
     date: effectiveDate,
     created_at: source.created_at,

@@ -4,6 +4,7 @@ created_at: "2026-02-11"
 description: Un site clair, rapide et conçu pour transformer vos visiteurs en clients.
 feed_summary: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro
 feed_title: Création de site
+accessible_name: la création de site
 locale: en
 packages:
   - title: Forfaits uniques de création de site
