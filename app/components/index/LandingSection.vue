@@ -12,7 +12,7 @@ defineProps<{
         <!-- A - Grain : Texture subtile en arrière-plan -->
         <div class="absolute inset-0 landing-grain pointer-events-none z-0" aria-hidden="true"></div>
 
-        <div class="w-1/2 h-95 absolute -top-20 left-1/2 landing-halo pointer-events-none z-1"></div>
+        <div class="w-1/2 h-95 absolute -top-5 left-1/2 landing-halo pointer-events-none z-1" aria-hidden="true"></div>
 
         <div class="flex flex-col items-center w-full px-4 relative gap-4 z-10">
             <slot name="tag"></slot>

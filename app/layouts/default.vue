@@ -78,10 +78,10 @@ useHead(() => ({
                     <NuxtPage />
                 </main>
 
-                <footer class="w-full mt-auto px-4 py-8 border-t border-(--bg-3) bg-(--bg) text-(--text-2) shrink-0">
+                <footer class="flex w-full mt-auto px-4 py-8 border-t border-(--bg-3) bg-(--bg) text-(--text-2) shrink-0">
                     <div
                         class="flex flex-col justify-between items-start max-w-6xl mx-auto gap-8 lg:gap-12">
-                        <div class="flex flex-col lg:flex-row">
+                        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12">
                             <address class="flex flex-col not-italic max-w-sm w-full fs-small leading-relaxed gap-3">
                                 <span class="font-bold fs-body text-(--text) mb-1">CodeKorico</span>
 
@@ -136,7 +136,7 @@ useHead(() => ({
                             </div>
                         </div>
 
-                        <div class="flex flex-col items-start lg:items-end w-full lg:w-auto mt-2 lg:mt-0 gap-6">
+                        <div class="flex flex-col items-start lg:items-center w-full mt-2 lg:mt-0 gap-6">
                             <UNavigationMenu highlight-color="neutral" orientation="horizontal"
                                 :items="itemsFooterNavigation" :ui="{
                                     list: 'gap-3 flex-col xl:flex-row lg:flex-col xl:flex-row items-start lg:items-end xl:items-center', // ul
