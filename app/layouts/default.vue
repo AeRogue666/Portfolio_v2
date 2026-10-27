@@ -80,57 +80,59 @@ useHead(() => ({
 
                 <footer class="w-full mt-auto px-4 py-8 border-t border-(--bg-3) bg-(--bg) text-(--text-2) shrink-0">
                     <div
-                        class="flex flex-col lg:flex-row justify-between items-start max-w-6xl mx-auto gap-8 lg:gap-12">
-                        <address class="flex flex-col not-italic max-w-sm w-full fs-small leading-relaxed gap-3">
-                            <span class="font-bold fs-body text-(--text) mb-1">CodeKorico</span>
+                        class="flex flex-col justify-between items-start max-w-6xl mx-auto gap-8 lg:gap-12">
+                        <div class="flex flex-col lg:flex-row">
+                            <address class="flex flex-col not-italic max-w-sm w-full fs-small leading-relaxed gap-3">
+                                <span class="font-bold fs-body text-(--text) mb-1">CodeKorico</span>
 
-                            <div class="flex items-center gap-2 whitespace-normal wrap-break-word">
-                                <UIcon name="fa7-solid:envelope" class="text-(--text-muted) shrink-0 fs-small"
-                                    aria-hidden="true" />
-                                <a href="mailto:contact@codekorico.com"
-                                    class="hover:text-(--accent) transition-colors focus-visible:outline-2 focus-visible:outline-(--focus) rounded">contact@codekorico.com</a>
-                            </div>
+                                <div class="flex items-center gap-2 whitespace-normal wrap-break-word">
+                                    <UIcon name="fa7-solid:envelope" class="text-(--text-muted) shrink-0 fs-small"
+                                        aria-hidden="true" />
+                                    <a href="mailto:contact@codekorico.com"
+                                        class="hover:text-(--accent) transition-colors focus-visible:outline-2 focus-visible:outline-(--focus) rounded">contact@codekorico.com</a>
+                                </div>
+
+                                <div
+                                    class="flex items-start border-t border-(--bg-3)/50 mt-1 whitespace-normal wrap-break-word gap-2">
+                                    <UIcon name="fa7-solid:phone" class="text-(--text-muted) shrink-0 fs-small"
+                                        aria-hidden="true" />
+                                    <a href="tel:+3343347803"
+                                        class="hover:text-(--accent) transition-colors focus-visible:outline-2 focus-visible:outline-(--focus) rounded">07
+                                        43 34 78 03</a>
+                                </div>
+
+                                <div
+                                    class="flex items-start border-t border-(--bg-3)/50 mt-1 whitespace-normal wrap-break-word gap-2">
+                                    <UIcon name="fa7-solid:location-dot"
+                                        class="text-(--text-muted) shrink-0 fs-small mt-1" aria-hidden="true" />
+                                    <p class="text-(--text-3)">
+                                        Pépinière d'entreprises l'Espélidou<br />
+                                        555 Chemin des Traverses<br />
+                                        07200 LACHAPELLE-SOUS-AUBENAS
+                                    </p>
+                                </div>
+
+                                <div
+                                    class="flex items-start !fs-small text-(--text-3) border-t border-(--bg-3)/50 mt-1 whitespace-normal wrap-break-word gap-2">
+                                    <UIcon name="fa7-solid:id-card" class="text-(--text-muted) shrink-0 text-xs"
+                                        aria-hidden="true" />
+                                    <p>
+                                        <span class="font-semibold text-(--text-2)">SIRET :</span> 439 076 563 00147
+                                        <span class="italic">RCS Aubenas (POLLEN SCOP)</span>
+                                    </p>
+                                </div>
+                            </address>
 
                             <div
-                                class="flex items-start border-t border-(--bg-3)/50 mt-1 whitespace-normal wrap-break-word gap-2">
-                                <UIcon name="fa7-solid:phone" class="text-(--text-muted) shrink-0 fs-small"
-                                    aria-hidden="true" />
-                                <a href="tel:+3343347803"
-                                    class="hover:text-(--accent) transition-colors focus-visible:outline-2 focus-visible:outline-(--focus) rounded">07
-                                    43 34 78 03</a>
-                            </div>
-
-                            <div
-                                class="flex items-start border-t border-(--bg-3)/50 mt-1 whitespace-normal wrap-break-word gap-2">
-                                <UIcon name="fa7-solid:location-dot" class="text-(--text-muted) shrink-0 fs-small mt-1"
-                                    aria-hidden="true" />
-                                <p class="text-(--text-3)">
-                                    Pépinière d'entreprises l'Espélidou<br />
-                                    555 Chemin des Traverses<br />
-                                    07200 LACHAPELLE-SOUS-AUBENAS
-                                </p>
-                            </div>
-
-                            <div
-                                class="flex items-start !fs-small text-(--text-3) border-t border-(--bg-3)/50 mt-1 whitespace-normal wrap-break-word gap-2">
-                                <UIcon name="fa7-solid:id-card" class="text-(--text-muted) shrink-0 text-xs"
-                                    aria-hidden="true" />
-                                <p>
-                                    <span class="font-semibold text-(--text-2)">SIRET :</span> 439 076 563 00147
-                                    <span class="italic">RCS Aubenas (POLLEN SCOP)</span>
-                                </p>
-                            </div>
-                        </address>
-
-                        <div
-                            class="flex flex-col sm:flex-row lg:flex-col justify-self-start items-start w-full lg:w-auto gap-6">
-                            <div v-for="(partner, index) of partnerIndexElements" :key="index"
-                                class="flex items-center w-full sm:w-auto min-w-50 bg-(--bg-2)/20 px-3 py-2 border border-(--bg-3)/40 rounded-lg gap-4">
-                                <img :src="partner.image" :alt="partner.imageAlt ?? ''" width="52" height="52"
-                                    class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75 shrink-0"
-                                    :class="[partner.imageClass, grayscale ? 'grayscale-100' : '']" />
-                                <span class="fs-small text-(--text-2) leading-tight font-medium">{{ partner.title
-                                    }}</span>
+                                class="flex flex-col sm:flex-row lg:flex-col justify-self-start items-start w-full lg:w-auto gap-6">
+                                <div v-for="(partner, index) of partnerIndexElements" :key="index"
+                                    class="flex items-center w-full sm:w-auto min-w-50 bg-(--bg-2)/20 px-3 py-2 border border-(--bg-3)/40 rounded-lg gap-4">
+                                    <img :src="partner.image" :alt="partner.imageAlt ?? ''" width="52" height="52"
+                                        class="sepia-80 opacity-60 transition-all duration-300 hover:sepia-0 hover:opacity-100 dark:brightness-125 dark:contrast-75 shrink-0"
+                                        :class="[partner.imageClass, grayscale ? 'grayscale-100' : '']" />
+                                    <span class="fs-small text-(--text-2) leading-tight font-medium">{{ partner.title
+                                        }}</span>
+                                </div>
                             </div>
                         </div>
 
