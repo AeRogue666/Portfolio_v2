@@ -8,20 +8,26 @@ defineProps<{
 
 <template>
     <section
-        class="flex flex-col justify-between items-center w-full h-auto mt-[6vh] py-30 gap-10 overflow-hidden rounded-2xl bg-(--bg-2) relative">
+        class="flex flex-col justify-between items-center w-full h-auto mt-[6vh] py-30 gap-6 overflow-hidden rounded-2xl bg-(--bg-2) relative">
         <!-- A - Grain : Texture subtile en arrière-plan -->
         <div class="absolute inset-0 landing-grain pointer-events-none z-0" aria-hidden="true"></div>
 
-        <div class="w-1/2 h-95 absolute -top-5 left-1/2 landing-halo pointer-events-none z-1" aria-hidden="true"></div>
+        <div class="flex flex-col lg:flex-row justify-between items-center w-full h-auto mt-[6vh] gap-3 overflow-hidden">
+            <div class="flex flex-col items-center lg:w-3/5">
+                <div class="w-full lg:w-1/4 h-95 absolute top-20 lg:top-25 left-1/2 lg:left-[30%] landing-halo pointer-events-none z-1"
+                    aria-hidden="true">
+                </div>
 
-        <div class="flex flex-col items-center w-full px-4 relative gap-4 z-10">
-            <slot name="tag"></slot>
-            <slot name="title"></slot>
-            <slot name="description"></slot>
-            <slot></slot>
+                <div class="flex flex-col items-center w-full px-4 relative gap-4 z-10">
+                    <slot name="tag"></slot>
+                    <slot name="title"></slot>
+                    <slot name="description"></slot>
+                    <slot></slot>
+                </div>
+            </div>
+
+            <carousel-departements class="lg:w-2/5" />
         </div>
-
-        <carousel-departements />
 
         <!-- B - Vague SVG de séparation avec la section suivante -->
         <svg class="block w-full h-18 absolute -bottom-px left-0 right-0 z-2" viewBox="0 0 1846 320"
