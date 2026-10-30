@@ -4,6 +4,17 @@ created_at: "2026-02-11"
 description: A clear, fast website designed to generate leads.
 accessible_name: digital training
 locale: en
+image:
+  alt: 
+  sources:
+    feed:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
+    detail:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits de Formations Professionnelles (De 1 à 4 personnes)
     children:

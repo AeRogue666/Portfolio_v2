@@ -6,6 +6,17 @@ feed_title: Formation numérique
 feed_summary: Gagnez en autonomie avec le digital.
 accessible_name: la formation numérique
 locale: fr
+image:
+  alt: 
+  sources:
+    feed:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
+    detail:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits de Formations Professionnelles (De 1 à 4 personnes)
     children:
@@ -41,11 +52,11 @@ highlighted: false
 ---
 service:
 
-- title: "Plateforme de gestion de recettes de cuisine"
+- title: "Capture d'une Plateforme de gestion de recettes de cuisine"
     desktop: "/images/project/plateforme-gestion-recettes/desktop.png"
     tablet: "/images/project/plateforme-gestion-recettes/tablet.png"
     mobile: "/images/project/plateforme-gestion-recettes/mobile.png"
-- title: "Site vitrine professionnel"
+- title: "Capture du site vitrine professionnel, CodeKorico.com"
     desktop: "/images/project/portfolio-v2/desktop.png"
     tablet: "/images/project/portfolio-v2/tablet.png"
     mobile: "/images/project/portfolio-v2/mobile.png"

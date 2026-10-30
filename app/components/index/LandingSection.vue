@@ -4,21 +4,44 @@ import CarouselDepartements from './organisms/CarouselDepartements.vue';
 defineProps<{
     fill?: string;
 }>();
+
+const sectionRef = ref<HTMLElement | null>(null),
+    isHeroActive = ref<boolean | undefined>(true);
+let landingObserver: IntersectionObserver | null = null;
+
+onMounted(() => {
+    if (sectionRef.value) {
+        landingObserver = new IntersectionObserver(([entry]) => {
+            isHeroActive.value = entry?.isIntersecting;
+        }, {
+            threshold: 0
+        });
+
+        landingObserver.observe(sectionRef.value);
+    }
+});
+
+onUnmounted(() => {
+    if (landingObserver) {
+        landingObserver.disconnect();
+    }
+});
 </script>
 
 <template>
-    <section
+    <section ref="sectionRef"
         class="flex flex-col justify-between items-center w-full h-auto mt-[6vh] py-30 gap-6 overflow-hidden rounded-2xl bg-(--bg-2) relative">
         <!-- A - Grain : Texture subtile en arrière-plan -->
         <div class="absolute inset-0 landing-grain pointer-events-none z-0" aria-hidden="true"></div>
 
-        <div class="flex flex-col lg:flex-row justify-between items-center w-full h-auto mt-[6vh] gap-3 overflow-hidden">
+        <div
+            class="flex flex-col lg:flex-row justify-between items-center w-full h-auto mt-[6vh] gap-3 overflow-hidden">
             <div class="flex flex-col items-center lg:w-3/5">
                 <div class="w-full lg:w-1/4 h-95 absolute top-20 lg:top-25 left-1/2 lg:left-[30%] landing-halo pointer-events-none z-1"
                     aria-hidden="true">
                 </div>
 
-                <div class="flex flex-col items-center w-full px-4 relative gap-4 z-10">
+                <div class="flex flex-col items-center w-full mb-[2vh] px-4 relative gap-4 z-10">
                     <slot name="tag"></slot>
                     <slot name="title"></slot>
                     <slot name="description"></slot>
@@ -26,7 +49,9 @@ defineProps<{
                 </div>
             </div>
 
-            <carousel-departements class="lg:w-2/5" />
+            <div class="w-full lg:w-2/5 contents transition-opacity duration-300" :class="{ 'pointer-events-none opacity-40 select-none' : !isHeroActive }" :aria-hidden="!isHeroActive ? 'true' : 'false'">
+                <carousel-departements :active="isHeroActive" />
+            </div>
         </div>
 
         <!-- B - Vague SVG de séparation avec la section suivante -->

@@ -1,3 +1,5 @@
+const isDev = process.env.NODE_ENV === 'development';
+
 export default defineNuxtConfig({
   ssr: true,
   future: {
@@ -80,8 +82,8 @@ export default defineNuxtConfig({
   },
   security: {
     headers: {
-      crossOriginEmbedderPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'require-corp',
-      crossOriginOpenerPolicy: process.env.NODE_ENV === 'development' ? 'unsafe-none' : 'same-origin',
+      crossOriginEmbedderPolicy: isDev ? 'unsafe-none' : 'require-corp',
+      crossOriginOpenerPolicy: isDev ? 'unsafe-none' : 'same-origin',
       strictTransportSecurity: {
         maxAge: 31536000, // 1 an (Standard)
         includeSubdomains: true,
@@ -89,11 +91,18 @@ export default defineNuxtConfig({
       },
       contentSecurityPolicy: {
         "default-src": ["'self'"],
-        "script-src": ["'self'", "'strict-dynamic'", "'nonce-{{nonce}}'", "'wasm-unsafe-eval'"],
+        "script-src": isDev
+        ? ["'self'", "'unsafe-inline'", "'wasm-unsafe-eval'", "http://localhost:3000", "ws://localhost:3000"]
+        : ["'self'", "'strict-dynamic'", "'wasm-unsafe-eval'"],
+        "script-src-attr": isDev
+        ? ["'unsafe-inline'"]
+        : ["'none'"],
         "style-src": ["'self'", "'unsafe-inline'"],
         "img-src": ["'self'","data:", "https://github.com", "https://avatars.githubusercontent.com"],
-        "connect-src": ["'self'"],
-        "upgrade-insecure-requests": true,
+        "connect-src": isDev
+        ? ["'self'", "http://localhost:3000", "ws://localhost:3000"]
+        : ["'self'"],
+        "upgrade-insecure-requests": !isDev,
       },
     },
   },

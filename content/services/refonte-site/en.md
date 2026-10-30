@@ -7,6 +7,17 @@ feed_summary: Votre site est vieillissant ou inefficace ? Transformez-le en outi
 feed_title: Refonte & modernisation web
 accessible_name: la refonte et modernisation web
 locale: en
+image:
+  alt: 
+  sources:
+    feed:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
+    detail:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits uniques de refonte de site
     children:

@@ -6,6 +6,17 @@ feed_summary: Un site clair, professionnel et efficace -> Idéal si vous partez 
 feed_title: Création de site
 accessible_name: la création de site
 locale: fr
+image:
+  alt: 
+  sources:
+    feed:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
+    detail:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits uniques de création de site
     children:

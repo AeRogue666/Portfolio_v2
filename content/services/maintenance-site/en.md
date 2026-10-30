@@ -6,6 +6,17 @@ feed_summary: Votre site reste sécurisé, rapide et fonctionnel en continu, san
 feed_title: Maintenance - Site web sans souci
 accessible_name: la maintenance de site web
 locale: en
+image:
+  alt: 
+  sources:
+    feed:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
+    detail:
+      mobile: /images/project/portfolio-v2/mobile.png
+      desktop: /images/project/portfolio-v2/desktop.png
+      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits mensuels de maintenance préventive
     children:
