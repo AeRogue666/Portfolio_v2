@@ -94,9 +94,9 @@ export default defineNuxtConfig({
         "script-src": isDev
         ? ["'self'", "'unsafe-inline'", "'wasm-unsafe-eval'", "http://localhost:3000", "ws://localhost:3000"]
         : ["'self'", "'strict-dynamic'", "'wasm-unsafe-eval'"],
-        "script-src-attr": isDev
+        /* "script-src-attr": isDev
         ? ["'unsafe-inline'"]
-        : ["'none'"],
+        : ["'none'"], */
         "style-src": ["'self'", "'unsafe-inline'"],
         "img-src": ["'self'","data:", "https://github.com", "https://avatars.githubusercontent.com"],
         "connect-src": isDev
