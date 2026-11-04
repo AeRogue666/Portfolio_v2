@@ -45,6 +45,7 @@ export function useFeed(options?: UseFeedOptions) {
     "read",
     "talk",
     "job",
+    "article"
   ];
   const selectedKinds = computed<FeedKind[]>(() => {
     const kinds = route.query.kinds;

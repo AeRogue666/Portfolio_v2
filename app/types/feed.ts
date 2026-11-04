@@ -1,6 +1,6 @@
 import type { ResponsiveImage } from "./media";
 
-export type FeedKind = "project" | "experiment" | "about" | "pinned" | "note" | "read" | "client" | "talk" | "job";
+export type FeedKind = "project" | "experiment" | "about" | "pinned" | "note" | "read" | "client" | "talk" | "job" | "article";
 // Kinds :
 // Project - Projet personnel
 // Experiment - side project, proof of concept, exploration technique sans objectif de production
@@ -10,6 +10,8 @@ export type FeedKind = "project" | "experiment" | "about" | "pinned" | "note" | 
 // Talk - présentation, conférence, intervention publique
 // Reading - livre, article, ressource qui m'a marqué avec mon avis
 // Job - expérience professionnelle, mission, poste occupé
+// Client - les clients
+// Article - Des articles que je publie sur divers sujets. Ce ne sont pas des notes mais pas des projets ou des expériences non plus.
 
 interface FeedLinks {
   github?: string;

@@ -286,7 +286,8 @@
       "note": "Note",
       "read": "Lecture",
       "job": "Métier",
-      "talk": "Intervention"
+      "talk": "Intervention",
+      "article": "Article"
     },
     "created_on": "Publié le",
     "updated_on": "Mis à jour le"

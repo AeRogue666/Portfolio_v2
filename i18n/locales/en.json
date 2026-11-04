@@ -286,7 +286,8 @@
       "note": "Note",
       "read": "Read",
       "job": "Job",
-      "talk": "Talk"
+      "talk": "Talk",
+      "article": "Article"
     },
     "created_on": "Published on",
     "updated_on": "Updated on"
