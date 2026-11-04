@@ -8,7 +8,7 @@ useSidebarFocusState();
 
 <template>
     <aside v-show="isCollapsed" id="sidebar-left-desktop" :aria-hidden="!isCollapsed" :inert="!isCollapsed"
-        class="hidden lg:block w-87 h-fit bg-(--bg) sticky top-0 overflow-x-hidden overflow-y-auto shrink-0 fade-in">
+        class="hidden lg:block w-[max(21.75rem, max-content)] max-w-[45vw] h-fit bg-(--bg) sticky top-0 overflow-x-hidden overflow-y-auto shrink-0 fade-in">
         <SidebarLeftContent :is-collapsed="!isCollapsed" :is-page-feed="isPageFeed" class="w-64 shrink-0" />
     </aside>
 </template>

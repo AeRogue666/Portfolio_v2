@@ -9,7 +9,7 @@ export interface AccessibilityState {
   contrast: ContrastMode;
   underlineLinks: boolean;
   fontFamily: FontFamily;
-  direction: ReadingDirection
+  readingDirection: ReadingDirection;
 }
 
 const DEFAULT_STATE: AccessibilityState = {
@@ -18,10 +18,82 @@ const DEFAULT_STATE: AccessibilityState = {
   contrast: "normal",
   underlineLinks: false,
   fontFamily: "source-sans",
-  direction: "ltr",
+  readingDirection: "ltr",
 };
 
-export const useAccessibilityStore = defineStore("accessibility", {
+export const useAccessibilityStore = defineStore("accessibility", () => {
+  const contrast = ref<ContrastMode>("normal");
+  const fontFamily = ref<FontFamily>("source-sans");
+  const grayscale = ref<boolean>(false);
+  const underlineLinks = ref<boolean>(false);
+  const fontScale = ref<FontScale>(1);
+  const readingDirection = ref<ReadingDirection>("ltr");
+
+  useHead({
+    htmlAttrs: {
+      "data-contrast": () => contrast.value,
+      "data-font-family": () => fontFamily.value,
+      "data-grayscale": () => (grayscale.value ? "true" : "false"),
+      "data-underline-links": () => (underlineLinks.value ? "true" : "false"),
+      "dir": () => readingDirection.value,
+      style: () => `--text-scale: ${fontScale.value};`,
+    },
+  });
+
+  function changeFont(value: FontFamily) {
+    fontFamily.value = value;
+  }
+  function increaseFont() {
+    // FONT SCALE
+    const scales: FontScale[] = [1, 1.25, 1.5, 1.75, 2];
+    const i = scales.indexOf(fontScale.value);
+    if (i !== -1 && i < scales.length - 1)
+      fontScale.value = scales[i + 1] as FontScale;
+  }
+  function decreaseFont() {
+    // FONT SCALE
+    const scales: FontScale[] = [1, 1.25, 1.5, 1.75, 2];
+    const i = scales.indexOf(fontScale.value);
+    if (i > 0) fontScale.value = scales[i - 1] as FontScale;
+  }
+  function changeDirection(dir: ReadingDirection) {
+    readingDirection.value = dir
+  }
+  function changeTextContrast(mode: ContrastMode) {
+    contrast.value = mode
+  }
+  function toggleGrayscale() {
+    grayscale.value = !grayscale.value;
+  }
+  function toggleUnderlineLinks() {
+    underlineLinks.value = !underlineLinks.value;
+  }
+  function reset() {
+    contrast.value = "normal";
+    fontFamily.value = "source-sans";
+    grayscale.value = false;
+    underlineLinks.value = false;
+    fontScale.value = 1;
+  }
+
+  return {
+    contrast,
+    fontFamily,
+    grayscale,
+    underlineLinks,
+    fontScale,
+    changeFont,
+    changeDirection,
+    changeTextContrast,
+    toggleGrayscale,
+    toggleUnderlineLinks,
+    increaseFont,
+    decreaseFont,
+    reset,
+  };
+});
+
+/* export const useAccessibilityStore = defineStore("accessibility", {
   state: (): AccessibilityState => ({ ...DEFAULT_STATE }),
 
   actions: {
@@ -68,3 +140,4 @@ export const useAccessibilityStore = defineStore("accessibility", {
     },
   },
 });
+ */

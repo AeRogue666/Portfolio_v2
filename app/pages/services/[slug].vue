@@ -61,8 +61,8 @@ if (service.value) {
     useSeoMeta({
         title: `${service.value.title} | CodeKorico`,
         ogTitle: `${service.value.title} | CodeKorico`,
-        description: service.value.description,
-        ogDescription: service.value.description,
+        description: service.value.shortDescription,
+        ogDescription: service.value.shortDescription,
         ogImage: `https://codekorico.com${route.path}`,
         ogImageAlt: t('seo.page.description', { pagetitle: service.value?.title }),
         ogImageType: 'image/png',
@@ -98,7 +98,7 @@ if (service.value) {
         }),
         defineService({
             name: service.value.title,
-            description: service.value.description,
+            description: service.value.shortDescription,
             provider: {
                 type: 'Organization',
                 name: 'CodeKorico',
@@ -149,7 +149,7 @@ if (service.value) {
                     {{ service.title }}
                 </h1>
                 <p class="fs-subtitle text-(--text-2) leading-snug">
-                    {{ service.description }}
+                    {{ service.shortDescription }}
                 </p>
             </template>
 

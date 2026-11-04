@@ -1,23 +1,20 @@
 ---
-title: Refonte de site web pour attirer plus de clients
+title: Refonte & modernisation web
 created_at: "2026-02-11"
 updated_at: "2026-09-15"
-description: Modernisez votre site internet pour améliorer votre image, votre visibilité et convertir plus de visiteurs
+shortDescription: Modernisez votre site internet pour améliorer votre image, votre visibilité et convertir plus de visiteurs
+description: 
+  - title: Votre site actuel est devenu obsolète, n'est pas ou plus adapté aux mobiles, ne respecte pas le RGAA ou ne correspond plus à votre image de marque ? Donnez-lui le coup de jeune technique et visuel qu'il mérité !
+    content: Reconstruisons ensemble votre projet sur des bases techniques saines, durables, accessibles et éco-conçues.
+  - children:
+    - title: Modernisation complète
+      content: Design contemporain, architecture fluide et accessible, et sécurisation renforcée des données utilisateurs.
+    - title: Mise aux normes
+      content: Transition fluide avec intégration des critères stricts d'accessibilité numérique (RGAA).
 feed_summary: Votre site est vieillissant ou inefficace ? Transformez-le en outil moderne, rapide et conçu pour générer des clients
-feed_title: Refonte & modernisation web
+feed_title: Refonte & modernisation web pour attirer plus de clients
 accessible_name: la refonte et modernisation web
 locale: fr
-image:
-  alt: 
-  sources:
-    feed:
-      mobile: /images/project/portfolio-v2/mobile.png
-      desktop: /images/project/portfolio-v2/desktop.png
-      tablet: /images/project/portfolio-v2/mobile.png
-    detail:
-      mobile: /images/project/portfolio-v2/mobile.png
-      desktop: /images/project/portfolio-v2/desktop.png
-      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits uniques de refonte de site
     children:

@@ -1,22 +1,19 @@
 ---
-title: Tranquilité pour votre site web
+title: Maintenance - Site web sans souci
 created_at: "2026-02-11"
-description: Un accompagnement complet pour garantir un site sécurisé, performant et toujours opérationnel, sans que vous ayez à vous en occuper.
+shortDescription: Votre site reste sécurisé, rapide et fonctionnel en continu, sans intervention de votre part.
+description: 
+  - title: Un accompagnement complet pour garantir un site sécurisé, performant et toujours opérationnel, sans que vous ayez à vous en occuper.
+    content: Ne redoutez plus les pannes, les bugs. J'assure la surveillance technique et l'évolution continue de votre plateforme pour que vous puissiez vous concentrer sur votre business.
+  - children:
+    - title: Sécurité & Sauvegardes
+      content: Mises à jour régulières des extensions, sauvegardes fréquentes et conformité RGPD continue.
+    - title: Sérénité totale
+      content: Votre vitrine numérique reste rapide, fonctionnelle et disponible 24h/24 pour vos clients.
 feed_summary: Votre site reste sécurisé, rapide et fonctionnel en continu, sans intervention de votre part.
 feed_title: Maintenance - Site web sans souci
 accessible_name: la maintenance de site web
 locale: fr
-image:
-  alt: 
-  sources:
-    feed:
-      mobile: /images/project/portfolio-v2/mobile.png
-      desktop: /images/project/portfolio-v2/desktop.png
-      tablet: /images/project/portfolio-v2/mobile.png
-    detail:
-      mobile: /images/project/portfolio-v2/mobile.png
-      desktop: /images/project/portfolio-v2/desktop.png
-      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits mensuels de maintenance préventive
     children:

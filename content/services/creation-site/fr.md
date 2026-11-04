@@ -1,22 +1,19 @@
 ---
-title: Site web qui génère des clients
+title: Création de site internet
 created_at: "2026-02-11"
-description: Un site clair, rapide et conçu pour transformer vos visiteurs en clients.
+shortDescription: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro.
+description: 
+  - title: Un site professionnel, clair, efficace et sur-mesure pour lancer votre activité.
+    content: Idéal si vous partez de zéro. Je conçois un site rapide, sécurisé et accessible à 100% de vos utilisateurs. Un outil clé en main, sans jargon, conçu pour attirer vos clients 24h/24.
+  - children:
+    - title: Performance & SEO
+      content: Des pages optimisées pour un chargement ultra-rapide et un meilleur référencement.
+    - title: Inclusif dès le départ
+      content: Un site web qui respecte nativement les bonnes pratiques d'accessibilité.
 feed_summary: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro
-feed_title: Création de site
+feed_title: Un site pro et sur-mesure pour lancer votre activité
 accessible_name: la création de site
 locale: fr
-image:
-  alt: 
-  sources:
-    feed:
-      mobile: /images/project/portfolio-v2/mobile.png
-      desktop: /images/project/portfolio-v2/desktop.png
-      tablet: /images/project/portfolio-v2/mobile.png
-    detail:
-      mobile: /images/project/portfolio-v2/mobile.png
-      desktop: /images/project/portfolio-v2/desktop.png
-      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits uniques de création de site
     children:

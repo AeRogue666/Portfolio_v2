@@ -7,10 +7,6 @@ const props = defineProps<{
 
 const accessibilityStore = useAccessibilityStore(),
     { t } = useI18n();
-
-onMounted(() => {
-    accessibilityStore.apply()
-})
 </script>
 
 <template>

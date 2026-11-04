@@ -80,7 +80,6 @@ h2,
 h3,
 h4,
 h5 {
-  color: var(--h, var(--text));
   font-weight: 600;
   letter-spacing: -0.01em;
 } 
@@ -132,6 +131,24 @@ h5 {
 .fs-hero {
   font-size: var(--font-size-hero);
   line-height: 1.1;
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--fluid-space-sm);
+}
+
+.card {
+  margin-bottom: var(--fluid-space-md);
+}
+
+.cta-button {
+  margin: var(--fluid-space-sm);
+  padding: var(--fluid-space-xs);
+}
+
+.nav-links-icon {
+  padding: var(--fluid-space-xs);
 }
 
 /* ============

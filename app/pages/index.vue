@@ -435,7 +435,7 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <ServicesContainer :services="servicesContainerItems" />
+            <ServicesContainer :services="servicesContainerItems" :service-page="false" />
 
             <p class="flex flex-col font-normal lg:text-center w-full text-(--text-2) my-6 sm:px-16 xl:px-48 fs-lead">
                 <span>{{ t('index.services_section.want_more.question') }}</span>
@@ -468,7 +468,7 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <ProcessContainer :elements="expertiseElements" />
+            <ProcessContainer :elements="expertiseElements" :variant="'process'" />
         </IndexSection>
 
         <!-- Section différenciation (ou la fin de la section process) -->
@@ -492,7 +492,7 @@ useSeoMeta(({
                 </p>
             </template>
 
-            <ProcessContainer :elements="differenciationElements" />
+            <ProcessContainer :elements="differenciationElements" :variant="'differentiation'" />
         </IndexSection>
 
         <!-- Partenaires section -->

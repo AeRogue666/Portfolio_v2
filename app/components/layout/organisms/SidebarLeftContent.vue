@@ -23,7 +23,6 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         label: t('sidebar-left.navigation.homepage'),
         icon: "fa7-solid:home",
         to: "/",
-        active: true
     },
     {
         label: t('sidebar-left.navigation.feed'),
@@ -31,24 +30,14 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         to: '/feed',
     },
     {
+        label: t('sidebar-left.navigation.services'),
+        icon: 'fa7-solid:briefcase',
+        to: '/services',
+    },
+    {
         label: t('sidebar-left.navigation.about'),
         icon: 'fa7-solid:user-circle',
         to: '/about',
-    },
-    {
-        label: t('sidebar-left.navigation.accessibility_statement'),
-        icon: "fa7-brands:accessible-icon",
-        to: "/accessibility",
-    },
-    {
-        label: t('sidebar-left.navigation.accessibility_report'),
-        icon: "fa7-solid:newspaper",
-        to: "/accessibility-report",
-    },
-    {
-        label: t('sidebar-left.navigation.problem_report'),
-        icon: 'fa7-solid:warning',
-        to: '/report',
     },
 ]),
     itemsFooterNavigation = computed<NavigationMenuItem[]>(() => [
@@ -66,6 +55,16 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
             label: t('sidebar-left.navigation.accessibility_statement'),
             icon: "fa7-brands:accessible-icon",
             to: "/accessibility",
+        },
+        {
+            label: t('sidebar-left.navigation.accessibility_report'),
+            icon: "fa7-solid:newspaper",
+            to: "/accessibility-report",
+        },
+        {
+            label: t('sidebar-left.navigation.problem_report'),
+            icon: 'fa7-solid:warning',
+            to: '/report',
         },
     ]);
 
@@ -101,12 +100,14 @@ onMounted(() => {
             <div class="flex flex-col justify-center items-center">
                 <NuxtLink to="/" tabindex="0">
                     <NuxtImg id="sidebar-left-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
-                        :alt="t('header.span_title')" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" />
+                        :alt="t('header.span_title')" width="192" height="108"
+                        sizes="xs:100vw sm:100vw md:80vw lg:16rem" :class="grayscale ? 'grayscale-100' : ''"
+                        class="dark:hidden" />
                     <NuxtImg id="sidebar-left-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
-                        :alt="t('header.span_title')" width="192" height="108" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-                        :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" />
+                        :alt="t('header.span_title')" width="192" height="108"
+                        sizes="xs:100vw sm:100vw md:80vw lg:16rem" :class="grayscale ? 'grayscale-100' : ''"
+                        class="hidden dark:block" />
                 </NuxtLink>
             </div>
 
@@ -117,51 +118,58 @@ onMounted(() => {
             <!-- <SendMessageModal /> -->
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:message'"
-                :cta-class="'inline-flex items-center justify-center w-full px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md'" />
+                :cta-class="'inline-flex items-center justify-center w-full px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md whitespace-normal break-words cta-button'" />
 
             <div class="inline-flex items-baseline gap-4">
                 <UTooltip :text="t('sidebar-left.open_github')" aria-hidden="true">
                     <IconButton :variant="'ghost'" :color="'neutral'" :to="'https://github.com/AeRogue666'"
-                        :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:github'" :label="t('sidebar-left.open_github')"
-                        id="button-sidebarleft-github" :class="'size-16'" />
+                        :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:github'"
+                        :label="t('sidebar-left.open_github')" id="button-sidebarleft-github" :class="'size-16'" />
                 </UTooltip>
 
                 <UTooltip :text="t('sidebar-left.open_linkedin')" aria-hidden="true">
                     <IconButton :variant="'ghost'" :color="'neutral'" :to="'https://linkedin.com/codekorico'"
-                        :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:linkedin'" :label="t('sidebar-left.open_linkedin')"
-                        id="button-sidebarleft-linkedin" :class="'size-16'" />
+                        :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:linkedin'"
+                        :label="t('sidebar-left.open_linkedin')" id="button-sidebarleft-linkedin" :class="'size-16'" />
                 </UTooltip>
 
                 <UTooltip :text="t('sidebar-left.open_pollen-scop')" aria-hidden="true">
                     <IconButton :variant="'ghost'" :color="'neutral'"
-                        :to="'https://pollen.coop/entrepreneur/codekorico-developpement-web-accessibilite-formation/'" :target="'_blank'" :size="'size-16'"
-                        :icon="'fa7-solid:handshake'" :label="t('sidebar-left.open_pollen-scop')" id="button-sidebarleft-pollen-scop"
+                        :to="'https://pollen.coop/entrepreneur/codekorico-developpement-web-accessibilite-formation/'"
+                        :target="'_blank'" :size="'size-16'" :icon="'fa7-solid:handshake'"
+                        :label="t('sidebar-left.open_pollen-scop')" id="button-sidebarleft-pollen-scop"
                         :class="'size-16'" />
                 </UTooltip>
             </div>
 
-            <UNavigationMenu highlight-color="neutral" :aria-label="t('sidebar-left.main_nav')" orientation="vertical" :items="itemsNavigation" :ui="{
-                list: 'flex flex-col gap-3', // ul
-                item: '', // li
-                link: 'text-(--text-2) data-active:bg-(--bg-3) data-active:text-(--text) hover:bg-(--bg-2) hover:text-(--text) transition-colors rounded-lg px-3 py-2', // a
-                linkLeadingIcon: 'text-(--text-muted) data-active:text-(--text)',
-                linkLabel: 'text-base leading-relaxed truncate max-w-[65ch] fs-body',
-            }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
+            <UNavigationMenu highlight-color="neutral" :aria-label="t('sidebar-left.main_nav')" orientation="vertical"
+                :items="itemsNavigation" :ui="{
+                    list: 'flex flex-col gap-3', // ul
+                    item: '', // li
+                    link: 'text-(--text-2) data-active:bg-(--bg-3) data-active:text-(--text) hover:bg-(--bg-2) hover:text-(--text) transition-colors rounded-lg px-3 py-2 nav-links', // a
+                    linkLeadingIcon: 'text-(--text-muted) data-active:text-(--text) nav-links-icon',
+                    linkLabel: 'leading-relaxed whitespace-normal break-words max-w-[65ch] fs-body',
+                }" class="m-0 px-2 py-8 lg:pt-2 bg-transparent opacity-100 data-[orientation=vertical]:w-full" />
 
-            <footer class="flex flex-col justify-center items-center w-full mt-auto py-6 shrink-0">
-                    <UNavigationMenu highlight-color="neutral" orientation="horizontal" :items="itemsFooterNavigation"
-                        :ui="{
-                            list: 'gap-3 flex-col', // ul
-                            item: '', // li
-                            link: 'data-active:bg-(--bg-3) data-active:text-(--text) text-(--text-2) hover:bg-(--bg-2) transition-colors rounded-lg px-2 py-1', // a
-                            linkLeadingIcon: 'text-(--text-muted)',
-                            linkLabel: 'text-sm leading-relaxed whitespace-normal break-words max-w-[65ch]',
-                        }" class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full fs-body" />
+            <USeparator orientation="horizontal" position="start" label="Footer" class="my-2 opacity-100" :ui="{
+                label: 'fs-small text-(--text-3)',
+                border: 'border-(--border-subtle)'
+            }" />
 
-                    <p class="fs-small text-(--text-3)">
-                        Copyright Aureldev - CodeKorico © {{ new Date().getUTCFullYear() }}
-                    </p>
-                </footer>
+            <footer class="flex flex-col w-full mt-auto py-6 shrink-0">
+                <UNavigationMenu highlight-color="neutral" orientation="vertical" :items="itemsFooterNavigation" :ui="{
+                    list: 'flex flex-col gap-3', // ul
+                    item: '', // li
+                    link: 'text-(--text-2) data-active:bg-(--bg-3) data-active:text-(--text) hover:bg-(--bg-2) hover:text-(--text) transition-colors rounded-lg px-3 py-2 nav-links', // a
+                    linkLeadingIcon: 'text-(--text-muted) data-active:text-(--text) nav-links-icon',
+                    linkLabel: 'leading-relaxed whitespace-normal break-words max-w-[65ch] fs-body',
+                }"
+                    class="m-0 px-2 py-8 lg:pt-2 lg:pb-0 bg-transparent opacity-100 data-[orientation=vertical]:w-full" />
+
+                <p class="fs-small text-(--text-3)">
+                    Copyright Aureldev - CodeKorico © {{ new Date().getUTCFullYear() }}
+                </p>
+            </footer>
         </UContainer>
     </div>
 </template>

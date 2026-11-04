@@ -100,13 +100,13 @@
         --font-size-hero -> <h1> de la landing page (index.vue) uniquement
     */
   --text-scale: 1;
-  --font-size-small: clamp(0.75rem, calc(0.875rem * var(--text-scale)), 1rem);
-  --font-size-body: clamp(0.875rem, calc(1rem * var(--text-scale)), 1.25rem);
-  --font-size-lead: clamp(1rem, calc(1.25rem * var(--text-scale)), 1.625rem);
-  --font-size-subtitle: clamp(1.25rem, calc(1.5rem * var(--text-scale)), 2rem);
-  --font-size-title: clamp(1.5rem, calc(2rem * var(--text-scale)), 2.5rem);
-  --font-size-heading: clamp(2rem, calc(2.25rem * var(--text-scale)), 3rem);
-  --font-size-hero: clamp(2rem, calc(3rem * var(--text-scale)), 4rem);
+  --font-size-small: clamp(0.75rem, calc(0.875rem * var(--text-scale)), 1.75rem);
+  --font-size-body: clamp(0.875rem, calc(1rem * var(--text-scale)), 2rem);
+  --font-size-lead: clamp(1rem, calc(1.25rem * var(--text-scale)), 2.5rem);
+  --font-size-subtitle: clamp(1.25rem, calc(1.5rem * var(--text-scale)), 3rem);
+  --font-size-title: clamp(1.5rem, calc(2rem * var(--text-scale)), 4rem);
+  --font-size-heading: clamp(2rem, calc(2.25rem * var(--text-scale)), 4.5rem);
+  --font-size-hero: clamp(2rem, calc(3rem * var(--text-scale)), 6rem);
 
   /* Spacing scale */
   --space-xs: 0.5rem;
@@ -115,6 +115,14 @@
   --space-lg: 1.5rem;
   --space-xl: 2rem;
   --space-2xl: 3rem;
+
+  /* Espaces dynamiques (à utilier pour les composants : marges de cartes, gaps de boutons, liens) */
+  --fluid-space-xs: calc(var(--space-xs) * var(--text-scale));
+  --fluid-space-sm: calc(var(--space-sm) * var(--text-scale));
+  --fluid-space-md: calc(var(--space-md) * var(--text-scale));
+  --fluid-space-lg: calc(var(--space-lg) * var(--text-scale));
+  --fluid-space-xl: calc(var(--space-xl) * var(--text-scale));
+  --fluid-space-2xl: calc(var(--space-2xl) * var(--text-scale));
 
   /* Border radius */
   --radius-sm: 0.5rem; /* Petits éléments */

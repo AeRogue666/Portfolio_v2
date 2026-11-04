@@ -5,8 +5,22 @@ import { responsiveImageSchema } from "./image";
 export const serviceSchema = z.object({
   ...metadataSchema,
   title: z.string().default(""),
-  description: z.string().default(""),
-
+  shortDescription: z.string().default(""),
+  description: z
+    .array(
+      z.object({
+        title: z.string().default(""),
+        content: z.string().default(""),
+        children: z.array(
+          z
+            .object({
+              title: z.string().default(""),
+              content: z.string().default(""),
+            })
+            .optional(),
+        ),
+      }),
+    ).optional(),
   feed_title: z.string().default(""),
   feed_summary: z.string().default(""),
   accessible_name: z.string().default(""),

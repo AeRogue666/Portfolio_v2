@@ -1,22 +1,19 @@
 ---
 title: Formation numérique simple pour professionnels et particuliers
 created_at: "2026-02-11"
-description: Apprenez à utiliser les outils numériques simplement et efficacement
+shortDescription: Gagnez en autonomie et maîtrisez vos outils digitaux du quotidien, ainsi que l'Intelligence Artificielle.
+description:
+  - title: Gagnez en autonomie et maîtrisez vos outils digitaux du quotidien, ainsi que l'Intelligence Artificielle.
+    content: Besoin de dompter votre ordinateur, de sécuriser vos démarches, de piloter votre site ou d'intégrer une IA de façon éthique et responsable dans votre travail ? Que vous soyez un particulier (débutant, senior) ou un professionnel, je vous accompagne pas à pas et avec pédagogie pour faire du numérique un véritable allié.
+  - children:
+      - title: Pour tous (particuliers & seniors)
+        content: Prise en main du matériel (ordinateur, tablette, téléphone), démarches en ligne, visios familiales, et prévention des arnaques.
+      - title: Pour les pros & entreprises
+        content: Gestion autonome de votre site web, outils cloud collaboratifs, utilisation sécurisée de l'IA sans fuite de données, et prévention des arnaques au travail.
 feed_title: Formation numérique
-feed_summary: Gagnez en autonomie avec le digital.
+feed_summary: Gagnez en autonomie et maîtrisez vos outils digitaux du quotidien, ainsi que l'Intelligence Artificielle.
 accessible_name: la formation numérique
 locale: fr
-image:
-  alt: 
-  sources:
-    feed:
-      mobile: /images/project/portfolio-v2/mobile.png
-      desktop: /images/project/portfolio-v2/desktop.png
-      tablet: /images/project/portfolio-v2/mobile.png
-    detail:
-      mobile: /images/project/portfolio-v2/mobile.png
-      desktop: /images/project/portfolio-v2/desktop.png
-      tablet: /images/project/portfolio-v2/mobile.png
 packages:
   - title: Forfaits de Formations Professionnelles (De 1 à 4 personnes)
     children:

@@ -1,9 +1,9 @@
 export default defineNuxtPlugin(() => {
     const store = useAccessibilityStore();
 
-    store.apply()
+    // store.apply()
 
     store.$subscribe(() => {
-        store.apply()
+        // store.apply()
     })
 });

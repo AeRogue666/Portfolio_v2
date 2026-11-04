@@ -11,7 +11,7 @@ const isOpen = ref(false);
 <template>
     <USlideover v-model="isOpen" side="left" id="sidebar-left-mobile" :title="t('sidebar-left.title')"
         :description="t('sidebar-left.description')" class="lg:hidden" :ui="{
-            content: 'w-screen sm:max-w-md h-screen bg-(--bg)',
+            content: 'w-[calc(100vw-calc(3rem/var(--text-scale)))] sm:max-w-2xl h-screen bg-(--bg)',
             body: 'p-0',
         }">
         <IconButton ref="sidebarLeftButtonMobileRef" id="button-sidebarleft-mobile" :variant="'ghost'"
