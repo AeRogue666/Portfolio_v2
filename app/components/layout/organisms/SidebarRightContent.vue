@@ -38,6 +38,7 @@ const grayscale = computed({
         set: () => accessibilityStore.toggleUnderlineLinks(),
     });
 
+const fontScale = computed(() => accessibilityStore.fontScale);
 const switching = ref(false);
 async function changeLanguage(newLocale: string) {
     if (newLocale === locale.value) return
@@ -61,10 +62,10 @@ async function changeLanguage(newLocale: string) {
         </template>
         <template #body>
             <UColorModeSelect :ui="{
-                base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
+                base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3) leading-relaxed whitespace-normal wrap-break-word',
                 content: 'bg-(--bg-2)',
-                value: 'fs-body text-(--text)',
-                item: 'fs-body text-(--text)',
+                value: 'fs-body text-(--text) leading-relaxed whitespace-normal wrap-break-word',
+                item: 'fs-body text-(--text) leading-relaxed whitespace-normal wrap-break-word',
             }" class="ring-transparent transitions-color w-48" />
         </template>
     </SidebarSelectorBase>
@@ -76,11 +77,13 @@ async function changeLanguage(newLocale: string) {
         <template #body>
             <ULocaleSelect :model-value="locale" :locales="locales" @update:model-value="changeLanguage"
                 :disabled="switching" color="neutral" size="xl" :ui="{
-                    base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
-                    content: 'bg-(--bg-2)',
-                    value: 'fs-body text-(--text)',
-                    item: 'fs-body text-(--text)'
-                }" class="ring-transparent transitions-color w-48" />
+                    viewport: fontScale >= 2 ? 'w-max' : '',
+                    base: fontScale > 1.5 ? 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3) leading-relaxed whitespace-normal wrap-break-word sidebar-select' : 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3) leading-relaxed whitespace-normal wrap-break-word',
+                    content: fontScale > 1.5 ? 'w-[33vw] bg-(--bg-2)' : 'bg-(--bg-2)',
+                    value: 'fs-body text-(--text) leading-relaxed whitespace-normal wrap-break-word',
+                    item: 'fs-body text-(--text) leading-relaxed whitespace-normal wrap-break-word gap-[0.5em]',
+                    leading: fontScale >= 1.75 ? 'hidden' : 'flex-col',
+                }" class="ring-transparent transitions-color w-48 leading-relaxed whitespace-normal wrap-break-word" />
         </template>
     </SidebarSelectorBase>
 
@@ -100,10 +103,10 @@ async function changeLanguage(newLocale: string) {
         </template>
         <template #body>
             <USelect v-model="fontFamily" :items="fontFamilyItems" color="neutral" size="xl" :ui="{
-                base: 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3)',
-                content: 'bg-(--bg-2)',
-                value: 'fs-body text-(--text)',
-                item: 'fs-body text-(--text)'
+                base: fontScale > 1 ? 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3) leading-relaxed whitespace-normal wrap-break-word sidebar-select w-[55vw]' : 'bg-(--bg-2) fs-body text-(--text) hover:bg(--bg-3) focus:bg(--bg-3) leading-relaxed whitespace-normal wrap-break-word',
+                content: fontScale > 1 ? 'w-full bg-(--bg-2)' : 'bg-(--bg-2)',
+                value: 'fs-body text-(--text) leading-relaxed whitespace-normal wrap-break-word',
+                item: 'fs-body text-(--text) leading-relaxed whitespace-normal wrap-break-word'
             }" class="ring-transparent transitions-color w-48" />
         </template>
     </SidebarSelectorBase>
@@ -141,6 +144,6 @@ async function changeLanguage(newLocale: string) {
     </SidebarSelectorBase>
 
     <UButton :label="t('sidebar-right.reset_params')" variant="soft"
-        class="justify-center items-center w-full md:w-[50%] h-auto bg-(--bg-2) text-(--text) fs-body hover:bg-(--accent-hover) hover:text-white active:bg-elevated focus:outline-none focus-visible:bg-(--bg-3) focus:ring-2 focus:ring-inverted hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent px-2 py-2"
+        class="justify-center items-center w-full md:w-[50%] h-auto bg-(--bg-2) text-(--text) fs-body hover:bg-(--accent-hover) hover:text-white active:bg-elevated focus:outline-none focus-visible:bg-(--bg-3) focus:ring-2 focus:ring-inverted hover:disabled:bg-transparent dark:hover:disabled:bg-transparent hover:aria-disabled:bg-transparent dark:hover:aria-disabled:bg-transparent px-2 py-2 mb-6"
         @click="accessibilityStore.reset()" />
 </template>

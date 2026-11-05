@@ -6,8 +6,11 @@ defineProps<{
 }>();
 
 const sectionRef = ref<HTMLElement | null>(null),
-    isHeroActive = ref<boolean | undefined>(true);
+    divRef = ref<HTMLElement | null>(null),
+    isHeroActive = ref<boolean | undefined>(true),
+    isCarouselActive = ref<boolean | undefined>(false);
 let landingObserver: IntersectionObserver | null = null;
+let divObserver: IntersectionObserver | null = null;
 
 onMounted(() => {
     if (sectionRef.value) {
@@ -19,11 +22,23 @@ onMounted(() => {
 
         landingObserver.observe(sectionRef.value);
     }
+    if (divRef.value) {
+        divObserver = new IntersectionObserver(([entry]) => {
+            isCarouselActive.value = entry?.isIntersecting;
+        }, {
+            threshold: 0
+        });
+
+        divObserver.observe(divRef.value);
+    }
 });
 
 onUnmounted(() => {
     if (landingObserver) {
         landingObserver.disconnect();
+    }
+    if (divObserver) {
+        divObserver.disconnect();
     }
 });
 </script>
@@ -36,7 +51,7 @@ onUnmounted(() => {
 
         <div
             class="flex flex-col lg:flex-row justify-between items-center w-full h-auto mt-[6vh] gap-3 overflow-hidden">
-            <div class="flex flex-col items-center lg:w-3/5">
+            <div class="flex flex-col items-center lg:w-3/5 mb-6">
                 <div class="w-full lg:w-1/4 h-95 absolute top-20 lg:top-25 left-1/2 lg:left-[30%] landing-halo pointer-events-none z-1"
                     aria-hidden="true">
                 </div>
@@ -49,9 +64,11 @@ onUnmounted(() => {
                 </div>
             </div>
 
-            <div class="w-full lg:w-2/5 contents transition-opacity duration-300" :class="{ 'pointer-events-none opacity-40 select-none' : !isHeroActive }" :aria-hidden="!isHeroActive ? 'true' : 'false'">
-                <carousel-departements :active="isHeroActive" />
+            <div class="w-full lg:w-2/5 transition-opacity duration-300" :class="{ 'pointer-events-none opacity-40 select-none' : !isHeroActive }" :aria-hidden="!isHeroActive ? 'true' : 'false'">
+                <carousel-departements :carousel-active="isCarouselActive" />
             </div>
+
+            <div ref="divRef" aria-hidden="true"></div>
         </div>
 
         <!-- B - Vague SVG de séparation avec la section suivante -->

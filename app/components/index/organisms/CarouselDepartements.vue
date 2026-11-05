@@ -6,10 +6,10 @@ import HauteLoireSVG from '../molecules/HauteLoireSVG.vue';
 
 withDefaults(
     defineProps<{
-        active?: boolean;
+        carouselActive?: boolean;
     }>(),
     {
-        active: true
+        carouselActive: true,
     }
 );
 
@@ -47,13 +47,13 @@ const prevSlide = () => {
                     class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-700 ease-in-out gap-5">
                     <component :is="dep.component" class="w-10/12 h-auto max-h-[70vh]"
                         :class="i === currentIndex ? 'opacity-100 animate-pulse-5s' : 'opacity-0'" />
-                    <span v-if="i === currentIndex && active" class="fixed bottom-55 fs-body font-normal">
+                    <span v-if="i === currentIndex && (carouselActive)" class="fixed bottom-55 fs-body font-normal">
                         {{ dep.name }}
                     </span>
                 </div>
 
                 <div
-                    class="flex items-center fixed lg:absolute top-[75vh] lg:top-150 left-auto lg:left-90 mt-auto px-4 py-2 gap-6 pointer-events-auto backdrop-blur-md rounded-full border border-white/10" v-if="active">
+                    class="flex items-center fixed lg:absolute top-[75vh] lg:top-150 left-auto lg:left-90 mt-auto px-4 py-2 gap-6 pointer-events-auto backdrop-blur-md rounded-full border border-white/10" v-if="carouselActive">
                     <UButton icon="fa7-solid-chevron-left" variant="ghost"
                         class="p-2 rounded-full active:scale-95 transition-all text-white"
                         :aria-label="`${t('index.landing_section.department_prev')}: ${departements[currentIndex === 0 ? 2 : currentIndex]?.name}`"

@@ -9,7 +9,6 @@ const props = defineProps<{
 const { t } = useI18n(),
     accessibilityStore = useAccessibilityStore();
 
-const grayscale = computed(() => accessibilityStore.grayscale);
 const activeIndex = ref<number | null>(0);
 
 function toggleService(index: number) {
@@ -21,7 +20,7 @@ function toggleService(index: number) {
     <ul class="flex flex-col w-full max-w-6xl mx-auto px-4 py-12 space-y-0" aria-label="Liste de mes prestations">
         <li v-for="(service, i) in services" :key="i" :class="[
             'flex flex-col py-6 border-b border-(--text)/10 relative transition-all duration-500 ease-in-out',
-            activeIndex === i ? 'bg-(--text)/5 px-4 rounded-xl border-transparent' : ''
+            activeIndex === i ? 'bg-(--bg) px-4 rounded-xl border-transparent' : ''
         ]">
             <UButton type="button" variant="ghost" color="neutral" :aria-expanded="activeIndex === i ? 'true' : 'false'"
                 :aria-controls="`service-panel-${service.slug}`" @click="toggleService(i)"
@@ -80,7 +79,7 @@ function toggleService(index: number) {
                     <div
                         class="flex flex-row items-center justify-between md:justify-end flex-1 m-2 lg:mb-6 w-full md:w-auto gap-6 md:gap-8">
                         <NuxtLink :to="`/services/${service.slug}`"
-                            class="inline-flex items-center px-5 py-2.5 text-(--text-2) font-medium bg-transparent !fs-body border border-(--text)/30 transition-all duration-300 lg:opacity-0 lg:translate-x-4 rounded-lg gap-2 group-hover:opacity-100 group-hover:translate-x-0 focus-visible:opacity-100 focus-visible:translate-x-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) hover:bg-(--text) hover:text-(--bg) hover:border-transparent motion-reduce:lg:translate-x-0 nav-links"
+                            class="inline-flex items-center px-5 py-2.5 text-(--text) font-medium bg-transparent fs-body border border-(--text)/30 transition-all duration-300 opacity-100 lg:translate-x-4 rounded-lg gap-2 group-hover:translate-x-0 focus-visible:translate-x-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) hover:bg-(--text) hover:text-(--bg) hover:border-transparent motion-reduce:lg:translate-x-0 nav-links"
                             :aria-label="t('index.services_section.learn_more_about', { service: service.accessible_name || (service.title.toLowerCase() ?? service.feed_title?.toLowerCase()) })">
                             {{ t('index.services_section.learn_more') }}
                             <UIcon name="fa7-solid:arrow-right"

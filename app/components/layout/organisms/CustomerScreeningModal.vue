@@ -153,7 +153,7 @@ onMounted(() => {
         }">
         <template #default>
             <UButton aria-haspopup="dialog" aria-controls="contact-modal" name="button-send-message" size="xl"
-                :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body'"
+                :class="props.ctaClass || 'bg-(--bg-3) text-(--text) fs-body leading-relaxed whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none'"
                 :icon="props.ctaIcon || 'fa7-solid:message'" :label="props.ctaLabel || 'Démarrer votre projet'"
                 @click="handleCtaClick" />
         </template>

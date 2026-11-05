@@ -151,6 +151,10 @@ h5 {
   padding: var(--fluid-space-xs);
 }
 
+.sidebar-select {
+  padding: var(--fluid-space-xs);
+}
+
 /* ============
 Links - styles accessibles
 ============ */

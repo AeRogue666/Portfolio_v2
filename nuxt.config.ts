@@ -92,7 +92,7 @@ export default defineNuxtConfig({
       contentSecurityPolicy: {
         "default-src": ["'self'"],
         "script-src": isDev
-        ? ["'self'", "'unsafe-inline'", "'wasm-unsafe-eval'", "http://localhost:3000", "ws://localhost:3000"]
+        ? ["'self'", "'unsafe-inline'", "'wasm-unsafe-eval'", "http://localhost:3000", "ws://localhost:3000", "blob:"]
         : ["'self'", "'strict-dynamic'", "'nonce-{{nonce}}'", "'wasm-unsafe-eval'"],
         "script-src-attr": isDev
         ? ["'unsafe-inline'"]
@@ -100,7 +100,7 @@ export default defineNuxtConfig({
         "style-src": ["'self'", "'unsafe-inline'"],
         "img-src": ["'self'","data:", "https://github.com", "https://avatars.githubusercontent.com"],
         "connect-src": isDev
-        ? ["'self'", "http://localhost:3000", "ws://localhost:3000"]
+        ? ["'self'", "http://localhost:3000", "ws://localhost:3000", "https://api.iconify.design", "https://api2.iconify.design",]
         : ["'self'"],
         "upgrade-insecure-requests": !isDev,
       },
