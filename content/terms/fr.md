@@ -18,13 +18,13 @@ Pour en savoir plus, toutes les mentions légales sont accessibles sur le site �
 
 Le Site permet à l'Utilisateur un accès gratuit aux services suivants:
 
-- Visualiser et lire des contenus et articles issues de projets, technologies et avancées techniques et technologiques dans le domaine du développement web.
+- Visualiser et lire des contenus et articles issus de projets, technologies et avancées techniques et technologiques dans le domaine du développement web.
 - Le site est accessible gratuitement en tout lieu à tout Utilisateur ayant un accès à Internet.
-- Tous les frais supportées par l'Utilisateur pour accéder au service (matériel informatique, logiciels, connexion Internet, etc.) sont à sa charge.
+- Tous les frais supportés par l'Utilisateur pour accéder au service (matériel informatique, logiciels, connexion Internet, etc.) sont à sa charge.
 
 ## Article 3: Collecte des données
 
-Le Site assure à l'Utilisateur une collecte et un traitement des données personnelles dans le respect de privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers aux libertés et dans le respect de la réglementation applicable en matière de traitement des données à caractère personnel conformément au règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 (ci-après, ensemble, la "Règlementation applicable en matière de protection des Données à caractère personnel").
+Le Site assure à l'Utilisateur une collecte et un traitement des données personnelles dans le respect de la vie privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers aux libertés et dans le respect de la réglementation applicable en matière de traitement des données à caractère personnel conformément au règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 (ci-après, ensemble, la "Règlementation applicable en matière de protection des Données à caractère personnel").
 
 En vertu de la Règlementation applicable en matière de protection des Données à caractère personnel, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur peut exercer ce droit :
 
@@ -43,14 +43,14 @@ Il est rappelé conformément à l'article L122-5 du Code de propriété intelle
 
 ## Article 5: Responsabilité
 
-Les sources des informations diffusées sur le Site sont reputées fiables mais le site ne garantit pas qu'il soit exempt de défauts, d'erreurs ou d'omissions.
+Les sources des informations diffusées sur le Site sont reputées fiables, mais le site ne garantit pas qu'il soit exempt de défauts, d'erreurs ou d'omissions.
 
 Les informations communiquées sont présentées à titre indicatif et général sans valeur contractuelle.
-Malgré des mises à jour régulières, le Site ne peut être tenu responsable de la modification des dispositions administratives et juridiques survenant après la publication. De même, le site ne peut être tenue responsable de l'utilisation et de l'interprétation de l'information contenue dans ce site.
+Malgré des mises à jour régulières, le Site ne peut être tenu responsable de la modification des dispositions administratives et juridiques survenant après la publication. De même, le site ne peut être tenu responsable de l'utilisation et de l'interprétation de l'information contenue dans ce site.
 
 Le Site ne peut être tenu pour responsable d'éventuels virus qui pourraient infecter l'ordinateur ou tout matériel informatique de l'Internaute, suite à une utilisation, à l'accès, ou au téléchargement provenant de ce site.
 
-La responsabilité du site ne peut être engagée en cas de force majeure ou du fait imprévisible et insurmontable d'u tiers.
+La responsabilité du site ne peut être engagée en cas de force majeure ou du fait imprévisible et insurmontable d'un tiers.
 
 ## Article 6: Liens hypertextes
 
@@ -74,7 +74,7 @@ Ces technologies nous permettent de :
 Pourquoi n'y a-t-il pas de bandeau d'acceptation ou de refus des cookies ?
 
 Car nous n'utilisons pas de cookies nécessitant votre approbation préalable.
-Les cookies et traceurs utilisés sur notre site sont des cookies dit essentiels cet à dire des cookies propriétaires de session nécessaires au fonctionnement du site ou des services demandés en ligne, comme renforcer la sécurité du site, mémoriser les identifiants de connexion ou les préférences utilisateurs, et à faciliter la communication entre ce dernier et le propriétaire du site ou de la plateforme.
+Les cookies et traceurs utilisés sur notre site sont des cookies dits essentiels c'est-à-dire des cookies propriétaires de session nécessaires au fonctionnement du site ou des services demandés en ligne, comme renforcer la sécurité du site, mémoriser les identifiants de connexion ou les préférences utilisateurs, et à faciliter la communication entre ce dernier et le propriétaire du site ou de la plateforme.
 
 En naviguant sur le site, l'Utilisateur les accepte.
 

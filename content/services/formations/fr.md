@@ -9,7 +9,7 @@ description:
       - title: Pour tous (particuliers & seniors)
         content: Prise en main du matériel (ordinateur, tablette, téléphone), démarches en ligne, visios familiales, et prévention des arnaques.
       - title: Pour les pros & entreprises
-        content: Gestion autonome de votre site web, outils cloud collaboratifs, utilisation sécurisée de l'IA sans fuite de données, et prévention des arnaques au travail.
+        content: Gestion autonome de votre site web, outils cloud collaboratifs, utilisation sécurisée de l'IA sans fuite de données et prévention des arnaques au travail.
 feed_title: Formation numérique
 feed_summary: Gagnez en autonomie et maîtrisez vos outils digitaux du quotidien, ainsi que l'Intelligence Artificielle.
 accessible_name: la formation numérique
@@ -17,26 +17,26 @@ locale: fr
 packages:
   - title: Forfaits de Formations Professionnelles (De 1 à 4 personnes)
     children:
-      - title: A l'heure
+      - title: À l'heure
         description: +15€ H.T par personne supplémentaire
         price: 70€/h
-      - title: A la Demi-journée
+      - title: À la Demi-journée
         description: +40€ H.T par personne supplémentaire (soit ~13.3€/h H.T)
         price: 200€
-      - title: A la Journée
+      - title: À la Journée
         description: +60€ H.T par personne supplémentaire (soit ~8.57€/h H.T)
         price: 400€
   - title: Forfaits de Formations Particuliers
     children:
-      - title: A l'heure
+      - title: À l'heure
         description: +15€ TTC par personne supplémentaire
         price: 75€/h
         ttc: true
-      - title: Demi-journée
+      - title: À la Demi-journée
         description: +45€ TTC par personne supplémentaire (soit 15€/h TTC)
         price: 225€
         ttc: true
-      - title: Journée
+      - title: À la Journée
         description: +75€ TTC par personne supplémentaire (soit ~10.714€/h TTC)
         price: 450€
         ttc: true
@@ -93,7 +93,7 @@ Vous utilisez vos outils numériques avec confiance, sans stress et sans dépend
 
 Choisissez la formation qui vous correspond.
 
-### Formations numérique de base
+### Formations numériques de base
 
 - Utiliser un ordinateur, un smartphone, une tablette
 -> Découverte et prise en main
@@ -106,7 +106,7 @@ Choisissez la formation qui vous correspond.
 
 Idéal pour : débutants, seniors, personnes peu à l'aise avec le numérique.
 
-### Formation outil du quotidien
+### Formation outils du quotidien
 
 - Utiliser les outils bureautiques
 - Organiser ses fichiers

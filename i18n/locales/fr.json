@@ -82,7 +82,7 @@
   "seo": {
     "home": {
       "title": "CodeKorico - Création de sites internet Accessibles",
-      "description": "Création de sites internet accessibles, évolutifs et centré sur l'utilisateur avec Wordpress, WooCommerce, Shopify, Nuxt ou Vue en Ardèche, Drôme et Auvergne Rhône-Alpes."
+      "description": "Création de sites internet accessibles, évolutifs et centrés sur l'utilisateur avec Wordpress, WooCommerce, Shopify, Nuxt ou Vue en Ardèche, Drôme et Auvergne Rhône-Alpes."
     },
     "feed": {
       "title": "Fil d'actualité - CodeKorico",
@@ -130,7 +130,7 @@
           "title": "Avoir un site qui vous permet de gagner en visibilité, crédibilité et notoriété."
         },
         "2": {
-          "title": "Comprendre votre site que vous saurez enfin en mesure de prendre en main et de faire évoluer en même temps que votre business."
+          "title": "Comprendre votre site que vous serez enfin en mesure de prendre en main et de faire évoluer en même temps que votre business."
         },
         "3": {
           "title": "Maîtriser un outil qui centralise vos activités et vous permet de trouver des clients 24h sur 24, 7 jours sur 7."
@@ -149,16 +149,16 @@
       "learn_more_about": "En savoir plus sur {service}",
       "want_more": {
         "question": "Vous souhaitez créer votre site par vous-même mais ne savez pas par où commencer ?",
-        "answer": "N'hésitez pas à me contacter, je serais ravis d'en discuter avec vous !"
+        "answer": "N'hésitez pas à me contacter, je serais ravi d'en discuter avec vous !"
       }
     },
     "expertise_section": {
       "tag": "Déroulé d'un projet",
       "title": "Mon expertise",
-      "description": "Mais dites moi, comment ça se passe ?",
+      "description": "Mais dites-moi, comment ça se passe ?",
       "process": {
         "1": {
-          "title": "Etude de vos objectifs",
+          "title": "Étude de vos objectifs",
           "description": "On échange sur votre besoin."
         },
         "2": {
@@ -167,14 +167,14 @@
         },
         "3": {
           "title": "Let's work!",
-          "description": "Je crée ou améliore votre site et vous tiens au courant sur son avancée."
+          "description": "Je crée ou améliore votre site et vous tiens au courant de son avancée."
         },
         "4": {
           "title": "Test In Real Life",
           "description": "On teste en conditions réelles et on optimise ensemble."
         },
         "5": {
-          "title": "Suivis après vente",
+          "title": "Suivi après vente",
           "description": "Le site est désormais à vous mais je vous accompagne si besoin."
         }
       }
@@ -190,15 +190,15 @@
         },
         "2": {
           "title": "Accessibilité : votre site est accessible à tous",
-          "description": "A quoi bon réaliser un site si personne ne peux l'utiliser ?"
+          "description": "À quoi bon réaliser un site si personne ne peut l'utiliser ?"
         },
         "3": {
           "title": "Performance : site rapide et correctement référencé",
-          "description": "Si rapide que même Usain Bolt est à la traine !"
+          "description": "Si rapide que même Usain Bolt est à la traîne !"
         },
         "4": {
           "title": "Explications simples, sans jargon",
-          "description": "Toujours avec pédagogie, je vous explique avec un vocabulaire adapté car je le sais, vous n'êtes pas Ingénieur(e) en informatique."
+          "description": "Toujours avec pédagogie, je vous explique avec un vocabulaire adapté car je le sais, vous n'êtes pas ingénieur(e) en informatique."
         },
         "5": {
           "title": "Tout est réalisé et hébergé localement",
@@ -221,9 +221,9 @@
         "2": {
           "tag": "Modèle Coopératif",
           "title": "Pollen SCOP",
-          "description": "Derrière CodeKorico, il y a un entrepreneur, mais aussi un collectif. C'est pour vous garantir un accompagnement honnête, transparent et basé sur l'entraide que j'ai fais le choix de rejoindre Pollen.",
+          "description": "Derrière CodeKorico, il y a un entrepreneur, mais aussi un collectif. C'est pour vous garantir un accompagnement honnête, transparent et basé sur l'entraide que j'ai fait le choix de rejoindre Pollen.",
           "image_alt": "Logo de la CAE Pollen SCOP",
-          "header_title": "CodeKorico est sous contrat CAPE et membre de Pollen SCOP"
+          "header_title": "CodeKorico est sous contrat CAPE et membre de Pollen SCOP."
         }
       }
     },
@@ -282,7 +282,7 @@
       "project": "Projet",
       "experiment": "Expérience",
       "about": "A propos",
-      "pinned": "Epinglé",
+      "pinned": "Épinglé",
       "client": "Client",
       "note": "Note",
       "read": "Lecture",
@@ -295,7 +295,7 @@
   },
   "project": {
     "published_on": "Publié le",
-    "role": "Role",
+    "role": "Rôle",
     "stack": "Stack",
     "context": "Contexte",
     "problem": "Le problème",
@@ -353,12 +353,12 @@
   },
   "report": {
     "title": "Signaler un incident",
-    "description": "Problème d'accessibilité, bug ou retour sur une fonctionnalitée",
+    "description": "Problème d'accessibilité, bug ou retour sur une fonctionnalité",
     "issue": {
       "accessibility": "Accessibilité",
       "issue": "Problème",
       "bug": "Bug",
-      "feedback": "Retour sur une fonctionnalitée",
+      "feedback": "Retour sur une fonctionnalité",
       "other": "Autre"
     },
     "state": {
@@ -382,7 +382,7 @@
   },
   "accessibility-report": {
     "test_environment": {
-      "keyboard_navigation": "Navigation clavier exhaustive (Tab, Echap, Entrer)"
+      "keyboard_navigation": "Navigation clavier exhaustive (Tab, Échap, Entrée)"
     }
   },
   "client": {
@@ -490,7 +490,7 @@
     "formations": "Formation au numérique",
     "warning": {
       "title": "Important",
-      "description": "Les tarifs indiqués sur cette page sont d'ordre indicatifs et ne représente en aucun cas la réalité. Un devis sur la création, l'optimisation ou la maintenance d'un site internet s'étudie au cas par cas en fonction de vos besoins et demandes. Il vous ait possible de supprimer certaines fonctionnalités pour alléger le tarif ou au contraire, ajouter de nouvelles fonctions pour étoffer votre projet."
+      "description": "Les tarifs indiqués sur cette page sont d'ordre indicatif et ne représentent en aucun cas la réalité. Un devis sur la création, l'optimisation ou la maintenance d'un site internet s'étudie au cas par cas en fonction de vos besoins et demandes. Il vous est possible de supprimer certaines fonctionnalités pour alléger le tarif ou au contraire, ajouter de nouvelles fonctions pour étoffer votre projet."
     },
     "price_starting_at": "A partir de",
     "on_estimate": "Sur devis"

@@ -2,12 +2,12 @@
 title: Mentions légales
 description: Mentions légales obligatoires pour la confiance en l'économie numérique
 created_at: 2026-03-07
-updated_at: 2026-25-08
+updated_at: 2026-08-25
 ---
 
 Conformément aux dispositions de la loi n°2004-575 du 21 juin 2004 pour la Confiance en l'économie numérique, il est porté à la connaissance des utilisateurs et visiteurs, ci-après l'"**Utilisateur**", du site codekorico.com, ci-après le "**Site**", les présentes mentions légales.
 
-La connexion et la navigation sur le Site par l'Utilisateur implique acceptation intégrale et sans réserve des présentes mentions légales.
+La connexion et la navigation sur le Site par l'Utilisateur impliquent acceptation intégrale et sans réserve des présentes mentions légales.
 
 Ces dernières sont accessibles sur le Site à la rubrique "**Mentions légales**".
 
@@ -29,10 +29,11 @@ Le directeur de la publication agit en qualité d'entrepreneur sous contrat CAPE
 
 ## Hébergeur
 
-L'hébergeur du Site est la société Vercel Inc. (SA).
+L'hébergeur du Site est la société Vercel Inc. via Vercel France (VERCEL FRANCE).
 
-- Adresse postale : 340 S Lemon Ave #4133, 91789 Walnut dans le comté de Californie aux Etats-Unis d'Amérique.
-- SIRET : SIRET
+- Adresse postale de Vercel Inc. : 340 S Lemon Ave #4133, 91789 Walnut dans le comté de Californie aux Etats-Unis d'Amérique.
+- Adresse postale de Vercel France : 102 Avenue des Champs-Élysées, 75008 Paris
+- SIRET : 828 193 722 00067 (VERCEL FRANCE)
 - Adresse e-mail : <support@vercel.com>
 - Site internet : vercel.com
 - Numéro de téléphone : +1 951-383-6898
@@ -40,14 +41,14 @@ L'hébergeur du Site est la société Vercel Inc. (SA).
 ## Accès au Site
 
 Le Site est normalement accessible, à tout moment, à l'Utilisateur.
-Toutefois, l'Editeur pourra, à tout moment et sans préavis, suspendre, limiter ou interrompre le Site afin de procéder, notamment, à des mises à jours ou des modifications de son contenu.
+Toutefois, l'Editeur pourra, à tout moment et sans préavis, suspendre, limiter ou interrompre le Site afin de procéder, notamment, à des mises à jour ou des modifications de son contenu.
 L'Editeur ne pourra en aucun cas être tenu pour responsable des conséquences éventuelles de cette indisponibilité sur les activités de l'Utilisateur.
 
 ## Collecte des données
 
-Le Site assure à l'Utilisateur une collecte et un traitement des données personnelles dans le respect de la vie privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers aux libertés et dans le respect de la réglementation applicable en matière de traitement des données à caractère personnel conformément au règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 (ci-après, ensemble, la "Règlementation applicable en matière de protection des Données à caractère personnel").
+Le Site assure à l'Utilisateur une collecte et un traitement des données personnelles dans le respect de la vie privée conformément à la loi n°78-17 du 6 janvier 1978 relative à l'informatique, aux fichiers et aux libertés, et dans le respect de la réglementation applicable en matière de traitement des données à caractère personnel conformément au règlement (UE) 2016/679 du Parlement européen et du Conseil du 27 avril 2016 (ci-après, ensemble, la "Règlementation applicable en matière de protection des Données à caractère personnel").
 
-La durée de conservation des données collectées via le formulaire de contact du Site ou le [formulaire de rapport du Site](/report) ou par mail n'excedera pas une durée maximale de 3 ans.
+La durée de conservation des données collectées par le formulaire de contact du Site ou le [formulaire de rapport du Site](/report) ou par mail n'excédera pas une durée maximale de 3 ans.
 
 En vertu de la Règlementation applicable en matière de protection des Données à caractère personnel, l'Utilisateur dispose d'un droit d'accès, de rectification, de suppression et d'opposition de ses données personnelles. L'Utilisateur peut exercer ce droit :
 

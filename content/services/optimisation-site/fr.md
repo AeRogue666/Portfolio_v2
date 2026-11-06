@@ -1,7 +1,7 @@
 ---
 title: Optimisation de site web pour plus de clients
 created_at: "2026-02-11"
-shortDescription: Améliorez votre site pour gagner en rapidité, en visibilité et plus efficace pour générer des clients.
+shortDescription: Améliorez votre site pour gagner en rapidité, en visibilité et en efficacité pour générer des clients.
 description: 
   - title: Votre site internet est en ligne mais il est lent, mal positionné sur les moteurs de recherche, ne respecte pas le RGAA ou ne vous apporte pas assez de clients ? Analysons ses faiblesses pour débloquer tout son potentiel.
     content: Un audit approfondi suivi d'actions techniques concrètes pour booster votre efficacité commerciale.
@@ -9,7 +9,7 @@ description:
     - title: Vitesse & Expérience Utilisateur
       content: Accélération du temps de chargement et fluidification du parcours utilisateur (UX).
     - title: Visibilité accrue
-      content: Correction des freins au référencement natural et local (SEO) pour plaire autant aux internautes qu'à Google.
+      content: Correction des freins au référencement naturel et local (SEO) pour plaire autant aux internautes qu'à Google.
 feed_title: Optimisation de site web
 feed_summary: Votre site existe déjà mais ne donne pas les résultats attendus ? Je l'améliore pour augmenter sa visibilité, sa rapidité et son efficacité
 accessible_name: l'optimisation de site web
@@ -28,7 +28,7 @@ packages:
         description: SEO + Performance + Accessibilité + Sécurité
         price: 700€
         features:
-          - Check-up de santé complet du site pour remettre aux normes du web moderne
+          - Check-up de santé complet du site pour le remettre aux normes du web moderne
 previewUrl: /services/optimisation-site
 slug: optimisation-site
 tag: Optimisation

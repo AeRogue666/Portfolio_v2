@@ -20,7 +20,7 @@ packages:
       - title: Site Page Unique / Portfolio basique
         price: 35€/mois
         features:
-          - Mises à jours de sécurité
+          - Mises à jour de sécurité
           - Sauvegardes automatiques
           - Surveillance du site
           - Suivi des performances de base
@@ -28,7 +28,7 @@ packages:
       - title: Site Vitrine
         price: 50€/mois
         features:
-          - Mises à jours avec vérification après déploiement
+          - Mises à jour avec vérification après déploiement
           - Sauvegardes automatiques
           - Surveillance du site 24/7 + sécurité renforcée
           - Optimisation des performances
@@ -36,7 +36,7 @@ packages:
       - title: Site E-commerce
         price: 80€/mois
         features:
-          - Mises à jours testées
+          - Mises à jour testées
           - Sauvegardes automatiques quotidiennes (priorisation des données critiques)
           - Surveillance avancée
           - Optimisation des performances
@@ -76,7 +76,7 @@ mobile: "/images/project/portfolio-v2/mobile.png"
 
 ## Problème
 
-Un site non maintenu peut tomber en panne, être piraté ou perdre en performance..
+Un site non maintenu peut tomber en panne, être piraté ou perdre en performance...
 ce qui entraîne directement une perte de clients et de crédibilité.
 
 ---
@@ -102,7 +102,7 @@ Vous pouvez vous concentrer sur votre activité, sereinement.
 - Sécurité
 - Support
 
-et préventions des problèmes avant qu'ils n'impactent votre activité.
+et prévention des problèmes avant qu'ils n'impactent votre activité.
 
 ---
 

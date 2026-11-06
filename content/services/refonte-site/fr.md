@@ -2,9 +2,9 @@
 title: Refonte & modernisation web
 created_at: "2026-02-11"
 updated_at: "2026-09-15"
-shortDescription: Modernisez votre site internet pour améliorer votre image, votre visibilité et convertir plus de visiteurs
+shortDescription: Modernisez votre site internet pour améliorer votre image, votre visibilité et convertir plus de visiteurs.
 description: 
-  - title: Votre site actuel est devenu obsolète, n'est pas ou plus adapté aux mobiles, ne respecte pas le RGAA ou ne correspond plus à votre image de marque ? Donnez-lui le coup de jeune technique et visuel qu'il mérité !
+  - title: Votre site actuel est devenu obsolète, n'est pas ou plus adapté aux mobiles, ne respecte pas le RGAA ou ne correspond plus à votre image de marque ? Donnez-lui le coup de jeune technique et visuel qu'il mérite !
     content: Reconstruisons ensemble votre projet sur des bases techniques saines, durables, accessibles et éco-conçues.
   - children:
     - title: Modernisation complète
@@ -58,7 +58,7 @@ highlighted: false
 ## Pour qui ?
 
 - Entreprises possédant déjà un site internet
-- Sites veillissants
+- Sites vieillissants
 - Sites qui ne réflètent plus l'image de l'entreprise
 
 ---
@@ -68,7 +68,7 @@ highlighted: false
 - Votre site paraît daté
 - Il est difficile à utiliser sur mobile (impossible de lire le contenu correctement sans zoomer)
 - Vous recevez peu ou pas de demandes
-- Il est lient ou difficile à mettre à jour
+- Il est lent ou difficile à mettre à jour
 
 ---
 

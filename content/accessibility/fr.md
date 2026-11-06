@@ -15,7 +15,8 @@ Je m'efforce de rendre ce site **accessible au plus grand nombre**, quels que so
 
 ## État de conformité
 
-Le site codekorico.com est **partiellement conforme** avec le Référentiel Général d'Amélioration de l'Accessibilité (RGAA), en raison des limitations énumérées ci-dessous. Un auto-audit complet est planifié pour finaliser la déclaration officielle et changé le statut en **totalement conforme**.
+Le site codekorico.com est **partiellement conforme** avec le Référentiel Général d'Amélioration de l'Accessibilité (RGAA), en raison des limitations énumérées ci-dessous. Un auto-audit complet est planifié pour finaliser la déclaration officielle et changer le statut en **totalement conforme**.
+Aucun audit externe n'est à ce jour prévu, n'engageant que notre parole sur l'état de conformité de notre site internet.
 Cependant, plusieurs bonnes pratiques ont été mises en place dès la conception:
 
 - Structure sémantique HTML claire (header", "main", "article", "section", "footer")
@@ -25,10 +26,11 @@ Cependant, plusieurs bonnes pratiques ont été mises en place dès la conceptio
 - Modes de contraste, niveaux de gris et polices adaptées à la lecture
 - Alternatives textuelles pour les images pertinentes
 - Langue du document correctement définie
+- Zoom intégré dans le code du site (ne nécessite aucun outil externe et ne dépend pas du zoom du navigateur)
 
 ## Résultats des tests
 
-L'auto-audit technique met en évidence une excellente application des normes sémantiques (Structure HTML5 claire, gestion des contrastes AAA, navigation exclusive au clavier, balises de focus). Le détail exhaustif des critères validés est disponible sur la page [Rapport d'accessibilité](/accessibility-report).
+L'auto-audit technique partiel met en évidence une excellente application des normes sémantiques (Structure HTML5 claire, gestion des contrastes AAA, navigation exclusive au clavier, balises de focus). Le détail exhaustif des critères validés est disponible sur la page [Rapport d'accessibilité](/accessibility-report).
 
 ## Limitations connues et contenus non accessibles
 
@@ -49,7 +51,16 @@ CodeKorico s'engage à vous répondre sous 48 à 72 heures ouvrées pour vous fo
 
 ## Voies de recours
 
-Si vous constatez un défaut d'accessibilité vous empêchant d'accéder à un contenu et que vous n'obtenez pas de réponse de notre part, vous êtes en droit d'adresser vos doléeances ou une demande de saisine au [Défenseur des droits](https://defenseurdesdroits.fr).
+Si vous constatez un défaut d'accessibilité vous empêchant d'accéder à un contenu et que vous n'obtenez pas de réponse de notre part, vous êtes en droit d'adresser vos doléances ou une demande de saisine au [Défenseur des droits](https://defenseurdesdroits.fr) ainsi qu'à la DGCCRF via le site [SignalConso](https://signal.conso.gouv.fr/fr) ou directement via le formulaire [SignalConso - Faire un signalement d'Accessibilité](https://signal.conso.gouv.fr/fr/accessibilite/faire-un-signalement).
+
+L'Arcom ne doit être saisie uniquement dans le cadre d'un défaut de conformité ou de respect des exigences en matière d'accessibilité (RGAA) pour certains organismes :
+
+- Les personnes morales de droit public ;
+- Les personnes morales de droit privé délégataires d'une mission de service public ;
+- Les entreprises dont le chiffre d'affaires excède un seuil fixé par décret (actuellement 250 millions d'euros - 250 000 000 €).
+
+Pour en savoir plus sur les exigences de l'Arcom, veuillez vous référer à l'article [Accessibilité des sites et des services numériques](https://www.arcom.fr/nous-connaitre/nos-missions/garantir-le-pluralisme-et-la-cohesion-sociale/les-droits-des-personnes-handicapees/accessibilite-des-sites-et-des-services-numeriques) disponible sur le site de l'Arcom.
+N'étant pas concerné par ces critères, merci de vous adresser à la DGCCRF.
 
 ## Amélioration continue
 

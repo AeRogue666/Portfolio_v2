@@ -1,7 +1,7 @@
 ---
 title: Création de site internet
 created_at: "2026-02-11"
-shortDescription: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro.
+shortDescription: Un site clair, professionnel et efficace -> Idéal si vous devez partir de zéro.
 description: 
   - title: Un site professionnel, clair, efficace et sur-mesure pour lancer votre activité.
     content: Idéal si vous partez de zéro. Je conçois un site rapide, sécurisé et accessible à 100% de vos utilisateurs. Un outil clé en main, sans jargon, conçu pour attirer vos clients 24h/24.
@@ -10,7 +10,7 @@ description:
       content: Des pages optimisées pour un chargement ultra-rapide et un meilleur référencement.
     - title: Inclusif dès le départ
       content: Un site web qui respecte nativement les bonnes pratiques d'accessibilité.
-feed_summary: Un site clair, professionnel et efficace -> Idéal si vous partez de zéro
+feed_summary: Un site clair, professionnel et efficace -> Idéal si vous devez partir de zéro
 feed_title: Un site pro et sur-mesure pour lancer votre activité
 accessible_name: la création de site
 locale: fr
@@ -25,7 +25,7 @@ packages:
           - Une seule page optimisée pour la conversion
         badge: Essentielle
       - title: Site vitrine & Institutionnel
-        description: Pour des PME locales, commerces physiques, et entreprises de services du bassin.
+        description: Pour des PME locales, commerces physiques et entreprises de services du bassin.
         price: 1700€
         features:
           - Site multipage (4 à 5 pages**) pour rassurer les clients
@@ -36,7 +36,7 @@ packages:
           - 4. Sécurité web
         badge: Populaire
       - title: Créatif & Storytelling
-        description: Pour les photographes, artistes, agences événementielles ou organisateur de mariage (wedding planner).
+        description: Pour les photographes, artistes, agences événementielles ou organisateurs de mariage (wedding planner).
         price: 1900€
         features:
           - Mise en valeur visuelle haut de gamme
@@ -85,7 +85,7 @@ service:
 
 ## Problème
 
-Vous n'avez pas de présence en ligne ou celle-ci est insufissante pour présenter votre activité.
+Vous n'avez pas de présence en ligne ou celle-ci est insuffissante pour présenter votre activité.
 Vous avez besoin d'un site, mais pas juste d'un "beau" site, un site qui vous rapporte sur le long terme.
 C'est exactement ce que je crée.
 
@@ -117,10 +117,10 @@ Un site qui ne sert pas uniquement à être vu, mais à vous amener des clients 
 - Portfolio créatif
 - Site de réservation touristique
 
-## Taille de projets
+## Taille des projets
 
 - Petite taille = simple présence en ligne
-- Complet = site strucutré pour générer des clients
+- Complet = site structuré pour générer des clients
 - E-commerce = vente en ligne
 
 ---
@@ -129,13 +129,13 @@ Un site qui ne sert pas uniquement à être vu, mais à vous amener des clients 
 
 Contrairement à beaucoup de sites qui ne sont que des supports de présentation, le vôtre sera conçu pour vous apporter des contacts et des demandes concrètes.
 
-Jutilise la solution la plus adaptée à votre activité et vos besoins :
+J'utiliserais la solution la plus adaptée à votre activité et à vos besoins :
 
 - CMS simple à administrer
 - Boutique en ligne
-- Ou Développement spécifique si nécessaire
+- Ou développement spécifique si nécessaire
 
-L'objectifs reste toujours le même :
+L'objectif reste toujours le même :
 
 - Rapidité
 - Sécurité
@@ -151,11 +151,11 @@ Besoin d'une application métier ou d'un outil sur-mesure ?
 
 Vous avez besoin d'automatiser vos processus internes, de créer une boutique e-commerce complète, de connecter votre site à un logiciel tiers (CRM, ERP), de créer un système de réservation avancé avec logique métier complexe ou de développer un SaaS léger ?
 
-En tant que développeur, je conçois des solutions robustes, sécurisées et codées sur-mesure pour s'adapter exactement à votre manière de travailler.
+En tant que développeur, je conçois des solutions robustes, sécurisées et codées sur-mesure qui s'adaptent exactement à votre manière de travailler.
 Je vous invite à cliquer sur le bouton **Discuter de votre projet** en bas de la page afin de convenir d'un rendez-vous.
 
 ## Tarif
 
 \*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
 
-\*\*Les pages classiques sont : Accueil, A propos, Services/Réalisations, Contact, Mentions légales
+\*\*Les pages classiques sont : Accueil, À propos, Services/Réalisations, Contact, Mentions légales
