@@ -16,7 +16,7 @@ const props = defineProps<{
 
 <template>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div v-for="(pt, index) in props.partners" :key="index" :position="props.partners.indexOf(pt) + 1"
+    <div v-for="(pt, index) in props.partners" :key="index"
       class="flex flex-col justify-between bg-(--bg-2)/20 dark:bg-(--bg-2)/10 p-8 rounded-2xl border border-(--border-subtle) gap-6 group hover:border-(--accent)/30 transition-all duration-300"
       :class="pt.class">
       <div class="max-w-md">
