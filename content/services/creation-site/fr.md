@@ -63,9 +63,9 @@ highlighted: true
 service:
 
 - title: "Plateforme de gestion de recettes de cuisine"
-    desktop: "/images/project/plateforme-gestion-recettes/desktop.png"
-    tablet: "/images/project/plateforme-gestion-recettes/tablet.png"
-    mobile: "/images/project/plateforme-gestion-recettes/mobile.png"
+    desktop: "/images/project/plateforme-gestion-recettes/desktop.PNG"
+    tablet: "/images/project/plateforme-gestion-recettes/tablet.PNG"
+    mobile: "/images/project/plateforme-gestion-recettes/mobile.PNG"
 - title: "Site vitrine professionnel"
     desktop: "/images/project/portfolio-v2/desktop.png"
     tablet: "/images/project/portfolio-v2/tablet.png"

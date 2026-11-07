@@ -29,12 +29,8 @@ if (!service.value) throw createError({ statusCode: 404, message: 'Service not f
 
 const breadcrumbItems: BreadcrumbItem[] = [
     {
-        label: t('breadcrumb.feed'),
-        to: '/feed'
-    },
-    {
         label: t('breadcrumb.services'),
-        to: ''
+        to: '/services'
     },
     {
         label: service.value?.title,

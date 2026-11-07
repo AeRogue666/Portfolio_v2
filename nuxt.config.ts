@@ -101,8 +101,8 @@ export default defineNuxtConfig({
         "style-src": ["'self'", "'nonce-{{nonce}}'", "'unsafe-hashes'"],
         "img-src": ["'self'","data:", "https://github.com", "https://avatars.githubusercontent.com"],
         "connect-src": isDev
-        ? ["'self'", "http://localhost:3000", "ws://localhost:3000", "https://api.iconify.design", "https://api2.iconify.design",]
-        : ["'self'"],
+        ? ["'self'", "http://localhost:3000", "ws://localhost:3000", "https://api.iconify.design", "https://api2.iconify.design"]
+        : ["'self'", "https://api.iconify.design", "https://api2.iconify.design"],
         "upgrade-insecure-requests": !isDev,
       },
     },
