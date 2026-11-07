@@ -98,7 +98,7 @@ export default defineNuxtConfig({
         "script-src-attr": isDev
         ? ["'unsafe-inline'"]
         : ["'self'", "'unsafe-hashes'"],
-        "style-src": ["'self'", "'nonce-{{nonce}}'", "'unsafe-hashes'"],
+        "style-src": ["'self'", "'unsafe-inline'"],
         "img-src": ["'self'","data:", "https://github.com", "https://avatars.githubusercontent.com"],
         "connect-src": isDev
         ? ["'self'", "http://localhost:3000", "ws://localhost:3000", "https://api.iconify.design", "https://api2.iconify.design"]

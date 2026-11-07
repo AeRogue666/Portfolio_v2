@@ -124,7 +124,7 @@ onMounted(() => {
                 <UTooltip :text="t('sidebar-left.open_github')">
                     <IconButton :variant="'ghost'" :color="'neutral'" :to="'https://github.com/AeRogue666'"
                         :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:github'"
-                        :aria-label="t('sidebar-left.open_github')" id="button-sidebarleft-github" :class="'size-16'" />
+                        :label="t('sidebar-left.open_github')" id="button-sidebarleft-github" :class="'size-16'" />
                 </UTooltip>
 
                 <UTooltip :text="t('sidebar-left.open_linkedin')">

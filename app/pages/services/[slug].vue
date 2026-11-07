@@ -119,6 +119,7 @@ if (service.value) {
             <template #header>
                 <UBreadcrumb :items="breadcrumbItems" :aria-label="t('breadcrumb.title')" class="my-2 fs-body"
                     color="neutral" :ui="{
+                        list: 'flex flex-col md:flex-row items-start',
                         link: 'text-(--text-2) hover:text-(--text) transition-colors'
                     }">
                     <template #item-label="{ item }">
@@ -167,7 +168,7 @@ if (service.value) {
 
             <div>
                 <p class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ t('plans.warning.title') }}</p>
-                <p class="fs-body text-(--text-2) leading-snug">{{ t('plans.warning.description') }}</p>
+                <p class="fs-small text-(--text-2) leading-snug">* {{ t('plans.warning.description') }}</p>
             </div>
         </ArticleLayout>
     </template>

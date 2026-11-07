@@ -82,7 +82,7 @@
   "seo": {
     "home": {
       "title": "CodeKorico - Accessible Website creation",
-      "description": "Creation of accessible, scalable, user-centered websites with Wordpress, WooCommerce, Shopify, Nuxt or Vue in Ardèche, Drôme and Auvergne Rhône-Alpes."
+      "description": "Creation of accessible, scalable, user-centered websites with Nuxt, Vue, Wordpress, WooCommerce or Shopify, in Ardèche, Drôme, Haute-Loire, Gard and Auvergne Rhône-Alpes."
     },
     "feed": {
       "title": "Feed - CodeKorico",
@@ -139,7 +139,7 @@
           "title": "Use a fast website that adheres to best practices in accessibility (WCAG), security, and user data management (GDPR)."
         }
       },
-      "solution": "You've come to the right place."
+      "commitment": "My commitment? To develop interfaces that are so seamless and inclusive that your customers can browse and shop with you without even having to think about it."
     },
     "services_section": {
       "tag": "Services",
@@ -230,7 +230,8 @@
     "contact_section": {
       "tag": "Contact",
       "title": "Ready to discuss it?",
-      "description": "Don't wait any longer, contact me now using the form below!"
+      "description": "Don't wait any longer, contact me now using the form below!",
+      "reassurance_banner": "From the Drôme to the Gard, via the Haute-Loire: I guarantee a sustainable and transparent project, from the initial quote all the way through to the maintenance of your website."
     }
   },
   "search": {
@@ -490,7 +491,7 @@
     "formations": "Digital training",
     "warning": {
       "title": "Important",
-      "description": "The prices listed on this page are for reference only and do not reflect actual costs. A quote for website creation, optimization, or maintenance is determined on a case-by-case basis depending on your needs and requirements. You can choose to remove certain features to reduce the cost or, conversely, add new features to enhance your project."
+      "description": "The prices listed on this page are for reference only and do not reflect actual costs. A quote for the creation, redesign, optimization, or maintenance of a website is determined on a case-by-case basis depending on your needs and requirements. You can choose to remove certain features to lower the cost or, conversely, add new features to enhance your project. Additionally, any travel costs, if necessary, are not included in the listed prices. The same applies to web hosting and the domain name, which depend on your choice of hosting provider, the hosting plan, and the domain name extension you select (.fr, .com, .net, .org, etc.). I would be happy to help you choose the best hosting for your website so that it costs you as little as possible and run as fast as possible."
     },
     "price_starting_at": "Starting at",
     "on_estimate": "On estimate"

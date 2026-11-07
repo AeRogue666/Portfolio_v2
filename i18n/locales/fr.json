@@ -82,7 +82,7 @@
   "seo": {
     "home": {
       "title": "CodeKorico - Création de sites internet Accessibles",
-      "description": "Création de sites internet accessibles, évolutifs et centrés sur l'utilisateur avec Wordpress, WooCommerce, Shopify, Nuxt ou Vue en Ardèche, Drôme et Auvergne Rhône-Alpes."
+      "description": "Création de sites internet accessibles, évolutifs et centrés sur l'utilisateur avec Nuxt, Vue, Wordpress, WooCommerce ou Shopify, en Ardèche, Drôme, Haute-Loire, Gard et Auvergne Rhône-Alpes."
     },
     "feed": {
       "title": "Fil d'actualité - CodeKorico",
@@ -97,10 +97,10 @@
     "user_title": "Par Aureldev",
     "lettered_logo": "Logo lettré (lettre K) de CodeKorico",
     "landing_section": {
-      "title": "Un site web qui attire des clients, pas juste un site design.",
-      "description": "Des sites rapides, accessibles à tous.. et que vous comprenez vraiment.",
-      "title_accent": "Un site web qui attire des clients,",
-      "title_rest": "pas juste un site design",
+      "title": "Votre artisan web de proximité pour un site qui attire de vrais clients.",
+      "description": "Basé en Ardèche, je conçois des sites sur-mesure, ultra-rapides et accessibles à tous. Simples, sécurisés et sans jargon.",
+      "title_accent": "Votre artisan web de proximité",
+      "title_rest": "pour un site qui attire de vrais clients.",
       "cta_project": "Discuter de votre projet",
       "cta_feed": "Découvrez le fil d'actualité",
       "cta_audit": "Obtenir un audit gratuit",
@@ -139,7 +139,7 @@
           "title": "Utiliser un site rapide et respectueux des bonnes pratiques en matière d'accessibilité (RGAA, WCAG), de sécurité et de gestion des données utilisateurs (RGPD)."
         }
       },
-      "solution": "Vous êtes au bon endroit."
+      "commitment": "Mon engagement ? Développer des interfaces tellement fluides et inclusives que vos clients naviguent et achètent chez vous sans avoir à réfléchir."
     },
     "services_section": {
       "tag": "Services",
@@ -182,7 +182,7 @@
     "differenciation_section": {
       "tag": "Différenciation",
       "title": "Pourquoi travailler avec moi ?",
-      "description": "Voici quelques bonnes raisons.",
+      "description": "Allier la puissance de l'IA éthique à la rigueur des normes d'accessibilité (RGAA/WCAG) pour vous offrir un site d'avenir, respectueux de vos utilisateurs.",
       "process": {
         "1": {
           "title": "Approche centrée utilisateur",
@@ -230,7 +230,8 @@
     "contact_section": {
       "tag": "Contact",
       "title": "Prêt à en discuter ?",
-      "description": "N'attendez plus et contactez-moi dès maintenant ci-dessous !"
+      "description": "N'attendez plus et contactez-moi dès maintenant ci-dessous !",
+      "reassurance_banner": "De la Drôme au Gard, en passant par la Haute-Loire : je vous garantis un projet durable et transparent, du premier devis jusqu'à la maintenance de votre site."
     }
   },
   "search": {
@@ -490,7 +491,7 @@
     "formations": "Formation au numérique",
     "warning": {
       "title": "Important",
-      "description": "Les tarifs indiqués sur cette page sont d'ordre indicatif et ne représentent en aucun cas la réalité. Un devis sur la création, l'optimisation ou la maintenance d'un site internet s'étudie au cas par cas en fonction de vos besoins et demandes. Il vous est possible de supprimer certaines fonctionnalités pour alléger le tarif ou au contraire, ajouter de nouvelles fonctions pour étoffer votre projet."
+      "description": "Les tarifs indiqués sur cette page sont d'ordre indicatif et ne représentent en aucun cas la réalité. Un devis sur la création, l'optimisation ou la maintenance d'un site internet s'étudie au cas par cas en fonction de vos besoins et demandes. Il vous est possible de supprimer certaines fonctionnalités pour alléger le tarif ou au contraire, ajouter de nouvelles fonctions pour étoffer votre projet. De plus, les coûts de déplacements si nécessaires ne sont pas compris dans les tarifs indiqués. Il en va de même pour l'hébergement et le nom de domaine qui dépendent du choix de l'hébergeur ainsi que de l'offre d'hébergement, et de l'extension du nom de domaine choisi (.fr, .com, .net, .org, etc.). Je me ferais un plaisir de vous aider à choisir le meilleur hébergement pour votre site internet afin qu'il vous coûte le moins cher possible et soit le plus rapide possible."
     },
     "price_starting_at": "A partir de",
     "on_estimate": "Sur devis"

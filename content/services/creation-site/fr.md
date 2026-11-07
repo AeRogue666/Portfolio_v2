@@ -58,6 +58,24 @@ slug: creation-site
 tag: Website
 highlighted: true
 ---
+
+## Concrétiser votre projet numérique
+
+Vous lancez votre activité et souhaitez démarrer sur des bases solides en ligne.
+
+::content-grid{columns=2 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:user-plus" title="Activités en lancement"}
+  Donnez immédiatement de la crédibilité à votre entreprise dès le premier jour auprès de vos futurs clients.
+  :::
+  :::content-card{icon="i-fa7-solid:lightbulb" title="Créateurs d'entreprise"}
+  Ne perdez pas de temps avec des outils génériques complexes. Confiez votre vitrine à un artisan web local.
+  :::
+::
+
+## Mes dernières réalisations
+
+Découvrez des exemples de plateformes performantes et accessibles : carrousel de projets (gestion de recettes, site vitrine) et modale de contact disponibles dans le code source.
+
 ::services-carousel
 ---
 service:
@@ -74,88 +92,50 @@ service:
 ---
 ::
 
-## Pour qui ?
-
-- Professionnels sans site internet
-- Créateurs d'entreprise
-- Activités en lancement
-- Entreprises souhaitant créer un nouveau projet
-
+::content-cta-modal
 ---
-
-## Problème
-
-Vous n'avez pas de présence en ligne ou celle-ci est insuffissante pour présenter votre activité.
-Vous avez besoin d'un site, mais pas juste d'un "beau" site, un site qui vous rapporte sur le long terme.
-C'est exactement ce que je crée.
-
+    ctaLabel: "Lancer mon projet"
+    ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
+    ctaIcon: "fa7-solid:comment-dots"
+    projectType: "creation"
+    ctaBtnLabel: "Voir les forfaits"
+    ctaBtnAriaLabel: "Voir les tarifs des forfaits de création"
+    ctaBtnName: "button-creation-tarif"
+    ctaBtnLink: "#choisissez-le-niveau-dintervention-adapté"
+    ctaBtnClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm leading-relaxed whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
+    ctaBtnIcon: "fa7-solid:chart-simple"
 ---
+::
 
-## Solution
+## Ce qui est inclus nativement dans votre site
 
-Un site qui ne sert pas uniquement à être vu, mais à vous amener des clients (appels, devis, prises de rendez-vous).
+::content-grid{columns=3 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:bolt" title="Performance et Vitesse"}
+  Un code éco-conçu ultra-léger pour un chargement instantané, essentiel pour le confort utilisateur.
+  :::
+  :::content-card{icon="i-fa7-solid:magnifying-glass" title="Référencement SEO"}
+  Une structure optimisée pour plaire aux algorithmes de Google et asseoir votre visibilité locale.
+  :::
+  :::content-card{icon="i-fa7-solid:eye" title="Accessibilité RGAA"}
+  Une interface inclusive et sémantique utilisable sans barrière par tous les publics.
+  :::
+::
 
----
+## Solutions applicatives et Evolutivité
 
-## Inclus
+Votre activité volue, votre site aussi. Je développe des fonctionnalités robustes qui s'adaptent exactement à votre manière de travailler.
 
-- Analyse des besoins
-- Conception du site
-- Lisibilité sur mobile et ordinateur
-- Visibilité sur Google
-- Optimisation des performances (site rapide et agréable à utiliser)
-- Site utilisable sur ordinateur, mobile et par tous les publics
-- Formation à l'utilisation du site (En option)
-- Assistance pour l'hébergement (En option : Choix de l'hébergement, nom de domaine, configuration, panne)
+::content-grid{columns=3 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:calendar-days" title="Tourisme et Réservations"}
+  Présentationd e vos hébergements, calendrier des disponibilités et synchronisation des calendriers via iCal (ou alternatives) pour vos gîtes.
+  :::
+  :::content-card{icon="i-fa7-solid:cart-shopping" title="E-commerce et Vente"}
+  Architecture sécurisée pour vos catalogues produits et la gestion de vos ventes en ligne.
+  :::
+::
 
----
+## Besoin d'un outil sur-mesure ?
 
-## Types de projets
-
-- Page unique de lancement
-- Site vitrine d'entreprise
-- Portfolio créatif
-- Site de réservation touristique
-
-## Taille des projets
-
-- Petite taille = simple présence en ligne
-- Complet = site structuré pour générer des clients
-- E-commerce = vente en ligne
-
----
-
-## Pourquoi c'est différent
-
-Contrairement à beaucoup de sites qui ne sont que des supports de présentation, le vôtre sera conçu pour vous apporter des contacts et des demandes concrètes.
-
-J'utiliserais la solution la plus adaptée à votre activité et à vos besoins :
-
-- CMS simple à administrer
-- Boutique en ligne
-- Ou développement spécifique si nécessaire
-
-L'objectif reste toujours le même :
-
-- Rapidité
-- Sécurité
-- Simplicité d'utilisation
-- Accessibilité
-- Evolutivité
-
----
-
-## Besoin particulier
-
-Besoin d'une application métier ou d'un outil sur-mesure ?
-
-Vous avez besoin d'automatiser vos processus internes, de créer une boutique e-commerce complète, de connecter votre site à un logiciel tiers (CRM, ERP), de créer un système de réservation avancé avec logique métier complexe ou de développer un SaaS léger ?
-
-En tant que développeur, je conçois des solutions robustes, sécurisées et codées sur-mesure qui s'adaptent exactement à votre manière de travailler.
-Je vous invite à cliquer sur le bouton **Discuter de votre projet** en bas de la page afin de convenir d'un rendez-vous.
-
-## Tarif
-
-\*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
+Automatisation de processus internes, connexion à des logiciels tiers (CRM, ERP), ou développement d'applications métiers spécifiques. En tant que développeur, je conçois des solutions codées sur-mesure.
 
 \*\*Les pages classiques sont : Accueil, À propos, Services/Réalisations, Contact, Mentions légales

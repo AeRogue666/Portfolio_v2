@@ -86,6 +86,7 @@ if (landing.value) {
             <template #header>
                 <UBreadcrumb :items="breadcrumbItems" :aria-label="t('breadcrumb.title')" class="my-2 fs-body"
                     color="neutral" :ui="{
+                        list: 'flex flex-col md:flex-row items-start',
                         link: 'text-(--text-2) hover:text-(--text) transition-colors'
                     }">
                     <template #item-label="{ item }">

@@ -407,7 +407,7 @@ useSeoMeta(({
             <QuestionContainer :elements="questionElements" />
 
             <p class="text-center w-full text-(--text-2) my-6 sm:px-16 xl:px-48 fs-lead">
-                {{ t('index.problem_section.solution') }}
+                {{ t('index.problem_section.commitment') }}
             </p>
 
             <SelfieDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="'var(--bg-3)'"
@@ -575,6 +575,12 @@ useSeoMeta(({
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')"
                 :cta-icon="'fa7-solid:comment-dots'"
                 :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md whitespace-normal break-words'" />
+
+            <div class="w-full bg-(--bg-2) border border-solid border-(--border-medium) rounded-xl my-8 p-6 text-center">
+                <p class="text-(--text) font-medium">
+                    {{ t('index.contact_section.reassurance_banner') }}
+                </p>
+            </div>
 
             <CustomerScreeningModal :cta-label="t('index.landing_section.cta_contact_me')"
                 :cta-icon="'fa7-solid:message'"
