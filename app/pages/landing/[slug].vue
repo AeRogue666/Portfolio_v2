@@ -29,8 +29,8 @@ const created_atDate = computed(() => formatDate(landing.value?.created_at)), //
     updated_atDate = computed(() => formatDate(landing.value?.updated_at)); // dayjs(landing.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => landing.value?.image?.sources?.detail?.mobile || landing.value?.image?.sources?.feed?.mobile || ''),
-    tabletSrc = computed(() => landing.value?.image?.sources?.detail?.tablet || landing.value?.image?.sources?.feed?.tablet || src),
-    desktopSrc = computed(() => landing.value?.image?.sources?.detail?.desktop || landing.value?.image?.sources?.feed?.desktop || tabletSrc);
+    tabletSrc = computed(() => landing.value?.image?.sources?.detail?.tablet || landing.value?.image?.sources?.feed?.tablet || src.value),
+    desktopSrc = computed(() => landing.value?.image?.sources?.detail?.desktop || landing.value?.image?.sources?.feed?.desktop || tabletSrc.value);
 
 const landingType = computed(() => slug.value.split('-')[0]);
 

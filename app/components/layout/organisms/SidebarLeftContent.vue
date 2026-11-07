@@ -121,19 +121,19 @@ onMounted(() => {
                 :cta-class="'inline-flex items-center justify-center w-full px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md whitespace-normal break-words cta-button'" />
 
             <div class="inline-flex items-baseline gap-4">
-                <UTooltip :text="t('sidebar-left.open_github')" aria-hidden="true">
+                <UTooltip :text="t('sidebar-left.open_github')">
                     <IconButton :variant="'ghost'" :color="'neutral'" :to="'https://github.com/AeRogue666'"
                         :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:github'"
-                        :label="t('sidebar-left.open_github')" id="button-sidebarleft-github" :class="'size-16'" />
+                        :aria-label="t('sidebar-left.open_github')" id="button-sidebarleft-github" :class="'size-16'" />
                 </UTooltip>
 
-                <UTooltip :text="t('sidebar-left.open_linkedin')" aria-hidden="true">
+                <UTooltip :text="t('sidebar-left.open_linkedin')">
                     <IconButton :variant="'ghost'" :color="'neutral'" :to="'https://linkedin.com/codekorico'"
                         :target="'_blank'" :size="'size-16'" :icon="'fa7-brands:linkedin'"
                         :label="t('sidebar-left.open_linkedin')" id="button-sidebarleft-linkedin" :class="'size-16'" />
                 </UTooltip>
 
-                <UTooltip :text="t('sidebar-left.open_pollen-scop')" aria-hidden="true">
+                <UTooltip :text="t('sidebar-left.open_pollen-scop')">
                     <IconButton :variant="'ghost'" :color="'neutral'"
                         :to="'https://pollen.coop/entrepreneur/codekorico-developpement-web-accessibilite-formation/'"
                         :target="'_blank'" :size="'size-16'" :icon="'fa7-solid:handshake'"

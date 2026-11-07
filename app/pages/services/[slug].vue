@@ -48,8 +48,8 @@ const created_atDate = computed(() => formatDate(service.value?.created_at)), //
     updated_atDate = computed(() => formatDate(service.value?.updated_at)); // dayjs(service.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => service.value?.image?.sources?.detail?.mobile || service.value?.image?.sources?.feed?.mobile || ''),
-    tabletSrc = computed(() => service.value?.image?.sources?.detail?.tablet || service.value?.image?.sources?.feed?.tablet || src),
-    desktopSrc = computed(() => service.value?.image?.sources?.detail?.desktop || service.value?.image?.sources?.feed?.desktop || tabletSrc);
+    tabletSrc = computed(() => service.value?.image?.sources?.detail?.tablet || service.value?.image?.sources?.feed?.tablet || src.value),
+    desktopSrc = computed(() => service.value?.image?.sources?.detail?.desktop || service.value?.image?.sources?.feed?.desktop || tabletSrc.value);
 
 const serviceType = computed(() => slug.value.split('-')[0]);
 

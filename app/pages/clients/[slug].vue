@@ -48,8 +48,8 @@ const created_atDate = computed(() => formatDate(client.value?.created_at)), // 
     updated_atDate = computed(() => formatDate(client.value?.updated_at)); // dayjs(client.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => client.value?.image?.sources?.detail?.mobile || client.value?.image?.sources?.feed?.mobile || ''),
-    tabletSrc = computed(() => client.value?.image?.sources?.detail?.tablet || client.value?.image?.sources?.feed?.tablet || src),
-    desktopSrc = computed(() => client.value?.image?.sources?.detail?.desktop || client.value?.image?.sources?.feed?.desktop || tabletSrc);
+    tabletSrc = computed(() => client.value?.image?.sources?.detail?.tablet || client.value?.image?.sources?.feed?.tablet || src.value),
+    desktopSrc = computed(() => client.value?.image?.sources?.detail?.desktop || client.value?.image?.sources?.feed?.desktop || tabletSrc.value);
 
 if (client.value) {
     useSeoMeta({

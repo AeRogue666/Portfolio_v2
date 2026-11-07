@@ -42,6 +42,7 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false,
   },
   image: {
+    provider: process.env.VERCEL ? 'vercel' : 'ipx',
     screens: {
       xs: 320,
       sm: 640,
@@ -96,8 +97,8 @@ export default defineNuxtConfig({
         : ["'self'", "'strict-dynamic'", "'nonce-{{nonce}}'", "'wasm-unsafe-eval'"],
         "script-src-attr": isDev
         ? ["'unsafe-inline'"]
-        : ["'self'"],
-        "style-src": ["'self'", "'unsafe-inline'"],
+        : ["'self'", "'unsafe-hashes'"],
+        "style-src": ["'self'", "'nonce-{{nonce}}'", "'unsafe-hashes'"],
         "img-src": ["'self'","data:", "https://github.com", "https://avatars.githubusercontent.com"],
         "connect-src": isDev
         ? ["'self'", "http://localhost:3000", "ws://localhost:3000", "https://api.iconify.design", "https://api2.iconify.design",]

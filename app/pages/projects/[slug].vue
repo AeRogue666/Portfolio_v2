@@ -50,8 +50,8 @@ const created_atDate = computed(() => formatDate(project.value?.created_at)), //
     updated_atDate = computed(() => formatDate(project.value?.updated_at)); // dayjs(project.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => project.value?.image?.sources?.detail?.mobile || project.value?.image?.sources?.feed?.mobile || ''),
-    tabletSrc = computed(() => project.value?.image?.sources?.detail?.tablet || project.value?.image?.sources?.feed?.tablet || src),
-    desktopSrc = computed(() => project.value?.image?.sources?.detail?.desktop || project.value?.image?.sources?.feed?.desktop || tabletSrc);
+    tabletSrc = computed(() => project.value?.image?.sources?.detail?.tablet || project.value?.image?.sources?.feed?.tablet || src.value),
+    desktopSrc = computed(() => project.value?.image?.sources?.detail?.desktop || project.value?.image?.sources?.feed?.desktop || tabletSrc.value);
 
 if (project.value) {
     useSeoMeta({

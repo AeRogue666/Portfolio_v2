@@ -46,8 +46,8 @@ const created_atDate = computed(() => formatDate(experiment.value?.created_at)),
     updated_atDate = computed(() => formatDate(experiment.value?.updated_at)); // dayjs(experiment.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
 const src = computed(() => experiment.value?.image?.sources?.detail?.mobile || experiment.value?.image?.sources?.feed?.mobile || ''),
-    tabletSrc = computed(() => experiment.value?.image?.sources?.detail?.tablet || experiment.value?.image?.sources?.feed?.tablet || src),
-    desktopSrc = computed(() => experiment.value?.image?.sources?.detail?.desktop || experiment.value?.image?.sources?.feed?.desktop || tabletSrc);
+    tabletSrc = computed(() => experiment.value?.image?.sources?.detail?.tablet || experiment.value?.image?.sources?.feed?.tablet || src.value),
+    desktopSrc = computed(() => experiment.value?.image?.sources?.detail?.desktop || experiment.value?.image?.sources?.feed?.desktop || tabletSrc.value);
 
 watchEffect(() => {
     if (!experiment.value) return;
