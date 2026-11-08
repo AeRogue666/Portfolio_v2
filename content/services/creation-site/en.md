@@ -1,63 +1,77 @@
 ---
 title: Création de site internet
 created_at: "2026-02-11"
-shortDescription: Un site clair, professionnel et efficace -> Idéal si vous devez partir de zéro.
+shortDescription: Un site professionnel, ergonomique et optimisé pour le SEO/AIO, conçu pour lancer votre activité sans barrière technique.
 description: 
-  - title: Un site professionnel, clair, efficace et sur-mesure pour lancer votre activité.
-    content: Idéal si vous partez de zéro. Je conçois un site rapide, sécurisé et accessible à 100% de vos utilisateurs. Un outil clé en main, sans jargon, conçu pour attirer vos clients 24h/24.
+  - title: Votre site internet sur-mesure, conçu pour durer.
+    content: Vous partez de zéro ? Je crée un site léger, sécurisé et pensé dès la première ligne de code pour être lisible et utilisable par tous vos clients. Pas de jargon d'agence, juste un outil de travail performant et durable.
   - children:
-    - title: Performance & SEO
-      content: Des pages optimisées pour un chargement ultra-rapide et un meilleur référencement.
-    - title: Inclusif dès le départ
-      content: Un site web qui respecte nativement les bonnes pratiques d'accessibilité.
-feed_summary: Un site clair, professionnel et efficace -> Idéal si vous devez partir de zéro
-feed_title: Un site pro et sur-mesure pour lancer votre activité
+    - title: Connecté aux nouveaux moteurs de recherche (SEO & AIO)
+      content: Une structure technique saine et moderne, prête pour le référencement traditionnel sur Google et optimisée pour la recherche par Intelligence Artificielle.
+    - title: Accessibilité & Ergonomie native
+      content: Un confort de navigation fluide sur tous les écrans, adapté aux utilisateurs comme aux outils d'assistance.
+feed_summary: Un site clair, rapide et accessible pour lancer votre activité.
+feed_title: Un site sur-mesure pour lancer votre activité
 accessible_name: la création de site
 locale: en
 packages:
-  - title: Forfaits uniques de création de site
+  - title: Forfaits de création de site
     children:
       - title: Page unique
-        description: Pour des artisans, indépendants ou thérapeutes qui démarrent et veulent une carte de visite en ligne propre, rapide et accessible.
+        description: L'essentiel pour les artisans, indépendants ou thérapeutes qui démarrent et veulent une carte de visite en ligne propre, rapide et accessible.
         price: 630€
         features:
-          - Présenter l'activité (activité, coordonnées, avis clients)
-          - Une seule page optimisée pour la conversion
+          - Présentation claire de votre activité et de vos valeurs
+          - Coordonnées de contact et avis clients mis en valeur
+          - Page unique optimisée pour faciliter la prise de contact
         badge: Essentielle
       - title: Site vitrine & Institutionnel
-        description: Pour des PME locales, commerces physiques et entreprises de services du bassin.
+        description: Pour les commerces, artisans installés et PME locales qui ont besoin de rassurer et d'informer.
         price: 1700€
         features:
-          - Site multipage (4 à 5 pages**) pour rassurer les clients
-          - Asseoir une présence locale forte sur Google via
-          - 1. SEO basique
-          - 2. Accessibilité basique
-          - 3. Optimisation des performances
-          - 4. Sécurité web
+          - Structure multipage (4 à 5 pages) pour détailler vos services
+          - Code optimisée pour le référencement naturel local et le référencement IA (SEO/AIO)
+          - Intégration native des critères d'accessibilité numérique
+          - Performances et sécurité technique surveillées
         badge: Populaire
-      - title: Créatif & Storytelling
-        description: Pour les photographes, artistes, agences événementielles ou organisateurs de mariage (wedding planner).
+      - title: Univers visuel & Portfolio
+        description: Dédié aux photographes, artistes, métiers créatifs, agences événementielles ou organisateurs de mariage (wedding planner) qui misent avant tout sur l'image.
         price: 1900€
         features:
-          - Mise en valeur visuelle haut de gamme
-          - Optimisation du poids des images
-          - Vitesse de chargement maximale
-          - Design axé sur l'émotion et l'image de marque
+          - Mise en valeur soignée de vos réalisations (galeries, portfolios)
+          - Optimisation stricte du poids des images pour rester ultra-rapide
+          - Design sur-mesure adapté à votre identité visuelle, axé sur l'émotion et l'image de marque
       - title: Tourisme et Réservation simple
-        description: Pour les gîtes, chambre d'hôtes et domaines touristiques de la région.
+        description: Idéal pour les gîtes, chambre d'hôtes et domaines touristiques de la région.
         price: 2450€
         features:
-          - Présenter les hébergements
-          - Mettre en avant les atouts régionaux
-          - Intégration d'un calendrier des disponibilités
-          - Synchronisation des calendriers (iCal)
-          - Intégrer un formulaire de demande de devis/réservation
-          - Pas de système de gestion de paiement en ligne
+          - Présenter complète des hébergements et des points d'intérêts locaux
+          - Intégration et synchronisation de vos calendriers de disponibilité (via iCal ou alternatives)
+          - Formulaire de demande de réservation ou de devis personnalisé
+          - Sans module de paiement en ligne (gestion humaine des réservations)
 previewUrl: /services/creation-site
 slug: creation-site
 tag: Website
 highlighted: true
 ---
+
+## Bâtir vos fondations sur le web
+
+Vous lancez votre activité et vous voulez une présence en ligne sérieuse, sans dépendre de plateformes génériques complexes.
+
+::content-grid{columns=2 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:user-plus" title="Nouvelles activités"}
+  Donnez immédiatement de la crédibilité à votre travail auprès de vos premiers clients.
+  :::
+  :::content-card{icon="i-fa7-solid:lightbulb" title="Créateurs et repreneurs"}
+  Ne perdez pas de temps avec des outils en ligne obscurs. Confiez votre vitrine à un artisan web local.
+  :::
+::
+
+## Quelques exemples de réalisation
+
+Voici des outils fonctionnels, légers et accessibles :
+
 ::services-carousel
 ---
 service:
@@ -74,88 +88,52 @@ service:
 ---
 ::
 
-## Pour qui ?
-
-- Professionnels sans site internet
-- Créateurs d'entreprise
-- Activités en lancement
-- Entreprises souhaitant créer un nouveau projet
-
+::content-cta-modal
 ---
-
-## Problème
-
-Vous n'avez pas de présence en ligne ou celle-ci est insuffissante pour présenter votre activité.
-Vous avez besoin d'un site, mais pas juste d'un "beau" site, un site qui vous rapporte sur le long terme.
-C'est exactement ce que je crée.
-
+    ctaLabel: "Parler de mon projet"
+    ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
+    ctaIcon: "fa7-solid:comment-dots"
+    projectType: "creation"
+    ctaBtnLabel: "Consulter les forfaits"
+    ctaBtnAriaLabel: "Voir les tarifs des forfaits de création"
+    ctaBtnName: "button-creation-tarif"
+    ctaBtnLink: "#les-forfaits-de-création"
+    ctaBtnClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm leading-relaxed whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
+    ctaBtnIcon: "fa7-solid:chart-simple"
 ---
+::
 
-## Solution
+## Ce qui est inclus d'office dans votre site
 
-Un site qui ne sert pas uniquement à être vu, mais à vous amener des clients (appels, devis, prises de rendez-vous).
+::content-grid{columns=3 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:bolt" title="Vitesse de chargement"}
+  Un code éco-conçu débarassé du superflu, pour un affichage instantané même avec une mauvaise connexion.
+  :::
+  :::content-card{icon="i-fa7-solid:magnifying-glass" title="Prêt pour le référencement de demain."}
+  Le référencement naturel commence par un code propre. Une indexation optimisée pour les moteurs de recherche et les nouvelles intelligences artificielles de recherche (SEO/AIO).
+  :::
+  :::content-card{icon="i-fa7-solid:eye" title="Accessibilité & Inclusion"}
+  Une interface constuite selon les normes (RGAA/WCAG) pour être utilisable par tout le monde, sans barrières.
+  :::
+::
 
----
+## Des fonctionnalités adaptées à votre quotidien
 
-## Inclus
+Votre site peut évoluer en même temps que votre entreprise. Pas besoin de tout réinventer si vos besoins changent.
 
-- Analyse des besoins
-- Conception du site
-- Lisibilité sur mobile et ordinateur
-- Visibilité sur Google
-- Optimisation des performances (site rapide et agréable à utiliser)
-- Site utilisable sur ordinateur, mobile et par tous les publics
-- Formation à l'utilisation du site (En option)
-- Assistance pour l'hébergement (En option : Choix de l'hébergement, nom de domaine, configuration, panne)
+::content-grid{columns=3 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:calendar-days" title="Modules de réservations simples"}
+  Affichage des disponibilités et synchronisation des plannings (iCal ou alternatives) pour vos hébergements ou rendez-vous.
+  :::
+  :::content-card{icon="i-fa7-solid:cart-shopping" title="Boutique en ligne artisanale"}
+  Une architecture fiable pour présenter vos produits et encaisser vos ventes de manière sécurisée.
+  :::
+::
 
----
+## Besoin d'un outil sur-mesure ?
 
-## Types de projets
+Qu'il s'agisse d'automatiser des processus internes et tâches répétitives, de lier votre site à vos outils habituels, de créer un espace de travail sur-mesure, ou créer une application métier spécifique, je développe la solution de manière artisanale, ligne par ligne.
 
-- Page unique de lancement
-- Site vitrine d'entreprise
-- Portfolio créatif
-- Site de réservation touristique
+\*\*Les pages incluses de base : Accueil, À propos, Services/Réalisations, Contact, Mentions légales, Déclaration d'Accessibilité.
 
-## Taille des projets
-
-- Petite taille = simple présence en ligne
-- Complet = site structuré pour générer des clients
-- E-commerce = vente en ligne
-
----
-
-## Pourquoi c'est différent
-
-Contrairement à beaucoup de sites qui ne sont que des supports de présentation, le vôtre sera conçu pour vous apporter des contacts et des demandes concrètes.
-
-J'utiliserais la solution la plus adaptée à votre activité et à vos besoins :
-
-- CMS simple à administrer
-- Boutique en ligne
-- Ou développement spécifique si nécessaire
-
-L'objectif reste toujours le même :
-
-- Rapidité
-- Sécurité
-- Simplicité d'utilisation
-- Accessibilité
-- Evolutivité
-
----
-
-## Besoin particulier
-
-Besoin d'une application métier ou d'un outil sur-mesure ?
-
-Vous avez besoin d'automatiser vos processus internes, de créer une boutique e-commerce complète, de connecter votre site à un logiciel tiers (CRM, ERP), de créer un système de réservation avancé avec logique métier complexe ou de développer un SaaS léger ?
-
-En tant que développeur, je conçois des solutions robustes, sécurisées et codées sur-mesure qui s'adaptent exactement à votre manière de travailler.
-Je vous invite à cliquer sur le bouton **Discuter de votre projet** en bas de la page afin de convenir d'un rendez-vous.
-
-## Tarif
-
-\*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
-
-\*\*Les pages classiques sont : Accueil, À propos, Services/Réalisations, Contact, Mentions légales
+## Les forfaits de création

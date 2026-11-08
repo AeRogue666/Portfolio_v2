@@ -1,43 +1,66 @@
 ---
-title: Optimisation de site web pour plus de clients
+title: Optimisation de site web : Performance, SEO/AIO et Accessibilité
 created_at: "2026-02-11"
-shortDescription: Améliorez votre site pour gagner en rapidité, en visibilité et en efficacité pour générer des clients.
+updated_at: "2026-11-08"
+shortDescription: Améliorez votre site actuel pour gagner en rapidité, en visibilité moderne et en confort de navigation.
 description: 
-  - title: Votre site internet est en ligne mais il est lent, mal positionné sur les moteurs de recherche, ne respecte pas le RGAA ou ne vous apporte pas assez de clients ? Analysons ses faiblesses pour débloquer tout son potentiel.
-    content: Un audit approfondi suivi d'actions techniques concrètes pour booster votre efficacité commerciale.
+  - title: Votre site internet est en ligne mais montre des faiblesses ?
+    content: S'il manque de vitesse, s'il se positionne mal sur les moteurs de recherche ou s'il savère difficile d'accès pour certains usagers, pas besoin de tout reconstruire. Identifions ses points de blocage pour exploiter proprement son infrastructure existante.
   - children:
-    - title: Vitesse & Expérience Utilisateur
-      content: Accélération du temps de chargement et fluidification du parcours utilisateur (UX).
-    - title: Visibilité accrue
-      content: Correction des freins au référencement naturel et local (SEO) pour plaire autant aux internautes qu'à Google.
-feed_title: Optimisation de site web
-feed_summary: Votre site existe déjà mais ne donne pas les résultats attendus ? Je l'améliore pour augmenter sa visibilité, sa rapidité et son efficacité
+    - title: Vitesse & Ergonomie
+      content: Allègement du code sous-jacent, optimisation des ressources et fluidification du parcours pour le confort de navigation.
+    - title: Visibilité SEO & Réponses IA (AIO)
+      content: Structuration propre des données et des contenus pour répondre aux exigences des moteurs classiques et des résumeurs d'IA.
+feed_title: Optimisation technique de site internet
+feed_summary: Améliorez la rapidité, l'accessibilité et le référencement sémantique de votre site actuel sans passer par une refonte totale.
 accessible_name: l'optimisation de site web
 locale: en
 packages:
-  - title: Forfaits uniques d'optimisation de site
+  - title: Forfaits d'optimisation technique ciblée
     children:
-      - title: Optimisation ciblée
-        description: Au choix -> SEO ou Performance ou Accessibilité ou Sécurité
+      - title: Optimisation à la carte
+        description: Au choix -> Performance web OU Accessibilité inclusive OU Structure SEO/AIO ou Durcissement Sécurité
         price: 400€
         features:
-          - Passage au vert sur PageSpeed Insights OU
-          - Résolution des erreurs d'accessibilité majeures (WAVE & Lighthouse) OU
-          - Durcissement de la sécurité et paramétrage des en-têtes serveurs
-      - title: Optimisation complète
-        description: SEO + Performance + Accessibilité + Sécurité
+          - Amélioration concrète des indicateurs de vitesse (PageSpeed Insights) OU
+          - Résolution des erreurs d'accessibilité majeures (normes WCAG/RGAA via Lighthouse/WAVE) OU
+          - Restructuration sémantique des balises et données structurées SEO/AIO OU
+          - Sécurisation du serveur et mise en place des en-têtes HTTP de sécurité
+      - title: Intervention globale de mise aux normes
+        description: Diagnostic complet et traitement des 4 piliers fondamentaux
         price: 700€
         features:
-          - Check-up de santé complet du site pour le remettre aux normes du web moderne
+          - Application des correctifs de performance, d'accessibilité, de référencement sémantique et de sécurité
 previewUrl: /services/optimisation-site
 slug: optimisation-site
 tag: Optimisation
 highlighted: false
 ---
 
+## Valoriser votre outil existant sans tout réinventer
+
+Si l'aspect visuel général de votre site vous convient mais que les résultats techniques ne sont pas au rendez-vous, la refonte intégrale n'est pas nécessaire.
+Une intervention chirurgicale ciblée sur le code existant permet souvent de retrouver un site performant et moderne.
+
+::content-grid(columns=3 class="my-6 gap-4")
+:::content-card{icon="i-fa7-solid:gauge" title="Performance pure"}
+Optimisation des images et scripts pour un affichage rapide et un socre technique au vert.
+:::
+:::content-card{icon="i-fa7-solid:robot" title="Sémantique SEO/AIO"}
+Un code sémantique structuré pour être parfaitement lisible par Google et compris par les IA de recherche.
+:::
+:::content-card{icon="i-fa7-solid:universal-access" title="Conformité et inclusion"}
+Ajustement des contrastes, navigation au clavier et balisage pour ouvrir votre site à tous les usagers.
+:::
+::
+
+## Une structure technique assainie et pérenne
+
+Je retravaille directement les fondations invisibles de vos pages pour leur redonner de l'efficacité :
+
 ::responsive-image
 ---
-title: "Capture du site vitrine professionnel, CodeKorico.com"
+title: "Interface d'audit et optimisation technique par CodeKorico"
 desktop: "/images/project/portfolio-v2/desktop.png"
 tablet: "/images/project/portfolio-v2/tablet.png"
 mobile: "/images/project/portfolio-v2/mobile.png"
@@ -45,52 +68,38 @@ mobile: "/images/project/portfolio-v2/mobile.png"
 ---
 ::
 
-## Pour qui ?
-
-- Professionnels satisfaits de leur site actuel
-- Sites qui manquent de visibilité
-- Sites lents ou peu performants
-
+::content-cta-modal
 ---
-
-## Problème
-
-Le site est globalement satisfaisant mais certains aspects limitent son efficacité.
-
+    ctaLabel: "Optimiser mon site"
+    ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
+    ctaIcon: "fa7-solid:comment-dots"
+    projectType: "optimisation"
+    ctaBtnLabel: "Consulter les options"
+    ctaBtnAriaLabel: "Voir le tarif des forfaits d'optimisation"
+    ctaBtnName: "button-optimisation-tarif"
+    ctaBtnLink: "#forfaits-d-optimisation-technique-ciblée"
+    ctaBtnClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm leading-relaxed whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
+    ctaBtnIcon: "fa7-solid:chart-simple"
 ---
+::
 
-## Solution
+## Les quatres axes du travail de l'artisan
 
-L'optimisation existe et elle ne nécessite pas de refonte complète du site.
-J'améliore votre site en corrigeant les éléments qui limitent sa performance :
-visibilité, rapidité et capacité à convertir vos visiteurs en clients.
+### Référencement naturel & Moteurs IA
 
----
+Le référencement moderne exige un balisage irréprochable. J'organise vos données de façon à ce que votre activité soit facilement référencée localement sur les cartes, indexée proprement sur les moteurs traditionnels (SEO) et facilement exploitable sous forme de résumész par les nouvelles intelligences artificielles (AIO).
 
-## Résultat
+### Vitesse et sobriété numérique
 
-Un site plus rapide, plus visible et qui convertit davantage.
+Un site lourd pénalise l'expérience utilisateur et votre positionnement.
+En nettoyant les scripts inutiles, en configurant les caches serveurs et en optimisant vos médias, vos pages s'affichent instantanément.
 
-## Optimisations proposées
+### Accessibilité et confort ergonomique
 
-### SEO
+La mise aux normes (RGAA/WCAG) consiste à retirer les obstacles à la lecture : réorganisation des niveaux de titres, gestion rigoureuse des attributs pour lecteurs d'écran et ajustements ergonomiques globaux pour tous.
 
-Amélioration du référencement naturel.
+### Durcissement de la sécurité
 
-### Performance
+Mise en place de protocoles stricts de protection pour sécuriser les formulaires contre le spam et empêcher les tentatives d'njections malveillantes.
 
-Amélioration de la vitesse de chargement et de la fluidité.
-
-### Accessibilité
-
-Amélioration de l'accès au contenu pour tous les utilisateurs.
-
-### Sécurité
-
-Renforcement de la sécurité du site.
-
----
-
-## Tarif
-
-\*Coût des déplacements (si besoin), Hébergement et Nom de domaine non compris dans le tarif (dépendent du choix de l'hébergeur et de l'offre ainsi que de l'extension du nom de domaine : .fr, .com, .net, .org, etc.)
+* Sous réserve d'un accès technique total à votre hébergement et au système de gestion de contenu (CMS) actuel.
