@@ -67,6 +67,7 @@ Un outil numérique obsolète dessert votre activité. Voici les points de bloca
 
 ::content-cta-modal
 ---
+    title: "Ne laissez plus un site internet obsolète ou inaccessible freiner votre business."
     ctaLabel: "Faire le point sur votre site"
     ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
     ctaIcon: "fa7-solid:comment-dots"
@@ -89,7 +90,7 @@ Utilisez le curseur pour voir la différence entre un code lourd et une version 
 
 ::image-slider
 ---
-    imageBefore: "/images/project/plateforme-gestion-recettes/desktop.PNG"
+    imageBefore: "/images/project/plateforme-gestion-recettes/desktop.png"
     altBefore: "Ancienne version du site : contrastes faibles et structure encombrée."
     imageAfter: "/images/project/portfolio-v2/desktop.png"
     altAfter: "Nouvelle version par CodeKorico : lisibilité parfaite, éco-conçu et code accessible."

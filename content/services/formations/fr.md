@@ -52,12 +52,12 @@ highlighted: false
 Utiliser des outils numériques tous les jours sans vraiment les comprendre génère du stress, des erreurs et une dépendance technique permanente. Brisons ce cercle vicieux ensemble.
 
 ::content-grid(columns=2 class="my-6 gap-4")
-:::content-card{icon="i-fa7-solid:graduation-cap" title="A votre propre rythme"}
-Pas de jargon technique inutile, mais des explications claires et des manipulations concrètes.
-:::
-:::content-card{icon="i-fa7-solid:shield-halved" title="Sécurité au quotidien"}
-Apprenez à identifier les pièges du web, à gérer vos accès et à travailler en toute confiance.
-:::
+  :::content-card{icon="i-fa7-solid:graduation-cap" title="A votre propre rythme"}
+  Pas de jargon technique inutile, mais des explications claires et des manipulations concrètes.
+  :::
+  :::content-card{icon="i-fa7-solid:shield-halved" title="Sécurité au quotidien"}
+  Apprenez à identifier les pièges du web, à gérer vos accès et à travailler en toute confiance.
+  :::
 ::
 
 ## Quelques exemples de contextes techniques maîtrisés
@@ -69,9 +69,9 @@ Mes réalisations et outils quotidiens servent de base pratique pour vous former
 service:
 
 - title: "Plateforme de gestion de recettes de cuisine"
-    desktop: "/images/project/plateforme-gestion-recettes/desktop.PNG"
-    tablet: "/images/project/plateforme-gestion-recettes/tablet.PNG"
-    mobile: "/images/project/plateforme-gestion-recettes/mobile.PNG"
+    desktop: "/images/project/plateforme-gestion-recettes/desktop.png"
+    tablet: "/images/project/plateforme-gestion-recettes/tablet.png"
+    mobile: "/images/project/plateforme-gestion-recettes/mobile.png"
 - title: "Site vitrine professionnel"
     desktop: "/images/project/portfolio-v2/desktop.png"
     tablet: "/images/project/portfolio-v2/tablet.png"
@@ -82,6 +82,7 @@ service:
 
 ::content-cta-modal
 ---
+    title: "Formez-vous facilement et localement dès maintenant !"
     ctaLabel: "Planifier une formation"
     ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
     ctaIcon: "fa7-solid:comment-dots"
@@ -94,8 +95,6 @@ service:
     ctaBtnIcon: "fa7-solid:chart-simple"
 ---
 ::
-
-::content-cta-modal
 
 ## Des programmes adaptés à vos objectifs
 

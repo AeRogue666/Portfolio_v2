@@ -87,6 +87,7 @@ mobile: "/images/project/portfolio-v2/mobile.png"
 
 ::content-cta-modal
 ---
+    title: "Ne laisser plus votre site internet sans maintenance, exposer à tous les vents !"
     ctaLabel: "Confier ma maintenance"
     ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
     ctaIcon: "fa7-solid:comment-dots"

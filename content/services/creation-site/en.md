@@ -90,6 +90,7 @@ service:
 
 ::content-cta-modal
 ---
+    title: "Une idée en tête ou besoin d'un site qui vous accompagnera dans votre activité ? Venez m'en parler !"
     ctaLabel: "Parler de mon projet"
     ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
     ctaIcon: "fa7-solid:comment-dots"

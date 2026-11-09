@@ -2,6 +2,7 @@
 import CustomerScreeningModal from './layout/organisms/CustomerScreeningModal.vue';
 
 withDefaults(defineProps<{
+    title: string;
     ctaLabel?: string;
     ctaClass?: string;
     ctaIcon?: string;
@@ -14,6 +15,7 @@ withDefaults(defineProps<{
     ctaBtnName?: string;
     ctaBtnAriaLabel?: string;
 }>(), {
+    title: 'Lancer votre présence sur internet dès maintenant !',
     ctaLabel: 'Démarrer votre projet',
     ctaClass: 'bg-(--bg-3) text-(--text) fs-body leading-relaxed whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none',
     ctaIcon: 'fa7-solid:message',
@@ -32,7 +34,7 @@ withDefaults(defineProps<{
     <div
         class="flex flex-col items-center justify-center w-full my-10 py-6 px-4 bg-(--bg-2) border border-solid border-(--border-subtle) rounded-xl gap-4">
         <p class="fs-body font-medium text-(--text) m-0 my-6 max-w-md">
-            Ne laissez plus un site internet obsolète ou inaccessible freiner votre business.
+            {{ title }}
         </p>
 
         <ClientOnly>

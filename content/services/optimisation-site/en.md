@@ -43,15 +43,15 @@ Si l'aspect visuel général de votre site vous convient mais que les résultats
 Une intervention chirurgicale ciblée sur le code existant permet souvent de retrouver un site performant et moderne.
 
 ::content-grid(columns=3 class="my-6 gap-4")
-:::content-card{icon="i-fa7-solid:gauge" title="Performance pure"}
-Optimisation des images et scripts pour un affichage rapide et un socre technique au vert.
-:::
-:::content-card{icon="i-fa7-solid:robot" title="Sémantique SEO/AIO"}
-Un code sémantique structuré pour être parfaitement lisible par Google et compris par les IA de recherche.
-:::
-:::content-card{icon="i-fa7-solid:universal-access" title="Conformité et inclusion"}
-Ajustement des contrastes, navigation au clavier et balisage pour ouvrir votre site à tous les usagers.
-:::
+  :::content-card{icon="i-fa7-solid:gauge" title="Performance pure"}
+  Optimisation des images et scripts pour un affichage rapide et un socre technique au vert.
+  :::
+  :::content-card{icon="i-fa7-solid:robot" title="Sémantique SEO/AIO"}
+  Un code sémantique structuré pour être parfaitement lisible par Google et compris par les IA de recherche.
+  :::
+  :::content-card{icon="i-fa7-solid:universal-access" title="Conformité et inclusion"}
+  Ajustement des contrastes, navigation au clavier et balisage pour ouvrir votre site à tous les usagers.
+  :::
 ::
 
 ## Une structure technique assainie et pérenne
@@ -70,6 +70,7 @@ mobile: "/images/project/portfolio-v2/mobile.png"
 
 ::content-cta-modal
 ---
+    title: "Vous mettriez bien un petit coup de polish à votre site ?"
     ctaLabel: "Optimiser mon site"
     ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
     ctaIcon: "fa7-solid:comment-dots"

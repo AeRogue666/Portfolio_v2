@@ -63,12 +63,12 @@ highlighted: false
 Un site web laissé à l'abandon finit inévitablement par accumuler des failles de sécurité, ralentir ou souffrir de dysfonctionnements d'affichage. Cela nuit directement à votre image et à la confiance de vos visiteurs.
 
 ::content-grid(columns=2 class="my-6 gap-4")
-:::content-card{icon="i-fa7-solid:shield-halved" title="Anticipation des risques"}
-Corriger et mettre à jour en amont permet d'éviter les pannes critiques qui paralysent votre activité.
-:::
-:::content-card{icon="i-fa7-solid:clock-rotate-left" title="Tranquilité technique"}
-La technique reste mon affaire. Votre site tourne rond et vous gardez l'esprit libre pour vos clients.
-:::
+  :::content-card{icon="i-fa7-solid:shield-halved" title="Anticipation des risques"}
+  Corriger et mettre à jour en amont permet d'éviter les pannes critiques qui paralysent votre activité.
+  :::
+  :::content-card{icon="i-fa7-solid:clock-rotate-left" title="Tranquilité technique"}
+  La technique reste mon affaire. Votre site tourne rond et vous gardez l'esprit libre pour vos clients.
+  :::
 ::
 
 ## Une interface surveillée au quotidien
@@ -87,6 +87,7 @@ mobile: "/images/project/portfolio-v2/mobile.png"
 
 ::content-cta-modal
 ---
+    title: "Ne laisser plus votre site internet sans maintenance, exposer à tous les vents !"
     ctaLabel: "Confier ma maintenance"
     ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
     ctaIcon: "fa7-solid:comment-dots"
