@@ -6,11 +6,11 @@ shortDescription: Votre site reste sécurisé, rapide et fonctionnel en continu,
 description: 
   - title: Un suivi rigoureux pour garantir un site opérationnel.
     content: Ne redoutez plus les pannes invisibles, les bugs. J'assure la surveillance technique et le maintien à niveau constant de votre plateforme pour que vous puissiez vous concentrer sur votre coeur de métier.
-  - children:
-    - title: Vigilance technique & Sauvegardes
-      content: Mises à jour minutieuses de vos outils, sauvegardes déportées fréquentes et maintien des critères de conformité RGPD.
-    - title: Performance préservée
-      content: Votre vitrine en ligne conserve sa légèreté, sa rapidité de chargement sa disponibilité pour vos usagers.
+    children:
+      - title: Vigilance technique & Sauvegardes
+        content: Mises à jour minutieuses de vos outils, sauvegardes déportées fréquentes et maintien des critères de conformité RGPD.
+      - title: Performance préservée
+        content: Votre vitrine en ligne conserve sa légèreté, sa rapidité de chargement sa disponibilité pour vos usagers.
 feed_summary: Protégez votre investissement numérique avec une maintenance rigoureuse, préventive et transparente.
 feed_title: Maintenance et suivi technique de site web
 accessible_name: la maintenance de site web

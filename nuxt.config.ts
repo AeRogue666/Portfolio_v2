@@ -24,9 +24,9 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "vercel",
-    /* prerender: {
-      routes: ['/']
-    } */
+    prerender: {
+      crawlLinks: true
+    }
   },
   css: ["~/assets/styles/main.css"],
   plugins: ["~/dayjs_client.ts"],
@@ -121,7 +121,7 @@ export default defineNuxtConfig({
       '/accessibility',
       '/clients',
       '/experiments',
-      '/legal_notices',
+      '/legal-notices',
       '/projects',
       '/projects/front-ecommerce-headless',
       '/projects/front-pomodor-timer',

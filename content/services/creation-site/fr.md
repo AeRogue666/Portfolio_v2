@@ -5,11 +5,11 @@ shortDescription: Un site professionnel, ergonomique et optimisé pour le SEO/AI
 description: 
   - title: Votre site internet sur-mesure, conçu pour durer.
     content: Vous partez de zéro ? Je crée un site léger, sécurisé et pensé dès la première ligne de code pour être lisible et utilisable par tous vos clients. Pas de jargon d'agence, juste un outil de travail performant et durable.
-  - children:
-    - title: Connecté aux nouveaux moteurs de recherche (SEO & AIO)
-      content: Une structure technique saine et moderne, prête pour le référencement traditionnel sur Google et optimisée pour la recherche par Intelligence Artificielle.
-    - title: Accessibilité & Ergonomie native
-      content: Un confort de navigation fluide sur tous les écrans, adapté aux utilisateurs comme aux outils d'assistance.
+    children:
+      - title: Connecté aux nouveaux moteurs de recherche (SEO & AIO)
+        content: Une structure technique saine et moderne, prête pour le référencement traditionnel sur Google et optimisée pour la recherche par Intelligence Artificielle.
+      - title: Accessibilité & Ergonomie native
+        content: Un confort de navigation fluide sur tous les écrans, adapté aux utilisateurs comme aux outils d'assistance.
 feed_summary: Un site clair, rapide et accessible pour lancer votre activité.
 feed_title: Un site sur-mesure pour lancer votre activité
 accessible_name: la création de site

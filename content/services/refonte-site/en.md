@@ -5,12 +5,12 @@ updated_at: "2026-09-15"
 shortDescription: Reconstruisons votre site actuel sur des base saines, fluides, éco-conçues et lisibles par tous.
 description: 
   - title: Votre site internet montre des signes de fatigue ?
-    content: S'il est devenu lent, illisible sur téléphone ou difficile ç indexer par les nouveaux outils de recherche, il s'éloigne de sa mission première. Redonnons-lui l'efficacité technique et le confort de navigation nécessaire, sans tout casser.
-  - children:
-    - title: Modernisation technique & AIO
-      content: Passage aux architectures modernes pour répondre aux exigences de rapidité de chargement et de lisibilité par les IA de recherche.
-    - title: Ergonomie & Accessibilité (RGAA)
-      content: Transition fluide vers une interface plus lisible, inclusive et intuitive pour l'ensemble des internautes.
+    content: S'il est devenu lent, illisible sur téléphone ou difficile à indexer par les nouveaux outils de recherche, il s'éloigne de sa mission première. Redonnons-lui l'efficacité technique et le confort de navigation nécessaire, sans tout casser.
+    children:
+      - title: Modernisation technique & AIO
+        content: Passage aux architectures modernes pour répondre aux exigences de rapidité de chargement et de lisibilité par les IA de recherche.
+      - title: Ergonomie & Accessibilité (RGAA)
+        content: Transition fluide vers une interface plus lisible, inclusive et intuitive pour l'ensemble des internautes.
 feed_summary: Votre site est vieillissant ou inefficace ? Retrouvez un outil rapide, accessible et adapté aux téléphones.
 feed_title: Refonte & modernisation de sites web
 accessible_name: la refonte et modernisation web

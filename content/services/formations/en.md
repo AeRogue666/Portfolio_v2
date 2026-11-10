@@ -6,7 +6,7 @@ shortDescription: Gagnez en autonomie et maîtrisez vos outils digitaux du quoti
 description:
   - title: Reprenez le contrôle de vos outils numériques.
     content: Besoin de dompter votre ordinateur, de sécuriser vos démarches ou d'intégrer une IA de façon éthique et responsable dans votre travail ? Que vous soyez un particulier ou un professionnel, je vous accompagne pas à pas et avec pédagogie pour faire du numérique un allié fiable.
-  - children:
+    children:
       - title: Pour tous (particuliers & seniors)
         content: Prise en main sereine du matériel (ordinateur, tablette, téléphone), démarches administratives, visios familiales, et prévention des arnaques.
       - title: Pour les pros & entreprises

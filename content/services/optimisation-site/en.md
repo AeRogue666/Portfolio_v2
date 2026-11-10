@@ -6,11 +6,11 @@ shortDescription: Améliorez votre site actuel pour gagner en rapidité, en visi
 description: 
   - title: Votre site internet est en ligne mais montre des faiblesses ?
     content: S'il manque de vitesse, s'il se positionne mal sur les moteurs de recherche ou s'il savère difficile d'accès pour certains usagers, pas besoin de tout reconstruire. Identifions ses points de blocage pour exploiter proprement son infrastructure existante.
-  - children:
-    - title: Vitesse & Ergonomie
-      content: Allègement du code sous-jacent, optimisation des ressources et fluidification du parcours pour le confort de navigation.
-    - title: Visibilité SEO & Réponses IA (AIO)
-      content: Structuration propre des données et des contenus pour répondre aux exigences des moteurs classiques et des résumeurs d'IA.
+    children:
+      - title: Vitesse & Ergonomie
+        content: Allègement du code sous-jacent, optimisation des ressources et fluidification du parcours pour le confort de navigation.
+      - title: Visibilité SEO & Réponses IA (AIO)
+        content: Structuration propre des données et des contenus pour répondre aux exigences des moteurs classiques et des résumeurs d'IA.
 feed_title: Optimisation technique de site internet
 feed_summary: Améliorez la rapidité, l'accessibilité et le référencement sémantique de votre site actuel sans passer par une refonte totale.
 accessible_name: l'optimisation de site web
