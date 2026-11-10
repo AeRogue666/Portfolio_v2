@@ -35,8 +35,6 @@ const { t, locale, locales } = useI18n(),
     route = useRoute(),
     { formatISO } = useDate();
 
-useSidebarFocusState();
-
 const grayscale = computed(() => accessibilityStore.grayscale);
 
 // Clients sections

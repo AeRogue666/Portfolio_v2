@@ -1,4 +1,4 @@
-export const useSidebarFocusState = () => {
+/* export const useSidebarFocusState = () => {
   const isModalOpen = ref(false);
 
   const setModalOpen = (value: boolean) => {
@@ -24,3 +24,4 @@ export const useSidebarFocusStateInject = () => {
 
   return state;
 };
+ */

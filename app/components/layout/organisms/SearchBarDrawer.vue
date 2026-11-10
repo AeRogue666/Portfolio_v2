@@ -5,8 +5,6 @@ const { t, locale } = useI18n(),
 const searchTerm = ref("");
 const isOpen = ref(false);
 
-useSidebarFocusState();
-
 const { data: postsData, status, execute } = await useFetch('/api/search', {
     key: `searchbar-posts-${locale.value}`,
     query: { locale: locale.value },

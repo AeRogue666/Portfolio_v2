@@ -7,8 +7,6 @@ const route = useRoute(),
     { t, locale, locales } = useI18n(),
     { formatDate, formatISO } = useDate();
 
-useSidebarFocusState();
-
 const slug = computed(() => String(route.params.slug));
 const asyncKey = computed(() => `landing-${slug.value}-${locale.value}`);
 

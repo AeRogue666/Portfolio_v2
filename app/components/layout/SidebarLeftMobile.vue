@@ -3,7 +3,7 @@ import IconButton from '../ui/IconButton.vue';
 import SidebarLeftContent from "./organisms/SidebarLeftContent.vue";
 
 const { t } = useI18n();
-useSidebarFocusState();
+// useSidebarFocusState();
 
 const isOpen = ref(false);
 </script>

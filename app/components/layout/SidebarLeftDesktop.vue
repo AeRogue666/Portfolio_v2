@@ -3,7 +3,7 @@ import SidebarLeftContent from './organisms/SidebarLeftContent.vue';
 
 const isCollapsed = useState('sidebar-collapsed', () => false);
 const isPageFeed = computed(() => useRoute().name === 'feed');
-useSidebarFocusState();
+// useSidebarFocusState();
 </script>
 
 <template>
