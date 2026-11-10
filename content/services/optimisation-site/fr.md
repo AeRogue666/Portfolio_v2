@@ -1,5 +1,5 @@
 ---
-title: Optimisation de site web : Performance, SEO/AIO et Accessibilité
+title: Optimisation de site web
 created_at: "2026-02-11"
 updated_at: "2026-11-08"
 shortDescription: Améliorez votre site actuel pour gagner en rapidité, en visibilité moderne et en confort de navigation.
@@ -42,7 +42,7 @@ highlighted: false
 Si l'aspect visuel général de votre site vous convient mais que les résultats techniques ne sont pas au rendez-vous, la refonte intégrale n'est pas nécessaire.
 Une intervention chirurgicale ciblée sur le code existant permet souvent de retrouver un site performant et moderne.
 
-::content-grid(columns=3 class="my-6 gap-4")
+::content-grid{columns=3 class="my-6 gap-4"}
   :::content-card{icon="i-fa7-solid:gauge" title="Performance pure"}
   Optimisation des images et scripts pour un affichage rapide et un socre technique au vert.
   :::
@@ -61,9 +61,9 @@ Je retravaille directement les fondations invisibles de vos pages pour leur redo
 ::responsive-image
 ---
 title: "Interface d'audit et optimisation technique par CodeKorico"
-desktop: "/images/project/portfolio-v2/desktop.png"
-tablet: "/images/project/portfolio-v2/tablet.png"
-mobile: "/images/project/portfolio-v2/mobile.png"
+desktop: "/images/services/optimisation-site/desktop.png"
+tablet: "/images/services/optimisation-site/tablet.png"
+mobile: "/images/services/optimisation-site/mobile.png"
 
 ---
 ::

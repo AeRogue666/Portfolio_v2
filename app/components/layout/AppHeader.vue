@@ -27,14 +27,14 @@ const isCollapsed = useState('sidebar-collapsed');
                 :size="'size-10'" :label="t('sidebar-left.open')" class="hidden lg:flex size-10" tabindex="0"
                 @click="isCollapsed = !isCollapsed" />
 
-            <UContainer :class="isCollapsed ? 'hidden' : 'hidden md:flex'">
-                <NuxtLink to="/" tabindex="0">
+            <UContainer>
+                <NuxtLink to="/" tabindex="0" :aria-label="t('header.span_title')" clas="relative w-full flex gap-1.5 focus:outline-none focus-visible:outline-none hover:text-highlighted rounded-lg px-2 py-1">
                     <NuxtImg id="header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
-                        :alt="t('header.span_title')" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        alt="" aria-hidden="true" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" />
                     <NuxtImg id="header-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
-                        :alt="t('header.span_title')" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        alt="" aria-hidden="true" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high" />
                 </NuxtLink>
             </UContainer>

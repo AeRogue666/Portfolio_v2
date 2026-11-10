@@ -346,14 +346,14 @@ useSeoMeta(({
         <!-- Landing section -->
         <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="fillColors?.[0]">
             <template #tag>
-                <div>
-                    <NuxtImg id="index-title-img-light" :src="'/images/logo/logo_k_light.png'" :alt="t('index.lettered_logo')"
+                <div role="img" :aria-label="t('index.lettered_logo')">
+                    <NuxtImg id="index-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="" aria-hidden="true"
                         width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high"
                         loading="eager" />
                     <NuxtImg id="index-title-img-dark"
                         :src="grayscale ? '/images/logo/logo_k_light.png' : '/images/logo/logo_k_dark.png'"
-                        :alt="t('index.lettered_logo')" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
+                        alt="" aria-hidden="true" width="250" height="250" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
                         :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high"
                         loading="eager" />
                 </div>
