@@ -18,41 +18,6 @@
     "open_linkedin": "Ouvrir sur Linkedin",
     "open_pollen-scop": "Ouvrir sur Pollen SCOP",
     "main_nav": "Navigation principale",
-    "modal-message": {
-      "title": "Envoyer un message",
-      "description": "Envoyer un message à l'équipe de CodeKorico",
-      "send-message_button_label": "Envoyer un message",
-      "selectType_label": "Sélectionner le type",
-      "email_label": "Email",
-      "textarea_label": "Message",
-      "textarea_placeholder": "Decrivez votre besoin, votre message ou votre question. Je vous repondrez directement par mail",
-      "submit_button": "Envoyer",
-      "step-complexity": {
-        "business-goals-label": "Quels sont les objectifs principaux du projet ?",
-        "business-goals-placeholder": "Décrivez en {maxlength} caractères maximum les objectifs principaux du projet.",
-        "problems-label": "Rencontrez-vous des problèmes actuellement ?",
-        "problems-placeholder": "Décrivez en {maxlength} caractères maximum les problèmes rencontrés.",
-        "client_website": "Adresse de votre site internet"
-      },
-      "step-summary": {
-        "email_label": "Email",
-        "email_placeholder": "Votre email",
-        "textarea_label": "Informations complémentaires (optionnel)",
-        "textarea_placeholder": "Decrivez vos besoins et toutes informations complémentaires."
-      },
-      "step-ending": {
-        "title": "Formulaire envoyé !",
-        "thank_you_message_part1": "Merci d'avoir pris le temps de remplir ce formulaire.",
-        "thank_you_message_part2": "Je vous répondrais sous 48 à 72 heures professionnelles ouvrées.",
-        "download_my_card": "N'oubliez pas d'enregistrer ma carte de visite dans vos contacts en cliquant sur le bouton ci-dessous"
-      },
-      "state": {
-        "loading": "Envoi en cours...",
-        "success": "Message envoyé",
-        "error": "Une erreur non prévue est survenue. Réessayez plus tard.",
-        "waiting_before_new_message": "Veuillez patienter avant de pouvoir envoyer un nouveau message."
-      }
-    },
     "navigation": {
       "homepage": "Accueil",
       "feed": "Fil",
@@ -61,6 +26,7 @@
       "accessibility_statement": "Accessibilité : Partiellement conforme",
       "problem_report": "Signaler un incident",
       "accessibility_report": "Rapport d'accessibilité",
+      "contact": "Contact",
       "legal_notices": "Mentions légales",
       "terms_of_use": "CGU",
       "landing_page": "Accessibilité en Ardèche"
@@ -495,6 +461,51 @@
     },
     "price_starting_at": "A partir de",
     "on_estimate": "Sur devis"
+  },
+  "contact": {
+    "modal-message": {
+      "title": "Envoyer un message",
+      "description": "Envoyer un message à l'équipe de CodeKorico",
+      "send-message_button_label": "Envoyer un message",
+      "selectType_label": "Sélectionner le type",
+      "email_label": "Email",
+      "textarea_label": "Message",
+      "textarea_placeholder": "Decrivez votre besoin, votre message ou votre question. Je vous repondrez directement par mail",
+      "submit_button": "Envoyer",
+      "step-starting": {
+        "title": "Bienvenue sur notre formulaire de contact",
+        "description": {
+          "1": "Vous vous trouvez sur le formulaire mais ce dernier n'est pas un simple formulaire de contact.",
+          "2": "Ce formulaire a pour but que vous et moi nous nous comprenions sur vos besoins, vos attentes, vos envies et vos craintes sans passer par 3 heures de réunion pour arriver au même résultat.",
+          "3": "Prêt(e) à continuer ? Alors, cliquez sur le bouton 'Suivant'"
+        }
+      },
+      "step-complexity": {
+        "business-goals-label": "Quels sont les objectifs principaux du projet ?",
+        "business-goals-placeholder": "Décrivez en {maxlength} caractères maximum les objectifs principaux du projet.",
+        "problems-label": "Rencontrez-vous des problèmes actuellement ?",
+        "problems-placeholder": "Décrivez en {maxlength} caractères maximum les problèmes rencontrés.",
+        "client_website": "Adresse de votre site internet"
+      },
+      "step-summary": {
+        "email_label": "Email",
+        "email_placeholder": "Votre email",
+        "textarea_label": "Informations complémentaires (optionnel)",
+        "textarea_placeholder": "Decrivez vos besoins et toutes informations complémentaires."
+      },
+      "step-ending": {
+        "title": "Formulaire envoyé !",
+        "thank_you_message_part1": "Merci d'avoir pris le temps de remplir ce formulaire.",
+        "thank_you_message_part2": "Je vous répondrais sous 48 à 72 heures professionnelles ouvrées.",
+        "download_my_card": "N'oubliez pas d'enregistrer ma carte de visite dans vos contacts en cliquant sur le bouton ci-dessous"
+      },
+      "state": {
+        "loading": "Envoi en cours...",
+        "success": "Message envoyé",
+        "error": "Une erreur non prévue est survenue. Réessayez plus tard.",
+        "waiting_before_new_message": "Veuillez patienter avant de pouvoir envoyer un nouveau message."
+      }
+    }
   },
   "page": {
     "created_on": "Publié le",

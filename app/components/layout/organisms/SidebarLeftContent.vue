@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NavigationMenuItem } from '@nuxt/ui';
 import IconButton from '../../ui/IconButton.vue';
-import CustomerScreeningModal from './CustomerScreeningModal.vue';
+import ContactLinkBase from '../molecules/ContactLinkBase.vue';
 
 defineProps<{
     isCollapsed?: boolean
@@ -39,6 +39,11 @@ const itemsNavigation = computed<NavigationMenuItem[]>(() => [
         icon: 'fa7-solid:user-circle',
         to: '/about',
     },
+    {
+        label: t('sidebar-left.navigation.contact'),
+        icon: 'fa7-solid:address-book',
+        to: '/contact',
+    }
 ]),
     itemsFooterNavigation = computed<NavigationMenuItem[]>(() => [
         {
@@ -117,7 +122,7 @@ onMounted(() => {
 
             <!-- <SendMessageModal /> -->
 
-            <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:message'"
+            <ContactLinkBase :cta-label="t('index.landing_section.cta_project')" :cta-icon="'fa7-solid:message'"
                 :cta-class="'inline-flex items-center justify-center w-full px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-lead shadow-md whitespace-normal break-words cta-button'" />
 
             <div class="inline-flex items-baseline gap-4">

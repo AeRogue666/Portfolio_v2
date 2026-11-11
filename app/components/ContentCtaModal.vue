@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import CustomerScreeningModal from './layout/organisms/CustomerScreeningModal.vue';
+import ContactLinkBase from './layout/molecules/ContactLinkBase.vue';
 
 withDefaults(defineProps<{
-    title: string;
+    title?: string;
     ctaLabel?: string;
     ctaClass?: string;
     ctaIcon?: string;
@@ -38,7 +38,7 @@ withDefaults(defineProps<{
         </p>
 
         <ClientOnly>
-            <CustomerScreeningModal :cta-label="ctaLabel" :cta-icon="ctaIcon" :cta-class="ctaClass"
+            <ContactLinkBase :cta-label="ctaLabel" :cta-icon="ctaIcon" :cta-class="ctaClass"
                 :project-type="projectType" :sub-type="subType" />
 
             <UButton v-if="ctaBtnLabel && ctaBtnAriaLabel && ctaBtnLink" :to="ctaBtnLink" :name="ctaBtnName" :label="ctaBtnLabel" :icon="ctaBtnIcon"

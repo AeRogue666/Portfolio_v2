@@ -134,11 +134,11 @@ const rejectedProjectTypes = ['formation', 'audit'];
             <span>Pas de contenu disponible</span>
         </div>
 
-        <UFormField :label="t('sidebar-left.modal-message.step-summary.email_label')" name="email" :ui="{
+        <UFormField :label="t('contact.modal-message.step-summary.email_label')" name="email" :ui="{
             label: 'text-(--text-2) fs-body',
         }" required>
             <UInput v-model="leadStore.data.contact.email"
-                :placeholder="t('sidebar-left.modal-message.step-summary.email_placeholder')" size="xl" tabindex="0"
+                :placeholder="t('contact.modal-message.step-summary.email_placeholder')" size="xl" tabindex="0"
                 class="block w-3xs md:w-full mt-3 mx-4" :ui="{
                     base: grayscale && colorMode.value == 'dark'
                         ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
@@ -146,12 +146,12 @@ const rejectedProjectTypes = ['formation', 'audit'];
                 }" required />
         </UFormField>
 
-        <UFormField :label="t('sidebar-left.modal-message.step-summary.textarea_label')" name="message" :ui="{
+        <UFormField :label="t('contact.modal-message.step-summary.textarea_label')" name="message" :ui="{
             label: 'text-(--text-2) fs-body',
         }">
             <UTextarea v-model="leadStore.data.contact.message" type="text" :rows="10" :maxrows="20" minlength="20"
                 maxlength="3000" autocomplete="off"
-                :placeholder="t('sidebar-left.modal-message.step-summary.textarea_placeholder')"
+                :placeholder="t('contact.modal-message.step-summary.textarea_placeholder')"
                 class="block w-3xs md:w-full mt-3 mx-4" :ui="{
                     base: grayscale && colorMode.value == 'dark'
                         ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'

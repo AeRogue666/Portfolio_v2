@@ -33,6 +33,9 @@ export interface LeadState {
     contact: {
       email: string;
       message: string;
+      website: string;
     };
+    leadScore: number;
+    leadTier: "low" | "medium" | "high";
   };
 }

@@ -2,7 +2,7 @@
 import type { BreadcrumbItem } from '@nuxt/ui';
 import ArticleLayout from '@/components/layout/molecules/ArticleLayout.vue';
 import PackagesContainer from '@/components/index/organisms/PackagesContainer.vue'
-import CustomerScreeningModal from '@/components/layout/organisms/CustomerScreeningModal.vue';
+import ContactLinkBase from '~/components/layout/molecules/ContactLinkBase.vue';
 
 const route = useRoute(),
     { t, locale, locales } = useI18n(),
@@ -158,7 +158,7 @@ if (service.value) {
             </ul>
 
             <div class="flex flex-col md:flex-row justify-evenly">
-                <CustomerScreeningModal :cta-label="t('index.landing_section.cta_project')"
+                <ContactLinkBase :cta-label="t('index.landing_section.cta_project')"
                     :cta-icon="'fa7-solid:comment-dots'"
                     :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal break-words'"
                     :project-type="serviceType" />

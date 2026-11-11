@@ -29,7 +29,7 @@ const isCollapsed = useState('sidebar-collapsed');
         @click="isCollapsed = !isCollapsed" />
 
       <UContainer>
-        <NuxtLink to="/" tabindex="0" :aria-label="t('header.span_title')" class="relative w-full flex gap-1.5 focus:outline-none focus-visible:outline-none hover:text-highlighted rounded-lg px-2 py-1">
+        <NuxtLink to="/" tabindex="0" :aria-label="t('header.span_title')" class="relative w-max flex gap-1.5 focus:outline-none focus-visible:outline-none hover:text-highlighted rounded-lg px-2 py-1">
           <NuxtImg id="index-header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'" alt=""
             aria-hidden="true" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
             :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" />

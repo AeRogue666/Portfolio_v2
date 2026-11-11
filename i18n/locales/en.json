@@ -18,41 +18,6 @@
     "open_linkedin": "Open on Linkedin",
     "open_pollen-scop": "Open on Pollen SCOP",
     "main_nav": "Main navigation",
-    "modal-message": {
-      "title": "Send a message",
-      "description": "Send a message to CodeKorico team",
-      "send-message_button_label": "Send a message",
-      "selectType_label": "Select a type",
-      "email_label": "Email",
-      "textarea_label": "Message",
-      "textarea_placeholder": "Describe your need, your context or your question. I will directly answer by mail.",
-      "submit_button": "Submit",
-      "step-complexity": {
-        "business-goals-label": "What are the main objectives of the project",
-        "business-goals-placeholder": "Describe the main objectives of the project in up to {maxlength} characters.",
-        "problems-label": "Are you currently experiencing any problems?",
-        "problems-placeholder": "Describe the problems you're experiencing in {maxlength} characters or fewer.",
-        "client_website": "Your website address"
-      },
-      "step-summary": {
-        "email_label": "Email",
-        "email_placeholder": "Your email",
-        "textarea_label": "Additional information (optional)",
-        "textarea_placeholder": "Describe your needs and provide any additional information."
-      },
-      "step-ending": {
-        "title": "Submitted Form !",
-        "thank_you_message_part1": "Merci d'avoir pris le temps de remplir ce formulaire.",
-        "thank_you_message_part2": "Je vous répondrais sous 48 à 72 heures professionnelles ouvrées.",
-        "download_my_card": "N'oubliez pas d'enregistrer ma carte de visite dans vos contacts en cliquant sur le bouton ci-dessous"
-      },
-      "state": {
-        "loading": "Sending...",
-        "success": "Message sent",
-        "error": "An unexpected error occured. Please try later again.",
-        "waiting_before_new_message": "Please wait before sending another message."
-      }
-    },
     "navigation": {
       "homepage": "Home page",
       "feed": "Feed",
@@ -61,6 +26,7 @@
       "accessibility_statement": "Accessibility: Partly compliant",
       "problem_report": "Report a problem",
       "accessibility_report": "Accessibility report",
+      "contact": "Contact",
       "legal_notices": "Legal notices",
       "terms_of_use": "Terms of Use",
       "landing_page": "Accessibility in Ardèche"
@@ -495,6 +461,51 @@
     },
     "price_starting_at": "Starting at",
     "on_estimate": "On estimate"
+  },
+  "contact": {
+    "modal-message": {
+      "title": "Send a message",
+      "description": "Send a message to CodeKorico team",
+      "send-message_button_label": "Send a message",
+      "selectType_label": "Select a type",
+      "email_label": "Email",
+      "textarea_label": "Message",
+      "textarea_placeholder": "Describe your need, your context or your question. I will directly answer by mail.",
+      "submit_button": "Submit",
+      "step-starting": {
+        "title": "Welcome on the Contact Form",
+        "description": {
+          "1": "You're looking at this form, but it's not just a simple contact form.",
+          "2": "The purpose of this form is for you and me to understand your needs, expectations, desires, and concerns without having to spend three hours in a meeting to reach the same conclusion.",
+          "3": "Ready to continue? Then click the 'Next' button."
+        }
+      },
+      "step-complexity": {
+        "business-goals-label": "What are the main objectives of the project",
+        "business-goals-placeholder": "Describe the main objectives of the project in up to {maxlength} characters.",
+        "problems-label": "Are you currently experiencing any problems?",
+        "problems-placeholder": "Describe the problems you're experiencing in {maxlength} characters or fewer.",
+        "client_website": "Your website address"
+      },
+      "step-summary": {
+        "email_label": "Email",
+        "email_placeholder": "Your email",
+        "textarea_label": "Additional information (optional)",
+        "textarea_placeholder": "Describe your needs and provide any additional information."
+      },
+      "step-ending": {
+        "title": "Submitted Form !",
+        "thank_you_message_part1": "Merci d'avoir pris le temps de remplir ce formulaire.",
+        "thank_you_message_part2": "Je vous répondrais sous 48 à 72 heures professionnelles ouvrées.",
+        "download_my_card": "N'oubliez pas d'enregistrer ma carte de visite dans vos contacts en cliquant sur le bouton ci-dessous"
+      },
+      "state": {
+        "loading": "Sending...",
+        "success": "Message sent",
+        "error": "An unexpected error occured. Please try later again.",
+        "waiting_before_new_message": "Please wait before sending another message."
+      }
+    }
   },
   "page": {
     "created_on": "Published on",

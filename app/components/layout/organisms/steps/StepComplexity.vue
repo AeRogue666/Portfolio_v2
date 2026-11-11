@@ -13,7 +13,10 @@ const pageOptions = ['1-3', '4-10', '10+'],
     featureOptions = ['Paiement en ligne', 'Espace client', 'Blog', 'Multilingue', 'Automatisation', 'API externe'],
     structuralTypes = ["creation", "refonte", "audit"],
     featuresTypes = ["creation", "refonte"],
-    flashAuditType = ["audit-flash"];
+    flashAuditType = ["audit-flash"],
+    dontHaveWebsiteAddressType = ["creation", "formation"],
+    dontNeedCMSType = ["optimisation", "maintenance", "audit"],
+    dontNeedComplexityType = ["audit", "formation"];
 
 function toggleFeature(feature: any) {
     console.log(feature, typeof feature);
@@ -46,7 +49,27 @@ function togglePage(page: string) {
 
 <template>
     <div class="space-y-6">
-        <UContainer v-if="structuralTypes.includes(leadStore.data.projectType) && !flashAuditType.includes(leadStore.data.subType)">
+        <UContainer v-if="!dontHaveWebsiteAddressType.includes(leadStore.data.projectType)">
+            <h3 class="fs-subtitle mb-3">
+                Informations
+            </h3>
+
+            <div class="flex flex-col gap-4">
+                <UFormField :label="t('contact.modal-message.step-complexity.client_website')" name="website"
+                orientation="vertical"
+                    :ui="{
+                        labelWrapper: 'justify-start',
+                        label: 'text-(--text-2) fs-body',
+                        hint: 'fs-small'
+                    }" required>
+                    <UInput v-model="leadStore.data.contact.website" type="website" autocomplete="off" :ui="{
+                        base: 'bg-(--bg-2) fs-body'
+                    }" />
+                </UFormField>
+            </div>
+        </UContainer>
+
+        <UContainer v-if="!flashAuditType.includes(leadStore.data.subType) && !dontNeedComplexityType.includes(leadStore.data.projectType)">
             <h3 class="fs-subtitle mb-3">
                 Structure du projet
             </h3>
@@ -61,35 +84,12 @@ function togglePage(page: string) {
                     }" :active="leadStore.data.complexity.pages === p" active-class="bg-(--bg-3) text-(--text)" />
             </div>
 
-            <div class="mt-4">
+            <div v-if="!dontNeedCMSType.includes(leadStore.data.projectType)" class="mt-4">
                 <UCheckbox v-model="leadStore.data.complexity.cms" label="Cocher si besoin d'un CMS"
                     description="(Système de Gestion de Contenus en français)" icon="fa7-solid:heart" :ui="{
                         base: 'ring-2 ring-(--border-medium)',
                         indicator: 'bg-(--bg-2) text-(--accent)'
                     }" />
-            </div>
-        </UContainer>
-
-        <UContainer v-else>
-            <h3 class="fs-subtitle mb-3">
-                Informations
-            </h3>
-
-            <div v-if="leadStore.data.projectType !== 'formation'" class="flex flex-col gap-4">
-                <UFormField :label="t('sidebar-left.modal-message.step-complexity.client_website')" name="website"
-                orientation="vertical"
-                    :ui="{
-                        labelWrapper: 'justify-start',
-                        label: 'text-(--text-2) fs-body',
-                        hint: 'fs-small'
-                    }" required>
-                    <UInput v-model="leadStore.data.contact.website" type="website" autocomplete="off" :ui="{
-                        base: 'bg-(--bg-2) fs-body',
-                        content: 'bg-(--bg-2)',
-                        value: grayscale && colorMode.value == 'dark' ? 'text-inverted' : '',
-                        item: grayscale && colorMode.value == 'dark' ? 'text-inverted fs-body' : 'fs-body',
-                    }" />
-                </UFormField>
             </div>
         </UContainer>
 
@@ -115,13 +115,13 @@ function togglePage(page: string) {
             </h3>
 
             <div class="flex flex-col gap-4">
-                <UFormField :label="t('sidebar-left.modal-message.step-complexity.business-goals-label')" name="message"
+                <UFormField :label="t('contact.modal-message.step-complexity.business-goals-label')" name="message"
                     :ui="{
                         label: 'text-(--text-2) fs-body',
                     }" required>
                     <UTextarea v-model="leadStore.data.businessGoals" type="text" :rows="10" :maxrows="20"
                         minlength="20" maxlength="3000"
-                        :placeholder="t('sidebar-left.modal-message.step-complexity.business-goals-placeholder', { maxlength: 3000 })"
+                        :placeholder="t('contact.modal-message.step-complexity.business-goals-placeholder', { maxlength: 3000 })"
                         class="block w-3xs md:w-full mt-3 mx-4" :ui="{
                             base: grayscale && colorMode.value == 'dark'
                                 ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
@@ -129,12 +129,12 @@ function togglePage(page: string) {
                         }" required />
                 </UFormField>
 
-                <UFormField :label="t('sidebar-left.modal-message.step-complexity.problems-label')" name="message" :ui="{
+                <UFormField :label="t('contact.modal-message.step-complexity.problems-label')" name="message" :ui="{
                     label: 'text-(--text-2) fs-body',
                 }" required>
                     <UTextarea v-model="leadStore.data.problems" type="text" :rows="10" :maxrows="20" minlength="20"
                         maxlength="3000"
-                        :placeholder="t('sidebar-left.modal-message.step-complexity.problems-placeholder', { maxlength: 3000 })"
+                        :placeholder="t('contact.modal-message.step-complexity.problems-placeholder', { maxlength: 3000 })"
                         class="block w-3xs md:w-full mt-3 mx-4" :ui="{
                             base: grayscale && colorMode.value == 'dark'
                                 ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'
