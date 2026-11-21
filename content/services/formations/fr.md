@@ -41,8 +41,8 @@ packages:
         description: +75€ TTC par personne supplémentaire (soit ~10.714€/h TTC)
         price: 450€
         ttc: true
-previewUrl: /services/formation
-slug: formation
+previewUrl: /services/formations
+slug: formations
 tag: Formations
 highlighted: false
 ---

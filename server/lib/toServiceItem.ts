@@ -2,10 +2,18 @@ import type { ServiceResolved } from "@/types/service";
 
 type ServiceSource = {
   title?: string;
-  description?: string;
+  shortDescription?: string;
+  description?: Array<{
+    title?: string;
+    content?: string;
+    children?: Array<{
+      title?: string;
+      content?: string;
+    }>;
+  }>;
   feed_title?: string;
   feed_summary?: string;
-  accessible_name?: string;
+  accessible_name: string;
   slug: string;
   date?: string;
   created_at: string;
