@@ -80,44 +80,43 @@ highlighted: false
 
 Un équipement informatique accumule de la poussière, des fichiers obsolètes et des failles de sécurité. Un entretien régulier évite les pannes brutales et vous épargne le rachat prématuré d'un appareil neuf.
 
-::content-grid(columns=2 class="my-6 gap-4")
-    :::content-card{icon="i-fa7-solid:gauge-high" title="Retrouvez de la fluidité"}
-    Fini les démarrages interminables et les ventilateurs qui s'emballent. Votre machine retrouve sa réactivité d'origine.
-    :::
-    :::content-card{icon="i-fa7-solid:shield-virus" title="Protection et réactivité"}
-    Face aux virus, arnaques et logiciels malveillants, bénéficiez d'une intervention méthodique pour assainir votre appareil et protéger vos données.
-    :::
+::content-grid{columns=2 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:gauge-high" title="Retrouvez de la fluidité"}
+  Fini les démarrages interminables et les ventilateurs qui s'emballent. Votre machine retrouve sa réactivité d'origine.
+  :::
+  :::content-card{icon="i-fa7-solid:shield-virus" title="Protection et réactivité"}
+  Face aux virus, arnaques et logiciels malveillants, bénéficiez d'une intervention méthodique pour assainir votre appareil et protéger vos données.
+  :::
 ::
 
 ## Les domaines d'intervention et systèmes pris en charge
 
 J'interviens sur ordinateurs fixes, portables, tablettes et smartphones, principalement sous **Windows**, **Linux**, **Android** et **ChromeOS**.
 
-::content-grid(columns=3 class="my-6 gap-4")
-    :::content-card{icon="i-fa7-solid:broom" title="Nettoyage & Mises à jour"}
-    Suppression des programmes superflus, mises à jour systèmes et dépoussiérage matériel pour éviter la surchauffe.
-    :::
-    :::content-card{icon="i-fa7-solid:microchip" title="Evolution matérielle"}
-    Remplacement d'un disque dur lent par un SSD ou ajout de mémoire vive (RAM) pour donner une seconde jeunesse à votre PC.
-    :::
-    :::content-card{icon="i-fa7-solid:user-shield" title="Désinfection & Sécurité"}
-    Nettoyage complet après une infection ou un comportement suspect, récupération de fichiers et sécurisation de vos comptes.
-    :::
+::content-grid{columns=3 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:broom" title="Nettoyage & Mises à jour"}
+  Suppression des programmes superflus, mises à jour systèmes et dépoussiérage matériel pour éviter la surchauffe.
+  :::
+  :::content-card{icon="i-fa7-solid:microchip" title="Evolution matérielle"}
+  Remplacement d'un disque dur lent par un SSD ou ajout de mémoire vive (RAM) pour donner une seconde jeunesse à votre PC.
+  :::
+  :::content-card{icon="i-fa7-solid:user-shield" title="Désinfection & Sécurité"}
+  Nettoyage complet après une infection ou un comportement suspect, récupération de fichiers et sécurisation de vos comptes.
+  :::
 ::
 
 ::responsive-image
-
-title: "Suivi technique et interface de maintenance par CodeKorico"
-desktop: "/images/project/portfolio-v2/desktop.png"
-tablet: "/images/project/portfolio-v2/tablet.png"
-mobile: "/images/project/portfolio-v2/mobile.png"
+---
+title: "Interface de récupération de données de TestDisk 7.3 pour Windows"
+desktop: "/images/services/maintenance-informatique/desktop.png"
+tablet: "/images/services/maintenance-informatique/tablet.png"
+mobile: "/images/services/maintenance-informatique/mobile.png"
 
 ---
-
 ::
 
-## ::content-cta-modal
-
+::content-cta-modal
+---
     title: "Votre ordinateur rame, chauffe ou a subi une attaque ? Faisons le point ensemble."
     ctaLabel: "Demander une intervention"
     ctaClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
@@ -129,9 +128,7 @@ mobile: "/images/project/portfolio-v2/mobile.png"
     ctaBtnLink: "#forfaits-particuliers-à-domicile-ou-à-distance"
     ctaBtnClass: "inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--bg-2) text-(--text) border transition-all duration-200 hover:bg-(--text) hover:text-(--bg) hover:border-transparent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-sm leading-relaxed whitespace-normal wrap-break-word max-w-[65%] sm:max-w-none"
     ctaBtnIcon: "fa7-solid:chart-simple"
-
 ---
-
 ::
 
 ## Modalité d'intervention et zone de déplacement
@@ -140,15 +137,6 @@ mobile: "/images/project/portfolio-v2/mobile.png"
 
 Aucune immobilisation en atelier : j'interviens directement **à domicile** pour les particuliers et **sur site** pour les professionnels.
 Dès que le diagnostic le permet (optimisation logicielle, mises à jour, désinfection légère), **la télémaintenance à distance** est privilégiée : elle permet une prise en charge rapide tout en **supprimant les frais de déplacement** de votre facture.
-
-### Barème de frais de déplacements (Base Prades / Jaujac / Lalevade-d'Ardèche)
-
-Les distances sont calculées à l'aller simple depuis ma zone d'activité principale :
-
-* **Moins de 20 km** *(Aubenas, Vals-les-Bains, Lachapelle-sous-Aubenas, Ucel, Thueyts, Largentière, Antraigues..)* : **Offert (0 €)**
-* **De 20 à 35 km** *(Joyeuse, Villeneuve-de-Berg, Les Vans, Montpezat..)* : **Forfait 15 €**
-* **De 35 à 50 km** *(Privas, Vallon-Pont-d'Arc, Le Teil, Ruoms..)* : **Forfait 25 €**
-* **Au-delà de 50 km** *(Montélimar, Drôme, Haute-Loire)* : **0.60 €/km A/R au-delà des 20 premiers kilomètres** *(ou télémaintenance privilégiée)*
 
 ### Besoin d'aller plus loin ? Formations & accompagnement
 

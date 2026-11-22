@@ -460,7 +460,11 @@
       "description": "Les tarifs indiqués sur cette page sont d'ordre indicatif et ne représentent en aucun cas la réalité. Un devis sur la création, l'optimisation ou la maintenance d'un site internet s'étudie au cas par cas en fonction de vos besoins et demandes. Il vous est possible de supprimer certaines fonctionnalités pour alléger le tarif ou au contraire, ajouter de nouvelles fonctions pour étoffer votre projet. De plus, les coûts de déplacements si nécessaires ne sont pas compris dans les tarifs indiqués. Il en va de même pour l'hébergement et le nom de domaine qui dépendent du choix de l'hébergeur ainsi que de l'offre d'hébergement, et de l'extension du nom de domaine choisi (.fr, .com, .net, .org, etc.). Je me ferais un plaisir de vous aider à choisir le meilleur hébergement pour votre site internet afin qu'il vous coûte le moins cher possible et soit le plus rapide possible."
     },
     "price_starting_at": "A partir de",
-    "on_estimate": "Sur devis"
+    "on_estimate": "Sur devis",
+    "travel_expenses": {
+      "title": "Barème de frais de déplacements (Base Prades / Jaujac / Lalevade-d'Ardèche)",
+      "description": "Les distances sont calculées à l'aller simple depuis ma zone d'activité principale"
+    }
   },
   "contact": {
     "modal-message": {

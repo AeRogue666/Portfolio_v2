@@ -51,7 +51,7 @@ highlighted: false
 
 Utiliser des outils numériques tous les jours sans vraiment les comprendre génère du stress, des erreurs et une dépendance technique permanente. Brisons ce cercle vicieux ensemble.
 
-::content-grid(columns=2 class="my-6 gap-4")
+::content-grid{columns=2 class="my-6 gap-4"}
   :::content-card{icon="i-fa7-solid:graduation-cap" title="A votre propre rythme"}
   Pas de jargon technique inutile, mais des explications claires et des manipulations concrètes.
   :::

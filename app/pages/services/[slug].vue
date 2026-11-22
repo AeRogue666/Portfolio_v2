@@ -21,6 +21,59 @@ const { data: service, error } = await useAsyncData(
         query: { locale: locale.value }
     }), */
 );
+const travelExpensesArray = reactive<{ language: 'en' | 'fr', children: Array<{ title: string, area: string, price: string }> }[]>([
+    {
+        "language": "fr",
+        "children": [
+            {
+                "title": "Moins de 20 km",
+                "area": "Aubenas, Vals-les-Bains, Lachapelle-sous-Aubenas, Ucel, Thueyts, Largentière, Antraigues..",
+                "price": "Offert (0 €)"
+            },
+            {
+                "title": "De 20 à 35 km",
+                "area": "Joyeuse, Villeneuve-de-Berg, Les Vans, Montpezat..",
+                "price": "Forfait 15 €"
+            },
+            {
+                "title": "De 35 à 50 km",
+                "area": "Privas, Vallon-Pont-d'Arc, Le Teil, Ruoms..",
+                "price": "Forfait 25 €"
+            },
+            {
+                "title": "Au-delà de 50 km",
+                "area": "Montélimar, Drôme, Haute-Loire",
+                "price": "0.60 €/km A/R au-delà des 20 premiers kilomètres (ou télémaintenance privilégiée)"
+            }
+        ]
+    },
+    {
+        "language": "en",
+        "children": [
+            {
+                "title": "Moins de 20 km",
+                "area": "(Aubenas, Vals-les-Bains, Lachapelle-sous-Aubenas, Ucel, Thueyts, Largentière, Antraigues..)",
+                "price": "Offert (0 €)"
+            },
+            {
+                "title": "De 20 à 35 km",
+                "area": "(Joyeuse, Villeneuve-de-Berg, Les Vans, Montpezat..)",
+                "price": "Forfait 15 €"
+            },
+            {
+                "title": "De 35 à 50 km",
+                "area": "(Privas, Vallon-Pont-d'Arc, Le Teil, Ruoms..)",
+                "price": "Forfait 25 €"
+            },
+            {
+                "title": "Au-delà de 50 km",
+                "area": "(Montélimar, Drôme, Haute-Loire)",
+                "price": "0.60 €/km A/R au-delà des 20 premiers kilomètres (ou télémaintenance privilégiée)"
+            }
+        ]
+    }
+]);
+
 
 if (error.value) throw createError({ statusCode: 500, message: 'Failed to load service', statusMessage: 'Failed to load service', cause: error.value, fatal: true });
 if (!service.value) throw createError({ statusCode: 404, message: 'Service not found', statusMessage: 'Service not found', cause: error.value, fatal: true });
@@ -46,6 +99,10 @@ const src = computed(() => service.value?.image?.sources?.detail?.mobile || serv
     desktopSrc = computed(() => service.value?.image?.sources?.detail?.desktop || service.value?.image?.sources?.feed?.desktop || tabletSrc.value);
 
 const serviceType = computed(() => slug.value.split('-')[0]);
+const travelExpenses = computed(() => travelExpensesArray
+    .find((travel: { language: 'en' | 'fr'; }) => travel.language === locale.value)
+    ?.children
+);
 
 watchEffect(() => {
     if (!service.value) return;
@@ -164,9 +221,26 @@ if (service.value) {
                     :project-type="serviceType" />
             </div>
 
-            <div>
-                <p class="fs-subtitle font-semibold tracking-tight leading-snug mt-2">{{ t('plans.warning.title') }}</p>
-                <p class="fs-small text-(--text-2) leading-snug">* {{ t('plans.warning.description') }}</p>
+            <div class="flex flex-col gap-2">
+                <p class="flex flex-col leading-snug gap-2">
+                    <span class="fs-lead font-semibold tracking-tight">{{ t('plans.warning.title') }}</span>
+                    <span class="fs-small text-(--text-2) leading-snug">* {{ t('plans.warning.description') }}</span>
+                </p>
+                <div class="mt-4">
+                    <p class="flex flex-col leading-snug gap-2 wrap-break-word">
+                        <span class="fs-body font-semibold tracking-tight">{{ t('plans.travel_expenses.title') }}</span>
+                        <span class="fs-small text-(--text-2)">
+                            {{ t('plans.travel_expenses.description') }} :
+                        </span>
+                    </p>
+                    <ul>
+                        <li v-for="travel in travelExpenses" :key="travel" class="ml-6 list-disc">
+                            <p class="fs-small text-(--text-2) wrap-break-word">
+                                <strong>{{ travel.title }}</strong> ({{ travel.area }}) : <strong>{{ travel.price }}</strong>
+                            </p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </ArticleLayout>
     </template>

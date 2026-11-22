@@ -460,7 +460,11 @@
       "description": "The prices listed on this page are for reference only and do not reflect actual costs. A quote for the creation, redesign, optimization, or maintenance of a website is determined on a case-by-case basis depending on your needs and requirements. You can choose to remove certain features to lower the cost or, conversely, add new features to enhance your project. Additionally, any travel costs, if necessary, are not included in the listed prices. The same applies to web hosting and the domain name, which depend on your choice of hosting provider, the hosting plan, and the domain name extension you select (.fr, .com, .net, .org, etc.). I would be happy to help you choose the best hosting for your website so that it costs you as little as possible and run as fast as possible."
     },
     "price_starting_at": "Starting at",
-    "on_estimate": "On estimate"
+    "on_estimate": "On estimate",
+    "travel_expenses": {
+      "title": "Trave Expense Schedule (Based in Prades / Jaujac / Lalevade-d'Ardèche)",
+      "description": "Distances are calculated as a one-way trip from my primary area of operation"
+    }
   },
   "contact": {
     "modal-message": {

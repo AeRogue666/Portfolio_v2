@@ -51,13 +51,13 @@ highlighted: false
 
 Utiliser des outils numériques tous les jours sans vraiment les comprendre génère du stress, des erreurs et une dépendance technique permanente. Brisons ce cercle vicieux ensemble.
 
-::content-grid(columns=2 class="my-6 gap-4")
-:::content-card{icon="i-fa7-solid:graduation-cap" title="A votre propre rythme"}
-Pas de jargon technique inutile, mais des explications claires et des manipulations concrètes.
-:::
-:::content-card{icon="i-fa7-solid:shield-halved" title="Sécurité au quotidien"}
-Apprenez à identifier les pièges du web, à gérer vos accès et à travailler en toute confiance.
-:::
+::content-grid{columns=2 class="my-6 gap-4"}
+  :::content-card{icon="i-fa7-solid:graduation-cap" title="A votre propre rythme"}
+  Pas de jargon technique inutile, mais des explications claires et des manipulations concrètes.
+  :::
+  :::content-card{icon="i-fa7-solid:shield-halved" title="Sécurité au quotidien"}
+  Apprenez à identifier les pièges du web, à gérer vos accès et à travailler en toute confiance.
+  :::
 ::
 
 ## Quelques exemples de contextes techniques maîtrisés
