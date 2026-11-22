@@ -18,11 +18,13 @@ const { t, locale, locales } = useI18n(),
     stepTitleRef = ref<HTMLElement | null>(null);
 
 const tabs = [
+    { title: "Bienvenue" },
     { title: "Nature" },
     { title: "Spécification" },
     { title: "Complexité" },
     { title: "Budget" },
-    { title: "Récapitulatif" }
+    { title: "Récapitulatif" },
+    { title: "Merci pour votre participation" },
 ];
 const totalSteps = computed(() => leadStore.data.projectType === "message" ? 2 : 5);
 const progressBar = computed(() => leadStore.step);

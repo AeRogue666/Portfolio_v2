@@ -10,6 +10,72 @@ const grayscale = computed({
 });
 
 const fields = computed(() => {
+    if(leadStore.data.projectType === "maintenance-informatique") {
+        switch (leadStore.data.subType) {
+            case "maintenance-it-particulier":
+            return [
+                {
+                    key: "budgetRange",
+                    title: "Choisissez un forfait (TTC)",
+                    options: [
+                        { value: "65", label: t('sendmessagemodal.budget.forfaits.maintenance-informatique.particulier.essentiel', { value: '65' }) },
+                        { value: "105", label: t('sendmessagemodal.budget.forfaits.maintenance-informatique.particulier.avancee', { value: '105' }) },
+                    ]
+                },
+                {
+                    key: "deadline",
+                    title: "Pour quand ?",
+                    options: [
+                        { value: "flexible", label: t('sendmessagemodal.deadline.flexible') },
+                        { value: "1-3m", label: t('sendmessagemodal.deadline.compris_entre', { value1: '1', value2: '3', suite: 'mois' }) },
+                        { value: "<1m", label: t('sendmessagemodal.deadline.inferieur_a', { value: '1', suite: 'mois' }) },
+                        { value: "urgent", label: t('sendmessagemodal.deadline.urgent') }
+                    ]
+                }
+            ]
+            case "maintenance-it-professionnel":
+            return [
+                {
+                    key: "budgetRange",
+                    title: "Choisissez un forfait (H.T)",
+                    options: [
+                        { value: "135", label: t('sendmessagemodal.budget.forfaits.maintenance-informatique.professionnel.mensuel', { value: '135', suite: 'HT par mois' }) },
+                        { value: "550", label: t('sendmessagemodal.budget.forfaits.maintenance-informatique.professionnel.annuel', { value: '550', suite: 'HT par an' }) },
+                    ]
+                },
+                {
+                    key: "deadline",
+                    title: "Pour quand ?",
+                    options: [
+                        { value: "flexible", label: t('sendmessagemodal.deadline.flexible') },
+                        { value: "1-3m", label: t('sendmessagemodal.deadline.compris_entre', { value1: '1', value2: '3', suite: 'mois' }) },
+                        { value: "<1m", label: t('sendmessagemodal.deadline.inferieur_a', { value: '1', suite: 'mois' }) },
+                        { value: "urgent", label: t('sendmessagemodal.deadline.urgent') }
+                    ]
+                }
+            ]
+            case "maintenance-it-ponctuelle":
+            return [
+                {
+                    key: "budgetRange",
+                    title: "Choisissez un forfait (H.T)",
+                    options: [
+                        { value: "120", label: t('sendmessagemodal.budget.forfaits.maintenance-informatique.ponctuelle.materiel', { value: '120', suite: 'H.T' }) },
+                    ]
+                },
+                {
+                    key: "deadline",
+                    title: "Pour quand ?",
+                    options: [
+                        { value: "flexible", label: t('sendmessagemodal.deadline.flexible') },
+                        { value: "1-3m", label: t('sendmessagemodal.deadline.compris_entre', { value1: '1', value2: '3', suite: 'mois' }) },
+                        { value: "<1m", label: t('sendmessagemodal.deadline.inferieur_a', { value: '1', suite: 'mois' }) },
+                        { value: "urgent", label: t('sendmessagemodal.deadline.urgent') }
+                    ]
+                }
+            ]
+        }
+    }
     switch (leadStore.data.projectType) {
         case "creation":
         case "refonte":
@@ -201,7 +267,8 @@ function toggleField<K extends 'personNumber' | 'budgetRange' | 'trainingFormat'
                     :ui="{
                         base: grayscale && colorMode.value == 'dark'
                             ? 'text-inverted'
-                            : ''
+                            : '',
+                        label: 'wrap-break-word text-clip'
                     }" :active="leadStore.data[field.key] === option.value" active-class="bg-(--bg-3) text-(--text)" />
             </div>
         </div>

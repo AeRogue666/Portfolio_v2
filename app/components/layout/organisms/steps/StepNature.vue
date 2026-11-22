@@ -36,6 +36,11 @@ const options = [
         icon: "fa7-solid:server"
     },
     {
+        label: t('sendmessagemodal.types.maintenance-informatique'),
+        value: "maintenance-informatique",
+        icon: "fa7-solid:computer"
+    },
+    {
         label: t('sendmessagemodal.types.audit'),
         value: "audit",
         icon: "fa7-solid:magnifying-glass"

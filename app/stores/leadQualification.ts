@@ -1,32 +1,33 @@
 interface LeadData {
-  projectType: string
-  subType: string
+  projectType: string;
+  subType: string;
   complexity: {
-    pages: string
-    features: string[]
-    cms: boolean
-  }
+    pages: string;
+    features: string[];
+    cms: boolean;
+    computerRange: number;
+  };
   formation: {
-    hours: number
-    attendees: number
-  }
+    hours: number;
+    attendees: number;
+  };
   maintenance: {
-    estimatedInterventions: number
-  }
-  businessGoals: string
-  problems: string
-  personNumber: string
-  budgetRange: string
-  trainingFormat: string
-  deadline: string
-  publicType: string
+    estimatedInterventions: number;
+  };
+  businessGoals: string;
+  problems: string;
+  personNumber: string;
+  budgetRange: string;
+  trainingFormat: string;
+  deadline: string;
+  publicType: string;
   contact: {
-    email: string
-    message: string
-    website: string
-  }
-  leadScore: number
-  leadTier: "low" | "medium" | "high"
+    email: string;
+    message: string;
+    website: string;
+  };
+  leadScore: number;
+  leadTier: "low" | "medium" | "high";
 }
 
 export const useLeadStore = defineStore("lead", () => {
@@ -38,14 +39,15 @@ export const useLeadStore = defineStore("lead", () => {
     complexity: {
       pages: "",
       features: [],
-      cms: false
+      cms: false,
+      computerRange: 1,
     },
     formation: {
       hours: 0,
-      attendees: 0
+      attendees: 0,
     },
     maintenance: {
-      estimatedInterventions: 0
+      estimatedInterventions: 0,
     },
     businessGoals: "",
     problems: "",
@@ -57,176 +59,249 @@ export const useLeadStore = defineStore("lead", () => {
     contact: {
       email: "",
       message: "",
-      website: ""
+      website: "",
     },
     leadScore: 0,
-    leadTier: "low"
-  })
+    leadTier: "low",
+  });
 
   const allTypes = ref([
     {
       projectType: "creation",
-      subTypes: ["onepage", "vitrine", "professionnel", "ecommerce", "reservation", "custom"]
+      subTypes: [
+        "onepage",
+        "vitrine",
+        "professionnel",
+        "ecommerce",
+        "reservation",
+        "custom",
+      ],
     },
     {
       projectType: "refonte",
-      subTypes: ["refonte-design", "refonte-performance", "refonte-accessibilite", "refonte-securite", "refonte-fonctionnalite"]
+      subTypes: [
+        "refonte-design",
+        "refonte-performance",
+        "refonte-accessibilite",
+        "refonte-securite",
+        "refonte-fonctionnalite",
+      ],
     },
     {
       projectType: "optimisation",
-      subTypes: ["optimisation-accessibilite", "optimisation-seo", "optimisation-securite", "optimisation-multi"]
+      subTypes: [
+        "optimisation-accessibilite",
+        "optimisation-seo",
+        "optimisation-securite",
+        "optimisation-multi",
+      ],
     },
     {
       projectType: "maintenance",
-      subTypes: ["maintenance-onepage", "maintenance-vitrine", "maintenance-professionnel", "maintenance-ecommerce", "maintenance-reservation", "maintenance-custom"]
+      subTypes: [
+        "maintenance-onepage",
+        "maintenance-vitrine",
+        "maintenance-professionnel",
+        "maintenance-ecommerce",
+        "maintenance-reservation",
+        "maintenance-custom",
+      ],
+    },
+    {
+      projectType: "maintenance-informatique",
+      subTypes: [
+        "maintenance-it-particulier",
+        "maintenance-it-professionnel",
+        "maintenance-it-ponctuelle",
+      ],
     },
     {
       projectType: "formation",
-      subTypes: ["ordinateur", "internet", "email", "securite-numerique", "ia", "custom"]
+      subTypes: [
+        "ordinateur",
+        "internet",
+        "email",
+        "securite-numerique",
+        "ia",
+        "custom",
+      ],
     },
     {
       projectType: "audit",
-      subTypes: ["audit-accessibilite", "audit-seo", "audit-securite", "audit-all", "audit-flash"]
-    }
-  ])
+      subTypes: [
+        "audit-accessibilite",
+        "audit-seo",
+        "audit-securite",
+        "audit-all",
+        "audit-flash",
+      ],
+    },
+  ]);
 
   const isValidSubType = (projectType: string, subType: string): boolean => {
-    const typeConfig = allTypes.value.find(t => t.projectType === projectType)
-    return typeConfig ? typeConfig.subTypes.includes(subType) : false
-  }
+    const typeConfig = allTypes.value.find(
+      (t) => t.projectType === projectType,
+    );
+    return typeConfig ? typeConfig.subTypes.includes(subType) : false;
+  };
 
-  watch(() => data.value.projectType, (newType) => {
-    if (data.value.subType && !isValidSubType(newType, data.value.subType)) {
-      data.value.subType = ""
-      persist()
-    }
-  })
+  watch(
+    () => data.value.projectType,
+    (newType) => {
+      if (data.value.subType && !isValidSubType(newType, data.value.subType)) {
+        data.value.subType = "";
+        persist();
+      }
+    },
+  );
 
   function next() {
-    persist()
-    step.value++
+    persist();
+    step.value++;
   }
 
   function back() {
-    persist()
-    step.value--
+    persist();
+    step.value--;
   }
 
   function validateNextStep(): boolean {
     switch (step.value) {
       case 0:
-        step.value = 0
-        return true
+        step.value = 0;
+        return true;
       case 1:
-        if (data.value.projectType === "message") return true
+        if (data.value.projectType === "message") return true;
         if (data.value.projectType !== "message" && !data.value.subType) {
-          step.value = 1
-          return true
+          step.value = 1;
+          return true;
         }
         if (data.value.projectType && data.value.subType) {
-          step.value = 2
-          return true
+          step.value = 2;
+          return true;
         }
-        return false
+        return false;
       case 2:
-        return isValidSubType(data.value.projectType, data.value.subType)
+        return isValidSubType(data.value.projectType, data.value.subType);
       case 3:
-        if (data.value.subType === "audit-flash" && data.value.contact.website) {
-          step.value = 4
-          return true
-        } else if(data.value.projectType === "creation" || data.value.projectType === "formation") {
-          return !!(data.value.businessGoals.length && data.value.problems.length) 
+        if (
+          data.value.subType === "audit-flash" &&
+          data.value.contact.website
+        ) {
+          step.value = 4;
+          return true;
+        } else if (
+          data.value.projectType === "creation" ||
+          data.value.projectType === "formation" ||
+          data.value.projectType === "maintenance-informatique"
+        ) {
+          return !!(
+            data.value.businessGoals.length && data.value.problems.length
+          );
         }
-        return !!(data.value.businessGoals.length && data.value.problems.length && data.value.contact.website)
+        return !!(
+          data.value.businessGoals.length &&
+          data.value.problems.length &&
+          data.value.contact.website
+        );
       case 4:
         return !!(
-          (!!data.value.budgetRange || (!!data.value.personNumber && !!data.value.trainingFormat && !!data.value.budgetRange && !!data.value.publicType)) && !!data.value.deadline
-        )
+          (!!data.value.budgetRange ||
+            (!!data.value.personNumber &&
+              !!data.value.trainingFormat &&
+              !!data.value.budgetRange &&
+              !!data.value.publicType)) &&
+          !!data.value.deadline
+        );
       case 5:
-        return !!data.value.contact.email
+        return !!data.value.contact.email;
       default:
-        return true
+        return true;
     }
   }
 
   function validateBackStep(): boolean {
     switch (step.value) {
       case 1:
-        return false
+        return false;
       case 3:
         if (data.value.projectType === "audit") {
-          step.value = 2
+          step.value = 2;
         }
-        return true
+        return true;
       default:
-        return true
+        return true;
     }
   }
 
   function persist() {
-    if (!import.meta.client) return
-    localStorage.setItem("leadDraft", JSON.stringify(data.value))
+    if (!import.meta.client) return;
+    localStorage.setItem("leadDraft", JSON.stringify(data.value));
   }
 
   function hasDraft(): boolean {
-    if (!import.meta.client) return false
-    return !!localStorage.getItem("leadDraft")
+    if (!import.meta.client) return false;
+    return !!localStorage.getItem("leadDraft");
   }
 
   function restore() {
-    if (!import.meta.client) return
-    const saved = localStorage.getItem("leadDraft")
-    if (saved) data.value = JSON.parse(saved)
+    if (!import.meta.client) return;
+    const saved = localStorage.getItem("leadDraft");
+    if (saved) data.value = JSON.parse(saved);
   }
 
   function resetStep() {
     switch (step.value) {
       case 1:
-        data.value.projectType = ""
-        break
+        data.value.projectType = "";
+        break;
       case 2:
-        data.value.subType = ""
-        break
+        data.value.subType = "";
+        break;
       case 3:
-        data.value.businessGoals = ""
-        data.value.problems = ""
+        data.value.businessGoals = "";
+        data.value.problems = "";
         data.value.complexity = {
-          pages: "", features: [], cms: false
-        }
-        break
+          pages: "",
+          features: [],
+          cms: false,
+          computerRange: 1,
+        };
+        break;
       case 4:
-        data.value.personNumber = ""
-        data.value.budgetRange = ""
-        data.value.trainingFormat = ""
-        data.value.deadline = ""
-        break
+        data.value.personNumber = "";
+        data.value.budgetRange = "";
+        data.value.trainingFormat = "";
+        data.value.deadline = "";
+        break;
       case 5:
-        data.value.contact.email = ""
-        data.value.contact.message = ""
-        break
+        data.value.contact.email = "";
+        data.value.contact.message = "";
+        break;
     }
-    persist()
+    persist();
   }
 
   function reset() {
     if (import.meta.client) {
-      localStorage.removeItem("leadDraft")
+      localStorage.removeItem("leadDraft");
     }
-    step.value = 0
+    step.value = 0;
     data.value = {
       projectType: "",
       subType: "",
       complexity: {
         pages: "",
         features: [],
-        cms: false
+        cms: false,
+        computerRange: 1,
       },
       formation: {
         hours: 0,
-        attendees: 0
+        attendees: 0,
       },
       maintenance: {
-        estimatedInterventions: 0
+        estimatedInterventions: 0,
       },
       businessGoals: "",
       problems: "",
@@ -238,17 +313,17 @@ export const useLeadStore = defineStore("lead", () => {
       contact: {
         email: "",
         message: "",
-        website: ""
+        website: "",
       },
       leadScore: 0,
-      leadTier: "low"
-    }
+      leadTier: "low",
+    };
   }
 
   function setInitialProject(projectType: string, subType: string) {
-    data.value.projectType = projectType
-    data.value.subType = subType
-    persist()
+    data.value.projectType = projectType;
+    data.value.subType = subType;
+    persist();
   }
 
   return {
@@ -265,9 +340,9 @@ export const useLeadStore = defineStore("lead", () => {
     restore,
     resetStep,
     reset,
-    setInitialProject
-  }
-})
+    setInitialProject,
+  };
+});
 
 /* export const useLeadStore = defineStore("lead", {
   state: () => ({

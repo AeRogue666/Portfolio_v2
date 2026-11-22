@@ -30,7 +30,7 @@ const options = computed(() => {
             ]
         case "optimisation":
             return [
-                { value: "optimisation-accessibilite", label: t('sendmessagemodal.subtypes.optimisation.accessibilite'),icon: "fa7-solid:1" },
+                { value: "optimisation-accessibilite", label: t('sendmessagemodal.subtypes.optimisation.accessibilite'), icon: "fa7-solid:1" },
                 { value: "optimisation-seo", label: t('sendmessagemodal.subtypes.optimisation.seo'), icon: "fa7-solid:2" },
                 { value: "optimisation-securite", label: t('sendmessagemodal.subtypes.optimisation.securite'), icon: "fa7-solid:3" },
                 { value: "optimisation-multi", label: t('sendmessagemodal.subtypes.optimisation.optimisation-multi'), icon: "fa7-solid:4" }
@@ -39,7 +39,7 @@ const options = computed(() => {
             return [
                 { value: "audit-accessibilite", label: t('sendmessagemodal.subtypes.audit.accessibilite'), icon: "fa7-solid:1" },
                 { value: "audit-seo", label: t('sendmessagemodal.subtypes.audit.seo'), icon: "fa7-solid:2" },
-                { value: "audit-securite", label: t('sendmessagemodal.subtypes.audit.securite'),icon: "fa7-solid:3" },
+                { value: "audit-securite", label: t('sendmessagemodal.subtypes.audit.securite'), icon: "fa7-solid:3" },
                 { value: "audit-all", label: t('sendmessagemodal.subtypes.audit.all'), icon: "fa7-solid:4" },
                 { value: "audit-flash", label: t('sendmessagemodal.subtypes.audit.flash_audit'), icon: "fa7-solid:5" },
             ];
@@ -51,6 +51,12 @@ const options = computed(() => {
                 { value: "maintenance-ecommerce", label: t('sendmessagemodal.subtypes.maintenance.ecommerce'), icon: "fa7-solid:4" },
                 { value: "maintenance-custom", label: t('sendmessagemodal.subtypes.maintenance.custom'), icon: "fa7-solid:5" },
                 { value: "maintenance-ponctuelle", label: t('sendmessagemodal.subtypes.maintenance.ponctuelle'), icon: "fa7-solid:6" },
+            ];
+        case "maintenance-informatique":
+            return [
+                { value: "maintenance-it-particulier", label: t('sendmessagemodal.subtypes.maintenance-informatique.particulier'), icon: "fa7-solid:1" },
+                { value: "maintenance-it-professionnel", label: t('sendmessagemodal.subtypes.maintenance-informatique.professionnel'), icon: "fa7-solid:2" },
+                { value: "maintenance-it-ponctuelle", label: t('sendmessagemodal.subtypes.maintenance-informatique.ponctuelle'), icon: "fa7-solid:3" }
             ];
         case "formation":
             return [
@@ -72,7 +78,6 @@ const options = computed(() => {
         <h3 class="fs-subtitle mb-4">
             Précisons votre besoin
         </h3>
-
         <UContainer class="grid sm:grid-cols-2 gap-3">
             <UButton v-for="opt in options" :key="opt.value" :icon="opt.icon"
                 @click="leadStore.data.subType = opt.value" :class="[
@@ -81,10 +86,10 @@ const options = computed(() => {
                         ? 'ring-2 ring-(--focus) border-(--border-subtle)'
                         : 'hover:border-(--accent-hover)'
                 ]" :ui="{
-                base: grayscale && colorMode.value == 'dark'
-                    ? 'bg-(--bg-3) text-inverted fs-body'
-                    : 'bg-(--bg-3) text-(--text) fs-body'
-            }">
+                    base: grayscale && colorMode.value == 'dark'
+                        ? 'bg-(--bg-3) text-inverted fs-body'
+                        : 'bg-(--bg-3) text-(--text) fs-body'
+                }">
                 {{ opt.label }}
             </UButton>
         </UContainer>

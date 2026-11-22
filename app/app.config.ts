@@ -3,6 +3,11 @@ export default defineAppConfig({
     dark: true,
   },
   ui: {
+    colors: {
+      primary: "theme-text-1",
+      secondary: "theme-text-2",
+      neutral: "theme-text-3",
+    },
     icons: {
       system: "fa7-solid:desktop",
       light: "fa7-solid:sun",

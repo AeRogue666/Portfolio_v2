@@ -364,6 +364,7 @@
       "refonte": "Redesign a website (Optimization + Redesign)",
       "optimisation": "Improve an existing website (Optimization)",
       "maintenance": "Request maintenance",
+      "maintenance-informatique": "Request an IT intervention",
       "audit": "Have my website analyzed",
       "formation": "Get training"
     },
@@ -391,11 +392,18 @@
       },
       "maintenance": {
         "onepage": "Single-page site / Basic portfolio",
-        "vitrine":"Showcase site",
+        "vitrine": "Showcase site",
         "professionnel": "Professionnal site",
-        "ecommerce":"E-commerce site",
-        "custom":"Industry-specific project",
+        "ecommerce": "E-commerce site",
+        "custom": "Industry-specific project",
         "ponctuelle": "One-time service"
+      },
+      "maintenance-informatique": {
+        "particulier": "Personal IT",
+        "professionnel": "Professionnal IT",
+        "custom": "Customized service",
+        "ponctuelle": "One-time service",
+        "urgent":"This is urgent"
       },
       "audit": {
         "accessibilite": "Accessibility Audit / WCAG Compliance",
@@ -419,7 +427,23 @@
       "compris_entre": "Between {value1}€ and {value2}€ {suite}",
       "urgent": "This is urgent",
       "flexible": "Flexible",
-      "intervention_ponctuelle": "One-time service ({value}{suite})"
+      "intervention_ponctuelle": "One-time service ({value}{suite})",
+      "forfaits": {
+        "maintenance-informatique": {
+          "particulier": {
+            "essentiel": "Essential Maintenance (Starting at {value}€)",
+            "avancee": "Advanced Maintenance & Hardware (Starting at {value}€)",
+            "urgence": "Security Emergency & Disinfection (Starting at {value}€)"
+          },
+          "professionnel": {
+            "mensuel": "Monthly Subscription - Ongoing Monitoring (Per workstation - starting at {value}€ {suite})",
+            "annuel": "Annual Subscription (Per workstation - starting at {value}€ {suite})"
+          },
+          "ponctuelle": {
+            "materiel": "One-off Service - Hardware or Cybersecurity (Per workstation - starting at {value}€ {suite})"
+          }
+        }
+      }
     },
     "deadline": {
       "inferieur_a": "Less than {value} {suite}",
@@ -461,6 +485,15 @@
     },
     "price_starting_at": "Starting at",
     "on_estimate": "On estimate",
+    "cta_link_base": {
+      "creation": "Discuss your project",
+      "refonte": "Request a website redesign",
+      "optimisation": "Request website optimization",
+      "maintenance": "Request maintenance",
+      "maintenance-informatique": "Request an IT maintenance",
+      "formation": "Get training",
+      "audit": "Have my website analyzed"
+    },
     "travel_expenses": {
       "title": "Trave Expense Schedule (Based in Prades / Jaujac / Lalevade-d'Ardèche)",
       "description": "Distances are calculated as a one-way trip from my primary area of operation"
@@ -485,8 +518,10 @@
         }
       },
       "step-complexity": {
-        "business-goals-label": "What are the main objectives of the project",
+        "business-goals-label": "What are the main objectives of the project?",
         "business-goals-placeholder": "Describe the main objectives of the project in up to {maxlength} characters.",
+        "goals-label": "What are your objectives?",
+        "goals-placeholder": "Describe the objectives of the maintenance in up to {maxlength} characters.",
         "problems-label": "Are you currently experiencing any problems?",
         "problems-placeholder": "Describe the problems you're experiencing in {maxlength} characters or fewer.",
         "client_website": "Your website address"

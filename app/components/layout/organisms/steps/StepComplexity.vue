@@ -14,9 +14,19 @@ const pageOptions = ['1-3', '4-10', '10+'],
     structuralTypes = ["creation", "refonte", "audit"],
     featuresTypes = ["creation", "refonte"],
     flashAuditType = ["audit-flash"],
-    dontHaveWebsiteAddressType = ["creation", "formation"],
-    dontNeedCMSType = ["optimisation", "maintenance", "audit"],
-    dontNeedComplexityType = ["audit", "formation"];
+    dontHaveWebsiteAddressType = ["creation", "formation", "maintenance-informatique"],
+    dontNeedCMSType = ["optimisation", "maintenance", "audit", "maintenance-informatique"],
+    dontNeedComplexityType = ["audit", "formation", "maintenance-informatique"],
+    dontNeedBusinessGoals = ["maintenance-informatique"],
+    needSlider = ["maintenance-informatique"];
+
+const computerRange = ref<number>(leadStore.data.complexity.computerRange);
+
+watch(computerRange, (newRange) => {
+    if(newRange) {
+        leadStore.data.complexity.computerRange = newRange
+    }
+});
 
 function toggleFeature(feature: any) {
     console.log(feature, typeof feature);
@@ -56,8 +66,7 @@ function togglePage(page: string) {
 
             <div class="flex flex-col gap-4">
                 <UFormField :label="t('contact.modal-message.step-complexity.client_website')" name="website"
-                orientation="vertical"
-                    :ui="{
+                    orientation="vertical" :ui="{
                         labelWrapper: 'justify-start',
                         label: 'text-(--text-2) fs-body',
                         hint: 'fs-small'
@@ -69,7 +78,8 @@ function togglePage(page: string) {
             </div>
         </UContainer>
 
-        <UContainer v-if="!flashAuditType.includes(leadStore.data.subType) && !dontNeedComplexityType.includes(leadStore.data.projectType)">
+        <UContainer
+            v-if="!flashAuditType.includes(leadStore.data.subType) && !dontNeedComplexityType.includes(leadStore.data.projectType)">
             <h3 class="fs-subtitle mb-3">
                 Structure du projet
             </h3>
@@ -105,7 +115,30 @@ function togglePage(page: string) {
                         base: grayscale && colorMode.value == 'dark'
                             ? 'text-inverted'
                             : ''
-                    }" :active="leadStore.data.complexity.features.indexOf(f) !== -1 ? true : false" active-class="bg-(--bg-3) text-(--text)" />
+                    }" :active="leadStore.data.complexity.features.indexOf(f) !== -1 ? true : false"
+                    active-class="bg-(--bg-3) text-(--text)" />
+            </div>
+        </UContainer>
+
+        <UContainer v-if="needSlider.includes(leadStore.data.projectType)">
+            <h3 class="fs-subtitle mb-3">
+                Nombre de postes
+            </h3>
+
+            <div class="flex flex-col gap-4">
+                <UFormField :label="t('contact.modal-message.step-complexity.client_website')" name="website"
+                    orientation="vertical" :ui="{
+                        labelWrapper: 'justify-start',
+                        label: 'text-(--text-2) fs-body',
+                        hint: 'fs-small'
+                    }" required>
+                    <USlider v-model="computerRange" :min="1" :max="101" size="xl" color="neutral" :ui="{
+                        track: 'bg-(--bg-3)',
+                        range: 'bg-(--text)',
+                        thumb: 'bg-(--bg-3) ring-(--text)'
+                    }" />
+                    <span>{{ leadStore.data.complexity.computerRange > 100 ? '100+' : leadStore.data.complexity.computerRange }}</span>
+                </UFormField>
             </div>
         </UContainer>
 
@@ -115,13 +148,14 @@ function togglePage(page: string) {
             </h3>
 
             <div class="flex flex-col gap-4">
-                <UFormField :label="t('contact.modal-message.step-complexity.business-goals-label')" name="message"
-                    :ui="{
+                <UFormField
+                    :label="!dontNeedBusinessGoals.includes(leadStore.data.projectType) ? t('contact.modal-message.step-complexity.business-goals-label') : t('contact.modal-message.step-complexity.goals-label')"
+                    name="message" :ui="{
                         label: 'text-(--text-2) fs-body',
                     }" required>
                     <UTextarea v-model="leadStore.data.businessGoals" type="text" :rows="10" :maxrows="20"
                         minlength="20" maxlength="3000"
-                        :placeholder="t('contact.modal-message.step-complexity.business-goals-placeholder', { maxlength: 3000 })"
+                        :placeholder="!dontNeedBusinessGoals.includes(leadStore.data.projectType) ? t('contact.modal-message.step-complexity.business-goals-placeholder', { maxlength: 3000 }) : t('contact.modal-message.step-complexity.goals-placeholder', { maxlength: 3000 })"
                         class="block w-3xs md:w-full mt-3 mx-4" :ui="{
                             base: grayscale && colorMode.value == 'dark'
                                 ? 'bg-(--bg-2) text-inverted fs-body ring-(--border-medium) placeholder:text-(--text-muted)'

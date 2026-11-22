@@ -363,7 +363,8 @@
       "creation": "Créer un nouveau site",
       "refonte": "Redesigner un site (Optimisation + Refonte)",
       "optimisation": "Améliorer un site existant (Optimisation)",
-      "maintenance": "Demander une maintenance",
+      "maintenance": "Demander une maintenance de mon site",
+      "maintenance-informatique": "Demander une intervention informatique",
       "audit": "Faire analyser mon site",
       "formation": "Me former"
     },
@@ -391,11 +392,18 @@
       },
       "maintenance": {
         "onepage": "Page unique / Portfolio basique",
-        "vitrine":"Site vitrine",
+        "vitrine": "Site vitrine",
         "professionnel": "Site professionnel",
-        "ecommerce":"Site e-commerce",
-        "custom":"Projet métier spécifique",
+        "ecommerce": "Site e-commerce",
+        "custom": "Projet métier spécifique",
         "ponctuelle": "Intervention ponctuelle"
+      },
+      "maintenance-informatique": {
+        "particulier": "Ordinateur personnel",
+        "professionnel": "Ordinateur professionnel",
+        "custom": "Intervention sur matériel spécifique",
+        "ponctuelle": "Intervention ponctuelle",
+        "urgent": "C'est urgent"
       },
       "audit": {
         "accessibilite": "Audit Accessibilité / Mise en conformité WCAG",
@@ -419,7 +427,23 @@
       "compris_entre": "Entre {value1}€ et {value2}€ {suite}",
       "urgent": "C'est urgent",
       "flexible": "Flexible",
-      "intervention_ponctuelle": "Intervention ponctuelle ({value}{suite})"
+      "intervention_ponctuelle": "Intervention ponctuelle ({value}{suite})",
+      "forfaits": {
+        "maintenance-informatique": {
+          "particulier": {
+            "essentiel": "Entretien Essentiel (à partir de {value}€)",
+            "avancee": "Maintenance Avancée & Matériel (à partir de {value}€)",
+            "urgence": "Urgence Sécurité & Désinfection (à partir de {value}€)"
+          },
+          "professionnel": {
+            "mensuel": "Abonnement Mensuel - Suivi Continu (Par poste - à partir de {value}€ {suite})",
+            "annuel": "Abonnement Annuel - Sérénité Parc (Par poste - à partir de {value}€ {suite})"
+          },
+          "ponctuelle": {
+            "materiel": "Intervention Ponctuelle - Matériel ou Cybersécurité (Par poste - à partir de {value}€ {suite})"
+          }
+        }
+      }
     },
     "deadline": {
       "inferieur_a": "Moins de {value} {suite}",
@@ -461,6 +485,15 @@
     },
     "price_starting_at": "A partir de",
     "on_estimate": "Sur devis",
+    "cta_link_base": {
+      "creation": "Discuter de votre projet",
+      "refonte": "Demander une refonte du site",
+      "optimisation": "Demander une optimisation du site",
+      "maintenance": "Demander une intervention sur mon site",
+      "maintenance-informatique": "Demander une intervention",
+      "formation": "Discuter des formations",
+      "audit": "Faire analyser mon site"
+    },
     "travel_expenses": {
       "title": "Barème de frais de déplacements (Base Prades / Jaujac / Lalevade-d'Ardèche)",
       "description": "Les distances sont calculées à l'aller simple depuis ma zone d'activité principale"
@@ -487,6 +520,8 @@
       "step-complexity": {
         "business-goals-label": "Quels sont les objectifs principaux du projet ?",
         "business-goals-placeholder": "Décrivez en {maxlength} caractères maximum les objectifs principaux du projet.",
+        "goals-label": "Quels sont vos objectifs ?",
+        "goals-placeholder": "Décrivez en {maxlength} caractères maximum les objectifs à atteindre lors de l'intervention.",
         "problems-label": "Rencontrez-vous des problèmes actuellement ?",
         "problems-placeholder": "Décrivez en {maxlength} caractères maximum les problèmes rencontrés.",
         "client_website": "Adresse de votre site internet"

@@ -1,11 +1,11 @@
 ---
 title: Maintenance Informatique & dépannage
-created_at: "2026-02-11"
-updated_at: "2026-11-21"
+created_at: "2026-11-21"
+updated_at: "2026-11-22"
 shortDescription: Gardez vos équipements informatiques rapides, sécurisés et fonctionnels au quotidien grâce à un entretien matériel et logiciel de proximité.
-description: 
+description:
   - title: Votre ordinateur ou appareil ralentit, chauffe ou montre des signes de faiblesse ?
-    content: Qu'il s'agisse d'un nettoyage préventif, d'une mise à jour majeure ou d'une remise en état après un incident, j'interviens sur vos équipements matériels et logiciels (PC Windows, Linux, ChromeOS, MAC, Téléphone Android, et Iphone et alternatives) pour prolonger leur durée de vie et sécuriser vos données.
+    content: Qu'il s'agisse d'un nettoyage préventif, d'une mise à jour majeure ou d'une remise en état après un incident, j'interviens sur vos équipements matériels et logiciels (Windows, Linux, ChromeOS, Android, Apple) pour prolonger leur durée de vie et sécuriser vos données.
     children:
       - title: Pour les particuliers
         content: Intervention à domicile ou à distance pour l'entretien courant, l'élimination de virus et de menaces informatiques, le remplacement de composants et l'amélioration des performances.
@@ -16,15 +16,15 @@ feed_title: Maintenance informatique & dépannage
 accessible_name: la maintenance informatique
 locale: fr
 packages:
-  - title: Forfaits Particuliers (A domicile ou à distance)
+  - title: Forfaits Particuliers (A domicile ou à distance - Tarif fixe, sans mauvaise surprise)
     children:
       - title: Entretien Essentiel
-        description: Nettoyage logiciel et vérification de santé générale de l'appareil (intervention à distance possible).
+        description: Nettoyage logiciel et vérification générale pour retrouver un appareil fluide (intervention à distance possible).
         price: 65€
         ttc: true
         features:
           - Nettoyage des fichiers temporaires et programmes inutiles au démarrage
-          - Mises à jour du système (Windows, Linux, Android, ChromOS, Apple) et des logiciels courants
+          - Mises à jour du système (Windows, Linux, Android, ChromeOS, Apple) et des logiciels courants
           - Vérification de l'état de santé du disque dur et de la batterie
           - Dépoussiérage externe et contrôle des températures (si intervention sur place)
       - title: Maintenance Avancée & Matériel
@@ -34,7 +34,7 @@ packages:
           - Toutes les prestations du forfait Entretien Essentiel
           - Dépoussiérage interne complet (ventilateurs, radiateurs) et changement de pâte thermique si nécessaire
           - Réinstallation propre du système ou mises à jour majeures complexes
-          - Remplacement ou ajout de composants (RAM, disque SSD, batterie - hors coût des pièces)
+          - Remplacement ou ajout de composants (RAM, disque SSD, batterie, câbles, carte réseau, carte son)
       - title: Urgence Sécurité & Désinfection
         description: Intervention approfondie suite à une attaque, un virus ou un piratage.
         price: 135€
@@ -44,32 +44,32 @@ packages:
           - Sauvegarde et récupération des données saines sur support externe
           - Réinitialisation sécurisée du système si l'intégrité est compromise
           - Sécurisation des accès, mots de passe et conseils de prévention
-  - title: Forfaits Professionnels (Suivi récurrent & Interventions)
-    children: 
-    - title: Abonnement Mensuel - Suivi Continu (Par poste)
-      description: Maintenance préventive régulière sur site ou à distance pour éviter toute panne.
-      price: 55€ HT/mois
-      features:
-        - Surveillance et mises à jour régulières des systèmes et logiciels métiers
-        - Nettoyage logiciel périodique et contrôle des sauvegardes locales ou cloud
-        - Prise en main à distance privilégiée pour une résolution rapide sans déplacement
-        - 1 visite annuelle sur site ou en atelier incluse pour le dépoussiérage matériel interne
-    - title: Abonnement Annuel - Sérénité Parc (Par poste)
-      desciption: Contrat annuel complet à tarif préférentiel (2 mois offerts).
-      price: 550€ HT/an
-      features:
-        - Toutes les prestations de l'Abonnement Mensuel incluses sur 12 mois
-        - Audit complet initial sur site ou en atelier pour mise à niveau du poste
-        - Deux contrôles matériels approfondis dans l'année (dépoussiérage, contrôle disques et températures)
-        - Support prioritaire à distance ou sur site en cas d'incident bloquant
-    - title: Intervention Ponctuelle - Matériel ou Cybersécurité
-      description: Remplacement de composants, migration de poste ou remédiation après attaque. 
-      price: 120€
-      features:
-        - Remplacement de composants matériels (SSD, mémoire vive, alimentation | hors pièces)
-        - Ou confinement, désinfection et remise en service après un incident de sécurité
-        - Migration complète de données et configuration des périphériques professionnels
-        - Diagnostic initial en entreprise ou en atelier, suivi à distance dès que possible
+  - title: Forfaits Professionnels (Suivi récurrent & Interventions sur parc informatique)
+    children:
+      - title: Abonnement Mensuel - Suivi Continu (Par poste)
+        description: Maintenance préventive régulière pour prévenir les pannes et garantir la continuité d'activité (sur place ou à distance).
+        price: 55€/mois
+        features:
+          - Surveillance et mises à jour régulières des systèmes et logiciels métiers
+          - Nettoyage logiciel périodique et contrôle de l'intégrité des sauvegardes locales ou cloud
+          - Prise en main à distance privilégiée pour une assistance rapide
+          - 1 visite annuelle sur site incluse pour le dépoussiérage matériel interne
+      - title: Abonnement Annuel - Sérénité Parc (Par poste)
+        desciption: Bilan annuel complet et assistance prioritaire tout au long de l'année.
+        price: 550€/an
+        features:
+          - Toutes les prestations de l'Abonnement Mensuel incluses sur 12 mois
+          - Audit complet initial sur site pour mise à niveau du poste
+          - Deux contrôles matériels approfondis dans l'année (dépoussiérage, contrôle disques et températures)
+          - Support prioritaire à distance ou sur site en cas d'incident bloquant
+      - title: Intervention Ponctuelle - Matériel ou Cybersécurité
+        description: Remplacement de composants, migration de poste ou remédiation après incident.
+        price: 120€
+        features:
+          - Remplacement de composants matériels (SSD, mémoire vive, alimentation, câbles, carte réseau, carte son)
+          - Ou confinement, désinfection et remise en service après un incident de sécurité
+          - Migration complète de données, installation du poste et configuration des périphériques professionnels
+          - Diagnostic initial sur site, suivi à distance dès que possible
 previewUrl: /services/maintenance-informatique
 slug: maintenance-informatique
 tag: Maintenance
@@ -81,12 +81,12 @@ highlighted: false
 Un équipement informatique accumule de la poussière, des fichiers obsolètes et des failles de sécurité. Un entretien régulier évite les pannes brutales et vous épargne le rachat prématuré d'un appareil neuf.
 
 ::content-grid{columns=2 class="my-6 gap-4"}
-  :::content-card{icon="i-fa7-solid:gauge-high" title="Retrouvez de la fluidité"}
-  Fini les démarrages interminables et les ventilateurs qui s'emballent. Votre machine retrouve sa réactivité d'origine.
-  :::
-  :::content-card{icon="i-fa7-solid:shield-virus" title="Protection et réactivité"}
-  Face aux virus, arnaques et logiciels malveillants, bénéficiez d'une intervention méthodique pour assainir votre appareil et protéger vos données.
-  :::
+:::content-card{icon="i-fa7-solid:gauge-high" title="Retrouvez de la fluidité"}
+Fini les démarrages interminables et les ventilateurs qui s'emballent. Votre machine retrouve sa réactivité d'origine.
+:::
+:::content-card{icon="i-fa7-solid:shield-virus" title="Protection et réactivité"}
+Face aux virus, arnaques et logiciels malveillants, bénéficiez d'une intervention méthodique pour assainir votre appareil et protéger vos données.
+:::
 ::
 
 ## Les domaines d'intervention et systèmes pris en charge
@@ -94,26 +94,20 @@ Un équipement informatique accumule de la poussière, des fichiers obsolètes e
 J'interviens sur ordinateurs fixes, portables, tablettes et smartphones, principalement sous **Windows**, **Linux**, **Android** et **ChromeOS**.
 
 ::content-grid{columns=3 class="my-6 gap-4"}
-  :::content-card{icon="i-fa7-solid:broom" title="Nettoyage & Mises à jour"}
-  Suppression des programmes superflus, mises à jour systèmes et dépoussiérage matériel pour éviter la surchauffe.
-  :::
-  :::content-card{icon="i-fa7-solid:microchip" title="Evolution matérielle"}
-  Remplacement d'un disque dur lent par un SSD ou ajout de mémoire vive (RAM) pour donner une seconde jeunesse à votre PC.
-  :::
-  :::content-card{icon="i-fa7-solid:user-shield" title="Désinfection & Sécurité"}
-  Nettoyage complet après une infection ou un comportement suspect, récupération de fichiers et sécurisation de vos comptes.
-  :::
+:::content-card{icon="i-fa7-solid:broom" title="Nettoyage & Mises à jour"}
+Suppression des programmes superflus, mises à jour systèmes et dépoussiérage matériel pour éviter la surchauffe.
+:::
+:::content-card{icon="i-fa7-solid:microchip" title="Evolution matérielle"}
+Remplacement d'un disque dur lent par un SSD ou ajout de mémoire vive (RAM) pour donner une seconde jeunesse à votre PC.
+:::
+:::content-card{icon="i-fa7-solid:user-shield" title="Désinfection & Sécurité"}
+Nettoyage complet après une infection ou un comportement suspect, récupération de fichiers et sécurisation de vos comptes.
+:::
 ::
 
-::responsive-image
----
-title: "Interface de récupération de données de TestDisk 7.3 pour Windows"
-desktop: "/images/services/maintenance-informatique/desktop.png"
-tablet: "/images/services/maintenance-informatique/tablet.png"
-mobile: "/images/services/maintenance-informatique/mobile.png"
-
----
-::
+:::content-card{icon="i-fa7-solid:handshake" title="Un réseau local de confiance"}
+Si votre équipement nécessite une réparation complexe (micro-soudure, carte mère HS, récupération de données en salle blanche) ou concerne un système spécifique, je ne vous laisse pas sans solution. Je vous oriente directement vers un prestataire local de confianc,e sélectionné pour son sérieux et la qualité de son travail.
+:::
 
 ::content-cta-modal
 ---
@@ -131,16 +125,20 @@ mobile: "/images/services/maintenance-informatique/mobile.png"
 ---
 ::
 
-## Modalité d'intervention et zone de déplacement
+## Modalité & Fourniture des pièces
 
-### Priorité à la télémaintenance ou à l'intervention sur place
+### A distance ou sur place : une intervention adaptée
 
-Aucune immobilisation en atelier : j'interviens directement **à domicile** pour les particuliers et **sur site** pour les professionnels.
-Dès que le diagnostic le permet (optimisation logicielle, mises à jour, désinfection légère), **la télémaintenance à distance** est privilégiée : elle permet une prise en charge rapide tout en **supprimant les frais de déplacement** de votre facture.
+Pour vous garantir un diagnostic rapide et sans frais inutiles, je privilégie la **télémaintenance** (prise en main à distance sécurisée) dès que la panne logicielle le permet. Si le problème est matériel ou nécessite une manipulation physique, j'interviens directement à votre domicile, dans vos locaux professionnels ou dans votre atelier (*voir les frais de déplacement en bas de page*).
+
+### Fourniture et choix des pièces détachées
+
+**Transparence totale, zéro marge sur le matériel**.
+Si une réparation ou une amélioration nécessite le remplacement d'un composant (disque dur SSD, mémoire RAM, batterie, alimentation...), je vous guide gratuitement vers la référence exacte adaptée à votre budget et vos usages. Vous achetez directement la pièce auprès du fournisseur de votre choix, au prix réel du marché, sans commission intermédiaire, et je me charge ensuite de son installation et de sa configuration.
 
 ### Besoin d'aller plus loin ? Formations & accompagnement
 
-En tant qu'entrepreneur-salarié au sein de **Pollen SCOP** *(coopérative ardéchoise engagée et labellisée **Emerveillés par l'Ardèche**)*, je propose également des [formations sur mesure](/services/formations) pour gagner en autonomie sur vos outils numériques et la cybersécurité - finançables pour les professionnels via **Pollen Formation** *(organisme certifié **Qualiopi** par l'AFNOR - **Eligible OPCO**)*.
+En tant qu'entrepreneur-salarié au sein de **Pollen SCOP** _(coopérative ardéchoise engagée et labellisée **Emerveillés par l'Ardèche**)_, je propose également des [formations sur mesure](/services/formations) pour gagner en autonomie sur vos outils numériques et la cybersécurité - finançables pour les professionnels via **Pollen Formation** _(organisme certifié **Qualiopi** - **Eligible OPCO**)_.
 
 ---
 

@@ -138,6 +138,11 @@ export default defineNuxtConfig({
       '/landing/accessibilite-web-ardeche',
     ],
   },
+  ui: {
+    theme: {
+      colors: ["primary", "secondary", "theme-bg-1", "theme-bg-2", "theme-bg-3", "theme-text-1", "theme-text-2", "theme-text-3", "info", "success", "warning", "error"],
+    },
+  },
   build: {
     transpile: [],
   },

@@ -10,34 +10,39 @@ const grayscale = computed({
 });
 
 const colorProjectType = [
-    { value: "creation", color: "primary" },
-    { value: "refonte", color: "warning" },
-    { value: "optimisation", color: "error" },
-    { value: "maintenance", color: "info" },
-    { value: "audit", color: "info" },
-    { value: "formation", color: "info" }
+    { value: "creation", color: "theme-bg-1" },
+    { value: "refonte", color: "theme-bg-2" },
+    { value: "optimisation", color: "theme-bg-2" },
+    { value: "maintenance", color: "theme-bg-3" },
+    { value: "maintenance-informatique", color: "theme-bg-2" },
+    { value: "audit", color: "theme-bg-3" },
+    { value: "formation", color: "theme-bg-3" }
 ];
 const colorSubType = [
-    { value: "vitrine", color: "secondary" },
-    { value: "ecommerce", color: "warning" },
-    { value: "reservation", color: "info" },
-    { value: "custom", color: "info" },
-    { value: "accessibilite", color: "info" },
-    { value: "seo", color: "info" },
-    { value: "securite", color: "info" },
-    { value: "performance", color: "info" },
-    { value: "all", color: "info" },
-    { value: "audit-accessibilite", color: "info" },
-    { value: "audit-seo", color: "info" },
-    { value: "audit-securite", color: "info" },
-    { value: "audit-all", color: "info" },
-    { value: "audit-flash", color: "info" },
-    { value: "ordinateur", color: "info" },
-    { value: "internet", color: "info" },
-    { value: "email", color: "info" },
-    { value: "securite-numerique", color: "info" },
-    { value: "ia", color: "info" },
-    { value: "formation", color: "info" }
+    { value: "vitrine", color: "theme-bg-3" },
+    { value: "ecommerce", color: "theme-bg-3" },
+    { value: "reservation", color: "theme-bg-3" },
+    { value: "custom", color: "theme-bg-3" },
+    { value: "accessibilite", color: "theme-bg-3" },
+    { value: "seo", color: "theme-bg-3" },
+    { value: "securite", color: "theme-bg-3" },
+    { value: "performance", color: "theme-bg-3" },
+    { value: "all", color: "theme-bg-3" },
+    { value: "maintenance-it-particulier", color: "theme-bg-3" },
+    { value: "maintenance-it-professionnel", color: "theme-bg-3" },
+    { value: "maintenance-it-ponctuelle", color: "theme-bg-3" },
+    { value: "maintenance-it-urgent", color: "warning" },
+    { value: "audit-accessibilite", color: "theme-bg-3" },
+    { value: "audit-seo", color: "theme-bg-3" },
+    { value: "audit-securite", color: "theme-bg-3" },
+    { value: "audit-all", color: "theme-bg-3" },
+    { value: "audit-flash", color: "theme-bg-3" },
+    { value: "ordinateur", color: "theme-bg-3" },
+    { value: "internet", color: "theme-bg-3" },
+    { value: "email", color: "theme-bg-3" },
+    { value: "securite-numerique", color: "theme-bg-3" },
+    { value: "ia", color: "theme-bg-3" },
+    { value: "formation", color: "theme-bg-3" }
 ];
 
 const colorProjectTypeFilter = computed(() => colorProjectType.find(c => c.value === leadStore.data.projectType)?.color || 'primary');
@@ -92,6 +97,12 @@ const rejectedProjectTypes = ['formation', 'audit'];
                 <p class="font-semibold tracking-widest uppercase fs-small">
                     <strong class="uppercase mr-6">CMS :</strong>
                     {{ leadStore.data.complexity.cms === true ? 'OUI' : 'NON' }}
+                </p>
+                <p v-if="leadStore.data.complexity.computerRange" class="font-semibold tracking-widest uppercase fs-small">
+                    <strong class="uppercase mr-6">
+                        Nombre d'ordinateurs :
+                    </strong>
+                    <span>{{ leadStore.data.complexity.computerRange > 100 ? '100+' : leadStore.data.complexity.computerRange }}</span>
                 </p>
             </div>
 

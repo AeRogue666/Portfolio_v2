@@ -98,7 +98,12 @@ const src = computed(() => service.value?.image?.sources?.detail?.mobile || serv
     tabletSrc = computed(() => service.value?.image?.sources?.detail?.tablet || service.value?.image?.sources?.feed?.tablet || src.value),
     desktopSrc = computed(() => service.value?.image?.sources?.detail?.desktop || service.value?.image?.sources?.feed?.desktop || tabletSrc.value);
 
-const serviceType = computed(() => slug.value.split('-')[0]);
+const serviceType = computed(() => {
+    if (slug.value === "maintenance-informatique") {
+       return slug.value
+    }
+    slug.value.split('-')[0]
+});
 const travelExpenses = computed(() => travelExpensesArray
     .find((travel: { language: 'en' | 'fr'; }) => travel.language === locale.value)
     ?.children
@@ -215,7 +220,7 @@ if (service.value) {
             </ul>
 
             <div class="flex flex-col md:flex-row justify-evenly">
-                <ContactLinkBase :cta-label="t('index.landing_section.cta_project')"
+                <ContactLinkBase :cta-label="t(`plans.cta_link_base.${serviceType}`)"
                     :cta-icon="'fa7-solid:comment-dots'"
                     :cta-class="'inline-flex items-center justify-center px-5 py-2.5 gap-2 rounded-lg bg-(--text) text-(--bg) border border-transparent transition-all duration-200 hover:bg-(--bg-3)/10 hover:text-(--text) hover:border-(--text) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--focus) fs-body shadow-md whitespace-normal break-words'"
                     :project-type="serviceType" />
