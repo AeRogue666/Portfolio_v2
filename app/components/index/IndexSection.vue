@@ -20,10 +20,20 @@ const props = defineProps<{
         </div>
 
         <!-- B - Vague SVG de séparation avec la section suivante -->
-        <svg class="block w-full h-18 absolute -bottom-px left-0 right-0 z-2" viewBox="0 0 1846 320"
-         xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M0,36 C180,72 360,0 540,28 C720,56 900,8 1080,36 C1260,60 1360,18 1846,36 L1846,72 L0,72 Z"
-                :fill="`var(${props.fill})`" />
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+            class="block w-full h-auto absolute -bottom-px left-0 right-0 z-2">
+            <defs>
+                <linearGradient id="wave-accent-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.18" />
+                    <stop offset="50%" stop-color="var(--accent)" stop-opacity="0.32" />
+                    <stop offset="100%" stop-color="var(--accent)" stop-opacity="0.14" />
+                </linearGradient>
+            </defs>
+
+            <path fill="url(#wave-accent-grad)"
+                d="M0 105c240-65 440 55 720 15s460-75 740-15c160 35 280 15 386-5v85H0Z" />
+
+            <path class="fill-(--bg-3)" d="M0 95c180 75 360-75 540-18s360-42 540 18c180 50 280-38 766 0v95H02" />
         </svg>
     </section>
 </template>

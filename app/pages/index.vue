@@ -6,7 +6,6 @@ import ClientCarousel from '../components/index/organisms/ClientCarousel.vue';
 import ProcessContainer from '../components/index/organisms/ProcessContainer.vue';
 import ServicesContainer from '../components/index/organisms/ServicesContainer.vue';
 import QuestionContainer from '../components/index/organisms/QuestionContainer.vue';
-import SelfieDoodle from '../components/doodles/SelfieDoodle.vue';
 import SprintingDoodle from '../components/doodles/SprintingDoodle.vue';
 import PartnerBentoGrid from '../components/index/organisms/PartnerBentoGrid.vue';
 import ContactLinkBase from '~/components/layout/molecules/ContactLinkBase.vue';
@@ -337,7 +336,7 @@ useSeoMeta(({
 <template>
     <UContainer class="max-w-none">
         <!-- Landing section -->
-        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1" :fill="fillColors?.[0]">
+        <LandingSection id="landing-section" aria-labelledby="index-title" tabindex="-1">
             <template #tag>
                 <div role="img" :aria-label="t('index.lettered_logo')">
                     <NuxtImg id="index-title-img-light" :src="'/images/logo/logo_k_light.png'" alt="" aria-hidden="true"
@@ -403,7 +402,7 @@ useSeoMeta(({
                 {{ t('index.problem_section.commitment') }}
             </p>
 
-            <SelfieDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="'var(--bg-3)'"
+            <LazyDoodlesSelfieDoodle class="w-full md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5" :bg-color="'var(--bg-3)'"
                 :fill-color="'var(--accent)'" :stroke-color="'var(--text)'" />
         </IndexSection>
 

@@ -29,14 +29,9 @@ const isCollapsed = useState('sidebar-collapsed');
         @click="isCollapsed = !isCollapsed" />
 
       <UContainer>
-        <NuxtLink to="/" tabindex="0" :aria-label="t('header.span_title')" class="relative w-max flex gap-1.5 focus:outline-none focus-visible:outline-none hover:text-highlighted rounded-lg px-2 py-1">
-          <NuxtImg id="index-header-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'" alt=""
-            aria-hidden="true" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-            :class="grayscale ? 'grayscale-100' : ''" class="dark:hidden" fetchpriority="high" />
-          <NuxtImg id="index-header-title-img-dark"
-            :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'" alt=""
-            aria-hidden="true" width="150" height="50" sizes="xs:100vw sm:100vw md:80vw lg:16rem"
-            :class="grayscale ? 'grayscale-100' : ''" class="hidden dark:block" fetchpriority="high" />
+        <NuxtLink to="/" tabindex="0" :aria-label="t('header.span_title')"
+          class="relative w-max flex gap-1.5 focus:outline-none focus-visible:outline-none hover:text-highlighted rounded-lg px-2 py-1">
+          <UColorModeImage light="/images/logo/logo_light_300x100.png" dark="/images/logo/logo_dark_300x100.png" width="150" height="50" sizes="150px" densities="x1 x2" fetchpriority="high" alt="" aria-hidden="true" :class="grayscale ? 'grayscale-100' : ''" />
         </NuxtLink>
       </UContainer>
     </template>

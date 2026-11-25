@@ -64,7 +64,9 @@ onUnmounted(() => {
                 </div>
             </div>
 
-            <div class="w-full lg:w-2/5 transition-opacity duration-300" :class="{ 'pointer-events-none opacity-40 select-none' : !isHeroActive }" :aria-hidden="!isHeroActive ? 'true' : 'false'">
+            <div class="w-full lg:w-2/5 transition-opacity duration-300"
+                :class="{ 'pointer-events-none opacity-40 select-none': !isHeroActive }"
+                :aria-hidden="!isHeroActive ? 'true' : 'false'">
                 <carousel-departements :carousel-active="isCarouselActive" />
             </div>
 
@@ -72,10 +74,9 @@ onUnmounted(() => {
         </div>
 
         <!-- B - Vague SVG de séparation avec la section suivante -->
-        <svg class="block w-full h-18 absolute -bottom-px left-0 right-0 z-2" viewBox="0 0 1846 320"
-            xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M0,36 C180,72 360,0 540,28 C720,56 900,8 1080,36 C1260,60 1360,18 1846,36 L1846,72 L0,72 Z"
-                :fill="`var(${fill})`" />
+        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+            class="block w-full h-auto absolute -bottom-px left-0 right-0 z-2 fill-(--bg-3)" viewBox="0 0 1846 320">
+            <path d="M0 160c180 160 360-160 540-35s360-90 540 35c180 105 280-80 766 0v160H0Z" />
         </svg>
     </section>
 </template>

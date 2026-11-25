@@ -103,17 +103,9 @@ onMounted(() => {
     <div id="sidebar-left-content" class="flex flex-col items-center w-full h-full pt-4 gap-4">
         <UContainer class="flex flex-col items-center w-full h-full mt-4 lg:mt-0 gap-4">
             <div class="flex flex-col justify-center items-center">
-                <NuxtLink to="/" tabindex="0">
-                    <NuxtImg id="sidebar-left-title-img-light" :src="'/images/logo/logo_light_1920x1080.png'"
-                        :alt="t('header.span_title')" width="192" height="108"
-                        sizes="xs:100vw sm:100vw md:80vw lg:16rem" :class="grayscale ? 'grayscale-100' : ''"
-                        class="dark:hidden" />
-                    <NuxtImg id="sidebar-left-title-img-dark"
-                        :src="grayscale ? '/images/logo/logo_light_1920x1080.png' : '/images/logo/logo_dark_1920x1080.png'"
-                        :alt="t('header.span_title')" width="192" height="108"
-                        sizes="xs:100vw sm:100vw md:80vw lg:16rem" :class="grayscale ? 'grayscale-100' : ''"
-                        class="hidden dark:block" />
-                </NuxtLink>
+                <span class="fs-title font-bold">
+                    Code<span class="text-(--brand-color)">K</span>orico
+                </span>
             </div>
 
             <span class="fs-body text-(--text-2) leading-relaxed">

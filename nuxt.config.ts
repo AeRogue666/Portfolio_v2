@@ -154,6 +154,16 @@ export default defineNuxtConfig({
       exclude: ["better-sqlite3"],
     },
   },
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   compatibilityDate: "latest",
+  features: {
+    inlineStyles: true,
+  },
+  fonts: {
+    defaults: {
+      weights: [400, 600, 700],
+      styles: ["normal"],
+      subsets: ["latin", "latin-ext"],
+    }
+  }
 });
