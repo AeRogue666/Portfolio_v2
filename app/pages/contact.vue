@@ -98,11 +98,6 @@ useSeoMeta({
     description: "",
     ogDescription: "",
     ogUrl: () => `https://codekorico.com${route.path}`,
-    ogImage: "https://codekorico.com",
-    ogImageType: "image/png",
-    ogImageWidth: 1920,
-    ogImageHeight: 1080,
-    ogType: "website"
 })
 useHead({
     link: [

@@ -280,11 +280,6 @@ useSeoMeta({
     description: t('seo.home.description'),
     ogDescription: t('seo.home.description'),
     ogUrl: () => `https://codekorico.com${route.path}`,
-    ogImage: 'https://codekorico.com', // `/images/logo/logo_${colorMode.value}_1920x1080.png`
-    ogImageAlt: t('seo.home.description'),
-    ogImageType: 'image/png',
-    ogImageWidth: 1920,
-    ogImageHeight: 1080,
     articlePublishedTime: articlePublishedTime.value ?? "",
     articleModifiedTime: articleModifiedTime.value ?? "",
 }),

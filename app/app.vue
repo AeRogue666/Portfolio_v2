@@ -7,7 +7,12 @@ useSeoMeta({
   twitterCard: 'summary_large_image',
   articleAuthor: ['CodeKorico'],
   ogLocale: 'fr_FR',
-  ogLocaleAlternate: 'en_US'
+  ogLocaleAlternate: 'en_US',
+  ogImage: 'https://codekorico.com/favicon.png',
+  ogImageAlt: t('seo.home.description'),
+  ogImageType: 'image/png',
+  ogImageWidth: 1920,
+  ogImageHeight: 1080,
 }),
   useHead({
     htmlAttrs: {
@@ -20,11 +25,11 @@ useSeoMeta({
           "@context": "https://schema.org",
           "@type": "ProfessionalService",
           "name": "CodeKorico",
-          "image": "https://codekorico.com",
+          "image": "https://codekorico.com/favicon.png",
           "@id": "https://codekorico.com",
           "url": "https://codekorico.com",
           "telephone": "+33743347803",
-          "priceRange": "$$$",
+          "priceRange": "$$", // $$ pour tarifs modérés / accessibles; $$$ pour tarifs élevés / haut de gamme
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "555 Chemin des Traverses, Pépinière l'Espélidou",
@@ -51,13 +56,25 @@ useSeoMeta({
             "closes": "17:00"
           },
           "sameAs": [
-            "https://linkedin.com/in/codekorico",
-            "https://github.com/AeRogue666"
+            "https://linkedin.com/in/aurelien-gasnier",
+            "https://github.com/AeRogue666",
+            "https://codekorico.medium.com",
+            "https://www.facebook.com/people/CodeKorico/61596505328017/",
+            "https://pollen.coop/entrepreneur/codekorico-developpement-web-accessibilite-formation/",
           ],
           "knowsAbout": [
             "développement web accessible",
             "accessibilité numérique",
             "eco-conception web",
+            "optimisation seo",
+            "performance web",
+            "maintenance informatique",
+            "dépannage informatique à domicile",
+            "dépannage informatique à distance",
+            "formation numérique",
+            "intelligence artificielle éthique",
+            "conformité RGAA",
+            "hébergement web européen RGPD",
             "nuxt.js",
             "vue.js",
             "storyblok",
@@ -65,10 +82,8 @@ useSeoMeta({
             "strapi",
             "directus",
             "cms",
-            "wordpress",
             "shopify",
-            "optimisation seo",
-            "performance web"
+            "wordpress",
           ],
           "areaServed": [
             {
@@ -147,7 +162,16 @@ useSeoMeta({
               "@type": "Place",
               "name": "Monistrol-sur-Loire"
             }
-          ]
+          ],
+          "alternateName": [
+            "CodeKorico",
+            "Aureldev",
+          ],
+          "parentOrganization": {
+            "@type": "Organization",
+            "name": "Pollen SCOP",
+            "url": "https://pollen.coop"
+          }
         }
         )
       }

@@ -90,9 +90,9 @@ Utilisez le curseur pour voir la différence entre un code lourd et une version 
 
 ::image-slider
 ---
-    imageBefore: "/images/project/plateforme-gestion-recettes/desktop.png"
+    imageBefore: "/images/services/refonte-site/desktop_before.png"
     altBefore: "Ancienne version du site : contrastes faibles et structure encombrée."
-    imageAfter: "/images/project/portfolio-v2/desktop.png"
+    imageAfter: "/images/services/refonte-site/desktop_after.png"
     altAfter: "Nouvelle version par CodeKorico : lisibilité parfaite, éco-conçu et code accessible."
 ---
 ::

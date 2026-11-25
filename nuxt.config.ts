@@ -133,6 +133,7 @@ export default defineNuxtConfig({
       '/services/optimisation-site',
       '/services/maintenance-site',
       '/services/formations',
+      "/services/maintenance-informatique",
       '/contact',
       '/terms',
       '/landing/accessibilite-web-ardeche',

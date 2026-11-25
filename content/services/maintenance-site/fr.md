@@ -78,9 +78,9 @@ La pérennité de votre outil web repose sur une structure technique propre et s
 ::responsive-image
 ---
 title: "Suivi technique et interface de maintenance par CodeKorico"
-desktop: "/images/project/portfolio-v2/desktop.png"
-tablet: "/images/project/portfolio-v2/tablet.png"
-mobile: "/images/project/portfolio-v2/mobile.png"
+desktop: "/images/services/maintenance-site/desktop.png"
+tablet: "/images/services/maintenance-site/tablet.png"
+mobile: "/images/services/maintenance-site/mobile.png"
 
 ---
 ::

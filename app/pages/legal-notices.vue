@@ -34,31 +34,30 @@ const articlePublishedTime = computed(() => formatISO(page.value?.created_at)), 
 const created_atDate = computed(() => formatDate(page.value?.created_at)), // dayjs(page.value?.created_at).locale(locale.value).format("DD MMMM YYYY")
     updated_atDate = computed(() => formatDate(page.value?.updated_at)); // dayjs(page.value?.updated_at).locale(locale.value).format("DD MMMM YYYY")
 
-useHeadSafe(() => ({
+useSeoMeta({
     title: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }),
-    meta: [
-        // Meta names
-        { name: 'description', content: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }) },
-        // Meta properties
-        { property: 'og:title', content: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }) },
-        { property: 'og:description', content: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }) },
-        { property: 'og:type', content: 'article' },
-        { property: 'article:author', content: 'Aureldev' },
-        { property: 'article:published_time', content: articlePublishedTime.value ?? created_atDate.value ?? '' },
-        { property: 'article:modified_time', content: articleModifiedTime.value ?? updated_atDate.value ?? '' },
-    ],
-    link: [
-        {
-            rel: 'canonical',
-            href: `https://codekorico.com${route.path}`
-        },
-        ...locales.value.map((l: { code: string; }) => ({
-            rel: 'alternate',
-            hreflang: l.code,
-            href: `https://codekorico.com${route.path}`
-        } as const))
-    ]
-}));
+    ogTitle: t('seo.page.title', { pagetitle: t('breadcrumb.legal_notices') }),
+    description: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }),
+    ogDescription: t('seo.page.description', { pagetitle: t('breadcrumb.legal_notices') }),
+    ogUrl: () => `https://codekorico.com${route.path}`,
+    ogType: 'article',
+    articleAuthor: ['CodeKorico'],
+    articlePublishedTime: articlePublishedTime.value ?? created_atDate.value ?? '',
+    articleModifiedTime: articleModifiedTime.value ?? updated_atDate.value ?? '',
+}),
+    useHead({
+        link: [
+            {
+                rel: 'canonical',
+                href: `https://codekorico.com${route.path}`
+            },
+            ...locales.value.map((l: { code: string }) => ({
+                rel: 'alternate',
+                hreflang: l.code,
+                href: `https://codekorico.com${route.path}`
+            } as const))
+        ]
+    });
 </script>
 
 <template>
