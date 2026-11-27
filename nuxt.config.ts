@@ -116,7 +116,7 @@ export default defineNuxtConfig({
       '/**/fr',
       '/**/en'
     ],
-    urls: [
+    /* urls: [
       '/about',
       '/accessibility',
       '/clients',
@@ -124,7 +124,7 @@ export default defineNuxtConfig({
       '/legal-notices',
       '/projects',
       '/projects/front-ecommerce-headless',
-      '/projects/front-pomodor-timer',
+      '/projects/front-pomodoro-timer',
       '/projects/front-weather-aggregator',
       '/projects/plateforme-gestion-recettes',
       '/projects/portfolio-v2',
@@ -137,7 +137,8 @@ export default defineNuxtConfig({
       '/contact',
       '/terms',
       '/landing/accessibilite-web-ardeche',
-    ],
+      '/articles/declaration-accessibilite-conformite'
+    ], */
   },
   ui: {
     theme: {

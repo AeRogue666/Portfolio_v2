@@ -14,11 +14,12 @@ export default defineEventHandler(
 
     const sortBy = (query.sort as string) ?? "recent";
 
-    const [projects, experiments, about, clients] = await Promise.all([
+    const [projects, experiments, about, clients, articles] = await Promise.all([
       queryCollection(event, "projects").where("locale", "=", locale).all(),
       queryCollection(event, "experiments").where("locale", "=", locale).all(),
       queryCollection(event, 'about').where("locale", "=", locale).all(),
       queryCollection(event, 'clients').where("locale", "=", locale).all(),
+      queryCollection(event, "articles").where("locale", "=", locale).all(),
     ]);
 
     /* ======
@@ -29,6 +30,7 @@ export default defineEventHandler(
       ...experiments.map((u) => toFeedItem({ ...u, kind: "experiment" as const })),
       ...about.map((a) => toFeedItem({ ...a, kind: "about" as const })),
       ...clients.map((c) => toFeedItem({ ...c, kind: "client" as const })),
+      ...articles.map((a) => toFeedItem({ ...a, kind: "article" as const })),
     ];
 
     /* ======

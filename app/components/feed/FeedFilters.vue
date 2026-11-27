@@ -51,6 +51,7 @@ const availableKinds: { value: FeedKind; label: string }[] = [
     { value: 'job', label: 'post.type.job' },
     { value: 'read', label: 'post.type.read' },
     { value: 'talk', label: 'post.type.talk' },
+    { value: 'article', label: 'post.type.article' },
 ];
 
 // Grayscale

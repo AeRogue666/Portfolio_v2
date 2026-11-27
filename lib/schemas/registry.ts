@@ -4,7 +4,8 @@ import { contentSchema } from "./content";
 import { experimentSchema } from "./experiment";
 import { projectSchema } from "./project";
 import { serviceSchema } from "./service";
-import { landingSchema } from './landing';
+import { landingSchema } from "./landing";
+import { articleSchema } from "./article";
 
 export const contentRegistry = {
   content: {
@@ -40,5 +41,10 @@ export const contentRegistry = {
   about: {
     label: "About",
     schema: aboutSchema,
+  },
+
+  articles: {
+    label: "Articles",
+    schema: articleSchema,
   },
 } as const;

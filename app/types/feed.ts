@@ -36,7 +36,7 @@ export interface FeedItem {
   image?: ResponsiveImage;
   previewUrl?: string;
   links?: FeedLinks;
-  customer_name: string;
+  customer_name?: string;
   customer_job?: string;
   customer_city?: string;
   customer_enterprise_name?: string;

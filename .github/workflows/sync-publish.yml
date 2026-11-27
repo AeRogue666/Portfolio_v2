@@ -1,0 +1,23 @@
+name: Synchroniser les articles vers DEV.to
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - "content/**"
+
+jobs:
+    publish:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Récupérer le dépôt
+              uses: actions/checkout@v4
+            - name: Configurer Node.js
+              uses: actions/setup-node@v4
+              with:
+                node-version: '22'
+            - name: Synchroniser DEV.to
+              env:
+                DEVTO_API_KEY: ${{ secrets.DEVTO_API_KEY }}
+              run: node scripts/sync-publish.mjs

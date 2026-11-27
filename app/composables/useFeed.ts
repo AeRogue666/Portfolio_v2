@@ -84,11 +84,12 @@ export function useFeed(options?: UseFeedOptions) {
   const { data, status, error, refresh } = useAsyncData(
     feedKey,
     async () => {
-      const [projects, experiments, about, clients] = await Promise.all([
+      const [projects, experiments, about, clients, articles] = await Promise.all([
         queryCollection("projects").where("locale", "=", locale.value).all(),
         queryCollection("experiments").where("locale", "=", locale.value).all(),
         queryCollection("about").where("locale", "=", locale.value).all(),
         queryCollection("clients").where("locale", "=", locale.value).all(),
+        queryCollection("articles").where("locale", "=", locale.value).all(),
       ]);
 
       let feed = [
@@ -102,6 +103,9 @@ export function useFeed(options?: UseFeedOptions) {
         ...clients.map((c: any) =>
           toFeedItem({ ...c, kind: "client" as const }),
         ),
+        ...articles.map((a: any) =>
+          toFeedItem({ ...a, kind: "article" as const })
+        )
       ];
 
       console.log({
@@ -109,6 +113,7 @@ export function useFeed(options?: UseFeedOptions) {
         experiments: experiments.length,
         about: about.length,
         clients: clients.length,
+        articles: articles.length,
       });
 
       return feed;

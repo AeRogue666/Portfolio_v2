@@ -1,6 +1,7 @@
 ---
 title: A propos
 created_at: 2026-04-13
+updated_at: 2026-05-20
 description: Qu'est-ce que CodeKorico ?
 feed_summary: Une page à propos de CodeKorico et de moi
 feed_title: A propos
@@ -23,7 +24,6 @@ slug: about
 tags:
   - profil
   - parcours
-updated_at: 2026-05-20
 ---
 
 ## Qui suis-je
